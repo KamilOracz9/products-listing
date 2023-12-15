@@ -1,0 +1,7 @@
+{
+  "name": "Service Map",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
