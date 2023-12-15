@@ -2,24 +2,19 @@
   <div style="height:100vh; width:100vw">
     <div>{{ coords }}</div>
     <LMap ref="map" :zoom="zoom" :center="[51.395918283664265, 21.152872568862815]">
-      <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        layer-type="base" name="OpenStreetMap" />
-        <l-marker :lat-lng="coords"></l-marker>
+      <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap" />
+      <l-marker v-for="coord in coords" :lat-lng="coord"></l-marker>
     </LMap>
   </div>
 </template>
 
 <script setup>
 const zoom = ref(8)
-const coords = ref([0, 0]);
+const coords = ref([]);
 
-// const postalCodes = ['26-600', '27-600', '28-600', '29-600'];
+const postalCodes = ['26-600', '27-600', '28-600', '29-600'];
 
-const postalCode = '26-600';
-
-const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&postalcode=${postalCode}`;
-
-const fetchCoords = async () => {
+const fetchCoords = async (apiUrl) => {
   return await fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
@@ -37,7 +32,11 @@ const fetchCoords = async () => {
 }
 
 onMounted(() => {
-  fetchCoords().then(response => {coords.value = response}).then(() => console.log(coords));
+  postalCodes.forEach(postalCode => {
+    const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&postalcode=${postalCode}`
+
+    fetchCoords(apiUrl).then(response => { if(response) coords.value.push(response) }).then(() => console.log(coords.value));
+  });
 });
 
 </script>
