@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.marker {
+    position: relative;
+    width: fit-content;
+}
+
+.marker__counter {
+    background: red;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transform: translate(40%, -40%);
+}
+
+.marker__data {
+    position: absolute;
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    left: 50%;
+    transform: translate(-50%, -100px);
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+    z-index: 1;
+    display: none;
+}
+
+.marker__data::before {
+    content: '';
+    display: flex;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    transform: translate(50%, 50%) rotate(45deg);
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(66, 68, 90, 1);
+    box-shadow: 2px 2px 8px 0px rgba(66, 68, 90, 1);
+    z-index: -1;
+}
+
+.marker__data::after {
+    content: '';
+    display: flex;
+    width: 20px;
+    height: 10px;
+    background: inherit;
+    transform: translate(50%, 0);
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    z-index: -1;
+}

@@ -1,8 +1,12 @@
 <template>
-    <div>
-        {{ children }}
+    <div id="main-layout">
+        <slot />
     </div>
 </template>
 
-<script setup>
-</script>
+<style scoped>
+#main-layout {
+    height: 100vh;
+    width: 100vw;
+}
+</style>
