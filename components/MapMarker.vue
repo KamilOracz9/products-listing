@@ -1,52 +1,49 @@
 <template>
-    <LMarker :lat-lng="[location.address.delivery_latitude, location.address.delivery_longitude]" :icon="mapMarkerIcon" @click="toggleData" />
+    <LMarker :lat-lng="[location.address.delivery_latitude, location.address.delivery_longitude]" :icon="mapMarkerIcon"
+        @click="toggleData" />
 </template>
 
 <script setup>
 import { getMarker } from '~/libs/osm/services';
 
-const props = defineProps({
-    location: Object,
+const locationStore = useLocationsStore();
+const { location } = defineProps({
+    location: {},
+});
+const open = ref(false);
+
+const markerScheme = {
+    counter: location.zseu_count,
+    numbers: [
+        `Numer: ${location.name}`,
+        `Trasa: ${location.route_name ?? 'brak'}`,
+    ],
+    open: open,
+    location: location
+};
+
+const marker = L.divIcon({
+    className: 'map-marker-icon',
+    html: getMarker(markerScheme),
 });
 
-const { location } = props;
-console.log(location);
-const open = ref(false);
-const mapMarkerIcon = ref(
-    L.divIcon({
-        className: 'map-marker-icon',
-        html: getMarker({
-            markerSize: 25,
-            counter: 10,
-            numbers: [
-                'TR/23/003100',
-                'TR/23/003100',
-                'TR/23/003100',
-            ],
-            open: open,
-        }).mapMarker,
-    })
-);
+const mapMarkerIcon = ref(marker);
 
 const toggleData = () => {
     const svg = event.target.closest('.loaction-icon');
-    if(svg && svg.classList.contains('loaction-icon')) open.value = !open.value;
+    if (svg && svg.classList.contains('loaction-icon')) {
+        locationStore.activeLocationId = location.id;
+        open.value = !open.value;
+    };
 }
 
 onMounted(() => {
     watch(open, () => {
+        locationStore.closeAllData();
+
         mapMarkerIcon.value = L.divIcon({
             className: 'map-marker-icon',
-            html: getMarker({
-                markerSize: 25,
-                counter: 10,
-                numbers: [
-                    'TR/23/003100',
-                    'TR/23/003100',
-                    'TR/23/003100',
-                ],
-                open: open,
-            }).mapMarker,
+            html: getMarker(markerScheme),
         });
     })
 })

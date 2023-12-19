@@ -1,24 +1,21 @@
 import { defineStore } from 'pinia';
-import { fetchCoords } from '~/libs/osm/api';
+import type { ILocation } from '~/types';
 
 type ILocationsStore = {
-    locations: (void | number[] | undefined)[],
-    activeLocationId: number | null,
+    locations: Array<ILocation>,
+    activeLocationId: string | null,
 }
 
 export const useLocationsStore = defineStore('locations', {
     state: (): ILocationsStore => ({
         locations: [],
-        activeLocationId: 0,
+        activeLocationId: '',
     }),
     getters: {
-        getActiveLocation: (state) => state.activeLocationId,
+        getActiveLocation: (state) => (state.locations.filter(location => location.id === state.activeLocationId)[0]),
     },
     actions: {
-        // async setLocations(response: (void | number[] | undefined)[]): Promise<void> {
-        //     this.locations = response;
-        // },
-        setActiveLocation(id: number) {
+        setActiveLocation(id: string) {
             this.activeLocationId = id;
         },
         async fetchLocations() {
@@ -26,6 +23,11 @@ export const useLocationsStore = defineStore('locations', {
             const url = `${config.public.apiProtocol}:\\\/${config.public.apiBase}/api/v1/service-orders`;
 
             await fetch(url).then(response => (response.json())).then(response => this.locations = response.data);
+        },
+        closeAllData() {
+            document.querySelectorAll('.marker__data').forEach((element) => {
+                element.style.display = 'none';
+            });
         },
     },
 })
