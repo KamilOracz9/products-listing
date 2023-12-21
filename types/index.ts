@@ -23,12 +23,12 @@ export type ILocation = {
     expired_status_id: IExpiredStatusId;
 };
 
-export type IExpiredStatusId = 0 | 1 | 2;
+export type IExpiredStatusId = 0 | 1 | 2 | null;
 
 export type ILocationType = "USE" | "ZSEU";
 
 export type IIcon = {
-    expiredStatusId: IExpiredStatusId;
+    expiredStatusId: IExpiredStatusId | null;
     locationType: ILocationType;
     markerSize: number;
 }

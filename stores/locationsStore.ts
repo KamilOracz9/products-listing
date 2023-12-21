@@ -3,12 +3,14 @@ import type { ILocation } from '~/types';
 
 type ILocationsStore = {
     locations: Array<ILocation>,
+    activeLocations: Array<ILocation>,
     activeLocationId: string | null,
 }
 
 export const useLocationsStore = defineStore('locations', {
     state: (): ILocationsStore => ({
         locations: [],
+        activeLocations: [],
         activeLocationId: '',
     }),
     getters: {
@@ -16,18 +18,22 @@ export const useLocationsStore = defineStore('locations', {
     },
     actions: {
         setActiveLocation(id: string) {
-            this.activeLocationId = id;
+            this.activeLocationId = this.activeLocationId === id ? null : id;
         },
         async fetchLocations() {
             const config = useRuntimeConfig();
-            const url = `${config.public.apiProtocol}:\\\/${config.public.apiBase}/api/v1/service-orders`;
+            const url = `${config.public.apiProtocol}:\\\\${config.public.apiBase}/api/v1/service-orders`;
 
-            await fetch(url).then(response => (response.json())).then(response => this.locations = response.data);
-        },
-        closeAllData() {
-            document.querySelectorAll('.marker__data').forEach((element) => {
-                element.style.display = 'none';
+            await fetch(url).then(response => (response.json())).then(response => {
+                const data = response.data.filter((location: ILocation) => location.address.delivery_latitude);
+
+                this.locations = data;
+                this.activeLocations = data;
             });
         },
+        group(zoom: number){
+            // console.log(zoom);
+            
+        }
     },
 })

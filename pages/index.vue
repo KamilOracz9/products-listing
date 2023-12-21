@@ -1,8 +1,8 @@
 <template>
   <MainLayout>
-    <LMap ref="map" :zoom="zoom" :center="center">
+    <LMap ref="map" :zoom="zoom" :center="center" @update:zoom="(value) => zoomUpdated(value)">
       <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap" />
-      <MapMarker v-for="location in locations" :location="location"></MapMarker>
+      <MapMarker v-if="rerenderMarkers" v-for="location in locations" :location="location"></MapMarker>
     </LMap>
   </MainLayout>
 </template>
@@ -11,16 +11,42 @@
 import MainLayout from '~/layouts/MainLayout.vue';
 import MapMarker from '~/components/MapMarker.vue';
 import type { PointExpression } from 'leaflet';
+import type { ILocation } from '~/types';
+import isArrayEqual from 'lodash/isEqual';
 
 const zoom: Ref<number> = ref(7);
 const center: Ref<PointExpression | undefined> = ref([51.919438, 19.14513599999998]);
-const locations: Ref<(void | number[] | undefined)[]> = ref([]);
+const locations: Ref<ILocation[]> = ref([]);
+
+const rerenderMarkers: Ref<boolean> = ref(true);
 
 const locationsStorage = useLocationsStore();
 
+const zoomUpdated = (value: number) => {
+  zoom.value = value;
+}
+
 onMounted(async () => {
   await locationsStorage.fetchLocations();
-  locations.value = locationsStorage.locations.filter(location => location.address.delivery_latitude);
+  locations.value = locationsStorage.activeLocations;
+
+  locationsStorage.group(zoom.value);
+
+  watch(locationsStorage, async (newValue) => {
+    if (!isArrayEqual(locations.value, newValue.activeLocations)) {
+      rerenderMarkers.value = false;
+
+      locations.value = locationsStorage.activeLocations;
+
+      await nextTick();
+
+      rerenderMarkers.value = true;
+    }
+  });
+
+  watch(zoom, (newValue) => {
+    locationsStorage.group(newValue);
+  });
 });
 
 </script>

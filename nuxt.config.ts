@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   modules: [
     'nuxt3-leaflet',
     '@pinia/nuxt',
+    'nuxt-lodash',
   ],
   runtimeConfig: {
     public: {
