@@ -1,9 +1,7 @@
 <template>
-    <div class="border-b-2">
-        <div class="font-bold p-4 cursor-pointer" @click="open = !open">
-            Legenda
-        </div>
-        <div class="text-xs" :class="open ? 'border-t' : 'hidden'">
+    <MenuItemLayout :open="open" :toggleOpen="toggleOpen">
+        <template v-slot:title>Legenda</template>
+        <template v-slot:body>
             <div class="flex flex-wrap gap-10 p-4">
                 <div class="flex flex-col gap-2">
                     <div v-for="icon in icons" class="flex w-[70px] justify-between">
@@ -20,14 +18,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </template>
+    </MenuItemLayout>
 </template>
 
 <script setup lang="ts">
+import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 import { icon } from '~/libs/osm/services';
+
 const { public: { expiredStatusesColors } } = useRuntimeConfig();
-const open: Ref<boolean> = ref(false);
+const open = ref(false);
+const toggleOpen = () => open.value = !open.value;
 
 const icons = ref([
     {

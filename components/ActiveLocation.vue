@@ -1,19 +1,21 @@
 <template>
-    <div class="border-b-2">
-        <div class="font-bold p-4 cursor-pointer" @click="open = !open">
-            Wybrana lokalozacja
-        </div>
-        <div class="text-xs" :class="open ? 'border-t' : 'hidden'">
+    <MenuItemLayout :open="open" :toggleOpen="toggleOpen">
+        <template v-slot:title>Wybrana lokalozacja</template>
+        <template v-slot:body>
             <div class="p-4">
                 {{ !locationStore.activeLocationId ? 'Brak wybranej lokalizacji' : locationStore.activeLocationId }}
             </div>
-        </div>
-    </div>
+        </template>
+    </MenuItemLayout>
 </template>
 
 <script setup lang="ts">
-const open: Ref<boolean> = ref(false);
+import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
+
 const locationStore = useLocationsStore();
+const open = ref(false);
+
+const toggleOpen = () => open.value = !open.value;
 
 watch(locationStore, () => locationStore.activeLocationId ? open.value = true : open.value = false);
 </script>

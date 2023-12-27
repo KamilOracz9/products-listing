@@ -30,8 +30,6 @@ onMounted(async () => {
   await locationsStorage.fetchLocations();
   locations.value = locationsStorage.activeLocations;
 
-  locationsStorage.group(zoom.value);
-
   watch(locationsStorage, async (newValue) => {
     if (!isArrayEqual(locations.value, newValue.activeLocations)) {
       rerenderMarkers.value = false;
@@ -45,7 +43,6 @@ onMounted(async () => {
   });
 
   watch(zoom, (newValue) => {
-    locationsStorage.group(newValue);
   });
 });
 

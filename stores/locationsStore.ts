@@ -31,9 +31,5 @@ export const useLocationsStore = defineStore('locations', {
                 this.activeLocations = data;
             });
         },
-        group(zoom: number){
-            // console.log(zoom);
-            
-        }
     },
 })

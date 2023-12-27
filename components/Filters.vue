@@ -1,9 +1,7 @@
 <template>
-    <div class="border-b-2">
-        <div class="font-bold p-4 cursor-pointer" @click="open = !open">
-            Filtry
-        </div>
-        <div class="text-xs" :class="open ? 'border-t' : 'hidden'">
+    <MenuItemLayout :open="open" :toggleOpen="toggleOpen">
+        <template v-slot:title>Filtry</template>
+        <template v-slot:body>
             <div class="p-4 flex flex-col gap-4">
                 <div class="flex gap-4 items-center">
                     <div>
@@ -31,16 +29,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </template>
+    </MenuItemLayout>
 </template>
 
 <script setup lang="ts">
+import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 import type { ILocationType } from '~/types';
 
 const filtersStore = useFiltersStore();
-
-const open: Ref<boolean> = ref(false);
+const open = ref(false);
+const toggleOpen = () => open.value = !open.value;
 const type: Ref<ILocationType | null> = ref(null);
 
 const changeType = (event: Event) => {

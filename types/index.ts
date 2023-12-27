@@ -1,8 +1,8 @@
 type ILocationAddress = {
     delivery_city: string;
     delivery_email: string | null;
-    delivery_latitude: string | null;
-    delivery_longitude: string | null;
+    delivery_latitude: number | null;
+    delivery_longitude: number | null;
     delivery_name: string;
     delivery_phone: string;
     delivery_postcode: string;
@@ -10,6 +10,13 @@ type ILocationAddress = {
     __database_postcode: string;
     __databse_name: string;
 }
+
+type INearestCity = {
+    name: string;
+    postcode: string;
+    latitude: number;
+    longitude: number;
+};
 
 export type ILocation = {
     address: ILocationAddress;
@@ -21,6 +28,7 @@ export type ILocation = {
     type: ILocationType;
     zseu_count: number;
     expired_status_id: IExpiredStatusId;
+    nearest_city: INearestCity | null;
 };
 
 export type IExpiredStatusId = 0 | 1 | 2 | null;
