@@ -30,6 +30,8 @@ export const useLocationsStore = defineStore('locations', {
                 this.locations = data;
                 this.activeLocations = data;
             });
+
+            console.log('asd')
         },
     },
 })

@@ -5,6 +5,7 @@
         </div>
 
         <div class="h-[30%] w-full overflow-y-auto flex-col border-t-2 xl:h-full xl:w-[20%] xl:border-l-2 xl:border-t-0">
+            <Actions />
             <Legend />
             <Filters />
             <ActiveLocation />
