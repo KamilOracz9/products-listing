@@ -16,12 +16,12 @@ const open = ref(false);
 const markerIcon = ref(renderMarker());
 const mapMarkerIcon = ref(getMarker());
 
-const toggleData = () => {
+const toggleData = async () => {
     const svg = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
     if (svg && svg.classList.contains('loaction-icon')) {
         const markerData = (<HTMLElement>svg.closest('.marker')?.querySelector('.marker__data'));
 
-        locationStore.setActiveLocation(location.id);
+        await locationStore.setActiveLocation(location.id);
         open.value = !open.value;
         globalStore.closeAllData();
         markerData.style.display = open.value ? 'block' : 'none';

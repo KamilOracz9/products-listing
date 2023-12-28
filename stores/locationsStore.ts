@@ -1,4 +1,4 @@
-import { concat } from 'lodash';
+import concat from 'lodash/concat';
 import { defineStore } from 'pinia';
 import type { IActiveLocation, IGroupedLocation, ILocation } from '~/types';
 
@@ -33,7 +33,7 @@ export const useLocationsStore = defineStore('locations', {
         },
         async fetchLocations() {
             const config = useRuntimeConfig();
-            const url = `${config.public.apiProtocol}:\\\\${config.public.apiBase}/api/v2/service-orders`;
+            const url = `http:\\\\192.168.1.252:20384/api/v2/service-orders`;
 
             await fetch(url).then(response => (response.json())).then(response => {
                 const locations = concat(...Object.values(response.data).map(location => (location.items))).filter((location: ILocation) => location.address.delivery_latitude);

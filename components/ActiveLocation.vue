@@ -8,12 +8,15 @@
                 </template>
                 <template v-else>
                     <p class="font-bold">Dane adresowe:</p>
+                    <p>ID: {{ locationStore.activeLocation.id }}</p>
                     <p>Numer: {{ locationStore.activeLocation.name }}</p>
+                    <p>Typ: {{ locationStore.activeLocation.type }}</p>
                     <p>Ulica: {{ locationStore.activeLocation.address.delivery_street }}</p>
                     <p>Miasto: {{ locationStore.activeLocation.address.delivery_city }}</p>
                     <p>Telefon: {{ locationStore.activeLocation.address.delivery_phone }}</p>
                     <p>Email: {{ locationStore.activeLocation.address.delivery_email }}</p>
                     <p>Data instalacji: {{ locationStore.activeLocation.installation_date }}</p>
+                    <p>Trasa: {{ locationStore.activeLocation.route_name }}</p>
                     <p class="font-bold">Usługi:</p>
                     <div class="flex">
                         <div v-for="service in locationStore.activeLocation.services">
