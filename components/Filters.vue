@@ -18,16 +18,6 @@
                             name="filter-type" value="ZSEU">
                     </div>
                 </div>
-
-                <div class="flex gap-4 items-center">
-                    <div>
-                        Pokaż dymki:
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input @change="toggleDataShow($event)" class="-translate-y-[1px]" type="checkbox"
-                            name="filter-show-data" value="1">
-                    </div>
-                </div>
             </div>
         </template>
     </MenuItemLayout>
@@ -51,10 +41,6 @@ const changeType = (event: Event) => {
 
     if (!event.target) type.value = null;
     else type.value = (<HTMLInputElement>event.target).checked ? <ILocationType>(<HTMLInputElement>event.target).value : null;
-}
-
-const toggleDataShow = (event: Event) => {
-    (<HTMLInputElement>event.target).checked ? filtersStore.showAllData() : filtersStore.closeAllData();
 }
 
 onMounted(() => {

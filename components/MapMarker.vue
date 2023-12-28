@@ -10,7 +10,7 @@ import { render } from 'vue';
 const { location } = defineProps(['location']);
 
 const locationStore = useLocationsStore();
-const filtersStore = useFiltersStore();
+const globalStore = useGlobalStore();
 
 const open = ref(false);
 const markerIcon = ref(renderMarker());
@@ -23,7 +23,7 @@ const toggleData = () => {
 
         locationStore.setActiveLocation(location.id);
         open.value = !open.value;
-        filtersStore.closeAllData();
+        globalStore.closeAllData();
         markerData.style.display = open.value ? 'block' : 'none';
     };
 }

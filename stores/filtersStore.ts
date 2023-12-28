@@ -20,15 +20,5 @@ export const useFiltersStore = defineStore('filters', {
 
             locationsStore.activeLocations = locations;
         },
-        closeAllData() {
-            document.querySelectorAll('.marker__data').forEach((element) => {
-                (<HTMLElement>element).style.display = 'none';
-            });
-        },
-        showAllData() {
-            document.querySelectorAll('.marker__data').forEach((element) => {
-                (<HTMLElement>element).style.display = 'block';
-            });
-        },
     },
 })

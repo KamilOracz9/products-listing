@@ -18,6 +18,12 @@ type INearestCity = {
     longitude: number;
 };
 
+type IActiveLocationService = {
+    code: string;
+    count: string;
+    name: string;
+}
+
 export type ILocation = {
     address: ILocationAddress;
     expired_date: string | null;
@@ -39,4 +45,15 @@ export type IIcon = {
     expiredStatusId: IExpiredStatusId | null;
     locationType: ILocationType;
     markerSize: number;
+}
+
+export type IGroupedLocation = {
+    postcode: string;
+    latitude: number;
+    longitude: number;
+    items: Array<ILocation>;
+}
+
+export type IActiveLocation = ILocation & {
+    services: Array<IActiveLocationService>;
 }
