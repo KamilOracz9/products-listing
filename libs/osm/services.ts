@@ -1,4 +1,4 @@
-import type { IExpiredStatusId, IIcon, ILocation, ILocationType } from "~/types";
+import type { IExpiredStatusId, IIcon, ILocation } from "~/types";
 
 type PropsType = {
     counter: number,

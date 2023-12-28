@@ -13,13 +13,13 @@ import MapMarker from '~/components/MapMarker.vue';
 import type { PointExpression } from 'leaflet';
 import type { ILocation } from '~/types';
 import isArrayEqual from 'lodash/isEqual';
+import MapMarkerIcon from '~/components/MapMarkerIcon.vue';
+import { render } from 'vue';
 
 const zoom: Ref<number> = ref(7);
 const center: Ref<PointExpression | undefined> = ref([51.919438, 19.14513599999998]);
 const locations: Ref<ILocation[]> = ref([]);
-
 const rerenderMarkers: Ref<boolean> = ref(true);
-
 const locationsStorage = useLocationsStore();
 
 const zoomUpdated = (value: number) => {
