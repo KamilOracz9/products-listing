@@ -38,9 +38,11 @@ import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 import type { ILocationType } from '~/types';
 
 const filtersStore = useFiltersStore();
+
 const open = ref(false);
-const toggleOpen = () => open.value = !open.value;
 const type: Ref<ILocationType | null> = ref(null);
+
+const toggleOpen = () => open.value = !open.value;
 
 const changeType = (event: Event) => {
     Array.from(document.querySelectorAll('input[name="filter-type"]'))

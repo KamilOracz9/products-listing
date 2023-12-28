@@ -12,10 +12,11 @@
 <script setup lang="ts">
 import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 
-const open = ref(false);
-const toggleOpen = () => open.value = !open.value;
 const locationsStorage = useLocationsStore();
 const filtersStore = useFiltersStore();
+
+const open = ref(false);
+const toggleOpen = () => open.value = !open.value;
 
 const handleRefresh = async () => {
     locationsStorage.fetchLocations().then(() => filtersStore.filter());

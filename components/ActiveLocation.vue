@@ -13,6 +13,7 @@
 import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 
 const locationStore = useLocationsStore();
+
 const open = ref(false);
 
 const toggleOpen = () => open.value = !open.value;

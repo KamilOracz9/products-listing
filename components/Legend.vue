@@ -24,10 +24,12 @@
 
 <script setup lang="ts">
 import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
-import { icon } from '~/libs/osm/services';
+import type { IExpiredStatusId, IIcon } from '~/types';
 
 const { public: { expiredStatusesColors } } = useRuntimeConfig();
+
 const open = ref(false);
+
 const toggleOpen = () => open.value = !open.value;
 
 const icons = ref([
@@ -63,4 +65,29 @@ const colors = ref([
         'color': expiredStatusesColors.red,
     },
 ]);
+
+function color(expiredStatusId: IExpiredStatusId) {
+    switch (expiredStatusId) {
+        case 0: return 'green';
+        case 1: return 'yellow';
+        case 2: return 'red';
+        default: return 'black';
+    }
+}
+
+function icon({ expiredStatusId, locationType, markerSize }: IIcon) {
+    switch (locationType) {
+        case 'USE': return `
+            <svg class="loaction-icon" width="${markerSize}" height="${markerSize}">
+                <rect width="300" height="100" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}"/>
+            </svg>
+        `;
+        case 'ZSEU': return `
+            <svg class="loaction-icon" height="${markerSize}" width="${markerSize}">
+                <circle cx="${markerSize / 2}" cy="${markerSize / 2}" r="${markerSize / 2}" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}" />
+            </svg>
+        `;
+        default: return '';
+    }
+}
 </script>
