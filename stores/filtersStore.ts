@@ -4,12 +4,14 @@ import { useLocationsStore } from '~/stores/locationsStore';
 type IFiltersStore = {
     type: ILocationType | null;
     hasRoute: string | null;
+    number: string | null;
 }
 
 export const useFiltersStore = defineStore('filters', {
     state: (): IFiltersStore => ({
         type: null,
         hasRoute: null,
+        number: null,
     }),
     getters: {
         isRouteSet: (state) => state.hasRoute !== null ? !!parseInt(state.hasRoute) : null,
@@ -19,6 +21,8 @@ export const useFiltersStore = defineStore('filters', {
             const locationsStore = useLocationsStore();
             let locations = locationsStore.locations;
             let groupedLocations = JSON.parse(JSON.stringify(locationsStore.groupedLocations));
+
+            locations = locations.filter(location => this.number !== null ? location.name.includes(this.number) : location);
 
             locations = locations.filter(location => {
                 return this.type ? (location.type === this.type) : location.type;
@@ -30,7 +34,7 @@ export const useFiltersStore = defineStore('filters', {
 
             locationsStore.activeLocations = locations;
 
-            if (this.type) {
+            if (this.type !== null || this.isRouteSet !== null || this.number !== null) {
                 locationsStore.groupedActiveLocations = groupedLocations.map((groupedLocation: IGroupedLocation) => {
                     const items = (<IGroupedLocation>groupedLocation).items?.filter(item => locations.find(location => location.id === item.id))
                     
