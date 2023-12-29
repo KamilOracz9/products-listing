@@ -17,7 +17,7 @@ const markerIcon = ref(renderMarker());
 const mapMarkerIcon = ref(getMarker());
 
 const toggleData = async () => {
-    navigator.clipboard.writeText(location.name);
+    if(navigator.clipboard) navigator.clipboard.writeText(location.name);
 
     const svg = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
     if (svg && svg.classList.contains('loaction-icon')) {
