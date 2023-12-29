@@ -1,6 +1,5 @@
 <template>
-    <LMarker :lat-lng="[location.latitude, location.longitude]" :icon="mapMarkerIcon"
-        @click="toggleData" />
+    <LMarker :lat-lng="[location.latitude, location.longitude]" :icon="mapMarkerIcon" @click="toggleData" />
 </template>
 
 <script setup lang="ts">
@@ -29,29 +28,35 @@ const toggleData = () => {
 }
 
 function renderMarker() {
-    const vnode = h(MapGroupedMarkerIcon, {
-        counters: {
-            "USE": {
-                locationsNumber: 1,
-                servicesNumber: 1,
-            },
-            "ZSEU": {
-                locationsNumber: 2,
-                servicesNumber: 5,
-            },
+    const counters = {
+        "USE": {
+            locationsNumber: 0,
+            servicesNumber: 0,
         },
-        // numbers: [
-        //     `Numer: ${location.name}`,
-        //     `Trasa: ${location.route_name ?? 'brak'}`,
-        //     `Typ: ${location.type}`,
-        // ],
-        // open: open,
+        "ZSEU": {
+            locationsNumber: 0,
+            servicesNumber: 0,
+        },
+    };
+
+    location.items.forEach(item => {
+        if(item.type === 'USE') {
+            counters.USE.locationsNumber++;
+            counters.USE.servicesNumber++;
+        }else {
+            counters.ZSEU.locationsNumber++;
+            counters.ZSEU.servicesNumber += item.zseu_count;
+        }
+    });
+
+    const vnode = h(MapGroupedMarkerIcon, {
+        counters: counters,
         location: location,
     });
     const container = document.createElement('div');
 
     render(vnode, container);
-    
+
     return container.innerHTML;
 }
 

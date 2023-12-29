@@ -19,6 +19,9 @@ export const useFiltersStore = defineStore('filters', {
             });
 
             locationsStore.activeLocations = locations;
+
+            if(this.type) locationsStore.groupedActiveLocations[0].items?.filter(location => !locations.includes(location));
+            else locationsStore.groupedActiveLocations = locationsStore.groupedLocations;
         },
     },
 })

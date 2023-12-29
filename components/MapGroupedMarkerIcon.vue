@@ -2,26 +2,25 @@
     <div class="marker" :style="`transform: translateY(-${markerSize}px);`">
         <!-- <div class="marker__data" :style="`display: ${open ? 'block' : 'none'}`">
             <div v-for="number in numbers" v-text="number"></div>
-        </div>
-        <div class="marker__counter">{{ counter }}</div> -->
-        <svg class="loaction-icon" :width="markerSize" :height="markerSize">
+        </div> -->
+        <div class="marker__counter marker__counter--use" v-if="counters.USE.locationsNumber">{{ counters.USE.locationsNumber }} / {{ counters.USE.servicesNumber }}</div>
+        <div class="marker__counter marker__counter--zseu" v-if="counters.ZSEU.locationsNumber">{{ counters.ZSEU.locationsNumber }} / {{ counters.ZSEU.servicesNumber }}</div>
+        <svg class="loaction-icon" :width="markerSize" :height="markerSize" v-if="counters.USE.locationsNumber">
             <rect width="300" height="100" stroke="black" stroke-width=".5" :fill="colors[color(location.expired_status_id)]" />
         </svg>
-        <!-- <svg class="loaction-icon" :width="markerSize" :height="markerSize" v-if="location.type === 'ZSEU'">
+        <svg class="loaction-icon" :width="markerSize" :height="markerSize"  v-if="counters.ZSEU.locationsNumber">
             <circle :cx="markerSize / 2" :cy="markerSize / 2" :r="markerSize / 2" stroke="black" stroke-width=".5"
                 :fill="colors[color(location.expired_status_id)]" />
-        </svg> -->
+        </svg>
     </div>
 </template>
 
 <script setup lang="ts">
 import type { IExpiredStatusId, ILocation } from '~/types';
 
-const props = defineProps(['counter', 'numbers', 'open', 'location']);
+const props = defineProps(['counters', 'location']);
 
-const numbers: Ref<Array<string>> = ref(props.numbers);
-const open: Ref<boolean> = ref(props.open);
-const counter: Ref<number> = ref(props.counter);
+const counters: Ref<number> = ref(props.counters);
 const location: Ref<ILocation> = ref(props.location);
 
 const markerSize = 25;

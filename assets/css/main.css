@@ -21,6 +21,15 @@
     transform: translate(40%, -40%);
 }
 
+.marker__counter--use, .marker__counter--zseu {
+    width: 50px;
+    border-radius: 20px;
+}
+
+.marker__counter--use {
+    transform: translate(40%, -150%);
+}
+
 .marker__data {
     position: absolute;
     top: -100%;
