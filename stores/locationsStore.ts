@@ -35,7 +35,8 @@ export const useLocationsStore = defineStore('locations', {
             const url = `${config.public.apiProtocol}:\\\\${config.public.apiBase}/api/v2/service-orders`;
 
             await fetch(url).then(response => (response.json())).then(response => {
-                const locations = concat(...(<IGroupedLocation[]>Object.values(response.data)).map((location) => (location.items))).filter((location) => location.address.delivery_latitude);
+                const locations = (<ILocation[]>concat(...(<IGroupedLocation[]>Object.values(response.data)).map((location) => (location.items))))
+                    .filter((location) => location.address.delivery_latitude);
                 const groupedLocations = (<IGroupedLocation[]>Object.values(response.data)).filter((location) => location.latitude && location.longitude);
 
                 this.locations = <ILocation[]>locations;

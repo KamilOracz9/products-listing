@@ -18,6 +18,21 @@
                             name="filter-type" value="ZSEU">
                     </div>
                 </div>
+                <div class="flex gap-4 items-center">
+                    <div>
+                        Przypisana trasa:
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label for="route">Tak</label>
+                        <input @change="changeHasRoute($event)" id="route" class="-translate-y-[1px]" type="checkbox"
+                            name="has-route" :value="1">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label for="no-route">Nie</label>
+                        <input @change="changeHasRoute($event)" id="no-route" class="-translate-y-[1px]" type="checkbox"
+                            name="has-route" :value="0">
+                    </div>
+                </div>
             </div>
         </template>
     </MenuItemLayout>
@@ -29,8 +44,9 @@ import type { ILocationType } from '~/types';
 
 const filtersStore = useFiltersStore();
 
-const open = ref(true);
+const open = ref(false);
 const type: Ref<ILocationType | null> = ref(null);
+const hasRoute: Ref<string | null> = ref(null);
 
 const toggleOpen = () => open.value = !open.value;
 
@@ -43,11 +59,26 @@ const changeType = (event: Event) => {
     else type.value = (<HTMLInputElement>event.target).checked ? <ILocationType>(<HTMLInputElement>event.target).value : null;
 }
 
+const changeHasRoute = (event: Event) => {
+    Array.from(document.querySelectorAll('input[name="has-route"]'))
+        .filter(checkbox => checkbox !== event.target)
+        .forEach(filter => (<HTMLInputElement>filter).checked = false);
+
+    if (!event.target) hasRoute.value = null;
+    else hasRoute.value = (<HTMLInputElement>event.target).checked ? (<HTMLInputElement>event.target).value : null;
+}
+
 onMounted(() => {
     type.value = filtersStore.type;
+    hasRoute.value = filtersStore.hasRoute;
 
     watch(type, () => {
         filtersStore.type = type.value;
+        filtersStore.filter();
+    })
+
+    watch(hasRoute, () => {
+        filtersStore.hasRoute = hasRoute.value;
         filtersStore.filter();
     })
 });

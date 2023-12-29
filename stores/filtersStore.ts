@@ -3,12 +3,17 @@ import { useLocationsStore } from '~/stores/locationsStore';
 
 type IFiltersStore = {
     type: ILocationType | null;
+    hasRoute: string | null;
 }
 
 export const useFiltersStore = defineStore('filters', {
     state: (): IFiltersStore => ({
         type: null,
+        hasRoute: null,
     }),
+    getters: {
+        isRouteSet: (state) => state.hasRoute !== null ? !!parseInt(state.hasRoute) : null,
+    },
     actions: {
         filter() {
             const locationsStore = useLocationsStore();
@@ -17,6 +22,10 @@ export const useFiltersStore = defineStore('filters', {
 
             locations = locations.filter(location => {
                 return this.type ? (location.type === this.type) : location.type;
+            });
+
+            locations = locations.filter(location => {
+                return this.isRouteSet !== null ? (this.isRouteSet ? !!location.route_name : !location.route_name) : location;
             });
 
             locationsStore.activeLocations = locations;
