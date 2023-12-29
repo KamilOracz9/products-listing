@@ -34,15 +34,17 @@ const zoomUpdated = (value: number) => {
 onMounted(async () => {
   await locationsStorage.fetchLocations();
   locations.value = locationsStorage.activeLocations;
-  groupedLocations.value = locationsStorage.groupedLocations;
+  groupedLocations.value = locationsStorage.groupedActiveLocations;
 
   globalStore.groupedMode = zoom.value <= 7;
 
   watch(locationsStorage, async (newValue) => {
     if (!isArrayEqual(locations.value, newValue.activeLocations)) {
+
       rerenderMarkers.value = false;
 
       locations.value = locationsStorage.activeLocations;
+      groupedLocations.value = locationsStorage.groupedActiveLocations;
 
       await nextTick();
 

@@ -29,7 +29,7 @@ import type { ILocationType } from '~/types';
 
 const filtersStore = useFiltersStore();
 
-const open = ref(false);
+const open = ref(true);
 const type: Ref<ILocationType | null> = ref(null);
 
 const toggleOpen = () => open.value = !open.value;

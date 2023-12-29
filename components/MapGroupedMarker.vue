@@ -1,31 +1,16 @@
 <template>
-    <LMarker :lat-lng="[location.latitude, location.longitude]" :icon="mapMarkerIcon" @click="toggleData" />
+    <LMarker :lat-lng="[location.latitude, location.longitude]" :icon="mapMarkerIcon" />
 </template>
 
 <script setup lang="ts">
 import MapGroupedMarkerIcon from '~/components/MapGroupedMarkerIcon.vue';
 import { render } from 'vue';
+import type { ILocation } from '~/types';
 
 const { location } = defineProps(['location']);
 
-const locationStore = useLocationsStore();
-const filtersStore = useFiltersStore();
-
-const open = ref(false);
 const markerIcon = ref(renderMarker());
 const mapMarkerIcon = ref(getMarker());
-
-const toggleData = () => {
-    // const svg = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
-    // if (svg && svg.classList.contains('loaction-icon')) {
-    //     const markerData = (<HTMLElement>svg.closest('.marker')?.querySelector('.marker__data'));
-
-    //     locationStore.setActiveLocation(location.id);
-    //     open.value = !open.value;
-    //     filtersStore.closeAllData();
-    //     markerData.style.display = open.value ? 'block' : 'none';
-    // };
-}
 
 function renderMarker() {
     const counters = {
@@ -39,7 +24,7 @@ function renderMarker() {
         },
     };
 
-    location.items.forEach(item => {
+    location.items.forEach((item: ILocation) => {
         if(item.type === 'USE') {
             counters.USE.locationsNumber++;
             counters.USE.servicesNumber++;
@@ -63,7 +48,7 @@ function renderMarker() {
 function getMarker() {
     return L.divIcon({
         className: 'map-marker-icon',
-        html: markerIcon,
+        html: markerIcon.value,
     });
 }
 

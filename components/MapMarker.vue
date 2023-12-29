@@ -49,7 +49,7 @@ function renderMarker() {
 function getMarker() {
     return L.divIcon({
         className: 'map-marker-icon',
-        html: markerIcon,
+        html: markerIcon.value,
     });
 }
 

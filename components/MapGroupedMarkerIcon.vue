@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import type { IExpiredStatusId, ILocation } from '~/types';
+import type { IExpiredStatusId, ILocation, ILocationType } from '~/types';
 
 const props = defineProps(['counters', 'location']);
 
-const counters: Ref<number> = ref(props.counters);
+const counters = ref(props.counters);
 const location: Ref<ILocation> = ref(props.location);
 
 const markerSize = 25;
