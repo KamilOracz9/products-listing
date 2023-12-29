@@ -35,6 +35,7 @@ export type ILocation = {
     zseu_count: number;
     expired_status_id: IExpiredStatusId;
     nearest_city: INearestCity | null;
+    zse_id: string | null;
 };
 
 export type IExpiredStatusId = 0 | 1 | 2 | null;
@@ -51,7 +52,7 @@ export type IGroupedLocation = {
     postcode: string;
     latitude: number;
     longitude: number;
-    items: Array<ILocation>;
+    items: Array<ILocation> | undefined;
 }
 
 export type IActiveLocation = ILocation & {

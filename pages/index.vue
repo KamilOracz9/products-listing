@@ -19,14 +19,17 @@ import isArrayEqual from 'lodash/isEqual';
 const locationsStorage = useLocationsStore();
 const globalStore = useGlobalStore();
 
-const map = ref(null);
 const zoom: Ref<number> = ref(7);
 const center: Ref<PointExpression> = ref([51.919438, 19.14513599999998]);
 const locations: Ref<ILocation[]> = ref([]);
 const groupedLocations: Ref<IGroupedLocation[]> = ref([]);
 const rerenderMarkers: Ref<boolean> = ref(true);
 
-const zoomUpdated = (value: number) => globalStore.groupedMode = value <= 7;
+const zoomUpdated = (value: number) => {
+  if(zoom.value !== value) globalStore.groupedMode = value <= 7;
+
+  zoom.value = value;
+};
 
 onMounted(async () => {
   await locationsStorage.fetchLocations();

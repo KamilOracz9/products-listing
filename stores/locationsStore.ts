@@ -24,16 +24,15 @@ export const useLocationsStore = defineStore('locations', {
         async setActiveLocation(id: string) {
             this.activeLocationId = this.activeLocationId === id ? null : id;
 
-            if(this.activeLocationId) {
+            if (this.activeLocationId) {
                 const activeLocation = this.activeLocations.filter((location: ILocation) => location.id === this.activeLocationId)[0];
-                await this.fetchActiveLocation(id).then(response => (<IActiveLocation>activeLocation).services = response);
-
+                if (activeLocation.zse_id) await this.fetchActiveLocationServices(activeLocation.zse_id).then(response => (<IActiveLocation>activeLocation).services = response);
                 this.activeLocation = (<IActiveLocation>activeLocation);
-            }else this.activeLocation = null;
+            } else this.activeLocation = null;
         },
         async fetchLocations() {
             const config = useRuntimeConfig();
-            const url = `http:\\\\192.168.1.252:20384/api/v2/service-orders`;
+            const url = `${config.public.apiProtocol}:\\\\${config.public.apiBase}/api/v2/service-orders`;
 
             await fetch(url).then(response => (response.json())).then(response => {
                 const locations = concat(...Object.values(response.data).map(location => (location.items))).filter((location: ILocation) => location.address.delivery_latitude);
@@ -45,7 +44,7 @@ export const useLocationsStore = defineStore('locations', {
                 this.groupedActiveLocations = groupedLocations;
             });
         },
-        async fetchActiveLocation(id: string) {
+        async fetchActiveLocationServices(id: string) {
             const config = useRuntimeConfig();
             const url = `${config.public.apiProtocol}:\\\\${config.public.apiBase}/api/v2/service-orders/show/${id}`;
 

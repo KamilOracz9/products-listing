@@ -1,5 +1,5 @@
 <template>
-    <MenuItemLayout :open="open" :toggleOpen="toggleOpen">
+    <MenuItemLayout :open="open">
         <template v-slot:title>Wybrana lokalozacja</template>
         <template v-slot:body>
             <div class="p-4 flex flex-col gap-2">
@@ -17,8 +17,8 @@
                     <p>Email: {{ locationStore.activeLocation.address.delivery_email }}</p>
                     <p>Data instalacji: {{ locationStore.activeLocation.installation_date }}</p>
                     <p>Trasa: {{ locationStore.activeLocation.route_name }}</p>
-                    <p class="font-bold">Usługi:</p>
-                    <div class="flex">
+                    <p class="font-bold" v-if="locationStore.activeLocation.zse_id">Usługi:</p>
+                    <div class="flex flex-col gap-2">
                         <div v-for="service in locationStore.activeLocation.services">
                             <p>Kod: {{ service.code }}</p>
                             <p>Nazwa: {{ service.name }}</p>
@@ -35,12 +35,9 @@ import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 
 const locationStore = useLocationsStore();
 
-const open = ref(false);
-const toggleOpen = () => open.value = !open.value;
+const open = ref(true);
 
-watch(locationStore, () => {
-    locationStore.activeLocation ? open.value = true : open.value = false;
+// const toggleOpen = () => open.value = !open.value;
 
-    console.log(locationStore.activeLocation);
-})
+// watch(locationStore, () => locationStore.activeLocation ? open.value = true : open.value = false)
 </script>

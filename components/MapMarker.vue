@@ -21,9 +21,9 @@ const toggleData = async () => {
     if (svg && svg.classList.contains('loaction-icon')) {
         const markerData = (<HTMLElement>svg.closest('.marker')?.querySelector('.marker__data'));
 
+        globalStore.closeAllData();
         await locationStore.setActiveLocation(location.id);
         open.value = !open.value;
-        globalStore.closeAllData();
         markerData.style.display = open.value ? 'block' : 'none';
     };
 }
@@ -42,7 +42,7 @@ function renderMarker() {
     const container = document.createElement('div');
 
     render(vnode, container);
-    
+
     return container.innerHTML;
 }
 
