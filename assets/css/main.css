@@ -50,3 +50,7 @@
     right: 50%;
     z-index: -1;
 }
+
+.legend-loaction-icon{
+    filter: invert(0%) sepia(2%) saturate(5%) hue-rotate(326deg) brightness(98%) contrast(100%);
+}

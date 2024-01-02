@@ -2,11 +2,16 @@
     <MenuItemLayout :open="open" :toggleOpen="toggleOpen">
         <template v-slot:title>Legenda</template>
         <template v-slot:body>
-            <div class="flex flex-wrap gap-10 p-4">
-                <div class="flex flex-col gap-2">
-                    <div v-for="icon in icons" class="flex w-[70px] justify-between">
-                        <div class="items-center flex" v-text="icon.title"></div>
-                        <div v-html="icon.icon"></div>
+            <div class="flex flex-wrap gap-4 p-4">
+                <div class="flex flex-col gap-2 w-[70px]">
+                    <div class="flex w-full justify-between">
+                        <div class="items-center flex">USE</div>
+                        <img :class="`legend-loaction-icon h-[30px]`" :src="`/assets/icons/use_red.svg`" alt="">
+                    </div>
+
+                    <div class="flex w-full justify-between">
+                        <div class="items-center flex">ZSEU</div>
+                        <img :class="`legend-loaction-icon h-[30px]`" :src="`/assets/icons/zseu_red.svg`" alt="">
                     </div>
                 </div>
 
@@ -32,24 +37,24 @@ const open = ref(false);
 
 const toggleOpen = () => open.value = !open.value;
 
-const icons = ref([
-    {
-        'title': 'USE',
-        'icon': icon({
-            expiredStatusId: null,
-            locationType: "USE",
-            markerSize: 25,
-        }),
-    },
-    {
-        'title': 'ZSEU',
-        'icon': icon({
-            expiredStatusId: null,
-            locationType: "ZSEU",
-            markerSize: 25,
-        }),
-    }
-]);
+// const icons = ref([
+//     {
+//         'title': 'USE',
+//         'icon': icon({
+//             expiredStatusId: null,
+//             locationType: "USE",
+//             markerSize: 25,
+//         }),
+//     },
+//     {
+//         'title': 'ZSEU',
+//         'icon': icon({
+//             expiredStatusId: null,
+//             locationType: "ZSEU",
+//             markerSize: 25,
+//         }),
+//     }
+// ]);
 
 const colors = ref([
     {
@@ -75,19 +80,19 @@ function color(expiredStatusId: IExpiredStatusId) {
     }
 }
 
-function icon({ expiredStatusId, locationType, markerSize }: IIcon) {
-    switch (locationType) {
-        case 'USE': return `
-            <svg class="loaction-icon" width="${markerSize}" height="${markerSize}">
-                <rect width="300" height="100" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}"/>
-            </svg>
-        `;
-        case 'ZSEU': return `
-            <svg class="loaction-icon" height="${markerSize}" width="${markerSize}">
-                <circle cx="${markerSize / 2}" cy="${markerSize / 2}" r="${markerSize / 2}" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}" />
-            </svg>
-        `;
-        default: return '';
-    }
-}
+// function icon({ expiredStatusId, locationType, markerSize }: IIcon) {
+//     switch (locationType) {
+//         case 'USE': return `
+//             <svg class="loaction-icon" width="${markerSize}" height="${markerSize}">
+//                 <rect width="300" height="100" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}"/>
+//             </svg>
+//         `;
+//         case 'ZSEU': return `
+//             <svg class="loaction-icon" height="${markerSize}" width="${markerSize}">
+//                 <circle cx="${markerSize / 2}" cy="${markerSize / 2}" r="${markerSize / 2}" stroke="black" stroke-width=".5" fill="${expiredStatusesColors[color(expiredStatusId)]}" />
+//             </svg>
+//         `;
+//         default: return '';
+//     }
+// }
 </script>
