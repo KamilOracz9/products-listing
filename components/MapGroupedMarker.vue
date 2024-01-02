@@ -37,6 +37,7 @@ function renderMarker() {
     const vnode = h(MapGroupedMarkerIcon, {
         counters: counters,
         location: location,
+        markerSize: 60,
     });
     const container = document.createElement('div');
 

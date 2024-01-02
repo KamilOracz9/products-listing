@@ -22,6 +22,7 @@
                         <div v-for="service in locationStore.activeLocation.services">
                             <p>Kod: {{ service.code }}</p>
                             <p>Nazwa: {{ service.name }}</p>
+                            <p>Ilość: {{ parseFloat(service.count).toFixed(0) }}</p>
                         </div>
                     </div>
                 </template>
@@ -36,8 +37,4 @@ import MenuItemLayout from '~/layouts/MenuItemLayout.vue';
 const locationStore = useLocationsStore();
 
 const open = ref(true);
-
-// const toggleOpen = () => open.value = !open.value;
-
-// watch(locationStore, () => locationStore.activeLocation ? open.value = true : open.value = false)
 </script>
