@@ -19,9 +19,10 @@ const mapMarkerIcon = ref(getMarker());
 const toggleData = async () => {
     if(navigator.clipboard) navigator.clipboard.writeText(location.name);
 
-    const svg = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
-    if (svg && svg.classList.contains('loaction-icon')) {
-        const markerData = (<HTMLElement>svg.closest('.marker')?.querySelector('.marker__data'));
+    const icon = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
+
+    if (icon && icon.classList.contains('loaction-icon')) {
+        const markerData = (<HTMLElement>icon.closest('.marker')?.querySelector('.marker__data'));
 
         globalStore.closeAllData();
         await locationStore.setActiveLocation(location.id);
@@ -40,6 +41,7 @@ function renderMarker() {
         ],
         open: open,
         location: location,
+        markerSize: 40,
     });
     const container = document.createElement('div');
 
