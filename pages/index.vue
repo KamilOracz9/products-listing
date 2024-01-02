@@ -39,7 +39,6 @@ onMounted(async () => {
 
   watch(locationsStorage, async (newValue) => {
     if (!isArrayEqual(locations.value, newValue.activeLocations)) {
-
       locationsStorage.isLoading = true;
 
       locations.value = locationsStorage.activeLocations;
@@ -47,7 +46,7 @@ onMounted(async () => {
 
       await nextTick();
 
-      locationsStorage.isLoading = true;
+      locationsStorage.isLoading = false;
     }
   });
 });
