@@ -7,32 +7,9 @@
     width: fit-content;
 }
 
-.marker__counter {
-    background: rgb(203, 203, 243);
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    transform: translate(40%, -40%);
-}
-
-.marker__counter--use, .marker__counter--zseu {
-    width: 50px;
-    border-radius: 20px;
-}
-
-.marker__counter--use {
-    transform: translate(40%, -150%);
-}
-
 .marker__data {
     position: absolute;
-    top: -100%;
+    top: -20px;
     background-color: white;
     padding: 10px;
     left: 50%;

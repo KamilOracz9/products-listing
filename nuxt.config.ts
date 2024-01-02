@@ -18,9 +18,9 @@ export default defineNuxtConfig({
       apiBase: process.env.API_URL,
       apiProtocol: process.env.API_PROTOCOL,
       expiredStatusesColors: {
-        'green': '#0a8d11',
-        'yellow': '#F2EB1D',
-        'red': '#DB261A',
+        'green': '#4CAD33',
+        'yellow': '#F9B233',
+        'red': '#E30613',
         'black': '#000',
       }
     },

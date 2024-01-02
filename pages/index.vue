@@ -2,8 +2,8 @@
   <MainLayout>
     <LMap ref="map" :zoom="zoom" :center="center" :min-zoom="7" @update:zoom="(value) => zoomUpdated(value)">
       <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap" />
-      <MapMarker v-if="rerenderMarkers && !globalStore.groupedMode" v-for="location in locations" :location="location"></MapMarker>
-      <MapGroupedMarker v-if="rerenderMarkers && globalStore.groupedMode" v-for="location in groupedLocations" :location="location"></MapGroupedMarker>
+      <MapMarker v-if="!locationsStorage.isLoading && !globalStore.groupedMode" v-for="location in locations" :location="location"></MapMarker>
+      <MapGroupedMarker v-if="!locationsStorage.isLoading && globalStore.groupedMode" v-for="location in groupedLocations" :location="location"></MapGroupedMarker>
     </LMap>
   </MainLayout>
 </template>
@@ -41,14 +41,14 @@ onMounted(async () => {
   watch(locationsStorage, async (newValue) => {
     if (!isArrayEqual(locations.value, newValue.activeLocations)) {
 
-      rerenderMarkers.value = false;
+      locationsStorage.isLoading = true;
 
       locations.value = locationsStorage.activeLocations;
       groupedLocations.value = locationsStorage.groupedActiveLocations;
 
       await nextTick();
 
-      rerenderMarkers.value = true;
+      locationsStorage.isLoading = false;
     }
   });
 });
