@@ -31,6 +31,8 @@ export const useLocationsStore = defineStore('locations', {
                 if (activeLocation.zse_id) await this.fetchActiveLocationServices(activeLocation.zse_id).then(response => (<IActiveLocation>activeLocation).services = response);
                 this.activeLocation = (<IActiveLocation>activeLocation);
             } else this.activeLocation = null;
+
+            return !!this.activeLocation;
         },
         async fetchLocations() {
             const config = useRuntimeConfig();

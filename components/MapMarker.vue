@@ -17,7 +17,7 @@ const markerIcon = ref(renderMarker());
 const mapMarkerIcon = ref(getMarker());
 
 const toggleData = async () => {
-    if(navigator.clipboard) navigator.clipboard.writeText(location.name);
+    if (navigator.clipboard) navigator.clipboard.writeText(location.name);
 
     const icon = (<HTMLElement>(<Event>event).target).closest('.loaction-icon');
 
@@ -25,9 +25,15 @@ const toggleData = async () => {
         const markerData = (<HTMLElement>icon.closest('.marker')?.querySelector('.marker__data'));
 
         globalStore.closeAllData();
-        await locationStore.setActiveLocation(location.id);
-        open.value = !open.value;
-        markerData.style.display = open.value ? 'block' : 'none';
+        locationStore.setActiveLocation(location.id).then(response => {
+            if (response) {
+                open.value = true;
+                markerData.style.display = 'block';
+            } else {
+                open.value = false;
+                markerData.style.display = 'none';
+            }
+        });
     };
 }
 
