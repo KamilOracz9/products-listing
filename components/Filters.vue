@@ -13,6 +13,11 @@
                     <input type="text" v-model="searchName" id="filter-search-name"
                         class="w-full border border-[#000] mt-2 p-3">
                 </div>
+                <!-- <div>
+                    <label for="filter-search-track">Szukaj po trasie</label>
+                    <input type="text" v-model="searchTrack" id="filter-search-track"
+                        class="w-full border border-[#000] mt-2 p-3">
+                </div> -->
                 <div class="flex gap-4 items-center">
                     <div>
                         Typ usługi:
@@ -60,6 +65,7 @@ const type: Ref<ILocationType | null> = ref(null);
 const hasRoute: Ref<string | null> = ref(null);
 const searchNumber = ref('');
 const searchName = ref('');
+const searchTrack = ref('');
 
 const toggleOpen = () => open.value = !open.value;
 
@@ -92,6 +98,11 @@ onMounted(() => {
 
     watch(searchName, debounce((value) => {
         filtersStore.name = value;
+        filtersStore.filter();
+    }, 500))
+
+    watch(searchTrack, debounce((value) => {
+        filtersStore.track = value;
         filtersStore.filter();
     }, 500))
 

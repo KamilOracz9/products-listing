@@ -6,6 +6,7 @@ type IFiltersStore = {
     hasRoute: string | null;
     number: string | null;
     name: string | null;
+    track: string | null;
 }
 
 export const useFiltersStore = defineStore('filters', {
@@ -14,6 +15,7 @@ export const useFiltersStore = defineStore('filters', {
         hasRoute: null,
         number: null,
         name: null,
+        track: null,
     }),
     getters: {
         isRouteSet: (state) => state.hasRoute !== null ? !!parseInt(state.hasRoute) : null,
@@ -25,13 +27,14 @@ export const useFiltersStore = defineStore('filters', {
             let groupedLocations = JSON.parse(JSON.stringify(locationsStore.groupedLocations));
 
             locations = locations.filter(location => this.number !== null ? location.name.includes(this.number) : location);
+            // locations = locations.filter(location => this.track !== null ? location.route_name?.includes(this.track) : location);
             locations = locations.filter(location => this.name !== null ? location.address.delivery_name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()) : location);
             locations = locations.filter(location => this.type ? (location.type === this.type) : location.type);
             locations = locations.filter(location => this.isRouteSet !== null ? (this.isRouteSet ? !!location.route_name : !location.route_name) : location);
 
             locationsStore.activeLocations = locations;
 
-            if (this.type !== null || this.isRouteSet !== null || this.number !== null || this.name !== null) {
+            if (this.type !== null || this.isRouteSet !== null || this.number !== null || this.name !== null || this.track !== null) {
                 locationsStore.groupedActiveLocations = groupedLocations.map((groupedLocation: IGroupedLocation) => {
                     const items = (<IGroupedLocation>groupedLocation).items?.filter(item => locations.find(location => location.id === item.id))
                     
