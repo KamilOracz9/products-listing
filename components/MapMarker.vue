@@ -43,7 +43,6 @@ function renderMarker() {
         numbers: [
             `Numer: ${location.name}`,
             `Trasa: ${location.route_name ?? 'brak'}`,
-            `Typ: ${location.type}`,
         ],
         open: open,
         location: location,

@@ -4,8 +4,13 @@
         <template v-slot:body>
             <div class="p-4 flex flex-col gap-4">
                 <div>
-                    <label for="filter-search">Szukaj po numerze</label>
-                    <input type="text" v-model="searchNumber" id="filter-search"
+                    <label for="filter-search-number">Szukaj po numerze</label>
+                    <input type="text" v-model="searchNumber" id="filter-search-number"
+                        class="w-full border border-[#000] mt-2 p-3">
+                </div>
+                <div>
+                    <label for="filter-search-name">Szukaj po nazwie</label>
+                    <input type="text" v-model="searchName" id="filter-search-name"
                         class="w-full border border-[#000] mt-2 p-3">
                 </div>
                 <div class="flex gap-4 items-center">
@@ -54,6 +59,7 @@ const open = ref(false);
 const type: Ref<ILocationType | null> = ref(null);
 const hasRoute: Ref<string | null> = ref(null);
 const searchNumber = ref('');
+const searchName = ref('');
 
 const toggleOpen = () => open.value = !open.value;
 
@@ -81,6 +87,11 @@ onMounted(() => {
 
     watch(searchNumber, debounce((value) => {
         filtersStore.number = value;
+        filtersStore.filter();
+    }, 500))
+
+    watch(searchName, debounce((value) => {
+        filtersStore.name = value;
         filtersStore.filter();
     }, 500))
 

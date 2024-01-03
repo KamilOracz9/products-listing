@@ -8,7 +8,7 @@
                 </template>
                 <template v-else>
                     <p class="font-bold">Dane adresowe:</p>
-                    <p>ID: {{ locationStore.activeLocation.id }}</p>
+                    <p>Nazwa: {{ locationStore.activeLocation.address.delivery_name }}</p>
                     <p>Numer: {{ locationStore.activeLocation.name }}</p>
                     <p>Typ: {{ locationStore.activeLocation.type }}</p>
                     <p>Ulica: {{ locationStore.activeLocation.address.delivery_street }}</p>
