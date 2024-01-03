@@ -25,16 +25,9 @@ export const useFiltersStore = defineStore('filters', {
             let groupedLocations = JSON.parse(JSON.stringify(locationsStore.groupedLocations));
 
             locations = locations.filter(location => this.number !== null ? location.name.includes(this.number) : location);
-            
             locations = locations.filter(location => this.name !== null ? location.address.delivery_name.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()) : location);
-
-            locations = locations.filter(location => {
-                return this.type ? (location.type === this.type) : location.type;
-            });
-
-            locations = locations.filter(location => {
-                return this.isRouteSet !== null ? (this.isRouteSet ? !!location.route_name : !location.route_name) : location;
-            });
+            locations = locations.filter(location => this.type ? (location.type === this.type) : location.type);
+            locations = locations.filter(location => this.isRouteSet !== null ? (this.isRouteSet ? !!location.route_name : !location.route_name) : location);
 
             locationsStore.activeLocations = locations;
 

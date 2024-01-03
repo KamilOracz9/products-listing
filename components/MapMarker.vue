@@ -40,10 +40,6 @@ const toggleData = async () => {
 function renderMarker() {
     const vnode = h(MapMarkerIcon, {
         counter: location.zseu_count,
-        numbers: [
-            `Numer: ${location.name}`,
-            `Trasa: ${location.route_name ?? 'brak'}`,
-        ],
         open: open,
         location: location,
         markerSize: 40,

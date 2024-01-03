@@ -31,6 +31,7 @@ export type ILocation = {
     installation_date: string | null;
     name: string;
     route_name: string | null;
+    route_color: string | null;
     type: ILocationType;
     zseu_count: number;
     expired_status_id: IExpiredStatusId;

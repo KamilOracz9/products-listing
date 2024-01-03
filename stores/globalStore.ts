@@ -5,7 +5,7 @@ type IGlobalStore = {
 
 export const useGlobalStore = defineStore('global', {
     state: (): IGlobalStore => ({
-        groupedMode: false,
+        groupedMode: true,
         dataOpen: false,
     }),
     actions: {
