@@ -1,6 +1,6 @@
 {
-  "appId": "com.servicemap.app",
-  "appName": "Service Map",
+  "appId": "com.newtrendy.app",
+  "appName": "NewTrendy",
   "webDir": "dist",
   "server": {
     "androidScheme": "http",

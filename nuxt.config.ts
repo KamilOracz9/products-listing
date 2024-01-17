@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css', 
+    '~/assets/css/breuer.css', 
+    '~/assets/css/aller.css', 
+    '~/assets/css/minion-pro.css'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -17,12 +22,9 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.API_URL,
       apiProtocol: process.env.API_PROTOCOL,
-      expiredStatusesColors: {
-        'green': '#4CAD33',
-        'yellow': '#F9B233',
-        'red': '#E30613',
-        'black': '#000',
-      }
     },
   },
+  plugins: [
+    '@/plugins/device',
+  ]
 })
