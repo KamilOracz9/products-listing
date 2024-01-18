@@ -1,17 +1,19 @@
-export type IMobileHeaderMenu = {
+export type IHeaderMenu = {
     isLoading: boolean;
-    items: IMobileHeaderMenuItem[];
+    items: IHeaderMenuItem[];
+    categories: IHeaderMenuCategory[];
 };
 
-export type IMobileHeaderMenuItem = {
+export type IHeaderMenuItem = {
     label: string;
     slug: string;
     url: string;
     iconUrl: string;
-    items: IMobileHeaderMenuSubItem[];
+    type: null | 'products' | 'search' | 'download' | 'clipboard';
+    items: IHeaderMenuSubItem[];
 };
 
-export type IMobileHeaderMenuSubItem = {
+export type IHeaderMenuSubItem = {
     label: string;
     url: string;
     iconUrl: string;
@@ -26,4 +28,18 @@ export type IClipboardItem = {
     dimensions: string;
     price: string;
     imgUrl: string;
+};
+
+export type IHeaderMenuCategory = {
+    label: string;
+    slug: string;
+    url: string;
+    iconUrl: string;
+    items: IHeaderMenuSubcategory[];
+};
+
+export type IHeaderMenuSubcategory = {
+    label: string;
+    url: string;
+    slug: string;
 };
