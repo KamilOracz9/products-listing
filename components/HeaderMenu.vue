@@ -1,6 +1,7 @@
 <template>
-    <div class="py-7 flex flex-col fixed w-full bg-white">
-        <ul class="px-5 flex justify-between items-center">
+    <div class="py-7 flex flex-col fixed w-full bg-white lg:flex-row max-w-max-content"
+        @mouseleave="() => { handleClose(); background.style.height = '0'; }">
+        <ul class="px-5 flex justify-between items-center lg:mr-[70px]">
             <li>
                 <a href="/"><img src="@/assets/images/logo.svg" width="161" alt=""></a>
             </li>
@@ -15,8 +16,9 @@
             </li>
         </ul>
 
-        <ul :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'inactive max-h-0'"
-            class="header-menu invisible  flex flex-col items-center text-center gap-8 z-20 bg-white w-full h-[calc(100vh-82px)] overflow-y-auto lg:hidden">
+        <!-- Mobile menu -->
+        <ul :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
+            class="lg:active lg:overflow-hidden lg:flex-row lg:h-auto header-menu max-lg:invisible flex flex-col items-end text-center gap-8 z-20 bg-white w-full h-[calc(100vh-82px)] overflow-y-auto lg:hidden">
             <HeaderDropdown :slug="menuItem.slug" :name="menuItem.label"
                 v-for="menuItem in headerStore.mobileHeaderMenu.items">
                 <li v-for="submenuItem in menuItem.items" :class="submenuItem.iconUrl ? 'w-[50%] md:w-[33%]' : 'w-full'">
@@ -28,8 +30,9 @@
                 </li>
             </HeaderDropdown>
 
-            <HeaderDropdown name="Pobierz" url="/" :iconUrl="downloadIcon"></HeaderDropdown>
-            <HeaderDropdown name="Wyszukaj" :iconUrl="searchIcon" slug="wyszukaj">
+            <HeaderDropdown name="Pobierz" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
+            </HeaderDropdown>
+            <HeaderDropdown name="Wyszukaj" :iconUrl="searchIcon" slug="wyszukaj" :desktopLabelHide="true">
                 <li class="w-full flex justify-center">
                     <div class="w-[70%] flex flex-col gap-4 py-4">
                         <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
@@ -50,8 +53,8 @@
                                 for="search-in-files">Szukaj w plikach</label>
                         </div>
                         <div class="flex items-center justify-start gap-2">
-                            <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" /> <label
-                                for="search-in-inspirations">Szukaj w inspiracjach</label>
+                            <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
+                            <label for="search-in-inspirations">Szukaj w inspiracjach</label>
                         </div>
 
                         <a href="/"
@@ -60,7 +63,7 @@
                     </div>
                 </li>
             </HeaderDropdown>
-            <HeaderDropdown name="Schowek" :iconUrl="clipboardIcon" slug="schowek">
+            <HeaderDropdown name="Schowek" :iconUrl="clipboardIcon" slug="schowek" :desktopLabelHide="true">
                 <li v-for="clipboardItem in clipboardStore.items.products" class="w-[50%] md:w-[33%]">
                     <a :href="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
                         <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" alt="">
@@ -75,6 +78,18 @@
                 </li>
             </HeaderDropdown>
         </ul>
+
+        <!-- Desktop menu -->
+        <ul class="hidden gap-6 items-end lg:flex">
+            <HeaderDropdownDesktop :slug="menuItem.slug" :name="menuItem.label" :background="background"
+                v-for="menuItem in headerStore.mobileHeaderMenu.items">
+                <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap">
+                    <a :href="submenuItem.url">{{ submenuItem.label }}</a>
+                </li>
+            </HeaderDropdownDesktop>
+        </ul>
+
+        <div ref="background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-[60px] -z-10"></div>
     </div>
 </template>
 
@@ -87,6 +102,12 @@ import clipboardIcon from '@/assets/icons/clipboard.svg';
 
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
+
+const background = ref(null);
+
+const handleClose = () => {
+    headerStore.setSubmenu('');
+}
 
 onMounted(() => {
     headerStore.fetchMobileMenuItems();

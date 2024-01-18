@@ -24,8 +24,8 @@ export const useHeaderStore = defineStore('header', {
                 ? body?.classList.add('overflow-hidden')
                 : body?.classList.remove('overflow-hidden');
         },
-        setSubmenu(name: string): void {
-            this.submenu = this.submenu === name ? '' : name;
+        setSubmenu(name: string, isMobile: boolean): void {
+            this.submenu = (this.submenu === name && isMobile) ? '' : name;
         },
         async fetchMobileMenuItems(): Promise<void> {
             this.mobileHeaderMenu.isLoading = true;

@@ -30,6 +30,7 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
+      'max-lg': {'max': '1023px'},
     },
     extend: {
       maxWidth: {
@@ -38,7 +39,7 @@ module.exports = {
       animation: {
         'fade-in': 'fade-in .3s',
         'arrow-rotate-in': 'arrow-rotate-in .3s forwards',
-        'slide-down': 'slide-down .5s forwards',
+        'slide-down': 'slide-down 1s forwards',
         'slide-up': 'slide-up .5s forwards',
       },
       keyframes: {
