@@ -107,7 +107,7 @@
         </ul>
 
         <!-- Menu Background -->
-        <div ref="background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-[60px] -z-10"></div>
+        <div ref="background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10"></div>
     </div>
 </template>
 

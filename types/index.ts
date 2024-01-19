@@ -1,3 +1,4 @@
+// Header
 export type IHeaderMenu = {
     isLoading: boolean;
     items: IHeaderMenuItem[];
@@ -19,17 +20,6 @@ export type IHeaderMenuSubItem = {
     iconUrl: string;
 };
 
-export type IClipboardItem = {
-    name: string;
-    slug: string;
-    url: string;
-    path: string;
-    symbol: string;
-    dimensions: string;
-    price: string;
-    imgUrl: string;
-};
-
 export type IHeaderMenuCategory = {
     label: string;
     slug: string;
@@ -43,3 +33,46 @@ export type IHeaderMenuSubcategory = {
     url: string;
     slug: string;
 };
+
+// Clipboard
+export type IClipboardItem = {
+    name: string;
+    slug: string;
+    url: string;
+    path: string;
+    symbol: string;
+    dimensions: string;
+    price: string;
+    imgUrl: string;
+};
+
+//Footer
+export type IFooterItemLink = {
+    label: string;
+    slug: string;
+    url: string;
+}
+
+export type IFooterItem = {
+    label: string;
+    slug: string;
+    items: IFooterItemLink[],
+}
+
+export type IFooterContact = {
+    label: string;
+    phones: string[];
+    addresses: string[];
+    emails: string[];
+}
+
+export type IFooterWebsite = {
+    label: string;
+    url: string;
+}
+
+export type IFooterData = {
+    items: IFooterItem[];
+    contacts: IFooterContact[];
+    websites: IFooterWebsite[];
+}
