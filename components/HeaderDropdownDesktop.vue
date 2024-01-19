@@ -1,14 +1,14 @@
 <template>
-    <li class="menu-item text-medium-lg uppercase xl:text-medium-xl" @mouseleave="handleClose" :class="type === 'download' ? 'ml-auto' : ''">
+    <li class="menu-item text-medium-lg uppercase 2xl:text-medium-xl" @mouseleave="handleClose" :class="type === 'download' ? 'ml-auto' : ''">
         <a href="/" @mouseenter="handleOpen"
             class="translate-y-2 pb-1 border-b border-black border-opacity-0 transition-all flex gap-2 hover-opacity-60">
-            <img width="18" class="icon" src="@/assets/icons/download.svg"
+            <img width="18" class="icon--header" src="@/assets/icons/download.svg"
                 v-if="type === 'download'" alt="">
-            <img width="18" class="icon" src="@/assets/icons/search.svg"
+            <img width="18" class="icon--header" src="@/assets/icons/search.svg"
                 v-if="type === 'search'" alt="">
-            <img width="18" class="icon" src="@/assets/icons/clipboard.svg"
+            <img width="18" class="icon--header" src="@/assets/icons/clipboard.svg"
                 v-if="type === 'clipboard'" alt="">
-            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden xl:block' : ''">{{ name }}</span>
+            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{ name }}</span>
         </a>
         <div :class="headerStore.submenu === name ? 'visible' : 'invisible', type ? 'left-0 w-full' : ''"
             class="absolute submenu bg-white top-full">

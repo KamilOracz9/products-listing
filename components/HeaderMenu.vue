@@ -3,7 +3,7 @@
         @mouseleave="() => { handleClose(); background.style.height = '0'; }">
 
         <!-- Logo and mobile menu icon -->
-        <ul class="px-5 flex justify-between items-center lg:mr-[70px]">
+        <ul class="px-5 flex justify-between items-center xl:mr-[70px]">
             <li>
                 <a href="/"><img src="@/assets/images/logo.svg" width="161" alt=""></a>
             </li>
@@ -78,6 +78,8 @@
                     </a>
                 </li>
             </HeaderDropdown>
+            
+            <ButtonsWhereBuy />
         </ul>
 
         <!-- Desktop menu -->
@@ -100,6 +102,8 @@
                     </a>
                 </li>
             </HeaderDropdownDesktop>
+
+            <ButtonsWhereBuy />
         </ul>
 
         <!-- Menu Background -->

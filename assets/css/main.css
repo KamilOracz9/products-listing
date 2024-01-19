@@ -23,6 +23,10 @@
     .icon {
         @apply min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px];
     }
+
+    .icon--header {
+        @apply icon lg:-translate-y-2 2xl:translate-y-0;
+    }
 }
 
 @layer utilities {
