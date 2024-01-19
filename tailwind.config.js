@@ -34,6 +34,10 @@ module.exports = {
       'max-lg': {'max': '1023px'},
     },
     extend: {
+      borderRadius: {
+        'lg': '60px',
+        'md': '20px',
+      },
       fontSize: {
         'xl': '1.375rem',
       },
