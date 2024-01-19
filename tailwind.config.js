@@ -18,6 +18,7 @@ module.exports = {
     colors: {
       'white': '#fff',
       'black': '#000',
+      'black-2': '#1d1d1b',
       'gray': 'rgba(242,242,242,.5)',
       'gray-1': '#c6c6c6',
       'gray-2': '#f2f2f2',
@@ -30,15 +31,19 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
+      'max-lg': {'max': '1023px'},
     },
     extend: {
+      fontSize: {
+        'xl': '1.375rem',
+      },
       maxWidth: {
         'max-content': '1680px',
       },
       animation: {
         'fade-in': 'fade-in .3s',
         'arrow-rotate-in': 'arrow-rotate-in .3s forwards',
-        'slide-down': 'slide-down .5s forwards',
+        'slide-down': 'slide-down 1s forwards',
         'slide-up': 'slide-up .5s forwards',
       },
       keyframes: {

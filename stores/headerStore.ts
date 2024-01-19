@@ -1,18 +1,19 @@
-import type { IMobileHeaderMenu, IMobileHeaderMenuItem } from '~/types';
+import type { IHeaderMenu, IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
 
-type IGlobalStore = {
+type IHeaderStore = {
     menuIsOpen: boolean;
     submenu: string;
-    mobileHeaderMenu: IMobileHeaderMenu
+    headerMenu: IHeaderMenu;
 }
 
 export const useHeaderStore = defineStore('header', {
-    state: (): IGlobalStore => ({
+    state: (): IHeaderStore => ({
         menuIsOpen: false,
         submenu: '',
-        mobileHeaderMenu: {
+        headerMenu: {
             isLoading: false,
             items: [],
+            categories: [],
         },
     }),
     actions: {
@@ -24,15 +25,48 @@ export const useHeaderStore = defineStore('header', {
                 ? body?.classList.add('overflow-hidden')
                 : body?.classList.remove('overflow-hidden');
         },
-        setSubmenu(name: string): void {
-            this.submenu = this.submenu === name ? '' : name;
+        setSubmenu(name: string, isMobile: boolean = true): void {
+            this.submenu = (this.submenu === name && isMobile) ? '' : name;
         },
-        async fetchMobileMenuItems(): Promise<void> {
-            this.mobileHeaderMenu.isLoading = true;
+        async fetchMenuItems(): Promise<void> {
+            this.headerMenu.isLoading = true;
 
             await import('@/data/mobileHeaderMenu').then(response => {
-                this.mobileHeaderMenu.items = <IMobileHeaderMenuItem[]>response.default;
-            }).finally(() => this.mobileHeaderMenu.isLoading = false)
+                this.headerMenu.items = <IHeaderMenuItem[]>response.default.items;
+                this.headerMenu.items.unshift({
+                    label: 'Produkty',
+                    slug: 'produkty',
+                    iconUrl: '',
+                    url: '/',
+                    type: 'products',
+                    items: response.default.categories
+                });
+                this.headerMenu.items.push({
+                    label: 'Pobierz',
+                    slug: 'pobierz',
+                    iconUrl: '',
+                    url: '/',
+                    type: 'download',
+                    items: []
+                });
+                this.headerMenu.items.push({
+                    label: 'Wyszukaj',
+                    slug: 'szukaj',
+                    iconUrl: '',
+                    url: '/',
+                    type: 'search',
+                    items: []
+                });
+                this.headerMenu.items.push({
+                    label: 'Schowek',
+                    slug: 'schowek',
+                    iconUrl: '',
+                    url: '/',
+                    type: 'clipboard',
+                    items: []
+                });
+                this.headerMenu.categories = <IHeaderMenuCategory[]>response.default.categories;
+            }).finally(() => this.headerMenu.isLoading = false)
         }
     }
 });

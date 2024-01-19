@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    scroll-behavior: smooth;
-}
-
 @layer base {
     body {
-        @apply font-breuer font-normal text-base;
+        @apply font-breuer font-normal text-base lg:overflow-auto;
     }
 }
 
 @layer components {
+    /* Header */
     .top-bar-icon {
         @apply transition-opacity hover:opacity-[70%];
     }
@@ -21,10 +18,34 @@
     .header-menu.active {
         @apply visible animate-slide-down;
     }
+
+    /* Common */
+    .icon {
+        @apply min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px];
+    }
+
+    .icon--header {
+        @apply icon lg:-translate-y-2 2xl:translate-y-0;
+    }
 }
 
 @layer utilities {
+    /* Filters */
     .gray-1-filter {
         filter: invert(91%) sepia(0%) saturate(3%) hue-rotate(230deg) brightness(91%) contrast(84%);
+    }
+
+    /* Typography */
+    .text-medium-lg {
+        @apply font-medium text-lg;
+    }
+
+    .text-medium-xl {
+        @apply font-medium text-xl;
+    }
+
+    /* Hovers */
+    .hover-opacity-60 {
+        @apply hover:opacity-[60%] hover:border-opacity-[60%];
     }
 }
