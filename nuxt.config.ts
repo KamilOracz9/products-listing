@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
-    '~/assets/css/main.css', 
-    '~/assets/css/breuer.css', 
-    '~/assets/css/aller.css', 
+    '~/assets/css/main.css',
+    '~/assets/css/breuer.css',
+    '~/assets/css/aller.css',
     '~/assets/css/minion-pro.css'
   ],
   postcss: {
@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     'nuxt3-leaflet',
     '@pinia/nuxt',
     'nuxt-lodash',
+    '@nuxtjs/i18n',
   ],
   runtimeConfig: {
     public: {
@@ -26,5 +27,8 @@ export default defineNuxtConfig({
   },
   plugins: [
     '@/plugins/device',
-  ]
+  ],
+  i18n: {
+    vueI18n: './i18n/i18n.config.ts',
+  },
 })

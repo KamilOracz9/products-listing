@@ -28,35 +28,31 @@
             <template v-if="type === 'search'">
                 <div class="w-full px-[50px] flex flex-wrap gap-y-8 font-normal">
                     <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1 w-1/3 mr-8">
-                        <input class="p-2 outline-none w-full" type="text" placeholder="Napisz czego szukasz">
+                        <input class="p-2 outline-none w-full" type="text" :placeholder="$t('what-are-you-looking-for')">
                         <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg" alt="">
                     </div>
 
                     <button
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20">Szukaj
+                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20">{{ $t('search') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                            for="search-in-products" class="translate-y-[2px] normal-case">Szukaj w produktach</label>
+                            for="search-in-products" class="translate-y-[2px] normal-case">{{ $t('search-in-products') }}</label>
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-files" type="checkbox" name="search-in-files" /> <label for="search-in-files"
-                            class="translate-y-[2px] normal-case">Szukaj w plikach</label>
+                            class="translate-y-[2px] normal-case">{{ $t('search-in-files') }}</label>
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                        <label for="search-in-inspirations" class="translate-y-[2px] normal-case">Szukaj w
-                            inspiracjach</label>
+                        <label for="search-in-inspirations" class="translate-y-[2px] normal-case">{{ $t('search-in-inspirations') }}</label>
                     </div>
 
-                    <div class="h-[50px] flex items-center normal-case w-1/3 mr-8">
-                        Chcesz precyzyjnie wyszukać produkt po jego właściwościach?
-                    </div>
+                    <div class="h-[50px] text-lg flex items-center normal-case w-1/3 mr-8">{{ $t('header-search-message') }}</div>
 
                     <a href="/"
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">Przejdź
-                        do strony z produktami
+                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{ $t('go-to-products') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
                 </div>
             </template>
