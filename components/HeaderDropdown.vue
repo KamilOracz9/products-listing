@@ -1,9 +1,9 @@
 <template>
     <li :class="`menu-item-${slug}`"
-        class="font-medium text-[1.125rem] uppercase flex flex-col items-center w-full gap-2 lg:w-fit">
+        class="text-medium-lg uppercase flex flex-col items-center w-full gap-2 lg:w-fit">
         <template v-if="hasSlot('default')">
             <div @click="handleOpen" class="flex items-center gap-2">
-                <img class="min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px]" width="18" v-if="iconUrl" :src="iconUrl"
+                <img class="icon" width="18" v-if="iconUrl" :src="iconUrl"
                     alt="">
                 <span class="flex h-[18px]" :class="desktopLabelHide ? 'lg:hidden xl:flex' : ''">{{ name }}</span>
             </div>
@@ -15,7 +15,7 @@
         </template>
 
         <a :href="url" v-if="!hasSlot('default')" class="flex items-center gap-2 pb-2 lg:pb-0">
-            <img class="min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px]" width="18" v-if="iconUrl" :src="iconUrl"
+            <img class="icon" width="18" v-if="iconUrl" :src="iconUrl"
                 alt="">
             <span class="flex h-[18px]" :class="desktopLabelHide ? 'lg:hidden xl:flex' : ''">{{ name }}</span>
         </a>
@@ -31,11 +31,7 @@ const { name, url, iconUrl, slug, desktopLabelHide } = props;
 const headerStore = useHeaderStore();
 const slots = useSlots();
 
-const hasSlot = (name) => {
-    return !!slots[name];
-}
+const hasSlot = (name) => (!!slots[name]);
 
-const handleOpen = () => {
-    headerStore.setSubmenu(name);
-}
+const handleOpen = () => headerStore.setSubmenu(name);
 </script>

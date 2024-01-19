@@ -1,6 +1,8 @@
 <template>
     <div class="py-7 flex flex-col fixed w-full bg-white lg:flex-row max-w-max-content"
         @mouseleave="() => { handleClose(); background.style.height = '0'; }">
+
+        <!-- Logo and mobile menu icon -->
         <ul class="px-5 flex justify-between items-center lg:mr-[70px]">
             <li>
                 <a href="/"><img src="@/assets/images/logo.svg" width="161" alt=""></a>
@@ -83,62 +85,24 @@
             <HeaderDropdownDesktop :slug="menuItem.slug" :name="menuItem.label" :background="background"
                 :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
                 <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
-                    <a :href="submenuItem.url" class="hover:opacity-[60%]">{{ submenuItem.label }}</a>
+                    <a :href="submenuItem.url" class="hover-opacity-60">{{ submenuItem.label }}</a>
                 </li>
                 <li v-for="submenuItem in menuItem.items" v-if="menuItem.type === 'products'"
                     class="border-r border-gray-1">
                     <a :href="submenuItem.url" v-if="submenuItem.iconUrl" class="px-6 flex flex-col gap-2 flex-1">
                         <img width="60" :src="submenuItem.iconUrl" alt="">
-                        <span class="hover:opacity-[60%]">{{ submenuItem.label }}</span>
+                        <span class="hover-opacity-60">{{ submenuItem.label }}</span>
                         <ul>
                             <li v-for="subcategory in submenuItem.items" class="text-sm">
-                                <a :href="subcategory.url" class="hover:opacity-[60%]">{{ subcategory.label }}</a>
+                                <a :href="subcategory.url" class="hover-opacity-60">{{ subcategory.label }}</a>
                             </li>
                         </ul>
                     </a>
                 </li>
             </HeaderDropdownDesktop>
-
-            <!-- <ul class="ml-auto flex items-cetner">
-                <li class="pb-1 hover:opacity-[60%]">
-                    <HeaderDropdownDesktop name="Pobierz" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
-                    </HeaderDropdownDesktop>
-                </li>
-                <HeaderDropdownDesktop name="Wyszukaj" :iconUrl="searchIcon" slug="wyszukaj" :desktopLabelHide="true"
-                    type="search">
-                    <li class="w-full flex justify-center">
-                        <div class="w-[70%] flex flex-col gap-4 py-4">
-                            <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
-                                <input class="p-2 outline-none" type="text" placeholder="Napisz czego szukasz">
-                                <img width="16" height="16" class="w-4 h-4 gray-1-filter" :src="searchIcon" alt="">
-                            </div>
-
-                            <button
-                                class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">Szukaj
-                                <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
-
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                                    for="search-in-products">Szukaj w produktach</label>
-                            </div>
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-files" type="checkbox" name="search-in-files" /> <label
-                                    for="search-in-files">Szukaj w plikach</label>
-                            </div>
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                                <label for="search-in-inspirations">Szukaj w inspiracjach</label>
-                            </div>
-
-                            <a href="/"
-                                class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">Produkty
-                                <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
-                        </div>
-                    </li>
-                </HeaderDropdownDesktop>
-            </ul> -->
         </ul>
 
+        <!-- Menu Background -->
         <div ref="background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-[60px] -z-10"></div>
     </div>
 </template>

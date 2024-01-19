@@ -33,6 +33,9 @@ module.exports = {
       'max-lg': {'max': '1023px'},
     },
     extend: {
+      fontSize: {
+        'xl': '1.375rem',
+      },
       maxWidth: {
         'max-content': '1680px',
       },

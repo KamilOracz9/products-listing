@@ -9,6 +9,7 @@
 }
 
 @layer components {
+    /* Header */
     .top-bar-icon {
         @apply transition-opacity hover:opacity-[70%];
     }
@@ -17,10 +18,30 @@
     .header-menu.active {
         @apply visible animate-slide-down;
     }
+
+    /* Common */
+    .icon {
+        @apply min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px];
+    }
 }
 
 @layer utilities {
+    /* Filters */
     .gray-1-filter {
         filter: invert(91%) sepia(0%) saturate(3%) hue-rotate(230deg) brightness(91%) contrast(84%);
+    }
+
+    /* Typography */
+    .text-medium-lg {
+        @apply font-medium text-lg;
+    }
+
+    .text-medium-xl {
+        @apply font-medium text-xl;
+    }
+
+    /* Hovers */
+    .hover-opacity-60 {
+        @apply hover:opacity-[60%] hover:border-opacity-[60%];
     }
 }
