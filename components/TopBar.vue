@@ -40,7 +40,7 @@
 
 <script setup>
 import device from '@/plugins/device';
-import { useGlobalStore } from '@/stores/globalStore';
+import { useGlobalStore } from '@/stores';
 
 const globalStore = useGlobalStore();
 const { locale, setLocale } = useI18n();

@@ -7,7 +7,7 @@ type IGlobalStore = {
     }
 }
 
-export const useGlobalStore = defineStore('global', {
+const useGlobalStore = defineStore('global', {
     state: (): IGlobalStore => ({
         locale: {
             isLoading: true,
@@ -26,3 +26,5 @@ export const useGlobalStore = defineStore('global', {
         },
     },
 });
+
+export default useGlobalStore;

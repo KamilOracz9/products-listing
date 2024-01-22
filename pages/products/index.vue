@@ -1,18 +1,11 @@
 <template>
-  <MainLayout>
-    <div>
-      {{ $t('products') }}
-    </div>
-  </MainLayout>
+  <div>
+    {{ $t('products') }}
+  </div>
 </template>
   
 <script setup lang="ts">
-import MainLayout from '~/layouts/MainLayout.vue';
+import paths from '@/lang/paths/products.json'
 
-defineI18nRoute({
-  paths: {
-    en: '/products',
-    pl: '/produkty',
-  }
-})
+defineI18nRoute({ paths })
 </script>

@@ -6,7 +6,7 @@ type IHeaderStore = {
     headerMenu: IHeaderMenu;
 }
 
-export const useHeaderStore = defineStore('header', {
+const useHeaderStore = defineStore('header', {
     state: (): IHeaderStore => ({
         menuIsOpen: false,
         submenu: '',
@@ -28,41 +28,33 @@ export const useHeaderStore = defineStore('header', {
         setSubmenu(name: string, isMobile: boolean = true): void {
             this.submenu = (this.submenu === name && isMobile) ? '' : name;
         },
-        async fetchMenuItems(i18n: Object): Promise<void> {
+        async fetchMenuItems(i18n): Promise<void> {
             this.headerMenu.isLoading = true;
 
-            await import('@/data/mobileHeaderMenu').then(response => {
+            await import('@/data/headerMenu').then(response => {
                 this.headerMenu.items = <IHeaderMenuItem[]>response.default.items.filter(item => !['clipboard', 'products', 'download', 'search'].includes(item.slug));
 
                 this.headerMenu.items.unshift({
                     label: i18n.t('products'),
                     slug: 'products',
-                    iconUrl: '',
-                    url: '/products',
                     type: 'products',
                     items: response.default.categories
                 });
                 this.headerMenu.items.push({
                     label: i18n.t('download'),
                     slug: 'download',
-                    iconUrl: '',
-                    url: '/',
                     type: 'download',
                     items: []
                 });
                 this.headerMenu.items.push({
                     label: i18n.t('search'),
                     slug: 'search',
-                    iconUrl: '',
-                    url: '/',
                     type: 'search',
                     items: []
                 });
                 this.headerMenu.items.push({
                     label: i18n.t('clipboard'),
                     slug: 'clipboard',
-                    iconUrl: '',
-                    url: '/',
                     type: 'clipboard',
                     items: []
                 });
@@ -71,3 +63,5 @@ export const useHeaderStore = defineStore('header', {
         }
     }
 });
+
+export default useHeaderStore;
