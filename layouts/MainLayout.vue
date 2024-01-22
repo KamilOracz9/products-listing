@@ -26,10 +26,7 @@ const headerStore = useHeaderStore();
 const i18n = useI18n();
 
 onMounted(async () => {
-    console.log('asd')
-    globalStore.fetchLocale().then(({ defaultLocale }) => {
-        // if (defaultLocale) i18n.setLocale(defaultLocale);
-    });
+    globalStore.fetchLocale();
 
     await headerStore.fetchMenuItems(i18n);
 
