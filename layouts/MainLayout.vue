@@ -1,13 +1,13 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <div class="flex flex-col min-h-screen max-w-max-content w-full relative">
+        <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
             <header>
                 <TopBar />
                 <HeaderMenu />
             </header>
 
             <main class="flex-1 mt-[114px]">
-                main
+                <slot />
             </main>
 
             <footer>
@@ -19,8 +19,17 @@
 </template>
 
 <script setup lang="ts">
+import { useGlobalStore } from '@/stores/globalStore';
 
-onMounted(() => {
+const globalStore = useGlobalStore();
+const headerStore = useHeaderStore();
+const i18n = useI18n();
+
+onMounted(async () => {
+    globalStore.fetchLocale();
+
+    await headerStore.fetchMenuItems(i18n);
+
     const topBar = document.getElementById('top-bar');
 
     document.addEventListener('scroll', () => {

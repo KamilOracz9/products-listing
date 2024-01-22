@@ -31,40 +31,40 @@
                 </li>
             </HeaderDropdown>
 
-            <HeaderDropdown name="Pobierz" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
+            <HeaderDropdown :name="$t('download')" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
             </HeaderDropdown>
-            <HeaderDropdown name="Wyszukaj" :iconUrl="searchIcon" slug="wyszukaj" :desktopLabelHide="true">
+            <HeaderDropdown :name="$t('search')" :iconUrl="searchIcon" slug="wyszukaj" :desktopLabelHide="true">
                 <li class="w-full flex justify-center">
                     <div class="w-[70%] flex flex-col gap-4 py-4">
                         <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
-                            <input class="p-2 outline-none" type="text" placeholder="Napisz czego szukasz">
+                            <input class="p-2 outline-none" type="text" :placeholder="$t('what-are-you-looking-for')">
                             <img width="16" height="16" class="w-4 h-4 gray-1-filter" :src="searchIcon" alt="">
                         </div>
 
                         <button
-                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">Szukaj
+                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{ $t('search') }}
                             <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
                         <div class="flex items-center justify-start gap-2">
                             <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                                for="search-in-products">Szukaj w produktach</label>
+                                for="search-in-products">{{ $t('search-in-products') }}</label>
                         </div>
                         <div class="flex items-center justify-start gap-2">
                             <input id="search-in-files" type="checkbox" name="search-in-files" /> <label
-                                for="search-in-files">Szukaj w plikach</label>
+                                for="search-in-files">{{ $t('search-in-files') }}</label>
                         </div>
                         <div class="flex items-center justify-start gap-2">
                             <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                            <label for="search-in-inspirations">Szukaj w inspiracjach</label>
+                            <label for="search-in-inspirations">{{ $t('search-in-inspirations') }}</label>
                         </div>
 
                         <a href="/"
-                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">Produkty
+                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{ $t('products') }}
                             <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
                     </div>
                 </li>
             </HeaderDropdown>
-            <HeaderDropdown name="Schowek" :iconUrl="clipboardIcon" slug="schowek" :desktopLabelHide="true">
+            <HeaderDropdown :name="$t('clipboard')" :iconUrl="clipboardIcon" slug="schowek" :desktopLabelHide="true">
                 <li v-for="clipboardItem in clipboardStore.items.products" class="w-[50%] md:w-[33%]">
                     <a :href="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
                         <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" alt="">
@@ -83,8 +83,8 @@
         </ul>
 
         <!-- Desktop menu -->
-        <ul class="hidden gap-6 items-end lg:flex w-full">
-            <HeaderDropdownDesktop :slug="menuItem.slug" :name="menuItem.label" :background="background"
+        <ul class="hidden gap-6 items-end lg:flex w-full" v-if="background">
+            <HeaderDropdownDesktop :slug="menuItem.slug" :url="menuItem.url" :name="menuItem.label" :background="background"
                 :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
                 <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
                     <a :href="submenuItem.url" class="hover-opacity-60">{{ submenuItem.label }}</a>
@@ -128,7 +128,6 @@ const handleClose = () => {
 }
 
 onMounted(() => {
-    headerStore.fetchMenuItems();
     clipboardStore.fetchItems();
 });
 </script>

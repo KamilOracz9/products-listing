@@ -10,7 +10,7 @@
             <FooterContact v-for="item in footerStore.data.contacts" :item="item" />
             <!-- Websites -->
             <li class="lg:w-1/4">
-                <p class="text-medium-lg">Nasze strony internetowe</p>
+                <p class="text-medium-lg uppercase">{{ $t('our-websites') }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="icon-16 white-filter translate-y-1" alt="" />
                     <ul class="flex flex-col">

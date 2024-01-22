@@ -11,7 +11,7 @@ export const useHeaderStore = defineStore('header', {
         menuIsOpen: false,
         submenu: '',
         headerMenu: {
-            isLoading: false,
+            isLoading: true,
             items: [],
             categories: [],
         },
@@ -28,38 +28,39 @@ export const useHeaderStore = defineStore('header', {
         setSubmenu(name: string, isMobile: boolean = true): void {
             this.submenu = (this.submenu === name && isMobile) ? '' : name;
         },
-        async fetchMenuItems(): Promise<void> {
+        async fetchMenuItems(i18n: Object): Promise<void> {
             this.headerMenu.isLoading = true;
 
             await import('@/data/mobileHeaderMenu').then(response => {
-                this.headerMenu.items = <IHeaderMenuItem[]>response.default.items;
+                this.headerMenu.items = <IHeaderMenuItem[]>response.default.items.filter(item => !['clipboard', 'products', 'download', 'search'].includes(item.slug));
+
                 this.headerMenu.items.unshift({
-                    label: 'Produkty',
-                    slug: 'produkty',
+                    label: i18n.t('products'),
+                    slug: 'products',
                     iconUrl: '',
-                    url: '/',
+                    url: '/products',
                     type: 'products',
                     items: response.default.categories
                 });
                 this.headerMenu.items.push({
-                    label: 'Pobierz',
-                    slug: 'pobierz',
+                    label: i18n.t('download'),
+                    slug: 'download',
                     iconUrl: '',
                     url: '/',
                     type: 'download',
                     items: []
                 });
                 this.headerMenu.items.push({
-                    label: 'Wyszukaj',
-                    slug: 'szukaj',
+                    label: i18n.t('search'),
+                    slug: 'search',
                     iconUrl: '',
                     url: '/',
                     type: 'search',
                     items: []
                 });
                 this.headerMenu.items.push({
-                    label: 'Schowek',
-                    slug: 'schowek',
+                    label: i18n.t('clipboard'),
+                    slug: 'clipboard',
                     iconUrl: '',
                     url: '/',
                     type: 'clipboard',
