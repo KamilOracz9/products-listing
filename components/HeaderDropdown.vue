@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { useHeaderStore } from '~/stores/headerStore';
+import { useHeaderStore } from '~/stores';
 
 const props = defineProps(['name', 'url', 'iconUrl', 'slug', 'desktopLabelHide']);
 const { name, url, iconUrl, slug, desktopLabelHide } = props;

@@ -7,7 +7,7 @@ type IClipboardStore = {
     };
 }
 
-export const useClipboardStore = defineStore('clipboard', {
+const useClipboardStore = defineStore('clipboard', {
     state: (): IClipboardStore => ({
         items: {
             isLoading: false,
@@ -24,3 +24,5 @@ export const useClipboardStore = defineStore('clipboard', {
         }
     },
 });
+
+export default useClipboardStore;

@@ -8,16 +8,13 @@ export type IHeaderMenu = {
 export type IHeaderMenuItem = {
     label: string;
     slug: string;
-    url: string;
-    iconUrl: string;
     type: null | 'products' | 'search' | 'download' | 'clipboard';
     items: IHeaderMenuSubItem[];
 };
 
 export type IHeaderMenuSubItem = {
     label: string;
-    url: string;
-    iconUrl: string;
+    slug: string;
 };
 
 export type IHeaderMenuCategory = {

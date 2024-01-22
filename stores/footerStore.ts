@@ -10,7 +10,7 @@ type IFooterStore = {
     };
 }
 
-export const useFooterStore = defineStore('footer', {
+const useFooterStore = defineStore('footer', {
     state: (): IFooterStore => ({
         activeItem: '',
         data: {
@@ -38,3 +38,5 @@ export const useFooterStore = defineStore('footer', {
         },
     }
 })
+
+export default useFooterStore;

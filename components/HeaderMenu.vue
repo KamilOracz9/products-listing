@@ -42,7 +42,8 @@
                         </div>
 
                         <button
-                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{ $t('search') }}
+                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
+                                $t('search') }}
                             <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
                         <div class="flex items-center justify-start gap-2">
@@ -59,7 +60,8 @@
                         </div>
 
                         <a href="/"
-                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{ $t('products') }}
+                            class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
+                                $t('products') }}
                             <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
                     </div>
                 </li>
@@ -78,8 +80,8 @@
                     </a>
                 </li>
             </HeaderDropdown>
-            
-            <ButtonsWhereBuy />
+
+            <ButtonsPlaceToBuy :label="$t('place-to-buy')" routeName="place-to-buy" />
         </ul>
 
         <!-- Desktop menu -->
@@ -87,23 +89,26 @@
             <HeaderDropdownDesktop :slug="menuItem.slug" :url="menuItem.url" :name="menuItem.label" :background="background"
                 :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
                 <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
-                    <a :href="submenuItem.url" class="hover-opacity-60">{{ submenuItem.label }}</a>
+                    <RouterLink :to="localePath({ name: submenuItem.slug })" class="hover-opacity-60">{{ $t(submenuItem.slug) }}
+                    </RouterLink>
                 </li>
                 <li v-for="submenuItem in menuItem.items" v-if="menuItem.type === 'products'"
                     class="border-r border-gray-1">
-                    <a :href="submenuItem.url" v-if="submenuItem.iconUrl" class="px-6 flex flex-col gap-2 flex-1">
+                    <RouterLink :to="localePath({ name: submenuItem.slug })" v-if="submenuItem.iconUrl"
+                        class="px-6 flex flex-col gap-2 flex-1">
                         <img width="60" :src="submenuItem.iconUrl" alt="">
                         <span class="hover-opacity-60">{{ submenuItem.label }}</span>
                         <ul>
                             <li v-for="subcategory in submenuItem.items" class="text-sm">
-                                <a :href="subcategory.url" class="hover-opacity-60">{{ subcategory.label }}</a>
+                                <RouterLink :to="localePath({ name: subcategory.slug })" class="hover-opacity-60">{{
+                                    subcategory.label }}</RouterLink>
                             </li>
                         </ul>
-                    </a>
+                    </RouterLink>
                 </li>
             </HeaderDropdownDesktop>
 
-            <ButtonsWhereBuy />
+            <ButtonsPlaceToBuy />
         </ul>
 
         <!-- Menu Background -->
@@ -112,14 +117,14 @@
 </template>
 
 <script setup>
-import { useHeaderStore } from '~/stores/headerStore';
-import { useClipboardStore } from '~/stores/clipboardStore';
+import { useHeaderStore, useClipboardStore } from '~/stores';
 import downloadIcon from '@/assets/icons/download.svg';
 import searchIcon from '@/assets/icons/search.svg';
 import clipboardIcon from '@/assets/icons/clipboard.svg';
 
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
+const localePath = useLocalePath();
 
 const background = ref(null);
 

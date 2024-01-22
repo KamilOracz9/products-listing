@@ -1,14 +1,12 @@
 <template>
-    <li class="menu-item text-medium-lg uppercase 2xl:text-medium-xl" @mouseleave="handleClose" :class="type === 'download' ? 'ml-auto' : ''">
-        <RouterLink :to="localePath({ name: 'products' })" @mouseenter="handleOpen"
+    <li class="menu-item text-medium-lg uppercase 2xl:text-medium-xl" @mouseleave="handleClose"
+        :class="type === 'download' ? 'ml-auto' : ''">
+        <RouterLink :to="localePath({ name: slug })" @mouseenter="handleOpen"
             class="translate-y-2 pb-1 border-b border-black border-opacity-0 transition-all flex gap-2 hover-opacity-60">
-            <img width="18" class="icon--header" src="@/assets/icons/download.svg"
-                v-if="type === 'download'" alt="">
-            <img width="18" class="icon--header" src="@/assets/icons/search.svg"
-                v-if="type === 'search'" alt="">
-            <img width="18" class="icon--header" src="@/assets/icons/clipboard.svg"
-                v-if="type === 'clipboard'" alt="">
-            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{ name }}</span>
+            <img width="18" class="icon--header" src="@/assets/icons/download.svg" v-if="type === 'download'" alt="">
+            <img width="18" class="icon--header" src="@/assets/icons/search.svg" v-if="type === 'search'" alt="">
+            <img width="18" class="icon--header" src="@/assets/icons/clipboard.svg" v-if="type === 'clipboard'" alt="">
+            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{ $t(slug) }}</span>
         </RouterLink>
         <div :class="headerStore.submenu === name ? 'visible' : 'invisible', type ? 'left-0 w-full' : ''"
             class="absolute submenu bg-white top-full">
@@ -33,12 +31,14 @@
                     </div>
 
                     <button
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20">{{ $t('search') }}
+                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20">{{
+                            $t('search') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                            for="search-in-products" class="translate-y-[2px] normal-case">{{ $t('search-in-products') }}</label>
+                            for="search-in-products" class="translate-y-[2px] normal-case">{{ $t('search-in-products')
+                            }}</label>
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-files" type="checkbox" name="search-in-files" /> <label for="search-in-files"
@@ -46,13 +46,16 @@
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                        <label for="search-in-inspirations" class="translate-y-[2px] normal-case">{{ $t('search-in-inspirations') }}</label>
+                        <label for="search-in-inspirations" class="translate-y-[2px] normal-case">{{
+                            $t('search-in-inspirations') }}</label>
                     </div>
 
-                    <div class="h-[50px] text-lg flex items-center normal-case w-1/3 mr-8">{{ $t('header-search-message') }}</div>
+                    <div class="h-[50px] text-lg flex items-center normal-case w-1/3 mr-8">{{ $t('header-search-message') }}
+                    </div>
 
                     <a href="/"
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{ $t('go-to-products') }}
+                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{
+                            $t('go-to-products') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
                 </div>
             </template>
@@ -78,11 +81,10 @@
 </template>
 
 <script setup>
-import { useHeaderStore } from '~/stores/headerStore';
-import { useClipboardStore } from '~/stores/clipboardStore';
+import { useHeaderStore, useClipboardStore } from '~/stores';
 
-const props = defineProps(['name', 'url', 'iconUrl', 'slug', 'desktopLabelHide', 'background', 'type']);
-const { name, background, type, url } = props;
+const props = defineProps(['name', 'slug', 'desktopLabelHide', 'background', 'type']);
+const { name, background, type, slug } = props;
 
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();

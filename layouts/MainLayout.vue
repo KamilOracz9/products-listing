@@ -19,10 +19,10 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '@/stores/globalStore';
+import { useHeaderStore } from '@/stores';
 
-const globalStore = useGlobalStore();
 const headerStore = useHeaderStore();
+const globalStore = useGlobalStore();
 const i18n = useI18n();
 
 onMounted(async () => {

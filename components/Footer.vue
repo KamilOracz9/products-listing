@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { useFooterStore } from '@/stores/footerStore';
+import { useFooterStore } from '@/stores';
 
 const footerStore = useFooterStore();
 
