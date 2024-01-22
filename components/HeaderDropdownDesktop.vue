@@ -1,6 +1,6 @@
 <template>
     <li class="menu-item text-medium-lg uppercase 2xl:text-medium-xl" @mouseleave="handleClose" :class="type === 'download' ? 'ml-auto' : ''">
-        <a href="/" @mouseenter="handleOpen"
+        <RouterLink :to="localePath({ name: 'products' })" @mouseenter="handleOpen"
             class="translate-y-2 pb-1 border-b border-black border-opacity-0 transition-all flex gap-2 hover-opacity-60">
             <img width="18" class="icon--header" src="@/assets/icons/download.svg"
                 v-if="type === 'download'" alt="">
@@ -9,7 +9,7 @@
             <img width="18" class="icon--header" src="@/assets/icons/clipboard.svg"
                 v-if="type === 'clipboard'" alt="">
             <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{ name }}</span>
-        </a>
+        </RouterLink>
         <div :class="headerStore.submenu === name ? 'visible' : 'invisible', type ? 'left-0 w-full' : ''"
             class="absolute submenu bg-white top-full">
             <!-- Default -->
@@ -82,10 +82,11 @@ import { useHeaderStore } from '~/stores/headerStore';
 import { useClipboardStore } from '~/stores/clipboardStore';
 
 const props = defineProps(['name', 'url', 'iconUrl', 'slug', 'desktopLabelHide', 'background', 'type']);
-const { name, background, type } = props;
+const { name, background, type, url } = props;
 
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
+const localePath = useLocalePath();
 
 const handleOpen = () => {
     headerStore.setSubmenu(name, false);

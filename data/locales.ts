@@ -1,5 +1,5 @@
 export default {
-    defaultLocale: 'en',
+    defaultLocale: 'pl',
     locales: [
         {
             label: 'Polish',

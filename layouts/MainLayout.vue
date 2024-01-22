@@ -7,7 +7,7 @@
             </header>
 
             <main class="flex-1 mt-[114px]">
-                main
+                <slot />
             </main>
 
             <footer>
@@ -26,8 +26,9 @@ const headerStore = useHeaderStore();
 const i18n = useI18n();
 
 onMounted(async () => {
+    console.log('asd')
     globalStore.fetchLocale().then(({ defaultLocale }) => {
-        if (defaultLocale) i18n.locale.value = defaultLocale;
+        // if (defaultLocale) i18n.setLocale(defaultLocale);
     });
 
     await headerStore.fetchMenuItems(i18n);

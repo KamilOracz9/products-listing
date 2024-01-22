@@ -29,6 +29,27 @@ export default defineNuxtConfig({
     '@/plugins/device',
   ],
   i18n: {
-    vueI18n: './i18n/i18n.config.ts',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.json',
+      },
+      {
+        code: 'pl',
+        iso: 'pl-PL',
+        file: 'pl-PL.json',
+      },
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'lang/',
+    strategy: 'prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+    },
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    customRoutes: 'page',
   },
 })

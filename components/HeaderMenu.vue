@@ -84,7 +84,7 @@
 
         <!-- Desktop menu -->
         <ul class="hidden gap-6 items-end lg:flex w-full" v-if="background">
-            <HeaderDropdownDesktop :slug="menuItem.slug" :name="menuItem.label" :background="background"
+            <HeaderDropdownDesktop :slug="menuItem.slug" :url="menuItem.url" :name="menuItem.label" :background="background"
                 :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
                 <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
                     <a :href="submenuItem.url" class="hover-opacity-60">{{ submenuItem.label }}</a>

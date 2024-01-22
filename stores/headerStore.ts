@@ -28,16 +28,17 @@ export const useHeaderStore = defineStore('header', {
         setSubmenu(name: string, isMobile: boolean = true): void {
             this.submenu = (this.submenu === name && isMobile) ? '' : name;
         },
-        async fetchMenuItems(i18n): Promise<void> {
+        async fetchMenuItems(i18n: Object): Promise<void> {
             this.headerMenu.isLoading = true;
 
             await import('@/data/mobileHeaderMenu').then(response => {
-                this.headerMenu.items = <IHeaderMenuItem[]>response.default.items;
+                this.headerMenu.items = <IHeaderMenuItem[]>response.default.items.filter(item => !['clipboard', 'products', 'download', 'search'].includes(item.slug));
+
                 this.headerMenu.items.unshift({
                     label: i18n.t('products'),
                     slug: 'products',
                     iconUrl: '',
-                    url: '/',
+                    url: '/products',
                     type: 'products',
                     items: response.default.categories
                 });
