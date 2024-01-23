@@ -32,6 +32,11 @@
     .icon--header {
         @apply icon lg:-translate-y-2 2xl:translate-y-0;
     }
+
+    /* Sliders */
+    .main-slider-arrow {
+        @apply absolute z-10 top-1/2 -translate-y-1/2 lg:translate-y-0 lg:top-auto lg:bottom-6 cursor-pointer;
+    }
 }
 
 @layer utilities {

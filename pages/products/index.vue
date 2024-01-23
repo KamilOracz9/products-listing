@@ -5,7 +5,10 @@
 </template>
   
 <script setup lang="ts">
-import paths from '@/lang/paths/products.json'
-
-defineI18nRoute({ paths })
+defineI18nRoute({
+  paths: {
+    "en": "/products",
+    "pl": "/produkty"
+  }
+})
 </script>

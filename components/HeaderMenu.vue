@@ -1,5 +1,5 @@
 <template>
-    <div class="py-7 flex flex-col fixed w-full bg-white lg:flex-row max-w-max-content"
+    <div class="py-7 flex flex-col fixed w-full bg-white lg:flex-row max-w-max-content z-20"
         @mouseleave="() => { handleClose(); background.style.height = '0'; }">
 
         <!-- Logo and mobile menu icon -->

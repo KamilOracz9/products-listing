@@ -1,11 +1,14 @@
 <template>
-    <div>
-      {{ $t('for-professionals') }}
-    </div>
+  <div>
+    {{ $t('for-professionals') }}
+  </div>
 </template>
   
 <script setup lang="ts">
-import paths from '@/lang/paths/inspirations.json'
-
-defineI18nRoute({ paths })
+defineI18nRoute({
+  paths: {
+    "en": "/inspirations",
+    "pl": "/inspiracje"
+  }
+})
 </script>

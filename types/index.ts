@@ -80,3 +80,17 @@ export type IActiveLocale = {
     code: string
     flagUrl: string;
 }
+
+// Sliders
+export type IMainSliderSlide = {
+    title: string | null;
+    subtitle: string | null;
+    url: string;
+    type: 'image' | 'video';
+    fileUrls: {
+        base: string;
+        sm?: string;
+        lg?: string;
+    };
+    navTitle: string;
+}

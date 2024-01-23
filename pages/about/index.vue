@@ -1,11 +1,14 @@
 <template>
-    <div>
-      {{ $t('about') }}
-    </div>
+  <div>
+    {{ $t('about') }}
+  </div>
 </template>
   
 <script setup lang="ts">
-import paths from '@/lang/paths/contact.json'
-
-defineI18nRoute({ paths })
+defineI18nRoute({
+  paths: {
+    "en": "/about",
+    "pl": "/o-firmie"
+  }
+})
 </script>

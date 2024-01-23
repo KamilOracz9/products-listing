@@ -5,7 +5,10 @@
 </template>
 
 <script setup>
-import paths from '@/lang/paths/place-to-buy.json'
-
-defineI18nRoute({ paths })
+defineI18nRoute({
+    paths: {
+        "en": "/place-to-buy",
+        "pl": "/gdzie-kupic-nasze-produkty"
+    }
+})
 </script>

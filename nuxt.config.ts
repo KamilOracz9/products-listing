@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-lodash',
     '@nuxtjs/i18n',
+    'nuxt-swiper',
   ],
   runtimeConfig: {
     public: {
