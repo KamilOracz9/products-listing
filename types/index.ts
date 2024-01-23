@@ -81,7 +81,7 @@ export type IActiveLocale = {
     flagUrl: string;
 }
 
-// Sliders
+// Home
 export type IMainSliderSlide = {
     title: string | null;
     subtitle: string | null;
@@ -93,4 +93,9 @@ export type IMainSliderSlide = {
         lg?: string;
     };
     navTitle: string;
+}
+
+export type IHomeCategoryItem = {
+    label: string;
+    slug: string;
 }

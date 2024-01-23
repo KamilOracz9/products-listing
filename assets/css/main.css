@@ -40,6 +40,7 @@
 }
 
 @layer utilities {
+
     /* Filters */
     .gray-1-filter {
         filter: invert(91%) sepia(0%) saturate(3%) hue-rotate(230deg) brightness(91%) contrast(84%);
@@ -65,5 +66,15 @@
     /* Hovers */
     .hover-opacity-60 {
         @apply lg:hover:opacity-[60%] lg:hover:border-opacity-[60%];
+    }
+
+    /* Scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }

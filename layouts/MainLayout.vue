@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-center font-breuer">
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
-            <header>
+            <header class="relative z-10">
                 <TopBar />
                 <HeaderMenu />
             </header>
