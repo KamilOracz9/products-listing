@@ -24,7 +24,7 @@
             <picture>
                 <source media="(min-width: 640px)"
                     srcset="https://newtrendy.pl/app/uploads/2023/08/prime_light_gold_r55_2-1024x542.webp" />
-                <img class="h-full w-full object-cover rounded-tl-md" loading="lazy" src="https://newtrendy.pl/app/uploads/2023/08/prime_light_gold_r55_2-1024x542.webp" alt="">
+                <img class="h-full w-full object-cover rounded-tl-md lg:rounded-tl-lg" loading="lazy" src="https://newtrendy.pl/app/uploads/2023/08/prime_light_gold_r55_2-1024x542.webp" alt="">
             </picture>
         </div>
     </section>

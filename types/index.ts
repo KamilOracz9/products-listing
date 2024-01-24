@@ -114,3 +114,19 @@ export type IHomeAboutTile = {
     imageUrl: string;
     url: string;
 }
+
+export type IHomeInOfferColor = {
+    title: string;
+    url: string;
+}
+
+export type IHomeInOfferCollection = {
+    title: string;
+    url: string;
+    categories?: IHomeInOfferCollectionCategory[];
+}
+
+export type IHomeInOfferCollectionCategory = {
+    title: string;
+    url: string;
+}

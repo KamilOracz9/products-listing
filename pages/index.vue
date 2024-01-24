@@ -13,6 +13,9 @@
     <SectionsHomeAboutTiles />
     <SectionsHomeLeftImage />
     <SectionsHomeRightImage />
+    <div class="lg:grid lg:grid-cols-2 lg:gap-10">
+      <SectionsHomeInOffer />
+    </div>
   </div>
 </template>
 

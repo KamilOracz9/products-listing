@@ -149,4 +149,86 @@ export default {
             },
         ]
     },
+    inOffer: {
+        colors: [
+            {
+                title: 'Czarny',
+                url: '/',
+            },
+            {
+                title: 'Baiły',
+                url: '/',
+            },
+            {
+                title: 'Chrom',
+                url: '/',
+            },
+            {
+                title: 'Czarny Chrom',
+                url: '/',
+            },
+            {
+                title: 'Złoty',
+                url: '/',
+            },
+            {
+                title: 'Gunmetal',
+                url: '/',
+            },
+            {
+                title: 'Miedziany',
+                url: '/',
+            },
+        ],
+        collections: [
+            {
+                title: 'Walk In',
+                url: '/',
+            },
+            {
+                title: 'Drzwi wnękowe',
+                url: '/',
+                categories: [
+                    {
+                        title: 'Drzwi prysznicowe otwierane na zewnątrz',
+                        url: '/'
+                    },
+                    {
+                        title: 'Drzwi prysznicowe przesuwne',
+                        url: '/'
+                    },
+                    {
+                        title: 'Drzwi prysznicowe wahadłowe',
+                        url: '/'
+                    },
+                    {
+                        title: 'Drzwi prysznicowe składane',
+                        url: '/'
+                    },
+                ],
+            },
+            {
+                title: 'Kabiny prysznicowe',
+                url: '/',
+                categories: [
+                    {
+                        title: 'Kabiny kwadratowe / kabiny prostokątne',
+                        url: '/'
+                    },
+                    {
+                        title: 'Kabiny półokrągłe',
+                        url: '/'
+                    },
+                    {
+                        title: 'Kabiny pięciokątne',
+                        url: '/'
+                    },
+                    {
+                        title: 'Kabiny przyścienne',
+                        url: '/'
+                    },
+                ]
+            },
+        ],
+    }
 }
