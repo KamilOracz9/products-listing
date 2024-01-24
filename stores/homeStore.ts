@@ -1,4 +1,4 @@
-import type { IHomeCategoryItem, IHomeProductTile, IMainSliderSlide } from "~/types";
+import type { IHomeAboutTile, IHomeCategoryItem, IHomeProductTile, IMainSliderSlide } from "~/types";
 
 type IHomeStore = {
     isLoading: boolean;
@@ -10,6 +10,9 @@ type IHomeStore = {
     },
     productTiles: {
         items: IHomeProductTile[],
+    },
+    aboutTiles: {
+        items: IHomeAboutTile[],
     }
 }
 
@@ -19,6 +22,7 @@ const useHomeStore = defineStore('slider', {
         slider: { items: [] },
         categories: { items: [] },
         productTiles: { items: [] },
+        aboutTiles: { items: [] },
     }),
     actions: {
         async fetchData() {
@@ -29,6 +33,7 @@ const useHomeStore = defineStore('slider', {
                     this.slider.items = <IMainSliderSlide[]>response.default.slider.items;
                     this.categories.items = <IHomeCategoryItem[]>response.default.categories.items;
                     this.productTiles.items = <IHomeProductTile[]>response.default.productTiles.items;
+                    this.aboutTiles.items = <IHomeAboutTile[]>response.default.aboutTiles.items;
                 })
                 .finally(() => this.isLoading = false)
         }

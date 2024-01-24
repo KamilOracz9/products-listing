@@ -10,6 +10,9 @@
     <SectionsHomeSwiper />
     <SectionsHomeCategories />
     <SectionsHomeProductTiles />
+    <SectionsHomeAboutTiles />
+    <SectionsHomeLeftImage />
+    <SectionsHomeRightImage />
   </div>
 </template>
 

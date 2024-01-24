@@ -106,3 +106,11 @@ export type IHomeProductTile = {
     productSlug: string;
     imageUrl: string;
 }
+
+export type IHomeAboutTile = {
+    title: string;
+    subtitle?: string;
+    description: string;
+    imageUrl: string;
+    url: string;
+}

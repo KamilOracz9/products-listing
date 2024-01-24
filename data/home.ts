@@ -118,5 +118,35 @@ export default {
                 imageUrl: 'https://newtrendy.pl/app/uploads/2023/07/new_soleo_light_gold.jpg',
             },
         ]
-    }
+    },
+    aboutTiles: {
+        items: [
+            {
+                title: 'architekta',
+                subtitle: 'Strefa',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum harum debitis labore omnis provident deserunt maiores velit voluptatibus qui, cumque natus? Officia quidem cupiditate inventore, fuga repellat incidunt impedit?',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/11/Frame-23824-1.webp',
+                url: '/',
+            },
+            {
+                title: 'partnera',
+                subtitle: 'Strefa',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum harum debitis labore omnis provident deserunt maiores velit voluptatibus qui, cumque natus? Officia quidem cupiditate inventore, fuga repellat incidunt impedit?',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/11/Frame-23826-1.webp',
+                url: '/',
+            },
+            {
+                title: 'Serwis',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum harum debitis labore omnis provident deserunt maiores velit voluptatibus qui, cumque natus? Officia quidem cupiditate inventore, fuga repellat incidunt impedit?',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/11/Frame-23826-2.webp',
+                url: '/',
+            },
+            {
+                title: 'Inspiracje',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum harum debitis labore omnis provident deserunt maiores velit voluptatibus qui, cumque natus? Officia quidem cupiditate inventore, fuga repellat incidunt impedit?',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/11/Frame-23827-1.webp',
+                url: '/',
+            },
+        ]
+    },
 }
