@@ -99,3 +99,10 @@ export type IHomeCategoryItem = {
     label: string;
     slug: string;
 }
+
+export type IHomeProductTile = {
+    title: string;
+    subtitle: string;
+    productSlug: string;
+    imageUrl: string;
+}

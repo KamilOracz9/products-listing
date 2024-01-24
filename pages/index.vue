@@ -9,6 +9,7 @@
 
     <SectionsHomeSwiper />
     <SectionsHomeCategories />
+    <SectionsHomeProductTiles />
   </div>
 </template>
 

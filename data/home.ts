@@ -90,5 +90,33 @@ export default {
                 slug: 'kabiny-prosnicowe-na-wymiar',
             },
         ],
+    },
+    productTiles: {
+        items: [
+            {
+                title: 'Avexa',
+                subtitle: 'Cooper brushed',
+                productSlug: 'avexa-cooper-brushed',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/06/AVEXA_copper_brushed.jpg',
+            },
+            {
+                title: 'Smart',
+                subtitle: 'Black',
+                productSlug: 'avexa-cooper-brushed',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/09/smart_black_reling2.jpg',
+            },
+            {
+                title: 'New soleo',
+                subtitle: 'Gunmetal brushed',
+                productSlug: 'avexa-cooper-brushed',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/06/NEW-SOLEO_gunmetal.jpg',
+            },
+            {
+                title: 'New soleo',
+                subtitle: 'Light gold',
+                productSlug: 'avexa-cooper-brushed',
+                imageUrl: 'https://newtrendy.pl/app/uploads/2023/07/new_soleo_light_gold.jpg',
+            },
+        ]
     }
 }

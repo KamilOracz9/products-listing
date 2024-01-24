@@ -37,6 +37,23 @@
     .main-slider-arrow {
         @apply absolute z-10 top-1/2 -translate-y-1/2 lg:translate-y-0 lg:top-auto lg:bottom-6 cursor-pointer;
     }
+    
+    /* Home */
+    #home-product-tiles > .home-product-tile:first-child > img{
+        @apply rounded-tl-md
+    }
+
+    #home-product-tiles > .home-product-tile:last-child > img{
+        @apply rounded-br-md
+    }
+
+    #home-product-tiles > .home-product-tile:first-child, .home-product-tile:last-child {
+        @apply md:w-[calc(55%-20px)];
+    }
+
+    #home-product-tiles > .home-product-tile:nth-child(2), .home-product-tile:nth-child(3) {
+        @apply md:w-[calc(45%-20px)];
+    }
 }
 
 @layer utilities {
