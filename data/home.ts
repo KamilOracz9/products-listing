@@ -62,31 +62,31 @@ export default {
     categories: {
         items: [
             {
-                label: 'Drzwi wnękowe',
+                label: 'Drzwi <br />wnękowe',
                 slug: 'drzwi-wnekowe',
             },
             {
-                label: 'Kabiny prysznicowe',
+                label: 'Kabiny <br />prysznicowe',
                 slug: 'kabiny-prysznicowe',
             },
             {
-                label: 'Kabiny walk-in',
+                label: 'Kabiny <br />walk-in',
                 slug: 'kabiny-walk-in',
             },
             {
-                label: 'Parawany nawannowe',
+                label: 'Parawany <br />nawannowe',
                 slug: 'parawany-nawannowe',
             },
             {
-                label: 'Brodziki i odwodnienia',
+                label: 'Brodziki i <br />odwodnienia',
                 slug: 'brodziki-i-odwodnienia',
             },
             {
-                label: 'Nasze kolekcje',
+                label: 'Nasze <br/>kolekcje',
                 slug: 'nasze-kolekcje',
             },
             {
-                label: 'Kabiny prysznicowe na wymiar',
+                label: 'Kabiny prysznicowe <br />na wymiar',
                 slug: 'kabiny-prosnicowe-na-wymiar',
             },
         ],

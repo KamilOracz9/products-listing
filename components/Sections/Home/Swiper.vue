@@ -5,7 +5,7 @@
         :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
         <SwiperSlide v-for="(slide, index) in homeStore.slider.items" :key="index">
             <a :href="slide.url" class="relative">
-                <div class="h-[582px] flex sm:h-[401px] lg:h-[612px]">
+                <div class="h-[582px] flex sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
                     <picture v-if="slide.type === 'image'" class="w-full">
                         <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
                         <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
