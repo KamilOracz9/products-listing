@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-gray-2 px-10 py-6 mt-7 sm:text-[1.25rem] sm:leading-6">
+    <section class="bg-gray-2 px-10 py-6 mt-7 h-fit sm:text-[1.25rem] sm:leading-6">
         <h6 class="font-bold text-lg leading-6 mb-2 sm:text-xl">W naszej ofercie znajdziesz wiele kolorów okuć kabiny:</h6>
 
         <ul class="pl-8">

@@ -230,5 +230,39 @@ export default {
                 ]
             },
         ],
+    },
+    additionalContent: {
+        items: [
+            {
+                content: 'Na naszej stronie czeka na Ciebie wiele ciekawych informacji na temat kabin prysznicowych, odpowiedzi na najczęstsze pytania oraz nowości. Tworzymy inspirujące treści i staramy się rozwiać wszelkie wątpliwości. Pomożemy Ci dobrać kabinę prysznicową odpowiednią dla Twoich potrzeb – zadowolenie Klientów stawiamy na pierwszym miejscu.',
+            },
+            {
+                title: 'Stwórz własną kabinę prysznicową na wymiar',
+                url: '/',
+                content: 'Poza standardowymi produktami z naszych kolekcji tworzymy też projekty nietypowe, wymagające modyfikacji i dopasowania ich do wymarzonego wnętrza. Dzięki dostępnej opcji „Na wymiar” możesz wprowadzić modyfikacje w naszych produktach, aby lepiej je dostosować do swoich potrzeb. Poznaj dodatkowe możliwości aranżacyjne. Skonfiguruj kabinę prysznicową dokładnie taką, jakiej potrzebujesz!'
+            },
+            {
+                title: 'Zainspiruj się…',
+                url: '/',
+                content: 'Brak Ci pomysłu na aranżację łazienki z kabiną prysznicową? Nie szkodzi! Na naszej stronie czekają na ciebie inspiracje łazienek z kabiną prysznicową. Chcemy ułatwić Ci wybór, dlatego przedstawiamy nasze propozycje aranżacji wnętrza dla różnych kolorów i kształtów kabin prysznicowych. Zaprezentujemy również kabiny na wymiar. Sprawdź najnowsze trendy i dostępne rozwiązania. Z dobrym pomysłem nawet mała łazienka z kabiną prysznicową wygląda wyjątkowo!',
+                list: [
+                    {
+                        title: 'Dopasuj produkt do indywidualnych potrzeb',
+                    },
+                    {
+                        title: 'Jeszcze dłuższa żywotność powłoki hydrofobowej',
+                    },
+                    {
+                        title: 'Nawet 7 lat gwarancji na wybrane produkty',
+                    },
+                    {
+                        title: 'Gwarancja najwyższej jakości',
+                    },
+                ]
+            },
+            {
+                content: 'Zapraszamy do naszych partnerskich sklepów z kabinami prysznicowymi. Jesteśmy obecni w najlepszych salonach łazienkowych w całej Polsce, gdzie otrzymasz fachową pomoc i doradztwo. W większości salonów możesz skorzystać z porady architekta wnętrz.'
+            }
+        ]
     }
 }

@@ -1,4 +1,4 @@
-import type { IHomeAboutTile, IHomeCategoryItem, IHomeInOfferCollection, IHomeInOfferColor, IHomeProductTile, IMainSliderSlide } from "~/types";
+import type { IHomeAboutTile, IHomeAdditionalContentItem, IHomeCategoryItem, IHomeInOfferCollection, IHomeInOfferColor, IHomeProductTile, IMainSliderSlide } from "~/types";
 
 type IHomeStore = {
     isLoading: boolean;
@@ -17,6 +17,9 @@ type IHomeStore = {
     inOffer: {
         colors: IHomeInOfferColor[];
         collections: IHomeInOfferCollection[];
+    },
+    additionalContent: {
+        items: IHomeAdditionalContentItem[];
     }
 }
 
@@ -28,6 +31,7 @@ const useHomeStore = defineStore('slider', {
         productTiles: { items: [] },
         aboutTiles: { items: [] },
         inOffer: { colors: [], collections: [] },
+        additionalContent: { items: [] },
     }),
     actions: {
         async fetchData() {
@@ -41,6 +45,7 @@ const useHomeStore = defineStore('slider', {
                     this.aboutTiles.items = <IHomeAboutTile[]>response.default.aboutTiles.items;
                     this.inOffer.colors = <IHomeInOfferColor[]>response.default.inOffer.colors;
                     this.inOffer.collections = <IHomeInOfferCollection[]>response.default.inOffer.collections;
+                    this.additionalContent.items = <IHomeAdditionalContentItem[]>response.default.additionalContent.items;
                 })
                 .finally(() => this.isLoading = false)
         }

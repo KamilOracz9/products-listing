@@ -130,3 +130,10 @@ export type IHomeInOfferCollectionCategory = {
     title: string;
     url: string;
 }
+
+export type IHomeAdditionalContentItem = {
+    title?: string;
+    url?: string;
+    content?: string;
+    list?: { title: string; }[]
+}
