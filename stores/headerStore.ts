@@ -1,5 +1,5 @@
-import { concat } from 'lodash';
-import type { IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
+import type { IHeaderMenuCategories, IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
+import concat from 'lodash/concat';
 
 type IHeaderStore = {
     menuIsOpen: boolean;
@@ -7,9 +7,7 @@ type IHeaderStore = {
     headerMenu: {
         isLoading: boolean;
         items: IHeaderMenuItem[];
-        categories: {
-            columns: IHeaderMenuCategory[];
-        };
+        categories: IHeaderMenuCategories;
     };
 }
 
@@ -21,14 +19,14 @@ const useHeaderStore = defineStore('header', {
             isLoading: true,
             items: [],
             categories: {
-                columns: [],
+                columns: [{ items: [] }]
             },
         },
     }),
     getters: {
         mainCategories: state => {
             const categories = state.headerMenu.categories.columns
-                .map(column => column.items
+                .map((column: { items: IHeaderMenuCategory[] }) => column.items
                     .map(({ label, url, slug, iconUrl }) => ({ label, url, slug, iconUrl }))
                 )
 
@@ -58,7 +56,7 @@ const useHeaderStore = defineStore('header', {
                     label: i18n.t('products'),
                     slug: 'products',
                     type: 'products',
-                    items: response.default.categories
+                    items: <IHeaderMenuCategories>response.default.categories
                 });
                 this.headerMenu.items.push({
                     label: i18n.t('download'),
@@ -78,7 +76,7 @@ const useHeaderStore = defineStore('header', {
                     type: 'clipboard',
                     items: []
                 });
-                this.headerMenu.categories = <{ columns: IHeaderMenuCategory[] }>response.default.categories;
+                this.headerMenu.categories = <{ columns: [{ items: IHeaderMenuCategory[] }] }>response.default.categories;
             }).finally(() => this.headerMenu.isLoading = false)
         }
     }

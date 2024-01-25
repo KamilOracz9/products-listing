@@ -1,5 +1,5 @@
 <template>
-    <li class="menu-item text-medium-lg uppercase" @mouseleave="handleClose"
+    <li class="menu-item text-medium-lg lg:text-base xl:text-xl uppercase" @mouseleave="handleClose"
         :class="type === 'download' ? 'ml-auto' : ''">
         <RouterLink :to="localePath({ name: slug })" @mouseenter="handleOpen"
             class="translate-y-2 pb-1 border-b border-black border-opacity-0 transition-all flex gap-2 hover-opacity-60">
@@ -82,7 +82,7 @@
 <script setup>
 import { useHeaderStore, useClipboardStore } from '~/stores';
 
-const props = defineProps(['name', 'slug', 'desktopLabelHide', 'background', 'type']);
+const props = defineProps(['name', 'slug', 'background', 'type']);
 const { name, background, type, slug } = props;
 
 const headerStore = useHeaderStore();

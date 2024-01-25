@@ -1,3 +1,5 @@
+import routes from "./lang/routes"
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -42,7 +44,7 @@ export default defineNuxtConfig({
         file: 'pl-PL.json',
       },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'pl',
     lazy: true,
     langDir: 'lang/',
     strategy: 'prefix_except_default',
@@ -51,6 +53,32 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
     },
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    customRoutes: 'page',
+    customRoutes: 'config',
+    pages: {
+      'products/index': {
+        "en": "/products",
+        "pl": "/produkty"
+      },
+      'place-to-buy/index': {
+        "en": "/place-to-buy",
+        "pl": "/gdzie-kupic-nasze-produkty"
+      },
+      'inspirations/index': {
+        "en": "/inspirations",
+        "pl": "/inspiracje"
+      },
+      'for-professionals/index': {
+        "en": "/for-professionals",
+        "pl": "/dla-profesjonalistow"
+      },
+      'contact/index': {
+        "en": "/contact",
+        "pl": "/kontakt"
+      },
+      'about/index': {
+        "en": "/about",
+        "pl": "/o-firmie"
+      },
+    }
   },
 })

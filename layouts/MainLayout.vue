@@ -23,12 +23,11 @@ import { useHeaderStore } from '@/stores';
 
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
-const i18n = useI18n();
 
 onMounted(async () => {
     globalStore.fetchLocale();
 
-    await headerStore.fetchMenuItems(i18n);
+    await headerStore.fetchMenuItems(useI18n());
 
     const topBar = document.getElementById('top-bar');
 

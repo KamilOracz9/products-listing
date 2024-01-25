@@ -3,13 +3,19 @@ export type IHeaderMenuItem = {
     label: string;
     slug: string;
     type: null | 'products' | 'search' | 'download' | 'clipboard';
-    items: IHeaderMenuSubItem[];
+    items: IHeaderMenuSubItem[] | IHeaderMenuCategories;
 };
 
 export type IHeaderMenuSubItem = {
     label: string;
     slug: string;
 };
+
+export type IHeaderMenuCategories = {
+    columns: {
+        items: IHeaderMenuCategory[];
+    }[]
+}
 
 export type IHeaderMenuCategory = {
     label: string;

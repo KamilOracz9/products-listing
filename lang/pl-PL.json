@@ -35,7 +35,7 @@
     "service": "Serwis",
     "certified-installers": "Certyfikowani instalatorzy",
     "made-to-measure": "Kabiny prysznicowe na miare",
-    "made-to-measure-home-link":"Kabiny prysznicowe na wymiar",
+    "made-to-measure-home-link": "Kabiny prysznicowe na wymiar",
     "more": "Więcej",
     "home": {
         "in-offer": {
@@ -48,6 +48,12 @@
         "map": {
             "title": "Znajdź sklep stacjonarny",
             "placeholder": "Wpisz nazwę miasta lub kod pocztowy"
+        }
+    },
+    "routes": {
+        "products": {
+            "pl": "/produkty",
+            "en": "/products"
         }
     }
 }

@@ -8,7 +8,7 @@
             <div class="flex gap-4">
                 <input :placeholder="$t('home.map.placeholder')" type="text" class="border-0 bg-white py-4 px-[1.125rem] flex-1" />
                 <div>
-                    <ButtonsTransparent :label="$t('search')" tagType="link" url="/" />
+                    <ButtonsTransparent :label="$t('search')" tagType="button" type="submit" />
                 </div>
             </div>
         </div>
