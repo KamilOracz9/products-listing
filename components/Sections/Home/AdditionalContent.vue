@@ -13,7 +13,7 @@
         </ul>
 
         <h6 class="mt-8">
-            <NuxtLink>Skorzystaj z naszej wyszukiwarki i znajdź swój sklep z kabinami prysznicowymi.</NuxtLink>
+            <NuxtLink>{{ $t('home.additional-content.use-searching') }}</NuxtLink>
         </h6>
     </section>
 </template>

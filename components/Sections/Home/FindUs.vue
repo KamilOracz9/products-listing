@@ -4,11 +4,11 @@
             <img class="h-full w-full object-cover" src="@/assets/images/find-shops.webp" alt="" loading="lazy" />
         </div>
         <div class="absolute top-1/2 -translate-y-1/2 left-0 w-full p-5 lg:w-1/2 lg:left-1/2 lg:-translate-x-1/2">
-            <p class="text-4xl whitespace-nowrap uppercase">Znajdź sklep stacjonarny</p>
+            <p class="text-4xl whitespace-nowrap uppercase">{{ $t('home.map.title') }}</p>
             <div class="flex gap-4">
-                <input placeholder="Wpisz nazwę miasta lub kod pocztowy" type="text" class="border-0 bg-white py-4 px-[1.125rem] flex-1" />
+                <input :placeholder="$t('home.map.placeholder')" type="text" class="border-0 bg-white py-4 px-[1.125rem] flex-1" />
                 <div>
-                    <ButtonsTransparent label="Szukaj" tagType="link" url="/" />
+                    <ButtonsTransparent :label="$t('search')" tagType="link" url="/" />
                 </div>
             </div>
         </div>
