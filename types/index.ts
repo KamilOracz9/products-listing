@@ -1,10 +1,4 @@
 // Header
-export type IHeaderMenu = {
-    isLoading: boolean;
-    items: IHeaderMenuItem[];
-    categories: IHeaderMenuCategory[];
-};
-
 export type IHeaderMenuItem = {
     label: string;
     slug: string;
@@ -29,6 +23,7 @@ export type IHeaderMenuSubcategory = {
     label: string;
     url: string;
     slug: string;
+    items?: [];
 };
 
 // Clipboard

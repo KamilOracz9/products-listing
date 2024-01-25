@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-breuer font-normal text-base lg:overflow-auto;
+        @apply font-breuer font-normal text-base lg:!overflow-auto;
     }
 
     h3 {
@@ -30,6 +30,9 @@
     .header-dropdown.active,
     .header-menu.active {
         @apply visible animate-slide-down;
+    }
+    #mobile-menu > * {
+        @apply lg:hidden;
     }
 
     /* Common */

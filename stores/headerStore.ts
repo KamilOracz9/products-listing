@@ -1,9 +1,16 @@
-import type { IHeaderMenu, IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
+import { concat } from 'lodash';
+import type { IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
 
 type IHeaderStore = {
     menuIsOpen: boolean;
     submenu: string;
-    headerMenu: IHeaderMenu;
+    headerMenu: {
+        isLoading: boolean;
+        items: IHeaderMenuItem[];
+        categories: {
+            columns: IHeaderMenuCategory[];
+        };
+    };
 }
 
 const useHeaderStore = defineStore('header', {
@@ -13,9 +20,22 @@ const useHeaderStore = defineStore('header', {
         headerMenu: {
             isLoading: true,
             items: [],
-            categories: [],
+            categories: {
+                columns: [],
+            },
         },
     }),
+    getters: {
+        mainCategories: state => {
+            const categories = state.headerMenu.categories.columns
+                .map(column => column.items
+                    .map(({ label, url, slug, iconUrl }) => ({ label, url, slug, iconUrl }))
+                )
+
+            return concat(...categories);
+        },
+        columnsNumber: state => (state.headerMenu.categories.columns.length),
+    },
     actions: {
         toggleMenuIsOpen(): void {
             this.menuIsOpen = !this.menuIsOpen;
@@ -58,7 +78,7 @@ const useHeaderStore = defineStore('header', {
                     type: 'clipboard',
                     items: []
                 });
-                this.headerMenu.categories = <IHeaderMenuCategory[]>response.default.categories;
+                this.headerMenu.categories = <{ columns: IHeaderMenuCategory[] }>response.default.categories;
             }).finally(() => this.headerMenu.isLoading = false)
         }
     }

@@ -19,9 +19,22 @@
         </ul>
 
         <!-- Mobile menu -->
-        <ul :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
+        <ul id="mobile-menu" :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
             class="lg:active lg:overflow-hidden lg:flex-row lg:h-auto header-menu max-lg:invisible flex flex-col items-end text-center gap-8 z-20 bg-white w-full h-[calc(100vh-82px)] overflow-y-auto lg:hidden">
-            <HeaderDropdown :slug="menuItem.slug" :name="menuItem.label" v-for="menuItem in headerStore.headerMenu.items">
+            <HeaderDropdown :name="$t('products')">
+                <li>
+                    <ul class="flex flex-wrap">
+                        <li v-for="category in headerStore.mainCategories" class="w-[50%] md:w-[33%]">
+                            <a :href="category.url" class="px-6 flex flex-col items-center gap-2">
+                                <img width="60" :src="category.iconUrl" alt="">
+                                {{ category.label }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </HeaderDropdown>
+            <HeaderDropdown :slug="menuItem.slug" :name="menuItem.label"
+                v-for="menuItem in headerStore.headerMenu.items.filter(item => !item.type)">
                 <li v-for="submenuItem in menuItem.items" :class="submenuItem.iconUrl ? 'w-[50%] md:w-[33%]' : 'w-full'">
                     <a :href="submenuItem.url" v-if="!submenuItem.iconUrl">{{ submenuItem.label }}</a>
                     <a :href="submenuItem.url" v-if="submenuItem.iconUrl" class="px-6 flex flex-col items-center gap-2">
@@ -89,11 +102,36 @@
             <HeaderDropdownDesktop :slug="menuItem.slug" :url="menuItem.url" :name="menuItem.label" :background="background"
                 :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
                 <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
-                    <RouterLink :to="localePath({ name: submenuItem.slug })" class="hover-opacity-60">{{ $t(submenuItem.slug) }}
+                    <RouterLink :to="localePath({ name: submenuItem.slug })" class="hover-opacity-60">{{
+                        $t(submenuItem.slug) }}
                     </RouterLink>
                 </li>
-                <li v-for="submenuItem in menuItem.items" v-if="menuItem.type === 'products'"
-                    class="border-r border-gray-1">
+                <li v-for="submenuItem in menuItem.items" v-if="menuItem.type === 'products'">
+                    <ul class="grid w-full px-[50px] gap-5"
+                        :class="menuItem.items.columns.length ? `grid-cols-${headerStore.columnsNumber}` : ''">
+                        <li v-for="column in menuItem.items.columns"
+                            class="border-r border-gray-1 pr-5 last:border-r-0 flex flex-col gap-10">
+                            <ul v-for="category in column.items">
+                                <li>
+                                    <NuxtLink :to="category.url">
+                                        <img width="65" :src="category.iconUrl" alt="">
+                                        <p class="py-3">{{ category.label }}</p>
+                                    </NuxtLink>
+                                    <ul class="text-sm">
+                                        <li v-for="subcategory in category.items">
+                                            <NuxtLink :to="subcategory.url">{{ subcategory.label }}</NuxtLink>
+                                            <ul class="pl-2 py-2" v-if="subcategory.items">
+                                                <li v-for="subsubcategory in subcategory.items">
+                                                    <NuxtLink :to="subsubcategory.url">{{ subsubcategory.label }}</NuxtLink>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
                     <RouterLink :to="localePath({ name: submenuItem.slug })" v-if="submenuItem.iconUrl"
                         class="px-6 flex flex-col gap-2 flex-1">
                         <img width="60" :src="submenuItem.iconUrl" alt="">

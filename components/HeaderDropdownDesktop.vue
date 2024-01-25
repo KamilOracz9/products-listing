@@ -1,15 +1,16 @@
 <template>
-    <li class="menu-item text-medium-lg uppercase 2xl:text-medium-xl" @mouseleave="handleClose"
+    <li class="menu-item text-medium-lg uppercase" @mouseleave="handleClose"
         :class="type === 'download' ? 'ml-auto' : ''">
         <RouterLink :to="localePath({ name: slug })" @mouseenter="handleOpen"
             class="translate-y-2 pb-1 border-b border-black border-opacity-0 transition-all flex gap-2 hover-opacity-60">
             <img width="18" class="icon--header" src="@/assets/icons/download.svg" v-if="type === 'download'" alt="">
             <img width="18" class="icon--header" src="@/assets/icons/search.svg" v-if="type === 'search'" alt="">
             <img width="18" class="icon--header" src="@/assets/icons/clipboard.svg" v-if="type === 'clipboard'" alt="">
-            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{ $t(slug) }}</span>
+            <span :class="type === 'clipboard' || type === 'search' || type === 'download' ? 'lg:hidden 2xl:block' : ''">{{
+                $t(slug) }}</span>
         </RouterLink>
         <div :class="headerStore.submenu === name ? 'visible' : 'invisible', type ? 'left-0 w-full' : ''"
-            class="absolute submenu bg-white top-full">
+            class="absolute submenu bg-white top-full text-base">
             <!-- Default -->
             <template v-if="!type">
                 <ul class="flex flex-col gap-4">
@@ -18,9 +19,7 @@
             </template>
             <!-- Products -->
             <template v-if="type === 'products'">
-                <ul class="grid grid-cols-7 px-[50px] [&>*:nth-child(7n)]:border-r-0">
-                    <slot />
-                </ul>
+                <slot />
             </template>
             <!-- Search -->
             <template v-if="type === 'search'">
