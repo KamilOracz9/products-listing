@@ -11,4 +11,5 @@
 
 <script setup>
     const homeStore = useHomeStore();
+    const categoryStore = useCategoryStore();
 </script>

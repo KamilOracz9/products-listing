@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <h1 class="uppercase">{{ $t('products') }}</h1>
-    <SectionsCommonFindUs />
-  </div>
+  <ProductsLayout :title="$t('products')">
+  </ProductsLayout>
 </template>
   
 <script setup lang="ts">
+import ProductsLayout from '@/layouts/ProductsLayout.vue';
 </script>

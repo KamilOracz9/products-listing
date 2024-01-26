@@ -23,6 +23,7 @@ module.exports = {
       'gray-1': '#c6c6c6',
       'gray-2': '#f2f2f2',
       'gray-3': '##9d9d9c',
+      'gray-4': '#808080',
       'yellow': '#ffce44',
     },
     screens: {

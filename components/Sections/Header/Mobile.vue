@@ -5,7 +5,7 @@
         <SectionsHeaderDropdown :name="$t('products')">
             <li>
                 <ul class="flex flex-wrap">
-                    <li v-for="category in headerStore.mainCategories" class="w-[50%] md:w-[33%]">
+                    <li v-for="category in categoryStore.mainCategories" class="w-[50%] md:w-[33%]">
                         <a :href="category.url" class="px-6 flex flex-col items-center gap-2">
                             <img width="60" :src="category.iconUrl" alt="">
                             {{ category.label }}
@@ -86,4 +86,5 @@ import clipboardIcon from '@/assets/icons/clipboard.svg';
 
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
+const categoryStore = useCategoryStore();
 </script>

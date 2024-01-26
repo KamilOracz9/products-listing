@@ -19,14 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores';
-
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
+const categoryStore = useCategoryStore();
 
 onMounted(async () => {
     globalStore.fetchLocale();
 
+    categoryStore.fetchCategories();
     await headerStore.fetchMenuItems(useI18n());
 
     const topBar = document.getElementById('top-bar');

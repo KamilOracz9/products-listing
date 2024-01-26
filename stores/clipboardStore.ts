@@ -1,4 +1,4 @@
-import type { IClipboardItem } from "~/types";
+import type { IClipboardItem } from "~/types/clipboard";
 
 type IClipboardStore = {
     items: {
