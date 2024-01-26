@@ -23,6 +23,7 @@ module.exports = {
       'gray-1': '#c6c6c6',
       'gray-2': '#f2f2f2',
       'gray-3': '##9d9d9c',
+      'yellow': '#ffce44',
     },
     screens: {
       'xs': '450px',
@@ -31,12 +32,15 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
+      '3xl': '1680px',
       'max-lg': {'max': '1023px'},
     },
     extend: {
       borderRadius: {
         'lg': '60px',
         'md': '20px',
+        'sm': '15px',
+        'xs': '10px',
       },
       fontSize: {
         'xl': '1.375rem',

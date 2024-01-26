@@ -33,5 +33,21 @@
     "custom-made-products-department": "Custom made products department",
     "spare-parts-department": "Spare parts department",
     "service": "Service",
-    "certified-installers": "Certified installers"
+    "certified-installers": "Certified installers",
+    "made-to-measure": "Made to measure",
+    "made-to-measure-home-link":"Made to measure",
+    "more": "More",
+    "home": {
+        "in-offer": {
+            "colors": "In our offer you will find many colors of details:",
+            "variants": "You also have a huge selection of variants in collections:"
+        },
+        "additional-content": {
+            "use-searching": "Use our search engine to find your shower room store."
+        },
+        "map": {
+            "title": "Find a stationary store",
+            "placeholder": "Enter the city name or zip code"
+        }
+    }
 }

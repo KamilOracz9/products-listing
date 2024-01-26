@@ -1,12 +1,12 @@
 <template>
     <div class="flex justify-center font-breuer">
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
-            <header>
+            <header class="relative z-30">
                 <TopBar />
                 <HeaderMenu />
             </header>
 
-            <main class="flex-1 mt-[114px]">
+            <main class="flex-1 mt-[114px] px-4 3xl:px-0">
                 <slot />
             </main>
 
@@ -23,12 +23,11 @@ import { useHeaderStore } from '@/stores';
 
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
-const i18n = useI18n();
 
 onMounted(async () => {
     globalStore.fetchLocale();
 
-    await headerStore.fetchMenuItems(i18n);
+    await headerStore.fetchMenuItems(useI18n());
 
     const topBar = document.getElementById('top-bar');
 

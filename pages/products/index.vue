@@ -1,11 +1,9 @@
 <template>
   <div>
-    {{ $t('products') }}
+    <h1 class="uppercase">{{ $t('products') }}</h1>
+    <SectionsCommonFindUs />
   </div>
 </template>
   
 <script setup lang="ts">
-import paths from '@/lang/paths/products.json'
-
-defineI18nRoute({ paths })
 </script>
