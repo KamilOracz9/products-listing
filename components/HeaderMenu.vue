@@ -6,7 +6,7 @@
         <SectionsHeaderMobile />
         <SectionsHeaderDesktop :background="background" />
 
-        <div ref="background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10"></div>
+        <div ref="background" id="menu-background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10"></div>
     </div>
 </template>
 

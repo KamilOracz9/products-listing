@@ -1,6 +1,7 @@
 <template>
   <div>
-    {{ $t('products') }}
+    <h1 class="uppercase">{{ $t('products') }}</h1>
+    <SectionsCommonFindUs />
   </div>
 </template>
   

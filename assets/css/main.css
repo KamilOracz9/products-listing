@@ -7,6 +7,10 @@
         @apply font-breuer font-normal text-base lg:!overflow-auto;
     }
 
+    h1 {
+        @apply text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem];
+    }
+
     h3 {
         @apply text-[1.5rem] leading-7 mt-0 mb-2 font-medium sm:text-[1.75rem] sm:leading-9;
     }
@@ -55,11 +59,11 @@
 
     /* Home */
     #home-product-tiles>.home-product-tile:first-child>img {
-        @apply rounded-tl-md
+        @apply rounded-tl-md md:rounded-tl-lg
     }
 
     #home-product-tiles>.home-product-tile:last-child>img {
-        @apply rounded-br-md
+        @apply rounded-br-md md:rounded-br-lg
     }
 
     #home-product-tiles>.home-product-tile:first-child, .home-product-tile:last-child {

@@ -55,6 +55,5 @@
 const { background } = defineProps(['background']);
 
 const headerStore = useHeaderStore();
-const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 </script>
