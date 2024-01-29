@@ -10,6 +10,7 @@
                 <button @click="productsFilterStore.isOpen = true" class="my-10 underline text-2xl lg:hidden">{{ $t('filtering') }} / {{ $t('sorting') }}</button>
 
                 <SectionsProductsListing v-if="!productStore.list.isLoading" />
+                <SectionsProductsPagination />
             </div>
         </div>
 

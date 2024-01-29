@@ -39,6 +39,10 @@
     "more": "More",
     "filtering": "Filtering",
     "sorting": "Sorting",
+    "pagination": {
+        "prev": "Previous",
+        "next": "Next"
+    },
     "home": {
         "in-offer": {
             "colors": "In our offer you will find many colors of details:",

@@ -39,6 +39,10 @@
     "more": "Więcej",
     "filtering": "Filtrowanie",
     "sorting": "Sortowanie",
+    "pagination": {
+        "prev": "Poprzednia",
+        "next": "Następna"
+    },
     "home": {
         "in-offer": {
             "colors": "W naszej ofercie znajdziesz wiele kolorów okuć kabiny:",

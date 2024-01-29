@@ -25,17 +25,28 @@
 }
 
 @layer components {
+
+    /* Pagination */
+    .pagination-button{
+        @apply bg-gray-2 px-4 h-[35px] flex items-center;
+    }
+
+    .pagination>ul>li:nth-child(6) {
+        @apply border-r-0;
+    }
+
+    /* Header */
     .top-bar-icon {
         @apply transition-opacity hover:opacity-[70%];
     }
 
-    /* Header */
     .footer-item.active,
     .header-dropdown.active,
     .header-menu.active {
         @apply visible animate-slide-down;
     }
-    #mobile-menu > * {
+
+    #mobile-menu>* {
         @apply lg:hidden;
     }
 
