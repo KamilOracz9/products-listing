@@ -22,13 +22,33 @@
     h6 {
         @apply text-lg leading-5 mt-0 mb-2 font-bold sm:text-xl sm:leading-[1.625rem];
     }
+
+    body *::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    body *::-webkit-scrollbar-track {
+        @apply bg-gray-2 rounded-[.25rem];
+    }
+
+    body *::-webkit-scrollbar-thumb {
+        @apply bg-gray-1 rounded-[.25rem];
+    }
 }
 
 @layer components {
+    /* Sliders */
+    .range-slider input {
+        @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px];
+    }
+
+    .range-slider input::-webkit-slider-thumb {
+        @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
 
     /* Pagination */
-    .pagination-button{
-        @apply bg-gray-2 px-4 h-[35px] flex items-center;
+    .pagination-button {
+        @apply bg-gray-2 px-4 flex items-center;
     }
 
     .pagination>ul>li:nth-child(6) {

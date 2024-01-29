@@ -7,6 +7,7 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
+    "./node_modules/flowbite/**/*.js",
   ],
   darkMode: 'class',
   theme: {
@@ -34,7 +35,7 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
       '3xl': '1680px',
-      'max-lg': {'max': '1023px'},
+      'max-lg': { 'max': '1023px' },
     },
     extend: {
       borderRadius: {
@@ -91,5 +92,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ]
 }

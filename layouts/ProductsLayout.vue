@@ -2,12 +2,12 @@
     <section>
         <h1 class="uppercase">{{ title }}</h1>
 
-        <div class="mt-10 flex">
+        <div class="mt-10 flex gap-10">
             <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
                 <SectionsProductsCategories />
 
-                <button @click="productsFilterStore.isOpen = true" class="my-10 underline text-2xl lg:hidden">{{ $t('filtering') }} / {{ $t('sorting') }}</button>
+                <button @click="productsFilterStore.toggleMenuIsOpen" class="my-10 underline text-2xl lg:hidden">{{ $t('filtering') }} / {{ $t('sorting') }}</button>
 
                 <SectionsProductsListing v-if="!productStore.list.isLoading" />
                 <SectionsProductsPagination />

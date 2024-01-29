@@ -7,23 +7,26 @@ export type IProductFilter = {
 
 export type IProductFilterDimensions = {
     width: {
+        label: string;
         min: number;
         max: number;
         enable: boolean;
     },
     depth: {
+        label: string;
         min: number;
         max: number;
         enable: boolean;
     },
     height: {
+        label: string;
         min: number;
         max: number;
         enable: boolean;
     },
 }
 
-type IProductFilterInput = {
+export type IProductFilterInput = {
     label: string;
     value: number;
     enable: boolean;

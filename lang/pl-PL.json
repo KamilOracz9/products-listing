@@ -43,6 +43,14 @@
         "prev": "Poprzednia",
         "next": "Następna"
     },
+    "reset-filters": "Resetuj filtry",
+    "width": "Szerokość",
+    "depth": "Głębokość",
+    "height": "Wysokość",
+    "dimension": "Wymiar",
+    "reset": "Resetuj",
+    "from": "Od",
+    "to": "Do",
     "home": {
         "in-offer": {
             "colors": "W naszej ofercie znajdziesz wiele kolorów okuć kabiny:",

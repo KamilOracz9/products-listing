@@ -1,0 +1,39 @@
+
+<template>
+    <ul class="flex flex-col gap-8">
+        <li v-for="dimension in [width, height, depth]" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+            <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(dimension.label) }}</span>
+            <div class="mb-4">
+                <button @click="onResetClick(dimension.label)">{{ $t('reset') }}</button>
+            </div>
+            <div class="range-slider relative h-[35px]">
+                <SectionsSidebarSlider :dimension="dimension" type="min" inputType="range" />
+                <SectionsSidebarSlider :dimension="dimension" type="max" inputType="range" />
+            </div>
+            <div class="grid grid-cols-2 gap-2 uppercase items-center justify-start">
+                <div class="flex items-center gap-2">
+                    {{ $t('from') }}
+                    <SectionsSidebarSlider :dimension="dimension" type="min" inputType="number"
+                        class="min-w-[60px] h-[26px]" />
+                </div>
+                <div class="flex items-center gap-2">
+                    {{ $t('to') }}
+                    <SectionsSidebarSlider :dimension="dimension" type="max" inputType="number"
+                        class="min-w-[60px] h-[26px]" />
+                </div>
+            </div>
+        </li>
+    </ul>
+</template>
+
+<script setup>
+const productsFilterStore = useProductsFilterStore();
+const { width, height, depth } = reactive(productsFilterStore.filtersDimensions);
+
+const onResetClick = (label) => {
+    const { min, max } = productsFilterStore.filtersDimensions[label];
+    
+    productsFilterStore.activeFiltersDimensions[label].min = min;
+    productsFilterStore.activeFiltersDimensions[label].max = max;
+}
+</script>
