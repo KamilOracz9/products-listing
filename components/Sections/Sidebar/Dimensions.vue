@@ -10,7 +10,7 @@
                 <SectionsSidebarSlider :dimension="dimension" type="min" inputType="range" />
                 <SectionsSidebarSlider :dimension="dimension" type="max" inputType="range" />
             </div>
-            <div class="grid grid-cols-2 gap-2 uppercase items-center justify-start">
+            <div class="flex gap-2 uppercase justify-start">
                 <div class="flex items-center gap-2">
                     {{ $t('from') }}
                     <SectionsSidebarSlider :dimension="dimension" type="min" inputType="number"
@@ -32,7 +32,7 @@ const { width, height, depth } = reactive(productsFilterStore.filtersDimensions)
 
 const onResetClick = (label) => {
     const { min, max } = productsFilterStore.filtersDimensions[label];
-    
+
     productsFilterStore.activeFiltersDimensions[label].min = min;
     productsFilterStore.activeFiltersDimensions[label].max = max;
 }

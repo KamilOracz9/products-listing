@@ -26,7 +26,7 @@ const onInput = debounce(() => {
     validate();
 
     setDimension();
-}, 300)
+}, 1000)
 
 const validate = () => {
     const value = parseInt(input.value.value);
