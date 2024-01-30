@@ -28,6 +28,8 @@
 
 <script setup>
 const productsFilterStore = useProductsFilterStore();
+const router = useRouter();
+
 const { width, height, depth } = reactive(productsFilterStore.filtersDimensions);
 
 const onResetClick = (label) => {
@@ -35,5 +37,17 @@ const onResetClick = (label) => {
 
     productsFilterStore.activeFiltersDimensions[label].min = min;
     productsFilterStore.activeFiltersDimensions[label].max = max;
+
+    const query = router.currentRoute.value.query;
+
+    const keys = [`${label}_min`, `${label}_max`];
+
+    const params = { ...query };
+
+    keys.forEach(key => {
+        delete params[key];
+    });
+
+    navigateTo({ query: params });
 }
 </script>

@@ -59,7 +59,7 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 min: 0,
                 max: 0,
             },
-        }
+        },
     }),
     actions: {
         toggleMenuIsOpen(): void {
@@ -71,6 +71,8 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 : body?.classList.remove('overflow-hidden');
         },
         async fetchFilters() {
+            const router = useRouter();
+
             this.isLoading = true;
 
             await import('@/data/productFilters')
@@ -91,6 +93,16 @@ const useProductsFilterStore = defineStore('productsFilter', {
                             max: this.filtersDimensions.height.max,
                         },
                     }
+
+                    const query = router.currentRoute.value.query;
+
+                    Object.keys(query).forEach(key => {
+                        const splitedKeys = key.split('_');
+
+                        if(Object.keys(this.activeFiltersDimensions).includes(splitedKeys[0])) {
+                            this.activeFiltersDimensions[splitedKeys[0]][splitedKeys[1]] = query[key];
+                        }
+                    });
                 })
                 .finally(() => this.isLoading = false);
         },

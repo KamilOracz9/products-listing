@@ -8,7 +8,7 @@
                 </NuxtLink>
             </li>
             <li v-for="pageNumber in 5" class="w-8 text-center border-r flex items-center justify-center border-gray-1">
-                <NuxtLink @click="page = pageNumber" :to="localePath({ name: 'products', query: { page: pageNumber } })">{{ pageNumber }}</NuxtLink>
+                <NuxtLink @click="page = pageNumber" :to="localePath({ name: 'products', query: { ...router.currentRoute.value.query, page: pageNumber } })">{{ pageNumber }}</NuxtLink>
             </li>
             <li class="">
                 <NuxtLink :to="localePath({ name: 'products' })" class="flex gap-2 pagination-button ml-4">
@@ -22,10 +22,6 @@
 
 <script setup>
 const localePath = useLocalePath();
-const productStore = useProductStore();
+const router = useRouter();
 const page = ref(1);
-
-watch(page, value => {
-    productStore.fetchProducts();
-})
 </script>
