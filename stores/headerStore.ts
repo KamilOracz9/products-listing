@@ -1,5 +1,4 @@
-import type { IHeaderMenuCategories, IHeaderMenuCategory, IHeaderMenuItem } from '~/types';
-import concat from 'lodash/concat';
+import type { IHeaderMenuItem } from '~/types/header';
 
 type IHeaderStore = {
     menuIsOpen: boolean;
@@ -7,7 +6,6 @@ type IHeaderStore = {
     headerMenu: {
         isLoading: boolean;
         items: IHeaderMenuItem[];
-        categories: IHeaderMenuCategories;
     };
 }
 
@@ -18,22 +16,8 @@ const useHeaderStore = defineStore('header', {
         headerMenu: {
             isLoading: true,
             items: [],
-            categories: {
-                columns: [{ items: [] }]
-            },
         },
     }),
-    getters: {
-        mainCategories: state => {
-            const categories = state.headerMenu.categories.columns
-                .map((column: { items: IHeaderMenuCategory[] }) => column.items
-                    .map(({ label, url, slug, iconUrl }) => ({ label, url, slug, iconUrl }))
-                )
-
-            return concat(...categories);
-        },
-        columnsNumber: state => (state.headerMenu.categories.columns.length),
-    },
     actions: {
         toggleMenuIsOpen(): void {
             this.menuIsOpen = !this.menuIsOpen;
@@ -50,13 +34,14 @@ const useHeaderStore = defineStore('header', {
             this.headerMenu.isLoading = true;
 
             await import('@/data/headerMenu').then(response => {
+                const categoryStore = useCategoryStore();
+
                 this.headerMenu.items = <IHeaderMenuItem[]>response.default.items.filter(item => !['clipboard', 'products', 'download', 'search'].includes(item.slug));
 
                 this.headerMenu.items.unshift({
                     label: i18n.t('products'),
                     slug: 'products',
                     type: 'products',
-                    items: <IHeaderMenuCategories>response.default.categories
                 });
                 this.headerMenu.items.push({
                     label: i18n.t('download'),
@@ -76,7 +61,6 @@ const useHeaderStore = defineStore('header', {
                     type: 'clipboard',
                     items: []
                 });
-                this.headerMenu.categories = <{ columns: [{ items: IHeaderMenuCategory[] }] }>response.default.categories;
             }).finally(() => this.headerMenu.isLoading = false)
         }
     }

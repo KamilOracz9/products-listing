@@ -37,6 +37,20 @@
     "made-to-measure": "Kabiny prysznicowe na miare",
     "made-to-measure-home-link": "Kabiny prysznicowe na wymiar",
     "more": "Więcej",
+    "filtering": "Filtrowanie",
+    "sorting": "Sortowanie",
+    "pagination": {
+        "prev": "Poprzednia",
+        "next": "Następna"
+    },
+    "reset-filters": "Resetuj filtry",
+    "width": "Szerokość",
+    "depth": "Głębokość",
+    "height": "Wysokość",
+    "dimension": "Wymiar",
+    "reset": "Resetuj",
+    "from": "Od",
+    "to": "Do",
     "home": {
         "in-offer": {
             "colors": "W naszej ofercie znajdziesz wiele kolorów okuć kabiny:",

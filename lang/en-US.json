@@ -37,6 +37,20 @@
     "made-to-measure": "Made to measure",
     "made-to-measure-home-link":"Made to measure",
     "more": "More",
+    "filtering": "Filtering",
+    "sorting": "Sorting",
+    "reset-filters": "Reset filters",
+    "width": "Width",
+    "depth": "Depth",
+    "height": "Height",
+    "dimension": "Dimension",
+    "reset": "Reset",
+    "from": "From",
+    "to": "To",
+    "pagination": {
+        "prev": "Previous",
+        "next": "Next"
+    },
     "home": {
         "in-offer": {
             "colors": "In our offer you will find many colors of details:",

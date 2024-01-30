@@ -6,7 +6,7 @@
                 <HeaderMenu />
             </header>
 
-            <main class="flex-1 mt-[114px] px-4 3xl:px-0">
+            <main class="flex-1 mt-[114px] px-4 3xl:px-0" v-if="!categoryStore.list.isLoading">
                 <slot />
             </main>
 
@@ -19,14 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores';
-
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
+const categoryStore = useCategoryStore();
 
 onMounted(async () => {
     globalStore.fetchLocale();
 
+    categoryStore.fetchCategories();
     await headerStore.fetchMenuItems(useI18n());
 
     const topBar = document.getElementById('top-bar');

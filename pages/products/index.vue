@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <h1 class="uppercase">{{ $t('products') }}</h1>
-    <SectionsCommonFindUs />
-  </div>
+  <section>
+    <ProductsLayout v-if="categoryStore.breadcrumbs" :title="$t('products')" :breadcrumbs="categoryStore.breadcrumbs">
+    </ProductsLayout>
+  </section>
 </template>
   
 <script setup lang="ts">
+import ProductsLayout from '@/layouts/ProductsLayout.vue';
+
+const categoryStore = useCategoryStore();
 </script>

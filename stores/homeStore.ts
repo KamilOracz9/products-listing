@@ -1,4 +1,4 @@
-import type { IHomeAboutTile, IHomeAdditionalContentItem, IHomeCategoryItem, IHomeInOfferCollection, IHomeInOfferColor, IHomeProductTile, IMainSliderSlide } from "~/types";
+import type { IHomeAboutTile, IHomeAdditionalContentItem, IHomeCategoryItem, IHomeInOfferCollection, IHomeInOfferColor, IHomeProductTile, IMainSliderSlide } from "~/types/home";
 
 type IHomeStore = {
     isLoading: boolean;

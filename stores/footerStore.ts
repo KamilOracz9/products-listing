@@ -1,4 +1,4 @@
-import type { IFooterContact, IFooterItem, IFooterWebsite } from "~/types";
+import type { IFooterContact, IFooterItem, IFooterWebsite } from "~/types/footer";
 
 type IFooterStore = {
     activeItem: string;
@@ -25,7 +25,7 @@ const useFooterStore = defineStore('footer', {
             this.data.isLoading = true;
 
             await import('@/data/footer').then(response => {
-                this.data.items = response.default.items;
+                this.data.items = <IFooterItem[]>response.default.items;
                 this.data.contacts = response.default.contacts;
                 this.data.websites = response.default.websites;
             }).finally(() => this.data.isLoading = false);

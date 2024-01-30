@@ -7,6 +7,7 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
+    "./node_modules/flowbite/**/*.js",
   ],
   darkMode: 'class',
   theme: {
@@ -23,6 +24,7 @@ module.exports = {
       'gray-1': '#c6c6c6',
       'gray-2': '#f2f2f2',
       'gray-3': '##9d9d9c',
+      'gray-4': '#808080',
       'yellow': '#ffce44',
     },
     screens: {
@@ -33,7 +35,7 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
       '3xl': '1680px',
-      'max-lg': {'max': '1023px'},
+      'max-lg': { 'max': '1023px' },
     },
     extend: {
       borderRadius: {
@@ -90,5 +92,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ]
 }

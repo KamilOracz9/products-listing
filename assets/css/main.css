@@ -22,20 +22,60 @@
     h6 {
         @apply text-lg leading-5 mt-0 mb-2 font-bold sm:text-xl sm:leading-[1.625rem];
     }
+
+    body *::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    body *::-webkit-scrollbar-track {
+        @apply bg-gray-2 rounded-[.25rem];
+    }
+
+    body *::-webkit-scrollbar-thumb {
+        @apply bg-gray-1 rounded-[.25rem];
+    }
 }
 
 @layer components {
+    /* Breadcrumbs */
+    .breadcrumbs > li:last-child > a > img {
+        @apply hidden;
+    }
+
+    .breadcrumbs > li:last-child {
+        @apply text-black;
+    }
+
+    /* Sliders */
+    .range-slider input {
+        @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px];
+    }
+
+    .range-slider input::-webkit-slider-thumb {
+        @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
+
+    /* Pagination */
+    .pagination-button {
+        @apply bg-gray-2 px-4 flex items-center;
+    }
+
+    .pagination>ul>li:nth-child(6) {
+        @apply border-r-0;
+    }
+
+    /* Header */
     .top-bar-icon {
         @apply transition-opacity hover:opacity-[70%];
     }
 
-    /* Header */
     .footer-item.active,
     .header-dropdown.active,
     .header-menu.active {
         @apply visible animate-slide-down;
     }
-    #mobile-menu > * {
+
+    #mobile-menu>* {
         @apply lg:hidden;
     }
 

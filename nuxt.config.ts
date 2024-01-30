@@ -1,5 +1,3 @@
-import routes from "./lang/routes"
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -58,6 +56,22 @@ export default defineNuxtConfig({
       'products/index': {
         "en": "/products",
         "pl": "/produkty"
+      },
+      'products/[slug]': {
+        "en": "/products/[slug]",
+        "pl": "/produkty/[slug]"
+      },
+      'products/[category]/index': {
+        "en": "/products/[category]",
+        "pl": "/produkty/[category]"
+      },
+      'categories/index': {
+        "en": "/categories",
+        "pl": "/kategorie"
+      },
+      'categories/[category]/index': {
+        "en": "/categories/[category]",
+        "pl": "/kategorie/[category]"
       },
       'place-to-buy/index': {
         "en": "/place-to-buy",
