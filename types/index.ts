@@ -4,3 +4,9 @@ export type IActiveLocale = {
     code: string
     flagUrl: string;
 }
+
+// Breadcrumbs
+export type IBreadCrumb = {
+    label: string;
+    path: string;
+}

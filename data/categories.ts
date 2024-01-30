@@ -1,4 +1,14 @@
 export default {
+    breadcrumbs: [
+        {
+            label: 'Główna',
+            path: '/',
+        },
+        {
+            label: 'Produkty',
+            path: '/produkty',
+        },
+    ],
     columns: [
         // Column 1
         {
@@ -10,6 +20,20 @@ export default {
                     url: '/',
                     productsCount: 0,
                     enableOnFilters: false,
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     items: [
                         {
                             label: 'Wymiar',
@@ -54,6 +78,20 @@ export default {
                     iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/DRZWI-WNEKOWE-1.webp',
                     productsCount: 93,
                     enableOnFilters: true,
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Drzwi wnękowe',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     url: '/',
                     items: [
                         {
@@ -90,6 +128,20 @@ export default {
                     productsCount: 265,
                     enableOnFilters: true,
                     url: '/',
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/kabiny-prysznicowe',
+                        },
+                    ],
                     items: [
                         {
                             label: 'Kwadratowe / prostokątne',
@@ -193,6 +245,7 @@ export default {
                     productsCount: 135,
                     enableOnFilters: true,
                     url: '/',
+                    breadcrumbs: null,
                     items: [
                         {
                             label: 'walk-in jednoczęściowe',
@@ -218,6 +271,20 @@ export default {
                     productsCount: 80,
                     enableOnFilters: true,
                     url: '/',
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     items: [
                         {
                             label: 'Parawany jednoczęściowe',
@@ -247,6 +314,20 @@ export default {
                     iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-7.webp',
                     productsCount: 106,
                     enableOnFilters: true,
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     url: '/',
                     items: [
                         {
@@ -289,6 +370,20 @@ export default {
                     iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-6.webp',
                     productsCount: 31,
                     enableOnFilters: true,
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     url: '/',
                     items: [
                         {
@@ -320,6 +415,20 @@ export default {
                     url: '/',
                     productsCount: 0,
                     enableOnFilters: false,
+                    breadcrumbs: [
+                        {
+                            label: 'Główna',
+                            path: '/',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty',
+                        },
+                        {
+                            label: 'Produkty',
+                            path: '/produkty/drzwi-wnekowe',
+                        },
+                    ],
                     items: [
                         {
                             label: 'Eventa',

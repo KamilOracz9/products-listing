@@ -1,5 +1,7 @@
 <template>
     <section>
+        <SectionsCommonBreadrumbs v-if="breadcrumbs && breadcrumbs.length" :breadcrumbs="breadcrumbs" />
+
         <h1 class="uppercase">{{ title }}</h1>
 
         <div class="mt-10 flex gap-10">
@@ -23,8 +25,8 @@
 </template>
 
 <script setup>
-const props = defineProps(['title']);
-const { title } = props;
+const props = defineProps(['title', 'breadcrumbs']);
+const { title, breadcrumbs } = props;
 
 const productsFilterStore = useProductsFilterStore();
 const productStore = useProductStore();

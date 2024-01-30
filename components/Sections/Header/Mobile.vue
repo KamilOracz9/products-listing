@@ -6,10 +6,10 @@
             <li>
                 <ul class="flex flex-wrap">
                     <li v-for="category in categoryStore.mainCategories" class="w-[50%] md:w-[33%]">
-                        <a :href="category.url" class="px-6 flex flex-col items-center gap-2">
+                        <NuxtLink :to="localePath({ name: 'categories' }) + `/${category.slug}`" class="px-6 flex flex-col items-center gap-2">
                             <img width="60" :src="category.iconUrl" alt="">
                             {{ category.label }}
-                        </a>
+                        </NuxtLink>
                     </li>
                 </ul>
             </li>

@@ -5,7 +5,6 @@
             {{ $t('place-to-buy') }}</NuxtLink>
     </li>
 </template>
-
-
 <script setup>
+const localePath = useLocalePath();
 </script>

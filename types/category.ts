@@ -1,3 +1,5 @@
+import type { IBreadCrumb } from ".";
+
 export type ICategoriesList = {
     columns: {
         items: ICategory[];
@@ -10,6 +12,7 @@ export type ICategory = {
     url: string;
     iconUrl: string;
     items: ISubcategory[];
+    breadcrumbs: IBreadCrumb[] | null;
     productsCount: number,
     enableOnFilters: boolean,
 };

@@ -37,6 +37,15 @@
 }
 
 @layer components {
+    /* Breadcrumbs */
+    .breadcrumbs > li:last-child > a > img {
+        @apply hidden;
+    }
+
+    .breadcrumbs > li:last-child {
+        @apply text-black;
+    }
+
     /* Sliders */
     .range-slider input {
         @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px];
