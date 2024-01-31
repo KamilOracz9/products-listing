@@ -50,50 +50,84 @@ export default {
             mobile: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg', // w:460px h:613px ar:3/4
             tablet: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1-537x716.jpg', // w:1024px h:1365px ar:3/4
             desktop: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg', // w:460px h:613px ar:3/4
+            full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
         },
         attachments: [
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg', // w:150px h:150px ar:1/1
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
             },
         ],
         glasses: [
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg', // w:128px h:128px ar:1/1
+                full: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/07/timeless_8-247x247.jpg',
             },
         ],
         tech: [
             {
                 mobile: 'https://newtrendy.pl/app/uploads/2023/08/730L-247x247.jpg', // w:128px h:128px ar:1/1
                 desktop: 'https://newtrendy.pl/app/uploads/2023/08/730L.jpg', // w:300px h:300px ar:1/1
+                full: 'https://newtrendy.pl/app/uploads/2023/08/730L.jpg',
             },
             {
                 mobile: 'https://newtrendy.pl/app/uploads/2023/08/730L-247x247.jpg',
                 desktop: 'https://newtrendy.pl/app/uploads/2023/08/730L.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/08/730L.jpg',
             },
         ],
         doorOpens: [
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/07/Sposob_otwierania_ikona_kabina_narozna_pieciokatna_asymetryczna_2scianki_1drzwi_otwZew-404x404.jpg', // w:126px h:126px ar:1/1
+                full: 'https://newtrendy.pl/app/uploads/2023/07/Sposob_otwierania_ikona_kabina_narozna_pieciokatna_asymetryczna_2scianki_1drzwi_otwZew-404x404.jpg',
             },
         ],
+        gallery: [
+            {
+                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+            },
+            {
+                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+            },
+            {
+                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+            },
+            {
+                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+            },
+            {
+                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+            },
+        ]
     },
     descriptionIcons: [
         {

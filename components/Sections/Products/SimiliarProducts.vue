@@ -41,8 +41,8 @@ const sliderConfig = {
     spaceBetween: 20,
     breakpoints: { 
         450: { slidesPerView: 2 }, 
-        768: { slidesPerView: 3, },
-        1280: { slidesPerView: 4, }, 
+        768: { slidesPerView: 3, spaceBetween: 30 },
+        1280: { slidesPerView: 4, spaceBetween: 40 }, 
     }
 };
 </script>

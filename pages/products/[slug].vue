@@ -7,6 +7,7 @@
                 <div class="relative lg:w-[45%] xl:w-[28%]">
                     <SectionsProductsBadge :badge="productStore.product.item.badge" />
                     <SectionsProductsMainImage />
+                    <SectionsProductsGallery />
                 </div>
 
                 <div class="mt-6 lg:w-[55%] xl:w-[72%]">
@@ -38,8 +39,6 @@ const openAccordionId = ref('product-description');
 
 provide('openAccordionId', openAccordionId);
 provide('productStore', productStore);
-
-// console.log(productStore.product.item.similiarProducts)
 
 onMounted(async () => {
     await productStore.fetchProduct();

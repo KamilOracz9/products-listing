@@ -74,4 +74,5 @@ type IPhoto = {
     tablet?: string;
     desktop?: string;
     thumb?: string;
+    full?: string;
 }
