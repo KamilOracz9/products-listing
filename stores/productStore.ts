@@ -1,10 +1,14 @@
-import type { IProductItem } from "~/types/product";
+import type { IProduct, IProductItem } from "~/types/product";
 
 type IProductStore = {
     list: {
         isLoading: boolean;
         items: IProductItem[];
     }
+    product: {
+        isLoading: boolean;
+        item: IProduct | null;
+    };
 }
 
 const useProductStore = defineStore('product', {
@@ -12,7 +16,11 @@ const useProductStore = defineStore('product', {
         list: {
             isLoading: true,
             items: [],
-        }
+        },
+        product: {
+            isLoading: true,
+            item: null,
+        },
     }),
     actions: {
         async fetchProducts() {
@@ -24,6 +32,15 @@ const useProductStore = defineStore('product', {
                 })
                 .finally(() => this.list.isLoading = false)
         },
+        async fetchProduct() {
+            this.product.isLoading = true;
+
+            await import('@/data/product')
+                .then(response => {
+                    this.product.item = <IProduct>response.default;
+                })
+                .finally(() => this.product.isLoading = false)
+        }
     }
 })
 

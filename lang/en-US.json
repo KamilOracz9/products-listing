@@ -35,7 +35,7 @@
     "service": "Service",
     "certified-installers": "Certified installers",
     "made-to-measure": "Made to measure",
-    "made-to-measure-home-link":"Made to measure",
+    "made-to-measure-home-link": "Made to measure",
     "more": "More",
     "filtering": "Filtering",
     "sorting": "Sorting",
@@ -50,6 +50,27 @@
     "pagination": {
         "prev": "Previous",
         "next": "Next"
+    },
+    "product": {
+        "yellow-box": "Personalize your cabin",
+        "desc-colors": "Available in colors",
+        "desc-doors": "Open doors method",
+        "product-description": "Product description",
+        "product-table": "Product table",
+        "glass-types": "Glass types",
+        "download-files": "Files to download",
+        "similiar-products": "Similiar products",
+        "symbol": "Symbol",
+        "dimensions": "Dimensions",
+        "doors": "Doors",
+        "a": "A",
+        "b": "B",
+        "c": "C",
+        "w": "W",
+        "h": "H",
+        "x1": "X1",
+        "x2": "X2",
+        "add-to-clipboard": "Add to clipboard"
     },
     "home": {
         "in-offer": {

@@ -4,9 +4,7 @@
             <li v-for="product in productStore.list.items" class="border-b border-gray-2 pb-8">
                 <NuxtLink :to="localePath({name: 'products'}) + `/${product.slug}`">
                     <div class="relative">
-                        <div v-if="product.badge" class="absolute top-[44px] -left-[60px] -rotate-90">
-                            <p class="text-sm font-bold uppercase pt-2 pb-1 text-center w-[120px] rounded-bl-xs" :style="`background: ${product.badge.bgColor}; color: ${product.badge.color}`">{{ product.badge.label }}</p>
-                        </div>
+                        <SectionsProductsBadge :badge="product.badge" />
                         <img class="w-full rounded-br-sm" :src="product.imageUrl" alt="">
                     </div>
                     <p class="font-medium uppercase text-base pt-2 pb-3">{{ product.name }}</p>
