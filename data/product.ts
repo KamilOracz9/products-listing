@@ -25,6 +25,21 @@ export default {
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
             slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
         },
+        {
+            image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
+            name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+        },
+        {
+            image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
+            name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+        },
+        {
+            image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
+            name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+        },
     ],
     breadcrumbs: [
         {
@@ -113,11 +128,11 @@ export default {
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
-                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1-537x716.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',
-                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_Qbhae18E22X7VjcwV6TIQNjHn5m20hkCRcnHdfJq-1.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/08/main_photo_368-2-768x1024.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_64LhfcgdUkCLfBw8lxWo7K7FhUHtdP4QxZS96k5K-390x520.jpg',

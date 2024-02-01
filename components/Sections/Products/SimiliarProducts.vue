@@ -33,7 +33,7 @@ const localePath = useLocalePath();
 
 const sliderConfig = {
     'slidesPerView': 1,
-    'loop': false,
+    'loop': true,
     navigation: {
         nextEl: '.similiar-products-slider-arrow-prev',
         prevEl: '.similiar-products-slider-arrow-next',

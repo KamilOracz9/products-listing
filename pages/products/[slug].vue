@@ -8,6 +8,14 @@
                     <SectionsProductsBadge :badge="productStore.product.item.badge" />
                     <SectionsProductsMainImage />
                     <SectionsProductsGallery />
+                    <SectionsCommonModal>
+                        <template #content>
+                            <SectionsProductsGalleryModal :images="productStore.product.item.images.gallery" />
+                        </template>
+                        <template #navigation>
+                            <SectionsProductsModalNavigation />
+                        </template>
+                    </SectionsCommonModal>
                 </div>
 
                 <div class="mt-6 lg:w-[55%] xl:w-[72%]">
@@ -36,9 +44,13 @@
 <script setup>
 const productStore = useProductStore();
 const openAccordionId = ref('product-description');
+const modalIsOpen = ref(false);
+const galleryActiveSlide = ref(0);
 
 provide('openAccordionId', openAccordionId);
 provide('productStore', productStore);
+provide('modalIsOpen', modalIsOpen);
+provide('galleryActiveSlide', galleryActiveSlide);
 
 onMounted(async () => {
     await productStore.fetchProduct();

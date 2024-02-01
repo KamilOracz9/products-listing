@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-breuer font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
+        @apply font-breuer font-normal text-base overflow-x-hidden;
     }
 
     h1 {
@@ -108,6 +108,10 @@
 
     .similiar-products-slider-arrow {
         @apply absolute z-10 top-1/2 flex items-center -translate-y-1/2 lg:bottom-6 cursor-pointer;
+    }
+
+    .modal-slider-arrow {
+        @apply absolute z-10 top-1/2 flex items-center -translate-y-1/2 lg:bottom-6 cursor-pointer h-[25px];
     }
 
     /* Home */

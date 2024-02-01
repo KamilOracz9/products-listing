@@ -1,7 +1,7 @@
 <template>
     <section class="grid pt-6 gap-6 md:grid-cols-2 xl:grid-cols-4">
         <NuxtLink :key="index" :to="aboutTile.url" v-for="(aboutTile, index) in homeStore.aboutTiles.items"
-            @mouseenter="activeItem = index" class="px-8 py-6 sm:p-8" :class="activeItem === index ? 'bg-yellow' : 'bg-gray-2'">
+            @mouseenter="activeItem = index" class="px-8 py-6 sm:p-8" :class="activeItem === index ? 'bg-yellow-2' : 'bg-gray-2'">
             <div class="flex items-center justify-center ">
                 <div class="max-w-[100px] flex justify-center">
                     <img :src="aboutTile.imageUrl" width="72" alt="" loading="lazy" />

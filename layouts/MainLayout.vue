@@ -1,5 +1,7 @@
 <template>
     <div class="flex justify-center font-breuer">
+        <Modals />
+
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
             <header class="relative z-30">
                 <TopBar />
