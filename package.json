@@ -39,6 +39,7 @@
     "pinia": "^2.1.7",
     "simplelightbox": "^2.14.2",
     "vee-validate": "^4.12.4",
+    "vue-easy-lightbox": "^1.17.0",
     "zod": "^3.22.4"
   }
 }

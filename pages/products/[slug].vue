@@ -8,14 +8,16 @@
                     <SectionsProductsBadge :badge="productStore.product.item.badge" />
                     <SectionsProductsMainImage />
                     <SectionsProductsGallery />
-                    <SectionsCommonModal>
+                    <!-- <SectionsCommonModal>
                         <template #content>
                             <SectionsProductsGalleryModal :images="productStore.product.item.images.gallery" />
                         </template>
                         <template #navigation>
                             <SectionsProductsModalNavigation />
                         </template>
-                    </SectionsCommonModal>
+                    </SectionsCommonModal> -->
+
+                    <LazySectionsCommonLightbox :images="productStore.product.item.images.gallery" />
                 </div>
 
                 <div class="mt-6 lg:w-[55%] xl:w-[72%]">
@@ -55,5 +57,4 @@ provide('galleryActiveSlide', galleryActiveSlide);
 onMounted(async () => {
     await productStore.fetchProduct();
 })
-
 </script>

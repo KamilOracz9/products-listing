@@ -37,6 +37,11 @@
 }
 
 @layer components {
+    /* Lightbox */
+    .lightbox {
+        @apply !bg-[rgba(255,255,255,.5)] duration-100;
+    }
+
     /* Product */
     .accordion{
         @apply hidden;

@@ -23,14 +23,26 @@
         <div class="my-3" v-if="productStore.product.item.images.doorOpens.length">
             <p class="font-medium">{{ $t('product.desc-doors') }}</p>
             <ul class="flex flex-wrap gap-2">
-                <li v-for="doorsOpen in productStore.product.item.images.doorOpens" class="w-1/2 max-w-[126px]">
+                <li v-for="(doorsOpen, index) in productStore.product.item.images.doorOpens" class="w-1/2 max-w-[126px] cursor-pointer" @click="openModal(index)">
                     <img :src="doorsOpen.thumb" alt="">
                 </li>
             </ul>
         </div>
+
+        <LazySectionsCommonLightbox :images="productStore.product.item.images.doorOpens" />
     </SectionsProductsAccordion>
 </template>
 
 <script setup>
 const productStore = inject('productStore');
+const modalIsOpen = ref(false);
+const galleryActiveSlide = ref(0);
+
+provide('modalIsOpen', modalIsOpen);
+provide('galleryActiveSlide', galleryActiveSlide);
+
+const openModal = (index) => {
+    modalIsOpen.value = true;
+    galleryActiveSlide.value = index;
+}
 </script>

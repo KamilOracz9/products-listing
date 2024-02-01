@@ -73,8 +73,8 @@ export default {
                 full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
             },
             {
-                thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
-                full: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
+                thumb: 'https://newtrendy.pl/app/uploads/2023/08/gallery_3685-2.jpg',
+                full: 'https://newtrendy.pl/app/uploads/2023/08/gallery_3685-2.jpg',
             },
             {
                 thumb: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_yfeX0bDI61Ykj5hJ9CTQrrDU3YOv0yVLs5I5X00Q-247x247.jpg',
