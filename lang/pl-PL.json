@@ -51,6 +51,27 @@
     "reset": "Resetuj",
     "from": "Od",
     "to": "Do",
+    "product": {
+        "yellow-box": "Spersonalizuj swoją kabinę",
+        "desc-colors": "Dostępny również w kolorach",
+        "desc-doors": "Sposób otwierania drzwi",
+        "product-description": "Opis produktu",
+        "product-table": "Tabela produktowa",
+        "glass-types": "Rodzaje szkła",
+        "download-files": "Pliki do pobrania",
+        "similiar-products": "Podobne produkty",
+        "symbol": "Symbol", 
+        "dimensions": "Wymiary",
+        "doors": "Drzwi",
+        "a": "A",
+        "b": "B",
+        "c": "C",
+        "w": "W",
+        "h": "H",
+        "x1": "X1",
+        "x2": "X2",
+        "add-to-clipboard": "Dodaj do schowka"
+    },
     "home": {
         "in-offer": {
             "colors": "W naszej ofercie znajdziesz wiele kolorów okuć kabiny:",
