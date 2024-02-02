@@ -6,3 +6,4 @@ export {default as useHomeStore} from './homeStore';
 export {default as useCategoryStore} from './categoryStore';
 export {default as useProductsFilterStore} from './productsFilterStore';
 export {default as useProductStore} from './productStore';
+export {default as useInspirationStore} from './inspirationStore';

@@ -51,6 +51,13 @@
     "reset": "Resetuj",
     "from": "Od",
     "to": "Do",
+    "pages": {
+        "inspirations": {
+            "see-all": "Zobacz wszystkie",
+            "often-questions": "Często zadawane pytania",
+            "often-questions-text": "Masz wątpliwości? Sprawdź nasze odpowiedzi na najczęściej zadawane pytania."
+        }
+    },
     "product": {
         "yellow-box": "Spersonalizuj swoją kabinę",
         "desc-colors": "Dostępny również w kolorach",
