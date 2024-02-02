@@ -7,7 +7,7 @@
             </NuxtLink>
         </div>
 
-        <SectionsInspirationsArticles :articles="category.articles" />
+        <SectionsInspirationsArticles :articles="category.articles" :categorySlug="category.slug" />
     </li>
 </template>
 

@@ -1,4 +1,4 @@
-import type { IBreadCrumb } from ".";
+import type { IBreadCrumb, IPhoto } from ".";
 
 export type IInspirationCategory = {
     title: string;
@@ -10,6 +10,20 @@ export type IInspirationCategory = {
 export type IInspirationsFaq = {
     question: string;
     answer: string;
+}
+
+export type IInspirationFullArticle = {
+    breadcrumbs: IBreadCrumb[];
+    image: IPhoto;
+    gallery: IPhoto[];
+    socials: {
+        type: string;
+        url: string;
+    }[];
+    title: string;
+    text: string;
+    slug: string;
+    similar: IInspirationArticle[];
 }
 
 type IInspirationArticle = {

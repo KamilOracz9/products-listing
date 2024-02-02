@@ -1,44 +1,44 @@
 export default {
-    similiarProducts: [
+    similarProducts: [
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg', // w:450px h:667px ar:3/4
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
         {
             image: 'https://newtrendy.pl/app/uploads/2023/11/product_photo_UKRLN1oOWSawMucNNSEZMhXWiSgN0113cB7ljGRJ.jpg',
             name: 'Drzwi wnękowe Eventa Gold Shine, drzwi pojedyncze.',
-            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similiar'
+            slug: 'DRZWI-WNĘKOWE-NEW-SOLEO-COPPER-BRUSHED-wahadłowe-podwójne-similar'
         },
     ],
     breadcrumbs: [

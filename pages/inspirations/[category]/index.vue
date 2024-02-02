@@ -6,13 +6,12 @@
             <p class="uppercase text-[2rem] leading-[2.25rem] mb-10">{{ inspirationStore.category.item.title }}</p>
         </div>
 
-        <SectionsInspirationsArticles :articles="inspirationStore.category.item.articles" />
+        <SectionsInspirationsArticles :articles="inspirationStore.category.item.articles" :categorySlug="inspirationStore.category.item.slug" />
     </div>
 </template>
 
 <script setup>
 const inspirationStore = useInspirationStore();
-
 
 onMounted(async () => {
     await inspirationStore.fetchCategory();

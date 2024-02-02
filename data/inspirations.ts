@@ -1,4 +1,112 @@
 export default {
+    article: {
+        breadcrumbs: [
+            {
+                label: 'Główna',
+                path: '/',
+            },
+            {
+                label: 'INSPIRACJE | AKTUALNOŚCI | PORADY | FAQ',
+                path: '/inspiracje',
+            },
+            {
+                label: 'AKTUALNOŚCI',
+                path: '/inspiracje/aktualności',
+            },
+            {
+                label: 'KATALOG PRODUKTÓW NEW TRENDY 2023!',
+                path: '/inspiracje/aktualności/KATALOG-PRODUKTÓW-NEW-TRENDY-2023',
+            },
+        ],
+        image: {
+            mobile: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-1-404x272.jpg',
+            tablet: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-1-1024x689.jpg',
+            desktop: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-1.jpg',
+        },
+        gallery: [
+            {
+                mobile: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-404x404.png',
+                tablet: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-716x716.png',
+                desktop: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-1024x1024.png',
+                full: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed.png',
+            },
+            {
+                mobile: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-404x404.png',
+                tablet: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-716x716.png',
+                desktop: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-1024x1024.png',
+                full: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed.png',
+            },
+            {
+                mobile: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-404x404.png',
+                tablet: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-716x716.png',
+                desktop: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed-1024x1024.png',
+                full: 'https://newtrendy.pl/app/uploads/2023/05/newsoleo_gunmetal_brushed.png',
+            },
+        ],
+        socials: [
+            {
+                type: 'facebook',
+                url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+            },
+            {
+                type: 'linkedin',
+                url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+            },
+        ],
+        title: 'AKTUALNOŚCI',
+        text: '<p>Z przyjemnością prezentujemy nowy Katalog Produktów New Trendy! Mamy do zaoferowania naprawdę wiele nowości.</p><p>Najnowszy katalog jest zbiorem naszego portfolio, które ukazuje aktualnie obowiązujące trendy. Dzięki współpracy z profesjonalistami i wsłuchiwaniu się w potrzeby rynku udało nam się jeszcze lepiej dostosować ofertę do potrzeb naszych Klientów.</p><p>Nowa kolorystyka okuć, kształty kabin, udoskonalone detale, rozwiązania technologiczne i wiele więcej! Najnowsze pozycje przepełnione są nowoczesnością, elegancją i rozwiązaniami ułatwiającymi ich użytkowanie. Nasze produkty dzięki wielowariantowości dają możliwość dopasowania kabiny do indywidualnych potrzeb i stworzenia wymarzonego wnętrza łazienki.</p><p>Zapraszamy do pobrania katalogu w wersji online! Odkryj z nami rewolucyjne rozwiązania i zainspiruj się kolorem jeszcze bardziej!</p>',
+        slug: 'aktualności',
+        similar: [
+            {
+                image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',
+                socials: [
+                    {
+                        type: 'facebook',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                    {
+                        type: 'linkedin',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                ],
+                title: 'KATALOG PRODUKTÓW NEW TRENDY 2023!',
+                shortText: 'Z przyjemnością prezentujemy nowy Katalog Produktów New Trendy! Mamy do zaoferowania naprawdę wiele nowości.',
+                slug: 'KATALOG-PRODUKTÓW-NEW-TRENDY-2023',
+            },
+            {
+                image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',
+                socials: [
+                    {
+                        type: 'facebook',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                    {
+                        type: 'linkedin',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                ],
+                title: 'KATALOG PRODUKTÓW NEW TRENDY 2023!',
+                shortText: 'Z przyjemnością prezentujemy nowy Katalog Produktów New Trendy! Mamy do zaoferowania naprawdę wiele nowości.',
+                slug: 'KATALOG-PRODUKTÓW-NEW-TRENDY-2023',
+            },
+            {
+                image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',
+                socials: [
+                    {
+                        type: 'facebook',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                    {
+                        type: 'linkedin',
+                        url: 'https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fnewtrendy.pl%252Fkatalog-produktow-new-trendy-2023%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=en_US',
+                    },
+                ],
+                title: 'KATALOG PRODUKTÓW NEW TRENDY 2023!',
+                shortText: 'Z przyjemnością prezentujemy nowy Katalog Produktów New Trendy! Mamy do zaoferowania naprawdę wiele nowości.',
+                slug: 'KATALOG-PRODUKTÓW-NEW-TRENDY-2023',
+            },
+        ],
+    },
     category: {
         title: 'AKTUALNOŚCI',
         slug: 'aktualności',

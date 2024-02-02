@@ -1,5 +1,5 @@
 import type { IBreadCrumb } from "~/types";
-import type { IInspirationCategory, IInspirationsFaq } from "~/types/inspirations";
+import type { IInspirationCategory, IInspirationFullArticle, IInspirationsFaq } from "~/types/inspirations";
 
 type IInspirationStore = {
     listing: {
@@ -15,7 +15,11 @@ type IInspirationStore = {
     category: {
         isLoading: boolean;
         item: IInspirationCategory | null;
-    }
+    },
+    article: {
+        isLoading: boolean;
+        item: IInspirationFullArticle | null;
+    },
 }
 
 const useInspirationStore = defineStore('inspiration', {
@@ -33,7 +37,11 @@ const useInspirationStore = defineStore('inspiration', {
         category: {
             isLoading: true,
             item: null,
-        }
+        },
+        article: {
+            isLoading: true,
+            item: null,
+        },
     }),
     actions: {
         async fetchListingData() {
@@ -56,6 +64,15 @@ const useInspirationStore = defineStore('inspiration', {
                     this.category.item = response.default.category;
                 })
                 .finally(() => this.category.isLoading = false);
+        },
+        async fetchArticle() {
+            this.article.isLoading = true;
+
+            await import('@/data/inspirations')
+                .then(response => {
+                    this.article.item = response.default.article;
+                })
+                .finally(() => this.article.isLoading = false);
         },
     }
 })
