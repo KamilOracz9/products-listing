@@ -1,5 +1,5 @@
 <template>
-    <SectionsProductsAccordion :label="$t('product.product-description')" id="product-description">
+    <SectionsCommonAccordion :label="$t('product.product-description')" id="product-description">
         <p>{{ productStore.product.item.description }}</p>
         <div v-if="productStore.product.item.colors.length" class="my-3">
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
@@ -30,7 +30,7 @@
         </div>
 
         <LazySectionsCommonLightbox :images="productStore.product.item.images.doorOpens" />
-    </SectionsProductsAccordion>
+    </SectionsCommonAccordion>
 </template>
 
 <script setup>

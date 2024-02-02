@@ -1,5 +1,5 @@
 <template>
-    <SectionsProductsAccordion :label="$t('product.product-table')" id="product-table">
+    <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
                 <li v-for="(techImage, index) in productStore.product.item.images.tech" class="min-w-[128px] lg:w-[300px] cursor-pointer" @click="openModal(index)">
@@ -36,7 +36,7 @@
             </table>
         </div>
         <LazySectionsCommonLightbox :images="productStore.product.item.images.tech" />
-    </SectionsProductsAccordion>
+    </SectionsCommonAccordion>
 </template>
 
 <script setup>

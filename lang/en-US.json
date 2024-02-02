@@ -51,6 +51,13 @@
         "prev": "Previous",
         "next": "Next"
     },
+    "pages": {
+        "inspirations": {
+            "see-all": "See all",
+            "often-questions": "Freaqently asked questions",
+            "often-questions-text": "Do you have doubts? Check out our answers to frequently asked questions."
+        }
+    },
     "product": {
         "yellow-box": "Personalize your cabin",
         "desc-colors": "Available in colors",

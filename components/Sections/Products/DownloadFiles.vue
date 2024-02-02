@@ -1,5 +1,5 @@
 <template>
-    <SectionsProductsAccordion :label="$t('product.download-files')" id="download-files">
+    <SectionsCommonAccordion :label="$t('product.download-files')" id="download-files">
         <div>
             <ul>
                 <li v-for="file in productStore.product.item.files">
@@ -7,7 +7,7 @@
                 </li>
             </ul>
         </div>
-    </SectionsProductsAccordion>
+    </SectionsCommonAccordion>
 </template>
 
 <script setup>
