@@ -1,4 +1,4 @@
-import type { IBadge, IBreadCrumb } from ".";
+import type { IBadge, IBreadCrumb, IPhoto } from ".";
 
 export type IProductItem = {
     name: string;
@@ -9,7 +9,7 @@ export type IProductItem = {
 }
 
 export type IProduct = {
-    similiarProducts: ISimiliarProduct[];
+    similarProducts: IsimilarProduct[];
     breadcrumbs: IBreadCrumb[];
     badge: IBadge | null;
     images: {
@@ -32,7 +32,7 @@ export type IProduct = {
     descriptionIcons: IDescriptionIcon[];
 }
 
-type ISimiliarProduct = {
+type IsimilarProduct = {
     image: string;
     name: string;
     slug: string;
@@ -68,11 +68,4 @@ type IVariant = {
 type IFile = {
     label: string;
     url: string;
-}
-type IPhoto = {
-    mobile?: string;
-    tablet?: string;
-    desktop?: string;
-    thumb?: string;
-    full?: string;
 }

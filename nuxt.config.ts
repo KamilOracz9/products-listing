@@ -85,6 +85,10 @@ export default defineNuxtConfig({
         "en": "/inspirations/[category]",
         "pl": "/inspiracje/[category]"
       },
+      'inspirations/[category]/[slug]': {
+        "en": "/inspirations/[category]/[slug]",
+        "pl": "/inspiracje/[category]/[slug]"
+      },
       'for-professionals/index': {
         "en": "/for-professionals",
         "pl": "/dla-profesjonalistow"

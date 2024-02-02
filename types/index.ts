@@ -11,9 +11,18 @@ export type IBreadCrumb = {
     path: string;
 }
 
-//Badges
+// Badges
 export type IBadge = {
     label: string;
     color: string;
     bgColor: string;
+}
+
+// Photos
+export type IPhoto = {
+    mobile?: string;
+    tablet?: string;
+    desktop?: string;
+    thumb?: string;
+    full?: string;
 }

@@ -1,6 +1,6 @@
 <template>
     <li>
-        <NuxtLink>
+        <NuxtLink :to="localePath({name: 'inspirations'}) + `/${categorySlug}/${article.slug}`">
             <div>
                 <img :src="article.image" alt="">
             </div>
@@ -14,10 +14,12 @@
 
         <p class="leading-5 my-4 md:line-clamp-2">{{ article.shortText }}</p>
 
-        <NuxtLink class="flex gap-2">{{ $t('more') }} <img src="@/assets/icons/arrow.svg" class="-rotate-90" alt=""></NuxtLink>
+        <NuxtLink class="flex gap-2">{{ $t('more') }} <img src="@/assets/icons/arrow.svg" class="-rotate-90" alt="">
+        </NuxtLink>
     </li>
 </template>
 
 <script setup>
-const { article } = defineProps(['article'])
+const localePath = useLocalePath();
+const { article } = defineProps(['article', 'categorySlug'])
 </script>

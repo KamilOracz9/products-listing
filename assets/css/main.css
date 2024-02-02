@@ -111,7 +111,7 @@
         @apply absolute z-10 top-1/2 -translate-y-1/2 lg:translate-y-0 lg:top-auto lg:bottom-6 cursor-pointer;
     }
 
-    .similiar-products-slider-arrow {
+    .similar-products-slider-arrow {
         @apply absolute z-10 top-1/2 flex items-center -translate-y-1/2 lg:bottom-6 cursor-pointer;
     }
 
