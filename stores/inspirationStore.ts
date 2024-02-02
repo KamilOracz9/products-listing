@@ -11,6 +11,10 @@ type IInspirationStore = {
         breadcrumbs: IBreadCrumb[] | null;
         categories: IInspirationCategory[];
         faq: IInspirationsFaq[];
+    },
+    category: {
+        isLoading: boolean;
+        item: IInspirationCategory | null;
     }
 }
 
@@ -25,6 +29,10 @@ const useInspirationStore = defineStore('inspiration', {
             breadcrumbs: null,
             categories: [],
             faq: [],
+        },
+        category: {
+            isLoading: true,
+            item: null,
         }
     }),
     actions: {
@@ -39,6 +47,15 @@ const useInspirationStore = defineStore('inspiration', {
                     this.listing.faq = <IInspirationsFaq[]>response.default.faq;
                 })
                 .finally(() => this.listing.isLoading = false);
+        },
+        async fetchCategory() {
+            this.category.isLoading = true;
+
+            await import('@/data/inspirations')
+                .then(response => {
+                    this.category.item = response.default.category;
+                })
+                .finally(() => this.category.isLoading = false);
         },
     }
 })

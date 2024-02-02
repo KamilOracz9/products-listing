@@ -1,6 +1,9 @@
+import type { IBreadCrumb } from ".";
+
 export type IInspirationCategory = {
     title: string;
     slug: string;
+    breadcrumbs: IBreadCrumb[] | null;
     articles: IInspirationArticle[];
 }
 
