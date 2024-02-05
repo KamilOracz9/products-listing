@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <SectionsProductssimilarProducts />
+            <SectionsProductsSimilarProducts />
         </div>
 
         <SectionsCommonFindUs />

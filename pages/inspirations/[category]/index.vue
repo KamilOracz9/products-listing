@@ -3,7 +3,7 @@
         <SectionsCommonBreadrumbs :breadcrumbs="inspirationStore.category.item.breadcrumbs" />
 
         <div class="pb-10">
-            <p class="uppercase text-[2rem] leading-[2.25rem] mb-10">{{ inspirationStore.category.item.title }}</p>
+            <p class="section-title">{{ inspirationStore.category.item.title }}</p>
         </div>
 
         <SectionsInspirationsArticles :articles="inspirationStore.category.item.articles" :categorySlug="inspirationStore.category.item.slug" />

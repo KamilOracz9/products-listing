@@ -37,6 +37,19 @@
 }
 
 @layer components {
+    /* Pages */
+    .section-text {
+        @apply text-sm [&>p]:mb-6 mt-6 sm:text-lg sm:my-10;
+    }
+
+    .section-title {
+        @apply uppercase text-[2rem] leading-[2.25rem] mb-10 sm:text-[2.25rem];
+    }
+
+    .for-professionas-section {
+        @apply lg:grid lg:grid-cols-2 lg:gap-10;
+    }
+
     /* Lightbox */
     .lightbox {
         @apply !bg-[rgba(255,255,255,.5)] duration-100;
