@@ -8,14 +8,6 @@
                     <SectionsProductsBadge :badge="productStore.product.item.badge" />
                     <SectionsProductsMainImage />
                     <SectionsProductsGallery />
-                    <!-- <SectionsCommonModal>
-                        <template #content>
-                            <SectionsProductsGalleryModal :images="productStore.product.item.images.gallery" />
-                        </template>
-                        <template #navigation>
-                            <SectionsProductsModalNavigation />
-                        </template>
-                    </SectionsCommonModal> -->
 
                     <LazySectionsCommonLightbox :images="productStore.product.item.images.gallery" />
                 </div>
