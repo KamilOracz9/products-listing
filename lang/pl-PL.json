@@ -56,6 +56,11 @@
             "see-all": "Zobacz wszystkie",
             "often-questions": "Często zadawane pytania",
             "often-questions-text": "Masz wątpliwości? Sprawdź nasze odpowiedzi na najczęściej zadawane pytania."
+        },
+        "about": {
+            "awards": "Nagrody i wyróżnienia",
+            "career": "Kariera",
+            "projects": "Projekty UE"
         }
     },
     "product": {

@@ -56,6 +56,11 @@
             "see-all": "See all",
             "often-questions": "Freaqently asked questions",
             "often-questions-text": "Do you have doubts? Check out our answers to frequently asked questions."
+        },
+        "about": {
+            "awards": "Prizes and awards",
+            "career": "Career",
+            "projects": "EU Projects"
         }
     },
     "product": {
