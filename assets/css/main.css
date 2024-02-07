@@ -46,6 +46,10 @@
         @apply uppercase text-[2rem] leading-[2.25rem] mb-10 sm:text-[2.25rem];
     }
 
+    .section-subtitle {
+        @apply uppercase font-medium text-xl;
+    }
+
     .for-professionas-section {
         @apply lg:grid lg:grid-cols-2 lg:gap-10;
     }

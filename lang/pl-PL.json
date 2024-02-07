@@ -61,6 +61,26 @@
             "awards": "Nagrody i wyróżnienia",
             "career": "Kariera",
             "projects": "Projekty UE"
+        },
+        "contact": {
+            "address": "Adres",
+            "phone": "Tel.",
+            "logistic-centrum": "Centrum logistyczne",
+            "sale-service-department": "Dział obsługi sprzedaży",
+            "export-department": "Dział sprzedaży",
+            "form": {
+                "write-to-us": "Napisz do nas",
+                "name-and-surname": "Imię i nazwisko / Nazwa firmy",
+                "email-address": "Adres email",
+                "message": "Wiadomość",
+                "agreement": "Wysyłając wiadomość, wyrażam zgodę na przetwarzanie moich danych osobowych przez New Trendy Spółka z ograniczoną odpowiedzialnością  z siedzibą w Radom 26-600 ul. Sadownicza 7, podanych w formularzu kontaktowym w celu skontaktowania się ze mną i odpowiedzi na moją wiadomość zgodnie z ",
+                "privacy": "polityką prywatności",
+                "and": " oraz ",
+                "info-clausue": "klauzulą informacyjną",
+                "accept": "*Zapoznałem się z polityką prywatności i klauzulą informacyjną.",
+                "send": "Wyślij"
+            },
+            "voievodship": "Województwo"
         }
     },
     "product": {
@@ -72,7 +92,7 @@
         "glass-types": "Rodzaje szkła",
         "download-files": "Pliki do pobrania",
         "similar-products": "Podobne produkty",
-        "symbol": "Symbol", 
+        "symbol": "Symbol",
         "dimensions": "Wymiary",
         "doors": "Drzwi",
         "a": "A",
