@@ -9,3 +9,4 @@ export {default as useProductStore} from './productStore';
 export {default as useInspirationStore} from './inspirationStore';
 export {default as useForProfessionalStore} from './forProfessionalStore';
 export {default as useAboutStore} from './aboutStore';
+export {default as useContactStore} from './contactStore';
