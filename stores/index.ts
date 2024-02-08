@@ -11,3 +11,4 @@ export {default as useForProfessionalStore} from './forProfessionalStore';
 export {default as useAboutStore} from './aboutStore';
 export {default as useContactStore} from './contactStore';
 export {default as useServiceStore} from './serviceStore';
+export {default as useDownloadStore} from './downloadStore';

@@ -1,4 +1,8 @@
 {
+  "download/index": {
+    "en": "/download",
+    "pl": "/pobierz"
+  },
   "service/index": {
     "en": "/service",
     "pl": "/serwis"
