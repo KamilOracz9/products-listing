@@ -51,6 +51,7 @@
     "reset": "Resetuj",
     "from": "Od",
     "to": "Do",
+    "or": "lub",
     "pages": {
         "inspirations": {
             "see-all": "Zobacz wszystkie",
@@ -81,6 +82,9 @@
                 "send": "Wyślij"
             },
             "voievodship": "Województwo"
+        },
+        "service": {
+            "in-hours": "w godzinach"
         }
     },
     "product": {

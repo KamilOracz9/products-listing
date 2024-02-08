@@ -52,8 +52,8 @@
 
         <div class="grid gap-6 lg:gap-10 lg:mt-10 xl:grid-cols-2">
             <section class="sm:grid sm:gap-6 sm:grid-cols-2 lg:gap-10 lg:mt-0 2xl:grid-cols-2">
-                <SectionsForProfessionalsBox boxClass="bg-gray-5 lg:order-1 xl:-order-1" :box="architectZone.section5.boxLeft" />
-                <SectionsForProfessionalsBox boxClass="bg-yellow-2 rounded-br-[25px] mt-6 md:rounded-br-lg sm:mt-0"
+                <SectionsCommonBox boxClass="bg-gray-5 lg:order-1 xl:-order-1" :box="architectZone.section5.boxLeft" />
+                <SectionsCommonBox boxClass="bg-yellow-2 rounded-br-[25px] mt-6 md:rounded-br-lg sm:mt-0"
                     :box="architectZone.section5.boxRight" />
             </section>
 

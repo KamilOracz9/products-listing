@@ -39,7 +39,7 @@
 @layer components {
     /* Pages */
     .section-text {
-        @apply text-sm mt-6 sm:text-lg sm:my-10;
+        @apply text-sm sm:text-lg;
     }
 
     .section-title {
