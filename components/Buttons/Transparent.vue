@@ -3,10 +3,10 @@
         class="text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center">
         <span class="translate-y-[2px]">{{ label }}</span><img src="@/assets/icons/arrow.svg" class="-rotate-90" alt="">
     </button>
-    <a v-if="tagType === 'link'" :type="type" :href="url"
+    <NuxtLink v-if="tagType === 'link'" :type="type" :to="url"
         class="text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center">
         <span class="translate-y-[2px]">{{ label }}</span> <img src="@/assets/icons/arrow.svg" class="-rotate-90" alt="">
-    </a>
+    </NuxtLink>
 </template>
 
 <script setup>
