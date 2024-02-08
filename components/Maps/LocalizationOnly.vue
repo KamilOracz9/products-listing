@@ -7,6 +7,7 @@ import markerIcon from '@/assets/icons/marker-icon-red.png';
 
 const zoom = ref(12);
 const center = ref([51.3788751, 21.0808941]);
+let map = null;
 
 const icon = L.icon({
     iconUrl: markerIcon,
@@ -23,7 +24,12 @@ onMounted(async () => {
 
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
-    const map = L.map("map", {
+    const container = L.DomUtil.get('map');
+    if (container != null) {
+        container._leaflet_id = null;
+    }
+
+    map = L.map("map", {
         center: center.value,
         zoom: zoom.value,
         maxZoom: 18,

@@ -47,6 +47,7 @@
     "reset": "Reset",
     "from": "From",
     "to": "To",
+    "or": "or",
     "pagination": {
         "prev": "Previous",
         "next": "Next"
@@ -61,6 +62,29 @@
             "awards": "Prizes and awards",
             "career": "Career",
             "projects": "EU Projects"
+        },
+        "contact": {
+            "address": "Address",
+            "phone": "Tel.",
+            "logistic-centrum": "Logistic centrum",
+            "sale-service-department": "Sale service department",
+            "export-department": "Export department",
+            "form": {
+                "write-to-us": "Write to us",
+                "name-and-surname": "Name / surname",
+                "email-address": "Email address",
+                "message": "Message",
+                "agreement": "By sending the message, I consent to the processing of my personal data by New Trendy Spółka z ograniczoną odpowiedzialnością with its registered office in Radom 26-600 ul. Sadownicza 7, provided in the contact form in order to contact me and respond to my message in accordance with ",
+                "privacy": "privacy policy",
+                "and": " and ",
+                "info-clausue": "information clause",
+                "accept": "*I have read the privacy policy and information clause.",
+                "send": "Send"
+            },
+            "voievodship": "Voievodship"
+        },
+        "service": {
+            "in-hours": "in hours"
         }
     },
     "product": {

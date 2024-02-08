@@ -1,11 +1,9 @@
 <template>
-  <ProductsLayout :breadcrumbs="breadcrumbs" :title="route.params.category">
-  </ProductsLayout>
+  <NuxtLayout name="products" :breadcrumbs="breadcrumbs" :title="route.params.category">
+  </NuxtLayout>
 </template>
     
 <script setup lang="ts">
-import ProductsLayout from '@/layouts/ProductsLayout.vue';
-
 const route = useRoute();
 const categoryStore = useCategoryStore();
 const slug = route.params.category;

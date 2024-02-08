@@ -1,8 +1,7 @@
 <template>
-  <ProductsLayout :title="$t('products')">
-  </ProductsLayout>
+  <NuxtLayout name="products" :title="$t('products')">
+  </NuxtLayout>
 </template>
   
 <script setup lang="ts">
-import ProductsLayout from '@/layouts/ProductsLayout.vue';
 </script>
