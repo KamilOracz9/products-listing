@@ -91,7 +91,9 @@
             "select-voievodship": "Select voievodship",
             "select-city": "Select-city",
             "input-placeholder": "Enter the city name or zip code",
-            "search-by-my-localization": "Search by my location"
+            "search-by-my-localization": "Search by my location",
+            "show-on-map": "Show on map",
+            "check-directions": "Check directions"
         }
     },
     "product": {

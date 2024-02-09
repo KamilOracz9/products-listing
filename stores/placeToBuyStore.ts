@@ -1,5 +1,5 @@
 import type { IBreadCrumb } from "~/types"
-import type { ICity, IVoievodship } from "~/types/placeToBuy";
+import type { ICity, ILocation, IVoievodship } from "~/types/placeToBuy";
 
 export type IPlaceToBuyStore = {
     isLoading: boolean;
@@ -12,6 +12,10 @@ export type IPlaceToBuyStore = {
         isLoading: boolean;
         items: ICity[];
     },
+    locations: {
+        isLoading: boolean;
+        items: ILocation[];
+    };
 }
 
 const usePlaceToBuyStore = defineStore('placeToBuy', {
@@ -24,6 +28,10 @@ const usePlaceToBuyStore = defineStore('placeToBuy', {
         },
         cities: {
             isLoading: false,
+            items: [],
+        },
+        locations: {
+            isLoading: true,
             items: [],
         },
     }),
@@ -54,6 +62,17 @@ const usePlaceToBuyStore = defineStore('placeToBuy', {
                     this.cities.items = response.cities;
                 })
                 .finally(() => this.cities.isLoading = false);
+        },
+        async fetchLocations(search?: { voievodship: string | null; city: string | null; name: string | null; }) {
+            this.locations.isLoading = true;
+
+            await import('@/data/place-to-buy')
+                .then(response => {
+                    if (search) this.locations.items = response.locationsList;
+                    else this.locations.items = response.default.locationsList;
+
+                })
+                .finally(() => this.locations.isLoading = false);
         },
     }
 })

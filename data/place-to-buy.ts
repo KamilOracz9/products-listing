@@ -9,7 +9,108 @@ export default {
             path: '/gdzie-kupic-nasze-produkty',
         },
     ],
+    locationsList: [
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 51.3909832,
+                lng: 21.1445618,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 51.3909832,
+                lng: 21.1445618,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 51.3909832,
+                lng: 21.1445618,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 51.3909832,
+                lng: 21.1445618,
+            },
+        },
+    ],
 }
+
+export const locationsList = [
+    {
+        title: 'Bomar 2',
+        subtitle: 'porada architekta wnętrz',
+        contact: {
+            address: 'Warszawska 139 26-600, Radom',
+            phone: '48 333-10-29'
+        },
+        coords: {
+            lat: 51.438015,
+            lng: 21.146063,
+        },
+    },
+    {
+        title: 'Bomar 2',
+        subtitle: 'porada architekta wnętrz',
+        contact: {
+            address: 'Warszawska 139 26-600, Radom',
+            phone: '48 333-10-29'
+        },
+        coords: {
+            lat: 51.438015,
+            lng: 21.146063,
+        },
+    },
+    {
+        title: 'Bomar 2',
+        subtitle: 'porada architekta wnętrz',
+        contact: {
+            address: 'Warszawska 139 26-600, Radom',
+            phone: '48 333-10-29'
+        },
+        coords: {
+            lat: 51.438015,
+            lng: 21.146063,
+        },
+    },
+    {
+        title: 'Bomar 2',
+        subtitle: 'porada architekta wnętrz',
+        contact: {
+            address: 'Warszawska 139 26-600, Radom',
+            phone: '48 333-10-29'
+        },
+        coords: {
+            lat: 51.438015,
+            lng: 21.146063,
+        },
+    },
+]
 
 export const voievodships = [
     {
