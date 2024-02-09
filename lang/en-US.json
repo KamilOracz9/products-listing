@@ -85,6 +85,13 @@
         },
         "service": {
             "in-hours": "in hours"
+        },
+        "place-to-buy": {
+            "title": "Where to buy our products",
+            "select-voievodship": "Select voievodship",
+            "select-city": "Select-city",
+            "input-placeholder": "Enter the city name or zip code",
+            "search-by-my-localization": "Search by my location"
         }
     },
     "product": {

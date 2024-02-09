@@ -85,6 +85,13 @@
         },
         "service": {
             "in-hours": "w godzinach"
+        },
+        "place-to-buy": {
+            "title": "Gdzie kupić nasze produkty",
+            "select-voievodship": "Wybierz województwo",
+            "select-city": "Wybierz miasto",
+            "input-placeholder": "Wpisz nazwę miasta lub kod pocztowy",
+            "search-by-my-localization": "Wyszukaj po mojej lokalizacji"
         }
     },
     "product": {

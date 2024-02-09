@@ -20,8 +20,7 @@
                 <ul class="flex flex-col gap-4 md:gap-10 md:flex-row">
                     <li v-for="(image, index) in inspirationStore.article.item.gallery" :key="index" class="flex-1 cursor-pointer" @click="modalIsOpen = true">
                         <picture>
-                            <source media="(min-width: 1280)" :srcset="image.tablet">
-                            <source media="(min-width: 768px)" :srcset="image.mobile">
+                            <source media="(min-width: 768px)" :srcset="image.desktop">
                             <source media="(min-width: 450px)" :srcset="image.tablet">
                             <img :src="image.mobile" alt="" class="w-full aspect-[1/1]">
                         </picture>
