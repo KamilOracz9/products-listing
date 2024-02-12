@@ -34,6 +34,7 @@
     "flowbite": "^2.2.1",
     "leaflet": "^1.9.4",
     "leaflet-gesture-handling": "^1.2.2",
+    "leaflet.markercluster": "^1.5.3",
     "mobile-detect": "^1.4.5",
     "nuxt-leaflet": "^0.0.27",
     "nuxt-swiper": "^1.2.2",
