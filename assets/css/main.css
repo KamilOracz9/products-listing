@@ -37,6 +37,16 @@
 }
 
 @layer components {
+    .group-marker {
+        @apply 
+            before:size-16 before:absolute before:-z-10 before:bg-gray-6 before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full 
+            relative size-10 leading-10 text-center bg-black-2 rounded-full text-white text-[1.25rem] font-bold;
+    }
+
+    .map *:not(.leaflet-marker-icon,.leaflet-marker-pane,.leaflet-map-pane,.leaflet-control-container, .group-marker){
+        filter: grayscale(1);
+    }
+
     /* Pages */
     .section-text {
         @apply text-sm sm:text-lg;

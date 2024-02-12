@@ -21,8 +21,9 @@
 
         <div class="w-full flex justify-end items-center my-6 text-sm lg:my-10">
             <button @click="onGetGeolocation" type="button" class="flex gap-2 items-center"><img class="size-[22px]"
-                    src="@/assets/icons/map-pin.svg" alt=""> {{ $t('pages.place-to-buy.search-by-my-localization')
-                    }}</button>
+                    src="@/assets/icons/map-pin.svg" alt="">
+                {{ $t('pages.place-to-buy.search-by-my-localization') }}
+            </button>
         </div>
     </div>
 </template>
@@ -32,6 +33,9 @@ const route = useRoute();
 const router = useRouter();
 const placeToBuyStore = usePlaceToBuyStore();
 
+const mapZoom: Ref<number> | undefined = inject('mapZoom');
+const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
+const mapKey: Ref<number> | undefined = inject('mapKey');
 
 const voievodship: Ref<string | null> = ref(null);
 const city: Ref<string | null> = ref(null);
@@ -45,13 +49,12 @@ const onGetGeolocation = () => {
         voievodship.value = null;
         city.value = null;
         name.value = null;
-        // console.log(response)
 
         onSubmit();
     })
 }
 
-const onSubmit = () => {
+const onSubmit = async () => {
     const query = { ...router.currentRoute.value.query }
 
     if (voievodship.value && !name.value) query.voievodship = voievodship.value;
@@ -64,6 +67,16 @@ const onSubmit = () => {
     else delete query.name;
 
     router.push({ query });
+
+    await placeToBuyStore.fetchLocations({
+        voievodship: voievodship.value,
+        city: city.value,
+        name: name.value,
+    });
+
+    if (mapCenter) mapCenter.value = [52.121, 19.108];
+    if (mapZoom) mapZoom.value = 6;
+    if (mapKey) mapKey.value += 1;
 }
 
 onMounted(async () => {

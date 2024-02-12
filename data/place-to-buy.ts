@@ -18,7 +18,7 @@ export default {
                 phone: '48 360-27-44'
             },
             coords: {
-                lat: 51.3909832,
+                lat: 54.5747221,
                 lng: 21.1445618,
             },
         },
@@ -31,7 +31,31 @@ export default {
             },
             coords: {
                 lat: 51.3909832,
-                lng: 21.1445618,
+                lng: 18.379901811332,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 54.5747221,
+                lng: 18.379901811332,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 54.5747221,
+                lng: 18.5,
             },
         },
         {
@@ -43,7 +67,19 @@ export default {
             },
             coords: {
                 lat: 51.3909832,
-                lng: 21.1445618,
+                lng: 21.17,
+            },
+        },
+        {
+            title: 'Blu Salon łazienek Radom',
+            subtitle: 'porada architekta wnętrz',
+            contact: {
+                address: '1905 roku 9 26-600, Radom',
+                phone: '48 360-27-44'
+            },
+            coords: {
+                lat: 51.3909832,
+                lng: 21.20,
             },
         },
         {

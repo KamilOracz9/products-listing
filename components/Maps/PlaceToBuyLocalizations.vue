@@ -1,12 +1,16 @@
 <template>
-    <section class="w-full h-[400px] relative z-10 lg:col-span-3 lg:h-[700px]" id="map"></section>
+    <section class="w-full map h-[400px] relative z-10 lg:col-span-3 lg:h-[700px]" id="map"></section>
 </template>
 
 <script setup>
-import markerIcon from '@/assets/icons/marker-icon-red.png';
+import markerIcon from '@/assets/icons/marker-icon-yellow.png';
+import markerIconRed from '@/assets/icons/marker-icon-red.png';
+const placeToBuyStore = usePlaceToBuyStore();
 
-const zoom = ref(12);
-const center = ref([51.3788751, 21.0808941]);
+const zoom = inject('mapZoom');
+const center = inject('mapCenter');
+const selected = inject('selected');
+
 let map = null;
 
 const icon = L.icon({
@@ -14,15 +18,20 @@ const icon = L.icon({
     iconSize: [23, 31],
 });
 
-const marker = L.marker(center.value, { icon: icon });
+const iconRed = L.icon({
+    iconUrl: markerIconRed,
+    iconSize: [23, 31],
+});
 
-const layer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
+const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-onMounted(async () => {
-    const L = await import('leaflet')
-    const { GestureHandling } = await import('leaflet-gesture-handling')
+const mount = async () => {
+    const L = await import('leaflet');
+    const { MarkerClusterGroup } = await import('leaflet.markercluster');
+    const { GestureHandling } = await import('leaflet-gesture-handling');
 
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+    L.Map.addInitHook("addHandler", "markerClusterGroup", MarkerClusterGroup);
 
     const container = L.DomUtil.get('map');
     if (container != null) {
@@ -33,12 +42,35 @@ onMounted(async () => {
         center: center.value,
         zoom: zoom.value,
         maxZoom: 18,
-        minZoom: zoom.value,
+        minZoom: 6,
         gestureHandling: true,
+        // zoomSnap: 1,
+        // zoomDelta: 1,
+        // wheelPxPerZoomLevel: 200,
     });
 
     layer.addTo(map);
-    marker.addTo(map);
     map.scrollWheelZoom.disable();
-})
+}
+
+const drawPoints = () => {
+    const markers = L.markerClusterGroup({
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="group-marker">' + markers.length + '</div>';
+            return L.divIcon({ html: html });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: false
+    });
+
+    placeToBuyStore.locations.items.forEach(({ coords }, index) => {
+        markers.addLayer(L.marker([coords.lat, coords.lng], { icon: selected.value === index ? iconRed : icon }));
+    });
+
+    map.addLayer(markers);
+}
+
+onMounted(() => mount().then(() => {
+    drawPoints();
+}))
 </script>
