@@ -1,7 +1,7 @@
 <template>
     <ul class="px-5 flex justify-between items-center xl:mr-[70px]">
         <li>
-            <NuxtLink to="/"><img src="@/assets/images/logo.svg" width="161" alt=""></NuxtLink>
+            <NuxtLink to="/" :aria-label="$t('home-page')"><img src="@/assets/images/logo.svg" width="161" alt=""></NuxtLink>
         </li>
 
         <li class="lg:hidden">

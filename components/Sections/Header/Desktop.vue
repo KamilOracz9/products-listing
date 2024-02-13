@@ -14,7 +14,7 @@
                         <ul v-for="category in column.items">
                             <li>
                                 <NuxtLink :to="localePath({ name: 'categories' }) + `/${category.slug}`">
-                                    <img width="65" :src="category.iconUrl" alt="">
+                                    <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl" :alt="category.label" :title="category.label">
                                     <p class="py-3">{{ category.label }}</p>
                                 </NuxtLink>
                                 <ul class="text-sm">

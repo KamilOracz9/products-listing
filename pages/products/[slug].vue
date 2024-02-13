@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="mt-6 lg:w-[55%] xl:w-[72%]">
-                    <h1>{{ productStore.product.item.name }}</h1>
+                    <h1 class="text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">{{ productStore.product.item.name }}</h1>
                     <p class="text-gray-3 font-medium uppercase text-xs mb-3">{{ productStore.product.item.category.name }}
                     </p>
                     <SectionsProductsBox />

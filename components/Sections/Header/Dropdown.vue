@@ -14,11 +14,11 @@
             </ul>
         </template>
 
-        <a :href="url" v-if="!hasSlot('default')" class="flex items-center gap-2 pb-2 lg:pb-0">
+        <NuxtLink :to="url" v-if="!hasSlot('default')" class="flex items-center gap-2 pb-2 lg:pb-0">
             <img class="icon" width="18" v-if="iconUrl" :src="iconUrl"
                 alt="">
             <span class="flex h-[18px]" :class="desktopLabelHide ? 'lg:hidden xl:flex' : ''">{{ name }}</span>
-        </a>
+        </NuxtLink>
     </li>
 </template>
 

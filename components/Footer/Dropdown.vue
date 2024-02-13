@@ -4,7 +4,7 @@
         <ul :class="footerStore.isActive(slug) ? 'max-lg:active' : 'max-lg:inactive'"
             class="footer-item border-t border-opacity-50 border-white max-h-0 invisible lg:visible lg:max-h-fit lg:border-none">
             <li v-for="link in items">
-                <a class="text-normal-base hover-opacity-60 cursor-pointer transition-all" :href="link.url">{{ link.label }}</a>
+                <NuxtLink class="text-normal-base hover-opacity-60 cursor-pointer transition-all" :to="link.url">{{ link.label }}</NuxtLink>
             </li>
         </ul>
     </li>

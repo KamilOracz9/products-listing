@@ -4,7 +4,7 @@
             <picture>
                 <source media="(min-width: 640px)"
                     srcset="https://newtrendy.pl/app/uploads/2023/07/na_wymiar_800x400.jpg" />
-                <img loading="lazy" src="https://newtrendy.pl/app/uploads/2023/07/na_wymiar_800x400.jpg" alt="" class="w-full h-full object-cover rounded-br-lg">
+                <img :title="'Kabiny prysznicowe'" loading="lazy" src="https://newtrendy.pl/app/uploads/2023/07/na_wymiar_800x400.jpg" :alt="'Kabiny prysznicowe'" class="w-full h-full object-cover rounded-br-lg">
             </picture>
         </div>
         <div class="uppercase p-6 lg:max-w-[90%] xl:max-w-[70%]">

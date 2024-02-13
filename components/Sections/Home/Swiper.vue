@@ -4,12 +4,12 @@
         :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
         :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
         <SwiperSlide v-for="(slide, index) in homeStore.slider.items" :key="index">
-            <a :href="slide.url" class="relative">
+            <NuxtLink :to="slide.url" class="relative" :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                 <div class="h-[582px] flex sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
                     <picture v-if="slide.type === 'image'" class="w-full">
                         <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
                         <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
-                        <img :src="slide.fileUrls.base" class="h-full w-full object-cover">
+                        <NuxtImg preset="home-swiper" format="webp" :src="slide.fileUrls.base" class="h-full w-full object-cover" loading="lazy" :alt="slide.title ?? `New Trendy - slide-${index}`" :title="slide.title ?? `New Trendy - slide-${index}`" />
                     </picture>
 
                     <video muted loop webkit-playsinline playsinline autoplay v-if="slide.type === 'video'"
@@ -20,9 +20,9 @@
 
                 <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-28 lg:left-6">
                     <p class="text-2xl">{{ slide.subtitle }}</p>
-                    <p class="text-[2.5rem] font-medium leading-[3rem] uppercase">{{ slide.title }}</p>
+                    <h2 v-if="slide.title" class="text-[2.5rem] font-medium leading-[3rem] uppercase">{{ slide.title }}</h2>
                 </div>
-            </a>
+            </NuxtLink>
         </SwiperSlide>
 
         <div class="left-4 main-slider-arrow main-slider-arrow-prev lg:left-6">

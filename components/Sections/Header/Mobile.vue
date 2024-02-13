@@ -7,7 +7,7 @@
                 <ul class="flex flex-wrap">
                     <li v-for="category in categoryStore.mainCategories" class="w-[50%] md:w-[33%]">
                         <NuxtLink :to="localePath({ name: 'categories' }) + `/${category.slug}`" class="px-6 flex flex-col items-center gap-2">
-                            <img width="60" :src="category.iconUrl" alt="">
+                            <img width="65" height="65" loading="lazy" class="size-[65px]" :src="category.iconUrl" :alt="category.label" :title="category.label">
                             {{ category.label }}
                         </NuxtLink>
                     </li>
@@ -17,11 +17,11 @@
         <SectionsHeaderDropdown :slug="menuItem.slug" :name="menuItem.label"
             v-for="menuItem in headerStore.headerMenu.items.filter(item => !item.type)">
             <li v-for="submenuItem in menuItem.items" :class="submenuItem.iconUrl ? 'w-[50%] md:w-[33%]' : 'w-full'">
-                <a :href="submenuItem.url" v-if="!submenuItem.iconUrl">{{ submenuItem.label }}</a>
-                <a :href="submenuItem.url" v-if="submenuItem.iconUrl" class="px-6 flex flex-col items-center gap-2">
-                    <img width="60" :src="submenuItem.iconUrl" alt="">
+                <NuxtLink :to="submenuItem.url ?? '/'" v-if="!submenuItem.iconUrl">{{ submenuItem.label }}</NuxtLink>
+                <NuxtLink :to="submenuItem.url ?? '/'" v-if="submenuItem.iconUrl" class="px-6 flex flex-col items-center gap-2">
+                    <img width="65" height="65" loading="lazy" class="size-[65px]" :src="submenuItem.iconUrl" :alt="category.label" :title="category.label">
                     {{ submenuItem.label }}
-                </a>
+                </NuxtLink>
             </li>
         </SectionsHeaderDropdown>
 
@@ -31,12 +31,12 @@
             <li class="w-full flex justify-center">
                 <div class="w-[70%] flex flex-col gap-4 py-4">
                     <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
-                        <input class="p-2 outline-none" type="text" :placeholder="$t('what-are-you-looking-for')">
+                        <input class="p-2 outline-none border-0" name="search" type="text" :placeholder="$t('what-are-you-looking-for')">
                         <img width="16" height="16" class="w-4 h-4 gray-1-filter" :src="searchIcon" alt="">
                     </div>
 
                     <button
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
+                        class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
                             $t('search') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
@@ -53,17 +53,17 @@
                         <label for="search-in-inspirations">{{ $t('search-in-inspirations') }}</label>
                     </div>
 
-                    <a href="/"
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
+                    <NuxtLink to="/"
+                        class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
                             $t('products') }}
-                        <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
+                        <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></NuxtLink>
                 </div>
             </li>
         </SectionsHeaderDropdown>
         <SectionsHeaderDropdown :name="$t('clipboard')" :iconUrl="clipboardIcon" slug="schowek" :desktopLabelHide="true">
             <li v-for="clipboardItem in clipboardStore.items.products" class="w-[50%] md:w-[33%]">
-                <a :href="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
-                    <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" alt="">
+                <NuxtLink :to="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
+                    <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" :alt="clipboardItem.name" :title="clipboardItem.name">
                     <div class="w-full flex flex-col items-start text-left text-xs gap-1.5">
                         <p class="text-base font-bold">{{ clipboardItem.name }}</p>
                         <p class="text-gray-3">{{ clipboardItem.path }}</p>
@@ -71,7 +71,7 @@
                         <p>{{ clipboardItem.dimensions }}</p>
                         <p>{{ clipboardItem.price }}</p>
                     </div>
-                </a>
+                </NuxtLink>
             </li>
         </SectionsHeaderDropdown>
 
@@ -87,4 +87,5 @@ import clipboardIcon from '@/assets/icons/clipboard.svg';
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
 const categoryStore = useCategoryStore();
+const localePath = useLocalePath();
 </script>

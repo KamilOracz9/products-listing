@@ -1,4 +1,5 @@
 import pages from './lang/pages.json'
+import imagesConfig from './config/images.config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -21,7 +22,10 @@ export default defineNuxtConfig({
     'nuxt-lodash',
     '@nuxtjs/i18n',
     'nuxt-swiper',
+    ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
+    '@nuxt/image',
   ],
+  image: imagesConfig,
   runtimeConfig: {
     public: {
       apiBase: process.env.API_URL,
