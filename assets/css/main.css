@@ -8,19 +8,29 @@
     }
 
     h1 {
-        @apply text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem];
+        /* @apply text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]; */
+    }
+
+    h2 {
+
     }
 
     h3 {
-        @apply text-[1.5rem] leading-7 mt-0 mb-2 font-medium sm:text-[1.75rem] sm:leading-9;
+        /* @apply text-[1.5rem] leading-7 mt-0 mb-2 font-medium sm:text-[1.75rem] sm:leading-9; */
     }
 
     h4 {
-        @apply font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8;
+        /* @apply font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8; */
+    }
+
+    h5 {
+        @apply text-lg leading-5 mt-0 mb-2 font-bold sm:text-xl sm:leading-[1.625rem];
+        /* @apply text-[1.75rem] font-medium; */
     }
 
     h6 {
-        @apply text-lg leading-5 mt-0 mb-2 font-bold sm:text-xl sm:leading-[1.625rem];
+        /* @apply text-lg leading-5 mt-0 mb-2 font-bold sm:text-xl sm:leading-[1.625rem]; */
+        /* @apply text-lg sm:text-xl */
     }
 
     body *::-webkit-scrollbar {
@@ -162,6 +172,15 @@
     #home-product-tiles>.home-product-tile:nth-child(2),
     .home-product-tile:nth-child(3) {
         @apply md:w-[calc(45%-20px)];
+    }
+
+    /* Footer */
+    footer .footer__url {
+        @apply hover-opacity-60 cursor-pointer transition-all py-3 lg:py-0;
+    }
+
+    footer .footer__icon {
+        @apply icon-16 white-filter translate-y-4 lg:translate-y-1;
     }
 }
 

@@ -12,7 +12,7 @@
             <li class="lg:w-1/4">
                 <p class="text-medium-lg uppercase">{{ $t('our-websites') }}</p>
                 <div class="flex mt-2 gap-3">
-                    <img src="@/assets/icons/glob.svg" class="icon-16 white-filter translate-y-1" alt="" />
+                    <img src="@/assets/icons/glob.svg" class="footer__icon" alt="Icon" title="" />
                     <ul class="flex flex-col">
                         <FooterWebsite v-for="item in footerStore.data.websites" :item="item" />
                     </ul>

@@ -8,7 +8,7 @@
                 </div>
                 <div class="uppercase flex-1 pl-4">
                     <p class="text-2xl">{{ aboutTile.subtitle }}</p>
-                    <p class="text-[1.75rem] font-medium">{{ aboutTile.title }}</p>
+                    <h3 class="text-[1.75rem] font-medium">{{ aboutTile.title }}</h3>
                 </div>
             </div>
             <div class="hidden w-full xs:block xs:mt-4">

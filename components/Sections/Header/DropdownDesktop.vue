@@ -25,27 +25,27 @@
             <template v-if="type === 'search'">
                 <div class="w-full px-[50px] flex flex-wrap gap-y-8 font-normal">
                     <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1 w-1/3 mr-8">
-                        <input class="p-2 outline-none w-full" type="text" :placeholder="$t('what-are-you-looking-for')">
+                        <input class="p-2 outline-none w-full border-0" name="search" type="text" :placeholder="$t('what-are-you-looking-for')">
                         <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg" alt="">
                     </div>
 
                     <button
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20">{{
+                        class="flex border items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20 border-black">{{
                             $t('search') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
 
                     <div class="flex items-center justify-start gap-2 mr-8">
-                        <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                            for="search-in-products" class="translate-y-[2px] normal-case">{{ $t('search-in-products')
+                        <input id="search-in-products-desktop" type="checkbox" name="search-in-products-desktop" /> <label
+                            for="search-in-products-desktop" class="translate-y-[2px] normal-case">{{ $t('search-in-products')
                             }}</label>
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
-                        <input id="search-in-files" type="checkbox" name="search-in-files" /> <label for="search-in-files"
+                        <input id="search-in-files-desktop" type="checkbox" name="search-in-files" /> <label for="search-in-files-desktop"
                             class="translate-y-[2px] normal-case">{{ $t('search-in-files') }}</label>
                     </div>
                     <div class="flex items-center justify-start gap-2 mr-8">
-                        <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                        <label for="search-in-inspirations" class="translate-y-[2px] normal-case">{{
+                        <input id="search-in-inspirations-desktop" type="checkbox" name="search-in-inspirations-desktop" />
+                        <label for="search-in-inspirations-desktop" class="translate-y-[2px] normal-case">{{
                             $t('search-in-inspirations') }}</label>
                     </div>
 
@@ -53,7 +53,7 @@
                     </div>
 
                     <a href="/"
-                        class="flex border-2 items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{
+                        class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{
                             $t('go-to-products') }}
                         <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
                 </div>
@@ -63,7 +63,7 @@
                 <ul class="grid grid-cols-4 px-[50px] xl:grid-cols-6">
                     <li v-for="clipboardItem in clipboardStore.items.products">
                         <a :href="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
-                            <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" alt="">
+                            <img loading="lazy" class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl" :title="clipboardItem.name" :alt="clipboardItem.name">
                             <div class="w-full flex flex-col items-start text-left text-xs gap-1.5">
                                 <p class="text-base font-bold">{{ clipboardItem.name }}</p>
                                 <p class="text-gray-3">{{ clipboardItem.path }}</p>

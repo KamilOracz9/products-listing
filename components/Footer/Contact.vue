@@ -3,23 +3,23 @@
         <p class="uppercase">{{ label }}</p>
         <!-- Addresses -->
         <div class="text-normal-base flex gap-3" v-if="addresses?.length"><img src="@/assets/icons/map-pin.svg"
-                class="icon-16 white-filter translate-y-1" alt="" />
+                class="footer__icon" alt="" />
             <div class="flex flex-col">
-                <p v-for="address in addresses">{{ address }}</p>
+                <p class="footer__url" v-for="address in addresses">{{ address }}</p>
             </div>
         </div>
         <!-- Phones -->
         <div class="text-normal-base flex gap-3" v-if="phones?.length"><img src="@/assets/icons/phone.svg"
-                class="icon-16 white-filter translate-y-1" alt="" />
+                class="footer__icon" alt="" />
             <div class="flex flex-col">
-                <a :href="`tel:${phone}`" class="hover-opacity-60 cursor-pointer transition-all" v-for="phone in phones">{{ phone }}</a>
+                <NuxtLink :to="`tel:${phone}`" class="footer__url" v-for="phone in phones">{{ phone }}</NuxtLink>
             </div>
         </div>
         <!-- Emails -->
         <div class="text-normal-base flex gap-3" v-if="emails?.length"><img src="@/assets/icons/envelope.svg"
-                class="icon-16 white-filter translate-y-1" alt="" />
+                class="footer__icon" alt="" />
             <div class="flex flex-col">
-                <a :href="`mailto:${email}`" class="hover-opacity-60 cursor-pointer transition-all" v-for="email in emails">{{ email }}</a>
+                <NuxtLink :to="`mailto:${email}`" class="footer__url" v-for="email in emails">{{ email }}</NuxtLink>
             </div>
         </div>
     </li>

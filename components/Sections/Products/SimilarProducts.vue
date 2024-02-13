@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h4 class="uppercase">{{ $t('product.similar-products') }}</h4>
+        <h4 class="uppercase font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8">{{ $t('product.similar-products') }}</h4>
 
         <Swiper :navigation="sliderConfig.navigation" @slideChange="activeSlide = $event.realIndex" class="relative"
             :modules="[SwiperNavigation]" :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop"

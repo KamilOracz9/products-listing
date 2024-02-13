@@ -7,18 +7,22 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },
@@ -29,22 +33,27 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },
@@ -55,10 +64,12 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },
@@ -69,18 +80,22 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },
@@ -91,34 +106,42 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },
@@ -129,10 +152,12 @@ export default {
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
                 {
                     label: 'Made to measure',
                     slug: 'made-to-measure',
+                    url: '/',
                 },
             ],
         },

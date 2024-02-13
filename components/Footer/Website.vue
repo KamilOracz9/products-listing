@@ -1,6 +1,6 @@
 <template>
-    <li class="">
-        <a class="hover-opacity-60 cursor-pointer transition-all" :href="url">{{ label }}</a>
+    <li class="flex gap-3">
+        <a class="footer__url" :href="url">{{ label }}</a>
     </li>
 </template>
 

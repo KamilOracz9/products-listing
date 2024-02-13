@@ -2,7 +2,7 @@
     <section>
         <SectionsCommonBreadrumbs v-if="breadcrumbs && breadcrumbs.length" :breadcrumbs="breadcrumbs" />
 
-        <h1 class="uppercase">{{ title }}</h1>
+        <h1 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">{{ title }}</h1>
 
         <div class="mt-10 flex gap-10">
             <SectionsProductsSidebar />
