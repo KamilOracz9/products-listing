@@ -7,12 +7,16 @@
         <div class="mt-10 flex gap-10">
             <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
+                <p v-if="shortText" class="pb-3.5 mb-5 border-b text-lg" v-html="shortText"></p>
+
                 <SectionsProductsCategories />
 
                 <button @click="productsFilterStore.toggleMenuIsOpen" class="my-10 underline text-2xl lg:hidden">{{ $t('filtering') }} / {{ $t('sorting') }}</button>
 
                 <SectionsProductsListing v-if="!productStore.list.isLoading" />
                 <SectionsProductsPagination />
+
+                <p v-if="longText" class="pt-3.5 mb-5 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium" v-html="longText"></p>
             </div>
         </div>
 
@@ -25,8 +29,8 @@
 </template>
 
 <script setup>
-const props = defineProps(['title', 'breadcrumbs']);
-const { title, breadcrumbs } = props;
+const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
+const { title, breadcrumbs, shortText, longText } = props;
 
 const productsFilterStore = useProductsFilterStore();
 const productStore = useProductStore();

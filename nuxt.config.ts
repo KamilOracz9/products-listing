@@ -40,12 +40,12 @@ export default defineNuxtConfig({
     locales: [
       {
         code: 'en',
-        iso: 'en-US',
+        iso: 'en_US',
         file: 'en-US.json',
       },
       {
         code: 'pl',
-        iso: 'pl-PL',
+        iso: 'pl_PL',
         file: 'pl-PL.json',
       },
     ],
@@ -60,59 +60,5 @@ export default defineNuxtConfig({
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     customRoutes: 'config',
     pages: pages,
-    // pages: {
-    //   'service/index': {
-    //     "en": "/service",
-    //     "pl": "/serwis"
-    //   },
-    //   'products/index': {
-    //     "en": "/products",
-    //     "pl": "/produkty"
-    //   },
-    //   'products/[slug]': {
-    //     "en": "/products/[slug]",
-    //     "pl": "/produkty/[slug]"
-    //   },
-    //   'products/[category]/index': {
-    //     "en": "/products/[category]",
-    //     "pl": "/produkty/[category]"
-    //   },
-    //   'categories/index': {
-    //     "en": "/categories",
-    //     "pl": "/kategorie"
-    //   },
-    //   'categories/[category]/index': {
-    //     "en": "/categories/[category]",
-    //     "pl": "/kategorie/[category]"
-    //   },
-    //   'place-to-buy/index': {
-    //     "en": "/place-to-buy",
-    //     "pl": "/gdzie-kupic-nasze-produkty"
-    //   },
-    //   'inspirations/index': {
-    //     "en": "/inspirations",
-    //     "pl": "/inspiracje"
-    //   },
-    //   'inspirations/[category]/index': {
-    //     "en": "/inspirations/[category]",
-    //     "pl": "/inspiracje/[category]"
-    //   },
-    //   'inspirations/[category]/[slug]': {
-    //     "en": "/inspirations/[category]/[slug]",
-    //     "pl": "/inspiracje/[category]/[slug]"
-    //   },
-    //   'for-professionals/index': {
-    //     "en": "/for-professionals",
-    //     "pl": "/dla-profesjonalistow"
-    //   },
-    //   'contact/index': {
-    //     "en": "/contact",
-    //     "pl": "/kontakt"
-    //   },
-    //   'about/index': {
-    //     "en": "/about",
-    //     "pl": "/o-firmie"
-    //   },
-    // }
   },
 })
