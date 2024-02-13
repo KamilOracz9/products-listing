@@ -13,7 +13,7 @@
             </div>
             <div class="hidden w-full xs:block xs:mt-4">
                 <p>{{ aboutTile.description }}</p>
-                <p class="uppercase pt-4 flex gap-2">{{ $t('more') }} <img src="@/assets/icons/arrow.svg" class="-rotate-90 -translate-y-px" alt=""></p>
+                <p class="uppercase pt-4 flex gap-2">{{ $t('more') }} <Arrow :direction="'right'" /></p>
             </div>
         </NuxtLink>
     </section>

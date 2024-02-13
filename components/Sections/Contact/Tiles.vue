@@ -8,7 +8,7 @@
                     <p>{{ tile.title }}</p>
                 </div>
                 <div class="flex items-center gap-2 py-4 lg:py-6">
-                    <img src="@/assets/icons/arrow.svg" alt="">
+                    <Arrow />
                     <span class="flex flex-1 h-0 border-b-2 border-black"></span>
                 </div>
                 <ul class="font-normal text-base lg:text-[1.25rem] lg:flex lg:flex-col lg:gap-1">

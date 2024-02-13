@@ -5,7 +5,7 @@
             @mouseleave="toggle($el, false)">
             <span class="flex gap-2 ml-2 items-center leading-[25px] z-10">
                 <span class="group-hover:animate-arrow-rotate-in">
-                    <img src="@/assets/icons/arrow.svg" width="10" alt="" title="" />
+                    <Arrow :width="10" :height="6" :direction="'down'" />
                 </span>
 
                 {{ $t(globalStore.locale.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}

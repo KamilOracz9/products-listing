@@ -13,8 +13,7 @@
             <p class="normal-case py-6 text-sm lg:text-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus dolorem exercitationem unde autem
                 soluta possimus quia molestias aperiam voluptates ducimus magnam culpa incidunt voluptatibus adipisci porro,
                 odit nisi a saepe!</p>
-            <NuxtLink :to="'/'" class="flex gap-2 text-[1.25rem] font-medium">{{ $t('more') }} <img src="@/assets/icons/arrow.svg"
-                    class="-rotate-90 -translate-y-[2px]" alt=""></NuxtLink>
+            <NuxtLink :to="'/'" class="flex gap-2 text-[1.25rem] font-medium">{{ $t('more') }} <Arrow :direction="'right'" /></NuxtLink>
         </div>
     </section>
 </template>

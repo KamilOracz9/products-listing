@@ -4,12 +4,12 @@
             <p class="font-medium text-xl mb-2 pb-2 sm:text-xl">{{ selected?.label }}</p>
             <ul>
                 <li v-for="(city, index) in section.cities" :key="index">
-                    <p class="font-medium text-lg flex gap-2 mb-2 mt-6 lg:mt-10 lg:mb-6"><img src="@/assets/icons/arrow.svg"
-                            class="rotate-180" alt="">
-                        {{ city.label }}</p>
+                    <p class="font-medium text-lg flex gap-2 mb-2 mt-6 lg:mt-10 lg:mb-6">
+                        <Arrow :direction="'upper'" /> {{ city.label }}
+                    </p>
                     <ul class="flex flex-col gap-4">
-                        <li class="bg-gray-2 flex justify-between font-bold p-4 sm:text-lg xl:max-w-[375px]" v-for="(contact, index) in city.contacts"
-                            :key="index">
+                        <li class="bg-gray-2 flex justify-between font-bold p-4 sm:text-lg xl:max-w-[375px]"
+                            v-for="(contact, index) in city.contacts" :key="index">
                             <div>
                                 <p>{{ contact.name }}</p>
                                 <p>{{ contact.phone }}</p>

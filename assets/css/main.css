@@ -93,6 +93,10 @@
         @apply hidden;
     }
 
+    .breadcrumbs > li > a > img {
+        @apply gray-1-filter;
+    }
+
     .breadcrumbs > li:last-child {
         @apply text-black;
     }
@@ -108,7 +112,7 @@
 
     /* Pagination */
     .pagination-button {
-        @apply bg-gray-2 px-4 flex items-center;
+        @apply bg-gray-2 px-4 flex items-center gap-2 ;
     }
 
     .pagination>ul>li:nth-child(6) {

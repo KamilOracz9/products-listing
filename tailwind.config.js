@@ -40,6 +40,12 @@ module.exports = {
       'max-lg': { 'max': '1023px' },
     },
     extend: {
+      rotate: {
+        'left': '90deg',
+        'right': '270deg',
+        'upper': '180deg',
+        'down': '0',
+      },
       borderRadius: {
         'lg': '60px',
         'md': '20px',
