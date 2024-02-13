@@ -8,6 +8,8 @@ type ICategoryStore = {
         items: ICategoriesList;
     };
     breadcrumbs: IBreadCrumb[] | null;
+    shortText: string;
+    longText: string;
 }
 
 const useCategoryStore = defineStore('category', {
@@ -17,6 +19,8 @@ const useCategoryStore = defineStore('category', {
             items: { columns: [{ items: [] }] },
         },
         breadcrumbs: null,
+        shortText: '',
+        longText: '',
     }),
     getters: {
         mainCategories: state => {
@@ -35,6 +39,8 @@ const useCategoryStore = defineStore('category', {
             await import('@/data/categories').then(response => {
                 this.list.items = <ICategoriesList>response.default;
                 this.breadcrumbs = <IBreadCrumb[]>response.default.breadcrumbs
+                this.shortText = response.default.shortText
+                this.longText = response.default.longText
             }).finally(() => this.list.isLoading = false)
         }
     },

@@ -1,4 +1,5 @@
 export default {
+    // endpoint
     article: {
         breadcrumbs: [
             {
@@ -107,6 +108,7 @@ export default {
             },
         ],
     },
+    // endpoint
     category: {
         title: 'AKTUALNOŚCI',
         slug: 'aktualności',
@@ -223,6 +225,7 @@ export default {
             },
         ],
     },
+    // endpoint
     breadcrumbs: [
         {
             label: 'Główna',

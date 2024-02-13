@@ -7,12 +7,13 @@
 <script setup>
 import logo from '@/assets/images/logo.svg';
 const i18n = useI18n();
+const router = useRouter();
 
 useHead(() => ({
   link: [
     {
       rel: 'canonical',
-      href: 'https://newtrendy.pl',
+      href: `https://newtrendy.pl${router.currentRoute.value.fullPath}`,
     },
   ],
   htmlAttrs: {
@@ -28,7 +29,7 @@ useSeoMeta({
   ogDescription: 'NEW TRENDY - Producent Kabin Prysznicowych',
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: 'https://newtrendy.pl',
+  ogUrl: `https://newtrendy.pl${router.currentRoute.value.fullPath}`,
   ogSiteName: 'newtrendy.pl',
   twitterCard: 'summary_large_image',
   robots: {
