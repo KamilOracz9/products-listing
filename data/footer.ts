@@ -1,163 +1,113 @@
 export default {
     items: [
+        // {
+        //     label: 'products',
+        //     slug: 'products',
+        //     items: [
+        //         {
+        //             label: 'Made to measure',
+        //             slug: 'made-to-measure',
+        //             url: '/',
+        //         },
+        //         {
+        //             label: 'Made to measure',
+        //             slug: 'made-to-measure',
+        //             url: '/',
+        //         },
+        //         {
+        //             label: 'Made to measure',
+        //             slug: 'made-to-measure',
+        //             url: '/',
+        //         },
+        //         {
+        //             label: 'Made to measure',
+        //             slug: 'made-to-measure',
+        //             url: '/',
+        //         },
+        //     ],
+        // },
         {
-            label: 'products',
-            slug: 'products',
-            items: [
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-            ],
-        },
-        {
-            label: 'inspirations',
             slug: 'inspirations',
             items: [
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'news',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'arrangements-and-inspirations',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'advice-and-support',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'faq',
                 },
             ],
         },
         {
-            label: 'for professionals',
             slug: 'for-professionals',
             items: [
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'partner-zone',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'architects-zone',
                 },
             ],
         },
         {
-            label: 'about',
             slug: 'about',
             items: [
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'companys-history',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'awards-and-implementations',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'career',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'projects-ue',
                 },
             ],
         },
         {
-            label: 'contact',
             slug: 'contact',
             items: [
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'sales-service-department',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'export-department',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'custom-made-products-department',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'spare-parts-department',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'service',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
-                },
-                {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'certified-installers',
                 },
             ],
         },
         {
-            label: 'download',
             slug: 'download',
             items: [
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'catalogs',
                 },
                 {
-                    label: 'Made to measure',
-                    slug: 'made-to-measure',
-                    url: '/',
+                    slug: 'files-3d',
+                },
+                {
+                    slug: 'atests-and-declarations',
+                },
+                {
+                    slug: 'graphic-files',
                 },
             ],
         },

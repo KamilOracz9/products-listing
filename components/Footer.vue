@@ -5,7 +5,8 @@
             <FooterDropdown v-for="item in footerStore.data.items" :item="item" />
         </ul>
 
-        <ul class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
+        <ul
+            class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
             <!-- Contacts -->
             <FooterContact v-for="item in footerStore.data.contacts" :item="item" />
             <!-- Websites -->
@@ -13,9 +14,10 @@
                 <p class="text-medium-lg uppercase">{{ $t('our-websites') }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="footer__icon" alt="Icon" title="" />
-                    <ul class="flex flex-col">
-                        <FooterWebsite v-for="item in footerStore.data.websites" :item="item" />
-                    </ul>
+                    <div class="flex flex-col">
+                        <a v-for="item in footerStore.data.websites" class="flex gap-3 footer__url" :href="item.url">{{
+                            item.label }}</a>
+                    </div>
                 </div>
             </li>
         </ul>

@@ -63,7 +63,7 @@
     }
 
     .section-title {
-        @apply uppercase text-[2rem] leading-[2.25rem] mb-10 sm:text-[2.25rem];
+        @apply uppercase text-[2rem] leading-[2.25rem] mb-6 sm:text-[2.25rem];
     }
 
     .section-subtitle {
@@ -89,15 +89,15 @@
     }
 
     /* Breadcrumbs */
-    .breadcrumbs > li:last-child > a > img {
+    .breadcrumbs > a:last-child > img {
         @apply hidden;
     }
 
-    .breadcrumbs > li > a > img {
+    .breadcrumbs > a > img {
         @apply gray-1-filter;
     }
 
-    .breadcrumbs > li:last-child {
+    .breadcrumbs > a:last-child {
         @apply text-black;
     }
 

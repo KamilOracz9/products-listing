@@ -9,7 +9,10 @@
                     <picture v-if="slide.type === 'image'" class="w-full">
                         <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
                         <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
-                        <NuxtImg preset="home-swiper" format="webp" :src="slide.fileUrls.base" class="h-full w-full object-cover" loading="lazy" :alt="slide.title ?? `New Trendy - slide-${index}`" :title="slide.title ?? `New Trendy - slide-${index}`" />
+                        <NuxtImg preset="home-swiper" format="webp" :src="slide.fileUrls.base"
+                            class="h-full w-full object-cover" loading="lazy"
+                            :alt="slide.title ?? `New Trendy - slide-${index}`"
+                            :title="slide.title ?? `New Trendy - slide-${index}`" />
                     </picture>
 
                     <video muted loop webkit-playsinline playsinline autoplay v-if="slide.type === 'video'"
@@ -25,26 +28,23 @@
             </NuxtLink>
         </SwiperSlide>
 
-        <div class="left-4 main-slider-arrow main-slider-arrow-prev lg:left-6">
-            <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
-        </div>
+        <img src="@/assets/icons/slider-arrow.svg"
+            class="left-4 main-slider-arrow main-slider-arrow-prev lg:left-6 block rotate-180" alt="">
 
-        <ul
+        <div
             class="hidden absolute bottom-3 text-white z-20 left-1/2 -translate-x-1/2 w-[85%] border-t border-gray-1 pt-2 lg:flex">
-            <li v-for="(slide, index) in homeStore.slider.items"
+
+            <span v-for="(slide, index) in homeStore.slider.items"
                 :class="activeSlide === index ? 'before:flex after:flex main-slider-pagination-item-active' : 'before:hidden after:hidden'"
                 class="
-          flex-1 text-center uppercase text-sm relative main-slider-pagination-item
-          before:absolute before:z-10 before:h-[3px] before:w-full before:bg-white before:-top-3
-          after:-top-5 after:left-1/2 after:-translate-x-1/2 after:rotate-180 after:absolute after:z-10 after:border-l-[10px] after:border-r-[10px] after:border-t-[10px] after:border-[transparent] after:border-t-white 
-        ">
-                <span class="px-2">{{ slide.navTitle }}</span>
-            </li>
-        </ul>
-
-        <div class="right-4 main-slider-arrow main-slider-arrow-next lg:right-6">
-            <img src="@/assets/icons/slider-arrow.svg" alt="">
+                    flex-1 text-center uppercase text-sm relative main-slider-pagination-item px-2
+                    before:absolute before:z-10 before:h-[3px] before:w-full before:bg-white before:-top-3
+                    after:-top-5 after:left-1/2 after:-translate-x-1/2 after:rotate-180 after:absolute after:z-10 after:border-l-[10px] after:border-r-[10px] after:border-t-[10px] after:border-[transparent] after:border-t-white 
+                ">{{ slide.navTitle }}</span>
         </div>
+
+        <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-6" src="@/assets/icons/slider-arrow.svg"
+            alt="">
     </Swiper>
 </template>
 

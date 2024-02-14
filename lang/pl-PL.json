@@ -22,7 +22,7 @@
     "news": "Aktualności",
     "arrangements-and-inspirations": "Aranżacje / inspiracje",
     "advice-and-support": "Porady / wsparcie",
-    "faq": "faq",
+    "faq": "Faq",
     "partner-zone": "Strefa partnera",
     "architects-zone": "Strefa architekta",
     "companys-history": "historia firmy",
@@ -35,6 +35,10 @@
     "spare-parts-department": "Dzial części zamiennych",
     "service": "Serwis",
     "certified-installers": "Certyfikowani instalatorzy",
+    "catalogs": "Katalogi",
+    "files-3d": "Pliki 3D",
+    "atests-and-declarations": "Atesty i deklaracje",
+    "graphic-files": "Pliki graficzne",
     "made-to-measure": "Kabiny prysznicowe na miare",
     "made-to-measure-home-link": "Kabiny prysznicowe na wymiar",
     "more": "Więcej",
@@ -129,12 +133,6 @@
         "map": {
             "title": "Znajdź sklep stacjonarny",
             "placeholder": "Wpisz nazwę miasta lub kod pocztowy"
-        }
-    },
-    "routes": {
-        "products": {
-            "pl": "/produkty",
-            "en": "/products"
         }
     }
 }

@@ -31,12 +31,11 @@
                 </div>
             </div>
 
-            <div class="my-6 lg:m-0 self-start xl:col-span-2">
-                <picture>
-                    <source media="(min-width: 640)" :srcset="main.image.tablet">
-                    <img :src="main.image.mobile" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg" alt="">
-                </picture>
-            </div>
+            <picture class="block my-6 lg:m-0 self-start xl:col-span-2">
+                <source media="(min-width: 640)" :srcset="main.image.tablet">
+                <img :src="main.image.mobile" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg"
+                    alt="">
+            </picture>
 
             <div class="flex flex-col gap-4 lg:col-span-2 xl:col-span-2">
                 <p class="uppercase font-medium text-xl">{{ $t('pages.contact.form.write-to-us') }}</p>
