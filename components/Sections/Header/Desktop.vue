@@ -3,7 +3,7 @@
         <SectionsHeaderDropdownDesktop :slug="menuItem.slug" :url="menuItem.url" :name="menuItem.label"
             :background="background" :type="menuItem.type" v-for="menuItem in headerStore.headerMenu.items">
             <li v-for="submenuItem in menuItem.items" class="whitespace-nowrap" v-if="!menuItem.type">
-                <RouterLink :to="localePath({ name: submenuItem.slug })" class="hover-opacity-60">{{
+                <RouterLink :to="getPath(menuItem.slug, $t(submenuItem.slug))" class="hover-opacity-60">{{
                     $t(submenuItem.slug) }}
                 </RouterLink>
             </li>
@@ -41,10 +41,8 @@
 </template>
 
 <script setup>
-const { background } = defineProps(['background']);
+const { background, getPath } = defineProps(['background', 'getPath']);
 
 const headerStore = useHeaderStore();
 const categoryStore = useCategoryStore();
-
-const localePath = useLocalePath();
 </script>

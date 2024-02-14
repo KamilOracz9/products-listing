@@ -2,7 +2,7 @@
     <ul id="mobile-menu"
         :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
         class="lg:active lg:overflow-hidden lg:flex-row lg:h-auto header-menu max-lg:invisible flex flex-col items-end text-center gap-8 z-20 bg-white w-full h-[calc(100vh-82px)] overflow-y-auto lg:hidden">
-        <SectionsHeaderDropdown :name="$t('products')">
+        <SectionsHeaderDropdown :name="$t('products')" slug="products">
             <li>
                 <ul class="flex flex-wrap">
                     <li v-for="category in categoryStore.mainCategories" class="w-[50%] md:w-[33%]">
@@ -18,20 +18,14 @@
         </SectionsHeaderDropdown>
         <SectionsHeaderDropdown :slug="menuItem.slug" :name="menuItem.label"
             v-for="menuItem in headerStore.headerMenu.items.filter(item => !item.type)">
-            <li v-for="submenuItem in menuItem.items" :class="submenuItem.iconUrl ? 'w-[50%] md:w-[33%]' : 'w-full'">
-                <NuxtLink :to="submenuItem.url ?? '/'" v-if="!submenuItem.iconUrl">{{ submenuItem.label }}</NuxtLink>
-                <NuxtLink :to="submenuItem.url ?? '/'" v-if="submenuItem.iconUrl"
-                    class="px-6 flex flex-col items-center gap-2">
-                    <img width="65" height="65" loading="lazy" class="size-[65px]" :src="submenuItem.iconUrl"
-                        :alt="category.label" :title="category.label">
-                    {{ submenuItem.label }}
-                </NuxtLink>
+            <li v-for="submenuItem in menuItem.items" class="w-full">
+                <NuxtLink :to="getPath(menuItem.slug, $t(submenuItem.slug))" v-if="!submenuItem.iconUrl">{{ $t(submenuItem.slug) }}</NuxtLink>
             </li>
         </SectionsHeaderDropdown>
 
-        <SectionsHeaderDropdown :name="$t('download')" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
+        <SectionsHeaderDropdown :name="$t('download')" slug="download" url="/" :iconUrl="downloadIcon" :desktopLabelHide="true">
         </SectionsHeaderDropdown>
-        <SectionsHeaderDropdown :name="$t('search')" :iconUrl="searchIcon" slug="wyszukaj" :desktopLabelHide="true">
+        <SectionsHeaderDropdown :name="$t('search')" :iconUrl="searchIcon" slug="search" :desktopLabelHide="true">
             <li class="w-full flex justify-center">
                 <div class="w-[70%] flex flex-col gap-4 py-4">
                     <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
@@ -67,7 +61,7 @@
                 </div>
             </li>
         </SectionsHeaderDropdown>
-        <SectionsHeaderDropdown :name="$t('clipboard')" :iconUrl="clipboardIcon" slug="schowek" :desktopLabelHide="true">
+        <SectionsHeaderDropdown :name="$t('clipboard')" :iconUrl="clipboardIcon" slug="clipboard" :desktopLabelHide="true">
             <li v-for="clipboardItem in clipboardStore.items.products" class="w-[50%] md:w-[33%]">
                 <NuxtLink :to="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
                     <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" :alt="clipboardItem.name"
@@ -96,4 +90,7 @@ const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
 const categoryStore = useCategoryStore();
 const localePath = useLocalePath();
+
+const props = defineProps(['getPath']);
+const { getPath } = props;
 </script>

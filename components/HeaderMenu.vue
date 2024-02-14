@@ -3,21 +3,30 @@
         @mouseleave="() => { handleClose(); background.style.height = '0'; }">
 
         <SectionsHeaderLogo />
-        <SectionsHeaderMobile />
-        <SectionsHeaderDesktop :background="background" />
+        <SectionsHeaderMobile :getPath="getPath" />
+        <SectionsHeaderDesktop :background="background" :getPath="getPath" />
 
         <div ref="background" id="menu-background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10"></div>
     </div>
 </template>
 
 <script setup>
+import slugify from '@/plugins/slugify';
+
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
+const localePath = useLocalePath();
 
 const background = ref(null);
 
 const handleClose = () => {
     headerStore.setSubmenu('');
+}
+
+const getPath = (mainSlug, linkSlug) => {
+    if (linkSlug === 'service' || linkSlug === 'certified-installers') mainSlug = 'service';
+
+    return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`
 }
 
 onMounted(() => {
