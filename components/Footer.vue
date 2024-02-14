@@ -2,6 +2,7 @@
     <div class="bg-black-2 text-white px-5 py-12 rounded-br-md lg:py-[61.5px] lg:pl-[46px] lg:pr-[78px] lg:rounded-br-lg">
         <!-- Items -->
         <ul class="flex flex-col gap-y-2 w-full lg:flex-row lg:gap-10 lg:justify-between lg:flex-wrap">
+            <FooterDropdown :item="products" :divider="'/'" />
             <FooterDropdown v-for="item in footerStore.data.items" :item="item" />
         </ul>
 
@@ -28,8 +29,22 @@
 import { useFooterStore } from '@/stores';
 
 const footerStore = useFooterStore();
+const categoryStore = useCategoryStore();
 
-onMounted(() => {
-    footerStore.fetchData();
+const products = computed(() => {
+    return {
+        label: 'products',
+        slug: 'categories',
+        items: categoryStore.mainCategories.map(mainCategory => {
+            return {
+                slug: mainCategory.slug,
+                label: mainCategory.label
+            }
+        })
+    };
+})
+
+onMounted(async () => {
+    await footerStore.fetchData();
 });
 </script>

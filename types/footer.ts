@@ -1,12 +1,11 @@
 export type IFooterItemLink = {
-    label: string;
+    label?: string;
     slug: string;
-    url: string;
 }
 
 export type IFooterItem = {
-    label: string;
     slug: string;
+    label?: string;
     items: IFooterItemLink[],
 }
 
