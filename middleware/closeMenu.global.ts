@@ -1,3 +1,5 @@
+import device from "~/plugins/device";
+
 export default defineNuxtRouteMiddleware(to => {
     if (process.server) return;
 
@@ -7,7 +9,9 @@ export default defineNuxtRouteMiddleware(to => {
 
     const headerStore = useHeaderStore();
     
-    headerStore.submenu = '';
+    if(device().provide.isDesktop()) headerStore.submenu = '';
 
-    background.style.height = '0'
+    background.style.height = '0';
+
+    headerStore.menuIsOpen = false;
 })
