@@ -6,7 +6,8 @@
         <SectionsHeaderMobile :getPath="getPath" />
         <SectionsHeaderDesktop :background="background" :getPath="getPath" />
 
-        <div ref="background" id="menu-background" class="absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10"></div>
+        <div ref="background" id="menu-background" class="shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10">
+        </div>
     </div>
 </template>
 
@@ -29,7 +30,7 @@ const getPath = (mainSlug, linkSlug) => {
     return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`
 }
 
-onMounted(() => {
-    clipboardStore.fetchItems();
+onMounted(async () => {
+    await clipboardStore.fetchItems();
 });
 </script>
