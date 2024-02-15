@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-10 lg:grid lg:grid-cols-2 lg:gap-6">
+    <section class="mt-10 lg:grid lg:grid-cols-2 lg:gap-6" data-aos="fade-up">
         <div class="text-sm description sm:text-base">
             <h4 class="mb-4 font-medium text-2xl mt-0 sm:text-[1.625rem] sm:leading-8">Jakość na światowym poziomie</h4>
             <p>New Trendy jest polskim producentem kabin prysznicowych.&nbsp;Od 2006 roku dostarczamy klientom najwyższej
