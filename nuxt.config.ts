@@ -35,6 +35,7 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/device',
     '@/plugins/slugify',
+    '@/plugins/useSlideTo',
   ],
   pages: true,
   i18n: {

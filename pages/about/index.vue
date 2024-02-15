@@ -3,7 +3,7 @@
     <SectionsCommonBreadrumbs :breadcrumbs="aboutStore.breadcrumbs" />
     <SectionsAboutStory />
 
-    <section class="mt-10">
+    <section class="mt-10" :id="slugify($t('pages.about.awards'))">
       <p class="section-title">{{ $t('pages.about.awards') }}</p>
       <div class="section-text" v-html="aboutStore.sections?.awards.body"></div>
       <div class="overflow-x-auto no-scrollbar">
@@ -14,12 +14,12 @@
       </div>
     </section>
 
-    <section class="xl:w-1/2">
+    <section class="xl:w-1/2" :id="slugify($t('pages.about.career'))">
       <p class="section-title">{{ $t('pages.about.career') }}</p>
       <div class="section-text" v-html="aboutStore.sections?.career.body"></div>
     </section>
 
-    <section class="mt-10">
+    <section class="mt-10" :id="slugify($t('pages.about.projects'))">
       <p class="section-title">{{ $t('pages.about.projects') }}</p>
       <div class="grid xl:grid-cols-2 gap-6 section-text lg:gap-10">
         <div v-html="aboutStore.sections?.projects.bodyLeft"></div>
@@ -32,11 +32,16 @@
 </template>
   
 <script setup lang="ts">
+import slugify from '~/plugins/slugify';
+import useSlideTo from '~/plugins/useSlideTo';
+
 const aboutStore = useAboutStore();
 
 provide('aboutStore', aboutStore);
 
 onMounted(async () => {
   await aboutStore.fetchData();
+
+  useSlideTo();
 })
 </script>

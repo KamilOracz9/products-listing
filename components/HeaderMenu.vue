@@ -18,6 +18,7 @@ import slugify from '@/plugins/slugify';
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
+const i18n = useI18n();
 
 const background = ref(null);
 const headerMenu = ref(null);
@@ -27,9 +28,11 @@ const handleClose = () => {
 }
 
 const getPath = (mainSlug, linkSlug) => {
-    if (linkSlug === 'service' || linkSlug === 'certified-installers') mainSlug = 'service';
+    if (linkSlug === i18n.t('service') || linkSlug === i18n.t('certified-installers')) mainSlug = 'service';
 
-    return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`
+    if(linkSlug === i18n.t(mainSlug)) return localePath({ name: mainSlug });
+
+    return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`;
 }
 
 const onScroll = () => {

@@ -1,31 +1,5 @@
 export default {
     items: [
-        // {
-        //     label: 'products',
-        //     slug: 'products',
-        //     items: [
-        //         {
-        //             label: 'Made to measure',
-        //             slug: 'made-to-measure',
-        //             url: '/',
-        //         },
-        //         {
-        //             label: 'Made to measure',
-        //             slug: 'made-to-measure',
-        //             url: '/',
-        //         },
-        //         {
-        //             label: 'Made to measure',
-        //             slug: 'made-to-measure',
-        //             url: '/',
-        //         },
-        //         {
-        //             label: 'Made to measure',
-        //             slug: 'made-to-measure',
-        //             url: '/',
-        //         },
-        //     ],
-        // },
         {
             slug: 'inspirations',
             items: [

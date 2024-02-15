@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section :id="slugify($t('pages.contact.office'))">
         <p class="section-title">{{ main.title }}</p>
 
         <div class="lg:grid lg:grid-cols-2 lg:gap-10 xl:grid-cols-5">
@@ -68,6 +68,8 @@
 </template>
 
 <script setup>
+import slugify from '~/plugins/slugify';
+
 const contactStore = inject('contactStore');
 const { main } = contactStore;
 </script>

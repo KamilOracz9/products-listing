@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import useSlideTo from '~/plugins/useSlideTo';
+
 const serviceStore = useServiceStore();
 
 const selected: Ref<{
@@ -31,6 +33,8 @@ const selected: Ref<{
 provide('selected', selected)
 
 onMounted(async () => {
-    serviceStore.fetchData().then(() => serviceStore.fetchCities());
+    await serviceStore.fetchData().then(() => serviceStore.fetchCities());
+
+    useSlideTo();
 })
 </script>

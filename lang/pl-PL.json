@@ -26,6 +26,7 @@
     "partner-zone": "Strefa partnera",
     "architects-zone": "Strefa architekta",
     "companys-history": "historia firmy",
+    "office": "Biuro",
     "awards-and-implementations": "Nagrody i wyróżnienia",
     "career": "Kariera",
     "projects-ue": "Projekty UE",
@@ -72,9 +73,10 @@
         "contact": {
             "address": "Adres",
             "phone": "Tel.",
+            "office": "Biuro",
             "logistic-centrum": "Centrum logistyczne",
             "sale-service-department": "Dział obsługi sprzedaży",
-            "export-department": "Dział sprzedaży",
+            "export-department": "Dział eksportu",
             "form": {
                 "write-to-us": "Napisz do nas",
                 "name-and-surname": "Imię i nazwisko / Nazwa firmy",

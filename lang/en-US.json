@@ -25,6 +25,7 @@
     "faq": "Faq",
     "partner-zone": "Partner zone",
     "architects-zone": "Architect`s zone",
+    "office": "Office",
     "companys-history": "Company`s history",
     "awards-and-implementations": "Awards and implementations",
     "career": "Career",
@@ -72,6 +73,7 @@
         "contact": {
             "address": "Address",
             "phone": "Tel.",
+            "office": "Office",
             "logistic-centrum": "Logistic centrum",
             "sale-service-department": "Sale service department",
             "export-department": "Export department",

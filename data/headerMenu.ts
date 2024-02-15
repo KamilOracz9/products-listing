@@ -67,6 +67,10 @@ export default {
             type: null,
             items: [
                 {
+                    label: 'office',
+                    slug: 'office',
+                },
+                {
                     label: 'sales service department',
                     slug: 'sales-service-department',
                 },
