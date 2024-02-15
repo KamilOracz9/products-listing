@@ -63,6 +63,7 @@ type IVariant = {
     },
     id: number;
     dimensions: string;
+    realizationTime?: number;
 }
 
 type IFile = {

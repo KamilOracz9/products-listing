@@ -123,7 +123,12 @@
         "h": "H",
         "x1": "X1",
         "x2": "X2",
-        "add-to-clipboard": "Dodaj do schowka"
+        "add-to-clipboard": "Dodaj do schowka",
+        "realization-time": {
+            "2-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 2 tygodni",
+            "4-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 4 tygodni",
+            "6-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 6 tygodni"
+        }
     },
     "home": {
         "in-offer": {

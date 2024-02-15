@@ -188,6 +188,7 @@ export default {
             },
             id: 1,
             dimensions: '90x90x200',
+            realizationTime: 2,
         },
         {
             symbol: 'EXK-6515',
@@ -204,6 +205,24 @@ export default {
             },
             id: 1,
             dimensions: '90x90x200',
+            realizationTime: 4,
+        },
+        {
+            symbol: 'EXK-6515',
+            w: 63,
+            h: 200,
+            a: '90,2-91,2',
+            c: 43.5,
+            b: '90,2-91,2',
+            x1: '88,2-89,2',
+            x2: '88,2-89,2',
+            doors: {
+                number: 1,
+                direction: 'L',
+            },
+            id: 1,
+            dimensions: '90x90x200',
+            realizationTime: 6,
         },
         {
             symbol: 'EXK-6515',
