@@ -35,7 +35,7 @@ const getPath = (mainSlug, linkSlug) => {
     return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`;
 }
 
-const onScroll = () => {
+const setHeader = () => {
     const shadow = 'drop-shadow-sm';
 
     if (window.scrollY) {
@@ -48,9 +48,15 @@ const onScroll = () => {
     }
 }
 
-onMounted(async () => {
-    await clipboardStore.fetchItems();
+const onScroll = () => {
+    setHeader();
+}
 
+onMounted(async () => {
+    setHeader();
+
+    await clipboardStore.fetchItems();
+    
     document.addEventListener('scroll', onScroll);
 });
 
