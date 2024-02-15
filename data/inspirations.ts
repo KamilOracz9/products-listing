@@ -237,13 +237,12 @@ export default {
         },
     ],
     header: {
-        title: 'INSPIRACJE',
         body: '<p>Sprawdź co możemy Ci zaoferować! Razem z nami odkryjesz najnowsze trendy łazienkowe i dowiesz się na co zwrócić uwagę podczas wyboru i użytkowania kabiny. Wszystkie najważniejsze, branżowe informacje, inspiracje i odpowiedzi na Twoje pytania zebraliśmy w jednym miejscu, żebyś łatwo mógł/mogła odnaleźć interesujące Cię zagadnienia.</p><p>Potrzebujesz inspiracji? Masz pytania dotyczące naszych produktów?</p><p>Jesteś w dobrym miejscu. Staraliśmy się odpowiedzieć na najczęściej zadawane pytania i rozwiać Twoje wątpliwości.</p>',
     },
     categories: [
         {
             title: 'AKTUALNOŚCI',
-            slug: 'aktualności',
+            slug: 'aktualnosci',
             articles: [
                 {
                     image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',
@@ -297,7 +296,7 @@ export default {
         },
         {
             title: 'ARANŻACJE',
-            slug: 'aranzacje',
+            slug: 'aranzacje-inspiracje',
             articles: [
                 {
                     image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',
@@ -335,7 +334,7 @@ export default {
         },
         {
             title: 'Porady / wsparcie',
-            slug: 'porady',
+            slug: 'porady-wsparcie',
             articles: [
                 {
                     image: 'https://newtrendy.pl/app/uploads/2023/05/artykul_katalog2023-2.jpg',

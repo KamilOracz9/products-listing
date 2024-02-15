@@ -17,6 +17,9 @@
             <SectionsSidebarFiltersList />
             <SectionsSidebarDimensions />
         </div>
+        <div class="mt-6 w-fit ml-auto">
+            <ButtonsTransparent tagType="button" :label="$t('filter')" @click="productsFilterStore.isOpen = false" />
+        </div>
     </section>
 </template>
 

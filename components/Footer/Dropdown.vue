@@ -30,6 +30,8 @@ const getPath = (linkSlug: string) => {
 
     if (linkSlug === 'service' || linkSlug === 'certified-installers') mainSlug = 'service';
 
+    console.log(linkSlug)
+
     return localePath({ name: mainSlug }) + `${divider.value}${linkSlug}`
 }
 </script>

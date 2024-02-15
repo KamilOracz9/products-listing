@@ -7,6 +7,10 @@
         @apply font-breuer font-normal text-base overflow-x-hidden;
     }
 
+    * {
+        scroll-margin-top: 134px;
+    }
+
     h1 {
         /* @apply text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]; */
     }

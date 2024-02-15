@@ -3,7 +3,7 @@
     <SectionsCommonBreadrumbs :breadcrumbs="listing.breadcrumbs" />
 
     <div class="pb-10">
-      <p class="uppercase text-[2rem] leading-[2.25rem] mb-10">{{ listing.header.title }}</p>
+      <p class="uppercase text-[2rem] leading-[2.25rem] mb-10">{{ $t('inspirations') }}</p>
       <div class="text-sm leading-6 flex flex-col gap-6 sm:text-base" v-html="listing.header.body"></div>
     </div>
 

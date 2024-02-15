@@ -1,5 +1,5 @@
 <template>
-    <div ref="headerMenu" class="py-7 flex flex-col fixed w-full bg-white lg:flex-row max-w-max-content"
+    <div ref="headerMenu" class="py-7 flex flex-col fixed w-full bg-white max-w-max-content small-height:py-2 lg:flex-row"
         @mouseleave="() => { handleClose(); background.style.height = '0'; }">
 
         <SectionsHeaderLogo />
@@ -7,7 +7,7 @@
         <SectionsHeaderDesktop :background="background" :getPath="getPath" />
 
         <div ref="background" id="menu-background"
-            class="shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10">
+            class="drop-shadow-sm absolute bg-white w-full top-[calc(100%-1px)] rounded-b-lg -z-10">
         </div>
     </div>
 </template>
@@ -33,10 +33,16 @@ const getPath = (mainSlug, linkSlug) => {
 }
 
 const onScroll = () => {
-    const shadow = 'shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]';
+    const shadow = 'drop-shadow-sm';
 
-    if (window.scrollY) headerMenu.value.classList.add(shadow);
-    else headerMenu.value.classList.remove(shadow);
+    if (window.scrollY) {
+        headerMenu.value.classList.add(shadow);
+        headerMenu.value.classList.add('lg:top-0');
+    }
+    else {
+        headerMenu.value.classList.remove(shadow);
+        headerMenu.value.classList.remove('lg:top-0');
+    }
 }
 
 onMounted(async () => {

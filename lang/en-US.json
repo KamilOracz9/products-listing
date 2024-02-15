@@ -53,6 +53,7 @@
     "from": "From",
     "to": "To",
     "or": "or",
+    "filter": "Filter",
     "pagination": {
         "prev": "Previous",
         "next": "Next"

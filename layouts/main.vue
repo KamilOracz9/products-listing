@@ -8,7 +8,7 @@
                 <HeaderMenu />
             </header>
 
-            <main class="flex-1 mt-[114px] px-4 3xl:px-0" v-if="!categoryStore.list.isLoading">
+            <main class="flex-1 mt-[114px] px-4 small-height:mt-[76px] 3xl:px-0" v-if="!categoryStore.list.isLoading">
                 <slot />
             </main>
 

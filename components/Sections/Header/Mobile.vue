@@ -1,6 +1,6 @@
 <template>
     <ul id="mobile-menu"
-        :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) xs:h-[calc(100vh-164px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
+        :class="headerStore.menuIsOpen ? 'active pt-11 max-h-screen h-[calc(100vh-114px) small-height:h-[calc(100vh-56px)] xs:h-[calc(100vh-86px)]' : 'max-lg:inactive max-lg:max-h-0 lg:active'"
         class="lg:active lg:overflow-hidden lg:flex-row lg:h-auto header-menu max-lg:invisible flex flex-col items-end text-center gap-8 z-20 bg-white w-full h-[calc(100vh-82px)] overflow-y-auto lg:hidden">
         <SectionsHeaderDropdown :name="$t('products')" slug="products">
             <li>

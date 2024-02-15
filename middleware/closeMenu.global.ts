@@ -4,6 +4,9 @@ export default defineNuxtRouteMiddleware(to => {
     if (process.server) return;
 
     const background = document.getElementById('menu-background');
+    const body = document.querySelector('body');
+
+    body?.classList.remove('overflow-hidden');
 
     if(!background) return;
 

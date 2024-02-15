@@ -1,5 +1,5 @@
 <template>
-    <section id="top-bar" class="bg-gray-5 hidden h-[50px] items-center justify-between px-4 rounded-b-xl xs:flex">
+    <section id="top-bar" class="bg-gray-5 hidden h-[50px] items-center justify-between px-4 rounded-b-xl lg:flex">
         <!-- Select -->
         <div class="cursor-pointer relative z-10" @click="toggle($el)" @mouseenter="toggle($el)"
             @mouseleave="toggle($el, false)">

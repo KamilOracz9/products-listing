@@ -5,7 +5,6 @@ type IInspirationStore = {
     listing: {
         isLoading: boolean;
         header: {
-            title: string;
             body: string;
         },
         breadcrumbs: IBreadCrumb[] | null;
@@ -27,7 +26,6 @@ const useInspirationStore = defineStore('inspiration', {
         listing: {
             isLoading: false,
             header: {
-                title: '',
                 body: '',
             },
             breadcrumbs: null,
