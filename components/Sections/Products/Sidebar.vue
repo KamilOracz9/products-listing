@@ -18,7 +18,7 @@
             <SectionsSidebarDimensions />
         </div>
         <div class="mt-6 w-fit ml-auto">
-            <ButtonsTransparent tagType="button" :label="$t('filter')" @click="productsFilterStore.isOpen = false" />
+            <ButtonsTransparent tagType="button" :label="$t('filter')" @click="productsFilterStore.toggleMenuIsOpen" />
         </div>
     </section>
 </template>
