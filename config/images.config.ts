@@ -1,6 +1,6 @@
 export default {
     screens: {
-        'xs': 450,
+        'xs': 320,
         'sm': 640,
         'md': 768,
         'lg': 1024,
@@ -11,8 +11,11 @@ export default {
     presets: {
         "home-swiper": {
             modifiers: {
-                format: 'webp',
-            }
+                fit: 'cover',
+                format: 'png',
+                width: 300,
+                height: 300,
+            },
         }
     }
 }

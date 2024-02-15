@@ -165,11 +165,11 @@
     }
 
     /* Home */
-    #home-product-tiles>.home-product-tile:first-child>img {
+    #home-product-tiles>.home-product-tile:first-child {
         @apply rounded-tl-md md:rounded-tl-lg
     }
 
-    #home-product-tiles>.home-product-tile:last-child>img {
+    #home-product-tiles>.home-product-tile:last-child {
         @apply rounded-br-md md:rounded-br-lg
     }
 
@@ -238,5 +238,18 @@
 
     .description p {
         @apply leading-6;
+    }
+
+    /* Animations */
+    .zoom-in {
+        overflow: hidden;
+    }
+
+    .zoom-in > img {
+        transition: transform .4s;
+    }
+
+    .zoom-in:hover > img {
+        transform: scale(1.1);
     }
 }

@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     '@nuxt/image',
+    'nuxt-aos',
   ],
   image: imagesConfig,
   runtimeConfig: {

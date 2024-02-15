@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-gray-2 mt-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 xl:gap-28">
+    <section class="bg-gray-2 mt-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 xl:gap-28" data-aos="fade-up">
         <picture class="h-[400px] block lg:h-fit">
             <source media="(min-width: 640px)" srcset="https://newtrendy.pl/app/uploads/2023/07/na_wymiar_800x400.jpg" />
             <img :title="'Kabiny prysznicowe'" loading="lazy"

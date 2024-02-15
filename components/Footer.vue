@@ -3,15 +3,15 @@
         <!-- Items -->
         <ul class="flex flex-col gap-y-2 w-full lg:flex-row lg:gap-10 lg:justify-between lg:flex-wrap">
             <FooterDropdown :item="products" :divider="'/'" />
-            <FooterDropdown v-for="item in footerStore.data.items" :item="item" />
+            <FooterDropdown v-for="item in footerStore.data.items" :item="item" data-aos="fade-up" />
         </ul>
 
         <ul
             class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
             <!-- Contacts -->
-            <FooterContact v-for="item in footerStore.data.contacts" :item="item" />
+            <FooterContact data-aos="fade-up" v-for="item in footerStore.data.contacts" :item="item" />
             <!-- Websites -->
-            <li class="lg:w-1/4">
+            <li class="lg:w-1/4" data-aos="fade-up">
                 <p class="text-medium-lg uppercase">{{ $t('our-websites') }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="footer__icon" alt="Icon" title="" />
