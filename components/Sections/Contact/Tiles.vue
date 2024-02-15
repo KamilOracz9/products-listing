@@ -8,14 +8,13 @@
                     <p>{{ tile.title }}</p>
                 </div>
                 <div class="flex items-center gap-2 py-4 lg:py-6">
-                    <img src="@/assets/icons/arrow.svg" alt="">
+                    <Arrow />
                     <span class="flex flex-1 h-0 border-b-2 border-black"></span>
                 </div>
-                <ul class="font-normal text-base lg:text-[1.25rem] lg:flex lg:flex-col lg:gap-1">
-                    <li v-for="phone in tile.phones"><a :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone
-                    }}</a></li>
-                    <li v-for="email in tile.emails"><a :href="`mailto:${email}`">{{ email }}</a></li>
-                </ul>
+                <div class="font-normal text-base lg:text-[1.25rem] lg:flex lg:flex-col lg:gap-1">
+                    <a v-for="phone in tile.phones" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone }}</a>
+                    <a v-for="email in tile.emails" :href="`mailto:${email}`">{{ email }}</a>
+                </div>
             </li>
         </ul>
     </section>

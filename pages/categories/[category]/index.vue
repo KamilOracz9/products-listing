@@ -1,5 +1,5 @@
 <template>
-  <ProductsLayout :breadcrumbs="breadcrumbs" :title="route.params.category">
+  <ProductsLayout :breadcrumbs="breadcrumbs" :title="route.params.category" :shortText="categoryStore.shortText" :longText="categoryStore.longText">
   </ProductsLayout>
 </template>
     

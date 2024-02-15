@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-10 border-b mb-10 pb-10 border-gray-1">
+    <section class="mt-10 border-b mb-10 pb-10 border-gray-1" :id="slugify($t('pages.contact.sale-service-department'))">
         <p class="section-subtitle">{{ $t('pages.contact.sale-service-department') }}</p>
 
         <div class="section-text" v-html="saleServiceDepartment.text"></div>
@@ -18,6 +18,8 @@
 </template>
 
 <script setup>
+import slugify from '~/plugins/slugify';
+
 const contactStore = inject('contactStore');
 const selected = ref(null);
 

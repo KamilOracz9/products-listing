@@ -4,7 +4,7 @@
         <!-- Addresses -->
         <div class="text-normal-base flex gap-3" v-if="addresses?.length"><img src="@/assets/icons/map-pin.svg"
                 class="footer__icon" alt="" />
-            <div class="flex flex-col">
+            <div class="flex flex-col ">
                 <p class="footer__url" v-for="address in addresses">{{ address }}</p>
             </div>
         </div>

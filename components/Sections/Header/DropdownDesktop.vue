@@ -29,10 +29,9 @@
                         <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg" alt="">
                     </div>
 
-                    <button
-                        class="flex border items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20 border-black">{{
-                            $t('search') }}
-                        <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></button>
+                    <button class="flex border items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit mr-20 border-black">
+                        {{ $t('search') }} <Arrow :direction="'right'" />
+                    </button>
 
                     <div class="flex items-center justify-start gap-2 mr-8">
                         <input id="search-in-products-desktop" type="checkbox" name="search-in-products-desktop" /> <label
@@ -55,7 +54,7 @@
                     <a href="/"
                         class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit px-4">{{
                             $t('go-to-products') }}
-                        <img src="@/assets/icons/arrow.svg" class="rotate-[270deg]" alt=""></a>
+                        <Arrow :direction="'right'" /></a>
                 </div>
             </template>
             <!-- Clipboard -->

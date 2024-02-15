@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-10">
+    <section class="mb-10" id="faq">
         <div class="pb-5">
             <p class="text-[1.5rem] font-medium pb-5 border-b border-gray-1 mb-5">{{
                 $t('pages.inspirations.often-questions') }}</p>

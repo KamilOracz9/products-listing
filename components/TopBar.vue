@@ -1,11 +1,11 @@
 <template>
-    <section id="top-bar" class="bg-gray-5 hidden h-[50px] items-center justify-between px-4 rounded-b-xl xs:flex">
+    <section id="top-bar" class="bg-gray-5 hidden h-[50px] items-center justify-between px-4 rounded-b-xl lg:flex">
         <!-- Select -->
         <div class="cursor-pointer relative z-10" @click="toggle($el)" @mouseenter="toggle($el)"
             @mouseleave="toggle($el, false)">
             <span class="flex gap-2 ml-2 items-center leading-[25px] z-10">
                 <span class="group-hover:animate-arrow-rotate-in">
-                    <img src="@/assets/icons/arrow.svg" width="10" alt="" title="" />
+                    <Arrow :width="10" :height="6" :direction="'down'" />
                 </span>
 
                 {{ $t(globalStore.locale.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}

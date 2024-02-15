@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-20">
+    <section class="mb-20" :id="slugify(architectZone.title)">
         <p class="section-title">{{ architectZone.title }}</p>
 
         <section class="for-professionas-section">
@@ -76,6 +76,8 @@
 </template>
 
 <script setup>
+import slugify from '~/plugins/slugify';
+
 const forProfessionalStore = inject('forProfessionalStore');
 const partnerZone = forProfessionalStore.partnerZone;
 const architectZone = forProfessionalStore.architectZone;

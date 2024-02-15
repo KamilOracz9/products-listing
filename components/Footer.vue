@@ -2,10 +2,12 @@
     <div class="bg-black-2 text-white px-5 py-12 rounded-br-md lg:py-[61.5px] lg:pl-[46px] lg:pr-[78px] lg:rounded-br-lg">
         <!-- Items -->
         <ul class="flex flex-col gap-y-2 w-full lg:flex-row lg:gap-10 lg:justify-between lg:flex-wrap">
+            <FooterDropdown :item="products" :divider="'/'" />
             <FooterDropdown v-for="item in footerStore.data.items" :item="item" />
         </ul>
 
-        <ul class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
+        <ul
+            class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
             <!-- Contacts -->
             <FooterContact v-for="item in footerStore.data.contacts" :item="item" />
             <!-- Websites -->
@@ -13,9 +15,10 @@
                 <p class="text-medium-lg uppercase">{{ $t('our-websites') }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="footer__icon" alt="Icon" title="" />
-                    <ul class="flex flex-col">
-                        <FooterWebsite v-for="item in footerStore.data.websites" :item="item" />
-                    </ul>
+                    <div class="flex flex-col">
+                        <a v-for="item in footerStore.data.websites" class="flex gap-3 footer__url" :href="item.url">{{
+                            item.label }}</a>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -26,8 +29,22 @@
 import { useFooterStore } from '@/stores';
 
 const footerStore = useFooterStore();
+const categoryStore = useCategoryStore();
 
-onMounted(() => {
-    footerStore.fetchData();
+const products = computed(() => {
+    return {
+        label: 'products',
+        slug: 'categories',
+        items: categoryStore.mainCategories.map(mainCategory => {
+            return {
+                slug: mainCategory.slug,
+                label: mainCategory.label
+            }
+        })
+    };
+})
+
+onMounted(async () => {
+    await footerStore.fetchData();
 });
 </script>
