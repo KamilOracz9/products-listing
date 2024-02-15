@@ -165,11 +165,11 @@
     }
 
     /* Home */
-    #home-product-tiles>.home-product-tile:first-child>img {
+    #home-product-tiles>.home-product-tile:first-child {
         @apply rounded-tl-md md:rounded-tl-lg
     }
 
-    #home-product-tiles>.home-product-tile:last-child>img {
+    #home-product-tiles>.home-product-tile:last-child {
         @apply rounded-br-md md:rounded-br-lg
     }
 
