@@ -71,6 +71,7 @@
             "projects": "Projekty UE"
         },
         "contact": {
+            "select-region": "Wybierz region",
             "address": "Adres",
             "phone": "Tel.",
             "office": "Biuro",

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="selected" class="mt-6 cursor-pointer" ref="salesServiceDepartmentMapRef" @click="onSelect"
+    <div class="mt-6 cursor-pointer" ref="salesServiceDepartmentMapRef" @click="onSelect"
         :class="selected ? `[&>svg>g>.active>.region]:fill-yellow-2` : ''">
         <svg viewBox="0 0 462 420" fill="none">
             <g clip-path="url(#clip0_591_8858)">

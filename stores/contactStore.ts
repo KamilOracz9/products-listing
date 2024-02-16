@@ -65,10 +65,14 @@ const useContactStore = defineStore('contact', {
                 this.main = response.default.main;
                 this.tiles = response.default.tiles;
                 this.saleServiceDepartment = response.default.saleServiceDepartment;
-                this.saleServiceDepartment.employees = response.saleServiceDepartmentEmployees;
                 this.exportDepartment = response.default.exportDepartment;
             }).finally(() => this.isLoading = false);
         },
+        async fetchCustomers() {
+            await import('@/data/contact').then(response => {
+                this.saleServiceDepartment.employees = response.saleServiceDepartmentEmployees;
+            })
+        }
     }
 });
 

@@ -10,8 +10,8 @@
                 <SectionsContactSalesServiceDepartmentMap :options="saleServiceDepartment.options" />
             </div>
             <div class="md:col-span-3 lg:col-span-2">
-                <p v-if="selected" class="section-subtitle capitalize">{{ selected.label }}</p>
-                <SectionsContactEmployees :employees="saleServiceDepartment.employees" />
+                <p class="section-subtitle capitalize">{{ selected?.label ?? $t('pages.contact.select-region') }}</p>
+                <SectionsContactEmployees :employees="contactStore.saleServiceDepartment.employees" />
             </div>
         </div>
     </section>
@@ -26,4 +26,8 @@ const selected = ref(null);
 provide('selected', selected);
 
 const { saleServiceDepartment } = contactStore;
+
+watch(selected, async () => {
+    await contactStore.fetchCustomers();
+})
 </script>
