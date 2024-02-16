@@ -176,6 +176,45 @@
         @apply absolute z-10 top-1/2 flex items-center -translate-y-1/2 lg:bottom-6 cursor-pointer h-[25px];
     }
 
+    /* Form online */
+    #form-online {
+        h2 {
+            @apply [font-size:_clamp(1.25rem,2.5cqw,1.5rem)] font-medium;
+        }
+
+        .content-grid {
+            @apply bg-gray-2 p-6 [&_textarea]:bg-white grid h-fit gap-4;
+
+            input:not([type='checkbox']) {
+                @apply bg-white;
+            }
+
+            label {
+                @apply [font-size:_clamp(.7rem,1.5cqw,.875rem)];
+            }
+        }
+
+        .file-input {
+            p, label {
+                @apply whitespace-nowrap text-gray-3 text-sm;
+            }
+
+            button{
+                @apply transition-all;
+
+                &:hover{
+                    @apply bg-yellow-1;
+                }
+            }
+        }
+
+        .actions {
+            p {
+                @apply whitespace-nowrap text-gray-3 text-sm;
+            }
+        }
+    }
+
     /* Home */
     #home-product-tiles>.home-product-tile:first-child {
         @apply rounded-tl-md md:rounded-tl-lg
