@@ -32,7 +32,7 @@
             class="left-4 main-slider-arrow main-slider-arrow-prev block rotate-180 lg:left-14 xl:left-16 2xl:left-20" alt="">
 
         <div
-            class="swiper-pagination hidden absolute bottom-3 text-white z-20 !left-1/2 !-translate-x-1/2 !w-[80%] border-t border-gray-1 pt-2 lg:flex lg:!bottom-9 xl:!w-[85%]">
+            class="swiper-pagination hidden absolute bottom-3 text-white z-20 !left-1/2 !-translate-x-1/2 !w-[80%] border-t border-gray-1 pt-2 lg:flex lg:text-lg lg:!bottom-9 xl:!w-[85%]">
         </div>
 
         <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-14 xl:right-16 2xl:right-20" src="@/assets/icons/slider-arrow.svg"
