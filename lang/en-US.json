@@ -54,12 +54,47 @@
     "from": "From",
     "to": "To",
     "or": "or",
+    "send": "Send",
     "filter": "Filter",
     "pagination": {
         "prev": "Previous",
         "next": "Next"
     },
     "pages": {
+        "form-online": {
+            "title": "Online Form",
+            "form-person": {
+                "title": "FILL IN PERSONAL DATA",
+                "placeholders": {
+                    "name": "Name / Company Name",
+                    "street": "Street",
+                    "home": "House/Apartment Number",
+                    "zip-code": "Zip Code",
+                    "city": "City",
+                    "phone": "Phone",
+                    "email": "Email Address",
+                    "desc": "Description of Damage"
+                },
+                "statements": {
+                    "real-data": "*I declare that I provide my data voluntarily and that the provided data is true.",
+                    "processing-data": "*I have read the information clause and consent to the processing of my data for the purpose of complaint processing, in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of individuals with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC."
+                }
+            },
+            "form-product": {
+                "title": "FILL IN PRODUCT DATA",
+                "placeholders": {
+                    "name": "Product Name / Code",
+                    "number": "Warranty Card Number / Purchase Proof Number",
+                    "place": "Product Name / Code"
+                },
+                "add-photo": "Attach Photo",
+                "select-file": "Select File",
+                "no-file": "No File Selected",
+                "action": "Action",
+                "warranty": "Warranty",
+                "post-warranty": "Post-Warranty"
+            }
+        },
         "inspirations": {
             "see-all": "See all",
             "often-questions": "Freaqently asked questions",

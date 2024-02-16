@@ -27,7 +27,7 @@
             <p class="section-text">{{ section.reklamationsForm.text }}</p>
             <ul class="flex flex-col gap-4 [&>li>a]:justify-between [&>li>a]:border-black">
                 <li class="xl:max-w-[344px]" v-for="(button, index) in section.reklamationsForm.buttons" :key="index">
-                    <ButtonsTransparent tagType="link" :url="button.path" :label="button.buttonText" />
+                    <ButtonsTransparent tagType="link" :url="localePath({name: 'form-online'})" :label="button.buttonText" />
                 </li>
             </ul>
         </div>
@@ -36,6 +36,8 @@
 
 <script setup lang="ts">
 import type { IServiceSection5 } from "~/types/service";
+
+const localePath = useLocalePath();
 
 const props = defineProps<{
     section: IServiceSection5

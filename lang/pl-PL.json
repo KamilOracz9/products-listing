@@ -59,7 +59,42 @@
     "from": "Od",
     "to": "Do",
     "or": "lub",
+    "send": "Wyślij",
     "pages": {
+        "form-online": {
+            "title": "Formularz online",
+            "form-person": {
+                "title": "WYPEŁNIJ DANE OSOBOWE",
+                "placeholders": {
+                    "name": "Imię i nazwisko / Nazwa firmy",
+                    "street": "Ulica",
+                    "home": "Nr domu / mieszkania",
+                    "zip-code": "Kod pocztowy",
+                    "city": "Miasto",
+                    "phone": "Telefon",
+                    "email": "Adres email",
+                    "desc": "Opis uszkodzenia"
+                },
+                "statements": {
+                    "real-data": "*Oświadczam, że swoje dane podaję dobrowolnie oraz że podane dane są prawdziwe",
+                    "processing-data": "*Zapoznałam/em się z klauzulą informacyjna i wyrażam zgodę na przetwarzanie moich danych na potrzeby realizacji procesu reklamacji, zgodnie z Rozporządzeniem parlamentu europejskiego i Rady (UE) 206/679 z dnia 27 kwietnia 2016 roku w sprawie ochrony osób fizycznych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE."
+                }
+            },
+            "form-product": {
+                "title": "WYPEŁNIJ DANE PRODUKTOWE",
+                "placeholders": {
+                    "name": "Nazwa / Kod produktu",
+                    "number": "Nr karty gwarancyjnej / Nr dowodu zakupu",
+                    "place": "Nazwa / Kod produktu"
+                },
+                "add-photo": "Załącz zdjęcie",
+                "select-file": "Wybierz plik",
+                "no-file": "Nie wybrano pliku",
+                "action": "Działanie",
+                "warranty": "Gwarancyjne",
+                "post-warranty": "Pogwarancyjne"
+            }
+        },
         "inspirations": {
             "see-all": "Zobacz wszystkie",
             "often-questions": "Często zadawane pytania",
