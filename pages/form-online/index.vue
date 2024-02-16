@@ -10,14 +10,14 @@
 
                 <InputFloating name="name" type="text" :label="$t('pages.form-online.form-person.placeholders.name')" />
                 <InputFloating name="street" type="text" :label="$t('pages.form-online.form-person.placeholders.street')" />
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid gap-4 sm:grid-cols-2">
                     <InputFloating name="home-number" type="text"
                         :label="$t('pages.form-online.form-person.placeholders.home')" />
                     <InputFloating name="zip-code" type="text"
                         :label="$t('pages.form-online.form-person.placeholders.zip-code')" />
                 </div>
                 <InputFloating name="city" type="text" :label="$t('pages.form-online.form-person.placeholders.city')" />
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid gap-4 sm:grid-cols-2">
                     <InputFloating name="phone" type="text"
                         :label="$t('pages.form-online.form-person.placeholders.phone')" />
                     <InputFloating name="email" type="text"
@@ -36,12 +36,12 @@
                 <InputFloating name="product_place" type="text"
                     :label="$t('pages.form-online.form-product.placeholders.place')" />
 
-                <div class="relative file-input">
+                <div class="relative file-input border-b border-gray-1 pb-4">
                     <input accept="image/png, image/jpeg"
                         @change="fileName = (<HTMLInputElement>$event?.target)?.files[0]?.name" ref="fileInputRef"
                         class="invisible h-0 w-0 absolute" type="file">
 
-                    <div class="flex w-fit items-center gap-6">
+                    <div class="flex w-fit items-center gap-6 flex-wrap [&>button]:w-fit">
                         <label>{{ $t('pages.form-online.form-product.add-photo') }}</label>
                         <ButtonsFilled :label="$t('pages.form-online.form-product.select-file')" type="button"
                             @click="<HTMLInputElement>fileInputRef.click()" tagType="button" color="yellow-2" />
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="flex gap-6 actions">
+                <div class="flex gap-6 actions flex-col xs:flex-row">
                     <p>{{ $t('pages.form-online.form-product.action') }}</p>
                     <div class="flex gap-3 text-xs">
                         <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0" id="warranty" />

@@ -188,6 +188,10 @@
             input:not([type='checkbox']) {
                 @apply bg-white;
             }
+
+            label {
+                @apply [font-size:_clamp(.7rem,1.5cqw,.875rem)];
+            }
         }
 
         .file-input {
@@ -207,10 +211,6 @@
         .actions {
             p {
                 @apply whitespace-nowrap text-gray-3 text-sm;
-            }
-
-            label {
-                
             }
         }
     }
