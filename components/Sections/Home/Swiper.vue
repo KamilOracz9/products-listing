@@ -1,6 +1,7 @@
 <template>
-    <Swiper :navigation="sliderConfig.navigation" @slideChange="activeSlide = $event.realIndex"
-        class="relative rounded-tr-lg" :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperNavigation]"
+    <Swiper :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
+        @slideChange="activeSlide = $event.realIndex" class="relative rounded-tr-lg"
+        :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperNavigation, SwiperPagination]"
         :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
         :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
         <SwiperSlide v-for="(slide, index) in homeStore.slider.items" :key="index">
@@ -10,8 +11,7 @@
                         <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
                         <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
                         <NuxtImg preset="home-swiper" quality="10" format="webp" :src="slide.fileUrls.base"
-                            class="h-full w-full object-cover"
-                            :alt="slide.title ?? `New Trendy - slide-${index}`"
+                            class="h-full w-full object-cover" :alt="slide.title ?? `New Trendy - slide-${index}`"
                             :title="slide.title ?? `New Trendy - slide-${index}`" />
                     </picture>
 
@@ -21,7 +21,7 @@
                     </video>
                 </div>
 
-                <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-28 lg:left-6">
+                <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-36 lg:left-12">
                     <p class="text-2xl">{{ slide.subtitle }}</p>
                     <h2 v-if="slide.title" class="text-[2.5rem] font-medium leading-[3rem] uppercase">{{ slide.title }}</h2>
                 </div>
@@ -29,21 +29,13 @@
         </SwiperSlide>
 
         <img src="@/assets/icons/slider-arrow.svg"
-            class="left-4 main-slider-arrow main-slider-arrow-prev lg:left-6 block rotate-180" alt="">
+            class="left-4 main-slider-arrow main-slider-arrow-prev block rotate-180 lg:left-14 xl:left-16 2xl:left-20" alt="">
 
         <div
-            class="hidden absolute bottom-3 text-white z-20 left-1/2 -translate-x-1/2 w-[85%] border-t border-gray-1 pt-2 lg:flex">
-
-            <span v-for="(slide, index) in homeStore.slider.items"
-                :class="activeSlide === index ? 'before:flex after:flex main-slider-pagination-item-active' : 'before:hidden after:hidden'"
-                class="
-                    flex-1 text-center uppercase text-sm relative main-slider-pagination-item px-2
-                    before:absolute before:z-10 before:h-[3px] before:w-full before:bg-white before:-top-3
-                    after:-top-5 after:left-1/2 after:-translate-x-1/2 after:rotate-180 after:absolute after:z-10 after:border-l-[10px] after:border-r-[10px] after:border-t-[10px] after:border-[transparent] after:border-t-white 
-                ">{{ slide.navTitle }}</span>
+            class="swiper-pagination hidden absolute bottom-3 text-white z-20 !left-1/2 !-translate-x-1/2 !w-[80%] border-t border-gray-1 pt-2 lg:flex lg:!bottom-9 xl:!w-[85%]">
         </div>
 
-        <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-6" src="@/assets/icons/slider-arrow.svg"
+        <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-14 xl:right-16 2xl:right-20" src="@/assets/icons/slider-arrow.svg"
             alt="">
     </Swiper>
 </template>
@@ -74,5 +66,18 @@ const sliderConfig = {
         nextEl: '.main-slider-arrow-next',
         prevEl: '.main-slider-arrow-prev',
     },
+    pagination: {
+        clickable: true,
+        el: '.swiper-pagination',
+        renderBullet: function (index, className) {
+            return `<span class="${className}">${homeStore.slider.items[index].navTitle ?? ''}</span>`;
+        },
+    }
 };
 </script>
+
+<style scoped>
+.swiper-pagination-bullet-active {
+    background: #fff;
+}
+</style>

@@ -3,6 +3,9 @@ import imagesConfig from './config/images.config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  routeRules: {
+    '/**': { swr: 3600 },
+  },
   devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
