@@ -36,5 +36,7 @@ onMounted(async () => {
     await serviceStore.fetchData().then(() => serviceStore.fetchCities());
 
     useSlideTo();
+
+    selected.value = serviceStore.sections?.section4.boxLeft.options[0];
 })
 </script>

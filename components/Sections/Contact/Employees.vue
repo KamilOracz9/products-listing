@@ -23,7 +23,7 @@
                     <p>{{ employee.voivodeships?.join(', ') }}</p>
                 </div>
             </li>
-            <li v-if="!employees?.length" class="flex flex-col gap-4 placeholder" v-for="index in 4">
+            <li v-if="!employees?.length" class="flex flex-col gap-4 placeholder mt-6" v-for="index in 4">
                 <img src="@/assets/icons/customer-placeholder.svg" alt=""
                         class="gray-2-filter rounded-br-[25px] w-full aspect-[1/1]">
 
