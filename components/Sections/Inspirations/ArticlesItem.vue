@@ -5,7 +5,7 @@
                 <source media="(min-width: 1280px)" :srcset="article.image.tablet">
                 <source media="(min-width: 768px)" :srcset="article.image.mobile">
                 <source media="(min-width: 450px)" :srcset="article.image.tablet">
-                <img :src="article.image.mobile" alt="" class="w-full">
+                <img :src="article.image.mobile" alt="" class="w-full aspect-[auto_735/495]" width="735" height="495">
             </picture>
         </NuxtLink>
 

@@ -3,6 +3,11 @@ import imagesConfig from './config/images.config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  nitro: {
+    externals: {
+      traceOptions: { base: process.cwd() }
+    }
+  },
   routeRules: {
     '/**': { swr: 3600 },
   },

@@ -15,7 +15,7 @@
                 class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                 <li class="p-3" v-for="item in globalStore.locale.locales">
                     <div @click="setLocale(item.code)" class="flex gap-2 group/dropdown-item">
-                        <img width="18" :src="item.flagUrl" alt="" title="" />
+                        <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
                         <span class="transition-opacity group-hover/dropdown-item:opacity-[70%]">{{ $t(item.label.toLowerCase()) }}</span>
                     </div>
                 </li>
