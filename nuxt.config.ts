@@ -32,12 +32,6 @@ export default defineNuxtConfig({
     'nuxt-aos',
   ],
   image: imagesConfig,
-  runtimeConfig: {
-    public: {
-      apiBase: process.env.API_URL,
-      apiProtocol: process.env.API_PROTOCOL,
-    },
-  },
   plugins: [
     '@/plugins/device',
     '@/plugins/slugify',

@@ -57,20 +57,18 @@ const useInspirationStore = defineStore('inspiration', {
         async fetchCategory() {
             this.category.isLoading = true;
 
-            await import('@/data/inspirations')
-                .then(response => {
-                    this.category.item = response.default.category;
-                })
+            const { data } = await useFetch(`${useAppConfig().public.apiBase}/pl_PL/articles/category/aktualnosci`)
                 .finally(() => this.category.isLoading = false);
+
+            this.category.item = <IInspirationCategory>data.value;
         },
-        async fetchArticle() {
+        async fetchArticle(slug: string) {
             this.article.isLoading = true;
 
-            await import('@/data/inspirations')
-                .then(response => {
-                    this.article.item = response.default.article;
-                })
+            const { data } = await useFetch(`${useAppConfig().public.apiBase}/pl_PL/articles/show/${slug}`)
                 .finally(() => this.article.isLoading = false);
+
+            this.article.item = <IInspirationFullArticle>data.value;
         },
     }
 })
