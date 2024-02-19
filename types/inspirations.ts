@@ -4,7 +4,7 @@ export type IInspirationCategory = {
     title: string;
     slug: string;
     breadcrumbs: IBreadCrumb[] | null;
-    articles: IInspirationArticle[];
+    items: IInspirationArticle[];
 }
 
 export type IInspirationsFaq = {
@@ -23,11 +23,11 @@ export type IInspirationFullArticle = {
     title: string;
     text: string;
     slug: string;
-    similar: IInspirationArticle[];
+    related: IInspirationArticle[];
 }
 
-type IInspirationArticle = {
-    image: string;
+export type IInspirationArticle = {
+    image: IPhoto;
     socials: {
         type: string;
         url: string;

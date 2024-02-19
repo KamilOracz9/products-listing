@@ -1,16 +1,25 @@
 <template>
-    <div v-if="!inspirationStore.category.isLoading" class="mb-20">
-        <SectionsCommonBreadrumbs :breadcrumbs="inspirationStore.category.item.breadcrumbs" />
+    <Suspense>
+        <div class="mb-20">
+            <SectionsCommonBreadrumbs :breadcrumbs="inspirationStore.category.item?.breadcrumbs" />
 
-        <div class="pb-10">
-            <p class="section-title">{{ inspirationStore.category.item.title }}</p>
+            <div class="pb-10">
+                <h1 class="section-title">{{ inspirationStore.category.item?.title }}</h1>
+            </div>
+
+            <SectionsInspirationsArticles :articles="inspirationStore.category.item?.items"
+                :categorySlug="inspirationStore.category.item?.slug" />
         </div>
 
-        <SectionsInspirationsArticles :articles="inspirationStore.category.item.articles" :categorySlug="inspirationStore.category.item.slug" />
-    </div>
+        <template #fallback>
+            <div class="h-[70svh]">
+               <Loading />
+            </div>
+        </template>
+    </Suspense>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const inspirationStore = useInspirationStore();
 
 onMounted(async () => {
