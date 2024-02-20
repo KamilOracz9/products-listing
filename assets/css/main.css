@@ -262,6 +262,22 @@
     footer .footer__icon {
         @apply icon-16 white-filter translate-y-4 lg:translate-y-1;
     }
+
+    footer .footer__items {
+        @apply grid gap-y-2 grid-flow-row-dense lg:gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,208px),1fr))];
+    }
+
+    footer .footer__dropdown > div {
+        @apply grid grid-rows-[0fr] transition-all lg:grid-rows-[1fr];
+    }
+
+    footer .footer__dropdown > div.active {
+        @apply grid grid-rows-[1fr];
+    }
+
+    footer .footer__dropdown > div > div {
+        @apply overflow-hidden grid pl-2 lg:pl-0;
+    }
 }
 
 @layer utilities {
