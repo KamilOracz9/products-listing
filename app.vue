@@ -8,7 +8,6 @@
 import logo from '@/assets/images/logo.svg';
 const i18n = useI18n();
 const router = useRouter();
-const config = useAppConfig();
 
 useHead(() => ({
   link: [
@@ -16,11 +15,13 @@ useHead(() => ({
       rel: 'canonical',
       href: `https://newtrendy.pl${router.currentRoute.value.fullPath}`,
     },
-  ],
-  link: [
     {
       rel: 'preconnect',
       href: 'https://newtrendy.pl',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://newtrendy.usermd.net',
     },
   ],
   htmlAttrs: {
@@ -51,6 +52,4 @@ useSeoMeta({
 <style lang="postcss">
 @import '~/assets/css/main.css';
 @import '~/assets/css/breuer.css';
-@import '~/assets/css/aller.css';
-@import '~/assets/css/minion-pro.css';
 </style>

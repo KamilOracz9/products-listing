@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
-    '@nuxt/image',
     'nuxt-aos',
   ],
   image: imagesConfig,
