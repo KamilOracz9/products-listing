@@ -1,11 +1,12 @@
 <template>
     <li>
-        <NuxtLink :to="localePath({ name: 'inspirations' }) + `/${categorySlug}/${article.slug}`">
+        <NuxtLink :aria-label="article.title" :to="localePath({ name: 'inspirations' }) + `/${categorySlug}/${article.slug}`">
             <picture>
                 <source media="(min-width: 1280px)" :srcset="article.image.tablet">
                 <source media="(min-width: 768px)" :srcset="article.image.mobile">
                 <source media="(min-width: 450px)" :srcset="article.image.tablet">
-                <img :src="article.image.mobile" alt="" class="w-full aspect-[auto_735/495]" width="735" height="495">
+                <NuxtImg :src="article.image.mobile" class="w-full aspect-[auto_735/495]" :title="article.title" :alt="article.title" sizes="100vw sm:608px md:219px lg:306px xl:389px 2xl:475px 3xl:533px" />
+                <!-- <img :src="article.image.mobile" alt="" class="w-full aspect-[auto_735/495]" width="735" height="495"> -->
             </picture>
         </NuxtLink>
 

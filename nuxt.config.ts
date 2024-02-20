@@ -12,15 +12,19 @@ export default defineNuxtConfig({
     '/**': { swr: 3600 },
   },
   devtools: { enabled: true },
-  css: [
-    '~/assets/css/main.css',
-    '~/assets/css/breuer.css',
-    '~/assets/css/aller.css',
-    '~/assets/css/minion-pro.css'
-  ],
+  hooks: {
+    'build:manifest': (manifest) => {
+      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
+
+      if (css) {
+        for (let i = css.length - 1; i >= 0; i--) {
+          if (css[i].startsWith('entry')) css.splice(i, 1);
+        }
+      }
+    },
+  },
   postcss: {
     plugins: {
-      'postcss-import': {},
       'tailwindcss/nesting': 'postcss-nesting',
       tailwindcss: {},
       autoprefixer: {},
