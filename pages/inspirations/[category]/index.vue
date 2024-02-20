@@ -6,14 +6,15 @@
             <div class="pb-10">
                 <h1 class="section-title">{{ inspirationStore.category.item?.title }}</h1>
             </div>
-
-            <SectionsInspirationsArticles :articles="inspirationStore.category.item?.items"
-                :categorySlug="inspirationStore.category.item?.slug" />
+            <template v-if="inspirationStore.category.item">
+                <LazySectionsInspirationsArticles :articles="inspirationStore.category.item?.items"
+                    :categorySlug="inspirationStore.category.item?.slug" />
+            </template>
         </div>
 
         <template #fallback>
             <div class="h-[70svh]">
-               <Loading />
+                <Loading />
             </div>
         </template>
     </Suspense>

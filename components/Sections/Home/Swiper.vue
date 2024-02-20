@@ -10,7 +10,7 @@
                     <picture v-if="slide.type === 'image'" class="w-full">
                         <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
                         <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
-                        <NuxtImg preset="home-swiper" quality="10" format="webp" :src="slide.fileUrls.base"
+                        <img preset="home-swiper" :src="slide.fileUrls.base"
                             class="h-full w-full object-cover" :alt="slide.title ?? `New Trendy - slide-${index}`"
                             :title="slide.title ?? `New Trendy - slide-${index}`" />
                     </picture>
@@ -74,6 +74,7 @@ const sliderConfig = {
         },
     }
 };
+
 </script>
 
 <style scoped>

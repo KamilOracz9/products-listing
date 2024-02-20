@@ -64,7 +64,7 @@
         <SectionsHeaderDropdown :name="$t('clipboard')" :iconUrl="clipboardIcon" slug="clipboard" :desktopLabelHide="true">
             <li v-for="clipboardItem in clipboardStore.items.products" class="w-[50%] md:w-[33%]">
                 <NuxtLink :to="clipboardItem.url" class="px-6 flex flex-col items-center gap-2">
-                    <img class="aspect-[3/4]" :src="clipboardItem.imgUrl" :alt="clipboardItem.name"
+                    <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl" :alt="clipboardItem.name"
                         :title="clipboardItem.name">
                     <div class="w-full flex flex-col items-start text-left text-xs gap-1.5">
                         <p class="text-base font-bold">{{ clipboardItem.name }}</p>
