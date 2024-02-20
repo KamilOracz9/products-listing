@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <Modals />
+        <!-- <Modals /> -->
 
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
             <header class="relative z-30">
@@ -30,6 +30,8 @@ onMounted(async () => {
 
     categoryStore.fetchCategories();
     await headerStore.fetchMenuItems(useI18n());
+
+    await prefetchComponents(['HeaderMenu', 'TopBar', 'Footer'])
 
     const topBar = document.getElementById('top-bar');
 
