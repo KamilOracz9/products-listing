@@ -2,13 +2,13 @@
     <div id="collections" class="mb-10">
         <h1 class="section-title">{{ $t('pages.collections.title') }}</h1>
         <div
-            class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,350px),1fr))] gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))]">
+            class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,278px),1fr))] gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))]">
             <NuxtLink :to="localePath({ name: 'categories', query: { collection: collection.slug } })" data-aos="fade-up"
-                :aria-label="collection.name" v-for="collection in collectionStore.items">
+                :aria-label="collection.name" v-for="(collection, index) in collectionStore.items">
                 <figure class="zoom-in relative rounded-br-md xs:rounded-br-lg">
                     <picture>
-                        <source media="(min-width: 450px)" :srcset="collection.images.medium">
-                        <img :title="collection.name" :alt="collection.name" :src="collection.images.small">
+                        <source media="(min-width: 1024px)" :srcset="collection.images.medium">
+                        <img :loading="index < 6 ? 'eager' : 'lazy'" :title="collection.name" :alt="collection.name" :src="collection.images.small" class="aspect-[auto_714/441]" width="714" height="441">
                     </picture>
                 </figure>
 

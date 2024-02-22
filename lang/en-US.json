@@ -61,6 +61,11 @@
         "next": "Next"
     },
     "pages": {
+        "made-to-measure": {
+            "title": "Made to measure",
+            "configurator": "Cabins configurator",
+            "how-use": "How to use cabins configurator"
+        },
         "collections": {
             "title": "Our collections",
             "discover": "Discover the collection"

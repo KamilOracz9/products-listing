@@ -7,7 +7,8 @@
             <SectionsHeaderItem slug="products">
                 <div class="header__categories">
                     <div v-for="column in categoryStore.list.items.columns">
-                        <div v-for="category in column.items" class="lg:my-10 lg:px-5">
+                        <SectionsHeaderColumn :column="column" />
+                        <!-- <div v-for="category in column.items" class="lg:my-10 lg:px-5">
                             <NuxtLink :to="localePath({ name: 'categories' }) + `/${category.slug}`">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
                                     :alt="category.label" :title="category.label">
@@ -25,7 +26,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </SectionsHeaderItem>

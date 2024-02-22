@@ -1,0 +1,89 @@
+@tailwind components;
+
+@layer components {
+    #made-to-measure {
+        h2 {
+            font-size: clamp(1.5rem, 2cqw, 2.25rem);
+            @apply font-medium leading-[1.1];
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2cqw, 1.5rem);
+            @apply font-medium leading-[1.1];
+        }
+        
+        .content-grid {
+            @apply grid gap-6 lg:pt-10 lg:gap-10;
+        }
+
+        .row {
+            @apply grid gap-4 lg:grid-cols-2 lg:gap-x-10;
+        }
+
+        .column {
+            @apply grid gap-4;
+
+            p {
+                font-size: clamp(1rem, 2cqw, 1.25rem);
+            }
+
+            a {
+                @apply font-medium;
+            }
+        }
+
+        .row.instruction {
+            @apply gap-6 grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] 
+                md:gap-10 md:grid-cols-[repeat(auto-fit,minmax(min(100%,250px),1fr))] 
+                lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))];
+        }
+
+        .row.tech-pictures {
+            @apply gap-6 grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] lg:grid-cols-6;
+        }
+
+        .row.glasses {
+            @apply gap-6 lg:gap-10 grid-cols-[repeat(auto-fit,minmax(min(100%,230px),1fr))] xl:grid-cols-4;
+
+            * {
+                font-size: clamp(.75rem, 2cqw, 1rem) !important;
+            }
+
+            p {
+                @apply leading-[1.3]
+            }
+
+            table {
+                @apply w-fit;
+
+                th {
+                    @apply text-left pr-5;
+                }
+            }
+
+            .stars {
+                @apply min-w-[110px];
+                
+                img {
+                    @apply aspect-[auto_1/1] [width:clamp(12px,1.5cqw,20px)];
+                }
+            }
+        }
+
+        .row.menu{
+            a {
+                @apply flex gap-2 items-center;
+            }
+        }
+
+        .row.modifications{
+            h2 {
+                @apply flex gap-2 items-center;
+            }
+        }
+
+        .divider {
+            @apply pb-6 lg:pb-10 border-b border-gray-1;
+        }
+    }
+}
