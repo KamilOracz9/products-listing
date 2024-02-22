@@ -1,4 +1,8 @@
 {
+  "collections/index": {
+    "en": "/collections",
+    "pl": "/kolekcje"
+  },
   "form-online/index": {
     "en": "/form-online",
     "pl": "/formularz-on-line"

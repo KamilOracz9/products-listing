@@ -61,6 +61,10 @@
     "or": "lub",
     "send": "Wyślij",
     "pages": {
+        "collections": {
+            "title": "Nasze kolekcje",
+            "discover": "Poznaj kolekcję"
+        },
         "form-online": {
             "title": "Formularz online",
             "form-person": {

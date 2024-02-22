@@ -4,6 +4,6 @@ export default defineAppConfig({
     gray: 'cool'
   },
   public: {
-    apiBase: 'https://newtrendy.usermd.net/api/v1'
+    apiBase: 'https://dev.newtrendy.usermd.net/api/v1'
   }
 })

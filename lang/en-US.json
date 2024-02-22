@@ -61,6 +61,10 @@
         "next": "Next"
     },
     "pages": {
+        "collections": {
+            "title": "Our collections",
+            "discover": "Discover the collection"
+        },
         "form-online": {
             "title": "Online Form",
             "form-person": {
