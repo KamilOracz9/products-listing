@@ -3,9 +3,9 @@
         <p class="section-title">{{ partnerZone.title }}</p>
 
         <section class="for-professionas-section">
-            <div v-html="partnerZone.section1.text" class="section-text lg:my-0"></div>
+            <div v-html="partnerZone.section1.text" class="section-text lg:my-0" data-aos="fade-up"></div>
 
-            <div class="mt-6 lg:mt-0">
+            <div class="mt-6 lg:mt-0" data-aos="fade-up">
                 <p class="font-medium text-xl sm:text-2xl">{{ partnerZone.section2.title }}</p>
 
                 <div v-html="partnerZone.section2.text" class="section-text my-2 lg:my-4"></div>
