@@ -442,83 +442,83 @@ export default {
             ]
         },
         // Column 5
-        {
-            items: [
-                {
-                    label: 'Nasze kolekcje',
-                    slug: 'nasze-kolekcje',
-                    iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg',
-                    url: '/',
-                    productsCount: 0,
-                    enableOnFilters: false,
-                    breadcrumbs: [
-                        {
-                            label: 'Główna',
-                            path: '/',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty/drzwi-wnekowe',
-                        },
-                    ],
-                    items: [
-                        {
-                            label: 'Eventa',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Black Chrome',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Cooper Shine',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Gold Shine',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Cooper Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Black XR',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gold Shine XR',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gunmetal Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gold Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                    ],
-                },
-            ]
-        }
+        // {
+        //     items: [
+        //         {
+        //             label: 'Nasze kolekcje',
+        //             slug: 'nasze-kolekcje',
+        //             iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg',
+        //             url: '/',
+        //             productsCount: 0,
+        //             enableOnFilters: false,
+        //             breadcrumbs: [
+        //                 {
+        //                     label: 'Główna',
+        //                     path: '/',
+        //                 },
+        //                 {
+        //                     label: 'Produkty',
+        //                     path: '/produkty',
+        //                 },
+        //                 {
+        //                     label: 'Produkty',
+        //                     path: '/produkty/drzwi-wnekowe',
+        //                 },
+        //             ],
+        //             items: [
+        //                 {
+        //                     label: 'Eventa',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Black Chrome',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Cooper Shine',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Gold Shine',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Cooper Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Black XR',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gold Shine XR',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gunmetal Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gold Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //             ],
+        //         },
+        //     ]
+        // }
     ]
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="lg:hidden" @click="headerStore.setSubmenu(slug)">
-        <p @mouseover="headerStore.setSubmenu(slug, false)" class="header__label flex gap-2 items-center">
+        <p class="header__label flex gap-2 items-center">
             <img v-if="icon" width="16" height="16" class="header__icon" :src="icon" alt="">
             <span class="mx-auto lg:hidden 2xl:block">{{ $t(slug) }}</span>
         </p>
@@ -9,8 +9,8 @@
         </div>
     </div>
 
-    <div class="hidden lg:block" @mouseleave="headerStore.setSubmenu('')">
-        <p @click="headerStore.setSubmenu(slug)" @mouseover="headerStore.setSubmenu(slug, false)"
+    <div class="hidden lg:block" @mouseleave="headerStore.setSubmenu('')" @mouseover="headerStore.setSubmenu(slug, false)">
+        <p @click="headerStore.setSubmenu(slug)"
             class="header__label flex gap-2 items-center">
             <img v-if="icon" width="16" height="16" class="header__icon" :src="icon" alt="">
             <span class="mx-auto lg:hidden 2xl:block">{{ $t(slug) }}</span>

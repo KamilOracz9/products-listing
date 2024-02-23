@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-breuer font-normal text-base overflow-x-hidden;
+        @apply font-breuer font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
     }
 
     * {
@@ -217,7 +217,7 @@
     }
 
     header .content-grid .header__categories {
-        @apply w-full grid gap-y-6 grid-cols-[repeat(auto-fit,minmax(min(100%,140px),1fr))] lg:grid-cols-5 lg:left-0;
+        @apply w-full grid gap-y-6 grid-cols-[repeat(auto-fit,minmax(min(100%,110px),1fr))] lg:grid-cols-5 lg:left-0;
     }
 
     header .content-grid .header__links-ref {

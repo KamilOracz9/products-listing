@@ -38,7 +38,25 @@
                     <SectionsHeaderColumn :column="categoryStore.list.items.columns[1]" />
                     <SectionsHeaderColumn :column="categoryStore.list.items.columns[2]" />
                     <SectionsHeaderColumn :column="categoryStore.list.items.columns[3]" />
-                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[4]" />
+                    <SectionsHeaderColumn>
+                        <div class="lg:px-8 lg:mb-10">
+                            <NuxtLink :to="localePath({ name: 'collections' })">
+                                <img loading="lazy" width="65" height="65" class="size-[65px]"
+                                    src="https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg"
+                                    :alt="$t('navigation.collections')" :title="$t('navigation.collections')">
+                                <p class="py-3">{{ $t('navigation.collections') }}</p>
+                            </NuxtLink>
+                            <div class="text-sm">
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                            </div>
+                        </div>
+                    </SectionsHeaderColumn>
                 </div>
             </SectionsHeaderItem>
 
@@ -99,12 +117,6 @@
             </NuxtLink>
 
             <SectionsHeaderItem slug="search" :icon="searchIcon">
-                <!-- <div class="lg:my-auto">
-                    <p class="header__label flex gap-2 items-center">
-                        <img width="16" height="16" class="header__icon" src="@/assets/icons/search.svg" alt="">
-                        <span class="mx-auto lg:hidden 2xl:block">{{ $t('search') }}</span>
-                    </p> -->
-                <!-- <div class="header__dropdown" :data-active="headerStore.submenu === 'search' ? true : false"> -->
                 <div class="w-full flex justify-center left-0">
                     <div class="w-[70%] flex flex-col gap-4 py-4 lg:pb-8">
                         <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
@@ -140,32 +152,7 @@
                         </NuxtLink>
                     </div>
                 </div>
-                <!-- </div> -->
-                <!-- </div> -->
             </SectionsHeaderItem>
-
-            <!-- <div class="lg:my-auto">
-                <p class="header__label flex gap-2 items-center">
-                    <img width="16" height="16" class="header__icon" src="@/assets/icons/clipboard.svg" alt="">
-                    <span class="mx-auto lg:hidden 2xl:block">{{ $t('clipboard') }}</span>
-                </p>
-                <div class="header__dropdown" :data-active="headerStore.submenu === 'clipboard' ? true : false">
-                    <div class="header__products left-0">
-                        <NuxtLink v-for="clipboardItem in clipboardStore.items.products" :to="clipboardItem.url"
-                            class="px-6 flex flex-col items-center gap-2 lg:mt-10">
-                            <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl"
-                                :alt="clipboardItem.name" :title="clipboardItem.name">
-                            <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                                <p class="text-base font-bold">{{ clipboardItem.name }}</p>
-                                <p class="text-gray-3">{{ clipboardItem.path }}</p>
-                                <p>{{ clipboardItem.symbol }}</p>
-                                <p>{{ clipboardItem.dimensions }}</p>
-                                <p>{{ clipboardItem.price }}</p>
-                            </div>
-                        </NuxtLink>
-                    </div>
-                </div>
-            </div> -->
 
             <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
@@ -269,15 +256,6 @@ const setLeftOffsets = () => {
     aboutOffsetLeft.value = calcLeftOffset(aboutRef.value);
     contactOffsetLeft.value = calcLeftOffset(contactRef.value);
 }
-
-// watch(
-//   () => route.fullPath,
-//   () => {
-//     headerStore.menuIsOpen = false;
-//     headerStore.setSubmenu('');
-//     console.log(route.fullPath)
-//   },
-// );
 
 onMounted(async () => {
     setHeader();
