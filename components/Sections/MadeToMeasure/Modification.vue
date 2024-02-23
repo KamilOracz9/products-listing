@@ -1,5 +1,5 @@
 <template>
-    <div class="row modifications">
+    <div class="row modifications" data-aos="fade-up">
         <div class="column">
             <h2><img :src="plusIcon" width="30" height="30" alt=""> Modyfikuj wymiary</h2>
             <p>Coraz częściej zdarza się, że strefa prysznica posiada wymiary odbiegające od standardowych,

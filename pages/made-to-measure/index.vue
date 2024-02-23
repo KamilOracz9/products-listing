@@ -49,7 +49,7 @@
             </div>
 
             <div class="row instruction divider">
-                <div class="column" v-for="index in 7">
+                <div class="column" v-for="index in 7" data-aos="fade-up" :data-aos-delay="index * 100">
                     <img width="80" height="80" src="https://newtrendy.pl/app/uploads/2023/12/01_zglos_pomiar_ikona.svg"
                         alt="">
                     <h3>1. ZGŁOŚ POMIAR</h3>
@@ -62,7 +62,7 @@
             <div id="#menu" class="row menu divider">
                 <div class="column">
                     <h2>Możliwe modyfikacje w naszych produktach:</h2>
-                    <h3 v-for="index in 7">
+                    <h3 v-for="index in 7" data-aos="fade-up" :data-aos-delay="index * 100">
                         <NuxtLink aria-label="Wymiar" class=""><img :src="plusIcon" width="20" height="20" alt="">Wymiar
                         </NuxtLink>
                     </h3>
@@ -71,7 +71,7 @@
 
             <SectionsMadeToMeasureModification imgClass="rounded-bl-md md:rounded-bl-lg" />
 
-            <div class="row modifications">
+            <div class="row modifications" data-aos="fade-up">
                 <div class="column col-span-2">
                     <h2><img :src="plusIcon" width="30" height="30" alt=""> Modyfikuj kształt</h2>
                     <p>Coraz częściej zdarza się, że strefa prysznica posiada wymiary odbiegające od standardowych,
@@ -98,12 +98,7 @@
                     class="column max-h-[400px] w-full object-cover lg:max-h-auto rounded-br-md md:rounded-br-lg">
             </div>
             <div class="row tech-pictures">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
-                <img src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
+                <img v-for="index in 6" data-aos="fade-up" :data-aos-delay="index * 100" src="https://newtrendy.pl/app/uploads/2023/08/Rysunek-02.jpg" alt="" class="column">
             </div>
 
             <SectionsMadeToMeasureModification imgClass="rounded-tl-md md:rounded-tl-lg" />
@@ -111,7 +106,7 @@
             <SectionsMadeToMeasureModification imgClass="rounded-br-md md:rounded-br-lg" />
             <SectionsMadeToMeasureModification />
 
-            <div class="row modifications">
+            <div class="row modifications" data-aos="fade-up">
                 <div class="column col-span-2">
                     <h2><img :src="plusIcon" width="30" height="30" alt=""> Zmień szkło</h2>
                     <p>Coraz częściej zdarza się, że strefa prysznica posiada wymiary odbiegające od standardowych,
@@ -132,7 +127,7 @@
             </div>
 
             <div class="row glasses mb-10">
-                <div class="column" v-for="index in 8">
+                <div class="column" v-for="index in 8" data-aos="fade-up">
                     <img src="https://newtrendy.pl/app/uploads/2023/07/opti_clear.jpg" alt="">
                     <p>
                         Wysoka transparentność szkła znakomicie prezentuje się w aranżacji łazienek z minimalistyczną strefą
