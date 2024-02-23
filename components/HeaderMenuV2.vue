@@ -12,10 +12,18 @@
                             :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
                         <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
                     </NuxtLink>
-                    <NuxtLink v-for="category in categoryStore.mainCategories" :to="localePath({ name: category.slug })">
+                    
+                    <NuxtLink v-for="category in categoryStore.mainCategories" :to="localePath({ name: 'categories' }) + `/${category.slug}`">
                         <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
                             :alt="category.label" :title="category.label">
                         <p class="py-3">{{ category.label }}</p>
+                    </NuxtLink>
+
+                    <NuxtLink :to="localePath({ name: 'collections' })">
+                        <img loading="lazy" width="65" height="65" class="size-[65px]"
+                            src="https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg"
+                            :alt="$t('navigation.collections')" :title="$t('navigation.collections')">
+                        <p class="py-3">{{ $t('navigation.collections') }}</p>
                     </NuxtLink>
                 </div>
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
@@ -134,8 +142,7 @@
                         </div>
 
                         <span class="lg:mr-20">
-                            <ButtonsTransparent :label="$t('search')" type="submit"
-                                    tag-type="button" />
+                            <ButtonsTransparent :label="$t('search')" type="submit" tag-type="button" />
                         </span>
 
                         <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
