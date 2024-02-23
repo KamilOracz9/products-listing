@@ -5,7 +5,7 @@
         <p class="section-title">{{ $t('download') }}</p>
 
         <ul class="flex flex-col gap-6 lg:gap-10">
-            <li v-for="(section, index) in downloadStore.sections" :key="index" class="flex flex-col gap-6 lg:gap-10">
+            <li v-for="(section, index) in downloadStore.sections" :key="index" class="flex flex-col gap-6 lg:gap-10" data-aos="fade-up">
                 <p class="uppercase text-[1.5rem] leading-[2.25rem] sm:text-[2rem]">{{ section.title }}</p>
 
                 <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 lg:gap-10">

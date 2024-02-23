@@ -4,26 +4,26 @@
     <SectionsAboutStory />
 
     <section class="mt-10" :id="slugify($t('pages.about.awards'))">
-      <p class="section-title">{{ $t('pages.about.awards') }}</p>
-      <div class="section-text" v-html="aboutStore.sections?.awards.body"></div>
+      <p class="section-title" data-aos="fade-up">{{ $t('pages.about.awards') }}</p>
+      <div class="section-text" data-aos="fade-up" v-html="aboutStore.sections?.awards.body"></div>
       <div class="overflow-x-auto no-scrollbar">
         <div class="flex lg:grid lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-          <img v-for="(image, index) in aboutStore.sections?.awards.images" :key="index"
+          <img data-aos="fade-up" v-for="(image, index) in aboutStore.sections?.awards.images" :key="index"
             class="min-w-[216px] max-w-[216px] aspect-1/1 w-full h-full" :src="image" alt="">
         </div>
       </div>
     </section>
 
     <section class="xl:w-1/2" :id="slugify($t('pages.about.career'))">
-      <p class="section-title">{{ $t('pages.about.career') }}</p>
-      <div class="section-text" v-html="aboutStore.sections?.career.body"></div>
+      <p class="section-title" data-aos="fade-up">{{ $t('pages.about.career') }}</p>
+      <div class="section-text" data-aos="fade-up" v-html="aboutStore.sections?.career.body"></div>
     </section>
 
     <section class="mt-10" :id="slugify($t('pages.about.projects'))">
-      <p class="section-title">{{ $t('pages.about.projects') }}</p>
+      <p data-aos="fade-up" class="section-title">{{ $t('pages.about.projects') }}</p>
       <div class="grid xl:grid-cols-2 gap-6 section-text lg:gap-10">
-        <div v-html="aboutStore.sections?.projects.bodyLeft"></div>
-        <div v-html="aboutStore.sections?.projects.bodyRight"></div>
+        <div data-aos="fade-up" v-html="aboutStore.sections?.projects.bodyLeft"></div>
+        <div data-aos="fade-up" v-html="aboutStore.sections?.projects.bodyRight"></div>
       </div>
     </section>
 

@@ -1,7 +1,7 @@
 <template>
     <section class="mt-10">
         <ul class="grid gap-4 xs:grid-cols-2 md:grid-cols-3 lg:gap-10">
-            <li v-for="(tile, index) in tiles" :key="index"
+            <li v-for="(tile, index) in tiles" :key="index" data-aos="fade-up"
                 class="bg-gray-2 rounded-br-[25px] p-6 font-medium text-lg items-center">
                 <div class="flex gap-6 items-center lg:text-xl">
                     <img :src="tile.icon" class="h-[50px]" alt="">

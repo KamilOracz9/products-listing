@@ -3,9 +3,9 @@
         <p class="section-title">{{ architectZone.title }}</p>
 
         <section class="for-professionas-section">
-            <div v-html="architectZone.section1.text" class="section-text lg:my-0"></div>
+            <div v-html="architectZone.section1.text" class="section-text lg:my-0" data-aos="fade-up"></div>
 
-            <div>
+            <div data-aos="fade-up">
                 <p class="font-medium text-xl sm:text-2xl">{{ architectZone.section2.title }}</p>
 
                 <div v-html="architectZone.section2.text" class="section-text"></div>
@@ -14,7 +14,7 @@
 
         <div class="for-professionas-section">
             <section class="bg-gray-5 pt-5 mb-6 lg:mb-0">
-                <div class="px-5 sm:px-7 sm:pt-5">
+                <div class="px-5 sm:px-7 sm:pt-5" data-aos="fade-up">
                     <p class="font-medium text-lg mb-2 sm:text-xl">{{ architectZone.section3.title }}</p>
 
                     <ul class="mb-auto pl-6 flex flex-col gap-1 sm:text-lg">
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl xl:w-[calc(50%-1.25rem)] xl:ml-auto">
+                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl xl:w-[calc(50%-1.25rem)] xl:ml-auto" data-aos="fade-up">
                     <ul class="flex flex-col gap-6">
                         <li class="flex gap-4 items-center"><img class="w-[28px] aspect-[1/1]"
                                 src="@/assets/icons/phone.svg" alt=""> {{ architectZone.section3.contact.phone }}</li>
@@ -33,7 +33,7 @@
                 </div>
             </section>
 
-            <section>
+            <section data-aos="fade-up">
                 <div class="h-[335px] relative mb-6 lg:mt-0 lg:h-full">
                     <picture>
                         <source media="(min-width: 1024px)" :srcset="architectZone.section4.image.desktop">
@@ -58,13 +58,13 @@
             </section>
 
             <section class="sm:grid sm:grid-cols-2 sm:gap-6 lg:mt-0 lg:gap-10 2xl:grid-cols-2">
-                <NuxtLink :to="architectZone.section6.boxLeft.path" class="h-fit">
+                <NuxtLink data-aos="fade-up" :to="architectZone.section6.boxLeft.path" class="h-fit">
                     <div class="bg-gray-5 mb-4 flex justify-center">
                         <img :src="architectZone.section6.boxLeft.image" alt="" class="h-full max-h-[235px]">
                     </div>
                     <p class="text-lg font-medium text-center leading-5">{{ architectZone.section6.boxLeft.title }}</p>
                 </NuxtLink>
-                <NuxtLink :to="architectZone.section6.boxRight.path"  class="h-fit">
+                <NuxtLink data-aos="fade-up" :to="architectZone.section6.boxRight.path"  class="h-fit">
                     <div class="bg-gray-5 mb-4 flex justify-center">
                         <img :src="architectZone.section6.boxRight.image" alt="" class="h-full max-h-[235px]">
                     </div>

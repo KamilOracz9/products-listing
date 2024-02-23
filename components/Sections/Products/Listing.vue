@@ -1,7 +1,7 @@
 <template>
     <section>
         <ul class="grid gap-8 xs:grid-cols-2 sm:grid-cols-3 lg:mt-10 xl:grid-cols-4 2xl:grid-cols-5">
-            <li v-for="product in productStore.list.items" class="border-b border-gray-2 pb-8">
+            <li v-for="product in productStore.list.items" class="border-b border-gray-2 pb-8" data-aos="fade-up">
                 <NuxtLink :aria-label="product.name" :title="product.name" :to="localePath({ name: 'products' }) + `/${product.slug}`">
                     <figure>
                         <div class="relative">
