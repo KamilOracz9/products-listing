@@ -6,7 +6,7 @@
                 src="https://newtrendy.pl/app/uploads/2023/07/na_wymiar_800x400.jpg" :alt="'Kabiny prysznicowe'"
                 class="w-full h-full object-cover rounded-br-lg">
         </picture>
-        <div class="uppercase p-6 pl-0 lg:max-w-[90%] xl:max-w-[70%]">
+        <div class="uppercase p-6 lg:pl-0 lg:max-w-[90%] xl:max-w-[70%]">
             <p class="text-lg xl:text-[1.625rem]">Kabiny prysznicowe</p>
             <p class="text-[1.75rem] mt-2 xl:text-[3.75rem] xl:mt-8">Na wymiar</p>
             <p class="normal-case py-6 text-sm lg:text-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit.

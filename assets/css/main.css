@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-breuer font-normal text-base overflow-x-hidden;
+        @apply font-breuer font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
     }
 
     * {
@@ -150,6 +150,92 @@
         @apply lg:hidden;
     }
 
+    header .content-grid {
+        @apply py-7 fixed w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row;
+    }
+
+    header .content-grid .header__dropdown {
+        @apply grid grid-rows-[0fr] transition-all w-full justify-stretch;
+    }
+
+    header .content-grid .header__dropdown > div {
+        @apply pt-4 px-4 overflow-hidden lg:absolute lg:h-0 lg:bg-white lg:pt-0;
+    }
+
+    header .content-grid .header__dropdown[data-active=true] > div {
+        @apply h-auto lg:rounded-b-lg;
+    }
+
+    header .content-grid .header__dropdown:hover > div {
+        @apply h-auto lg:rounded-b-lg;
+    }
+
+    header .content-grid .header__dropdown[data-active=true] {
+        @apply grid-rows-[1fr] h-auto;
+    }
+
+    header .content-grid .header__items {
+        grid-auto-rows: min-content;
+        /* grid-auto-columns: min-content; */
+        @apply hidden max-h-[calc(100vh-114px)] min-h-[calc(100vh-114px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-8 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
+    }
+
+    header .content-grid .header__items[data-active=true] {
+        @apply grid lg:flex;
+    }
+
+    header .content-grid .header__items > div {
+        @apply lg:w-fit lg:h-fit last:pr-0 last:lg:pr-0 lg:pr-4 3xl:pr-10;
+    }
+
+    header .content-grid a, header .content-grid .header__label {
+        @apply transition-all;
+    }
+
+    header .content-grid a:hover, header .content-grid .header__label:hover {
+        @apply lg:text-gray-4;
+    }
+
+    header .content-grid .header__label:hover {
+        @apply lg:border-gray-3;
+    }
+
+    header .content-grid .header__label {
+        @apply border-b border-transparent text-xl font-medium uppercase text-center cursor-pointer lg:text-lg 2xl:text-xl;
+    }
+
+    header .content-grid .header__products > a {
+        @apply flex flex-col items-center text-center gap-y-2 uppercase font-medium 2xl:text-lg;
+    }
+
+    header .content-grid .header__products {
+        @apply w-full grid gap-y-6 grid-cols-[repeat(auto-fit,minmax(min(100%,140px),1fr))] lg:grid-cols-5;
+    }
+
+    header .content-grid .header__categories a {
+        @apply flex flex-col items-center text-center gap-y-2 uppercase font-medium lg:items-start;
+    }
+
+    header .content-grid .header__categories {
+        @apply w-full grid gap-y-6 grid-cols-[repeat(auto-fit,minmax(min(100%,110px),1fr))] lg:grid-cols-5 lg:left-0;
+    }
+
+    header .content-grid .header__links-ref {
+        @apply lg:left-0 lg:w-full;
+    }
+
+    header .content-grid .header__links {
+        @apply grid justify-center pl-8 lg:pl-0 lg:relative lg:w-fit lg:left-0 lg:py-5;
+    }
+
+    header .content-grid .header__links > a {
+        @apply py-2 text-center uppercase font-medium 2xl:text-lg;
+    }
+
+    header .content-grid .header__icon {
+        @apply min-w-4 max-w-4 max-h-4 -translate-y-[2px] hidden lg:block;
+    }
+
     /* Common */
     .icon {
         @apply min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px];
@@ -174,6 +260,12 @@
 
     .modal-slider-arrow {
         @apply absolute z-10 top-1/2 flex items-center -translate-y-1/2 lg:bottom-6 cursor-pointer h-[25px];
+    }
+
+    /* Collections */
+
+    #collections h2 {
+        @apply [font-size:_clamp(1.25rem,2.5cqw,1.375rem)] font-medium;
     }
 
     /* Form online */
@@ -262,6 +354,22 @@
     footer .footer__icon {
         @apply icon-16 white-filter translate-y-4 lg:translate-y-1;
     }
+
+    footer .footer__items {
+        @apply grid gap-y-2 grid-flow-row-dense lg:gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,208px),1fr))];
+    }
+
+    footer .footer__dropdown > div {
+        @apply grid grid-rows-[0fr] transition-all lg:grid-rows-[1fr];
+    }
+
+    footer .footer__dropdown > div.active {
+        @apply grid grid-rows-[1fr];
+    }
+
+    footer .footer__dropdown > div > div {
+        @apply overflow-hidden grid pl-2 lg:pl-0;
+    }
 }
 
 @layer utilities {
@@ -321,11 +429,11 @@
         overflow: hidden;
     }
 
-    .zoom-in > img {
+    .zoom-in > img, .zoom-in > picture > img {
         transition: transform .4s;
     }
 
-    .zoom-in:hover > img {
+    .zoom-in:hover > img, .zoom-in:hover > picture > img {
         transform: scale(1.1);
     }
 }

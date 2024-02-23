@@ -60,7 +60,27 @@
         "prev": "Previous",
         "next": "Next"
     },
+    "navigation": {
+        "made-to-measure": "Made to measure",
+        "measure": "Measure",
+        "shape": "Shape",
+        "glass": "Glass",
+        "ceiling-bracket": "Ceiling bracket",
+        "walk-in-to-the-ceiling": "Walk in to to ceiling",
+        "installation-on-internal-cubes": "Installation on internal cubes",
+        "rail-hanger": "Rail hanger",
+        "collections": "Our collections"
+    },
     "pages": {
+        "made-to-measure": {
+            "title": "Made to measure",
+            "configurator": "Cabins configurator",
+            "how-use": "How to use cabins configurator"
+        },
+        "collections": {
+            "title": "Our collections",
+            "discover": "Discover the collection"
+        },
         "form-online": {
             "title": "Online Form",
             "form-person": {
@@ -101,17 +121,18 @@
             "often-questions-text": "Do you have doubts? Check out our answers to frequently asked questions."
         },
         "about": {
-            "awards": "Prizes and awards",
+            "awards": "Awards and implementations",
             "career": "Career",
-            "projects": "EU Projects"
+            "projects": "Projects UE"
         },
         "contact": {
             "address": "Address",
             "phone": "Tel.",
             "office": "Office",
             "logistic-centrum": "Logistic centrum",
-            "sale-service-department": "Sale service department",
+            "sale-service-department": "Sales service department",
             "export-department": "Export department",
+            "select-region": "Select region",
             "form": {
                 "write-to-us": "Write to us",
                 "name-and-surname": "Name / surname",

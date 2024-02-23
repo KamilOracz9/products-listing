@@ -1,4 +1,12 @@
 {
+  "made-to-measure/index": {
+    "en": "/made-to-measure",
+    "pl": "/na-wymiar"
+  },
+  "collections/index": {
+    "en": "/collections",
+    "pl": "/kolekcje"
+  },
   "form-online/index": {
     "en": "/form-online",
     "pl": "/formularz-on-line"

@@ -60,7 +60,27 @@
     "to": "Do",
     "or": "lub",
     "send": "Wyślij",
+    "navigation": {
+        "made-to-measure": "Na wymiar",
+        "measure": "Wymiar",
+        "shape": "Kształt",
+        "glass": "Szkło",
+        "ceiling-bracket": "Wspornik sufitowy",
+        "walk-in-to-the-ceiling": "Walk in do samego sufitu",
+        "installation-on-internal-cubes": "Montaż na kostkach wewnętrznych",
+        "rail-hanger": "Wieszak relingowy",
+        "collections": "Nasze kolekcje"
+    },
     "pages": {
+        "made-to-measure": {
+            "title": "Na wymiar",
+            "configurator": "Konfigurator kabin",
+            "how-use": "Jak korzystać z konfiguratora kabin"
+        },
+        "collections": {
+            "title": "Nasze kolekcje",
+            "discover": "Poznaj kolekcję"
+        },
         "form-online": {
             "title": "Formularz online",
             "form-person": {

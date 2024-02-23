@@ -34,8 +34,6 @@ const useHeaderStore = defineStore('header', {
             this.headerMenu.isLoading = true;
 
             await import('@/data/headerMenu').then(response => {
-                const categoryStore = useCategoryStore();
-
                 this.headerMenu.items = <IHeaderMenuItem[]>response.default.items.filter(item => !['clipboard', 'products', 'download', 'search'].includes(item.slug));
 
                 this.headerMenu.items.unshift({

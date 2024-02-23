@@ -49,65 +49,65 @@ export default {
         // Column 1
         {
             items: [
-                {
-                    label: 'Kabiny na wymiar',
-                    slug: 'kabiny-na-wymiar',
-                    iconUrl: 'https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289',
-                    url: '/',
-                    productsCount: 0,
-                    enableOnFilters: false,
-                    breadcrumbs: [
-                        {
-                            label: 'Główna',
-                            path: '/',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty/drzwi-wnekowe',
-                        },
-                    ],
-                    items: [
-                        {
-                            label: 'Wymiar',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Kształt',
-                            slug: 'ksztalt',
-                            url: '',
-                        },
-                        {
-                            label: 'Szkło',
-                            slug: 'szklo',
-                            url: '',
-                        },
-                        {
-                            label: 'Wspornik sufitowy',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Walk in do samego sufitu',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Montaż na kostkach wewnętrznych',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Wieszak relingowy',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                    ],
-                },
+                // {
+                //     label: 'Kabiny na wymiar',
+                //     slug: 'kabiny-na-wymiar',
+                //     iconUrl: 'https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289',
+                //     url: '/',
+                //     productsCount: 0,
+                //     enableOnFilters: false,
+                //     breadcrumbs: [
+                //         {
+                //             label: 'Główna',
+                //             path: '/',
+                //         },
+                //         {
+                //             label: 'Produkty',
+                //             path: '/produkty',
+                //         },
+                //         {
+                //             label: 'Produkty',
+                //             path: '/produkty/drzwi-wnekowe',
+                //         },
+                //     ],
+                //     items: [
+                //         {
+                //             label: 'Wymiar',
+                //             slug: 'wymiar',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Kształt',
+                //             slug: 'ksztalt',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Szkło',
+                //             slug: 'szklo',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Wspornik sufitowy',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Walk in do samego sufitu',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Montaż na kostkach wewnętrznych',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Wieszak relingowy',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //     ],
+                // },
                 {
                     label: 'Drzwi wnękowe',
                     slug: 'drzwi-wnekowe',
@@ -442,83 +442,83 @@ export default {
             ]
         },
         // Column 5
-        {
-            items: [
-                {
-                    label: 'Nasze kolekcje',
-                    slug: 'nasze-kolekcje',
-                    iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg',
-                    url: '/',
-                    productsCount: 0,
-                    enableOnFilters: false,
-                    breadcrumbs: [
-                        {
-                            label: 'Główna',
-                            path: '/',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty/drzwi-wnekowe',
-                        },
-                    ],
-                    items: [
-                        {
-                            label: 'Eventa',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Black Chrome',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Cooper Shine',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Eventa Gold Shine',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Cooper Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Black XR',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gold Shine XR',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gunmetal Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Avexa Gold Brushed',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                    ],
-                },
-            ]
-        }
+        // {
+        //     items: [
+        //         {
+        //             label: 'Nasze kolekcje',
+        //             slug: 'nasze-kolekcje',
+        //             iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg',
+        //             url: '/',
+        //             productsCount: 0,
+        //             enableOnFilters: false,
+        //             breadcrumbs: [
+        //                 {
+        //                     label: 'Główna',
+        //                     path: '/',
+        //                 },
+        //                 {
+        //                     label: 'Produkty',
+        //                     path: '/produkty',
+        //                 },
+        //                 {
+        //                     label: 'Produkty',
+        //                     path: '/produkty/drzwi-wnekowe',
+        //                 },
+        //             ],
+        //             items: [
+        //                 {
+        //                     label: 'Eventa',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Black Chrome',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Cooper Shine',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Eventa Gold Shine',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Cooper Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Black XR',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gold Shine XR',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gunmetal Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //                 {
+        //                     label: 'Avexa Gold Brushed',
+        //                     slug: 'wymiar',
+        //                     url: '',
+        //                 },
+        //             ],
+        //         },
+        //     ]
+        // }
     ]
 }

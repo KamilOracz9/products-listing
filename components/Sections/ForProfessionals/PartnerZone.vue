@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-20" :id="slugify(partnerZone.title)">
+    <section class="mb-20" :id="slugify($t('partner-zone'))">
         <p class="section-title">{{ partnerZone.title }}</p>
 
         <section class="for-professionas-section">

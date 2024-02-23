@@ -14,3 +14,4 @@ export {default as useServiceStore} from './serviceStore';
 export {default as useDownloadStore} from './downloadStore';
 export {default as usePlaceToBuyStore} from './placeToBuyStore';
 export {default as useFormOnlineStore} from './formOnlineStore';
+export {default as useCollectionStore} from './collectionsStore';

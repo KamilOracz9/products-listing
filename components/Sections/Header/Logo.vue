@@ -1,7 +1,7 @@
 <template>
     <ul class="px-5 flex justify-between items-center xl:mr-[70px]">
         <li>
-            <NuxtLink to="/" :aria-label="$t('home-page')"><img src="@/assets/images/logo.svg" class="aspect-[auto_4/3] w-[161px] small-height:w-[100px]" width="214" alt=""></NuxtLink>
+            <NuxtLink :to="localePath({path: '/'})" :aria-label="$t('home-page')"><img src="@/assets/images/logo.svg" class="aspect-[auto_4/3] w-[161px] small-height:w-[100px]" width="214" alt=""></NuxtLink>
         </li>
 
         <li class="lg:hidden">
@@ -17,4 +17,7 @@
 
 <script setup>
 const headerStore = useHeaderStore();
+const localePath = useLocalePath();
+
+const props = defineProps(['toggleMenu'])
 </script>

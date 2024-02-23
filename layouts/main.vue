@@ -5,10 +5,10 @@
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
             <header class="relative z-30">
                 <TopBar />
-                <HeaderMenu />
+                <HeaderMenuV2 />
             </header>
 
-            <main class="flex-1 mt-[114px] px-4 small-height:mt-[76px] 3xl:px-0" v-if="!categoryStore.list.isLoading">
+            <main class="flex-1 mt-[144px] px-4 small-height:mt-[76px] 3xl:px-0" v-if="!categoryStore.list.isLoading">
                 <slot />
             </main>
 
