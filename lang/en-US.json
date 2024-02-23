@@ -121,17 +121,18 @@
             "often-questions-text": "Do you have doubts? Check out our answers to frequently asked questions."
         },
         "about": {
-            "awards": "Prizes and awards",
+            "awards": "Awards and implementations",
             "career": "Career",
-            "projects": "EU Projects"
+            "projects": "Projects UE"
         },
         "contact": {
             "address": "Address",
             "phone": "Tel.",
             "office": "Office",
             "logistic-centrum": "Logistic centrum",
-            "sale-service-department": "Sale service department",
+            "sale-service-department": "Sales service department",
             "export-department": "Export department",
+            "select-region": "Select region",
             "form": {
                 "write-to-us": "Write to us",
                 "name-and-surname": "Name / surname",

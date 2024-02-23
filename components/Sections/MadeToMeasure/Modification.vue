@@ -27,9 +27,13 @@
 const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
 
 const props = withDefaults(defineProps<{
-    imgClass: string;
-}>(),{})
+    imgClass?: string;
+}>(), {})
+
+const { imgClass } = toRefs(props);
 
 </script>
 
-<style lang="css" scoped>@import url('@/assets/css/made-to-measure.css');</style>
+<style lang="css" scoped>
+@import url('@/assets/css/made-to-measure.css');
+</style>

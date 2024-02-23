@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <p class="section-title">{{ story?.title }}</p>
+    <section :id="slugify($t('companys-history'))">
+        <p class="section-title">{{ $t('companys-history') }}</p>
 
         <div class="flex flex-col gap-6 pt-10 sm:gap-0 xl:flex-row xl:gap-10">
             <div class="section-text mt-0 xl:w-[50%]">
@@ -32,6 +32,8 @@
 </template>
 
 <script setup>
+import slugify from '~/plugins/slugify';
+
 const aboutStore = inject('aboutStore');
 const { story } = aboutStore;
 </script>

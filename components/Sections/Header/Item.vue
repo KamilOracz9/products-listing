@@ -10,11 +10,11 @@
     </div>
 
     <div class="hidden lg:block" @mouseleave="headerStore.setSubmenu('')" @mouseover="headerStore.setSubmenu(slug, false)">
-        <p @click="headerStore.setSubmenu(slug)"
+        <NuxtLink :to="localePath({ name: slug })" @click="headerStore.setSubmenu(slug)"
             class="header__label flex gap-2 items-center">
             <img v-if="icon" width="16" height="16" class="header__icon" :src="icon" alt="">
             <span class="mx-auto lg:hidden 2xl:block">{{ $t(slug) }}</span>
-        </p>
+        </NuxtLink>
         <div class="header__dropdown" :data-active="headerStore.submenu === slug ? true : false">
             <slot />
         </div>
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 const headerStore = useHeaderStore();
+const localePath = useLocalePath();
 
 const props = defineProps<{
     slug: string;
