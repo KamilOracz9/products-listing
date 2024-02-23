@@ -117,7 +117,7 @@
             </SectionsHeaderItem>
 
             <NuxtLink
-                class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:pr-4 lg:ml-auto lg:my-auto 3xl:pr-10"
+                class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
                 :to="localePath({ name: 'download' })">
                 <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
                 <p class="lg:hidden 2xl:block">{{ $t('download') }}</p>
@@ -181,7 +181,7 @@
 
             <div class="w-full justify-center flex lg:w-fit lg:justify-start">
                 <NuxtLink :to="localePath('place-to-buy')"
-                    class="text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:w-[150px] 2xl:text-xl 2xl:py-2">
+                    class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:w-[150px] 2xl:text-xl 2xl:py-2">
                     {{ $t('place-to-buy') }}</NuxtLink>
             </div>
         </div>

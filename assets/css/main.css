@@ -185,7 +185,7 @@
     }
 
     header .content-grid .header__items > div {
-        @apply lg:w-fit lg:h-fit last:pr-0 last:lg:pr-0 lg:pr-4 3xl:pr-10;
+        @apply lg:w-fit lg:h-fit last:pr-0 last:lg:pr-0 lg:pr-4 3xl:px-5;
     }
 
     header .content-grid a, header .content-grid .header__label {
@@ -198,6 +198,10 @@
 
     header .content-grid .header__label:hover {
         @apply lg:border-gray-3;
+    }
+
+    header .content-grid .header__label:hover .header__icon {
+        @apply lg:gray-3-filter;
     }
 
     header .content-grid .header__label {
@@ -233,7 +237,7 @@
     }
 
     header .content-grid .header__icon {
-        @apply min-w-4 max-w-4 max-h-4 -translate-y-[2px] hidden lg:block;
+        @apply min-w-4 max-w-4 max-h-4 -translate-y-[2px] hidden transition-all lg:block;
     }
 
     /* Common */
@@ -381,6 +385,10 @@
     
     .gray-2-filter {
         filter: invert(100%) sepia(41%) saturate(41%) hue-rotate(319deg) brightness(118%) contrast(90%);
+    }
+    
+    .gray-3-filter {
+        filter: invert(72%) sepia(4%) saturate(48%) hue-rotate(22deg) brightness(89%) contrast(80%);
     }
 
     .white-filter {
