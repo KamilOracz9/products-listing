@@ -1,33 +1,44 @@
 <template>
     <div ref="headerMenuRef" class="content-grid">
 
-        <SectionsHeaderLogo :toggleMenu="toggleMenu" />
+        <SectionsHeaderLogo />
 
-        <div class="header__items" :data-active="isActive">
+        <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <SectionsHeaderItem slug="products">
-                <div class="header__categories">
-                    <div v-for="column in categoryStore.list.items.columns">
-                        <SectionsHeaderColumn :column="column" />
-                        <!-- <div v-for="category in column.items" class="lg:my-10 lg:px-5">
-                            <NuxtLink :to="localePath({ name: 'categories' }) + `/${category.slug}`">
-                                <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
-                                    :alt="category.label" :title="category.label">
-                                <p class="py-3">{{ category.label }}</p>
+                <div class="header__categories gap-10">
+                    <NuxtLink :to="localePath({ name: 'made-to-measure' })">
+                        <img loading="lazy" width="65" height="65" class="size-[65px]"
+                            src="https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289"
+                            :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
+                        <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
+                    </NuxtLink>
+                    <NuxtLink v-for="category in categoryStore.mainCategories" :to="localePath({ name: category.slug })">
+                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
+                            :alt="category.label" :title="category.label">
+                        <p class="py-3">{{ category.label }}</p>
+                    </NuxtLink>
+                </div>
+                <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
+                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[0]">
+                        <div class="lg:px-8 lg:mb-10">
+                            <NuxtLink :to="localePath({ name: 'made-to-measure' })">
+                                <img loading="lazy" width="65" height="65" class="size-[65px]"
+                                    src="https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289"
+                                    :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
+                                <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
                             </NuxtLink>
-                            <div class="text-sm" v-for="subcategory in category.items">
-                                <NuxtLink class="text-left"
-                                    :to="{ path: localePath({ name: 'categories' }) + `/${category.slug}`, query: { type: subcategory.slug } }">
-                                    {{ subcategory.label }}</NuxtLink>
-                                <ul class="pl-2 py-2" v-if="subcategory.items">
-                                    <li v-for="subsubcategory in subcategory.items">
-                                        <NuxtLink
-                                            :to="{ path: localePath({ name: 'categories' }) + `/${category.slug}`, query: { type: subcategory.slug, doors: subsubcategory.slug } }">
-                                            {{ subsubcategory.label }}</NuxtLink>
-                                    </li>
-                                </ul>
+                            <div class="text-sm">
+                                <NuxtLink
+                                    v-for="item in ['measure', 'shape', 'glass', 'ceiling-bracket', 'walk-in-to-the-ceiling', 'installation-on-internal-cubes', 'rail-hanger',]"
+                                    :to="{ path: localePath({ name: 'made-to-measure' }), hash: `#${slugify($t(`navigation.${item}`))}` }">
+                                    {{ $t(`navigation.${item}`) }}</NuxtLink>
                             </div>
-                        </div> -->
-                    </div>
+                        </div>
+                    </SectionsHeaderColumn>
+                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[1]" />
+                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[2]" />
+                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[3]" />
+                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[4]" />
                 </div>
             </SectionsHeaderItem>
 
@@ -81,62 +92,64 @@
             </SectionsHeaderItem>
 
             <NuxtLink
-                class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:ml-auto lg:my-auto"
+                class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:pr-4 lg:ml-auto lg:my-auto 3xl:pr-10"
                 :to="localePath({ name: 'download' })">
                 <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
                 <p class="lg:hidden 2xl:block">{{ $t('download') }}</p>
             </NuxtLink>
 
-            <div class="lg:my-auto">
-                <p class="header__label flex gap-2 items-center" @click="toggleSubmenu('search')">
-                    <img width="16" height="16" class="header__icon" src="@/assets/icons/search.svg" alt="">
-                    <span class="mx-auto lg:hidden 2xl:block">{{ $t('search') }}</span>
-                </p>
-                <div class="header__dropdown" :data-active="activeSubmenu === 'search' ? true : false">
-                    <div class="w-full flex justify-center left-0">
-                        <div class="w-[70%] flex flex-col gap-4 py-4 lg:pb-8">
-                            <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
-                                <input class="p-2 outline-none border-0" name="search" type="text"
-                                    :placeholder="$t('what-are-you-looking-for')">
-                                <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
-                                    alt="">
-                            </div>
-
-                            <button
-                                class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
-                                    $t('search') }}
-                                <Arrow :direction="'right'" />
-                            </button>
-
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                                    for="search-in-products">{{ $t('search-in-products') }}</label>
-                            </div>
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-files" type="checkbox" name="search-in-files" /> <label
-                                    for="search-in-files">{{ $t('search-in-files') }}</label>
-                            </div>
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                                <label for="search-in-inspirations">{{ $t('search-in-inspirations') }}</label>
-                            </div>
-
-                            <NuxtLink to="/"
-                                class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">
-                                {{ $t('products') }}
-                                <Arrow :direction="'right'" />
-                            </NuxtLink>
+            <SectionsHeaderItem slug="search" :icon="searchIcon">
+                <!-- <div class="lg:my-auto">
+                    <p class="header__label flex gap-2 items-center">
+                        <img width="16" height="16" class="header__icon" src="@/assets/icons/search.svg" alt="">
+                        <span class="mx-auto lg:hidden 2xl:block">{{ $t('search') }}</span>
+                    </p> -->
+                <!-- <div class="header__dropdown" :data-active="headerStore.submenu === 'search' ? true : false"> -->
+                <div class="w-full flex justify-center left-0">
+                    <div class="w-[70%] flex flex-col gap-4 py-4 lg:pb-8">
+                        <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
+                            <input class="p-2 outline-none border-0" name="search" type="text"
+                                :placeholder="$t('what-are-you-looking-for')">
+                            <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
+                                alt="">
                         </div>
+
+                        <button
+                            class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
+                                $t('search') }}
+                            <Arrow :direction="'right'" />
+                        </button>
+
+                        <div class="flex items-center justify-start gap-2">
+                            <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
+                                for="search-in-products">{{ $t('search-in-products') }}</label>
+                        </div>
+                        <div class="flex items-center justify-start gap-2">
+                            <input id="search-in-files" type="checkbox" name="search-in-files" /> <label
+                                for="search-in-files">{{ $t('search-in-files') }}</label>
+                        </div>
+                        <div class="flex items-center justify-start gap-2">
+                            <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
+                            <label for="search-in-inspirations">{{ $t('search-in-inspirations') }}</label>
+                        </div>
+
+                        <NuxtLink to="/"
+                            class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">
+                            {{ $t('products') }}
+                            <Arrow :direction="'right'" />
+                        </NuxtLink>
                     </div>
                 </div>
-            </div>
+                <!-- </div> -->
+                <!-- </div> -->
+            </SectionsHeaderItem>
 
-            <div class="lg:my-auto">
-                <p class="header__label flex gap-2 items-center" @click="toggleSubmenu('clipboard')">
+            <!-- <div class="lg:my-auto">
+                <p class="header__label flex gap-2 items-center">
                     <img width="16" height="16" class="header__icon" src="@/assets/icons/clipboard.svg" alt="">
                     <span class="mx-auto lg:hidden 2xl:block">{{ $t('clipboard') }}</span>
                 </p>
-                <div class="header__dropdown" :data-active="activeSubmenu === 'clipboard' ? true : false">
+                <div class="header__dropdown" :data-active="headerStore.submenu === 'clipboard' ? true : false">
                     <div class="header__products left-0">
                         <NuxtLink v-for="clipboardItem in clipboardStore.items.products" :to="clipboardItem.url"
                             class="px-6 flex flex-col items-center gap-2 lg:mt-10">
@@ -152,7 +165,24 @@
                         </NuxtLink>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+            <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
+                <div class="header__products left-0">
+                    <NuxtLink v-for="clipboardItem in clipboardStore.items.products" :to="clipboardItem.url"
+                        class="px-6 flex flex-col items-center gap-2 lg:mt-10">
+                        <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl"
+                            :alt="clipboardItem.name" :title="clipboardItem.name">
+                        <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
+                            <p class="text-base font-bold">{{ clipboardItem.name }}</p>
+                            <p class="text-gray-3">{{ clipboardItem.path }}</p>
+                            <p>{{ clipboardItem.symbol }}</p>
+                            <p>{{ clipboardItem.dimensions }}</p>
+                            <p>{{ clipboardItem.price }}</p>
+                        </div>
+                    </NuxtLink>
+                </div>
+            </SectionsHeaderItem>
 
             <div class="w-full justify-center flex lg:w-fit lg:justify-start">
                 <NuxtLink :to="localePath('place-to-buy')"
@@ -165,21 +195,21 @@
 
 <script setup lang="ts">
 import slugify from '@/plugins/slugify';
+import searchIcon from '@/assets/icons/search.svg';
+import clipboardIcon from '@/assets/icons/clipboard.svg';
 
+const route = useRoute();
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const i18n = useI18n();
-
 const categoryStore = useCategoryStore();
+const headerStore = useHeaderStore();
 
 const headerMenuRef = ref();
 const inspirationsRef = ref();
 const forProfessionalsRef = ref();
 const aboutRef = ref();
 const contactRef = ref();
-
-const isActive = ref(true);
-const activeSubmenu = ref('');
 
 const inspirationsOffsetLeft = ref(0);
 const inspirationsStyle = computed(() => ({
@@ -208,9 +238,6 @@ const getPath = (mainSlug: string, linkSlug: string) => {
 
     return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`;
 }
-
-const toggleMenu = () => isActive.value = !isActive.value;
-const toggleSubmenu = (submenu: string) => activeSubmenu.value = activeSubmenu.value === submenu ? '' : submenu;
 
 const setHeader = () => {
     const shadow = 'drop-shadow-sm';
@@ -243,8 +270,14 @@ const setLeftOffsets = () => {
     contactOffsetLeft.value = calcLeftOffset(contactRef.value);
 }
 
-provide('activeSubmenu', activeSubmenu);
-provide('toggleSubmenu', toggleSubmenu);
+// watch(
+//   () => route.fullPath,
+//   () => {
+//     headerStore.menuIsOpen = false;
+//     headerStore.setSubmenu('');
+//     console.log(route.fullPath)
+//   },
+// );
 
 onMounted(async () => {
     setHeader();

@@ -171,13 +171,13 @@
     }
 
     header .content-grid .header__dropdown[data-active=true] {
-        @apply grid grid-rows-[1fr] h-auto;
+        @apply grid-rows-[1fr] h-auto;
     }
 
     header .content-grid .header__items {
         grid-auto-rows: min-content;
         /* grid-auto-columns: min-content; */
-        @apply hidden max-h-[calc(100vh-114px)] min-h-[calc(100vh-114px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-8 gap-y-2 gap-x-4 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center 3xl:gap-x-10;
+        @apply hidden max-h-[calc(100vh-114px)] min-h-[calc(100vh-114px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-8 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
     }
 
     header .content-grid .header__items[data-active=true] {
@@ -185,11 +185,23 @@
     }
 
     header .content-grid .header__items > div {
-        @apply lg:w-fit lg:h-fit;
+        @apply lg:w-fit lg:h-fit last:pr-0 last:lg:pr-0 lg:pr-4 3xl:pr-10;
+    }
+
+    header .content-grid a, header .content-grid .header__label {
+        @apply transition-all;
+    }
+
+    header .content-grid a:hover, header .content-grid .header__label:hover {
+        @apply lg:text-gray-4;
+    }
+
+    header .content-grid .header__label:hover {
+        @apply lg:border-gray-3;
     }
 
     header .content-grid .header__label {
-        @apply text-xl font-medium uppercase text-center lg:text-lg 2xl:text-xl;
+        @apply border-b border-transparent text-xl font-medium uppercase text-center cursor-pointer lg:text-lg 2xl:text-xl;
     }
 
     header .content-grid .header__products > a {
@@ -213,7 +225,7 @@
     }
 
     header .content-grid .header__links {
-        @apply grid justify-center lg:relative lg:w-fit lg:left-0 lg:pb-10;
+        @apply grid justify-center pl-8 lg:pl-0 lg:relative lg:w-fit lg:left-0 lg:py-5;
     }
 
     header .content-grid .header__links > a {

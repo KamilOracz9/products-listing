@@ -49,65 +49,65 @@ export default {
         // Column 1
         {
             items: [
-                {
-                    label: 'Kabiny na wymiar',
-                    slug: 'kabiny-na-wymiar',
-                    iconUrl: 'https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289',
-                    url: '/',
-                    productsCount: 0,
-                    enableOnFilters: false,
-                    breadcrumbs: [
-                        {
-                            label: 'Główna',
-                            path: '/',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty',
-                        },
-                        {
-                            label: 'Produkty',
-                            path: '/produkty/drzwi-wnekowe',
-                        },
-                    ],
-                    items: [
-                        {
-                            label: 'Wymiar',
-                            slug: 'wymiar',
-                            url: '',
-                        },
-                        {
-                            label: 'Kształt',
-                            slug: 'ksztalt',
-                            url: '',
-                        },
-                        {
-                            label: 'Szkło',
-                            slug: 'szklo',
-                            url: '',
-                        },
-                        {
-                            label: 'Wspornik sufitowy',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Walk in do samego sufitu',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Montaż na kostkach wewnętrznych',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                        {
-                            label: 'Wieszak relingowy',
-                            slug: 'wspornik-sufitowy',
-                            url: '',
-                        },
-                    ],
-                },
+                // {
+                //     label: 'Kabiny na wymiar',
+                //     slug: 'kabiny-na-wymiar',
+                //     iconUrl: 'https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289',
+                //     url: '/',
+                //     productsCount: 0,
+                //     enableOnFilters: false,
+                //     breadcrumbs: [
+                //         {
+                //             label: 'Główna',
+                //             path: '/',
+                //         },
+                //         {
+                //             label: 'Produkty',
+                //             path: '/produkty',
+                //         },
+                //         {
+                //             label: 'Produkty',
+                //             path: '/produkty/drzwi-wnekowe',
+                //         },
+                //     ],
+                //     items: [
+                //         {
+                //             label: 'Wymiar',
+                //             slug: 'wymiar',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Kształt',
+                //             slug: 'ksztalt',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Szkło',
+                //             slug: 'szklo',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Wspornik sufitowy',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Walk in do samego sufitu',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Montaż na kostkach wewnętrznych',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //         {
+                //             label: 'Wieszak relingowy',
+                //             slug: 'wspornik-sufitowy',
+                //             url: '',
+                //         },
+                //     ],
+                // },
                 {
                     label: 'Drzwi wnękowe',
                     slug: 'drzwi-wnekowe',

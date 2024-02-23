@@ -5,7 +5,7 @@
         </li>
 
         <li class="lg:hidden">
-            <button type="button" aria-label="Toggle menu" @click="toggleMenu()">
+            <button type="button" aria-label="Toggle menu" @click="headerStore.toggleMenuIsOpen()">
                 <div class="bg-gray-2 flex w-12 h-12 items-center justify-center">
                     <img src="@/assets/icons/burger-menu.svg" width="20" alt="" v-if="!headerStore.menuIsOpen">
                     <img src="@/assets/icons/close.svg" width="20" alt="" v-if="headerStore.menuIsOpen">
