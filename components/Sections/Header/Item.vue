@@ -13,7 +13,7 @@
         <NuxtLink :to="localePath({ name: slug })" @click="headerStore.setSubmenu(slug)"
             class="header__label flex gap-2 items-center">
             <img v-if="icon" width="16" height="16" class="header__icon" :src="icon" alt="">
-            <span class="mx-auto lg:hidden 2xl:block">{{ $t(slug) }}</span>
+            <span class="mx-auto" :class="icon ? 'lg:hidden 2xl:block' : 'lg:block'">{{ $t(slug) }}</span>
         </NuxtLink>
         <div class="header__dropdown" :data-active="headerStore.submenu === slug ? true : false">
             <slot />

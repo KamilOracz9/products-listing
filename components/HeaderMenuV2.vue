@@ -47,13 +47,20 @@
                                 <p class="py-3">{{ $t('navigation.collections') }}</p>
                             </NuxtLink>
                             <div class="text-sm">
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
+                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                    Eventa</NuxtLink>
                             </div>
                         </div>
                     </SectionsHeaderColumn>
@@ -117,46 +124,47 @@
             </NuxtLink>
 
             <SectionsHeaderItem slug="search" :icon="searchIcon">
-                <div class="w-full flex justify-center left-0">
-                    <div class="w-[70%] flex flex-col gap-4 py-4 lg:pb-8">
-                        <div class="flex items-center justify-between border-2 border-gray-1 px-2 py-1">
+                <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
+                    <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
+                        <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
                             <input class="p-2 outline-none border-0" name="search" type="text"
                                 :placeholder="$t('what-are-you-looking-for')">
                             <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
                                 alt="">
                         </div>
 
-                        <button
-                            class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">{{
-                                $t('search') }}
-                            <Arrow :direction="'right'" />
-                        </button>
+                        <span class="lg:mr-20">
+                            <ButtonsTransparent :label="$t('search')" type="submit"
+                                    tag-type="button" />
+                        </span>
 
-                        <div class="flex items-center justify-start gap-2">
-                            <input id="search-in-products" type="checkbox" name="search-in-products" /> <label
-                                for="search-in-products">{{ $t('search-in-products') }}</label>
-                        </div>
-                        <div class="flex items-center justify-start gap-2">
-                            <input id="search-in-files" type="checkbox" name="search-in-files" /> <label
-                                for="search-in-files">{{ $t('search-in-files') }}</label>
-                        </div>
-                        <div class="flex items-center justify-start gap-2">
-                            <input id="search-in-inspirations" type="checkbox" name="search-in-inspirations" />
-                            <label for="search-in-inspirations">{{ $t('search-in-inspirations') }}</label>
+                        <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
+                            <div class="flex items-center justify-start gap-2"
+                                v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
+                                <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
+                                    class="whitespace-nowrap lg:text-xl" :for="item">{{
+                                        $t(item) }}</label>
+                            </div>
                         </div>
 
-                        <NuxtLink to="/"
-                            class="flex border border-black items-center justify-center gap-3 text-[1.375rem] min-h-[50px] min-w-[162px] w-fit">
-                            {{ $t('products') }}
-                            <Arrow :direction="'right'" />
-                        </NuxtLink>
+                        <div class="lg:w-full lg:flex lg:items-center lg:gap-10">
+                            <p class="hidden lg:block lg:text-xl">{{ $t('header-search-message') }}</p>
+                            <span class="lg:hidden">
+                                <ButtonsTransparent :label="$t('products')" :url="localePath({ name: 'products' })"
+                                    tag-type="link" />
+                            </span>
+                            <span class="hidden lg:block">
+                                <ButtonsTransparent :label="$t('go-to-products')" :url="localePath({ name: 'products' })"
+                                    tag-type="link" />
+                            </span>
+                        </div>
                     </div>
                 </div>
             </SectionsHeaderItem>
 
             <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
-                    <NuxtLink v-for="clipboardItem in clipboardStore.items.products" :to="clipboardItem.url"
+                    <NuxtLink v-for=" clipboardItem  in  clipboardStore.items.products " :to="clipboardItem.url"
                         class="px-6 flex flex-col items-center gap-2 lg:mt-10">
                         <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl"
                             :alt="clipboardItem.name" :title="clipboardItem.name">
