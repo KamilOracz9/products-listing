@@ -51,6 +51,14 @@
 }
 
 @layer components {
+    .transparent-button {
+        @apply text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center transition-all hover:bg-black hover:text-white;
+    }
+
+    .transparent-button:hover img {
+        @apply white-filter;
+    }
+
     .group-marker {
         @apply 
             before:size-16 before:absolute before:-z-10 before:bg-gray-6 before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full 
@@ -166,10 +174,6 @@
         @apply h-auto lg:rounded-b-lg;
     }
 
-    header .content-grid .header__dropdown:hover > div {
-        @apply h-auto lg:rounded-b-lg;
-    }
-
     header .content-grid .header__dropdown[data-active=true] {
         @apply grid-rows-[1fr] h-auto;
     }
@@ -192,7 +196,7 @@
         @apply transition-all;
     }
 
-    header .content-grid a:hover, header .content-grid .header__label:hover {
+    header .content-grid a:not([role='button']):hover, header .content-grid .header__label:hover {
         @apply lg:text-gray-4;
     }
 

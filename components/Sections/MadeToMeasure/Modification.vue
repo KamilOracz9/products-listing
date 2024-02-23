@@ -10,7 +10,7 @@
                 poznamy cenę katalogową planowanego rozwiązania.</p>
             <div class="flex flex-col gap-4 xs:flex-row">
                 <a href="#menu"
-                    class="w-full min-h-[30px] xs:min-h-[56px] border border-black xs:aspect-[auto_1/1] grid place-items-center">
+                    class="transparent-button p-0 w-full min-h-[30px] xs:min-h-[56px] border border-black xs:aspect-[auto_1/1] grid place-items-center">
                     <Arrow :direction="'upper'" :width="20" />
                 </a>
                 <ButtonsTransparent tag-type="link" :label="$t('pages.made-to-measure.configurator')"
