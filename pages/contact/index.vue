@@ -10,14 +10,10 @@
 </template>
   
 <script setup lang="ts">
-import useSlideTo from '~/plugins/useSlideTo';
-
 const contactStore = useContactStore();
 provide('contactStore', contactStore);
 
 onMounted(async () => {
   await contactStore.fetchData();
-
-  useSlideTo();
 })
 </script>

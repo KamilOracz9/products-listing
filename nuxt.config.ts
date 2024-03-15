@@ -39,11 +39,9 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
   ],
-  image: imagesConfig,
   plugins: [
     '@/plugins/device',
     '@/plugins/slugify',
-    '@/plugins/useSlideTo',
   ],
   pages: true,
   i18n: {

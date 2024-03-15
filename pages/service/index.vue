@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import useSlideTo from '~/plugins/useSlideTo';
-
 const serviceStore = useServiceStore();
 
 const selected: Ref<{
@@ -34,8 +32,6 @@ provide('selected', selected)
 
 onMounted(async () => {
     await serviceStore.fetchData().then(() => serviceStore.fetchCities());
-
-    useSlideTo();
 
     selected.value = serviceStore.sections?.section4.boxLeft.options[0];
 })

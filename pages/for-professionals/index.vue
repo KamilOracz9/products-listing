@@ -7,15 +7,11 @@
 </template>
   
 <script setup lang="ts">
-import useSlideTo from '@/plugins/useSlideTo';
-
 const forProfessionalStore = useForProfessionalStore();
 
 provide('forProfessionalStore', forProfessionalStore);
 
 onMounted(async () => {
   await forProfessionalStore.fetchData();
-
-  useSlideTo();
 })
 </script>
