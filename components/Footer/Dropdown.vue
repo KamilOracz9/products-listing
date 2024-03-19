@@ -28,11 +28,13 @@ const i18n = useI18n();
 const props = withDefaults(defineProps<{
     divider?: '#' | '/',
     item: IFooterItem;
+    translate?: boolean;
 }>(), {
     divider: '#',
+    translate: true,
 });
 
-const { item, divider } = toRefs(props);
+const { item, divider, translate } = toRefs(props);
 
 const getPath = (linkSlug: string) => {
     let mainSlug = item.value.slug;

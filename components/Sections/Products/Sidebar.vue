@@ -1,5 +1,5 @@
 <template>
-    <section :class="productsFilterStore.isOpen ? '' : 'hidden'"
+    <div :class="productsFilterStore.isOpen ? '' : 'hidden'"
         class="fixed p-5 top-0 left-0 bg-white w-full h-screen overflow-y-auto z-40 flex-col pb-10 lg:pb-0 lg:h-fit lg:overflow-hidden lg:p-0 lg:!flex lg:relative lg:z-0 lg:w-[250px]">
         <div class="text-[1.25rem] flex justify-between lg:hidden">
             <span class="underline">{{ $t('filtering') }} / {{ $t('sorting') }}</span>
@@ -13,20 +13,24 @@
             </button>
         </div>
 
-        <div class="flex flex-col gap-8 text-sm">
+        <div class="flex flex-col gap-8 text-sm" v-if="productsFilterStore.filters?.attributes">
             <SectionsSidebarFiltersList />
             <SectionsSidebarDimensions />
         </div>
         <div class="mt-6 w-fit ml-auto">
+            <!-- <ButtonsTransparent tagType="button" :label="$t('filter')" type="submit" /> -->
             <ButtonsTransparent tagType="button" :label="$t('filter')" @click="productsFilterStore.toggleMenuIsOpen" />
         </div>
-    </section>
+    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+const router = useRouter();
 const productsFilterStore = useProductsFilterStore();
 
-onMounted(() => {
-    productsFilterStore.fetchFilters();
+onMounted(async () => {
+    await productsFilterStore.fetchFilters({
+        // 'type[]': 5,
+    });
 })
 </script>
