@@ -35,36 +35,8 @@
 
 <script setup>
 const props = defineProps(['filters']);
-// const productsFilterStore = useProductsFilterStore();
-// const { activeFilters } = reactive(productsFilterStore);
 const route = useRoute();
-const router = useRouter();
 const { filters } = toRefs(props);
-const newQuery = ref();
-
-// const onChange = inject('')
-
-// console.log(activeFilters.value)
-
-// const onChange = (event) => {
-//     const query = route.query;
-//     const value = event.target.value;
-//     const checked = event.target.checked;
-//     const key = `${event.target.name}[]`;
-
-//     if (checked) {
-//         if (!query[key]) query[key] = [];
-//         if (typeof(query[key]) === 'string') query[key] = [query[key]];
-//         query[key].push(value);
-//     } else {
-//         query[key].splice(query[key].indexOf(value), 1);
-//         if (!query[key].length) delete query[key];
-//     }
-
-//     router.push({
-//         query: query,
-//     })
-// }
 
 const onChange = (event) => {
     const { name, value, checked } = event.target;
@@ -83,39 +55,12 @@ const onChange = (event) => {
         }
     }
 
-    router.push({ query });
+    navigateTo({ query });
 }
-
-// watch(newQuery, (value) => {
-//     // console.log(Object.keys(value))
-//     // console.log(`?${toGetParams(value)}`)
-//     // router.push(`?collection[]=329`)
-// })
 
 const checkFilterUsed = (filterName, optionValue) => {
     const query = route.query;
 
     return query[`${filterName}[]`] && !!Object.values(query[`${filterName}[]`]).filter(filter => filter == optionValue)[0];
 }
-
-// const onChange = async (event) => {
-//     const query = route.query;
-//     const value = event.target.value;
-//     const checked = event.target.checked;
-//     const key = `${event.target.name}[]`;
-
-//     if(key === 'collection[]') await productsFilterStore.fetchFilters();
-
-//     // Object.keys(activeFilters).forEach(key => {
-//     //     if (typeof (query[key]) === 'string') activeFilters[key].push(query[key])
-//     //     if (typeof (query[key]) === 'object') activeFilters[key].push(...query[key])
-//     // });
-
-//     // if (checked) activeFilters[key].push(value);
-//     // else activeFilters[key] = activeFilters[key].filter(activeFilter => activeFilter !== value);
-
-//     // activeFilters[key] = [...new Set(activeFilters[key])];
-
-//     // navigateTo({ query: { ...query, ...activeFilters } });
-// }
 </script>
