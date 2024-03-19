@@ -111,16 +111,16 @@ const useProductsFilterStore = defineStore('productsFilter', {
 
             this.filters = await $fetch(`${useAppConfig().public.apiBase}/pl_PL/products/filters?${toGetParams(props)}`).finally(() => this.isLoading = false);
 
-            this.activeFilters[`collection[]`] = [];
-            const existingCollections = route.query[`collection[]`];
-            if(typeof(existingCollections) === 'string') this.activeFilters[`collection[]`].push(existingCollections);
-            if(typeof(existingCollections) === 'object') this.activeFilters[`collection[]`] = existingCollections;
+            if(!this.activeFilters[`collection[]`]) this.activeFilters[`collection[]`] = [];
+            // const existingCollections = route.query[`collection[]`];
+            // if(typeof(existingCollections) === 'string') this.activeFilters[`collection[]`].push(existingCollections);
+            // if(typeof(existingCollections) === 'object') this.activeFilters[`collection[]`] = existingCollections;
 
             this.filters.attributes.forEach(filter => {
-                this.activeFilters[`${filter.name}[]`] = [];
-                const existingValue = route.query[`${filter.name}[]`];
-                if(typeof(existingValue) === 'string') this.activeFilters[`${filter.name}[]`].push(existingValue);
-                if(typeof(existingValue) === 'object') this.activeFilters[`${filter.name}[]`] = existingValue;
+                if(!this.activeFilters[`${filter.name}[]`]) this.activeFilters[`${filter.name}[]`] = [];
+                // const existingValue = route.query[`${filter.name}[]`];
+                // if(typeof(existingValue) === 'string') this.activeFilters[`${filter.name}[]`].push(existingValue);
+                // if(typeof(existingValue) === 'object') this.activeFilters[`${filter.name}[]`] = existingValue;
             })
 
             // this.activeFilters = this.filters.attributes.map(filter => ({key: `${filter.name}[]`, value: []}))
