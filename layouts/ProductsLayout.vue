@@ -18,7 +18,7 @@
 
                 <SectionsProductsListing :products="data.data" />
                 <!-- <SectionsProductsListing v-if="!productStore.list.isLoading" /> -->
-                <SectionsProductsPagination />
+                <SectionsProductsPagination :meta="data.meta" />
 
                 <p v-if="longText"
                     class="pt-3.5 mb-5 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
