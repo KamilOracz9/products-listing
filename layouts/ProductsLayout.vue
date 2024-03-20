@@ -18,7 +18,7 @@
 
                 <SectionsProductsListing :products="data.data" />
                 <!-- <SectionsProductsListing v-if="!productStore.list.isLoading" /> -->
-                <SectionsProductsPagination :meta="data.meta" />
+                <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
                 <p v-if="longText"
                     class="pt-3.5 mb-5 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
@@ -42,4 +42,8 @@ const { title, breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
 const { data } = await useAsyncData('products', () => fetchProducts(route.query), { watch: [() => route.query] });
+
+watch(() => route.query.page, value => {
+    if(value) document.querySelector('h1').scrollIntoView();
+})
 </script>

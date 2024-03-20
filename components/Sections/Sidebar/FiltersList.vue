@@ -59,6 +59,8 @@ const onChange = async (event) => {
         }
     }
 
+    delete query.page;
+
     await navigateTo({ query });
     refresh();
 }
