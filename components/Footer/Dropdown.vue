@@ -10,7 +10,7 @@
         <div :class="footerStore.isActive(item.slug) ? 'max-lg:active' : 'max-lg:inactive'">
             <div>
                 <NuxtLink v-for="link in item.items" class="text-normal-base hover-opacity-60 cursor-pointer transition-all"
-                    :to="getPath($t(<string>link.slug))">{{ link.label ?? $t(<string>link.slug) }}</NuxtLink>
+                    :to="getPath(translate ? $t(<string>link.slug) : <string>link.slug)">{{ link.label ?? (translate ? $t(<string>link.slug) : link.slug) }}</NuxtLink>
             </div>
         </div>
     </li>
@@ -41,7 +41,7 @@ const getPath = (linkSlug: string) => {
 
     if (linkSlug === i18n.t('service') || linkSlug === i18n.t('certified-installers')) mainSlug = 'service';
 
-    if (linkSlug === i18n.t(mainSlug)) return localePath({ name: mainSlug });
+    if (linkSlug === (translate ? i18n.t(mainSlug) : mainSlug)) return localePath({ name: mainSlug });
 
     return localePath({ name: mainSlug }) + `${divider.value}${slugify(linkSlug)}`
 }

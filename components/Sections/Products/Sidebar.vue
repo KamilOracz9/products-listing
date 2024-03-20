@@ -8,7 +8,7 @@
             </button>
         </div>
         <div>
-            <button type="button" class="text-lg my-6 lg:mt-0 lg:text-2xl">
+            <button @click="resetFilters" type="button" class="text-lg my-6 lg:mt-0 lg:text-2xl">
                 {{ $t('reset-filters') }}
             </button>
         </div>
@@ -25,16 +25,18 @@
 </template>
 
 <script setup lang="ts">
+import { fetchFilters } from '~/services/api';
+
 const productsFilterStore = useProductsFilterStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
+const route = useRoute();
 
-const { data, pending, error, refresh } = await useAsyncData(
-    'filters',
-    () => $fetch('https://dev.newtrendy.usermd.net/api/v1/pl_PL/products/filters?type[]=1')
-)
-// onMounted(async () => {
-//     await productsFilterStore.fetchFilters({
-//         // 'type[]': 5,
-//     });
-// })
+const resetFilters = async () => {
+    await navigateTo({ query: {} });
+    refresh();
+}
+
+const { data, refresh } = await useAsyncData('filters', () => fetchFilters(route.query))
+
+provide('refresh', refresh);
 </script>

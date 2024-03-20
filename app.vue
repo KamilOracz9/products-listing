@@ -1,6 +1,13 @@
 <template>
   <NuxtLayout name="main">
-    <NuxtPage />
+    <Suspense>
+      <NuxtPage />
+      <template #fallback>
+        <div class="w-full flex items-center justify-center my-10">
+          <img class="w-20 h-20 animate-spin" src="https://www.svgrepo.com/show/448500/loading.svg" alt="Loading icon">
+        </div>
+      </template>
+    </Suspense>
   </NuxtLayout>
 </template>
 

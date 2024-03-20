@@ -57,7 +57,7 @@ const useInspirationStore = defineStore('inspiration', {
         async fetchCategory() {
             this.category.isLoading = true;
 
-            const { data } = await useFetch(`${useAppConfig().public.apiBase}/pl_PL/articles/category/aktualnosci`)
+            const { data } = await useFetch(`${useAppConfig().public.apiBase}/v1/pl_PL/articles/category/aktualnosci`)
                 .finally(() => this.category.isLoading = false);
 
             this.category.item = <IInspirationCategory>data.value;
@@ -65,7 +65,7 @@ const useInspirationStore = defineStore('inspiration', {
         async fetchArticle(slug: string) {
             this.article.isLoading = true;
 
-            const { data } = await useFetch(`${useAppConfig().public.apiBase}/pl_PL/articles/show/${slug}`)
+            const { data } = await useFetch(`${useAppConfig().public.apiBase}/v1/pl_PL/articles/show/${slug}`)
                 .finally(() => this.article.isLoading = false);
 
             this.article.item = <IInspirationFullArticle>data.value;
