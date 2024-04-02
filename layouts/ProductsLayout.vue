@@ -14,10 +14,11 @@
                 <SectionsProductsCategories />
 
                 <button @click="productsFilterStore.toggleMenuIsOpen" class="my-10 underline text-2xl lg:hidden">{{
-            $t('filtering') }} / {{ $t('sorting') }}</button>
+                    $t('filtering') }} / {{ $t('sorting') }}</button>
 
-                <SectionsProductsListing :products="data.data" />
-                <!-- <SectionsProductsListing v-if="!productStore.list.isLoading" /> -->
+                <SectionsProductsListing v-if="!pending" :products="data.data" />
+                <LoadingIndicator v-else />
+                
                 <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
                 <p v-if="longText"
@@ -41,9 +42,9 @@ const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
 const { title, breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
-const { data } = await useAsyncData('products', () => fetchProducts(route.query), { watch: [() => route.query] });
+const { data, pending } = await useAsyncData('products', () => fetchProducts(route.query), { watch: [() => route.query] });
 
 watch(() => route.query.page, value => {
-    if(value) document.querySelector('h1').scrollIntoView();
+    if (value) document.querySelector('h1').scrollIntoView();
 })
 </script>

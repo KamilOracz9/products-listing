@@ -15,7 +15,7 @@
 
         <div class="flex flex-col gap-8 text-sm" v-if="data">
             <SectionsSidebarFiltersList :filters="data" />
-            <SectionsSidebarDimensions />
+            <SectionsSidebarDimensions :filters="data.dimensions" />
         </div>
         <div class="mt-6 w-fit ml-auto">
             <!-- <ButtonsTransparent tagType="button" :label="$t('filter')" type="submit" /> -->

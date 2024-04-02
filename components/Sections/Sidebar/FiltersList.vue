@@ -1,24 +1,9 @@
 <template>
     <ul class="flex flex-col gap-8">
-        <li class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-            <span class="font-medium uppercase">{{ $t('filters.collections') }}</span>
-            <!-- <input :name="filter.name" v-if="filter.enableSearching" type="text" :placeholder="$t('search')" class="border rounded-[3px] p-1" /> -->
-            <input v-model="collectionsSearch" type="text" :placeholder="$t('search')"
-                class="border rounded-[3px] p-1" />
-            <ul class="max-h-[150px] overflow-y-auto">
-                <li v-for="option in filters.collections.filter(collection => collection.name.toUpperCase().includes(collectionsSearch.toUpperCase()))" class="flex gap-3 items-center">
-                    <input :checked="checkFilterUsed('collections', option.id)" name="collections" :value="option.id"
-                        @change="onChange" type="checkbox"
-                        class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
-                        :disabled="option.disabled" :id="`collections-${option.id}`" />
-                    <label :class="option.disabled ? 'text-gray-4' : 'text-black'" :for="`collections-${option.id}`">
-                        {{ option.name }}
-                    </label>
-                </li>
-            </ul>
-        </li>
-        <li v-for="filter in filters.attributes" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+        <li v-for="filter in attributes" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
             <span class="font-medium uppercase">{{ $t(`filters.${filter.name}`) }}</span>
+            <input v-model="collectionsSearch" v-if="filter.name === 'collections'" type="text"
+                :placeholder="$t('search')" class="border rounded-[3px] p-1" />
             <ul class="max-h-[150px] overflow-y-auto">
                 <li v-for="option in filter.options" class="flex gap-3 items-center">
                     <input :checked="checkFilterUsed(filter.name, option.value)" :name="filter.name"
@@ -41,6 +26,12 @@ const route = useRoute();
 const { filters } = toRefs(props);
 const refresh = inject('refresh');
 const collectionsSearch = ref('');
+
+const attributes = computed(() => Object.keys(filters.value).map(key => {
+    if (key !== 'dimensions') return filters.value[key]
+}).filter(item => item));
+
+// const dimensions = computed(() => filters.value.dimensions);
 
 const onChange = async (event) => {
     const { name, value, checked } = event.target;

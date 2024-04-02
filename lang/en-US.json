@@ -74,12 +74,16 @@
     },
     "filters": {
         "collections": "Collections",
-        "doors_type": "Doors type",
-        "doors_count": "Doors count",
+        "doorType": "Doors type",
+        "doorsCount": "Doors count",
         "color": "Color",
-        "detail_finish": "Details finish",
-        "product_surface_finish": "Surface finish",
-        "shape": "Shape"
+        "detailFinishing": "Details finish",
+        "surfaceFinishing": "Surface finish",
+        "shape": "Shape",
+        "material": "Material",
+        "length": "Length",
+        "width": "Width",
+        "height": "height"
     },
     "pages": {
         "made-to-measure": {

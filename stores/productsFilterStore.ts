@@ -11,7 +11,7 @@ type IProductsFilterStore = {
             min: number;
             max: number;
         },
-        depth: {
+        length: {
             min: number;
             max: number;
         },
@@ -34,8 +34,8 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 max: 0,
                 enable: false,
             },
-            depth: {
-                label: 'depth',
+            length: {
+                label: 'length',
                 min: 0,
                 max: 0,
                 enable: false,
@@ -52,7 +52,7 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 min: 0,
                 max: 0,
             },
-            depth: {
+            length: {
                 min: 0,
                 max: 0,
             },

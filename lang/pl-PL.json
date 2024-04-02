@@ -74,12 +74,16 @@
     },
     "filters": {
         "collections": "Kolekcje",
-        "doors_type": "Typ drzwi",
-        "doors_count": "Liczba drzwi",
+        "doorType": "Typ drzwi",
+        "doorsCount": "Liczba drzwi",
         "color": "Kolor",
-        "detail_finish": "Wykończenie detali",
-        "product_surface_finish": "Wykończenie powierzchni",
-        "shape": "Kształt"
+        "detailFinishing": "Wykończenie detali",
+        "surfaceFinishing": "Wykończenie powierzchni",
+        "shape": "Kształt",
+        "material": "Materiał",
+        "length": "Długość",
+        "width": "Szerokość",
+        "height": "Wysokość"
     },
     "pages": {
         "made-to-measure": {

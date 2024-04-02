@@ -12,7 +12,7 @@ export type IProductFilterDimensions = {
         max: number;
         enable: boolean;
     },
-    depth: {
+    length: {
         label: string;
         min: number;
         max: number;

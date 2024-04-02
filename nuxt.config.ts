@@ -1,5 +1,4 @@
 import pages from './lang/pages.json'
-import imagesConfig from './config/images.config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
