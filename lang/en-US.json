@@ -1,4 +1,5 @@
 {
+    "categories": "Categories",
     "home-page": "Strona główna",
     "privacy-policy": "Privacy policy",
     "polish": "Polish",
@@ -70,6 +71,19 @@
         "installation-on-internal-cubes": "Installation on internal cubes",
         "rail-hanger": "Rail hanger",
         "collections": "Our collections"
+    },
+    "filters": {
+        "collections": "Collections",
+        "doorType": "Doors type",
+        "doorsCount": "Doors count",
+        "color": "Color",
+        "detailFinishing": "Details finish",
+        "surfaceFinishing": "Surface finish",
+        "shape": "Shape",
+        "material": "Material",
+        "length": "Length",
+        "width": "Width",
+        "height": "height"
     },
     "pages": {
         "made-to-measure": {

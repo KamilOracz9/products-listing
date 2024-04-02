@@ -13,8 +13,6 @@
 </template>
   
 <script setup>
-import useSlideTo from '@/plugins/useSlideTo';
-
 const inspirationStore = useInspirationStore();
 
 const { listing } = inspirationStore;
@@ -23,7 +21,5 @@ provide('listing', listing);
 
 onMounted(async () => {
   await inspirationStore.fetchListingData();
-
-  useSlideTo();
 })
 </script>

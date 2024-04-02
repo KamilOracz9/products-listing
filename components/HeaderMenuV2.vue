@@ -12,8 +12,9 @@
                             :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
                         <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
                     </NuxtLink>
-                    
-                    <NuxtLink v-for="category in categoryStore.mainCategories" :to="localePath({ name: 'categories' }) + `/${category.slug}`">
+
+                    <NuxtLink v-for="category in categoryStore.mainCategories"
+                        :to="localePath({ name: 'categories' }) + `/${category.slug}`">
                         <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
                             :alt="category.label" :title="category.label">
                         <p class="py-3">{{ category.label }}</p>
@@ -55,19 +56,26 @@
                                 <p class="py-3">{{ $t('navigation.collections') }}</p>
                             </NuxtLink>
                             <div class="text-sm">
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
-                                <NuxtLink :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
+                                <NuxtLink
+                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
                                     Eventa</NuxtLink>
                             </div>
                         </div>
@@ -80,7 +88,7 @@
                     <div class="header__links" :style="inspirationsStyle">
                         <NuxtLink :to="getPath('inspirations', $t('news'))">{{ $t('news') }}</NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('arrangements-and-inspirations'))">{{
-                            $t('arrangements-and-inspirations') }}</NuxtLink>
+            $t('arrangements-and-inspirations') }}</NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('advice-and-support'))">{{ $t('advice-and-support') }}
                         </NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('faq'))">{{ $t('faq') }}</NuxtLink>
@@ -93,7 +101,8 @@
                     <div class="header__links" :style="forProfessionalsStyle">
                         <NuxtLink :to="getPath('for-professionals', $t('architects-zone'))">{{ $t('architects-zone') }}
                         </NuxtLink>
-                        <NuxtLink :to="getPath('for-professionals', $t('partner-zone'))">{{ $t('partner-zone') }}</NuxtLink>
+                        <NuxtLink :to="getPath('for-professionals', $t('partner-zone'))">{{ $t('partner-zone') }}
+                        </NuxtLink>
                     </div>
                 </div>
             </SectionsHeaderItem>
@@ -103,7 +112,7 @@
                     <div class="header__links" :style="aboutStyle">
                         <NuxtLink :to="getPath('about', $t('companys-history'))">{{ $t('companys-history') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('awards-and-implementations'))">{{
-                            $t('awards-and-implementations') }}</NuxtLink>
+            $t('awards-and-implementations') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('career'))">{{ $t('career') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('projects-ue'))">{{ $t('projects-ue') }}</NuxtLink>
                     </div>
@@ -115,8 +124,9 @@
                     <div class="header__links" :style="contactStyle">
                         <NuxtLink :to="getPath('contact', $t('office'))">{{ $t('office') }}</NuxtLink>
                         <NuxtLink :to="getPath('contact', $t('sales-service-department'))">{{
-                            $t('sales-service-department') }}</NuxtLink>
-                        <NuxtLink :to="getPath('contact', $t('export-department'))">{{ $t('export-department') }}</NuxtLink>
+            $t('sales-service-department') }}</NuxtLink>
+                        <NuxtLink :to="getPath('contact', $t('export-department'))">{{ $t('export-department') }}
+                        </NuxtLink>
                         <NuxtLink :to="localePath({ name: 'service' })">{{ $t('service') }}</NuxtLink>
                         <NuxtLink :to="getPath('service', $t('certified-installers'))">{{ $t('certified-installers') }}
                         </NuxtLink>
@@ -150,7 +160,7 @@
                                 v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
                                 <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
                                     class="whitespace-nowrap lg:text-xl" :for="item">{{
-                                        $t(item) }}</label>
+            $t(item) }}</label>
                             </div>
                         </div>
 
@@ -161,8 +171,8 @@
                                     tag-type="link" />
                             </span>
                             <span class="hidden lg:block">
-                                <ButtonsTransparent :label="$t('go-to-products')" :url="localePath({ name: 'products' })"
-                                    tag-type="link" />
+                                <ButtonsTransparent :label="$t('go-to-products')"
+                                    :url="localePath({ name: 'products' })" tag-type="link" />
                             </span>
                         </div>
                     </div>
@@ -272,6 +282,13 @@ const setLeftOffsets = () => {
     contactOffsetLeft.value = calcLeftOffset(contactRef.value);
 }
 
+watch(
+    () => headerStore.submenu,
+    () => {
+        setLeftOffsets();
+    },
+)
+
 onMounted(async () => {
     setHeader();
 
@@ -279,8 +296,6 @@ onMounted(async () => {
 
     document.addEventListener('scroll', onScroll);
     window.addEventListener('resize', setLeftOffsets);
-
-    setLeftOffsets();
 });
 
 onUnmounted(() => {

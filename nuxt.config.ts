@@ -1,5 +1,4 @@
 import pages from './lang/pages.json'
-import imagesConfig from './config/images.config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -39,11 +38,9 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
   ],
-  image: imagesConfig,
   plugins: [
     '@/plugins/device',
     '@/plugins/slugify',
-    '@/plugins/useSlideTo',
   ],
   pages: true,
   i18n: {

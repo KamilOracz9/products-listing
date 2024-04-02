@@ -33,7 +33,6 @@
   
 <script setup lang="ts">
 import slugify from '~/plugins/slugify';
-import useSlideTo from '~/plugins/useSlideTo';
 
 const aboutStore = useAboutStore();
 
@@ -41,7 +40,5 @@ provide('aboutStore', aboutStore);
 
 onMounted(async () => {
   await aboutStore.fetchData();
-
-  useSlideTo();
 })
 </script>

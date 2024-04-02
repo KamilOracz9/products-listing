@@ -1,4 +1,5 @@
 {
+    "categories": "kategorie",
     "home-page": "Strona główna",
     "privacy-policy": "Polityka prywatności",
     "polish": "Polski",
@@ -70,6 +71,19 @@
         "installation-on-internal-cubes": "Montaż na kostkach wewnętrznych",
         "rail-hanger": "Wieszak relingowy",
         "collections": "Nasze kolekcje"
+    },
+    "filters": {
+        "collections": "Kolekcje",
+        "doorType": "Typ drzwi",
+        "doorsCount": "Liczba drzwi",
+        "color": "Kolor",
+        "detailFinishing": "Wykończenie detali",
+        "surfaceFinishing": "Wykończenie powierzchni",
+        "shape": "Kształt",
+        "material": "Materiał",
+        "length": "Długość",
+        "width": "Szerokość",
+        "height": "Wysokość"
     },
     "pages": {
         "made-to-measure": {

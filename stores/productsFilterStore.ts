@@ -4,13 +4,14 @@ type IProductsFilterStore = {
     isLoading: boolean;
     isOpen: boolean;
     filters: IProductFilter[];
+    activeFilters: [];
     filtersDimensions: IProductFilterDimensions;
     activeFiltersDimensions: {
         width: {
             min: number;
             max: number;
         },
-        depth: {
+        length: {
             min: number;
             max: number;
         },
@@ -33,8 +34,8 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 max: 0,
                 enable: false,
             },
-            depth: {
-                label: 'depth',
+            length: {
+                label: 'length',
                 min: 0,
                 max: 0,
                 enable: false,
@@ -51,7 +52,7 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 min: 0,
                 max: 0,
             },
-            depth: {
+            length: {
                 min: 0,
                 max: 0,
             },
@@ -60,6 +61,7 @@ const useProductsFilterStore = defineStore('productsFilter', {
                 max: 0,
             },
         },
+        activeFilters: [],
     }),
     actions: {
         toggleMenuIsOpen(): void {
@@ -69,42 +71,6 @@ const useProductsFilterStore = defineStore('productsFilter', {
             this.isOpen
                 ? body?.classList.add('overflow-hidden')
                 : body?.classList.remove('overflow-hidden');
-        },
-        async fetchFilters() {
-            const router = useRouter();
-
-            this.isLoading = true;
-
-            await import('@/data/productFilters')
-                .then(response => {
-                    this.filters = <IProductFilter[]>response.default.filters;
-                    this.filtersDimensions = <IProductFilterDimensions>response.default.dimensions;
-                    this.activeFiltersDimensions = {
-                        width: {
-                            min: this.filtersDimensions.width.min,
-                            max: this.filtersDimensions.width.max,
-                        },
-                        depth: {
-                            min: this.filtersDimensions.depth.min,
-                            max: this.filtersDimensions.depth.max,
-                        },
-                        height: {
-                            min: this.filtersDimensions.height.min,
-                            max: this.filtersDimensions.height.max,
-                        },
-                    }
-
-                    const query = router.currentRoute.value.query;
-
-                    Object.keys(query).forEach(key => {
-                        const splitedKeys = key.split('_');
-
-                        if(Object.keys(this.activeFiltersDimensions).includes(splitedKeys[0])) {
-                            this.activeFiltersDimensions[splitedKeys[0]][splitedKeys[1]] = query[key];
-                        }
-                    });
-                })
-                .finally(() => this.isLoading = false);
         },
     },
 });

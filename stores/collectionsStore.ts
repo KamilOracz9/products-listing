@@ -17,7 +17,7 @@ const useCollectionStore = defineStore('collection', {
         async fetchCollections() {
             this.isLoading = true;
 
-            const { data } = await useFetch(`${useAppConfig().public.apiBase}/pl_PL/collections`)
+            const { data } = await useFetch(`${useAppConfig().public.apiBase}/v1/pl_PL/collections`)
                 .finally(() => this.isLoading = false);
 
             this.items = <ICollectionItem[]>data.value.data;

@@ -1,24 +1,23 @@
-
 <template>
     <ul class="flex flex-col gap-8">
-        <li v-for="dimension in [width, height, depth]" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-            <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(dimension.label) }}</span>
+        <li v-for="dimension in dimensions" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+            <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
             <div class="mb-4">
-                <button @click="onResetClick(dimension.label)">{{ $t('reset') }}</button>
+                <button @click="onResetClick(dimension.name)">{{ $t('reset') }}</button>
             </div>
             <div class="range-slider relative h-[35px]">
-                <SectionsSidebarSlider :dimension="dimension" type="min" inputType="range" />
-                <SectionsSidebarSlider :dimension="dimension" type="max" inputType="range" />
+                <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_min`] ?? dimension.min" type="min" inputType="range" />
+                <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_max`] ?? dimension.max" type="max" inputType="range" />
             </div>
             <div class="flex gap-2 uppercase justify-start">
                 <div class="flex items-center gap-2">
                     {{ $t('from') }}
-                    <SectionsSidebarSlider :dimension="dimension" type="min" inputType="number"
+                    <SectionsSidebarSlider :value="route.query[`${dimension.name}_min`] ?? dimension.min" :dimension="dimension" type="min" inputType="number"
                         class="min-w-[60px] h-[26px]" />
                 </div>
                 <div class="flex items-center gap-2">
                     {{ $t('to') }}
-                    <SectionsSidebarSlider :dimension="dimension" type="max" inputType="number"
+                    <SectionsSidebarSlider :value="route.query[`${dimension.name}_max`] ?? dimension.max" :dimension="dimension" type="max" inputType="number"
                         class="min-w-[60px] h-[26px]" />
                 </div>
             </div>
@@ -29,11 +28,17 @@
 <script setup>
 const productsFilterStore = useProductsFilterStore();
 const router = useRouter();
+const props = defineProps(['filters']);
+const { filters: dimensions } = toRefs(props);
+const route = useRoute();
 
-const { width, height, depth } = reactive(productsFilterStore.filtersDimensions);
+// const { width, height, depth } = reactive(productsFilterStore.filtersDimensions);
+// const { width, height, depth } = filters.value;
+
+// console.log(filters.value)
 
 const onResetClick = (label) => {
-    const { min, max } = productsFilterStore.filtersDimensions[label];
+    const { min, max } = dimensions[label];
 
     productsFilterStore.activeFiltersDimensions[label].min = min;
     productsFilterStore.activeFiltersDimensions[label].max = max;
@@ -50,4 +55,16 @@ const onResetClick = (label) => {
 
     navigateTo({ query: params });
 }
+
+onMounted(() => {
+    const query = route.query;
+
+    Object.keys(productsFilterStore.activeFiltersDimensions).forEach(key => {
+        // productsFilterStore.activeFiltersDimensions[key].min = dimensions.value[key].min;
+        // productsFilterStore.activeFiltersDimensions[key].max = dimensions.value[key].max;
+
+        // console.log(query[`${key}_min`])
+        // console.log(query[`${key}_max`])
+    });
+})
 </script>
