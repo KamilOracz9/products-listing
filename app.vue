@@ -42,7 +42,7 @@ useSeoMeta({
   ogDescription: 'NEW TRENDY - Producent Kabin Prysznicowych',
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: `https://newtrendy.pl${router.currentRoute.value.fullPath}`,
+  ogUrl: `https://newtrendy.pl${router.currentRoute.value.path}`,
   ogSiteName: 'newtrendy.pl',
   twitterCard: 'summary_large_image',
   robots: {
