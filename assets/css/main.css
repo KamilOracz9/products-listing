@@ -52,7 +52,7 @@
 
 @layer components {
     .transparent-button {
-        @apply text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center transition-all hover:bg-black hover:text-white;
+        @apply text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center transition-all border-black hover:bg-black hover:text-white;
     }
 
     .transparent-button:hover img {
