@@ -7,7 +7,7 @@
         <SectionsPlaceToBuySearch />
 
         <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
-            <div class="lg:col-span-2  text-2xl font-medium" v-if="notFoundLocations">
+            <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
                 {{ $t('pages.place-to-buy.locations-not-found') }}
             </div>
             <SectionsPlaceToBuyLocationsList v-else />
