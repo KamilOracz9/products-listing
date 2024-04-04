@@ -34,8 +34,8 @@ export const setMeta = (meta: Meta) => {
         description: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
         ogDescription: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
         robots: {
-            Index: !meta.noindex ?? true,
-            Follow: !meta.nofollow ?? true,
+            Index: meta.noindex  ? !meta.noindex : true,
+            Follow: meta.nofollow ? !meta.nofollow : true,
         }
     })
 }
