@@ -1,17 +1,16 @@
-
 <template>
     <div>
         <div class="bg-gray-2 p-4 grid gap-4 items-center lg:grid-cols-6">
             <div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-                <InputSelect2 :disabled="!!name" modelKey="voievodship" :options="placeToBuyStore.voievodships"
+                <InputSelect2 :disabled="!!city_or_code" modelKey="voivodeship_name" :options="voivodeships"
                     :placeholder="$t('pages.place-to-buy.select-voievodship')" />
-                <InputSelect2 :disabled="!!name" modelKey="city" :options="placeToBuyStore.cities"
+                <InputSelect2 :disabled="!!city_or_code" modelKey="city" :options="cities"
                     :placeholder="$t('pages.place-to-buy.select-city')" />
             </div>
 
             <div class="text-lg text-center">{{ $t('or') }}</div>
 
-            <input :disabled="!!voievodship || !!city" v-model="name" type="text"
+            <input :disabled="!!voivodeship_name || !!city" v-model="city_or_code" type="text"
                 class="disabled:bg-gray-6 border-gray-6 focus:border-gray-6 lg:col-span-2 w-full py-3.5 px-5 focus:ring-0 placeholder:text-gray-1 placeholder:text-sm"
                 :placeholder="$t('pages.place-to-buy.input-placeholder')">
             <div class="[&>button]:border-black [&>button]:justify-center [&>button]:h-[52px]">
@@ -29,50 +28,51 @@
 </template>
 
 <script setup lang="ts">
+import { fetchCities, fetchVoivodeships } from '~/services/api';
+
 const route = useRoute();
 const router = useRouter();
-const placeToBuyStore = usePlaceToBuyStore();
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
 const mapKey: Ref<number> | undefined = inject('mapKey');
 
-const voievodship: Ref<string | null> = ref(null);
+const voivodeship_name: Ref<string | null> = ref(null);
 const city: Ref<string | null> = ref(null);
-const name: Ref<string | null> = ref(null);
+const city_or_code: Ref<string | null> = ref(null);
 
-provide('voievodship', voievodship);
+const { data: voivodeships } = await useAsyncData('voivodeships', () => fetchVoivodeships(voivodeship_name.value as string), { watch: [voivodeship_name] });
+const { data: cities } = await useAsyncData('cities', () => fetchCities(city.value as string), { watch: [city] });
+
+provide('voivodeship_name', voivodeship_name);
 provide('city', city);
 
 const onGetGeolocation = () => {
-    navigator.geolocation.getCurrentPosition(response => {
-        voievodship.value = null;
-        city.value = null;
-        name.value = null;
-
-        onSubmit();
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+        fetch(`https://nominatim.openstreetmap.org/search.php?q=${latitude},${longitude}&polygon_geojson=1&format=json`)
+            .then(response => response.json())
+            .then(data => {
+                voivodeship_name.value = null;
+                city.value = null;
+                city_or_code.value = data[0].display_name.split(',').reverse()[3].replace(' ', '');
+                onSubmit();
+            })
     })
 }
 
 const onSubmit = async () => {
     const query = { ...router.currentRoute.value.query }
 
-    if (voievodship.value && !name.value) query.voievodship = voievodship.value;
-    else delete query.voievodship;
+    if (voivodeship_name.value && !city_or_code.value) query.voivodeship_name = voivodeship_name.value;
+    else delete query.voivodeship_name;
 
-    if (city.value && !name.value) query.city = city.value;
+    if (city.value && !city_or_code.value) query.city = city.value;
     else delete query.city;
 
-    if (name.value && (!voievodship.value || !city.value)) query.name = name.value;
-    else delete query.name;
+    if (city_or_code.value && (!voivodeship_name.value || !city.value)) query.city_or_code = city_or_code.value;
+    else delete query.city_or_code;
 
     router.push({ query });
-
-    await placeToBuyStore.fetchLocations({
-        voievodship: voievodship.value,
-        city: city.value,
-        name: name.value,
-    });
 
     if (mapCenter) mapCenter.value = [52.121, 19.108];
     if (mapZoom) mapZoom.value = 6;
@@ -80,19 +80,8 @@ const onSubmit = async () => {
 }
 
 onMounted(async () => {
-    voievodship.value = <string>route.query.voievodship ?? null;
+    voivodeship_name.value = <string>route.query.voivodeship_name ?? null;
     city.value = <string>route.query.city ?? null;
-    name.value = <string>route.query.name ?? null;
-
-    if (voievodship.value) await placeToBuyStore.fetchVoievodships();
-    if (city.value) await placeToBuyStore.fetchCities();
-
-    watch(voievodship, value => {
-        placeToBuyStore.fetchVoievodships();
-    })
-
-    watch(city, value => {
-        placeToBuyStore.fetchCities();
-    })
+    city_or_code.value = <string>route.query.city_or_code ?? null;
 })
 </script>

@@ -5,11 +5,14 @@
 <script setup>
 import markerIcon from '@/assets/icons/marker-icon-yellow.png';
 import markerIconRed from '@/assets/icons/marker-icon-red.png';
-const placeToBuyStore = usePlaceToBuyStore();
+import { fetchCoordsList } from '~/services/api';
+const route = useRoute();
 
 const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
+
+const { data } = await useAsyncData('coordsList', () => fetchCoordsList(route.query), { watch: [() => route.query] });
 
 let map = null;
 
@@ -63,8 +66,8 @@ const drawPoints = () => {
         spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: false
     });
 
-    placeToBuyStore.locations.items.forEach(({ coords }, index) => {
-        markers.addLayer(L.marker([coords.lat, coords.lng], { icon: selected.value === index ? iconRed : icon }));
+    data.value.forEach(({latitude, longitude}, index) => {
+        if(latitude && longitude) markers.addLayer(L.marker([latitude, longitude], { icon: selected.value === index ? iconRed : icon }));
     });
 
     map.addLayer(markers);
