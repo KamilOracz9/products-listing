@@ -16,7 +16,8 @@
                 <li class="p-3" v-for="item in globalStore.locale.locales">
                     <div @click="setLocale(item.code)" class="flex gap-2 group/dropdown-item">
                         <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
-                        <span class="transition-opacity group-hover/dropdown-item:opacity-[70%]">{{ $t(item.label.toLowerCase()) }}</span>
+                        <span class="transition-opacity group-hover/dropdown-item:opacity-[70%]">{{
+            $t(item.label.toLowerCase()) }}</span>
                     </div>
                 </li>
             </ul>
@@ -24,16 +25,19 @@
 
         <!-- Icons -->
         <div class="text-gray-1 flex gap-[14px] items-center">
-            <a href="/" :aria-label="$t('privacy-policy')" class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}</a>
-            <a href="/" aria-label="Facebook"><img class="top-bar-icon" src="@/assets/icons/social/facebook.svg" width="10" height="20"
-                    alt="" title="" /></a>
-            <a href="/" aria-label="Instagram"><img class="top-bar-icon" src="@/assets/icons/social/instagram.svg" width="19" height="18"
-                    alt="" title="" /></a>
-            <a href="/" aria-label="Pinterest"><img class="top-bar-icon" src="@/assets/icons/social/pinterest.svg" width="19" height="20"
-                    alt="" title="" /></a>
-            <a href="/" aria-label="Youtube"><img class="top-bar-icon" src="@/assets/icons/social/youtube.svg" width="23" height="16" alt="" title="" /></a>
-            <a href="/" aria-label="Linkedin"><img class="top-bar-icon" src="@/assets/icons/social/linkedin.svg" width="21" height="20"
-                    alt="" title="" /></a>
+            <NuxtLink :to="localePath({ name: 'privacy-policy' })" :aria-label="$t('privacy-policy')"
+                class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}
+            </NuxtLink>
+            <a href="/" aria-label="Facebook"><img class="top-bar-icon" src="@/assets/icons/social/facebook.svg"
+                    width="10" height="20" alt="" title="" /></a>
+            <a href="/" aria-label="Instagram"><img class="top-bar-icon" src="@/assets/icons/social/instagram.svg"
+                    width="19" height="18" alt="" title="" /></a>
+            <a href="/" aria-label="Pinterest"><img class="top-bar-icon" src="@/assets/icons/social/pinterest.svg"
+                    width="19" height="20" alt="" title="" /></a>
+            <a href="/" aria-label="Youtube"><img class="top-bar-icon" src="@/assets/icons/social/youtube.svg"
+                    width="23" height="16" alt="" title="" /></a>
+            <a href="/" aria-label="Linkedin"><img class="top-bar-icon" src="@/assets/icons/social/linkedin.svg"
+                    width="21" height="20" alt="" title="" /></a>
         </div>
     </section>
 </template>
@@ -42,6 +46,7 @@
 import device from '@/plugins/device';
 import { useGlobalStore } from '@/stores';
 
+const localePath = useLocalePath();
 const globalStore = useGlobalStore();
 const { locale, setLocale } = useI18n();
 
@@ -52,7 +57,7 @@ function toggle(element) {
     const eventType = event.type;
 
     if (isMobile && eventType === 'click') open.value = !open.value;
-    else if(!isMobile && eventType !== 'click') open.value = eventType === 'mouseenter';
+    else if (!isMobile && eventType !== 'click') open.value = eventType === 'mouseenter';
 
     open.value ? element.classList.add('group') : element.classList.remove('group');
 }
