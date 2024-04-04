@@ -28,16 +28,14 @@ export const setMeta = (meta: Meta) => {
     }))
 
     useSeoMeta({
-        title: meta.meta_title,
-        keywords: meta.meta_keywords,
-        ogTitle: meta.meta_title,
-        description: meta.meta_description,
-        ogDescription: meta.meta_description,
-        ogUrl: `https://newtrendy.pl${route.fullPath}`,
-        ogSiteName: `https://newtrendy.pl${route.fullPath}`,
+        title: meta.meta_title ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
+        keywords: meta.meta_keywords ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
+        ogTitle: meta.meta_title ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
+        description: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
+        ogDescription: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
         robots: {
-            Index: !meta.noindex,
-            Follow: !meta.nofollow,
+            Index: !meta.noindex ?? true,
+            Follow: !meta.nofollow ?? true,
         }
     })
 }

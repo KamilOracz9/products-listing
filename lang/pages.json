@@ -1,4 +1,8 @@
 {
+  "privacy-policy/index": {
+    "en": "/privacy-policy",
+    "pl": "/polityka-prywatnosci"
+  },
   "made-to-measure/index": {
     "en": "/made-to-measure",
     "pl": "/na-wymiar"

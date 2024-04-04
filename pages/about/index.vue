@@ -63,8 +63,8 @@
 </template>
 
 <script setup lang="ts">
+import { slugify, setMeta } from '~/utils';
 import { fetchAbout } from '~/services/api';
-import { slugify } from '@/utils';
 
 const { data } = await useAsyncData('about', () => fetchAbout());
 const { description, meta, breadcrumbs } = toRefs(data.value);

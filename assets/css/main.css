@@ -159,7 +159,7 @@
     }
 
     header .content-grid {
-        @apply py-7 fixed w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row;
+        @apply py-7 fixed w-full bg-white max-w-max-content z-10 small-height:py-2 grid lg:flex lg:flex-row;
     }
 
     header .content-grid .header__dropdown {
