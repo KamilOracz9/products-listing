@@ -10,7 +10,7 @@ export type ICity = {
 
 export type ILocation = {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     contact: {
         address: string,
         phone: string

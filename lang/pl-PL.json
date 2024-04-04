@@ -171,7 +171,8 @@
             "input-placeholder": "Wpisz nazwę miasta lub kod pocztowy",
             "search-by-my-localization": "Wyszukaj po mojej lokalizacji",
             "show-on-map": "Pokaż na mapie",
-            "check-directions": "Sprawdź dojazd"
+            "check-directions": "Sprawdź dojazd",
+            "locations-not-found": "Nie znaleziono sklepów w tej okolicy"
         }
     },
     "product": {

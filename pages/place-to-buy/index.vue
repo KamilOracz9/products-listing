@@ -1,32 +1,50 @@
 <template>
-    <div v-if="!placeToBuyStore.isLoading">
-        <SectionsCommonBreadrumbs :breadcrumbs="placeToBuyStore.breadcrumbs" />
+    <div>
+        <SectionsCommonBreadrumbs :breadcrumbs="data.breadcrumbs" />
 
         <p class="section-title">{{ $t('pages.place-to-buy.title') }}</p>
 
         <SectionsPlaceToBuySearch />
 
         <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
-            <SectionsPlaceToBuyLocationsList />
+            <div class="lg:col-span-2  text-2xl font-medium" v-if="notFoundLocations">
+                {{ $t('pages.place-to-buy.locations-not-found') }}
+            </div>
+            <SectionsPlaceToBuyLocationsList v-else />
             <MapsPlaceToBuyLocalizations :key="mapKey" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-const placeToBuyStore = usePlaceToBuyStore();
+import { fetchShops } from '@/services/api';
+
+const route = useRoute();
 
 const mapKey = ref(0);
 const mapZoom = ref(6);
 const mapCenter = ref([52.121, 19.108]);
 const selected = ref(null);
+const page = ref(1);
+
+const { data } = await useAsyncData('shopsList', () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
+
+const locationsList = ref([...data.value.locationsList]);
+const notFoundLocations = computed(() => !locationsList.value.length);
+
+watch(() => route.query, () => {
+    locationsList.value = [];
+    selected.value = null;
+})
+
+watch(data, value => {
+    locationsList.value = [...locationsList.value, ...value.locationsList];
+})
 
 provide('mapZoom', mapZoom);
 provide('mapCenter', mapCenter);
 provide('mapKey', mapKey);
 provide('selected', selected);
-
-onMounted(async () => {
-    await placeToBuyStore.fetchData();
-})
+provide('page', page);
+provide('locationsList', locationsList);
 </script>

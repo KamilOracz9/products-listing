@@ -1,7 +1,8 @@
 <template>
     <section class="lg:col-span-2">
-        <ul class="grid gap-4 max-h-[400px] lg:max-h-[700px] overflow-y-auto pr-2">
-            <li :class="selected === index ? 'border-black' : 'border-gray-2'" class="bg-gray-2 px-6 py-5 rounded-br-[25px] border" v-for="(location, index) in placeToBuyStore.locations.items"
+        <ul class="grid gap-4 max-h-[400px] lg:max-h-[700px] overflow-y-auto pr-2" @scroll="onScroll">
+            <li :class="selected === index ? 'border-black' : 'border-gray-2'"
+                class="bg-gray-2 px-6 py-5 rounded-br-[25px] border" v-for="(location, index) in locationsList"
                 :key="index">
                 <p class="font-medium text-lg xs:text-xl">{{ location.title }}</p>
                 <p>{{ location.subtitle }}</p>
@@ -11,12 +12,13 @@
                         <p>{{ location.contact.phone }}</p>
                     </div>
                     <div class="grid justify-left gap-2 xs:justify-end">
-                        <button @click="() => onShowOnMap(location.coords, index)" class="w-fit flex gap-2 items-center"><img
-                                class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""> {{
-                                    $t('pages.place-to-buy.show-on-map') }}</button>
+                        <button @click="() => onShowOnMap(location.coords, index)"
+                            class="w-fit flex gap-2 items-center"><img class="size-[16px]"
+                                src="@/assets/icons/map-pin.svg" alt=""> {{
+            $t('pages.place-to-buy.show-on-map') }}</button>
                         <button @click="onCheckTrace(location.coords)" class="flex gap-2 items-center"><img
                                 class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""> {{
-                                    $t('pages.place-to-buy.check-directions') }}</button>
+            $t('pages.place-to-buy.check-directions') }}</button>
                     </div>
                 </div>
             </li>
@@ -25,18 +27,29 @@
 </template>
 
 <script setup lang="ts">
-const placeToBuyStore = usePlaceToBuyStore();
+import type { ILocation } from '~/types/placeToBuy';
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
 const mapKey: Ref<number> | undefined = inject('mapKey');
 const selected: Ref<number> | undefined = inject('selected');
+const page: Ref<number> | undefined = inject('page') ?? ref(1);
+
+const locationsList: Ref<ILocation[]> | undefined = inject('locationsList');
+
+const onScroll = (e: Event) => {
+    const element = e.currentTarget as HTMLElement;
+
+    if (element.scrollTop + element.offsetHeight >= element.scrollHeight) {
+        page.value = page.value + 1;
+    }
+}
 
 const onShowOnMap = ({ lat, lng }: { lat: number; lng: number }, index: number) => {
     if (mapCenter) mapCenter.value = [lat, lng];
-    if (mapZoom) mapZoom.value = 12;
+    if (mapZoom) mapZoom.value = 16;
     if (mapKey) mapKey.value += 1;
-    if(selected !== undefined) selected.value = index;
+    if (selected !== undefined) selected.value = index;
 }
 
 const onCheckTrace = async ({ lat, lng }: { lat: number; lng: number }) => {
@@ -46,8 +59,4 @@ const onCheckTrace = async ({ lat, lng }: { lat: number; lng: number }) => {
         if (error.code === 1) open(`https://www.google.pl/maps/dir//'${lat},${lng}'/@${lat},${lng},16z`);
     })
 }
-
-onMounted(async () => {
-    await placeToBuyStore.fetchLocations();
-})
 </script>
