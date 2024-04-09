@@ -1,7 +1,7 @@
 <template>
     <li>
         <NuxtLink :aria-label="article.title"
-            :to="localePath({ name: 'inspirations' }) + `/${categorySlug}/${article.slug}`">
+            :to="localePath({ name: 'inspirations' }) + `/${route.params.category}/${article.slug}`">
             <picture>
                 <source media="(min-width: 1280px)" :srcset="article.image.tablet">
                 <source media="(min-width: 768px)" :srcset="article.image.mobile">
@@ -17,7 +17,7 @@
 
         <h2 class="upperacse font-medium text-xl">{{ article.title }}</h2>
 
-        <p class="leading-5 my-4 md:line-clamp-2">{{ article.shortText }}</p>
+        <p class="leading-5 my-4 md:line-clamp-2">{{ article.description_short }}</p>
 
         <NuxtLink class="flex gap-2 items-center">{{ $t('more') }}
             <Arrow :direction="'right'" />
@@ -26,15 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import type { IInspirationArticle } from '~/types/inspirations';
+import type { Inspiration } from '~/types/inspirations.types';
 
 const localePath = useLocalePath();
+const route = useRoute();
 const props = defineProps<{
-    article: IInspirationArticle;
-    categorySlug: string;
+    article: Inspiration;
 }>();
 
-const { article, categorySlug } = toRefs(props);
+const { article } = toRefs(props);
 
 useHead({
     link: [

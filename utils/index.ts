@@ -1,11 +1,4 @@
-type Meta = {
-    canonical_tag?: string | null;
-    meta_description: string;
-    meta_keywords: string;
-    meta_title: string;
-    nofollow: boolean;
-    noindex: boolean;
-}
+import type { Meta } from "~/types/common.types";
 
 export const toGetParams = (params: any) => (
     Object.keys(params).map(key => {
