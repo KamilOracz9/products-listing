@@ -29,7 +29,10 @@ const props = defineProps<{
 const { data } = toRefs(props);
 const { items, options, title, text } = toRefs(data.value);
 
-const selected = ref(null);
+const selected: Ref<{
+    label: string;
+    value: number;
+} | null> = ref(null);
 
 provide('selected', selected);
 </script>

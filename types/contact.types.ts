@@ -45,7 +45,7 @@ export interface ContactPage extends Page {
                 }
             };
             "departments": Department[];
-            "sales": Sales[];
+            "sales": Sales;
             "export": {
                 "title": string;
                 "text": string;
