@@ -63,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import { slugify, setMeta } from '~/utils';
 import { fetchAbout } from '~/services/api';
 import type { AboutPage } from '~/types/about.types';
 

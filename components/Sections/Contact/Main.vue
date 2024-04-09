@@ -67,8 +67,6 @@
 </template>
 
 <script setup>
-import slugify from '~/plugins/slugify';
-
 const props = defineProps(['data', 'title']);
 const { data, title } = toRefs(props);
 const { image, office, logistic } = toRefs(data.value);

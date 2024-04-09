@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import type { IFooterItem } from '@/types/footer';
 import { useFooterStore } from '@/stores';
-import slugify from '~/plugins/slugify';
 
 const footerStore = useFooterStore();
 const localePath = useLocalePath();

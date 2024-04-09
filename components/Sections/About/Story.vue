@@ -32,8 +32,6 @@
 </template>
 
 <script setup>
-import slugify from '~/plugins/slugify';
-
 const aboutStore = inject('aboutStore');
 const { story } = aboutStore;
 </script>

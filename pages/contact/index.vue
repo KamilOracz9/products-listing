@@ -12,7 +12,6 @@
 <script setup lang="ts">
 import { fetchContact } from '~/services/api';
 import type { ContactPage } from '~/types/contact.types';
-import { setMeta } from '~/utils';
 
 const { data } = await useAsyncData('contact', () => fetchContact());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as ContactPage);

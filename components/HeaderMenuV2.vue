@@ -206,11 +206,9 @@
 </template>
 
 <script setup lang="ts">
-import slugify from '@/plugins/slugify';
 import searchIcon from '@/assets/icons/search.svg';
 import clipboardIcon from '@/assets/icons/clipboard.svg';
 
-const route = useRoute();
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const i18n = useI18n();

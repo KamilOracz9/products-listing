@@ -26,8 +26,6 @@
 </template>
 
 <script setup>
-import slugify from '~/plugins/slugify';
-
 const forProfessionalStore = inject('forProfessionalStore');
 const partnerZone = forProfessionalStore.partnerZone;
 </script>
