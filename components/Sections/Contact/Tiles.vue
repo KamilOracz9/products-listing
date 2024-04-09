@@ -1,7 +1,7 @@
 <template>
     <section class="mt-10">
         <ul class="grid gap-4 xs:grid-cols-2 md:grid-cols-3 lg:gap-10">
-            <li v-for="(tile, index) in tiles" :key="index" data-aos="fade-up"
+            <li v-for="(tile, index) in data" :key="index" data-aos="fade-up"
                 class="bg-gray-2 rounded-br-[25px] p-6 font-medium text-lg items-center">
                 <div class="flex gap-6 items-center lg:text-xl">
                     <img :src="tile.icon" class="h-[50px]" alt="">
@@ -12,15 +12,18 @@
                     <span class="flex flex-1 h-0 border-b-2 border-black"></span>
                 </div>
                 <div class="font-normal text-base lg:text-[1.25rem] lg:flex lg:flex-col lg:gap-1">
-                    <a v-for="phone in tile.phones" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone }}</a>
-                    <a v-for="email in tile.emails" :href="`mailto:${email}`">{{ email }}</a>
+                    <a v-for="phone in tile.phone" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone
+                        }}</a>
+                    <a v-for="email in tile.email" :href="`mailto:${email}`">{{ email }}</a>
                 </div>
             </li>
         </ul>
     </section>
 </template>
 
-<script setup>
-const contactStore = inject('contactStore');
-const { tiles } = contactStore;
+<script setup lang="ts">
+import type { Department } from '@/types/contact.types.ts';
+
+const props = defineProps<{ data: Department[] }>();
+const { data } = toRefs(props);
 </script>

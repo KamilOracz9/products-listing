@@ -6,3 +6,4 @@ export * from './about-company';
 export * from './privacy-policy';
 export * from './inspirations';
 export * from './information-clausue';
+export * from './contact';

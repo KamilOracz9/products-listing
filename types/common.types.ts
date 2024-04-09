@@ -27,6 +27,13 @@ export interface Page {
 
 export type DescriptionType = 'simple' | 'extended';
 
+export type Description = {
+    type: DescriptionType;
+    content: {
+        html: string;
+    }
+}
+
 export type Image = {
     "mobile": string;
     "tablet": string;
