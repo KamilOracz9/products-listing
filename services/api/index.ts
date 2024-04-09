@@ -5,3 +5,4 @@ export * from './location';
 export * from './about-company';
 export * from './privacy-policy';
 export * from './inspirations';
+export * from './information-clausue';
