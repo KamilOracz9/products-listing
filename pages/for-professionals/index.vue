@@ -1,17 +1,18 @@
 <template>
-  <div v-if="!forProfessionalStore.isLoading">
-    <SectionsCommonBreadrumbs :breadcrumbs="forProfessionalStore.breadcrumbs" />
-    <SectionsForProfessionalsPartnerZone />
-    <SectionsForProfessionalsArchitectZone />
+  <div>
+    <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
+    <SectionsForProfessionalsPartnerZone :data="description.content.partner_zone" />
+    <SectionsForProfessionalsArchitectZone :data="description.content.architect_zone" />
   </div>
 </template>
-  
+
 <script setup lang="ts">
-const forProfessionalStore = useForProfessionalStore();
+import { fetchForProfessionals } from '~/services/api';
+import type { ForProfessionalsPage } from '~/types/for-professionals.types';
 
-provide('forProfessionalStore', forProfessionalStore);
+const { data } = await useAsyncData('for-professionals', () => fetchForProfessionals());
+const { meta, breadcrumbs, description } = toRefs(data.value as ForProfessionalsPage);
 
-onMounted(async () => {
-  await forProfessionalStore.fetchData();
-})
+setMeta(meta.value);
+
 </script>
