@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import slugify from '~/plugins/slugify';
 import type { ExportDepartment } from '@/types/contact.types.ts';
 
 const props = defineProps<{

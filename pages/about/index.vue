@@ -63,16 +63,11 @@
 </template>
 
 <script setup lang="ts">
-import { slugify, setMeta } from '~/utils';
 import { fetchAbout } from '~/services/api';
-import type { Breadcrumbs } from '@/types/common.types';
+import type { AboutPage } from '~/types/about.types';
 
 const { data } = await useAsyncData('about', () => fetchAbout());
-const { description, meta, breadcrumbs } = toRefs(data.value as {
-  breadcrumbs: Breadcrumbs;
-  description: any;
-  meta: any;
-});
+const { description, meta, breadcrumbs } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);
 </script>

@@ -13,8 +13,6 @@
 </template>
 
 <script setup>
-import slugify from '@/plugins/slugify';
-
 const headerStore = useHeaderStore();
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();

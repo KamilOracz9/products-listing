@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import slugify from "~/plugins/slugify";
 import type { IServiceSection4 } from "~/types/service";
 
 const props = defineProps<{

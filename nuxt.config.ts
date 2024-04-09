@@ -40,7 +40,6 @@ export default defineNuxtConfig({
   ],
   plugins: [
     '@/plugins/device',
-    '@/plugins/slugify',
   ],
   pages: true,
   i18n: {
