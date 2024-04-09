@@ -7,3 +7,4 @@ export * from './privacy-policy';
 export * from './inspirations';
 export * from './information-clausue';
 export * from './contact';
+export * from './for-professionals';
