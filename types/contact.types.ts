@@ -5,92 +5,112 @@ export interface ContactPage extends Page {
         "type": DescriptionType,
         "content": {
             "contact": {
-                "image": String;
+                "image": string;
                 "office": {
-                    "name": String;
+                    "name": string;
                     "address": {
-                        "street": String;
-                        "postcode": String;
-                        "city": String;
-                        "gps": String;
+                        "street": string;
+                        "postcode": string;
+                        "city": string;
+                        "gps": string;
                     };
                     "contact": {
-                        "phone": String;
-                        "email": String;
+                        "phone": string;
+                        "email": string;
                     };
                     "numbers": {
                         "nip": {
-                            "label": String;
-                            "value": String;
+                            "label": string;
+                            "value": string;
                         },
                         "krs": {
-                            "label": String;
-                            "value": String;
+                            "label": string;
+                            "value": string;
                         },
                         "regon": {
-                            "label": String;
-                            "value": String;
+                            "label": string;
+                            "value": string;
                         }
                     };
-                    "button_map": String;
+                    "button_map": string;
                 };
                 "logistic": {
-                    "name": String;
+                    "name": string;
                     "address": {
-                        "street": String;
-                        "postcode": String;
-                        "city": String;
-                        "gps"?: String;
+                        "street": string;
+                        "postcode": string;
+                        "city": string;
+                        "gps"?: string;
                     }
                 }
             };
-            "departments": {
-                "title": String;
-                "phone": String[];
-                "email": String[];
-                "icon": String;
-            }[];
-            "sales": {
-                "title": String;
-                "text"?: String;
-                "options": [];
-                "items": [];
-            };
+            "departments": Department[];
+            "sales": Sales[];
             "export": {
-                "title": String;
-                "text": String;
-                "image": String;
+                "title": string;
+                "text": string;
+                "image": string;
                 "items": [];
             };
         };
         "departments": {
-            "title": String;
-            "phone": String[];
-            "email": String[];
-            "icon": String;
+            "title": string;
+            "phone": string[];
+            "email": string[];
+            "icon": string;
         }[];
         "sales": {
             "options": {
                 "value": Number;
-                "label": String;
+                "label": string;
             }[];
             "items": {
-                "name": String;
-                "image": String;
-                "title": String;
-                "phone": String;
-                "email": String;
+                "name": string;
+                "image": string;
+                "title": string;
+                "phone": string;
+                "email": string;
                 "regions": Number[];
             }[];
         };
         "export": {
             "items": {
-                "name": String;
-                "image": String;
-                "title": String;
-                "phone": String;
-                "email": String;
+                "name": string;
+                "image": string;
+                "title": string;
+                "phone": string;
+                "email": string;
             }[];
         }
     }
+}
+
+export type Employee = {
+    "name": string;
+    "image": string;
+    "title": string;
+    "phone": string[];
+    "email": string[];
+    "info": string;
+}
+
+export type ExportDepartment = {
+    "title": string;
+    "text": string;
+    "image": string;
+    "items": Employee[];
+}
+
+export type Sales = {
+    "title": string;
+    "text"?: string;
+    "options": [];
+    "items": Employee[];
+}
+
+export type Department = {
+    "title": string;
+    "phone": string[];
+    "email": string[];
+    "icon": string;
 }
