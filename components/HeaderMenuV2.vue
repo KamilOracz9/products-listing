@@ -1,5 +1,5 @@
 <template>
-    <div ref="headerMenuRef" class="content-grid">
+    <div ref="headerMenuRef" class="content-grid lg:top-0">
 
         <SectionsHeaderLogo />
 
@@ -88,7 +88,7 @@
                     <div class="header__links" :style="inspirationsStyle">
                         <NuxtLink :to="getPath('inspirations', $t('news'))">{{ $t('news') }}</NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('arrangements-and-inspirations'))">{{
-            $t('arrangements-and-inspirations') }}</NuxtLink>
+                            $t('arrangements-and-inspirations') }}</NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('advice-and-support'))">{{ $t('advice-and-support') }}
                         </NuxtLink>
                         <NuxtLink :to="getPath('inspirations', $t('faq'))">{{ $t('faq') }}</NuxtLink>
@@ -112,7 +112,7 @@
                     <div class="header__links" :style="aboutStyle">
                         <NuxtLink :to="getPath('about', $t('companys-history'))">{{ $t('companys-history') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('awards-and-implementations'))">{{
-            $t('awards-and-implementations') }}</NuxtLink>
+                            $t('awards-and-implementations') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('career'))">{{ $t('career') }}</NuxtLink>
                         <NuxtLink :to="getPath('about', $t('projects-ue'))">{{ $t('projects-ue') }}</NuxtLink>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="header__links" :style="contactStyle">
                         <NuxtLink :to="getPath('contact', $t('office'))">{{ $t('office') }}</NuxtLink>
                         <NuxtLink :to="getPath('contact', $t('sales-service-department'))">{{
-            $t('sales-service-department') }}</NuxtLink>
+                            $t('sales-service-department') }}</NuxtLink>
                         <NuxtLink :to="getPath('contact', $t('export-department'))">{{ $t('export-department') }}
                         </NuxtLink>
                         <NuxtLink :to="localePath({ name: 'service' })">{{ $t('service') }}</NuxtLink>
@@ -160,7 +160,7 @@
                                 v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
                                 <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
                                     class="whitespace-nowrap lg:text-xl" :for="item">{{
-            $t(item) }}</label>
+                                    $t(item) }}</label>
                             </div>
                         </div>
 
@@ -181,7 +181,7 @@
 
             <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
-                    <NuxtLink v-for=" clipboardItem  in  clipboardStore.items.products " :to="clipboardItem.url"
+                    <NuxtLink v-for=" clipboardItem in clipboardStore.items.products " :to="clipboardItem.url"
                         class="px-6 flex flex-col items-center gap-2 lg:mt-10">
                         <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl"
                             :alt="clipboardItem.name" :title="clipboardItem.name">
@@ -290,12 +290,12 @@ watch(
 )
 
 onMounted(async () => {
-    setHeader();
-
     await clipboardStore.fetchItems();
 
     document.addEventListener('scroll', onScroll);
     window.addEventListener('resize', setLeftOffsets);
+
+    setHeader();
 });
 
 onUnmounted(() => {
