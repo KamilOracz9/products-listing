@@ -15,8 +15,10 @@
                     <p class="font-medium"><span>{{ office.address.gps }}</span></p>
                 </div>
 
-                <a href="https://www.google.com/maps/place/New+Trendy+Sp.+z+o.o./@51.3789493,21.078195,17z/data=!4m6!3m5!1s0x47185969fe0bb7d9:0xe64e431891bc9fa4!8m2!3d51.3789493!4d21.0807699!16s%2Fg%2F1q675dmtz?entry=tts&shorturl=1" target="_blank" data-aos="fade-up">
-                    <img src="/assets/images/contact_map_button.png" class="w-[200px] h-[50px]" width="200" height="50" alt="">
+                <a href="https://www.google.com/maps/place/New+Trendy+Sp.+z+o.o./@51.3789493,21.078195,17z/data=!4m6!3m5!1s0x47185969fe0bb7d9:0xe64e431891bc9fa4!8m2!3d51.3789493!4d21.0807699!16s%2Fg%2F1q675dmtz?entry=tts&shorturl=1"
+                    target="_blank" data-aos="fade-up">
+                    <img src="/assets/images/contact_map_button.png" class="w-[200px] h-[50px]" width="200" height="50"
+                        alt="">
                 </a>
 
                 <div data-aos="fade-up" class="[&>p>span]:font-bold">
@@ -31,23 +33,28 @@
 
             <picture class="block my-6 lg:m-0 self-start xl:col-span-2" data-aos="fade-up">
                 <source media="(min-width: 640)" :srcset="image">
-                <img :src="image" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg"
-                    alt="">
+                <img :src="image" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg" alt="">
             </picture>
 
-            <div class="flex flex-col gap-4 lg:col-span-2 xl:col-span-2" data-aos="fade-up">
+            <form method="post" @submit="onSubmit" class="flex flex-col gap-4 lg:col-span-2 xl:col-span-2"
+                data-aos="fade-up">
                 <p class="uppercase font-medium text-xl">{{ $t('pages.contact.form.write-to-us') }}</p>
 
                 <InputFloating type="text" id="name" name="name" :label="$t('pages.contact.form.name-and-surname')" />
+                <ValidationError :messages="formResponse.errors.name" />
                 <InputFloating type="text" id="email" name="email" :label="$t('pages.contact.form.email-address')" />
+                <ValidationError :messages="formResponse.errors.email" />
                 <InputFloating type="textarea" id="message" name="message" :label="$t('pages.contact.form.message')" />
+                <ValidationError :messages="formResponse.errors.message" />
 
                 <div class="text-xs sm:text-sm">
                     <p>
                         {{ $t('pages.contact.form.agreement') }}
-                        <NuxtLink :to="localePath({name: 'privacy-policy'})" class="font-bold">{{ $t('pages.contact.form.privacy') }}</NuxtLink>
+                        <NuxtLink :to="localePath({ name: 'privacy-policy' })" class="font-bold">{{
+                            $t('pages.contact.form.privacy') }}</NuxtLink>
                         {{ $t('pages.contact.form.and') }}
-                        <NuxtLink :to="localePath({name: 'information-clausue'})" class="font-bold">{{ $t('pages.contact.form.info-clausue') }}</NuxtLink>
+                        <NuxtLink :to="localePath({ name: 'information-clausue' })" class="font-bold">{{
+                            $t('pages.contact.form.info-clausue') }}</NuxtLink>
                     </p>
 
                     <div class="mt-4">
@@ -55,23 +62,30 @@
                             id="agreement" />
                         <label class="ml-2" for="agreement">{{ $t('pages.contact.form.accept') }}</label>
                     </div>
+
+                    <ValidationError :messages="formResponse.errors.clausue" />
                 </div>
 
                 <div class="w-fit ml-auto">
-                    <ButtonsFilled type="button" tagType="button" :label="$t('pages.contact.form.send')"
-                        :onClick="() => console.log('asd')" color="yellow-2" />
+                    <ButtonsFilled type="submit" tagType="button" :label="$t('pages.contact.form.send')"
+                        color="yellow-2" />
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { CONTACT_FORM_INITIAL_RESPONSE } from '~/constants/form';
+import { sendMessage } from '~/services/api';
+
 const props = defineProps(['data', 'title']);
 const { data, title } = toRefs(props);
-const { image, office, logistic } = toRefs(data.value);
+const { image, office, logistic } = toRefs(data?.value);
 
 const localePath = useLocalePath();
+
+const formResponse = ref({...CONTACT_FORM_INITIAL_RESPONSE});
 
 const officeAddress = computed(() => {
     const { city, postcode, street } = office.value.address;
@@ -84,4 +98,22 @@ const logisticAddress = computed(() => {
 
     return `${street}, ${postcode} ${city}`
 })
+
+const onSubmit = async (event: Event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget as HTMLFormElement;
+
+    const formData = new FormData(form);
+
+    const data = await sendMessage(formData);
+
+    if (data.errors) formResponse.value.errors = data.errors;
+    else {
+        formResponse.value.errors = {...CONTACT_FORM_INITIAL_RESPONSE.errors};
+        formResponse.value.message = data.message;
+
+        form.reset();
+    };
+}
 </script>
