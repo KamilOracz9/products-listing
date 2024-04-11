@@ -23,6 +23,10 @@
     "en": "/download",
     "pl": "/pobierz"
   },
+  "download/3d/index": {
+    "en": "/download_files_3d",
+    "pl": "/pobierz_pliki_3d"
+  },
   "service/index": {
     "en": "/service",
     "pl": "/serwis"

@@ -1,3 +1,4 @@
+import { Colors } from "~/enums/download";
 import type { Meta } from "~/types/common.types";
 
 export const toGetParams = (params: any) => (
@@ -27,7 +28,7 @@ export const setMeta = (meta: Meta) => {
         description: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
         ogDescription: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
         robots: {
-            Index: meta.noindex  ? !meta.noindex : true,
+            Index: meta.noindex ? !meta.noindex : true,
             Follow: meta.nofollow ? !meta.nofollow : true,
         }
     })
@@ -44,4 +45,15 @@ export const slugify = (string: string) => {
         // .replace(/[^a-z0-9 -]/g, '') // remove non-alphanumeric characters
         .replace(/\s+/g, '-') // replace spaces with hyphens
         .replace(/-+/g, '-'); // remove consecutive hyphens
+}
+
+export const getBgColor = (color: Colors) => {
+    let bgColor = '';
+
+    switch (color) {
+        case Colors.YELLOW: bgColor = '#ffce44'; break;
+        case Colors.GRAY: bgColor = '#e1e1e1'; break;
+    }
+
+    return bgColor;
 }
