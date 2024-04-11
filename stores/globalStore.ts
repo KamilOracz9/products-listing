@@ -4,7 +4,7 @@ type IGlobalStore = {
     locale: {
         isLoading: boolean;
         locales: IActiveLocale[],
-    }
+    },
 }
 
 const useGlobalStore = defineStore('global', {
@@ -12,7 +12,7 @@ const useGlobalStore = defineStore('global', {
         locale: {
             isLoading: true,
             locales: [],
-        }
+        },
     }),
     actions: {
         async fetchLocale() {

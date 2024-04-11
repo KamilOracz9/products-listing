@@ -119,7 +119,7 @@
                 "placeholders": {
                     "name": "Nazwa / Kod produktu",
                     "number": "Nr karty gwarancyjnej / Nr dowodu zakupu",
-                    "place": "Nazwa / Kod produktu"
+                    "place": "Miejsce zakupu"
                 },
                 "add-photo": "Załącz zdjęcie",
                 "select-file": "Wybierz plik",

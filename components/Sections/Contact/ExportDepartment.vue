@@ -9,7 +9,7 @@
                 <img class="w-full" :src="image" alt="">
             </div>
             <div data-aos="fade-up" class="md:col-span-3 lg:col-span-2">
-                <SectionsContactEmployees :employees="items" />
+                <SectionsContactEmployeesExport :employees="items" />
             </div>
         </div>
     </section>
