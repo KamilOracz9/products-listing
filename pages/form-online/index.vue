@@ -1,5 +1,5 @@
 <template>
-    <section id="form-online" class="grid grid-col gap-10">
+    <form id="form-online" class="grid grid-col gap-10" @submit="onSubmit">
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
         <h1 class="section-title">{{ $t('pages.form-online.title') }}</h1>
         <div v-html="text" class="section-text lg:w-1/2"></div>
@@ -9,35 +9,55 @@
                 <h2>{{ $t('pages.form-online.form-person.title') }}</h2>
 
                 <InputFloating name="name" type="text" :label="$t('pages.form-online.form-person.placeholders.name')" />
-                <InputFloating name="street" type="text" :label="$t('pages.form-online.form-person.placeholders.street')" />
+                <ValidationError :messages="formResponse.errors.name" />
+                <InputFloating name="street" type="text"
+                    :label="$t('pages.form-online.form-person.placeholders.street')" />
+                <ValidationError :messages="formResponse.errors.street" />
                 <div class="grid gap-4 sm:grid-cols-2">
-                    <InputFloating name="home-number" type="text"
-                        :label="$t('pages.form-online.form-person.placeholders.home')" />
-                    <InputFloating name="zip-code" type="text"
-                        :label="$t('pages.form-online.form-person.placeholders.zip-code')" />
+                    <div>
+                        <InputFloating name="home_number" type="text"
+                            :label="$t('pages.form-online.form-person.placeholders.home')" />
+                        <ValidationError :messages="formResponse.errors.home_number" />
+                    </div>
+                    <div>
+                        <InputFloating name="post_code" type="text"
+                            :label="$t('pages.form-online.form-person.placeholders.zip-code')" />
+                        <ValidationError :messages="formResponse.errors.post_code" />
+                    </div>
                 </div>
                 <InputFloating name="city" type="text" :label="$t('pages.form-online.form-person.placeholders.city')" />
+                <ValidationError :messages="formResponse.errors.city" />
                 <div class="grid gap-4 sm:grid-cols-2">
-                    <InputFloating name="phone" type="text"
-                        :label="$t('pages.form-online.form-person.placeholders.phone')" />
-                    <InputFloating name="email" type="text"
-                        :label="$t('pages.form-online.form-person.placeholders.email')" />
+                    <div>
+                        <InputFloating name="phone" type="text"
+                            :label="$t('pages.form-online.form-person.placeholders.phone')" />
+                        <ValidationError :messages="formResponse.errors.phone" />
+                    </div>
+                    <div>
+                        <InputFloating name="email" type="text"
+                            :label="$t('pages.form-online.form-person.placeholders.email')" />
+                        <ValidationError :messages="formResponse.errors.email" />
+                    </div>
                 </div>
                 <InputFloating name="description" type="textarea"
                     :label="$t('pages.form-online.form-person.placeholders.desc')" />
+                <ValidationError :messages="formResponse.errors.description" />
             </div>
             <div class="content-grid">
                 <h2>{{ $t('pages.form-online.form-product.title') }}</h2>
 
                 <InputFloating name="product_name" type="text"
                     :label="$t('pages.form-online.form-product.placeholders.name')" />
-                <InputFloating name="product_number" type="text"
+                <ValidationError :messages="formResponse.errors.product_name" />
+                <InputFloating name="number" type="text"
                     :label="$t('pages.form-online.form-product.placeholders.number')" />
-                <InputFloating name="product_place" type="text"
+                <ValidationError :messages="formResponse.errors.number" />
+                <InputFloating name="place" type="text"
                     :label="$t('pages.form-online.form-product.placeholders.place')" />
+                <ValidationError :messages="formResponse.errors.place" />
 
                 <div class="relative file-input border-b border-gray-1 pb-4">
-                    <input accept="image/png, image/jpeg"
+                    <input name="image" accept="image/png, image/jpeg"
                         @change="fileName = (<HTMLInputElement>$event?.target)?.files[0]?.name" ref="fileInputRef"
                         class="invisible h-0 w-0 absolute" type="file">
 
@@ -48,18 +68,24 @@
                         <p>{{ fileName ?? $t('pages.form-online.form-product.no-file') }}</p>
                     </div>
                 </div>
+                <ValidationError :messages="formResponse.errors.image" />
 
                 <div class="flex gap-6 actions flex-col xs:flex-row">
                     <p>{{ $t('pages.form-online.form-product.action') }}</p>
                     <div class="flex gap-3 text-xs">
-                        <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0" id="warranty" />
+                        <input name="action" type="checkbox" value="on"
+                            class="border border-black w-4 h-4 text-black focus:ring-0" id="warranty" />
                         <label class="" for="warranty">{{ $t('pages.form-online.form-product.warranty') }}</label>
                     </div>
+
                     <div class="flex gap-3 text-xs">
-                        <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0" id="post-warranty" />
-                        <label class="" for="post-warranty">{{ $t('pages.form-online.form-product.post-warranty') }}</label>
+                        <input name="action" type="checkbox" value="off"
+                            class="border border-black w-4 h-4 text-black focus:ring-0" id="post-warranty" />
+                        <label class="" for="post-warranty">{{ $t('pages.form-online.form-product.post-warranty')
+                            }}</label>
                     </div>
                 </div>
+                <ValidationError :messages="formResponse.errors.action" />
             </div>
         </div>
 
@@ -68,31 +94,64 @@
 
             <div class="grid gap-6">
                 <div class="flex gap-3 text-xs">
-                    <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0" id="real-data" />
-                    <label class="" for="real-data">{{ $t('pages.form-online.form-person.statements.real-data') }}</label>
+                    <input type="checkbox" name="true_data" class="border border-black w-4 h-4 text-black focus:ring-0" id="real-data" />
+                    <label class="" for="real-data">{{ $t('pages.form-online.form-person.statements.real-data')
+                        }}</label>
                 </div>
+                <ValidationError :messages="formResponse.errors.true_data" />
 
                 <div class="flex gap-3 text-xs">
-                    <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0"
+                    <input name="clausue" type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0"
                         id="processing-data" />
-                    <label class="" for="processing-data">{{ $t('pages.form-online.form-person.statements.processing-data')
-                    }}</label>
+                    <label class="" for="processing-data">{{
+                        $t('pages.form-online.form-person.statements.processing-data')
+                        }}</label>
                 </div>
+                <ValidationError :messages="formResponse.errors.clausue" />
             </div>
 
             <div class="w-fit">
                 <ButtonsFilled :label="$t('send')" type="submit" tagType="button" color="yellow-2" />
             </div>
         </div>
-    </section>
+    </form>
 </template>
 
 <script setup lang="ts">
+import { SERVICE_FORM_INITIAL_RESPONSE } from '~/constants/form';
+import { Types } from '~/enums/flashMessage';
+import { sendServiceMessage } from '~/services/api';
+
 const formOnlineStore = useFormOnlineStore();
+const flashMessages = useFlashMessageStore();
 
 const { breadcrumbs, text, clausue } = toRefs(useFormOnlineStore());
 const fileInputRef = ref();
 const fileName = ref();
+const formResponse = ref({ ...SERVICE_FORM_INITIAL_RESPONSE });
+
+const onSubmit = async (event: Event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget as HTMLFormElement;
+
+    const formData = new FormData(form);
+
+    const data = await sendServiceMessage(formData);
+
+    if (data.errors) formResponse.value.errors = data.errors;
+    else {
+        formResponse.value.errors = { ...SERVICE_FORM_INITIAL_RESPONSE.errors };
+        formResponse.value.message = data.message;
+
+        form.reset();
+
+        flashMessages.addMessage({
+            message: data.message,
+            type: Types.SUCCESS
+        });
+    };
+}
 
 onMounted(async () => {
     await formOnlineStore.fetchData();

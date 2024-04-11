@@ -202,6 +202,8 @@
                     {{ $t('place-to-buy') }}</NuxtLink>
             </div>
         </div>
+        
+        <FlashMessages />
     </div>
 </template>
 

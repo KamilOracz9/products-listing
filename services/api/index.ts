@@ -8,3 +8,4 @@ export * from './inspirations';
 export * from './information-clausue';
 export * from './contact';
 export * from './for-professionals';
+export * from './service';

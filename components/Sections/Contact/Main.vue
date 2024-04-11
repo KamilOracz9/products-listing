@@ -58,7 +58,7 @@
                     </p>
 
                     <div class="mt-4">
-                        <input type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0"
+                        <input type="checkbox" name="clausue" class="border border-black w-4 h-4 text-black focus:ring-0"
                             id="agreement" />
                         <label class="ml-2" for="agreement">{{ $t('pages.contact.form.accept') }}</label>
                     </div>
@@ -77,15 +77,17 @@
 
 <script setup lang="ts">
 import { CONTACT_FORM_INITIAL_RESPONSE } from '~/constants/form';
-import { sendMessage } from '~/services/api';
+import { Types } from '~/enums/flashMessage';
+import { sendContactMessage } from '~/services/api';
 
 const props = defineProps(['data', 'title']);
 const { data, title } = toRefs(props);
 const { image, office, logistic } = toRefs(data?.value);
 
 const localePath = useLocalePath();
+const flashMessages = useFlashMessageStore();
 
-const formResponse = ref({...CONTACT_FORM_INITIAL_RESPONSE});
+const formResponse = ref({ ...CONTACT_FORM_INITIAL_RESPONSE });
 
 const officeAddress = computed(() => {
     const { city, postcode, street } = office.value.address;
@@ -106,14 +108,19 @@ const onSubmit = async (event: Event) => {
 
     const formData = new FormData(form);
 
-    const data = await sendMessage(formData);
+    const data = await sendContactMessage(formData);
 
     if (data.errors) formResponse.value.errors = data.errors;
     else {
-        formResponse.value.errors = {...CONTACT_FORM_INITIAL_RESPONSE.errors};
+        formResponse.value.errors = { ...CONTACT_FORM_INITIAL_RESPONSE.errors };
         formResponse.value.message = data.message;
 
         form.reset();
+
+        flashMessages.addMessage({
+            message: data.message,
+            type: Types.SUCCESS
+        });
     };
 }
 </script>
