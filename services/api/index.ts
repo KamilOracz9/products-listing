@@ -9,3 +9,4 @@ export * from './information-clausue';
 export * from './contact';
 export * from './for-professionals';
 export * from './service';
+export * from './made-to-measure';
