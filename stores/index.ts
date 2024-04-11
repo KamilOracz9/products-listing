@@ -7,7 +7,6 @@ export {default as useProductsFilterStore} from './productsFilterStore';
 export {default as useProductStore} from './productStore';
 export {default as useInspirationStore} from './inspirationStore';
 export {default as useServiceStore} from './serviceStore';
-export {default as useDownloadStore} from './downloadStore';
 export {default as useFormOnlineStore} from './formOnlineStore';
 export {default as useCollectionStore} from './collectionsStore';
 export {default as useFlashMessageStore} from './flashMessageStore';
