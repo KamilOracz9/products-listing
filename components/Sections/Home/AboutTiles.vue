@@ -1,10 +1,10 @@
 <template>
     <section class="grid pt-6 gap-10 md:grid-cols-2 xl:grid-cols-4">
-        <NuxtLink :key="index" :to="aboutTile.url" v-for="(aboutTile, index) in homeStore.aboutTiles.items"
+        <NuxtLink :key="index" :to="aboutTile.path" v-for="(aboutTile, index) in data"
             @mouseenter="activeItem = index" class="px-8 py-6 transition-all sm:p-8" :class="activeItem === index ? 'bg-yellow-2' : 'bg-gray-2'">
             <figure class="flex items-center justify-center ">
                 <div class="max-w-[100px] flex justify-center">
-                    <img :src="aboutTile.imageUrl" width="72" alt="" loading="lazy" />
+                    <img :src="aboutTile.icon" width="72" alt="" loading="lazy" />
                 </div>
                 <figcaption class="uppercase flex-1 pl-4">
                     <p class="text-2xl">{{ aboutTile.subtitle }}</p>
@@ -19,8 +19,13 @@
     </section>
 </template>
 
-<script setup>
-const homeStore = useHomeStore();
+<script setup lang="ts">
+import type { Box } from '~/types/home.types';
+
+const props = defineProps<{
+    data: Box[];
+}>();
+const { data } = toRefs(props);
 
 const activeItem = ref(1);
 </script>

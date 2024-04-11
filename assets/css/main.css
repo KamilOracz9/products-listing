@@ -316,6 +316,51 @@
     }
 
     /* Home */
+    #home-products {
+        h6 {
+            @apply font-bold text-lg leading-6 mt-10 mb-2 sm:text-xl;
+        }
+
+        ul {
+            @apply list-disc grid gap-2 ml-8 mb-4;
+        }
+
+        p {
+            @apply mb-4
+        }
+
+        p > a {
+            @apply flex gap-2 font-bold;
+        }
+
+        p > a:before {
+            content: url('/assets/icons/arrow.svg');
+            rotate: -90deg;
+        }
+    }
+
+    #home-additional-content > .yellow-box > p {
+        @apply font-bold gap-2 items-start leading-[25px];
+    }
+
+    #home-additional-content > .yellow-box > p::before {
+        content: url('/assets/icons/check.png');
+        
+        @apply float-left mr-2 size-[25px];
+    }
+
+    #home-additional-content > .welcome {
+        @apply mt-4;
+    }
+
+    #home-additional-content h6 {
+        @apply mt-4 text-xl leading-7
+    }
+
+    #home-additional-content h4{
+        @apply font-bold text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8;
+    }
+
     #home-product-tiles>.home-product-tile:first-child {
         @apply rounded-tl-md md:rounded-tl-lg
     }
