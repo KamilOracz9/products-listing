@@ -1,7 +1,0 @@
-{
-  "name": "NewTrendy",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue-vite"
-}
