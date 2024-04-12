@@ -1,13 +1,13 @@
 export default defineNuxtPlugin((nuxtApp) => {
-    if (process.server) return;
+    // if (process.server) return;
     
-    const router = useRouter();
+    // const router = useRouter();
 
-    nuxtApp.hook('page:finish', async () => {
-        const hash = router.currentRoute.value.hash;
+    // nuxtApp.hook('page:finish', async () => {
+    //     const hash = router.currentRoute.value.hash;
 
-        if (hash) setTimeout(() => {
-            document?.querySelector(hash)?.scrollIntoView();
-        }, 100)
-    })
+    //     if (hash) setTimeout(() => {
+    //         document?.querySelector(hash)?.scrollIntoView();
+    //     }, 100)
+    // })
 })

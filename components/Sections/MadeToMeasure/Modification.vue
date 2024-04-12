@@ -1,13 +1,13 @@
 <template>
-    <div class="row modifications" :id="data.hashtag" data-aos="fade-up">
-        <div class="column">
+    <div class="row modifications" :id="data.hashtag.replace('#', '')" >
+        <div class="column" data-aos="fade-up">
             <h2><img :src="plusIcon" width="30" height="30" alt="">{{ data.title }}</h2>
             <div v-html="data.html" />
             <div class="flex flex-col gap-4 xs:flex-row">
-                <a href="#menu"
+                <NuxtLink to="#menu"
                     class="transparent-button p-0 w-full min-h-[30px] xs:min-h-[56px] border border-black xs:aspect-[auto_1/1] grid place-items-center">
                     <Arrow :direction="'upper'" :width="20" />
-                </a>
+                </NuxtLink>
                 <ButtonsTransparent tag-type="link" :label="data.button" :url="data.link" />
             </div>
         </div>

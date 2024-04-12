@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div id="#menu" class="row menu divider">
+            <div id="menu" class="row menu divider">
                 <div class="column">
                     <h2>{{ section_3.title }}</h2>
                     <h3 v-for="(item, index) in section_3.items" data-aos="fade-up" :data-aos-delay="index * 100">
