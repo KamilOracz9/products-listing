@@ -14,5 +14,4 @@ const { data } = await useAsyncData('for-professionals', () => fetchForProfessio
 const { meta, breadcrumbs, description } = toRefs(data.value as ForProfessionalsPage);
 
 setMeta(meta.value);
-
 </script>

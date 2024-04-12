@@ -1,7 +1,5 @@
 <template>
     <div>
-        <SectionsCommonBreadrumbs :breadcrumbs="data.breadcrumbs" />
-
         <p class="section-title">{{ $t('pages.place-to-buy.title') }}</p>
 
         <SectionsPlaceToBuySearch />
@@ -29,10 +27,7 @@ const page = ref(1);
 
 const { data } = await useAsyncData('shopsList', () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
 
-console.log(data.value)
-
 const locationsList = ref([...data.value.locationsList]);
-const notFoundLocations = computed(() => !locationsList.value.length);
 
 watch(() => route.query, () => {
     locationsList.value = [];
