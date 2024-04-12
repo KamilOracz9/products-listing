@@ -9,6 +9,14 @@
     </NuxtLink>
 </template>
 
-<script setup>
-const { type, tagType, url, onClick, label } = defineProps(['type', 'tagType', 'url', 'onClick', 'label']);
+<script setup lang="ts">
+const { type, tagType, url, onClick, label } = withDefaults(defineProps<{
+    url?: string;
+    tagType: 'link' | 'button';
+    onClick?: () => void;
+    label: string;
+    type?: "button" | "submit" | "reset";
+}>(), {
+    type: "button",
+});
 </script>

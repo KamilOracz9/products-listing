@@ -22,7 +22,7 @@
                     </li>
                 </ul>
 
-                <div class="self-start">
+                <div class="self-start [&>a]:border-black">
                     <ButtonsTransparent v-if="section.button" tagType="link" :url="section.link"
                         :label="section.button" />
                 </div>

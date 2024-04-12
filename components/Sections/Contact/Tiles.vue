@@ -11,7 +11,7 @@
                     <Arrow />
                     <span class="flex flex-1 h-0 border-b-2 border-black"></span>
                 </div>
-                <div class="font-normal text-base lg:text-[1.25rem] lg:flex lg:flex-col lg:gap-1">
+                <div class="font-normal text-base lg:text-[1.25rem] flex flex-col gap-1">
                     <a v-for="phone in tile.phone" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone
                         }}</a>
                     <a v-for="email in tile.email" :href="`mailto:${email}`">{{ email }}</a>

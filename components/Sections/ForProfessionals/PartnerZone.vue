@@ -12,7 +12,7 @@
             </div>
         </section>
 
-        <section class="for-professionas-section">
+        <section class="for-professionas-section mt-6">
             <SectionsCommonBox boxClass="bg-yellow-2" :box="section_2.left" />
             <SectionsCommonBox boxClass="bg-gray-5 rounded-tr-[25px] mt-6 md:rounded-tr-lg lg:mt-0"
                 :box="section_2.right" />

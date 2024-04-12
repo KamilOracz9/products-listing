@@ -1,14 +1,4 @@
-export type IVoievodship = {
-    value: string;
-    label: string;
-}
-
-export type ICity = {
-    value: string;
-    label: string;
-}
-
-export type ILocation = {
+export type Location = {
     title: string;
     subtitle?: string;
     contact: {
