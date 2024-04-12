@@ -27,15 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import type { ILocation } from '~/types/placeToBuy';
-
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
 const mapKey: Ref<number> | undefined = inject('mapKey');
 const selected: Ref<number> | undefined = inject('selected');
 const page: Ref<number> | undefined = inject('page') ?? ref(1);
 
-const locationsList: Ref<ILocation[]> | undefined = inject('locationsList');
+const locationsList: Ref<Location[]> | undefined = inject('locationsList');
 
 const onScroll = (e: Event) => {
     const element = e.currentTarget as HTMLElement;

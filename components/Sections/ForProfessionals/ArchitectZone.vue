@@ -7,7 +7,7 @@
                 <p v-for="text in section_1.left.text">{{ text }}</p>
             </div>
 
-            <div data-aos="fade-up">
+            <div data-aos="fade-up" class="my-4 grid gap-2 lg:my-0">
                 <p class="font-medium text-xl sm:text-2xl">{{ section_1.right.title }}</p>
 
                 <div v-html="section_1.right.text" class="section-text"></div>
@@ -25,9 +25,9 @@
                     </ul>
                 </div>
 
-                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl xl:w-[calc(50%-1.25rem)] xl:ml-auto"
+                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl 2xl:w-[calc(50%-1.25rem)] 2xl:ml-auto"
                     data-aos="fade-up">
-                    <ul class="flex flex-col gap-6">
+                    <ul class="flex flex-col gap-6" style="font-size: clamp(1rem, 3cqw, 1.25rem);">
                         <li class="flex gap-4 items-center"><img class="w-[28px] aspect-[1/1]"
                                 src="@/assets/icons/phone.svg" alt=""> {{ section_2.left.phone }}</li>
                         <li class="flex gap-4 items-center"><img class="w-[28px] aspect-[1/1]"
@@ -46,7 +46,7 @@
                     <div
                         class="absolute bottom-0 left-0 p-5 flex flex-col gap-5 text-white [&>a>img]:white-filter [&>a]:w-fit">
                         <p class="text-[1.25rem] font-medium">{{ section_2.right.title }}</p>
-                        <ButtonsTransparent tagType="link" :label="section_2.right.button"
+                        <ButtonsTransparent tagType="link" class="border-white" :label="section_2.right.button"
                             :url="section_2.right.path" />
                     </div>
                 </div>
