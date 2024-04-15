@@ -12,7 +12,7 @@
         </NuxtLink>
 
         <div class="flex justify-end gap-4 my-4">
-            <SectionsInspirationsSocialLink v-for="(social, index) in article.socials" :social="social" :key="index" />
+            <SectionsInspirationsSocialLink v-if="article.socials" v-for="(social, index) in article.socials" :social="social" :key="index" />
         </div>
 
         <h2 class="upperacse font-medium text-xl">{{ article.title }}</h2>
@@ -26,23 +26,13 @@
 </template>
 
 <script setup lang="ts">
-import type { Inspiration } from '~/types/inspirations.types';
+import type { Article } from '~/types/inspirations.types';
 
 const localePath = useLocalePath();
 const route = useRoute();
 const props = defineProps<{
-    article: Inspiration;
+    article: Article;
 }>();
 
 const { article } = toRefs(props);
-
-useHead({
-    link: [
-        {
-            rel: "preload",
-            href: article.value.image.mobile,
-            as: 'image',
-        },
-    ]
-})
 </script>

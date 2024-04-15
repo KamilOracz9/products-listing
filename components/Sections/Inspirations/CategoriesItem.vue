@@ -1,7 +1,7 @@
 <template>
-    <li class="mb-20" :id="category.slug">
+    <li class="mb-20" :id="category.slug.toString()">
         <div class="border-b border-black flex flex-col gap-4 pb-4 mb-6 sm:flex-row sm:justify-between">
-            <p class="text-[1.5rem] uppercase sm:text-[1.875rem]">{{ category.title }}</p>
+            <p class="text-[1.5rem] uppercase sm:text-[1.875rem]">{{ category.name }}</p>
             <NuxtLink :to="localePath({ name: 'inspirations' }) + `/${category.slug}`" class="flex gap-2 uppercase">{{
                 $t('pages.inspirations.see-all') }} <Arrow :direction="'right'" />
             </NuxtLink>
@@ -11,7 +11,15 @@
     </li>
 </template>
 
-<script setup>
-const { category } = defineProps(['category'])
+<script setup lang="ts">
+import type { Category } from '~/types/inspirations.types';
+
 const localePath = useLocalePath();
+
+const props = defineProps<{
+    category: Category;
+}>();
+
+const { category } = toRefs(props);
+
 </script>
