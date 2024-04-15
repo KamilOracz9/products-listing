@@ -1,27 +1,36 @@
 <template>
-    <div v-if="!serviceStore.isLoading && serviceStore.sections">
-        <SectionsCommonBreadrumbs :breadcrumbs="serviceStore.breadcrumbs" />
+    <div class="mb-10">
+        <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
-        <p class="section-title">{{ serviceStore.title }}</p>
+        <p class="section-title">{{ title }}</p>
 
         <section class="for-professionas-section">
-            <div v-html="serviceStore.sections.section1.text" class="section-text lg:my-0"></div>
+            <div v-html="section_1.text" class="section-text lg:my-0"></div>
 
             <div class="mt-6 lg:mt-0">
-                <p class="font-medium text-xl sm:text-2xl">{{ serviceStore.sections.section2.title }}</p>
+                <p class="font-medium text-xl sm:text-2xl">{{ section_2.title }}</p>
 
-                <div v-html="serviceStore.sections.section2.text" class="section-text my-2 lg:my-4"></div>
+                <div v-html="section_2.text" class="section-text my-2 lg:my-4"></div>
             </div>
         </section>
 
-        <SectionsServiceSection3 :section="serviceStore.sections.section3" />
-        <SectionsServiceSection4 :section="serviceStore.sections.section4" />
-        <SectionsServiceSection5 v-if="selected" :section="serviceStore.sections.section5" />
+        <SectionsServiceSection3 :data="{
+            left: {
+                items: section_1.items,
+            },
+            right: {
+                image: section_2.image,
+                text: section_2.text_image
+            }
+        }" />
+        <SectionsServiceSection4 :data="{ left: section_3, right: section_4 }" />
+        <SectionsServiceSection5 :installers="section_3.installers" :reklamationForm="section_5" />
     </div>
 </template>
 
 <script setup lang="ts">
-const serviceStore = useServiceStore();
+import { fetchService } from '~/services/api';
+import type { ServicePage } from '~/types/service.types';
 
 const selected: Ref<{
     label: string;
@@ -30,9 +39,9 @@ const selected: Ref<{
 
 provide('selected', selected)
 
-onMounted(async () => {
-    await serviceStore.fetchData().then(() => serviceStore.fetchCities());
+const { data } = await useAsyncData('service', () => fetchService());
+const { breadcrumbs, description, meta, title } = toRefs(data.value as ServicePage);
+const { section_1, section_2, section_3, section_4, section_5 } = toRefs(description.value.content);
 
-    selected.value = serviceStore.sections?.section4.boxLeft.options[0];
-})
+setMeta(meta.value);
 </script>
