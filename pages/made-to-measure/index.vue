@@ -29,9 +29,8 @@
             </div>
 
             <div class="row instruction divider">
-                <div class="column" v-for="(item, index) in section_2.items" data-aos="fade-up"
-                    :data-aos-delay="index * 100">
-                    <img width="80" height="80" :src="item.icon" alt="">
+                <div class="column" v-for="(item, index) in section_2.items" :data-aos-delay="index * 100">
+                    <img loading="lazy" width="80" height="80" :src="item.icon" alt="">
                     <h3>{{ item.title }}</h3>
                     <span v-html="item.html" />
                 </div>
@@ -40,49 +39,58 @@
             <div id="menu" class="row menu divider">
                 <div class="column">
                     <h2>{{ section_3.title }}</h2>
-                    <h3 v-for="(item, index) in section_3.items" data-aos="fade-up" :data-aos-delay="index * 100">
-                        <NuxtLink :aria-label="item.label" :to="item.hashtag" class=""><img :src="plusIcon" width="20"
-                                height="20" alt="">{{ item.label }}</NuxtLink>
+                    <h3 v-for="(item, index) in section_3.items" :data-aos-delay="index * 100">
+                        <NuxtLink :aria-label="item.label" :to="item.hashtag" class=""><img loading="lazy"
+                                :src="plusIcon" width="20" height="20" alt="">{{ item.label }}</NuxtLink>
                     </h3>
                 </div>
             </div>
 
             <SectionsMadeToMeasureModification :data="section_4">
-                <div><img :src="section_4.image" alt="" class="section-img rounded-bl-md md:rounded-bl-lg"></div>
+                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_4.image" alt=""
+                        class="rounded-bl-md md:rounded-bl-lg"></div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification imgClass="rounded-bl-md md:rounded-bl-lg" :data="section_5">
                 <div class="row col-span-2">
-                    <div><img :src="section_5.images[0].left" alt="" class="section-img rounded-tl-md md:rounded-tl-lg"></div>
-                    <div><img :src="section_5.images[0].right" alt="" class="section-img rounded-br-md md:rounded-br-lg"></div>
+                    <div class="section-img"><img loading="lazy" width="1000" height="667"
+                            :src="section_5.images[0].left" alt="" class="rounded-tl-md md:rounded-tl-lg"></div>
+                    <div class="section-img"><img loading="lazy" width="1000" height="667"
+                            :src="section_5.images[0].right" alt="" class="rounded-br-md md:rounded-br-lg"></div>
                 </div>
 
                 <div class="row tech-pictures col-span-2">
-                    <img data-aos="fade-up" :data-aos-delay="index * 100"
-                        v-for="(image, index) in section_5.images[0].bottom" :src="image" alt="" class="column" />
+                    <div class="flex items-center justify-center" v-for="(image, index) in section_5.images[0].bottom">
+                        <img loading="lazy" :data-aos-delay="index * 100" :src="image" alt="" class="column" width="205"
+                            height="205" />
+                    </div>
                 </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_6">
-                <div><img :src="section_6.image" alt="" class="section-img rounded-tl-md md:rounded-tl-lg"></div>
+                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_6.image" alt=""
+                        class="rounded-tl-md md:rounded-tl-lg"></div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_7">
-                <div><img :src="section_7.image" alt="" class="section-img"></div>
+                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_7.image" alt="">
+                </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_8">
-                <div><img :src="section_8.image" alt="" class="section-img rounded-br-md md:rounded-br-lg"></div>
+                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_8.image" alt=""
+                        class="rounded-br-md md:rounded-br-lg"></div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_9">
-                <div><img :src="section_9.image" alt="" class="section-img"></div>
+                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_9.image" alt="">
+                </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_10">
                 <div class="row glasses mb-10 col-span-2">
-                    <div class="column" v-for="(item, index) in section_10.items" data-aos="fade-up">
-                        <img :src="item.image" alt="">
+                    <div class="column" v-for="(item, index) in section_10.items">
+                        <img loading="lazy" :src="item.image" alt="">
                         <p>{{ item.text }}</p>
                         <table class="mt-auto">
                             <thead>
@@ -99,12 +107,15 @@
                         <div class="flex justify-between">
                             <p class="uppercase font-medium">{{ $t('pages.made-to-measure.transparency-level') }}</p>
                             <div class="flex gap-1 items-center stars">
-                                <img v-for="index in Math.floor(parseInt(item.level_transparency))"
+                                <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_transparency))"
                                     src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_zolta-1.png"
                                     width="20" height="20" alt="">
-                                <img v-if="parseFloat(item.level_transparency) % 1" src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
+                                <img loading="lazy" v-if="parseFloat(item.level_transparency) % 1"
+                                    src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
                                     width="20" height="20" alt="">
-                                <img v-for="index in (5 - parseInt(item.level_transparency) - Math.ceil((parseFloat(item.level_transparency) % 1)))" src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
+                                <img loading="lazy"
+                                    v-for="index in (5 - parseInt(item.level_transparency) - Math.ceil((parseFloat(item.level_transparency) % 1)))"
+                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
                                     width="20" height="20" alt="">
                             </div>
                         </div>
@@ -112,12 +123,15 @@
                             <p class="uppercase font-medium ![font-size:_clamp(.75rem,1cqw,1rem)]">{{
                                 $t('pages.made-to-measure.discretion-level') }}</p>
                             <div class="flex gap-1 items-center stars">
-                                <img v-for="index in Math.floor(parseInt(item.level_discretion))"
+                                <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_discretion))"
                                     src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_zolta-1.png"
                                     width="20" height="20" alt="">
-                                <img v-if="parseFloat(item.level_discretion) % 1" src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
+                                <img loading="lazy" v-if="parseFloat(item.level_discretion) % 1"
+                                    src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
                                     width="20" height="20" alt="">
-                                <img v-for="index in (5 - parseInt(item.level_discretion) - Math.ceil((parseFloat(item.level_discretion) % 1)))" src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
+                                <img loading="lazy"
+                                    v-for="index in (5 - parseInt(item.level_discretion) - Math.ceil((parseFloat(item.level_discretion) % 1)))"
+                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
                                     width="20" height="20" alt="">
                             </div>
                         </div>

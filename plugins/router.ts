@@ -6,7 +6,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     // nuxtApp.hook('page:finish', async () => {
     //     const hash = router.currentRoute.value.hash;
 
-    //     if (hash) setTimeout(() => {
+    //     if (hash) await setTimeout(() => {
     //         document?.querySelector(hash)?.scrollIntoView();
     //     }, 100)
     // })

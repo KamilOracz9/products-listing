@@ -39,7 +39,7 @@
                             <div class="text-sm">
                                 <NuxtLink
                                     v-for="item in ['measure', 'shape', 'glass', 'ceiling-bracket', 'walk-in-to-the-ceiling', 'installation-on-internal-cubes', 'rail-hanger',]"
-                                    :to="{ path: localePath({ name: 'made-to-measure' }), hash: `#${slugify($t(`navigation.${item}`))}` }">
+                                    :to="{ path: localePath({ name: 'made-to-measure' }), hash: `#${slugify($t(`navigation.slug.${item}`))}` }">
                                     {{ $t(`navigation.${item}`) }}</NuxtLink>
                             </div>
                         </div>

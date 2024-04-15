@@ -70,7 +70,17 @@
         "walk-in-to-the-ceiling": "Walk in to to ceiling",
         "installation-on-internal-cubes": "Installation on internal cubes",
         "rail-hanger": "Rail hanger",
-        "collections": "Our collections"
+        "collections": "Our collections",
+        "slug": {
+            "made-to-measure": "Made to measure",
+            "measure": "Measure",
+            "shape": "Shape",
+            "glass": "Glass",
+            "ceiling-bracket": "Ceiling bracket",
+            "walk-in-to-the-ceiling": "Walk in to to ceiling",
+            "installation-on-internal-cubes": "Installation on internal cubes",
+            "rail-hanger": "Rail hanger"
+        }
     },
     "filters": {
         "collections": "Collections",
