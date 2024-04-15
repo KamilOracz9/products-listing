@@ -44,3 +44,22 @@ export type SocialLink = {
     "type": string;
     "url": string;
 }
+
+export interface Faq {
+    title: string;
+    text: string;
+    items: FaqItem[];
+}
+
+export type FaqItem = {
+    question: string;
+    answer: string;
+}
+
+export type Pagination = {
+    "param": string;
+    "total": number;
+    "per_page": number;
+    "current_page": number;
+    "last_page": number;
+}

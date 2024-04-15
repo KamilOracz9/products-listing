@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Inspiration } from '~/types/inspirations.types';
+import type { Article } from '~/types/inspirations.types';
 
 const props = withDefaults(defineProps<{
     listClass?: string;
-    articles: Inspiration[];
+    articles: Article[];
 }>(), {
     listClass: '',
 });

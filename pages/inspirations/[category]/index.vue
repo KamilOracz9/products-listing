@@ -1,15 +1,12 @@
 <template>
     <Suspense>
         <div class="mb-20">
-            <SectionsCommonBreadrumbs :breadcrumbs="inspirationStore.category.item?.breadcrumbs" />
+            <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
             <div class="pb-10">
-                <h1 class="section-title">{{ inspirationStore.category.item?.title }}</h1>
+                <h1 class="section-title">{{ title }}</h1>
             </div>
-            <template v-if="inspirationStore.category.item">
-                <LazySectionsInspirationsArticles :articles="inspirationStore.category.item?.items"
-                    :categorySlug="inspirationStore.category.item?.slug" />
-            </template>
+            <SectionsInspirationsArticles :articles="items" />
         </div>
 
         <template #fallback>
@@ -21,9 +18,11 @@
 </template>
 
 <script setup lang="ts">
-const inspirationStore = useInspirationStore();
+import { fetchInspirationCategory } from '~/services/api';
+import type { InspirationCategoryPage } from '~/types/inspirations.types';
 
-onMounted(async () => {
-    await inspirationStore.fetchCategory();
-})
+const route = useRoute();
+
+const { data } = await useAsyncData('inspiration-category', () => fetchInspirationCategory(route.params.category as string));
+const { breadcrumbs, items, pagination, title } = toRefs(data.value as InspirationCategoryPage);
 </script>

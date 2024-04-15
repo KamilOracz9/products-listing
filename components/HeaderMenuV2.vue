@@ -86,12 +86,12 @@
             <SectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink :to="getPath('inspirations', $t('news'))">{{ $t('news') }}</NuxtLink>
-                        <NuxtLink :to="getPath('inspirations', $t('arrangements-and-inspirations'))">{{
+                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.news'))}` })">{{ $t('news') }}</NuxtLink>
+                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.arrangements-and-inspirations'))}` })">{{
                             $t('arrangements-and-inspirations') }}</NuxtLink>
-                        <NuxtLink :to="getPath('inspirations', $t('advice-and-support'))">{{ $t('advice-and-support') }}
+                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.advice-and-support'))}` })">{{ $t('advice-and-support') }}
                         </NuxtLink>
-                        <NuxtLink :to="getPath('inspirations', $t('faq'))">{{ $t('faq') }}</NuxtLink>
+                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#faq` })">{{ $t('faq') }}</NuxtLink>
                     </div>
                 </div>
             </SectionsHeaderItem>
@@ -160,7 +160,7 @@
                                 v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
                                 <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
                                     class="whitespace-nowrap lg:text-xl" :for="item">{{
-                                    $t(item) }}</label>
+                                        $t(item) }}</label>
                             </div>
                         </div>
 
@@ -202,7 +202,7 @@
                     {{ $t('place-to-buy') }}</NuxtLink>
             </div>
         </div>
-        
+
         <FlashMessages />
     </div>
 </template>
