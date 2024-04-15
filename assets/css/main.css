@@ -6,12 +6,16 @@
     /* section {
         scroll-margin-top: 300px;
     } */
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         @apply font-breuer font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
     }
 
     * {
-        scroll-margin-top: 134px;
+        scroll-margin-top: 164px;
     }
 
     h1 {
@@ -468,7 +472,7 @@
         }
     }
 
-    #made-to-measure .section-img {
+    #made-to-measure .section-img img {
         @apply max-h-[400px] w-full object-cover;
     }
 

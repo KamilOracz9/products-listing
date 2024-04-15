@@ -70,7 +70,17 @@
         "walk-in-to-the-ceiling": "Walk in do samego sufitu",
         "installation-on-internal-cubes": "Montaż na kostkach wewnętrznych",
         "rail-hanger": "Wieszak relingowy",
-        "collections": "Nasze kolekcje"
+        "collections": "Nasze kolekcje",
+        "slug": {
+            "made-to-measure": "Na wymiar",
+            "measure": "Wymiary",
+            "shape": "Kształt",
+            "glass": "Szkło",
+            "ceiling-bracket": "Wspornik sufitowy",
+            "walk-in-to-the-ceiling": "Walkin sufit",
+            "installation-on-internal-cubes": "Kostki",
+            "rail-hanger": "Wieszak"
+        }
     },
     "filters": {
         "collections": "Kolekcje",
