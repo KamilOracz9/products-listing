@@ -13,6 +13,9 @@
 import logo from '@/assets/images/logo.svg';
 const i18n = useI18n();
 const router = useRouter();
+const globalStore = useGlobalStore();
+
+await globalStore.fetchGlobalData();
 
 useHead(() => ({
   link: [

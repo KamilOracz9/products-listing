@@ -1,6 +1,6 @@
 <template>
     <li class="text-medium-lg flex flex-col gap-2 lg:w-1/4">
-        <p class="uppercase">{{ label }}</p>
+        <p class="uppercase">{{ title }}</p>
         <!-- Addresses -->
         <div class="text-normal-base flex gap-3" v-if="addresses?.length"><img src="@/assets/icons/map-pin.svg"
                 class="footer__icon" alt="" />
@@ -25,8 +25,12 @@
     </li>
 </template>
 
-<script setup>
-const props = defineProps(['item']);
+<script setup lang="ts">
+import type { FooterDepartment } from '~/types/layout.types';
 
-const { item: { label, phones, addresses, emails } } = props;
+const props = defineProps<{
+    item: FooterDepartment;
+}>();
+
+const { title, phone: phones, email: emails, address: addresses } = toRefs(reactive(props.item));
 </script>

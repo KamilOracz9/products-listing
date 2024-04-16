@@ -1,35 +1,12 @@
-import type { IFooterContact, IFooterItem, IFooterWebsite } from "~/types/footer";
-
-type IFooterStore = {
+type FooterState = {
     activeItem: string;
-    data: {
-        isLoading: boolean;
-        items: IFooterItem[];
-        contacts: IFooterContact[];
-        websites: IFooterWebsite[];
-    };
 }
 
 const useFooterStore = defineStore('footer', {
-    state: (): IFooterStore => ({
+    state: (): FooterState => ({
         activeItem: '',
-        data: {
-            isLoading: false,
-            items: [],
-            contacts: [],
-            websites: [],
-        }
     }),
     actions: {
-        async fetchData() {
-            this.data.isLoading = true;
-
-            await import('@/data/footer').then(response => {
-                this.data.items = <IFooterItem[]>response.default.items;
-                this.data.contacts = response.default.contacts;
-                this.data.websites = response.default.websites;
-            }).finally(() => this.data.isLoading = false);
-        },
         setActiveItem(slug: string) {
             this.activeItem = this.activeItem === slug ? '' :  slug;
         },
