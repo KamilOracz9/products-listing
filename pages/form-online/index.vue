@@ -1,8 +1,8 @@
 <template>
     <form id="form-online" class="grid grid-col gap-10" @submit="onSubmit">
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
-        <h1 class="section-title">{{ $t('pages.form-online.title') }}</h1>
-        <div v-html="text" class="section-text lg:w-1/2"></div>
+        <h1 class="section-title">{{ title }}</h1>
+        <div v-html="section_1.html" class="section-text lg:w-1/2"></div>
 
         <div class="grid gap-6 lg:grid-cols-2 lg:gap-10">
             <div class="content-grid">
@@ -90,22 +90,20 @@
         </div>
 
         <div class="mb-10 grid gap-6 lg:w-1/2">
-            <div v-html="clausue" class="[font-size:_clamp(.75rem,1cqw,.875rem)] leading-[1.2]"></div>
+            <div v-html="section_2.hmtl" class="[font-size:_clamp(.75rem,1cqw,.875rem)] leading-[1.2]"></div>
 
             <div class="grid gap-6">
                 <div class="flex gap-3 text-xs">
-                    <input type="checkbox" name="true_data" class="border border-black w-4 h-4 text-black focus:ring-0" id="real-data" />
-                    <label class="" for="real-data">{{ $t('pages.form-online.form-person.statements.real-data')
-                        }}</label>
+                    <input type="checkbox" name="true_data" class="border border-black w-4 h-4 text-black focus:ring-0"
+                        id="real-data" />
+                    <label class="" for="real-data">{{ section_3.checkbox_1 }}</label>
                 </div>
                 <ValidationError :messages="formResponse.errors.true_data" />
 
                 <div class="flex gap-3 text-xs">
                     <input name="clausue" type="checkbox" class="border border-black w-4 h-4 text-black focus:ring-0"
                         id="processing-data" />
-                    <label class="" for="processing-data">{{
-                        $t('pages.form-online.form-person.statements.processing-data')
-                        }}</label>
+                    <label class="" for="processing-data">{{ section_3.checkbox_2 }}</label>
                 </div>
                 <ValidationError :messages="formResponse.errors.clausue" />
             </div>
@@ -119,13 +117,14 @@
 
 <script setup lang="ts">
 import { SERVICE_FORM_INITIAL_RESPONSE } from '~/constants/form';
+import { DataKeys } from '~/enums/dataKeys';
 import { Types } from '~/enums/flashMessage';
 import { sendServiceMessage } from '~/services/api';
+import { fetchFormOnlinePage } from '~/services/api/form-online';
+import type { FormOnlinePage } from '~/types/form-online.types';
 
-const formOnlineStore = useFormOnlineStore();
 const flashMessages = useFlashMessageStore();
 
-const { breadcrumbs, text, clausue } = toRefs(useFormOnlineStore());
 const fileInputRef = ref();
 const fileName = ref();
 const formResponse = ref({ ...SERVICE_FORM_INITIAL_RESPONSE });
@@ -153,7 +152,7 @@ const onSubmit = async (event: Event) => {
     };
 }
 
-onMounted(async () => {
-    await formOnlineStore.fetchData();
-})
+const { data } = await useAsyncData(DataKeys.FORM_ONLINE_PAGE, () => fetchFormOnlinePage());
+const { breadcrumbs, description, meta, title } = toRefs(data.value as FormOnlinePage);
+const { section_1, section_2, section_3 } = toRefs(description.value.content);
 </script>
