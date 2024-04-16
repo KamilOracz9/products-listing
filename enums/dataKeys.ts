@@ -19,4 +19,5 @@ export enum DataKeys {
     CITIES_LIST = 'cities-list',
     VOIVODESHIPS_LIST = 'voivodeships-list',
     COORDS_LIST = 'coords-list',
+    COLLECTIONS_LIST = 'collections-list',
 }

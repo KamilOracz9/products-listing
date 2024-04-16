@@ -11,3 +11,4 @@ export * from './for-professionals';
 export * from './service';
 export * from './made-to-measure';
 export * from './home';
+export * from './collections';
