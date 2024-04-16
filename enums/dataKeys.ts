@@ -12,6 +12,7 @@ export enum DataKeys {
     PRIVACY_POLICY_PAGE = 'privacy-policy-page',
     SERVICE_PAGE = 'service-page',
     HOME_PAGE = 'home-page',
+    FORM_ONLINE_PAGE = 'form-online-page',
 
     PLACE_TO_BUY_SHOPS_LIST = 'place-to-buy-shops-list',
     PRODUCTS_LIST = 'products-list',
