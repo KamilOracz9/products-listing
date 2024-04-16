@@ -1,0 +1,22 @@
+export enum DataKeys {
+    ABOUT_PAGE = 'about-page',
+    CONTACT_PAGE = 'contact-page',
+    DOWNLOAD_PAGE = 'download-page',
+    DOWNLOAD_3D_PAGE = 'download-3d-page',
+    FOR_PROFESSIONALS_PAGE = 'for-professionals-page',
+    INFORMATION_CLAUSUE_PAGE = 'information-clausue-page',
+    INSPIRATIONS_CATEGORIES_PAGE = 'inspirations-categories-page',
+    INSPIRATIONS_CATEGORY_PAGE = 'inspirations-category-page',
+    INSPIRATION_PAGE = 'inspiration-page',
+    MADE_TO_MEASURE_PAGE = 'made-to-measure-page',
+    PRIVACY_POLICY_PAGE = 'privacy-policy-page',
+    SERVICE_PAGE = 'service-page',
+    HOME_PAGE = 'home-page',
+
+    PLACE_TO_BUY_SHOPS_LIST = 'place-to-buy-shops-list',
+    PRODUCTS_LIST = 'products-list',
+    FILTERS_LIST = 'filters-list',
+    CITIES_LIST = 'cities-list',
+    VOIVODESHIPS_LIST = 'voivodeships-list',
+    COORDS_LIST = 'coords-list'
+}

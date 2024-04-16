@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { fetchShops } from '@/services/api';
+import { DataKeys } from '~/enums/dataKeys';
 
 const route = useRoute();
 
@@ -25,7 +26,7 @@ const mapCenter = ref([52.121, 19.108]);
 const selected = ref(null);
 const page = ref(1);
 
-const { data } = await useAsyncData('shopsList', () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
+const { data } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
 
 const locationsList = ref([...data.value.locationsList]);
 

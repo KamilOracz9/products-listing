@@ -18,11 +18,12 @@
 </template>
 
 <script setup lang="ts">
+import { DataKeys } from '~/enums/dataKeys';
 import { fetchInspirationCategoryPage } from '~/services/api';
 import type { InspirationCategoryPage } from '~/types/inspirations.types';
 
 const route = useRoute();
 
-const { data } = await useAsyncData('inspiration-category', () => fetchInspirationCategoryPage(route.params.category as string));
-const { breadcrumbs, items, pagination, title } = toRefs(data.value as InspirationCategoryPage);
+const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORY_PAGE, () => fetchInspirationCategoryPage(route.params.category as string));
+const { breadcrumbs, items, title } = toRefs(data.value as InspirationCategoryPage);
 </script>

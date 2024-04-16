@@ -28,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { DataKeys } from '~/enums/dataKeys';
 import { fetchCities, fetchVoivodeships } from '~/services/api';
 
 const route = useRoute();
@@ -41,8 +42,8 @@ const voivodeship_name: Ref<string | null> = ref(null);
 const city: Ref<string | null> = ref(null);
 const city_or_code: Ref<string | null> = ref(null);
 
-const { data: voivodeships } = await useAsyncData('voivodeships', () => fetchVoivodeships(voivodeship_name.value as string), { watch: [voivodeship_name] });
-const { data: cities } = await useAsyncData('cities', () => fetchCities(city.value as string), { watch: [city] });
+const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, () => fetchVoivodeships(voivodeship_name.value as string), { watch: [voivodeship_name] });
+const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, () => fetchCities(city.value as string), { watch: [city] });
 
 provide('voivodeship_name', voivodeship_name);
 provide('city', city);

@@ -29,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import { DataKeys } from '~/enums/dataKeys';
 import { fetchServicePage } from '~/services/api';
 import type { ServicePage } from '~/types/service.types';
 
@@ -39,7 +40,7 @@ const selected: Ref<{
 
 provide('selected', selected)
 
-const { data } = await useAsyncData('service', () => fetchServicePage());
+const { data } = await useAsyncData(DataKeys.SERVICE_PAGE, () => fetchServicePage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as ServicePage);
 const { section_1, section_2, section_3, section_4, section_5 } = toRefs(description.value.content);
 

@@ -36,13 +36,14 @@
 </template>
 
 <script setup>
+import { DataKeys } from '~/enums/dataKeys';
 import { fetchProducts } from '~/services/api';
 
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
 const { title, breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
-const { data, pending } = await useAsyncData('products', () => fetchProducts(route.query), { watch: [() => route.query] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts(route.query), { watch: [() => route.query] });
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();

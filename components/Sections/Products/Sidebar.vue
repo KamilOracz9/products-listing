@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import { DataKeys } from '~/enums/dataKeys';
 import { fetchFilters } from '~/services/api';
 
 const productsFilterStore = useProductsFilterStore();
@@ -36,7 +37,7 @@ const resetFilters = async () => {
     refresh();
 }
 
-const { data, refresh } = await useAsyncData('filters', () => fetchFilters(route.query))
+const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters(route.query))
 
 provide('refresh', refresh);
 </script>
