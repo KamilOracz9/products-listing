@@ -6,13 +6,14 @@
 import markerIcon from '@/assets/icons/marker-icon-yellow.png';
 import markerIconRed from '@/assets/icons/marker-icon-red.png';
 import { fetchCoordsList } from '~/services/api';
+import { DataKeys } from '~/enums/dataKeys';
 const route = useRoute();
 
 const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
 
-const { data } = await useAsyncData('coordsList', () => fetchCoordsList(route.query), { watch: [() => route.query] });
+const { data } = await useAsyncData(DataKeys.COORDS_LIST, () => fetchCoordsList(route.query), { watch: [() => route.query] });
 
 let map = null;
 

@@ -24,12 +24,13 @@
 </template>
 
 <script setup lang="ts">
-import { fetchHome } from '~/services/api';
+import { DataKeys } from '~/enums/dataKeys';
+import { fetchHomePage } from '~/services/api';
 import type { HomePage } from '~/types/home.types';
 
 const localePath = useLocalePath();
 
-const { data } = await useAsyncData('home', () => fetchHome());
+const { data } = await useAsyncData(DataKeys.HOME_PAGE, () => fetchHomePage());
 const { description } = toRefs(data.value as HomePage);
 const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
 </script>
