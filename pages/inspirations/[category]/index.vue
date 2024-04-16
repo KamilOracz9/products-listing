@@ -18,11 +18,11 @@
 </template>
 
 <script setup lang="ts">
-import { fetchInspirationCategory } from '~/services/api';
+import { fetchInspirationCategoryPage } from '~/services/api';
 import type { InspirationCategoryPage } from '~/types/inspirations.types';
 
 const route = useRoute();
 
-const { data } = await useAsyncData('inspiration-category', () => fetchInspirationCategory(route.params.category as string));
+const { data } = await useAsyncData('inspiration-category', () => fetchInspirationCategoryPage(route.params.category as string));
 const { breadcrumbs, items, pagination, title } = toRefs(data.value as InspirationCategoryPage);
 </script>

@@ -63,10 +63,10 @@
 </template>
 
 <script setup lang="ts">
-import { fetchAbout } from '~/services/api';
+import { fetchAboutPage } from '~/services/api';
 import type { AboutPage } from '~/types/about.types';
 
-const { data } = await useAsyncData('about', () => fetchAbout());
+const { data } = await useAsyncData('about', () => fetchAboutPage());
 const { description, meta, breadcrumbs } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);

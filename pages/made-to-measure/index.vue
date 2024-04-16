@@ -144,12 +144,12 @@
 
 <script setup lang="ts">
 import Breadrumbs from '~/components/Sections/Common/Breadrumbs.vue';
-import { fetchMadeToMeasure } from '~/services/api';
+import { fetchMadeToMeasurePage } from '~/services/api';
 import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
 
 const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
 
-const { data } = await useAsyncData('made-to-measure', () => fetchMadeToMeasure());
+const { data } = await useAsyncData('made-to-measure', () => fetchMadeToMeasurePage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);
 const { section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10 } = toRefs(description.value.content);
 

@@ -6,10 +6,10 @@
 </template>
 
 <script setup lang="ts">
-import { fetchInformationClausue } from '~/services/api';
+import { fetchInformationClausuePage } from '~/services/api';
 import type { InformationClausuePage } from '~/types/information-clausue.types';
 
-const { data } = await useAsyncData('information-clausue', () => fetchInformationClausue());
+const { data } = await useAsyncData('information-clausue', () => fetchInformationClausuePage());
 const { breadcrumbs, meta, description } = toRefs(data.value as InformationClausuePage);
 
 setMeta(meta.value);

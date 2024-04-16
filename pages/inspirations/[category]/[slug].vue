@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { fetchInspiration } from '~/services/api';
+import { fetchInspirationPage } from '~/services/api';
 import type { InspirationPage } from '~/types/inspirations.types';
 
 const route = useRoute();
@@ -57,7 +57,7 @@ const galleryActiveSlide = ref(0);
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
-const { data } = await useAsyncData('inspiration', () => fetchInspiration(route.params.slug as string));
+const { data } = await useAsyncData('inspiration', () => fetchInspirationPage(route.params.slug as string));
 const { breadcrumbs, title, related, image, gallery, description } = toRefs(data.value as InspirationPage);
 
 setMeta({

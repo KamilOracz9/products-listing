@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { fetchPrivacyPolicy } from '~/services/api';
+import { fetchPrivacyPolicyPage } from '~/services/api';
 import type { PrivacyPolicyPage } from '~/types/privacy-policy.types';
 
-const { data } = await useAsyncData('privacy-policy', () => fetchPrivacyPolicy());
+const { data } = await useAsyncData('privacy-policy', () => fetchPrivacyPolicyPage());
 const { breadcrumbs, title, description, meta } = toRefs(data.value as PrivacyPolicyPage);
 
 setMeta(meta.value);

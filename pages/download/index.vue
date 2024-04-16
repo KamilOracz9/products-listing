@@ -32,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-import { fetchDownload } from '~/services/api/download';
+import { fetchDownloadPage } from '~/services/api/download';
 import type { DownloadPage } from '~/types/download.types';
 
-const { data } = await useAsyncData('download', () => fetchDownload());
+const { data } = await useAsyncData('download', () => fetchDownloadPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as DownloadPage);
 
 setMeta(meta.value);

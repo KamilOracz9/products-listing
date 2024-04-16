@@ -13,10 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { fetchInspirationCategories } from '~/services/api';
+import { fetchInspirationCategoriesPage } from '~/services/api';
 import type { InspirationCategoriesPage } from '~/types/inspirations.types';
 
-const { data } = await useAsyncData('inspiration-categories', () => fetchInspirationCategories());
+const { data } = await useAsyncData('inspiration-categories', () => fetchInspirationCategoriesPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as InspirationCategoriesPage);
 
 setMeta(meta.value);
