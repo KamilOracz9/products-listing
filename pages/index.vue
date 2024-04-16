@@ -16,7 +16,7 @@
     <SectionsHomeRightImage :data="quality" />
     <div class="lg:grid lg:grid-cols-2 lg:gap-10">
       <SectionsHomeInOffer :data="products" />
-      <SectionsHomeAdditionalContent :data="{information, yellow, welcome}" />
+      <SectionsHomeAdditionalContent :data="{ information, yellow, welcome }" />
     </div>
     <SectionsCommonFindUs />
     <SectionsCommonUE />
@@ -32,5 +32,5 @@ const localePath = useLocalePath();
 
 const { data } = await useAsyncData(DataKeys.HOME_PAGE, () => fetchHomePage());
 const { description } = toRefs(data.value as HomePage);
-const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
+const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(reactive(description.value.content));
 </script>

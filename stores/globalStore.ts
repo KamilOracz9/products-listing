@@ -1,10 +1,15 @@
+import { fetchLayoutData } from '~/services/api/layout';
 import type { IActiveLocale } from '~/types';
+import type { Footer, Header, Socials } from '~/types/layout.types';
 
 type IGlobalStore = {
     locale: {
         isLoading: boolean;
-        locales: IActiveLocale[],
-    },
+        locales: IActiveLocale[];
+    };
+    header?: Header;
+    footer?: Footer;
+    socials?: Socials;
 }
 
 const useGlobalStore = defineStore('global', {
@@ -24,6 +29,14 @@ const useGlobalStore = defineStore('global', {
                 })
                 .finally(() => this.locale.isLoading = false)
         },
+        async fetchGlobalData() {
+            const data = await fetchLayoutData(1);
+            const { header, footer, socials } = data;
+
+            this.header = header;
+            this.footer = footer;
+            this.socials = socials;
+        }
     },
 });
 
