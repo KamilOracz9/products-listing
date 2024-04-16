@@ -6,77 +6,31 @@
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <SectionsHeaderItem slug="products">
                 <div class="header__categories gap-10">
-                    <NuxtLink :to="localePath({ name: 'made-to-measure' })">
-                        <img loading="lazy" width="65" height="65" class="size-[65px]"
-                            src="https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289"
-                            :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
-                        <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
-                    </NuxtLink>
-
-                    <NuxtLink v-for="category in categoryStore.mainCategories"
-                        :to="localePath({ name: 'categories' }) + `/${category.slug}`">
-                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.iconUrl"
-                            :alt="category.label" :title="category.label">
-                        <p class="py-3">{{ category.label }}</p>
-                    </NuxtLink>
-
-                    <NuxtLink :to="localePath({ name: 'collections' })">
-                        <img loading="lazy" width="65" height="65" class="size-[65px]"
-                            src="https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg"
-                            :alt="$t('navigation.collections')" :title="$t('navigation.collections')">
-                        <p class="py-3">{{ $t('navigation.collections') }}</p>
+                    <NuxtLink v-for="category in categories" :to="category.path">
+                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image"
+                            :alt="category.name" :title="category.name">
+                        <p class="py-3">{{ category.name }}</p>
                     </NuxtLink>
                 </div>
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
-                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[0]">
-                        <div class="lg:px-8 lg:mb-10">
-                            <NuxtLink :to="localePath({ name: 'made-to-measure' })">
-                                <img loading="lazy" width="65" height="65" class="size-[65px]"
-                                    src="https://newtrendy.pl/app/uploads/2023/12/ikona-na-wymiar.png?ver=1701856289"
-                                    :alt="$t('navigation.made-to-measure')" :title="$t('navigation.made-to-measure')">
-                                <p class="py-3">{{ $t('navigation.made-to-measure') }}</p>
+                    <SectionsHeaderColumn v-for="column in columns">
+                        <div class="lg:px-8 lg:mb-10" v-for="item in column">
+                            <NuxtLink
+                                :to="item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : slugify(item.name)">
+                                <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                                    :alt="item.name" :title="item.name" />
+                                <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
-                            <div class="text-sm">
-                                <NuxtLink
-                                    v-for="item in ['measure', 'shape', 'glass', 'ceiling-bracket', 'walk-in-to-the-ceiling', 'installation-on-internal-cubes', 'rail-hanger',]"
-                                    :to="{ path: localePath({ name: 'made-to-measure' }), hash: `#${slugify($t(`navigation.slug.${item}`))}` }">
-                                    {{ $t(`navigation.${item}`) }}</NuxtLink>
-                            </div>
-                        </div>
-                    </SectionsHeaderColumn>
-                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[1]" />
-                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[2]" />
-                    <SectionsHeaderColumn :column="categoryStore.list.items.columns[3]" />
-                    <SectionsHeaderColumn>
-                        <div class="lg:px-8 lg:mb-10">
-                            <NuxtLink :to="localePath({ name: 'collections' })">
-                                <img loading="lazy" width="65" height="65" class="size-[65px]"
-                                    src="https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-1.svg"
-                                    :alt="$t('navigation.collections')" :title="$t('navigation.collections')">
-                                <p class="py-3">{{ $t('navigation.collections') }}</p>
-                            </NuxtLink>
-                            <div class="text-sm">
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
-                                <NuxtLink
-                                    :to="{ path: localePath({ name: 'products' }), query: { collection: 'eventa' } }">
-                                    Eventa</NuxtLink>
+                            <div class="text-sm" v-for="subitem in item.items">
+                                <NuxtLink 
+                                    :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subitem.slug}`">
+                                    {{ subitem.name }}</NuxtLink>
+
+                                <div class="text-xs my-2" v-if=" subitem.items ? !!subitem.items.length : false">
+                                    <NuxtLink v-for="subsubitem in subitem.items"
+                                        :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subsubitem.slug}`">
+                                        {{ subsubitem.name }}</NuxtLink>
+                                </div>
                             </div>
                         </div>
                     </SectionsHeaderColumn>
@@ -86,12 +40,8 @@
             <SectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.news'))}` })">{{ $t('news') }}</NuxtLink>
-                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.arrangements-and-inspirations'))}` })">{{
-                            $t('arrangements-and-inspirations') }}</NuxtLink>
-                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#${slugify($t('navigation.slug.advice-and-support'))}` })">{{ $t('advice-and-support') }}
+                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path">{{ item.label }}
                         </NuxtLink>
-                        <NuxtLink :to="localePath({ name: 'inspirations', hash: `#faq` })">{{ $t('faq') }}</NuxtLink>
                     </div>
                 </div>
             </SectionsHeaderItem>
@@ -99,9 +49,7 @@
             <SectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
-                        <NuxtLink :to="getPath('for-professionals', $t('architects-zone'))">{{ $t('architects-zone') }}
-                        </NuxtLink>
-                        <NuxtLink :to="getPath('for-professionals', $t('partner-zone'))">{{ $t('partner-zone') }}
+                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path">{{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -110,11 +58,7 @@
             <SectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
-                        <NuxtLink :to="getPath('about', $t('companys-history'))">{{ $t('companys-history') }}</NuxtLink>
-                        <NuxtLink :to="getPath('about', $t('awards-and-implementations'))">{{
-                            $t('awards-and-implementations') }}</NuxtLink>
-                        <NuxtLink :to="getPath('about', $t('career'))">{{ $t('career') }}</NuxtLink>
-                        <NuxtLink :to="getPath('about', $t('projects-ue'))">{{ $t('projects-ue') }}</NuxtLink>
+                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
             </SectionsHeaderItem>
@@ -122,14 +66,7 @@
             <SectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
-                        <NuxtLink :to="getPath('contact', $t('office'))">{{ $t('office') }}</NuxtLink>
-                        <NuxtLink :to="getPath('contact', $t('sales-service-department'))">{{
-                            $t('sales-service-department') }}</NuxtLink>
-                        <NuxtLink :to="getPath('contact', $t('export-department'))">{{ $t('export-department') }}
-                        </NuxtLink>
-                        <NuxtLink :to="localePath({ name: 'service' })">{{ $t('service') }}</NuxtLink>
-                        <NuxtLink :to="getPath('service', $t('certified-installers'))">{{ $t('certified-installers') }}
-                        </NuxtLink>
+                        <NuxtLink v-for="item in header['contact'].items" :to="item.path">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
             </SectionsHeaderItem>
@@ -213,9 +150,23 @@ import clipboardIcon from '@/assets/icons/clipboard.svg';
 
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
-const i18n = useI18n();
-const categoryStore = useCategoryStore();
 const headerStore = useHeaderStore();
+const globalStore = useGlobalStore();
+
+const { header } = toRefs(globalStore);
+
+const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
+const categories = ref([]);
+
+Object.values(columns.value).map(column => {
+    column?.map(item => {
+        categories.value.push({
+            'name': item.name,
+            'path': item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : slugify(item.name),
+            'image': item.image,
+        });
+    })
+});
 
 const headerMenuRef = ref();
 const inspirationsRef = ref();
@@ -242,14 +193,6 @@ const contactOffsetLeft = ref(0);
 const contactStyle = computed(() => ({
     translate: `${contactOffsetLeft.value}px`,
 }))
-
-const getPath = (mainSlug: string, linkSlug: string) => {
-    if (linkSlug === i18n.t('service') || linkSlug === i18n.t('certified-installers')) mainSlug = 'service';
-
-    if (linkSlug === i18n.t(mainSlug)) return localePath({ name: mainSlug });
-
-    return localePath({ name: mainSlug }) + `#${slugify(linkSlug)}`;
-}
 
 const setHeader = () => {
     const shadow = 'drop-shadow-sm';

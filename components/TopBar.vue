@@ -28,15 +28,15 @@
             <NuxtLink :to="localePath({ name: 'privacy-policy' })" :aria-label="$t('privacy-policy')"
                 class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}
             </NuxtLink>
-            <a href="/" aria-label="Facebook"><img class="top-bar-icon" src="@/assets/icons/social/facebook.svg"
+            <a :href="globalStore.socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon" src="@/assets/icons/social/facebook.svg"
                     width="10" height="20" alt="" title="" /></a>
-            <a href="/" aria-label="Instagram"><img class="top-bar-icon" src="@/assets/icons/social/instagram.svg"
+            <a :href="globalStore.socials.instagram" target="_blank" aria-label="Instagram"><img class="top-bar-icon" src="@/assets/icons/social/instagram.svg"
                     width="19" height="18" alt="" title="" /></a>
-            <a href="/" aria-label="Pinterest"><img class="top-bar-icon" src="@/assets/icons/social/pinterest.svg"
+            <a :href="globalStore.socials.pinterest" target="_blank" aria-label="Pinterest"><img class="top-bar-icon" src="@/assets/icons/social/pinterest.svg"
                     width="19" height="20" alt="" title="" /></a>
-            <a href="/" aria-label="Youtube"><img class="top-bar-icon" src="@/assets/icons/social/youtube.svg"
+            <a :href="globalStore.socials.youtube" target="_blank" aria-label="Youtube"><img class="top-bar-icon" src="@/assets/icons/social/youtube.svg"
                     width="23" height="16" alt="" title="" /></a>
-            <a href="/" aria-label="Linkedin"><img class="top-bar-icon" src="@/assets/icons/social/linkedin.svg"
+            <a :href="globalStore.socials.linkedin" target="_blank" aria-label="Linkedin"><img class="top-bar-icon" src="@/assets/icons/social/linkedin.svg"
                     width="21" height="20" alt="" title="" /></a>
         </div>
     </section>
