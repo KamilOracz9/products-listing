@@ -37,7 +37,7 @@ const resetFilters = async () => {
     refresh();
 }
 
-const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters(route.query))
+const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({}))
 
 provide('refresh', refresh);
 </script>
