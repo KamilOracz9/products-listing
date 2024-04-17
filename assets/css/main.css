@@ -266,7 +266,7 @@
 
     /* Sliders */
     .main-slider-arrow {
-        @apply absolute z-10 top-1/2 -translate-y-1/2 cursor-pointer lg:translate-y-0 lg:top-auto lg:bottom-14;
+        @apply absolute z-10 top-1/2 -translate-y-1/2 cursor-pointer lg:translate-y-0 lg:top-auto lg:bottom-11;
     }
 
     .similar-products-slider-arrow {
