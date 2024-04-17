@@ -4,7 +4,7 @@
 
         <h1
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-            {{ title }}</h1>
+            {{ activeCategory.name }}</h1>
 
         <div class="mt-10 flex gap-10">
             <SectionsProductsSidebar />
@@ -18,7 +18,7 @@
 
                 <SectionsProductsListing v-if="!pending" :products="data.data" />
                 <LoadingIndicator v-else />
-                
+
                 <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
                 <p v-if="longText"
@@ -30,8 +30,6 @@
         <div>
             <slot />
         </div>
-
-        <SectionsCommonFindUs />
     </section>
 </template>
 
@@ -43,9 +41,8 @@ const globalStore = useGlobalStore();
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
 const { title, breadcrumbs, shortText, longText } = props;
 const route = useRoute();
-const categoryId = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0].id);
 
-console.log(categoryId.value)
+const categoryId = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0].id);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': [categoryId.value]}), { watch: [() => route.query, categoryId] });
 

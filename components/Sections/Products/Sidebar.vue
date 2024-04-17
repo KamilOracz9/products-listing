@@ -40,7 +40,6 @@ const resetFilters = async () => {
 }
 
 const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({}))
-// const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({...route.query, category: categoryId.value}))
 
 provide('refresh', refresh);
 </script>
