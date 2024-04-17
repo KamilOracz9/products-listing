@@ -216,7 +216,7 @@
     }
 
     header .content-grid .header__label {
-        @apply border-b border-transparent text-xl font-medium uppercase text-center cursor-pointer lg:text-lg 2xl:text-xl;
+        @apply border-b border-transparent text-xl font-medium uppercase text-center cursor-pointer lg:text-base 2xl:text-lg;
     }
 
     header .content-grid .header__products > a {
