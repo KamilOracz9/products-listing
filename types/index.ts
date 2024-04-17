@@ -25,4 +25,5 @@ export type IPhoto = {
     desktop?: string;
     thumb?: string;
     full?: string;
+    thumbnail?: string;
 }

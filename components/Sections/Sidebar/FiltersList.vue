@@ -5,7 +5,7 @@
             <input v-model="collectionsSearch" v-if="filter.name === 'collections'" type="text"
                 :placeholder="$t('search')" class="border rounded-[3px] p-1" />
             <ul class="max-h-[150px] overflow-y-auto">
-                <li v-for="option in filter.options" class="flex gap-3 items-center">
+                <li v-for="option in getFilterOptions(filter)" class="flex gap-3 items-center">
                     <input :checked="checkFilterUsed(filter.name, option.value)" :name="filter.name"
                         :value="option.value" @change="onChange" type="checkbox"
                         class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
@@ -45,6 +45,8 @@ const onChange = async (event) => {
             if (query[key].length === 0) {
                 delete query[key];
             }
+        }else {
+            delete query[key];
         }
     }
 
@@ -57,6 +59,13 @@ const onChange = async (event) => {
 const checkFilterUsed = (filterName, optionValue) => {
     const query = route.query;
 
+    if(typeof(query[`${filterName}[]`]) === 'string') return query[`${filterName}[]`] == optionValue;
+
     return query[`${filterName}[]`] && !!Object.values(query[`${filterName}[]`]).filter(filter => filter == optionValue)[0];
+}
+
+const getFilterOptions = (filter) => {
+    if(filter.name === 'collections') return filter.options.filter(option => option.label.toLocaleLowerCase().includes(collectionsSearch.value.toLocaleLowerCase()))
+    return filter.options;
 }
 </script>

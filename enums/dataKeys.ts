@@ -13,6 +13,7 @@ export enum DataKeys {
     SERVICE_PAGE = 'service-page',
     HOME_PAGE = 'home-page',
     FORM_ONLINE_PAGE = 'form-online-page',
+    PRODUCT_PAGE = 'product-page',
 
     PLACE_TO_BUY_SHOPS_LIST = 'place-to-buy-shops-list',
     PRODUCTS_LIST = 'products-list',
