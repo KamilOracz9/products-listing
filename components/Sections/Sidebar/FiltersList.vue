@@ -9,8 +9,8 @@
                     <input :checked="checkFilterUsed(filter.name, option.value)" :name="filter.name"
                         :value="option.value" @change="onChange" type="checkbox"
                         class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
-                        :disabled="option.disabled" :id="`${filter.name}-${option.value}`" />
-                    <label :class="option.disabled ? 'text-gray-4' : 'text-black'"
+                        :id="`${filter.name}-${option.value}`" />
+                    <label :class="option.disabled ? 'text-black' : 'text-black'"
                         :for="`${filter.name}-${option.value}`">
                         {{ option.label }}
                     </label>
@@ -30,8 +30,6 @@ const collectionsSearch = ref('');
 const attributes = computed(() => Object.keys(filters.value).map(key => {
     if (key !== 'dimensions') return filters.value[key]
 }).filter(item => item));
-
-// const dimensions = computed(() => filters.value.dimensions);
 
 const onChange = async (event) => {
     const { name, value, checked } = event.target;
