@@ -42,9 +42,9 @@ const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
 const { title, breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
-const categoryId = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0].id);
+const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': [categoryId.value]}), { watch: [() => route.query, categoryId] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': [activeCategory.value.id]}), { watch: [() => route.query, activeCategory] });
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
