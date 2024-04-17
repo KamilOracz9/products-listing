@@ -29,8 +29,10 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchFilters } from '~/services/api';
 
 const productsFilterStore = useProductsFilterStore();
+const globalStore = useGlobalStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
 const route = useRoute();
+const categoryId = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0].id);
 
 const resetFilters = async () => {
     await navigateTo({ query: {} });
