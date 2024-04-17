@@ -75,7 +75,7 @@
                 class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
                 :to="localePath({ name: 'download' })">
                 <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
-                <p class="lg:hidden 2xl:block">{{ $t('download') }}</p>
+                <p class="lg:hidden xl:block">{{ $t('download') }}</p>
             </NuxtLink>
 
             <SectionsHeaderItem slug="search" :icon="searchIcon">
