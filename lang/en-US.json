@@ -185,7 +185,8 @@
             "search-by-my-localization": "Search by my location",
             "show-on-map": "Show on map",
             "check-directions": "Check directions",
-            "locations-not-found": "No stores found in this area"
+            "locations-not-found": "No stores found in this area",
+            "symbol": "Symbol"
         }
     },
     "product": {
