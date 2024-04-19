@@ -4,9 +4,9 @@
 
         <h1
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-            {{ activeCategory.name }}</h1>
+            {{ activeCategory?.name ?? $t('products') }}</h1>
 
-        <div class="mt-10 flex gap-10">
+        <div class="mt-10 flex gap-10" v-if="data">
             <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
                 <p v-if="shortText" class="pb-3.5 mb-5 border-b text-lg" v-html="shortText"></p>
@@ -39,12 +39,12 @@ import { fetchProducts } from '~/services/api';
 
 const globalStore = useGlobalStore();
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
-const { title, breadcrumbs, shortText, longText } = props;
+const { breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': [activeCategory.value.id]}), { watch: [() => route.query, activeCategory] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();

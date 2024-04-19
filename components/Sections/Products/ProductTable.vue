@@ -33,8 +33,9 @@
                         <td class="text-center">{{ variant?.width }}</td>
                         <td class="text-center">{{ variant?.x1 }}</td>
                         <td class="text-center">{{ variant?.x2 }}</td>
-                        <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white">
-                            <button>{{ $t('product.add-to-clipboard') }}</button>
+                        <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
+                            <button><img src="/assets/icons/clipboard.svg" alt=""></button>
+                            <NuxtLink class="flex gap-2 items-center" :to="localePath({name: 'place-to-buy'}) + `?symbol=${variant?.symbol}`"><img class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>
                         </td>
                     </tr>
                 </tbody>
@@ -68,6 +69,8 @@ const props = defineProps<{
 }>();
 
 const { techImages } = toRefs(props);
+
+const localePath = useLocalePath();
 
 const headers = ['symbol', 'dimensions', 'doors', 'a', 'b', 'c', 'h', 'w', 'x1', 'x2'];
 const modalIsOpen = ref(false);

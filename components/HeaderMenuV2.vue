@@ -16,14 +16,13 @@
                     <SectionsHeaderColumn v-for="column in columns">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
                             <NuxtLink
-                                :to="item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : slugify(item.name)">
+                                :to="getMainLink(item)">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
                                     :alt="item.name" :title="item.name" />
                                 <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
-                                <NuxtLink
-                                    :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subitem.slug}`">
+                                <NuxtLink :to="getLink(item, subitem)">
                                     {{ subitem.name }}</NuxtLink>
 
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
@@ -172,6 +171,18 @@ const { header } = toRefs(globalStore);
 
 const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
 const categories = ref([]);
+
+const getLink = (item, subitem) => {
+    if (item.type === 'made-to-measure') return localePath(subitem.path);
+    if (item.type === 'collections') return localePath({ name: 'categories' }) + `?collections[]=${subitem.id}`;
+    return localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subitem.slug}`;
+}
+
+const getMainLink = (item) => {
+    if(item.type === 'made-to-measure') return localePath({name: 'made-to-measure'});
+    if(item.type === 'collections') return localePath({name: 'collections'});
+    return localePath({ name: 'categories' }) + `/${item.slug}`;
+}
 
 Object.values(columns.value).map(column => {
     column?.map(item => {

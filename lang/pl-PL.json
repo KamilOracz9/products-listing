@@ -166,8 +166,8 @@
             "phone": "Tel.",
             "office": "Biuro",
             "logistic-centrum": "Centrum logistyczne",
-            "sale-service-department": "Dział obsługi sprzedaży",
-            "export-department": "Dział eksportu",
+            "sale-service-department": "Dzial obslugi sprzedazy",
+            "export-department": "Dzial eksportu",
             "form": {
                 "write-to-us": "Napisz do nas",
                 "name-and-surname": "Imię i nazwisko / Nazwa firmy",
@@ -193,7 +193,8 @@
             "search-by-my-localization": "Wyszukaj po mojej lokalizacji",
             "show-on-map": "Pokaż na mapie",
             "check-directions": "Sprawdź dojazd",
-            "locations-not-found": "Nie znaleziono sklepów w tej okolicy"
+            "locations-not-found": "Nie znaleziono sklepów w tej okolicy",
+            "symbol": "Symbol"
         }
     },
     "product": {

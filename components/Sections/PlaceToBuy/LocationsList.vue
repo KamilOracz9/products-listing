@@ -15,10 +15,10 @@
                         <button @click="() => onShowOnMap(location.coords, index)"
                             class="w-fit flex gap-2 items-center"><img class="size-[16px]"
                                 src="@/assets/icons/map-pin.svg" alt=""> {{
-            $t('pages.place-to-buy.show-on-map') }}</button>
+                                    $t('pages.place-to-buy.show-on-map') }}</button>
                         <button @click="onCheckTrace(location.coords)" class="flex gap-2 items-center"><img
                                 class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""> {{
-            $t('pages.place-to-buy.check-directions') }}</button>
+                                    $t('pages.place-to-buy.check-directions') }}</button>
                     </div>
                 </div>
             </li>
@@ -32,8 +32,22 @@ const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
 const mapKey: Ref<number> | undefined = inject('mapKey');
 const selected: Ref<number> | undefined = inject('selected');
 const page: Ref<number> | undefined = inject('page') ?? ref(1);
-
 const locationsList: Ref<Location[]> | undefined = inject('locationsList');
+
+const route = useRoute();
+
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+
 
 const onScroll = (e: Event) => {
     const element = e.currentTarget as HTMLElement;
@@ -57,4 +71,8 @@ const onCheckTrace = async ({ lat, lng }: { lat: number; lng: number }) => {
         if (error.code === 1) open(`https://www.google.pl/maps/dir//'${lat},${lng}'/@${lat},${lng},16z`);
     })
 }
+
+onMounted(async () => {
+    if(route.query.symbol) shuffle(locationsList.value)
+})
 </script>
