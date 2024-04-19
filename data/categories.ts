@@ -402,7 +402,7 @@ export default {
                 },
                 {
                     label: 'Akcesoria i środki do pielęgnacji',
-                    slug: 'akcesoria-i-środki-do-pielęgnacji',
+                    slug: 'akcesoria-i-srodki-do-pielegnacji',
                     iconUrl: 'https://newtrendy.pl/app/uploads/2023/11/KABINY-WALK-IN-6.webp',
                     productsCount: 31,
                     enableOnFilters: true,
