@@ -18,7 +18,7 @@
                             <h1
                                 class="text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
                                 {{ name }}</h1>
-                            <p class="text-gray-3 font-medium uppercase text-xs mb-3">{{ category.name }}</p>
+                            <p class="text-gray-3 font-medium uppercase text-xs mb-3">{{ category?.name }}</p>
                         </div>
                         <SectionsProductsBox />
                     </div>

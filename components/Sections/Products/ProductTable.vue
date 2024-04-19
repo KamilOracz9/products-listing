@@ -2,8 +2,8 @@
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
-                <li v-for="(techImage, index) in techImages"
-                    class="min-w-[128px] lg:w-[300px] cursor-pointer" @click="openModal(index)">
+                <li v-for="(techImage, index) in techImages" class="min-w-[128px] lg:w-[300px] cursor-pointer"
+                    @click="openModal(index)">
                     <picture>
                         <source media="(min-width: 1024px)" :srcset="techImage.desktop">
                         <img class="w-full" :src="techImage.mobile" alt="">
@@ -13,45 +13,67 @@
         </div>
 
         <div class="overflow-x-auto pb-3">
-            <table>
+            <table class="w-full">
                 <thead>
                     <th class="border-b-[2px] border-gray-1"></th>
-                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1" v-for="header in headers">{{
-                        $t(`product.${header}`) }}</th>
+                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1"
+                        v-for="header in Object.keys(Object.fromEntries(Object.entries(variants[0]).filter(([key, value]) => value && key !== 'id')))">
+                        {{
+                            $t(`product.${header}`) }}</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
                         <td class="pl-2"><span :class="[`${getRealizationColor(variant?.realizationTime)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td class="pl-8 py-1">{{ variant?.symbol }}</td>
-                        <td class="pl-8 py-1">{{ variant?.dimensions }}</td>
-                        <td class="text-center">{{ variant?.doors?.number }}{{ variant?.doors?.direction }}</td>
-                        <td class="text-center">{{ variant?.a }}</td>
-                        <td class="text-center">{{ variant?.b }}</td>
-                        <td class="text-center">{{ variant?.c }}</td>
-                        <td class="text-center">{{ variant?.height }}</td>
-                        <td class="text-center">{{ variant?.width }}</td>
-                        <td class="text-center">{{ variant?.x1 }}</td>
-                        <td class="text-center">{{ variant?.x2 }}</td>
-                        <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
-                            <button><img src="/assets/icons/clipboard.svg" alt=""></button>
-                            <NuxtLink class="flex gap-2 items-center" :to="localePath({name: 'place-to-buy'}) + `?symbol=${variant?.symbol}`"><img class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>
+                        <td v-if="variant?.symbol" class="pl-8 py-1">{{ variant?.symbol }}</td>
+                        <td v-if="variant?.dimensions" class="pl-8 py-1">{{ variant?.dimensions }}</td>
+                        <td v-if="variant?.doors" class="text-center">{{ variant?.doors?.number }}{{
+                            variant?.doors?.direction }}</td>
+                        <td v-if="variant?.dimension_a" class="text-center">{{ variant?.dimension_a }}</td>
+                        <td v-if="variant?.dimension_b" class="text-center">{{ variant?.dimension_b }}</td>
+                        <td v-if="variant?.dimension_c" class="text-center">{{ variant?.dimension_c }}</td>
+                        <td v-if="variant?.dimension_d" class="text-center">{{ variant?.dimension_d }}</td>
+                        <td v-if="variant?.dimension_e" class="text-center">{{ variant?.dimension_e }}</td>
+                        <td v-if="variant?.dimension_f" class="text-center">{{ variant?.dimension_f }}</td>
+                        <td v-if="variant?.dimension_w" class="text-center">{{ variant?.dimension_w }}</td>
+                        <td v-if="variant?.height" class="text-center">{{ variant?.height }}</td>
+                        <td v-if="variant?.width" class="text-center">{{ variant?.width }}</td>
+                        <td v-if="variant?.dimension_axis_x1" class="text-center">{{ variant?.dimension_axis_x1 }}</td>
+                        <td v-if="variant?.dimension_axis_x2" class="text-center">{{ variant?.dimension_axis_x2 }}</td>
+                        <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
+                            <button class="size-4"><img src="/assets/icons/clipboard.svg" alt=""></button>
+                            <NuxtLink class="flex gap-2 items-center size-4"
+                                :to="localePath({ name: 'place-to-buy' }) + `?symbol=${variant?.symbol}`"><img
+                                    class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="grid gap-4 mt-10">
-                <div class="flex items-center gap-2">
-                    <span :class="[`${getRealizationColor(2)}`]" class="flex size-2 -translate-y-[10%]"></span>
-                    <p class="text-sm">{{ $t('product.realization-time.2-weeks') }}</p>
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="flex flex-col gap-4 mt-10">
+                    <div class="flex items-center gap-2">
+                        <span :class="[`${getRealizationColor(2)}`]" class="flex size-2 -translate-y-[10%]"></span>
+                        <p class="text-sm">{{ $t('product.realization-time.2-weeks') }}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span :class="[`${getRealizationColor(4)}`]" class="flex size-2 -translate-y-[10%]"></span>
+                        <p class="text-sm">{{ $t('product.realization-time.4-weeks') }}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span :class="[`${getRealizationColor(6)}`]" class="flex size-2 -translate-y-[10%]"></span>
+                        <p class="text-sm">{{ $t('product.realization-time.6-weeks') }}</p>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2">
-                    <span :class="[`${getRealizationColor(4)}`]" class="flex size-2 -translate-y-[10%]"></span>
-                    <p class="text-sm">{{ $t('product.realization-time.4-weeks') }}</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span :class="[`${getRealizationColor(6)}`]" class="flex size-2 -translate-y-[10%]"></span>
-                    <p class="text-sm">{{ $t('product.realization-time.6-weeks') }}</p>
+                <div class="flex flex-col gap-4 mt-10">
+                    <div class="flex items-center gap-2">
+                        <img src="/assets/icons/clipboard.svg" alt="">
+                        <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img class="size-[16px]" src="@/assets/icons/map-pin.svg" alt="">
+                        <p class="text-sm">{{ $t('product.search-in-expositions') }}</p>
+                    </div>
                 </div>
             </div>
         </div>
