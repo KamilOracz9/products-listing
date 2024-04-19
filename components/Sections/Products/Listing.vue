@@ -7,7 +7,7 @@
                     <figure>
                         <div class="relative">
                             <SectionsProductsBadge :badge="product.badge" />
-                            <img class="w-full rounded-br-sm" src="https://newtrendy.pl/app/uploads/2023/10/product_photo_19Tw6jIX2U5vMIbiCoFTQ6ye7GHZ4g9RsazSHhvC-390x520.jpg" :alt="product.name"
+                            <img class="w-full rounded-br-sm" :src="product.media.main['460_613']" :alt="product.name"
                                 :title="product.name">
                         </div>
                         <figcaption>
