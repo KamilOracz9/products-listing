@@ -1,4 +1,8 @@
 {
+  "search/index": {
+    "en": "/search",
+    "pl": "/szukaj"
+  },
   "information-clausue/index": {
     "en": "/information-clausue",
     "pl": "/klauzula-informacyjna"
