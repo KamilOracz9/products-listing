@@ -99,6 +99,12 @@
         "height": "Wysokość"
     },
     "pages": {
+        "search": {
+            "title": "Wyniki wyszukiwania dla: ",
+            "products": "Produkty",
+            "inspirations": "Inspiracje",
+            "found-positions": "Znaleziono pozycji: "
+        },
         "made-to-measure": {
             "title": "Na wymiar",
             "configurator": "Konfigurator kabin",

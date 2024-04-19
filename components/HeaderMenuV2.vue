@@ -22,11 +22,11 @@
                                 <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
-                                <NuxtLink 
+                                <NuxtLink
                                     :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subitem.slug}`">
                                     {{ subitem.name }}</NuxtLink>
 
-                                <div class="text-xs my-2" v-if=" subitem.items ? !!subitem.items.length : false">
+                                <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items"
                                         :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subsubitem.slug}`">
                                         {{ subsubitem.name }}</NuxtLink>
@@ -82,23 +82,37 @@
                 <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
                     <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                         <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
-                            <input class="p-2 outline-none border-0" name="search" type="text"
-                                :placeholder="$t('what-are-you-looking-for')">
+                            <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
+                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')">
                             <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
                                 alt="">
                         </div>
 
                         <span class="lg:mr-20">
-                            <ButtonsTransparent :label="$t('search')" type="submit" tag-type="button" />
+                            <ButtonsTransparent :label="$t('search')" type="button" tag-type="button" @click="search" />
                         </span>
 
                         <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
-                            <div class="flex items-center justify-start gap-2"
+                            <div class="flex items-center justify-start gap-2">
+                                <input id="search-in-products" type="checkbox" name="item"
+                                    class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
+                                    v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
+                                    for="search-in-products">{{
+                                        $t('search-in-products') }}</label>
+                            </div>
+                            <div class="flex items-center justify-start gap-2">
+                                <input id="search-in-inspirations" type="checkbox" name="item"
+                                    class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
+                                    v-model="searchInInspirations" /> <label class="whitespace-nowrap lg:text-xl"
+                                    for="search-in-inspirations">{{
+                                        $t('search-in-inspirations') }}</label>
+                            </div>
+                            <!-- <div class="flex items-center justify-start gap-2"
                                 v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
                                 <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
                                     class="whitespace-nowrap lg:text-xl" :for="item">{{
                                         $t(item) }}</label>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="lg:w-full lg:flex lg:items-center lg:gap-10">
@@ -152,6 +166,7 @@ const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
+const route = useRoute();
 
 const { header } = toRefs(globalStore);
 
@@ -167,6 +182,20 @@ Object.values(columns.value).map(column => {
         });
     })
 });
+
+const searchQuery = ref('');
+const searchInProducts = ref(false);
+const searchInInspirations = ref(false);
+
+const search = () => {
+    const query = {
+        search: searchQuery.value,
+        searchInProducts: searchInProducts.value,
+        searchInInspirations: searchInInspirations.value,
+    }
+
+    navigateTo(localePath({ name: 'search', query: Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false)) }));
+}
 
 const headerMenuRef = ref();
 const inspirationsRef = ref();
@@ -237,6 +266,10 @@ onMounted(async () => {
 
     document.addEventListener('scroll', onScroll);
     window.addEventListener('resize', setLeftOffsets);
+
+    searchQuery.value = (route.query.search ?? '') as string;
+    searchInInspirations.value = (route.query.searchInInspirations ?? false) as boolean;
+    searchInProducts.value = (route.query.searchInProducts ?? false) as boolean;
 
     setHeader();
 });
