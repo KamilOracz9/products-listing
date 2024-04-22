@@ -1,8 +1,8 @@
 <template>
     <picture class="w-full cursor-pointer" @click="modalIsOpen = true">
-        <source media="(min-width:768px)" :srcset="image.desktop">
-        <source media="(min-width:450px)" :srcset="image.tablet">
-        <img :src="image.mobile"
+        <source media="(min-width:768px)" :srcset="image?.desktop">
+        <source media="(min-width:450px)" :srcset="image?.tablet">
+        <img :src="image?.mobile"
             class="w-full aspect-[3/4] object-cover rounded-tr-[36px]">
     </picture>
 </template>

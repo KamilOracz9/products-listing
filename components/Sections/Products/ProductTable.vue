@@ -16,8 +16,7 @@
             <table class="w-full">
                 <thead>
                     <th class="border-b-[2px] border-gray-1"></th>
-                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1"
-                        v-for="header in Object.keys(Object.fromEntries(Object.entries(variants[0]).filter(([key, value]) => value && key !== 'id')))">
+                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1" v-for="header in headers">
                         {{
                             $t(`product.${header}`) }}</th>
                     <th></th>
@@ -26,21 +25,7 @@
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
                         <td class="pl-2"><span :class="[`${getRealizationColor(variant?.realizationTime)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td v-if="variant?.symbol" class="pl-8 py-1">{{ variant?.symbol }}</td>
-                        <td v-if="variant?.dimensions" class="pl-8 py-1">{{ variant?.dimensions }}</td>
-                        <td v-if="variant?.doors" class="text-center">{{ variant?.doors?.number }}{{
-                            variant?.doors?.direction }}</td>
-                        <td v-if="variant?.dimension_a" class="text-center">{{ variant?.dimension_a }}</td>
-                        <td v-if="variant?.dimension_b" class="text-center">{{ variant?.dimension_b }}</td>
-                        <td v-if="variant?.dimension_c" class="text-center">{{ variant?.dimension_c }}</td>
-                        <td v-if="variant?.dimension_d" class="text-center">{{ variant?.dimension_d }}</td>
-                        <td v-if="variant?.dimension_e" class="text-center">{{ variant?.dimension_e }}</td>
-                        <td v-if="variant?.dimension_f" class="text-center">{{ variant?.dimension_f }}</td>
-                        <td v-if="variant?.dimension_w" class="text-center">{{ variant?.dimension_w }}</td>
-                        <td v-if="variant?.height" class="text-center">{{ variant?.height }}</td>
-                        <td v-if="variant?.width" class="text-center">{{ variant?.width }}</td>
-                        <td v-if="variant?.dimension_axis_x1" class="text-center">{{ variant?.dimension_axis_x1 }}</td>
-                        <td v-if="variant?.dimension_axis_x2" class="text-center">{{ variant?.dimension_axis_x2 }}</td>
+                        <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
                             <button class="size-4"><img src="/assets/icons/clipboard.svg" alt=""></button>
                             <NuxtLink class="flex gap-2 items-center size-4"
@@ -94,9 +79,10 @@ const { techImages } = toRefs(props);
 
 const localePath = useLocalePath();
 
-const headers = ['symbol', 'dimensions', 'doors', 'a', 'b', 'c', 'h', 'w', 'x1', 'x2'];
+// const headers = ['symbol', 'dimensions', 'doors', 'a', 'b', 'c', 'h', 'w', 'x1', 'x2'];
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
+const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(props.variants[0]).filter(([key, value]) => value && key !== 'id'))));
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
