@@ -221,8 +221,9 @@
         "dimension_axis_x2": "X2",
         "width": "Szerokość",
         "height": "Wysokość",
+        "length": "Długość",
         "add-to-clipboard": "Dodaj do schowka",
-        "search-in-expositions": "Szukaj ekspozycjach",
+        "search-in-expositions": "Szukaj w ekspozycjach",
         "realization-time": {
             "2-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 2 tygodni",
             "4-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 4 tygodni",
