@@ -7,9 +7,9 @@
                 <div class="relative lg:w-[45%] xl:w-[28%]">
                     <SectionsProductsBadge :badge="badge" />
                     <SectionsProductsMainImage :image="images.main" />
-                    <SectionsProductsGallery />
+                    <!-- <SectionsProductsGallery /> -->
 
-                    <LazySectionsCommonLightbox :images="productStore.product.item.images.gallery" />
+                    <SectionsCommonLightbox :images="Object.values(images)" />
                 </div>
 
                 <div class="mt-6 lg:w-[55%] xl:w-[72%]">
@@ -29,6 +29,7 @@
                         <SectionsProductsProductTable :techImages="images.technical" :variants="variants" />
                         <SectionsProductsGlassTypes :glasses="images.glasses" />
                         <SectionsProductsDownloadFiles :files="files"/>
+                        <SectionsProductsParts />
                     </div>
                 </div>
             </div>
