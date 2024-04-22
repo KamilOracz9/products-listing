@@ -68,4 +68,9 @@ export default defineNuxtConfig({
     customRoutes: 'config',
     pages: pages,
   },
+  swiper: {
+    modules: ['autoplay', 'effect-creative', 'navigation', 'pagination'],
+    prefix: 'Swiper',
+    styleLang: 'css'
+  }
 })
