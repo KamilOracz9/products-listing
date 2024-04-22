@@ -1,7 +1,7 @@
 <template>
-    <div :id="id" class="border border-t-0 border-black">
+    <div class="border border-t-0 border-black">
         <div class="flex justify-between px-5 py-4" @click="openAccordionId === id ? openAccordionId = '' : openAccordionId = id;">
-            <p class="text-lg font-medium leading-5">{{ label }}</p>
+            <p class="text-lg font-medium leading-5" :id="id">{{ label }}</p>
             <Arrow />
         </div>
 
@@ -15,4 +15,8 @@
 const { label, id } = defineProps(['label', 'id']);
 
 const openAccordionId = inject('openAccordionId');
+
+watch(openAccordionId, async (value) => {
+    if(value) navigateTo(`#${value}`);
+})
 </script>
