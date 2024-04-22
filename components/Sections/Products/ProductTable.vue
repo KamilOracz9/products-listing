@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
-                        <td class="pl-2"><span :class="[`${getRealizationColor(variant?.realizationTime)}`]"
+                        <td class="pl-2"><span :class="[`${getRealizationColor(parseInt(variant.id) % 2 === 0 ? 2 : 4)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
