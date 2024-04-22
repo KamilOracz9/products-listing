@@ -2,7 +2,7 @@ import pages from './lang/pages.json'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   nitro: {
     externals: {
       traceOptions: { base: process.cwd() }
