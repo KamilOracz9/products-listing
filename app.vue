@@ -1,12 +1,12 @@
 <template>
   <NuxtLoadingIndicator />
   <NuxtLayout name="main">
-    <!-- <Suspense> -->
+    <Suspense>
       <NuxtPage />
-      <!-- <template #fallback> -->
-        <!-- <LoadingIndicator /> -->
-      <!-- </template> -->
-    <!-- </Suspense> -->
+      <template #fallback>
+        <LoadingIndicator />
+      </template>
+    </Suspense>
   </NuxtLayout>
 </template>
 

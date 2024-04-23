@@ -1,5 +1,4 @@
 <template>
-    <!-- <Suspense> -->
         <div class="mb-10 flex flex-col gap-10">
             <h1 v-if="route.query.search" class="section-title">{{ $t('pages.search.title') + route.query.search }}</h1>
 
@@ -46,10 +45,6 @@
             </template>
             <Loading v-if="pending || !data" />
         </div>
-        <!-- <template #fallback>
-            <Loading />
-        </template>
-    </Suspense> -->
 </template>
 
 <script setup lang="ts">
