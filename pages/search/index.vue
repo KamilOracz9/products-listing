@@ -1,5 +1,5 @@
 <template>
-    <Suspense>
+    <!-- <Suspense> -->
         <div class="mb-10 flex flex-col gap-10">
             <h1 v-if="route.query.search" class="section-title">{{ $t('pages.search.title') + route.query.search }}</h1>
 
@@ -44,12 +44,12 @@
                     </div>
                 </div>
             </template>
-            <Loading v-if="pending" />
+            <Loading v-if="pending || !data" />
         </div>
-        <template #fallback>
+        <!-- <template #fallback>
             <Loading />
         </template>
-    </Suspense>
+    </Suspense> -->
 </template>
 
 <script setup lang="ts">
@@ -60,7 +60,7 @@ const route = useRoute();
 const localePath = useLocalePath();
 
 const query = computed(() => ({
-    search: route.query.search,
+    search: route.query.search as string,
     searchInProducts: + !!route.query.searchInProducts,
     searchInInspirations: + !!route.query.searchInInspirations,
 }))
