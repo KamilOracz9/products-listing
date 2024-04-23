@@ -1,4 +1,4 @@
-import pages from './lang/pages.json'
+import pages from './lang/pages.json';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
+    
   ],
   plugins: [
     '@/plugins/device',

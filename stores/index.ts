@@ -5,6 +5,4 @@ export {default as useClipboardStore} from './clipboardStore';
 export {default as useCategoryStore} from './categoryStore';
 export {default as useProductsFilterStore} from './productsFilterStore';
 export {default as useProductStore} from './productStore';
-export {default as useFormOnlineStore} from './formOnlineStore';
-export {default as useCollectionStore} from './collectionsStore';
 export {default as useFlashMessageStore} from './flashMessageStore';

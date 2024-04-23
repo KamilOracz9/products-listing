@@ -21,5 +21,5 @@ const props = defineProps<{
     };
 }>();
 const { data } = toRefs(props);
-const { information, yellow, welcome } = toRefs(data.value);
+const { information, yellow, welcome } = toRefs(reactive(data.value));
 </script>

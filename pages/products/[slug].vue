@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchProductPage } from '~/services/api';
+import fetchData, { fetchProductPage } from '~/services/api';
 import type { ProductPage } from '~/types/products.types';
 
 const productStore = useProductStore();
@@ -56,8 +56,8 @@ onMounted(async () => {
     await productStore.fetchProduct();
 })
 
-const { data } = await useAsyncData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
-const { badge, breadcrumbs, category, description, files, images, meta, name, similiarProducts, variants } = toRefs(data.value as ProductPage);
+const { data } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
+const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
 
 setMeta(meta.value);
 

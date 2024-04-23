@@ -40,3 +40,7 @@ export type Category = {
     "name": string;
     "slug": string;
 }
+
+export type ProductPageParams = {
+    slug: string;
+}
