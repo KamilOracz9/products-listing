@@ -32,3 +32,9 @@ export type Product = {
     },
     "badge"?: []
 }
+
+export type HeaderSearchRequest = {
+    search: string;
+    searchInProducts: number;
+    searchInInspirations: number;
+}
