@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading && !headerStore.headerMenu.isLoading">
+        <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading">
             <header class="relative z-30">
                 <TopBar />
                 <HeaderMenuV2 />
@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
 const categoryStore = useCategoryStore();
 
@@ -31,8 +30,6 @@ onMounted(async () => {
     globalStore.fetchLocale();
 
     categoryStore.fetchCategories();
-    await headerStore.fetchMenuItems(useI18n());
-
     await prefetchComponents(['HeaderMenu', 'TopBar', 'Footer'])
 
     const topBar = document.getElementById('top-bar');

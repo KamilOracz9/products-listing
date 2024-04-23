@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 const headerStore = useHeaderStore();
-const localePath = useLocalePath();
 
 const props = defineProps<{
     slug: string;
