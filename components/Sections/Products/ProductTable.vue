@@ -27,7 +27,7 @@
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
-                            <button class="size-4"><img src="/assets/icons/clipboard.svg" alt=""></button>
+                            <button class="size-4"  @click="clipboardStore.toggleItem(variant.id)"><img src="/assets/icons/clipboard.svg" alt=""></button>
                             <NuxtLink class="flex gap-2 items-center size-4"
                                 :to="localePath({ name: 'place-to-buy' }) + `?symbol=${variant?.symbol}`"><img
                                     class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>
@@ -83,6 +83,7 @@ const localePath = useLocalePath();
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(props.variants[0]).filter(([key, value]) => value && key !== 'id'))));
+const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
@@ -99,5 +100,9 @@ const getRealizationColor = (realizationTime: number) => {
         case 6: return 'bg-[#f0e332]';
         default: return '';
     }
+}
+
+const addToClipboard = (variantId: number) => {
+    clipboardStore.toggleItem(variantId);
 }
 </script>

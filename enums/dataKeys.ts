@@ -22,6 +22,7 @@ export enum DataKeys {
     VOIVODESHIPS_LIST = 'voivodeships-list',
     COORDS_LIST = 'coords-list',
     COLLECTIONS_LIST = 'collections-list',
+    CLIPBOARD_ITEMS_LIST = 'clipboard-items-list',
 
     SEARCH_RESULT = 'search-result',
 }

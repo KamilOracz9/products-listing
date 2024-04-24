@@ -15,8 +15,7 @@
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
                     <SectionsHeaderColumn v-for="column in columns">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
-                            <NuxtLink
-                                :to="getMainLink(item)">
+                            <NuxtLink :to="getMainLink(item)">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
                                     :alt="item.name" :title="item.name" />
                                 <p class="py-3">{{ item.name }}</p>
@@ -131,18 +130,26 @@
 
             <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
-                    <NuxtLink v-for=" clipboardItem in clipboardStore.items.products " :to="clipboardItem.url"
+                    <div v-if="clipboardStore.hasItems" v-for=" clipboardItem in clipboardStore.items " 
                         class="px-6 flex flex-col items-center gap-2 lg:mt-10">
-                        <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.imgUrl"
-                            :alt="clipboardItem.name" :title="clipboardItem.name">
+                        <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.image"
+                            :alt="clipboardItem.symbol" :title="clipboardItem.symbol">
                         <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                            <p class="text-base font-bold">{{ clipboardItem.name }}</p>
-                            <p class="text-gray-3">{{ clipboardItem.path }}</p>
+                            <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`" class="text-base font-bold">{{ clipboardItem.collection }}</NuxtLink>
+                            <div class="flex justify-between gap-10 w-full">
+                                <p class="text-gray-3">{{ clipboardItem.category }}</p>
+                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)">
+                                    <img src="/assets/icons/delete.svg" width="12" height="12" />
+                                </button>
+                            </div>
                             <p>{{ clipboardItem.symbol }}</p>
-                            <p>{{ clipboardItem.dimensions }}</p>
+                            <p>{{ clipboardItem.catalog_dimensions }}</p>
                             <p>{{ clipboardItem.price }}</p>
                         </div>
-                    </NuxtLink>
+                    </div>
+                    <div v-else class="flex lg:h-[300px] justify-center items-center lg:col-span-5 lg:text-4xl font-medium">
+                        {{ $t('no-saved-products') }}
+                    </div>
                 </div>
             </SectionsHeaderItem>
 
@@ -179,8 +186,8 @@ const getLink = (item, subitem) => {
 }
 
 const getMainLink = (item) => {
-    if(item.type === 'made-to-measure') return localePath({name: 'made-to-measure'});
-    if(item.type === 'collections') return localePath({name: 'collections'});
+    if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
+    if (item.type === 'collections') return localePath({ name: 'collections' });
     return localePath({ name: 'categories' }) + `/${item.slug}`;
 }
 
