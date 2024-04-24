@@ -1,27 +1,36 @@
-import type { IClipboardItem } from "~/types/clipboard";
+import { fetchClipboardItems } from "~/services/api/clipboard";
+import type { ClipboardItem } from "~/types/clipboard.types";
 
 type IClipboardStore = {
-    items: {
-        isLoading: boolean;
-        products: IClipboardItem[];
-    };
+    items: ClipboardItem[];
 }
 
 const useClipboardStore = defineStore('clipboard', {
     state: (): IClipboardStore => ({
-        items: {
-            isLoading: false,
-            products: [],
-        },
+        items: [],
     }),
+    getters: {
+        hasItems: (state) => (!isEmpty(state.items)),
+    },
     actions: {
-        async fetchItems(): Promise<void> {
-            this.items.isLoading = true;
+        getIds() {
+            return JSON.parse(localStorage.getItem('clipboard-ids') as string);
+        },
+        async toggleItem(variantId: number) {
+            let ids = this.getIds() ?? [];
+            const exisits = !!ids.find((id: number) => id == variantId);
 
-            await import('@/data/clipboard').then(response => {
-                this.items.products = <IClipboardItem[]>response.default;
-            }).finally(() => this.items.isLoading = false)
-        }
+            if (!exisits) ids.push(variantId);
+            else ids = ids.filter((id: number) => id != variantId);
+
+            localStorage.setItem('clipboard-ids', JSON.stringify(ids));
+
+            await this.fetchItems();
+        },
+        async fetchItems() {
+            if (isEmpty(this.getIds())) this.items = [];
+            else this.items = await fetchClipboardItems(this.getIds());
+        },
     },
 });
 
