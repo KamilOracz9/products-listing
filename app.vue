@@ -4,7 +4,9 @@
     <Suspense>
       <NuxtPage />
       <template #fallback>
-        <LoadingIndicator />
+        <div class="min-h-screen">
+          <Loading />
+        </div>
       </template>
     </Suspense>
   </NuxtLayout>
