@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-lodash',
     '@nuxtjs/i18n',
-    // 'nuxt-swiper',
+    'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
     
