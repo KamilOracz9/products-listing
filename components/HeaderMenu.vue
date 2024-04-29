@@ -1,7 +1,7 @@
 <template>
     <div ref="headerMenuRef" class="content-grid lg:top-0">
 
-        <SectionsHeaderLogo />
+        <LazySectionsHeaderLogo />
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <LazySectionsHeaderItem slug="products">
@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <FlashMessages />
+        <LazyFlashMessages />
     </div>
 </template>
 
