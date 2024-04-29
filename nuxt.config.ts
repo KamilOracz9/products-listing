@@ -27,7 +27,6 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
-    
   ],
   swiper: {
     modules: ['navigation', 'pagination', 'autoplay'],

@@ -1,7 +1,7 @@
 <template>
-  <div>
-     <p class="title">404</p>
-  </div>
+  <NuxtLayout name="404">
+    <p class="title">404</p>
+  </NuxtLayout>
 </template>
 
 <script>
