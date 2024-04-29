@@ -8,7 +8,7 @@
         }}</span>
     </NuxtLink>
 
-    <SectionsHomeSwiper :data="slides" />
+    <!-- <SectionsHomeSwiper :data="slides" /> -->
     <SectionsHomeCategories :data="categories" />
     <SectionsHomeProductTiles :data="collections" />
     <SectionsHomeAboutTiles :data="boxes" />
