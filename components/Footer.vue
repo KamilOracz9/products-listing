@@ -3,13 +3,13 @@
         class="bg-black-2 text-white px-5 py-12 rounded-br-md lg:py-[61.5px] lg:pl-[46px] lg:pr-[78px] lg:rounded-br-lg">
         <!-- Items -->
         <ul class="footer__items">
-            <FooterDropdown v-for="item in Object.values(top)" :translate="false" :item="item" />
+            <LazyFooterDropdown v-for="item in Object.values(top)" :translate="false" :item="item" />
         </ul>
 
         <ul
             class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
             <!-- Contacts -->
-            <FooterContact data-aos="fade-up" v-for="item in [{
+            <LazyFooterContact data-aos="fade-up" v-for="item in [{
                 title: bottom.company.title,
                 address: [bottom.company.address],
                 email: [bottom.company.email],

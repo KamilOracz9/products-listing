@@ -4,7 +4,7 @@
         <SectionsHeaderLogo />
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
-            <SectionsHeaderItem slug="products">
+            <LazySectionsHeaderItem slug="products">
                 <div class="header__categories gap-10">
                     <NuxtLink v-for="category in categories" :to="category.path" :aira-label="category.name">
                         <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image"
@@ -13,7 +13,7 @@
                     </NuxtLink>
                 </div>
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
-                    <SectionsHeaderColumn v-for="column in columns">
+                    <LazySectionsHeaderColumn v-for="column in columns">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
                             <NuxtLink :to="getMainLink(item)" :aira-label="item.name">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
@@ -31,43 +31,43 @@
                                 </div>
                             </div>
                         </div>
-                    </SectionsHeaderColumn>
+                    </LazySectionsHeaderColumn>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
-            <SectionsHeaderItem slug="inspirations">
+            <LazySectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
                         <NuxtLink v-for="item in header['inspirations'].items" :to="item.path">{{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
-            <SectionsHeaderItem slug="for-professionals">
+            <LazySectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
                         <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path">{{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
-            <SectionsHeaderItem slug="about">
+            <LazySectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
                         <NuxtLink v-for="item in header['about-us'].items" :to="item.path">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
-            <SectionsHeaderItem slug="contact">
+            <LazySectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
                         <NuxtLink v-for="item in header['contact'].items" :to="item.path">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
             <NuxtLink
                 class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
@@ -76,7 +76,7 @@
                 <p class="lg:hidden xl:block">{{ $t('download') }}</p>
             </NuxtLink>
 
-            <SectionsHeaderItem slug="search" :icon="searchIcon">
+            <LazySectionsHeaderItem slug="search" :icon="searchIcon">
                 <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
                     <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                         <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
@@ -87,7 +87,7 @@
                         </div>
 
                         <span class="lg:mr-20">
-                            <ButtonsTransparent :label="$t('search')" type="button" tag-type="button" @click="search" />
+                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button" @click="search" />
                         </span>
 
                         <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
@@ -116,19 +116,19 @@
                         <div class="lg:w-full lg:flex lg:items-center lg:gap-10">
                             <p class="hidden lg:block lg:text-xl">{{ $t('header-search-message') }}</p>
                             <span class="lg:hidden">
-                                <ButtonsTransparent :label="$t('products')" :url="localePath({ name: 'products' })"
+                                <LazyButtonsTransparent :label="$t('products')" :url="localePath({ name: 'products' })"
                                     tag-type="link" />
                             </span>
                             <span class="hidden lg:block">
-                                <ButtonsTransparent :label="$t('go-to-products')"
+                                <LazyButtonsTransparent :label="$t('go-to-products')"
                                     :url="localePath({ name: 'products' })" tag-type="link" />
                             </span>
                         </div>
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
-            <SectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
+            <LazySectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
                     <div v-if="clipboardStore.hasItems" v-for=" clipboardItem in clipboardStore.items " 
                         class="px-6 flex flex-col items-center gap-2 lg:mt-10">
@@ -151,7 +151,7 @@
                         {{ $t('no-saved-products') }}
                     </div>
                 </div>
-            </SectionsHeaderItem>
+            </LazySectionsHeaderItem>
 
             <div class="w-full justify-center flex lg:w-fit lg:justify-start">
                 <NuxtLink :to="localePath('place-to-buy')"
