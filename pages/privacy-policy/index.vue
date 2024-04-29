@@ -2,7 +2,7 @@
     <div class="pb-10">
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
         <p class="section-title">{{ title }}</p>
-        <div v-html="description.content.html"></div>
+        <div class="break-all" v-html="description.content.html"></div>
     </div>
 </template>
 

@@ -40,6 +40,9 @@ export default defineNuxtConfig({
     'nuxt-aos',
     
   ],
+  swiper: {
+    modules: ['navigation', 'pagination', 'autoplay'],
+  },
   plugins: [
     '@/plugins/device',
   ],
