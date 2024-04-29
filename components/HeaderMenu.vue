@@ -6,18 +6,18 @@
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <SectionsHeaderItem slug="products">
                 <div class="header__categories gap-10">
-                    <NuxtLink v-for="category in categories" :to="category.path">
+                    <NuxtLink v-for="category in categories" :to="category.path" :aira-label="category.name">
                         <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image"
-                            :alt="category.name" :title="category.name">
+                            alt="" :title="category.name">
                         <p class="py-3">{{ category.name }}</p>
                     </NuxtLink>
                 </div>
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
                     <SectionsHeaderColumn v-for="column in columns">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
-                            <NuxtLink :to="getMainLink(item)">
+                            <NuxtLink :to="getMainLink(item)" :aira-label="item.name">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
-                                    :alt="item.name" :title="item.name" />
+                                    alt="" :title="item.name" />
                                 <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">

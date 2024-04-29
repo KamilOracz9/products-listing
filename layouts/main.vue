@@ -3,7 +3,7 @@
         <div class="flex flex-col min-h-screen max-w-max-content w-full relative" v-if="!globalStore.locale.isLoading">
             <header class="relative z-30">
                 <TopBar />
-                <HeaderMenuV2 />
+                <HeaderMenu />
             </header>
 
             <main class="flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0" v-if="!categoryStore.list.isLoading">
@@ -15,7 +15,7 @@
             </main>
 
             <footer>
-                <LazyFooter />
+                <Footer />
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>
         </div>
@@ -30,7 +30,6 @@ onMounted(async () => {
     globalStore.fetchLocale();
 
     categoryStore.fetchCategories();
-    await prefetchComponents(['HeaderMenu', 'TopBar', 'Footer'])
 
     const topBar = document.getElementById('top-bar');
 
