@@ -57,8 +57,3 @@ useSeoMeta({
   }
 })
 </script>
-
-<style lang="postcss">
-@import '~/assets/css/main.css';
-@import '~/assets/css/breuer.css';
-</style>
