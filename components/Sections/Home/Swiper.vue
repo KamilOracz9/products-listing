@@ -2,7 +2,7 @@
     <div>
         <Swiper :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
             @slideChange="activeSlide = $event.realIndex" class="relative rounded-tr-lg"
-            :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperNavigation, SwiperPagination]"
+            :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
             :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
             :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
             <SwiperSlide v-for="(slide, index) in data" :key="index">
