@@ -12,17 +12,21 @@ export default defineNuxtConfig({
     '/**': { swr: 3600 },
   },
   devtools: { enabled: true },
-  hooks: {
-    'build:manifest': (manifest) => {
-      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
+  // hooks: {
+  //   'build:manifest': (manifest) => {
+  //     const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
 
-      if (css) {
-        for (let i = css.length - 1; i >= 0; i--) {
-          if (css[i].startsWith('entry')) css.splice(i, 1);
-        }
-      }
-    },
-  },
+  //     if (css) {
+  //       for (let i = css.length - 1; i >= 0; i--) {
+  //         if (css[i].startsWith('entry')) css.splice(i, 1);
+  //       }
+  //     }
+  //   },
+  // },
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/css/breuer.css',
+  ],
   postcss: {
     plugins: {
       'tailwindcss/nesting': 'postcss-nesting',
@@ -72,9 +76,4 @@ export default defineNuxtConfig({
     customRoutes: 'config',
     pages: pages,
   },
-  swiper: {
-    modules: ['autoplay', 'effect-creative', 'navigation', 'pagination'],
-    prefix: 'Swiper',
-    styleLang: 'css'
-  }
 })
