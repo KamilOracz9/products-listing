@@ -1,16 +1,16 @@
 <template>
   <NuxtLoadingIndicator />
   <NuxtLayout name="main">
-    <Suspense>
-      <template #default>
+    <!-- <Suspense>
+      <template #default> -->
         <NuxtPage />
-      </template>
+      <!-- </template>
       <template #fallback>
         <div class="min-h-screen">
           <Loading />
         </div>
       </template>
-    </Suspense>
+    </Suspense> -->
   </NuxtLayout>
 </template>
 
@@ -91,6 +91,12 @@ useSeoMeta({
     Disallow: '',
     Index: true,
     Follow: true,
-  }
+  },
+  // cacheControl: 'public, max-age=31536000, immutable',
 })
 </script>
+
+<style lang="postcss">
+@import '~/assets/css/main.css';
+@import '~/assets/css/breuer.css';
+</style>

@@ -7,11 +7,24 @@ export default defineNuxtConfig({
     externals: {
       traceOptions: { base: process.cwd() }
     },
+    routeRules: {
+      "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
+      "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
+    }
   },
-  css: [
-    '~/assets/css/main.css',
-    '~/assets/css/breuer.css',
-  ],
+  hooks: {
+    'build:manifest': (manifest) => {
+      // find the app entry, css list
+      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
+      if (css) {
+        // start from the end of the array and go to the beginning
+        for (let i = css.length - 1; i >= 0; i--) {
+          // if it starts with 'entry', remove it from the list
+          if (css[i].startsWith('entry')) css.splice(i, 1)
+        }
+      }
+    },
+  },
   postcss: {
     plugins: {
       'tailwindcss/nesting': 'postcss-nesting',
