@@ -3,7 +3,7 @@
         <li v-for="dimension in dimensions" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
             <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
             <div class="mb-4">
-                <button @click="onResetClick(dimension.name)">{{ $t('reset') }}</button>
+                <button @click="onResetClick(dimension.name)" :aria-label="$t('reset')">{{ $t('reset') }}</button>
             </div>
             <div class="range-slider relative h-[35px]">
                 <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_min`] ?? dimension.min" type="min" inputType="range" />

@@ -14,10 +14,10 @@
                     <div class="grid justify-left gap-2 xs:justify-end">
                         <button @click="() => onShowOnMap(location.coords, index)"
                             class="w-fit flex gap-2 items-center"><img class="size-[16px]"
-                                src="@/assets/icons/map-pin.svg" alt=""> {{
+                                src="@/assets/icons/map-pin.svg" alt="" :aria-label="$t('pages.place-to-buy.show-on-map')"> {{
                                     $t('pages.place-to-buy.show-on-map') }}</button>
                         <button @click="onCheckTrace(location.coords)" class="flex gap-2 items-center"><img
-                                class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""> {{
+                                class="size-[16px]" src="@/assets/icons/map-pin.svg" alt="" :aria-label="t('pages.place-to-buy.check-directions')"> {{
                                     $t('pages.place-to-buy.check-directions') }}</button>
                     </div>
                 </div>

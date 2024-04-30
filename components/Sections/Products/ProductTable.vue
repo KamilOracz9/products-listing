@@ -27,7 +27,7 @@
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
-                            <button class="size-4"  @click="clipboardStore.toggleItem(variant.id)"><img src="/assets/icons/clipboard.svg" alt=""></button>
+                            <button class="size-4"  @click="clipboardStore.toggleItem(variant.id)" :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img src="/assets/icons/clipboard.svg" alt=""></button>
                             <NuxtLink class="flex gap-2 items-center size-4" :aria-label="variant?.symbol"
                                 :to="localePath({ name: 'place-to-buy' }) + `?symbol=${variant?.symbol}`"><img
                                     class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>

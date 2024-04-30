@@ -16,6 +16,7 @@
     "search-in-files": "Szukaj w plikach",
     "search-in-inspirations": "Szukaj w inspiracjach",
     "header-search-message": "Chcesz precyzyjnie wyszukać produkt po jego właściwościach?",
+    "header-clipboard-delete": "Usuń ze schowka",
     "go-to-products": "Przejdź do strony z produktami",
     "inspirations": "Inspiracje",
     "for-professionals": "Dla profesjonalistów",
@@ -230,7 +231,8 @@
             "2-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 2 tygodni",
             "4-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 4 tygodni",
             "6-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 6 tygodni"
-        }
+        },
+        "toggle-toggle-clipboard": "Przełącz produkt w schowku"
     },
     "home": {
         "in-offer": {

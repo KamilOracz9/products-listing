@@ -1,6 +1,6 @@
 <template>
     <div class="border border-t-0 border-black px-5 h-[50px] relative">
-        <button @click="isOpen = !isOpen" type="button" class="flex justify-between w-full h-full items-center">{{
+        <button @click="isOpen = !isOpen" type="button" class="flex justify-between w-full h-full items-center" :aria-label="selected?.label ?? $t('pages.contact.select-region')">{{
             selected?.label ?? $t('pages.contact.select-region') }}
             <Arrow />
         </button>

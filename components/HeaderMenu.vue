@@ -138,7 +138,7 @@
                             <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`" :aria-label="clipboardItem.symbol" class="text-base font-bold">{{ clipboardItem.collection }}</NuxtLink>
                             <div class="flex justify-between gap-10 w-full">
                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
-                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)">
+                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)" :aria-label="clipboardItem.symbol">
                                     <img src="/assets/icons/delete.svg" width="12" height="12" />
                                 </button>
                             </div>

@@ -13,7 +13,7 @@
 
                 <SectionsProductsCategories />
 
-                <button @click="productsFilterStore.toggleMenuIsOpen" class="my-10 underline text-2xl lg:hidden">{{
+                <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering') }} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                     $t('filtering') }} / {{ $t('sorting') }}</button>
 
                 <SectionsProductsListing v-if="!pending" :products="data.data" />

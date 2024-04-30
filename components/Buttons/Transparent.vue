@@ -1,5 +1,5 @@
 <template>
-    <button v-if="tagType === 'button'" :type="type" @click="onClick"
+    <button v-if="tagType === 'button'" :type="type" @click="onClick" :aria-label="label"
         class="transparent-button">
         <span class="translate-y-[2px]">{{ label }}</span><Arrow :direction="'right'" />
     </button>
