@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="social.url">
+    <NuxtLink :to="social.url" :aria-label="social.type">
         <img :src="icons[social.type]" class="h-4" alt="">
     </NuxtLink>
 </template>

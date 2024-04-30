@@ -21,11 +21,11 @@
                                 <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
-                                <NuxtLink :to="getLink(item, subitem)">
+                                <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
                                     {{ subitem.name }}</NuxtLink>
 
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
-                                    <NuxtLink v-for="subsubitem in subitem.items"
+                                    <NuxtLink v-for="subsubitem in subitem.items"  :aria-label="subitem.name"
                                         :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subsubitem.slug}`">
                                         {{ subsubitem.name }}</NuxtLink>
                                 </div>
@@ -38,7 +38,7 @@
             <LazySectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path">{{ item.label }}
+                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path"  :aria-label="item.label">{{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
             <LazySectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
-                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path">{{ item.label }}
+                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path" :aria-label="item.label">{{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             <LazySectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
-                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path">{{ item.label }}</NuxtLink>
+                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path" :aria-label="item.label">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
             </LazySectionsHeaderItem>
@@ -64,14 +64,14 @@
             <LazySectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
-                        <NuxtLink v-for="item in header['contact'].items" :to="item.path">{{ item.label }}</NuxtLink>
+                        <NuxtLink v-for="item in header['contact'].items" :to="item.path" :aria-label="item.label">{{ item.label }}</NuxtLink>
                     </div>
                 </div>
             </LazySectionsHeaderItem>
 
             <NuxtLink
                 class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
-                :to="localePath({ name: 'download' })">
+                :to="localePath({ name: 'download' })" :aria-label="$t('download') ">
                 <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
                 <p class="lg:hidden xl:block">{{ $t('download') }}</p>
             </NuxtLink>
@@ -135,7 +135,7 @@
                         <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.image"
                             :alt="clipboardItem.symbol" :title="clipboardItem.symbol">
                         <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                            <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`" class="text-base font-bold">{{ clipboardItem.collection }}</NuxtLink>
+                            <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`" :aria-label="clipboardItem.symbol" class="text-base font-bold">{{ clipboardItem.collection }}</NuxtLink>
                             <div class="flex justify-between gap-10 w-full">
                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
                                 <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)">
@@ -154,7 +154,7 @@
             </LazySectionsHeaderItem>
 
             <div class="w-full justify-center flex lg:w-fit lg:justify-start">
-                <NuxtLink :to="localePath('place-to-buy')"
+                <NuxtLink :to="localePath('place-to-buy')" :aria-label="$t('place-to-buy')"
                     class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:w-[150px] 2xl:text-xl 2xl:py-2">
                     {{ $t('place-to-buy') }}</NuxtLink>
             </div>

@@ -61,13 +61,13 @@
             </section>
 
             <section class="sm:grid sm:grid-cols-2 sm:gap-6 lg:mt-0 lg:gap-10 2xl:grid-cols-2">
-                <NuxtLink data-aos="fade-up" :to="section_3.box_3.path" class="h-fit">
+                <NuxtLink data-aos="fade-up" :to="section_3.box_3.path" class="h-fit" :aria-label="section_3.box_3.title">
                     <div class="bg-gray-5 mb-4 flex justify-center">
                         <img :src="section_3.box_3.icon" alt="" class="h-full max-h-[235px]">
                     </div>
                     <p class="text-lg font-medium text-center leading-5">{{ section_3.box_3.title }}</p>
                 </NuxtLink>
-                <NuxtLink data-aos="fade-up" :to="section_3.box_4.path" class="h-fit">
+                <NuxtLink data-aos="fade-up" :to="section_3.box_4.path" class="h-fit" :aria-label="section_3.box_4.title">
                     <div class="bg-gray-5 mb-4 flex justify-center">
                         <img :src="section_3.box_4.icon" alt="" class="h-full max-h-[235px]">
                     </div>

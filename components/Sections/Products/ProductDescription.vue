@@ -5,7 +5,7 @@
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
             <ul class="flex flex-wrap">
                 <li v-for="color in productStore.product.item.colors">
-                    <NuxtLink :to="color.path">
+                    <NuxtLink :to="color.path" :aria-label="color.path">
                         <img class="w-[70px] aspect-[1/1]" :src="color.image" alt="">
                     </NuxtLink>
                 </li>

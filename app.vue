@@ -2,7 +2,9 @@
   <NuxtLoadingIndicator />
   <NuxtLayout name="main">
     <Suspense>
-      <NuxtPage />
+      <template #default>
+        <NuxtPage />
+      </template>
       <template #fallback>
         <div class="min-h-screen">
           <Loading />
