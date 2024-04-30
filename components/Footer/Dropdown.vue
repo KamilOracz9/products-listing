@@ -4,7 +4,7 @@
         <div :class="footerStore.isActive(slugify(title)) ? 'max-lg:active' : 'max-lg:inactive'">
             <div>
                 <NuxtLink v-for="item in items" class="text-normal-base hover-opacity-60 cursor-pointer transition-all"
-                    :to="item.path">{{ item.label }}</NuxtLink>
+                    :to="item.path" :aria-label="item.label">{{ item.label }}</NuxtLink>
             </div>
         </div>
     </li>

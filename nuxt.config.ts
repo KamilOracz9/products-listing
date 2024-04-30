@@ -6,23 +6,8 @@ export default defineNuxtConfig({
   nitro: {
     externals: {
       traceOptions: { base: process.cwd() }
-    }
+    },
   },
-  routeRules: {
-    '/**': { swr: 3600 },
-  },
-  devtools: { enabled: true },
-  // hooks: {
-  //   'build:manifest': (manifest) => {
-  //     const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
-
-  //     if (css) {
-  //       for (let i = css.length - 1; i >= 0; i--) {
-  //         if (css[i].startsWith('entry')) css.splice(i, 1);
-  //       }
-  //     }
-  //   },
-  // },
   css: [
     '~/assets/css/main.css',
     '~/assets/css/breuer.css',
@@ -42,13 +27,14 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
-    
   ],
   swiper: {
     modules: ['navigation', 'pagination', 'autoplay'],
   },
   plugins: [
     '@/plugins/device',
+    '@/plugins/error-handler',
+    '@/plugins/router',
   ],
   pages: true,
   i18n: {

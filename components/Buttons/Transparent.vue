@@ -1,9 +1,9 @@
 <template>
-    <button v-if="tagType === 'button'" :type="type" @click="onClick"
+    <button v-if="tagType === 'button'" :type="type" @click="onClick" :aria-label="label"
         class="transparent-button">
         <span class="translate-y-[2px]">{{ label }}</span><Arrow :direction="'right'" />
     </button>
-    <NuxtLink role="button" v-if="tagType === 'link'" :type="type" :to="url"
+    <NuxtLink role="button" v-if="tagType === 'link'" :type="type" :to="url" :aria-label="label"
         class="transparent-button">
         <span class="translate-y-[2px]">{{ label }}</span><Arrow :direction="'right'" />
     </NuxtLink>

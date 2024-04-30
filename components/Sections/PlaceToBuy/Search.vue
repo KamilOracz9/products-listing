@@ -25,7 +25,7 @@
         </div>
 
         <div class="w-full flex justify-end items-center my-6 text-sm lg:my-10">
-            <button @click="onGetGeolocation" type="button" class="flex gap-2 items-center"><img class="size-[22px]"
+            <button @click="onGetGeolocation" type="button" class="flex gap-2 items-center" :aria-label="$t('pages.place-to-buy.search-by-my-localization')"><img class="size-[22px]"
                     src="@/assets/icons/map-pin.svg" alt="">
                 {{ $t('pages.place-to-buy.search-by-my-localization') }}
             </button>

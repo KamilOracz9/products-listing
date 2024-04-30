@@ -12,7 +12,7 @@
 
                     <div
                         class="grid gap-5 grid-cols-1 mt-5 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-                        <NuxtLink :to="localePath({ name: 'products' }) + `/${product.slug}`"
+                        <NuxtLink :to="localePath({ name: 'products' }) + `/${product.slug}`" :aria-label="product.name"
                             v-for="product in data?.products" class="flex flex-col gap-2">
                             <div>
                                 <img loading="lazy" :src="product.media?.main['460_613']" alt="">
@@ -32,7 +32,7 @@
 
                     <div
                         class="grid gap-5 grid-cols-1 mt-5 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-                        <NuxtLink :to="localePath({ name: 'inspirations' }) + `/${article.slug}`"
+                        <NuxtLink :to="localePath({ name: 'inspirations' }) + `/${article.slug}`" :aria-label="article.title"
                             v-for="article in data?.articles" class="flex flex-col gap-2">
                             <div>
                                 <img loading="lazy" :src="article.image.mobile" alt="">

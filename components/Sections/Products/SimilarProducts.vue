@@ -7,7 +7,7 @@
             :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect"
             :space-between="sliderConfig.spaceBetween" :breakpoints="sliderConfig.breakpoints">
             <SwiperSlide v-for="(slide, index) in productStore.product.item.similarProducts" :key="index">
-                <NuxtLink :to="localePath({ name: 'products' }) + `/${slide.slug}`" class="relative group">
+                <NuxtLink :to="localePath({ name: 'products' }) + `/${slide.slug}`" class="relative group" :aria-label="slide.name">
                     <img :src="slide.image" alt="">
                     <div class="absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
                         <p class="font-medium text-white uppercase leading-[120%] lg:text-[1.5rem]">{{ slide.name }}</p>
