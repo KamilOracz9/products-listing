@@ -5,19 +5,21 @@
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <LazySectionsHeaderItem slug="products">
-                <div class="header__categories gap-10">
-                    <NuxtLink v-for="category in categories" :to="category.path" :aira-label="category.name">
-                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image"
-                            alt="" :title="category.name">
-                        <p class="py-3">{{ category.name }}</p>
-                    </NuxtLink>
-                </div>
+                <!-- <div class="header__categories gap-10">
+                    <template v-for="category in categories">
+                        <NuxtLink v-if="category.path" :to="category.path" :aria-label="category.name">
+                            <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image" alt=""
+                                :title="category.name">
+                            <p class="py-3">{{ category.name }}</p>
+                        </NuxtLink>
+                    </template>
+                </div> -->
                 <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
                     <LazySectionsHeaderColumn v-for="column in columns">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
-                            <NuxtLink :to="getMainLink(item)" :aira-label="item.name">
-                                <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
-                                    alt="" :title="item.name" />
+                            <NuxtLink :to="getMainLink(item)" :aria-label="item.name ?? item.type">
+                                <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
+                                    :title="item.name" />
                                 <p class="py-3">{{ item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
@@ -25,7 +27,7 @@
                                     {{ subitem.name }}</NuxtLink>
 
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
-                                    <NuxtLink v-for="subsubitem in subitem.items"  :aria-label="subitem.name"
+                                    <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
                                         :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subsubitem.slug}`">
                                         {{ subsubitem.name }}</NuxtLink>
                                 </div>
@@ -38,7 +40,9 @@
             <LazySectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path"  :aria-label="item.label">{{ item.label }}
+                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path" :aria-label="item.label">
+                            {{
+                            item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -47,7 +51,9 @@
             <LazySectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
-                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path" :aria-label="item.label">{{ item.label }}
+                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path"
+                            :aria-label="item.label">{{
+                            item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -56,7 +62,9 @@
             <LazySectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
-                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path" :aria-label="item.label">{{ item.label }}</NuxtLink>
+                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path" :aria-label="item.label">{{
+                            item.label }}
+                        </NuxtLink>
                     </div>
                 </div>
             </LazySectionsHeaderItem>
@@ -64,14 +72,16 @@
             <LazySectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
-                        <NuxtLink v-for="item in header['contact'].items" :to="item.path" :aria-label="item.label">{{ item.label }}</NuxtLink>
+                        <NuxtLink v-for="item in header['contact'].items" :to="item.path" :aria-label="item.label">{{
+                            item.label }}
+                        </NuxtLink>
                     </div>
                 </div>
             </LazySectionsHeaderItem>
 
             <NuxtLink
                 class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
-                :to="localePath({ name: 'download' })" :aria-label="$t('download') ">
+                :to="localePath({ name: 'download' })" :aria-label="$t('download')">
                 <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
                 <p class="lg:hidden xl:block">{{ $t('download') }}</p>
             </NuxtLink>
@@ -87,7 +97,8 @@
                         </div>
 
                         <span class="lg:mr-20">
-                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button" @click="search" />
+                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
+                                @click="search" />
                         </span>
 
                         <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
@@ -130,16 +141,20 @@
 
             <LazySectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
                 <div class="header__products left-0">
-                    <div v-if="clipboardStore.hasItems" v-for=" clipboardItem in clipboardStore.items " 
+                    <div v-if="clipboardStore.hasItems" v-for=" clipboardItem in clipboardStore.items "
                         class="px-6 flex flex-col items-center gap-2 lg:mt-10">
                         <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.image"
                             :alt="clipboardItem.symbol" :title="clipboardItem.symbol">
                         <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                            <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`" :aria-label="clipboardItem.symbol" class="text-base font-bold">{{ clipboardItem.collection }}</NuxtLink>
+                            <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`"
+                                :aria-label="clipboardItem.symbol" class="text-base font-bold">{{
+                                clipboardItem.collection }}
+                            </NuxtLink>
                             <div class="flex justify-between gap-10 w-full">
                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
-                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)" :aria-label="clipboardItem.symbol">
-                                    <img src="/assets/icons/delete.svg" width="12" height="12" />
+                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
+                                    :aria-label="clipboardItem.symbol">
+                                    <img src="/assets/icons/delete.svg" width="12" height="12" alt="" />
                                 </button>
                             </div>
                             <p>{{ clipboardItem.symbol }}</p>
@@ -147,7 +162,8 @@
                             <p>{{ clipboardItem.price }}</p>
                         </div>
                     </div>
-                    <div v-else class="flex lg:h-[300px] justify-center items-center lg:col-span-5 lg:text-4xl font-medium">
+                    <div v-else
+                        class="flex lg:h-[300px] justify-center items-center lg:col-span-5 lg:text-4xl font-medium">
                         {{ $t('no-saved-products') }}
                     </div>
                 </div>
