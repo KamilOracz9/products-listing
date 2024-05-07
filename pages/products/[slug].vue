@@ -29,12 +29,11 @@
                         <SectionsProductsProductTable :techImages="images.technical" :variants="variants" />
                         <SectionsProductsGlassTypes :glasses="images.glasses" />
                         <SectionsProductsDownloadFiles :files="files"/>
-                        <SectionsProductsParts />
                     </div>
                 </div>
             </div>
 
-            <!-- <SectionsProductsSimilarProducts /> -->
+            <SectionsProductsSimilarProducts />
         </div>
 
         <SectionsCommonFindUs />
