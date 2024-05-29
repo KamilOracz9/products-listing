@@ -38,13 +38,14 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchProducts } from '~/services/api';
 
 const globalStore = useGlobalStore();
+const productsFilterStore = useProductsFilterStore();
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
 const { breadcrumbs, shortText, longText } = props;
 const route = useRoute();
 
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'categories[]': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();

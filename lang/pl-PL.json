@@ -98,7 +98,15 @@
         "material": "Materiał",
         "length": "Długość",
         "width": "Szerokość",
-        "height": "Wysokość"
+        "height": "Wysokość",
+        "series": "Serie",
+        "product_color": "Kolor",
+        "product_detail_finishing": "Wykończenie detali",
+        "product_door_type": "Rodzaj drzwi",
+        "product_doors_count": "Liczba drzwi",
+        "product_material": "Material",
+        "product_shape": "Kształt",
+        "product_surface_finishing": "Wykończenie"
     },
     "pages": {
         "search": {

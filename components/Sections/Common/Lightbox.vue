@@ -36,7 +36,7 @@ const {
     show, onHide, changeIndex,
     visibleRef, indexRef, imgsRef
 } = useEasyLightbox({
-    imgs: images.map(image => image.full),
+    imgs: images.map(image => image?.full),
     initIndex: galleryActiveSlide,
 })
 

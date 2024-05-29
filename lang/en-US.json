@@ -98,7 +98,15 @@
         "material": "Material",
         "length": "Length",
         "width": "Width",
-        "height": "height"
+        "height": "height",
+        "series": "Series",
+        "product_color": "Color",
+        "product_detail_finishing": "Details finishing",
+        "product_door_type": "Door type",
+        "product_doors_count": "Doors count",
+        "product_material": "Meterial",
+        "product_shape": "Shape",
+        "product_surface_finishing": "Surface"
     },
     "pages": {
         "made-to-measure": {
