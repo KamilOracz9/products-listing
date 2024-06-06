@@ -66,4 +66,5 @@ export type Customized = {
     "text": string;
     "more_text": string;
     "path": string;
+    "image": string;
 }
