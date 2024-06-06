@@ -28,7 +28,7 @@
 
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                        :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subsubitem.slug}`">
+                                        :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?product_door_type[]=${subsubitem.id}`">
                                         {{ subsubitem.name }}</NuxtLink>
                                 </div>
                             </div>
@@ -196,9 +196,11 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories = ref([]);
 
 const getLink = (item, subitem) => {
+    const filterName = !!subitem.items?.length ? 'product_shape' : 'product_door_type';
+
     if (item.type === 'made-to-measure') return localePath(subitem.path);
     if (item.type === 'collections') return localePath({ name: 'categories' }) + `?collections[]=${subitem.id}`;
-    return localePath({ name: 'categories' }) + `/${item.slug}` + `?type[]=${subitem.slug}`;
+    return localePath({ name: 'categories' }) + `/${item.slug}` + `?${filterName}[]=${subitem.id}`;
 }
 
 const getMainLink = (item) => {
