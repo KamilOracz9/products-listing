@@ -6,10 +6,10 @@
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
             {{ activeCategory?.name ?? $t('products') }}</h1>
 
-        <div class="mt-10 flex gap-10" v-if="data">
+        <div class="mt-10 flex gap-10" v-if="data && categoryPage">
             <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
-                <p v-if="shortText" class="pb-3.5 mb-5 border-b text-lg" v-html="shortText"></p>
+                <p v-if="categoryPage.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
 
                 <SectionsProductsCategories />
 
@@ -21,9 +21,9 @@
 
                 <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
-                <p v-if="longText"
+                <p v-if="categoryPage.description"
                     class="pt-3.5 mb-5 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
-                    v-html="longText"></p>
+                    v-html="categoryPage.description"></p>
             </div>
         </div>
 
@@ -36,6 +36,7 @@
 <script setup>
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchProducts } from '~/services/api';
+import { fetchCategoryPage } from '~/services/api/category';
 
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
@@ -46,6 +47,9 @@ const route = useRoute();
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
+
+console.log(categoryPage.value)
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
