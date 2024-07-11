@@ -40,7 +40,7 @@
             <LazySectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink v-for="item in header['inspirations'].items" :to="item.path" :aria-label="item.label">
+                        <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({path: item.path})" :aria-label="item.label">
                             {{
                             item.label }}
                         </NuxtLink>
@@ -51,7 +51,7 @@
             <LazySectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
-                        <NuxtLink v-for="item in header['for-professionals'].items" :to="item.path"
+                        <NuxtLink v-for="item in header['for-professionals'].items" :to="localePath({path: item.path})"
                             :aria-label="item.label">{{
                             item.label }}
                         </NuxtLink>
@@ -62,7 +62,7 @@
             <LazySectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
-                        <NuxtLink v-for="item in header['about-us'].items" :to="item.path" :aria-label="item.label">{{
+                        <NuxtLink v-for="item in header['about-us'].items" :to="localePath({path: item.path})" :aria-label="item.label">{{
                             item.label }}
                         </NuxtLink>
                     </div>
@@ -72,7 +72,7 @@
             <LazySectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
-                        <NuxtLink v-for="item in header['contact'].items" :to="item.path" :aria-label="item.label">{{
+                        <NuxtLink v-for="item in header['contact'].items" :to="localePath({path: item.path})" :aria-label="item.label">{{
                             item.label }}
                         </NuxtLink>
                     </div>

@@ -11,7 +11,7 @@
             <div class="w-full lg:w-3/4 xl:w-full">
                 <p v-if="categoryPage.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
 
-                <SectionsProductsCategories />
+                <SectionsProductsCategories :categories="categoryPage.categories" />
 
                 <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering') }} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                     $t('filtering') }} / {{ $t('sorting') }}</button>
@@ -41,15 +41,13 @@ import { fetchCategoryPage } from '~/services/api/category';
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
-const { breadcrumbs, shortText, longText } = props;
+const { breadcrumbs } = props;
 const route = useRoute();
 
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
-
-console.log(categoryPage.value)
+const { data: categoryPage } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
