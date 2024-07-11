@@ -197,6 +197,11 @@
             "check-directions": "Check directions",
             "locations-not-found": "No stores found in this area",
             "symbol": "Symbol"
+        },
+        "search": {
+            "products": "Produkty",
+            "found-positions": "Found positions: ",
+            "inspirations": "Inspirations"
         }
     },
     "product": {
