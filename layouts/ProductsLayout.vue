@@ -6,26 +6,28 @@
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
             {{ activeCategory?.name ?? $t('products') }}</h1>
 
-        <div class="mt-10 flex gap-10" v-if="data && categoryPage">
-            <SectionsProductsSidebar />
+        <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending && !filtersPending">
+            <SectionsProductsSidebar @refresh="filtersRefresh" />
             <div class="w-full lg:w-3/4 xl:w-full">
-                <p v-if="categoryPage.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
+                <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
 
-                <SectionsProductsCategories :categories="categoryPage.categories" />
+                <SectionsProductsCategories :categories="categoryPage?.categories" />
 
                 <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering') }} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                     $t('filtering') }} / {{ $t('sorting') }}</button>
 
                 <SectionsProductsListing v-if="!pending" :products="data.data" />
-                <LoadingIndicator v-else />
+                
 
                 <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
-                <p v-if="categoryPage.description"
+                <p v-if="categoryPage?.description"
                     class="pt-3.5 mb-5 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
-                    v-html="categoryPage.description"></p>
+                    v-html="categoryPage?.description"></p>
             </div>
         </div>
+
+        <LoadingIndicator v-if="pending || categoryPagePending || filtersPending" />
 
         <div>
             <slot />
@@ -41,13 +43,13 @@ import { fetchCategoryPage } from '~/services/api/category';
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
-const { breadcrumbs } = props;
+const { breadcrumbs } = toRefs(props);
 const route = useRoute();
 
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
-const { data: categoryPage } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
