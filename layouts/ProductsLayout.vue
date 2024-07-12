@@ -6,8 +6,8 @@
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
             {{ activeCategory?.name ?? $t('products') }}</h1>
 
-        <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending && !filtersPending">
-            <SectionsProductsSidebar @refresh="filtersRefresh" />
+        <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending">
+            <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
                 <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
 
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <LoadingIndicator v-if="pending || categoryPagePending || filtersPending" />
+        <LoadingIndicator v-if="pending || categoryPagePending" />
 
         <div>
             <slot />

@@ -5,17 +5,18 @@
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
             <LazySectionsHeaderItem slug="products">
-                <!-- <div class="header__categories gap-10">
-                    <template v-for="category in categories">
-                        <NuxtLink v-if="category.path" :to="category.path" :aria-label="category.name">
-                            <img loading="lazy" width="65" height="65" class="size-[65px]" :src="category.image" alt=""
-                                :title="category.name">
-                            <p class="py-3">{{ category.name }}</p>
-                        </NuxtLink>
-                    </template>
-                </div> -->
-                <div class="header__categories [&_a]:!text-left !hidden lg:!grid">
-                    <LazySectionsHeaderColumn v-for="column in columns">
+                <div class="header__categories lg:[&_a]:!text-left">
+                    <LazySectionsHeaderColumn class="lg:hidden">
+                        <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                            <NuxtLink class="text-center flex items-center flex-col" :to="getMainLink(item)"
+                                :aria-label="item.name ?? item.type" v-for="item in Object.values(columns).flat()">
+                                <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
+                                    :title="item.name" />
+                                <p class="py-3">{{ item.name }}</p>
+                            </NuxtLink>
+                        </div>
+                    </LazySectionsHeaderColumn>
+                    <LazySectionsHeaderColumn v-for="column in columns" class="hidden lg:block">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column">
                             <NuxtLink :to="getMainLink(item)" :aria-label="item.name ?? item.type">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
@@ -40,9 +41,10 @@
             <LazySectionsHeaderItem slug="inspirations">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
-                        <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({path: item.path})" :aria-label="item.label">
+                        <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({ path: item.path })"
+                            :aria-label="item.label">
                             {{
-                            item.label }}
+                                item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -51,9 +53,9 @@
             <LazySectionsHeaderItem slug="for-professionals">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
-                        <NuxtLink v-for="item in header['for-professionals'].items" :to="localePath({path: item.path})"
-                            :aria-label="item.label">{{
-                            item.label }}
+                        <NuxtLink v-for="item in header['for-professionals'].items"
+                            :to="localePath({ path: item.path })" :aria-label="item.label">{{
+                                item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -62,8 +64,9 @@
             <LazySectionsHeaderItem slug="about">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
-                        <NuxtLink v-for="item in header['about-us'].items" :to="localePath({path: item.path})" :aria-label="item.label">{{
-                            item.label }}
+                        <NuxtLink v-for="item in header['about-us'].items" :to="localePath({ path: item.path })"
+                            :aria-label="item.label">{{
+                                item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -72,8 +75,9 @@
             <LazySectionsHeaderItem slug="contact">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
-                        <NuxtLink v-for="item in header['contact'].items" :to="localePath({path: item.path})" :aria-label="item.label">{{
-                            item.label }}
+                        <NuxtLink v-for="item in header['contact'].items" :to="localePath({ path: item.path })"
+                            :aria-label="item.label">{{
+                                item.label }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -148,7 +152,7 @@
                         <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
                             <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`"
                                 :aria-label="clipboardItem.symbol" class="text-base font-bold">{{
-                                clipboardItem.collection }}
+                                    clipboardItem.collection }}
                             </NuxtLink>
                             <div class="flex justify-between gap-10 w-full">
                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
