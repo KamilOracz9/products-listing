@@ -1,6 +1,6 @@
 <template>
     <section>
-        <SectionsCommonBreadrumbs v-if="breadcrumbs && breadcrumbs.length" :breadcrumbs="breadcrumbs" />
+        <SectionsCommonBreadrumbs v-if="!categoryPagePending" :breadcrumbs="categoryPage.breadcrumbs" />
 
         <h1
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
@@ -42,8 +42,6 @@ import { fetchCategoryPage } from '~/services/api/category';
 
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
-const props = defineProps(['title', 'breadcrumbs', 'shortText', 'longText']);
-const { breadcrumbs } = toRefs(props);
 const route = useRoute();
 
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
