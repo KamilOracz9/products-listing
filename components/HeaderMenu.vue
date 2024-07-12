@@ -17,8 +17,12 @@
                         </div>
                     </LazySectionsHeaderColumn>
                     <LazySectionsHeaderColumn v-for="column in columns" class="hidden lg:block">
-                        <div class="lg:px-8 lg:mb-10" v-for="item in column">
-                            <NuxtLink :to="getMainLink(item)" :aria-label="item.name ?? item.type">
+                        <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
+                            item.url = item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : localePath({ name: item.type })
+
+                            return item;
+                        })">
+                            <NuxtLink :to="item.url" :aria-label="item.name ?? item.type">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
                                     :title="item.name" />
                                 <p class="py-3">{{ item.name }}</p>
@@ -26,10 +30,10 @@
                             <div class="text-sm" v-for="subitem in item.items">
                                 <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
                                     {{ subitem.name }}</NuxtLink>
-
+                                
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                        :to="localePath({ name: 'categories' }) + `/${item.slug}` + `?product_door_type[]=${subsubitem.id}`">
+                                        :to="getLink(item, subsubitem)">
                                         {{ subsubitem.name }}</NuxtLink>
                                 </div>
                             </div>
@@ -200,11 +204,23 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories = ref([]);
 
 const getLink = (item, subitem) => {
-    const filterName = !!subitem.items?.length ? 'product_shape' : 'product_door_type';
+    if(subitem.path) return subitem.path;
+    if(!subitem.main_parent_id) return localePath({ name: 'categories' });
+    if(!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
+    if(subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
 
-    if (item.type === 'made-to-measure') return localePath(subitem.path);
-    if (item.type === 'collections') return localePath({ name: 'categories' }) + `?collections[]=${subitem.id}`;
-    return localePath({ name: 'categories' }) + `/${item.slug}` + `?${filterName}[]=${subitem.id}`;
+    // const path = localePath({ name: 'categories' }) + `/${item.slug}`;
+
+    // console.log(path)
+
+    // if(!subitem.parameters)
+
+    // console.log(subitem.parameters);
+    // const filterName = !!subitem.items?.length ? 'product_shape' : 'product_door_type';
+
+    // if (item.type === 'made-to-measure') return localePath(subitem.path);
+    // if (item.type === 'collections') return localePath({ name: 'categories' }) + `?collections[]=${subitem.id}`;
+    // return localePath({ name: 'categories' }) + `/${item.slug}` + `?${filterName}[]=${subitem.id}`;
 }
 
 const getMainLink = (item) => {

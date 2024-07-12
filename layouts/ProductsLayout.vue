@@ -1,6 +1,6 @@
 <template>
     <section>
-        <SectionsCommonBreadrumbs v-if="!categoryPagePending" :breadcrumbs="categoryPage.breadcrumbs" />
+        <SectionsCommonBreadrumbs v-if="categoryPage?.breadcrumbs" :breadcrumbs="categoryPage.breadcrumbs" />
 
         <h1
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">

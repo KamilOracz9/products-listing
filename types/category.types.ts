@@ -7,5 +7,6 @@ export interface CategoryPage extends Page {
         id: number;
         slug: string;
         name: string;
+        image: string;
     }
 }

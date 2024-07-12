@@ -7,7 +7,7 @@
                     class="w-full h-full flex flex-col" :title="category.name" :aria-label="category.name">
                     <p class="text-gray-1 text-sm mb-1">({{ category.count }})</p>
                     <div class="mx-auto px-3.5">
-                        <img class="max-w-[80px] aspect-[auto_1/1]" width="100" height="100" :src="category.iconUrl"
+                        <img class="max-w-[80px] aspect-[auto_1/1]" width="100" height="100" :src="category.image"
                             :alt="category.name" :title="category.name">
                     </div>
                     <p class="text-xs uppercase font-medium mt-auto">{{ category.name }}</p>
