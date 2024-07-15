@@ -17,20 +17,24 @@
                 <thead>
                     <th class="border-b-[2px] border-gray-1"></th>
                     <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1" v-for="header in headers">
-                        {{
-                            $t(`product.${header}`) }}</th>
+                        <img height="20" class="min-h-[20px] min-w-[30px] max-w-[30px] mx-auto" v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
+                        <span v-else>{{ $t(`product.${header}`) }}</span>
+                    </th>
                     <th></th>
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
-                        <td class="pl-2"><span :class="[`${variants.order_time && getRealizationColor(variants.order_time)}`]"
+                        <td class="pl-2"><span
+                                :class="[`${variants.order_time && getRealizationColor(variants.order_time)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
+                        <td v-for="header in headers" class="text-center">{{ getHeader(variant, header) }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
-                            <button class="size-4"  @click="clipboardStore.toggleItem(variant.id)" :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img src="/assets/icons/clipboard.svg" alt=""></button>
-                            <NuxtLink class="flex gap-2 items-center size-4" :aria-label="variant?.symbol"
+                            <button class="size-4" @click="clipboardStore.toggleItem(variant.id)"
+                                :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
+                                    src="/assets/icons/clipboard.svg" alt=""></button>
+                            <!-- <NuxtLink class="flex gap-2 items-center size-4" :aria-label="variant?.symbol"
                                 :to="localePath({ name: 'place-to-buy' }) + `?symbol=${variant?.symbol}`"><img
-                                    class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink>
+                                    class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink> -->
                         </td>
                     </tr>
                 </tbody>
@@ -52,13 +56,13 @@
                 </div>
                 <div class="flex flex-col gap-4 mt-10">
                     <div class="flex items-center gap-2">
-                        <img src="/assets/icons/clipboard.svg" alt="">
+                        <img class="size-[16px]" src="/assets/icons/clipboard.svg" alt="">
                         <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
                     </div>
-                    <div class="flex items-center gap-2">
+                    <!-- <div class="flex items-center gap-2">
                         <img class="size-[16px]" src="@/assets/icons/map-pin.svg" alt="">
                         <p class="text-sm">{{ $t('product.search-in-expositions') }}</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -69,17 +73,29 @@
 <script setup lang="ts">
 import type { IPhoto } from '~/types';
 import type { Variant } from '~/types/products.types';
+import symbolIcon from 'assets/icons/symbol_icon.svg';
+import dimensionsIcon from 'assets/icons/dimensions_icon.svg';
+import colorIcon from 'assets/icons/color_icon.svg';
+import doorsIcon from 'assets/icons/doors_icon.svg';
+import materialIcon from 'assets/icons/material_icon.svg';
 
 const props = defineProps<{
     techImages: IPhoto[];
     variants: Variant[];
 }>();
 
+const headerIcons = ref({
+    'symbol': symbolIcon,
+    'dimensions': dimensionsIcon,
+    'color': colorIcon,
+    'doors': doorsIcon,
+    'material': materialIcon,
+});
+
 const { techImages, variants } = toRefs(props);
 
 const localePath = useLocalePath();
 
-// const headers = ['symbol', 'dimensions', 'doors', 'a', 'b', 'c', 'h', 'w', 'x1', 'x2'];
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && key !== 'id'))));
@@ -87,6 +103,10 @@ const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
+
+const getHeader = (variant: Variant, header: string) => {
+    return variant[header];
+}
 
 const openModal = (index: number) => {
     modalIsOpen.value = true;
