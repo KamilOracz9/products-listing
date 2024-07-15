@@ -240,11 +240,11 @@
     }
 
     header .content-grid .header__links {
-        @apply grid justify-center pl-8 lg:pl-0 lg:relative lg:w-fit lg:left-0 lg:py-5;
+        @apply grid justify-center lg:relative lg:w-fit lg:left-0 lg:py-5;
     }
 
     header .content-grid .header__links > a {
-        @apply py-2 text-center uppercase font-medium 2xl:text-lg;
+        @apply py-2 text-center uppercase font-medium lg:text-left 2xl:text-lg;
     }
 
     header .content-grid .header__icon {

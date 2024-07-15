@@ -41,7 +41,7 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem slug="inspirations">
+            <LazySectionsHeaderItem slug="inspirations" position="sticky">
                 <div class="header__links-ref" ref="inspirationsRef">
                     <div class="header__links" :style="inspirationsStyle">
                         <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({ path: item.path })"
@@ -53,7 +53,7 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem slug="for-professionals">
+            <LazySectionsHeaderItem slug="for-professionals" position="sticky">
                 <div class="header__links-ref" ref="forProfessionalsRef">
                     <div class="header__links" :style="forProfessionalsStyle">
                         <NuxtLink v-for="item in header['for-professionals'].items"
@@ -64,7 +64,7 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem slug="about">
+            <LazySectionsHeaderItem slug="about" position="sticky">
                 <div class="header__links-ref" ref="aboutRef">
                     <div class="header__links" :style="aboutStyle">
                         <NuxtLink v-for="item in header['about-us'].items" :to="localePath({ path: item.path })"
@@ -75,7 +75,7 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem slug="contact">
+            <LazySectionsHeaderItem slug="contact" position="sticky">
                 <div class="header__links-ref" ref="contactRef">
                     <div class="header__links" :style="contactStyle">
                         <NuxtLink v-for="item in header['contact'].items" :to="localePath({ path: item.path })"
@@ -282,32 +282,32 @@ const onScroll = () => {
     setHeader();
 }
 
-const calcLeftOffset = (element: HTMLElement) => {
-    const dropdown = element.closest('.header__dropdown') as HTMLElement;
-    const headerLinks = element.querySelector('.header__links') as HTMLElement;
+// const calcLeftOffset = (element: HTMLElement) => {
+//     const dropdown = element.closest('.header__dropdown') as HTMLElement;
+//     const headerLinks = element.querySelector('.header__links') as HTMLElement;
 
-    return dropdown.offsetLeft - 16 + (dropdown.offsetWidth / 2) - (headerLinks.offsetWidth / 2);
-}
+//     return dropdown.offsetLeft - 16 + (dropdown.offsetWidth / 2) - (headerLinks.offsetWidth / 2);
+// }
 
-const setLeftOffsets = () => {
-    inspirationsOffsetLeft.value = calcLeftOffset(inspirationsRef.value);
-    forProfessionalsOffsetLeft.value = calcLeftOffset(forProfessionalsRef.value);
-    aboutOffsetLeft.value = calcLeftOffset(aboutRef.value);
-    contactOffsetLeft.value = calcLeftOffset(contactRef.value);
-}
+// const setLeftOffsets = () => {
+//     inspirationsOffsetLeft.value = calcLeftOffset(inspirationsRef.value);
+//     forProfessionalsOffsetLeft.value = calcLeftOffset(forProfessionalsRef.value);
+//     aboutOffsetLeft.value = calcLeftOffset(aboutRef.value);
+//     contactOffsetLeft.value = calcLeftOffset(contactRef.value);
+// }
 
-watch(
-    () => headerStore.submenu,
-    () => {
-        setLeftOffsets();
-    },
-)
+// watch(
+//     () => headerStore.submenu,
+//     () => {
+//         setLeftOffsets();
+//     },
+// )
 
 onMounted(async () => {
     await clipboardStore.fetchItems();
 
     document.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', setLeftOffsets);
+    // window.addEventListener('resize', setLeftOffsets);
 
     searchQuery.value = (route.query.search ?? '') as string;
     searchInInspirations.value = (route.query.searchInInspirations ?? false) as boolean;
@@ -318,6 +318,6 @@ onMounted(async () => {
 
 onUnmounted(() => {
     document.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', setLeftOffsets);
+    // window.removeEventListener('resize', setLeftOffsets);
 })
 </script>
