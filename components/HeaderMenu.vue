@@ -1,6 +1,5 @@
 <template>
     <div ref="headerMenuRef" class="content-grid lg:top-0">
-
         <LazySectionsHeaderLogo />
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
@@ -208,19 +207,6 @@ const getLink = (item, subitem) => {
     if(!subitem.main_parent_id) return localePath({ name: 'categories' });
     if(!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
     if(subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-
-    // const path = localePath({ name: 'categories' }) + `/${item.slug}`;
-
-    // console.log(path)
-
-    // if(!subitem.parameters)
-
-    // console.log(subitem.parameters);
-    // const filterName = !!subitem.items?.length ? 'product_shape' : 'product_door_type';
-
-    // if (item.type === 'made-to-measure') return localePath(subitem.path);
-    // if (item.type === 'collections') return localePath({ name: 'categories' }) + `?collections[]=${subitem.id}`;
-    // return localePath({ name: 'categories' }) + `/${item.slug}` + `?${filterName}[]=${subitem.id}`;
 }
 
 const getMainLink = (item) => {
@@ -284,11 +270,11 @@ const setHeader = () => {
 
     if (window.scrollY) {
         headerMenuRef.value.classList.add(shadow);
-        headerMenuRef.value.classList.add('lg:top-0');
+        headerMenuRef.value.classList.add('top-0');
     }
     else {
         headerMenuRef.value.classList.remove(shadow);
-        headerMenuRef.value.classList.remove('lg:top-0');
+        headerMenuRef.value.classList.remove('top-0');
     }
 }
 
