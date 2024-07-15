@@ -1,22 +1,22 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-description')" id="product-description">
         <p>{{ description }}</p>
-        <div v-if="productStore.product.item.colors.length" class="my-3">
+        <div v-if="colors.length" class="my-3">
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
             <ul class="flex flex-wrap">
-                <li v-for="color in productStore.product.item.colors">
-                    <NuxtLink :to="color.path" :aria-label="color.path">
-                        <img class="w-[70px] aspect-[1/1]" :src="color.image" alt="">
+                <li v-for="color in colors">
+                    <NuxtLink :to="localePath({name: 'products'}) + `/${color.slug}`" :aria-label="color.label">
+                        <img class="w-[70px] aspect-[1/1]" :src="color.image.mobile" alt="">
                     </NuxtLink>
                 </li>
             </ul>
         </div>
-        <div v-if="productStore.product.item.descriptionIcons.length">
+        <div v-if="attributes.length">
             <ul class="flex gap-2 flex-wrap">
-                <li v-for="descriptionIcon in productStore.product.item.descriptionIcons"
+                <li v-for="attribute in attributes"
                     class="w-1/4 sm:w-[calc(100%/7)] xl:w-auto xl:max-w-[74px]">
                     <picture>
-                        <img class="aspect-[1/1] w-full" :src="descriptionIcon.icon" alt="">
+                        <img class="aspect-[1/1] w-full" :src="attribute.image.mobile" alt="">
                     </picture>
                 </li>
             </ul>
@@ -38,14 +38,21 @@
 <script setup lang="ts">
 import type { IPhoto } from '~/types';
 
+const localePath = useLocalePath();
+
 const props = defineProps<{
     description: string;
     doorsOpen: IPhoto[];
+    attributes: IPhoto[];
+    colors: {
+        image: IPhoto;
+        label: string;
+        slug: string;
+    }[]
 }>();
 
-const { description, doorsOpen } = toRefs(props);
+const { description, doorsOpen, attributes, colors } = toRefs(props);
 
-const productStore = inject('productStore');
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 

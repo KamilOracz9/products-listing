@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div v-if="!productStore.product.isLoading">
+        <div>
             <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
             <div class="pb-10 w-full lg:flex lg:gap-10">
@@ -25,15 +25,15 @@
                     <SectionsProductsAttachments :images="images.details" />
 
                     <div class="flex flex-col gap-1 leading-4 sm:leading-6">
-                        <SectionsProductsProductDescription :description="description" :doorsOpen="images.doors_open" />
-                        <SectionsProductsProductTable :techImages="images.technical" :variants="variants" />
-                        <SectionsProductsGlassTypes :glasses="images.glasses" />
-                        <SectionsProductsDownloadFiles :files="files"/>
+                        <SectionsProductsProductDescription :description="description" :attributes="images.attribute_icons" :doorsOpen="images.description_icons" :colors="data.other_colors" />
+                        <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]" :variants="variants" />
+                        <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
+                        <SectionsProductsDownloadFiles v-if="hasFiles" :files="files"/>
                     </div>
                 </div>
             </div>
 
-            <SectionsProductsSimilarProducts />
+            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []"/>
         </div>
 
         <SectionsCommonFindUs />
@@ -57,6 +57,9 @@ onMounted(async () => {
 
 const { data } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
+
+const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
+const hasGlasses = computed(() => !!images.value.glasses.length);
 
 setMeta(meta.value);
 

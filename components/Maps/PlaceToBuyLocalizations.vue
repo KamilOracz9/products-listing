@@ -67,8 +67,8 @@ const drawPoints = () => {
         spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: false
     });
 
-    data.value.forEach(({latitude, longitude}, index) => {
-        if(latitude && longitude) markers.addLayer(L.marker([latitude, longitude], { icon: selected.value === index ? iconRed : icon }));
+    data.value.forEach(({lat, lon}, index) => {
+        if(lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon }));
     });
 
     map.addLayer(markers);

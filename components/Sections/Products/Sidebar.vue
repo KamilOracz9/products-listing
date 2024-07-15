@@ -15,20 +15,8 @@
         </div>
 
         <div class="flex flex-col gap-8 text-sm relative" v-if="data">
-            <template v-if="!pending">
-                <SectionsSidebarFiltersList :filters="data.filters" />
-                <SectionsSidebarDimensions :filters="data.dimensions" />
-            </template>
-
-            <LoadingIndicator v-else="pending" />
-
-            <!-- <div class="absolute z-50 w-full h-full bg-[rgba(0,0,0,.04)]" v-if="pending">
-                <LoadingIndicator />
-            </div> -->
-        </div>
-        <div class="mt-6 w-fit ml-auto [&>button]:border-black">
-            <!-- <ButtonsTransparent tagType="button" :label="$t('filter')" type="submit" /> -->
-            <ButtonsTransparent type="button" tagType="button" :label="$t('filter')" @click="toggleMenuIsOpen" />
+            <SectionsSidebarFiltersList :filters="data.filters" />
+            <SectionsSidebarDimensions :filters="data.dimensions" />
         </div>
     </div>
 </template>
@@ -42,14 +30,13 @@ const globalStore = useGlobalStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
 const route = useRoute();
 const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
-// const categoryId = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0].id);
 
 const resetFilters = async () => {
     await navigateTo({ query: {} });
     refresh();
 }
 
-const { data, refresh, pending } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}));
+const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
 provide('refresh', refresh);
 </script>

@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
-                        <td class="pl-2"><span :class="[`${getRealizationColor(parseInt(variant.id) % 2 === 0 ? 2 : 4)}`]"
+                        <td class="pl-2"><span :class="[`${variants.order_time && getRealizationColor(variants.order_time)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center">{{ variant[header] }}</td>
                         <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
@@ -75,14 +75,14 @@ const props = defineProps<{
     variants: Variant[];
 }>();
 
-const { techImages } = toRefs(props);
+const { techImages, variants } = toRefs(props);
 
 const localePath = useLocalePath();
 
 // const headers = ['symbol', 'dimensions', 'doors', 'a', 'b', 'c', 'h', 'w', 'x1', 'x2'];
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(props.variants[0]).filter(([key, value]) => value && key !== 'id'))));
+const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && key !== 'id'))));
 const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);

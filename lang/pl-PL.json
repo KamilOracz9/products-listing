@@ -160,6 +160,9 @@
                 "post-warranty": "Pogwarancyjne"
             }
         },
+        "product": {
+            "toggle-clipboard": "Dodaj do schowka"
+        },
         "inspirations": {
             "see-all": "Zobacz wszystkie",
             "often-questions": "Często zadawane pytania",
