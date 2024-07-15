@@ -178,7 +178,7 @@
     }
 
     header .content-grid .header__dropdown[data-active=true] > div {
-        @apply h-auto lg:rounded-b-lg;
+        @apply h-auto lg:rounded-br-lg;
     }
 
     header .content-grid .header__dropdown[data-active=true] {
