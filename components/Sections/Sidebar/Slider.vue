@@ -1,7 +1,6 @@
 <template>
     <input :name="`${dimension.name}_${type}`" ref="input" @change="onChange" @input="onInput" :min="dimension.min"
-        :max="dimension.max"
-        :value="type === 'min' ? dimension.min : dimension.max" step="1" :type="inputType">
+        :max="dimension.max" :value="type === 'min' ? dimension.min : dimension.max" step="1" :type="inputType">
 </template>
 
 <script setup>
@@ -24,26 +23,19 @@ const onChange = () => {
 }
 
 const onInput = debounce(() => {
+    console.log('asd')
     if (inputType.value === 'range') return;
 
     validate();
     setDimension();
 }, 1000)
 
-// console.log(dimension.value.name)
-
 const validate = () => {
-    // console.log(dimension.value)
     const value = parseInt(input.value.value);
     const minValue = parseInt(dimension.value.min);
     const maxValue = parseInt(dimension.value.max);
     const activeMinValue = parseInt(dimension.value.min);
     const activeMaxValue = parseInt(dimension.value.max);
-    // const value = parseInt(input.value.value);
-    // const minValue = parseInt(productsFilterStore.filtersDimensions[dimension.label].min);
-    // const maxValue = parseInt(productsFilterStore.filtersDimensions[dimension.label].max);
-    // const activeMinValue = parseInt(productsFilterStore.activeFiltersDimensions[dimension.label].min);
-    // const activeMaxValue = parseInt(productsFilterStore.activeFiltersDimensions[dimension.label].max);
 
     if (value > activeMaxValue && type.value === 'min') input.value.value = activeMaxValue - 10;
     else if (value < activeMinValue && type.value === 'max') input.value.value = activeMinValue + 10;
@@ -61,7 +53,7 @@ const setDimension = () => {
 
     const key = `${dimension.value.name}_${type.value}`;
 
-    const params = {...query, ...{ [key]: value }};
+    const params = { ...query, ...{ [key]: value } };
 
     if (value === productsFilterStore.filtersDimensions[[dimension.value.name]][type.value]) delete params[key];
 

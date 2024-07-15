@@ -1,6 +1,6 @@
 <template>
     <ul class="flex flex-col gap-8">
-        <li v-for="dimension in dimensions" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+        <!-- <li v-for="dimension in dimensions" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
             <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
             <div class="mb-4">
                 <button @click="onResetClick(dimension.name)" :aria-label="$t('reset')">{{ $t('reset') }}</button>
@@ -21,24 +21,23 @@
                         class="min-w-[60px] h-[26px]" />
                 </div>
             </div>
-        </li>
+        </li> -->
+        <Dimension v-for="dimension in dimensions" :dimension="dimension" :onResetClick="onResetClick" />
     </ul>
 </template>
 
 <script setup>
+import Dimension from './Dimension.vue';
+
 const productsFilterStore = useProductsFilterStore();
 const router = useRouter();
 const props = defineProps(['filters']);
 const { filters: dimensions } = toRefs(props);
 const route = useRoute();
 
-// const { width, height, depth } = reactive(productsFilterStore.filtersDimensions);
-// const { width, height, depth } = filters.value;
-
-// console.log(filters.value)
-
 const onResetClick = (label) => {
-    const { min, max } = dimensions[label];
+    console.log(label)
+    const { min, max } = dimensions.value[label];
 
     productsFilterStore.activeFiltersDimensions[label].min = min;
     productsFilterStore.activeFiltersDimensions[label].max = max;
@@ -55,16 +54,4 @@ const onResetClick = (label) => {
 
     navigateTo({ query: params });
 }
-
-onMounted(() => {
-    const query = route.query;
-
-    Object.keys(productsFilterStore.activeFiltersDimensions).forEach(key => {
-        // productsFilterStore.activeFiltersDimensions[key].min = dimensions.value[key].min;
-        // productsFilterStore.activeFiltersDimensions[key].max = dimensions.value[key].max;
-
-        // console.log(query[`${key}_min`])
-        // console.log(query[`${key}_max`])
-    });
-})
 </script>
