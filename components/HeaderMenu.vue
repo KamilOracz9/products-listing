@@ -98,7 +98,7 @@
                     <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                         <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
                             <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')">
+                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')" @keydown="(event) => {if(event.keyCode === 13) search()}">
                             <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
                                 alt="">
                         </div>

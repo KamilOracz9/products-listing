@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M9.27,14.65c-2.77,0-5.03-2.26-5.03-5.03s2.26-5.03,5.03-5.03,5.03,2.26,5.03,5.03-2.26,5.03-5.03,5.03M18.6,18.04s-.04-.06-.06-.09l-4.33-4.32c.89-1.09,1.42-2.49,1.42-4,0-3.51-2.86-6.37-6.37-6.37s-6.37,2.86-6.37,6.37,2.86,6.37,6.37,6.37c1.51,0,2.91-.53,4-1.42l4.32,4.32s.06.05.1.07c.1.06.22.1.35.1.37,0,.67-.3.67-.67,0-.13-.04-.25-.1-.35"/>
+</svg>
