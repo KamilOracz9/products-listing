@@ -15,7 +15,7 @@
                             </NuxtLink>
                         </div>
                     </LazySectionsHeaderColumn>
-                    <LazySectionsHeaderColumn v-for="column in columns" class="hidden lg:block">
+                    <LazySectionsHeaderColumn v-for="(column, index) in columns" class="hidden lg:block">
                         <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
                             item.url = item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : localePath({ name: item.type })
 
@@ -37,6 +37,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div v-if="index == 5" class="lg:px-8 lg:mb-10">
+                            <NuxtLink :to="localePath({ name: 'categories' })" :aria-label="$t('navigation.all-products')">
+                                {{ $t('navigation.all-products') }}
+                            </NuxtLink>
+                        </div>
                     </LazySectionsHeaderColumn>
                 </div>
             </LazySectionsHeaderItem>
@@ -45,8 +50,7 @@
                 v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                 <div class="header__links-ref">
                     <div class="header__links">
-                        <NuxtLink v-for="item in header[slug].items" :to="item.path"
-                            :aria-label="item.label">
+                        <NuxtLink v-for="item in header[slug].items" :to="item.path" :aria-label="item.label">
                             {{ item.label }}
                         </NuxtLink>
                     </div>
