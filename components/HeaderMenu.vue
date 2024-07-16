@@ -41,45 +41,12 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem slug="inspirations" position="sticky">
+            <LazySectionsHeaderItem :slug="slug" position="sticky" v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                 <div class="header__links-ref">
                     <div class="header__links">
-                        <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({ path: item.path })"
+                        <NuxtLink v-for="item in header[slug].items" :to="localePath({ path: item.path })"
                             :aria-label="item.label">
                             {{
-                                item.label }}
-                        </NuxtLink>
-                    </div>
-                </div>
-            </LazySectionsHeaderItem>
-
-            <LazySectionsHeaderItem slug="for-professionals" position="sticky">
-                <div class="header__links-ref">
-                    <div class="header__links">
-                        <NuxtLink v-for="item in header['for-professionals'].items"
-                            :to="localePath({ path: item.path })" :aria-label="item.label">{{
-                                item.label }}
-                        </NuxtLink>
-                    </div>
-                </div>
-            </LazySectionsHeaderItem>
-
-            <LazySectionsHeaderItem slug="about" position="sticky">
-                <div class="header__links-ref" ref="aboutRef">
-                    <div class="header__links">
-                        <NuxtLink v-for="item in header['about-us'].items" :to="localePath({ path: item.path })"
-                            :aria-label="item.label">{{
-                                item.label }}
-                        </NuxtLink>
-                    </div>
-                </div>
-            </LazySectionsHeaderItem>
-
-            <LazySectionsHeaderItem slug="contact" position="sticky">
-                <div class="header__links-ref">
-                    <div class="header__links">
-                        <NuxtLink v-for="item in header['contact'].items" :to="localePath({ path: item.path })"
-                            :aria-label="item.label">{{
                                 item.label }}
                         </NuxtLink>
                     </div>
@@ -185,6 +152,7 @@
 <script setup lang="ts">
 import searchIcon from '@/assets/icons/search.svg';
 import clipboardIcon from '@/assets/icons/clipboard.svg';
+import type { LocationQueryRaw } from 'vue-router';
 
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
@@ -195,16 +163,16 @@ const route = useRoute();
 const { header } = toRefs(globalStore);
 
 const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
-const categories = ref([]);
+const categories: Ref = ref([]);
 
-const getLink = (item, subitem) => {
+const getLink = (item: any, subitem: any) => {
     if (subitem.path) return subitem.path;
     if (!subitem.main_parent_id) return localePath({ name: 'categories' });
     if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
     if (subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
 }
 
-const getMainLink = (item) => {
+const getMainLink = (item: any) => {
     if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
     if (item.type === 'collections') return localePath({ name: 'collections' });
     return localePath({ name: 'categories' }) + `/${item.slug}`;
@@ -231,41 +199,23 @@ const search = () => {
         searchInInspirations: searchInInspirations.value,
     }
 
-    navigateTo(localePath({ name: 'search', query: Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false)) }));
+    navigateTo(localePath({ name: 'search', query: (Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false))) as LocationQueryRaw }));
 }
 
 const headerMenuRef = ref();
 
-const setHeader = () => {
-    const shadow = 'drop-shadow-sm';
-
-    if (window.scrollY) {
-        headerMenuRef.value.classList.add(shadow);
-        headerMenuRef.value.classList.add('top-0');
-    }
-    else {
-        headerMenuRef.value.classList.remove(shadow);
-        headerMenuRef.value.classList.remove('top-0');
-    }
-}
-
-const onScroll = () => {
-    setHeader();
-}
-
 onMounted(async () => {
-    await clipboardStore.fetchItems();
+    const navObserver = new IntersectionObserver((entries) => {
+        headerMenuRef.value.classList.toggle('top-0', !entries[0].isIntersecting)
+        headerMenuRef.value.classList.toggle('drop-shadow-sm', !entries[0].isIntersecting)
+    })
 
-    document.addEventListener('scroll', onScroll);
+    navObserver.observe(document.getElementById('top-bar') as Element);
+
+    await clipboardStore.fetchItems();
 
     searchQuery.value = (route.query.search ?? '') as string;
     searchInInspirations.value = (route.query.searchInInspirations ?? false) as boolean;
     searchInProducts.value = (route.query.searchInProducts ?? false) as boolean;
-
-    setHeader();
 });
-
-onUnmounted(() => {
-    document.removeEventListener('scroll', onScroll);
-})
 </script>
