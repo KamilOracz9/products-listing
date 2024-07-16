@@ -98,7 +98,7 @@ const localePath = useLocalePath();
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && key !== 'id'))));
+const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && !['id', 'width', 'height', 'length'].includes(key)))));
 const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
