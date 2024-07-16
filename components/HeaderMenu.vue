@@ -29,7 +29,7 @@
                             <div class="text-sm" v-for="subitem in item.items">
                                 <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
                                     {{ subitem.name }}</NuxtLink>
-                                
+
                                 <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
                                         :to="getLink(item, subsubitem)">
@@ -42,8 +42,8 @@
             </LazySectionsHeaderItem>
 
             <LazySectionsHeaderItem slug="inspirations" position="sticky">
-                <div class="header__links-ref" ref="inspirationsRef">
-                    <div class="header__links" :style="inspirationsStyle">
+                <div class="header__links-ref">
+                    <div class="header__links">
                         <NuxtLink v-for="item in header['inspirations'].items" :to="localePath({ path: item.path })"
                             :aria-label="item.label">
                             {{
@@ -54,8 +54,8 @@
             </LazySectionsHeaderItem>
 
             <LazySectionsHeaderItem slug="for-professionals" position="sticky">
-                <div class="header__links-ref" ref="forProfessionalsRef">
-                    <div class="header__links" :style="forProfessionalsStyle">
+                <div class="header__links-ref">
+                    <div class="header__links">
                         <NuxtLink v-for="item in header['for-professionals'].items"
                             :to="localePath({ path: item.path })" :aria-label="item.label">{{
                                 item.label }}
@@ -66,7 +66,7 @@
 
             <LazySectionsHeaderItem slug="about" position="sticky">
                 <div class="header__links-ref" ref="aboutRef">
-                    <div class="header__links" :style="aboutStyle">
+                    <div class="header__links">
                         <NuxtLink v-for="item in header['about-us'].items" :to="localePath({ path: item.path })"
                             :aria-label="item.label">{{
                                 item.label }}
@@ -76,8 +76,8 @@
             </LazySectionsHeaderItem>
 
             <LazySectionsHeaderItem slug="contact" position="sticky">
-                <div class="header__links-ref" ref="contactRef">
-                    <div class="header__links" :style="contactStyle">
+                <div class="header__links-ref">
+                    <div class="header__links">
                         <NuxtLink v-for="item in header['contact'].items" :to="localePath({ path: item.path })"
                             :aria-label="item.label">{{
                                 item.label }}
@@ -98,7 +98,8 @@
                     <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                         <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
                             <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')" @keydown="(event) => {if(event.keyCode === 13) search()}">
+                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
+                                @keydown="(event) => { if (event.keyCode === 13) search() }">
                             <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
                                 alt="">
                         </div>
@@ -123,12 +124,6 @@
                                     for="search-in-inspirations">{{
                                         $t('search-in-inspirations') }}</label>
                             </div>
-                            <!-- <div class="flex items-center justify-start gap-2"
-                                v-for="item in ['search-in-products', 'search-in-files', 'search-in-inspirations']">
-                                <input :id="item" type="checkbox" name="item" class="lg:-translate-y-[2px]" /> <label
-                                    class="whitespace-nowrap lg:text-xl" :for="item">{{
-                                        $t(item) }}</label>
-                            </div> -->
                         </div>
 
                         <div class="lg:w-full lg:flex lg:items-center lg:gap-10">
@@ -203,10 +198,10 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories = ref([]);
 
 const getLink = (item, subitem) => {
-    if(subitem.path) return subitem.path;
-    if(!subitem.main_parent_id) return localePath({ name: 'categories' });
-    if(!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
-    if(subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+    if (subitem.path) return subitem.path;
+    if (!subitem.main_parent_id) return localePath({ name: 'categories' });
+    if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
+    if (subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
 }
 
 const getMainLink = (item) => {
@@ -240,30 +235,6 @@ const search = () => {
 }
 
 const headerMenuRef = ref();
-const inspirationsRef = ref();
-const forProfessionalsRef = ref();
-const aboutRef = ref();
-const contactRef = ref();
-
-const inspirationsOffsetLeft = ref(0);
-const inspirationsStyle = computed(() => ({
-    translate: `${inspirationsOffsetLeft.value}px`,
-}))
-
-const forProfessionalsOffsetLeft = ref(0);
-const forProfessionalsStyle = computed(() => ({
-    translate: `${forProfessionalsOffsetLeft.value}px`,
-}))
-
-const aboutOffsetLeft = ref(0);
-const aboutStyle = computed(() => ({
-    translate: `${aboutOffsetLeft.value}px`,
-}))
-
-const contactOffsetLeft = ref(0);
-const contactStyle = computed(() => ({
-    translate: `${contactOffsetLeft.value}px`,
-}))
 
 const setHeader = () => {
     const shadow = 'drop-shadow-sm';
@@ -282,32 +253,10 @@ const onScroll = () => {
     setHeader();
 }
 
-// const calcLeftOffset = (element: HTMLElement) => {
-//     const dropdown = element.closest('.header__dropdown') as HTMLElement;
-//     const headerLinks = element.querySelector('.header__links') as HTMLElement;
-
-//     return dropdown.offsetLeft - 16 + (dropdown.offsetWidth / 2) - (headerLinks.offsetWidth / 2);
-// }
-
-// const setLeftOffsets = () => {
-//     inspirationsOffsetLeft.value = calcLeftOffset(inspirationsRef.value);
-//     forProfessionalsOffsetLeft.value = calcLeftOffset(forProfessionalsRef.value);
-//     aboutOffsetLeft.value = calcLeftOffset(aboutRef.value);
-//     contactOffsetLeft.value = calcLeftOffset(contactRef.value);
-// }
-
-// watch(
-//     () => headerStore.submenu,
-//     () => {
-//         setLeftOffsets();
-//     },
-// )
-
 onMounted(async () => {
     await clipboardStore.fetchItems();
 
     document.addEventListener('scroll', onScroll);
-    // window.addEventListener('resize', setLeftOffsets);
 
     searchQuery.value = (route.query.search ?? '') as string;
     searchInInspirations.value = (route.query.searchInInspirations ?? false) as boolean;
@@ -318,6 +267,5 @@ onMounted(async () => {
 
 onUnmounted(() => {
     document.removeEventListener('scroll', onScroll);
-    // window.removeEventListener('resize', setLeftOffsets);
 })
 </script>

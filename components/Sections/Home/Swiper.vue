@@ -17,7 +17,7 @@
                             :alt="slide.title ?? `New Trendy - slide-${index}`"
                             :title="slide.title ?? `New Trendy - slide-${index}`" />
                     </picture> -->
-                        <img preset="home-swiper" :src="slide.image" class="h-full w-full object-cover"
+                        <img preset="home-swiper" v-if="slide.image" :src="slide.image" class="h-full w-full object-cover"
                             :alt="slide.title ?? `New Trendy - slide-${index}`"
                             :title="slide.title ?? `New Trendy - slide-${index}`" />
 
