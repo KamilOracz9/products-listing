@@ -11,7 +11,7 @@
             <div class="w-full lg:w-3/4 xl:w-full">
                 <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
 
-                <SectionsProductsCategories :categories="categoryPage?.categories" />
+                <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                 <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering') }} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                     $t('filtering') }} / {{ $t('sorting') }}</button>

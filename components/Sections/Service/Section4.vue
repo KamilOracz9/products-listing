@@ -28,7 +28,7 @@ const props = defineProps<{
 }>()
 
 const { data } = toRefs(props);
-const { left, right } = toRefs(data.value);
+const { left, right } = toRefs(reactive(data.value));
 
 const options = computed(() => Object.keys(left.value.installer_options).map(key => ({
     value: key,

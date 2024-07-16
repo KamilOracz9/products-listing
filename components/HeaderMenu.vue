@@ -41,13 +41,13 @@
                 </div>
             </LazySectionsHeaderItem>
 
-            <LazySectionsHeaderItem :slug="slug" position="sticky" v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
+            <LazySectionsHeaderItem :slug="slug" position="sticky"
+                v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                 <div class="header__links-ref">
                     <div class="header__links">
                         <NuxtLink v-for="item in header[slug].items" :to="localePath({ path: item.path })"
                             :aria-label="item.label">
-                            {{
-                                item.label }}
+                            {{ item.label }}
                         </NuxtLink>
                     </div>
                 </div>

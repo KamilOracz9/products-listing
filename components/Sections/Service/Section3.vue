@@ -35,5 +35,5 @@ const props = defineProps<{
 }>()
 
 const { data } = toRefs(props);
-const { left, right } = toRefs(data.value);
+const { left, right } = toRefs(reactive(data.value));
 </script>
