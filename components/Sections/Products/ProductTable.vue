@@ -12,7 +12,7 @@
             </ul>
         </div>
 
-        <div class="overflow-x-auto pb-3">
+        <div class="overflow-x-auto pb-3 w-full">
             <table class="w-full">
                 <thead>
                     <th class="border-b-[2px] border-gray-1"></th>
@@ -27,8 +27,8 @@
                         <td class="pl-2"><span
                                 :class="[`${variants.order_time && getRealizationColor(variants.order_time)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td v-for="header in headers" class="text-center">{{ getHeader(variant, header) }}</td>
-                        <td class="w-full whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
+                        <td v-for="header in headers" class="text-center" :class="`w-[50%]`">{{ getHeader(variant, header) }}</td>
+                        <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
                             <button class="size-4" @click="clipboardStore.toggleItem(variant.id)"
                                 :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
                                     src="/assets/icons/clipboard.svg" alt=""></button>

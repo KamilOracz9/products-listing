@@ -4,7 +4,7 @@
 
         <h1
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-            {{ activeCategory?.name ?? $t('products') }}</h1>
+            {{ categoryPage?.name ?? $t('products') }}</h1>
 
         <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending">
             <SectionsProductsSidebar />
@@ -44,12 +44,8 @@ const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
 
-const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
-
-console.log(globalStore.header?.products.items.categories)
-
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null}), { watch: [() => route.query, activeCategory] });
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(activeCategory.value.id));
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': route.params.category ?? null}), { watch: [() => route.query] });
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(route.params.category));
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
