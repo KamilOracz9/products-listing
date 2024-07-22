@@ -1,6 +1,6 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-description')" id="product-description">
-        <p>{{ description }}</p>
+        <div v-html="description"></div>
         <div v-if="colors.length" class="my-3">
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
             <ul class="flex flex-wrap">
@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div v-if="attributes.length">
-            <ul class="flex gap-2 flex-wrap">
+            <ul class="flex gap-2 flex-wrap mt-4">
                 <li v-for="attribute in attributes"
                     class="w-1/4 sm:w-[calc(100%/7)] xl:w-auto xl:max-w-[74px]">
                     <picture>
