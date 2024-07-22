@@ -11,7 +11,7 @@
                                 :aria-label="item.name ?? item.type" v-for="item in Object.values(columns).flat()">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
                                     :title="item.name" />
-                                <p class="py-3">{{ item.name }}</p>
+                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') : item.name }}</p>
                             </NuxtLink>
                         </div>
                     </LazySectionsHeaderColumn>
@@ -24,7 +24,7 @@
                             <NuxtLink :to="item.url" :aria-label="item.name ?? item.type">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
                                     :title="item.name" />
-                                <p class="py-3">{{ item.name }}</p>
+                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') : item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
                                 <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
