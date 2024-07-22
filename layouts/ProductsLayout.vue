@@ -6,7 +6,7 @@
             class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
             {{ categoryPage?.name ?? $t('products') }}</h1>
 
-        <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending">
+        <div class="mt-10 flex gap-10" v-if="!pending && !categoryPagePending && !filtersPending">
             <SectionsProductsSidebar />
             <div class="w-full lg:w-3/4 xl:w-full">
                 <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg" v-html="categoryPage.description_short"></p>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <LoadingIndicator v-if="pending || categoryPagePending" />
+        <LoadingIndicator v-if="pending || categoryPagePending || filtersPending" />
 
         <div>
             <slot />
@@ -37,17 +37,22 @@
 
 <script setup>
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchProducts } from '~/services/api';
+import { fetchFilters, fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
 
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
+const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': route.params.category ?? null}), { watch: [() => route.query] });
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(route.params.category));
+const { data: filtersData, pending: filtersPending, filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
 })
+
+provide('filtersData', filtersData);
+provide('filtersRefresh', filtersRefresh);
 </script>

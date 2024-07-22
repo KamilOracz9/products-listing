@@ -50,7 +50,7 @@
                 v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                 <div class="header__links-ref">
                     <div class="header__links">
-                        <NuxtLink v-for="item in header[slug].items" :to="item.path" :aria-label="item.label">
+                        <NuxtLink :external="false" v-for="item in header[slug].items" :to="item.path" :aria-label="item.label">
                             {{ item.label }}
                         </NuxtLink>
                     </div>

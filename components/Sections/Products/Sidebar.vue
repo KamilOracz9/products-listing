@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { DataKeys } from '~/enums/dataKeys';
-import { fetchFilters } from '~/services/api';
+const data = inject('filtersData');
+const refresh = inject('filtersRefresh');
 
 const productsFilterStore = useProductsFilterStore();
 const globalStore = useGlobalStore();
@@ -35,8 +35,6 @@ const resetFilters = async () => {
     await navigateTo({ query: {} });
     refresh();
 }
-
-const { data, refresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
 provide('refresh', refresh);
 </script>
