@@ -15,7 +15,7 @@
             <SectionsInspirationsSocialLink v-if="article.socials" v-for="(social, index) in article.socials" :social="social" :key="index" />
         </div>
 
-        <h2 class="upperacse font-medium text-xl">{{ article.title }}</h2>
+        <p class="upperacse font-medium text-xl">{{ article.title }}</p>
 
         <p class="leading-5 my-4 md:line-clamp-2">{{ article.description_short }}</p>
 
