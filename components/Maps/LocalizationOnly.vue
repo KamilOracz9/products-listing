@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-10 w-full h-[400px] relative z-10" id="map"></section>
+    <section class="map mt-10 w-full h-[400px] relative z-10" id="map"></section>
 </template>
 
 <script setup>
@@ -16,7 +16,7 @@ const icon = L.icon({
 
 const marker = L.marker(center.value, { icon: icon });
 
-const layer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
+const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
 
 onMounted(async () => {
     const L = await import('leaflet')
