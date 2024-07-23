@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div>
+        <div v-if="!pending">
             <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
             <div class="pb-10 w-full lg:flex lg:gap-10">
@@ -20,7 +20,7 @@
                                 {{ name }}</h1>
                             <p class="text-gray-3 font-medium uppercase text-xs mb-3">{{ category?.name }}</p>
                         </div>
-                        <SectionsProductsBox />
+                        <SectionsProductsBox v-if="data.enabled_on_dimension" />
                     </div>
                     <SectionsProductsAttachments :images="images.details" />
 
@@ -35,6 +35,8 @@
 
             <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []"/>
         </div>
+        
+        <LoadingIndicator v-else />
 
         <SectionsCommonFindUs />
     </section>
@@ -55,7 +57,7 @@ onMounted(async () => {
     await productStore.fetchProduct();
 })
 
-const { data } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
+const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
