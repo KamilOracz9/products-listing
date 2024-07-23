@@ -26,10 +26,7 @@ const data = inject('filtersData');
 const refresh = inject('filtersRefresh');
 
 const productsFilterStore = useProductsFilterStore();
-const globalStore = useGlobalStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
-const route = useRoute();
-const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
 
 const resetFilters = async () => {
     await navigateTo({ query: {} });

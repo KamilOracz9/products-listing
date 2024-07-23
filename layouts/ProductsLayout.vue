@@ -47,7 +47,7 @@ const activeCategory = computed(() => globalStore.header?.products.items.categor
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, () => fetchProducts({...route.query, 'category': route.params.category ?? null}), { watch: [() => route.query] });
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, () => fetchCategoryPage(route.params.category));
-const { data: filtersData, pending: filtersPending, filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
+const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
 watch(() => route.query.page, value => {
     if (value) document.querySelector('h1').scrollIntoView();
