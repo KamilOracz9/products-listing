@@ -46,11 +46,11 @@
                         <p class="text-sm">{{ $t('product.realization-time.2-weeks') }}</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span :class="[`${getRealizationColor(4)}`]" class="flex size-2 -translate-y-[10%]"></span>
+                        <span :class="[`${getRealizationColor(3)}`]" class="flex size-2 -translate-y-[10%]"></span>
                         <p class="text-sm">{{ $t('product.realization-time.4-weeks') }}</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span :class="[`${getRealizationColor(6)}`]" class="flex size-2 -translate-y-[10%]"></span>
+                        <span :class="[`${getRealizationColor(5)}`]" class="flex size-2 -translate-y-[10%]"></span>
                         <p class="text-sm">{{ $t('product.realization-time.6-weeks') }}</p>
                     </div>
                 </div>
@@ -94,8 +94,6 @@ const headerIcons = ref({
 
 const { techImages, variants } = toRefs(props);
 
-const localePath = useLocalePath();
-
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && !['id', 'width', 'height', 'length', 'order_time_id'].includes(key)))));
@@ -116,8 +114,8 @@ const openModal = (index: number) => {
 const getRealizationColor = (realizationTime: number) => {
     switch (realizationTime) {
         case 2: return 'bg-[#41f841]';
-        case 4: return 'bg-[#fa3939]';
-        case 6: return 'bg-[#f0e332]';
+        case 3: return 'bg-[#fa3939]';
+        case 5: return 'bg-[#f0e332]';
         default: return '';
     }
 }
