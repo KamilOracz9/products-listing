@@ -170,10 +170,12 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories: Ref = ref([]);
 
 const getLink = (item: any, subitem: any) => {
+
     if (subitem.path) return subitem.path;
-    if (!subitem.main_parent_id) return localePath({ name: 'categories' });
+    // if (!subitem.main_parent_id) return localePath({ name: 'categories' });
     if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
-    if (subitem.parameters) return `${item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+    if (subitem.parameters) return `${localePath({ name: 'categories' })}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+    
 }
 
 const getMainLink = (item: any) => {
