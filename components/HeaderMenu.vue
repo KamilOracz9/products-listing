@@ -210,11 +210,13 @@ const headerMenuRef = ref();
 
 onMounted(async () => {
     const navObserver = new IntersectionObserver((entries) => {
-        headerMenuRef.value.classList.toggle('top-0', !entries[0].isIntersecting)
-        headerMenuRef.value.classList.toggle('drop-shadow-sm', !entries[0].isIntersecting)
-    })
+        headerMenuRef.value?.classList.toggle('top-0', !entries[0].isIntersecting);
+        headerMenuRef.value?.classList.toggle('drop-shadow-sm', !entries[0].isIntersecting);
+    });
 
     navObserver.observe(document.getElementById('top-bar') as Element);
+
+    document.addEventListener('scroll', () => headerStore.setSubmenu(''));
 
     await clipboardStore.fetchItems();
 
