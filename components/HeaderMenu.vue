@@ -30,7 +30,7 @@
                                 <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
                                     {{ subitem.name }}</NuxtLink>
 
-                                <div class="text-xs my-2" v-if="subitem.items ? !!subitem.items.length : false">
+                                <div class="text-[0.8125rem] my-2 ml-2" v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
                                         :to="getLink(item, subsubitem)">
                                         {{ subsubitem.name }}</NuxtLink>

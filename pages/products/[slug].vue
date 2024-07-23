@@ -35,11 +35,10 @@
                     </div>
                 </div>
             </div>
-
-            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" />
+            <!-- <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" /> -->
         </div>
 
-        <LoadingIndicator v-else />
+        <LoadingIndicator v-if="pending" />
 
         <SectionsCommonFindUs />
     </section>
