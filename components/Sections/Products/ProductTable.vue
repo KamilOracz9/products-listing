@@ -25,7 +25,7 @@
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
                         <td class="pl-2"><span
-                                :class="[`${variants.order_time && getRealizationColor(variants.order_time)}`]"
+                                :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center" :class="`w-[50%]`">{{ getHeader(variant, header) }}</td>
                         <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
@@ -98,7 +98,7 @@ const localePath = useLocalePath();
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && !['id', 'width', 'height', 'length'].includes(key)))));
+const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && !['id', 'width', 'height', 'length', 'order_time_id'].includes(key)))));
 const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
@@ -120,9 +120,5 @@ const getRealizationColor = (realizationTime: number) => {
         case 6: return 'bg-[#f0e332]';
         default: return '';
     }
-}
-
-const addToClipboard = (variantId: number) => {
-    clipboardStore.toggleItem(variantId);
 }
 </script>
