@@ -172,9 +172,9 @@ const categories: Ref = ref([]);
 const getLink = (item: any, subitem: any) => {
 
     if (subitem.path) return subitem.path;
-    // if (!subitem.main_parent_id) return localePath({ name: 'categories' });
     if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
-    if (subitem.parameters) return `${localePath({ name: 'categories' })}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+    console.log(item.url)
+    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
     
 }
 
