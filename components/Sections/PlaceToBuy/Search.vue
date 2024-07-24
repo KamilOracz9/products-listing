@@ -2,15 +2,15 @@
     <div>
         <div class="bg-gray-2 p-4 grid gap-4 items-center lg:grid-cols-6">
             <div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-                <InputSelect2 :disabled="!!city_or_code" modelKey="voievodeship" :options="voivodeships"
+                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }" :disabled="!!city_or_code" modelKey="voievodeship" :options="voivodeships"
                     :placeholder="$t('pages.place-to-buy.select-voievodship')" />
-                <InputSelect2 :disabled="!!city_or_code" modelKey="city" :options="cities"
-                    :placeholder="$t('pages.place-to-buy.select-city')" />
+                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }" :disabled="!!city_or_code"
+                    modelKey="city" :options="cities" :placeholder="$t('pages.place-to-buy.select-city')" />
             </div>
 
             <div class="text-lg text-center">{{ $t('or') }}</div>
 
-            <input :disabled="!!voievodeship || !!city" v-model="city_or_code" type="text"
+            <input :disabled="!!voievodeship || !!city" v-model="city_or_code" type="text" :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }"
                 class="disabled:bg-gray-6 border-gray-6 focus:border-gray-6 lg:col-span-2 w-full py-3.5 px-5 focus:ring-0 placeholder:text-gray-1 placeholder:text-sm"
                 :placeholder="$t('pages.place-to-buy.input-placeholder')">
             <div class="[&>button]:border-black [&>button]:justify-center [&>button]:h-[52px]">

@@ -173,7 +173,6 @@ const getLink = (item: any, subitem: any) => {
 
     if (subitem.path) return subitem.path;
     if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
-    console.log(item.url)
     if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
     
 }
