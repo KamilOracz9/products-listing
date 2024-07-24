@@ -108,7 +108,8 @@
         "product_doors_count": "Doors count",
         "product_material": "Meterial",
         "product_shape": "Shape",
-        "product_surface_finishing": "Surface"
+        "product_surface_finishing": "Surface",
+        "product_walls_count": "Walls count"
     },
     "pages": {
         "made-to-measure": {

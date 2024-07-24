@@ -108,7 +108,8 @@
         "product_doors_count": "Liczba drzwi",
         "product_material": "Material",
         "product_shape": "Kształt",
-        "product_surface_finishing": "Wykończenie"
+        "product_surface_finishing": "Wykończenie",
+        "product_walls_count": "Liczba ścianek"
     },
     "pages": {
         "search": {
