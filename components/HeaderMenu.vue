@@ -11,7 +11,8 @@
                                 :aria-label="item.name ?? item.type" v-for="item in Object.values(columns).flat()">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
                                     :title="item.name" />
-                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') : item.name }}</p>
+                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') :
+                                    item.name }}</p>
                             </NuxtLink>
                         </div>
                     </LazySectionsHeaderColumn>
@@ -24,13 +25,15 @@
                             <NuxtLink :to="item.url" :aria-label="item.name ?? item.type">
                                 <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
                                     :title="item.name" />
-                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') : item.name }}</p>
+                                <p class="py-3">{{ item.type === 'collections' ? $t('navigation.collections') :
+                                    item.name }}</p>
                             </NuxtLink>
                             <div class="text-sm" v-for="subitem in item.items">
                                 <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
                                     {{ subitem.name }}</NuxtLink>
 
-                                <div class="text-[0.8125rem] my-2 ml-2" v-if="subitem.items ? !!subitem.items.length : false">
+                                <div class="text-[0.8125rem] my-2 ml-2"
+                                    v-if="subitem.items ? !!subitem.items.length : false">
                                     <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
                                         :to="getLink(item, subsubitem)">
                                         {{ subsubitem.name }}</NuxtLink>
@@ -38,7 +41,8 @@
                             </div>
                         </div>
                         <div v-if="index == 5" class="lg:px-8 lg:mb-10">
-                            <NuxtLink :to="localePath({ name: 'categories' })" :aria-label="$t('navigation.all-products')">
+                            <NuxtLink :to="localePath({ name: 'categories' })"
+                                :aria-label="$t('navigation.all-products')">
                                 {{ $t('navigation.all-products') }}
                             </NuxtLink>
                         </div>
@@ -50,7 +54,8 @@
                 v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                 <div class="header__links-ref">
                     <div class="header__links">
-                        <NuxtLink :external="false" v-for="item in header[slug].items" :to="item.path" :aria-label="item.label">
+                        <NuxtLink :external="false" v-for="item in header[slug].items" :to="item.path"
+                            :aria-label="item.label">
                             {{ item.label }}
                         </NuxtLink>
                     </div>
@@ -66,38 +71,41 @@
 
             <LazySectionsHeaderItem slug="search" :icon="searchIcon">
                 <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
-                    <div class="w-[90%] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
-                        <div class="flex items-center justify-between border border-gray-1 px-2 py-1 lg:w-[300px]">
-                            <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
-                                @keydown="(event) => { if (event.keyCode === 13) search() }">
-                            <img width="16" height="16" class="w-4 h-4 gray-1-filter" src="@/assets/icons/search.svg"
-                                alt="">
+                    <div class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
+                        <div class="flex flex-col lg:flex-row lg:flex-wrap lg:ml-auto">
+                            <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row">
+                                <div class="flex items-center justify-start gap-2">
+                                    <input id="search-in-products" type="checkbox" name="item"
+                                        class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
+                                        v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
+                                        for="search-in-products">{{
+                                            $t('search-in-products') }}</label>
+                                </div>
+                                <div class="flex items-center justify-start gap-2 lg:mx-10">
+                                    <input id="search-in-inspirations" type="checkbox" name="item"
+                                        class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
+                                        v-model="searchInInspirations" /> <label class="whitespace-nowrap lg:text-xl"
+                                        for="search-in-inspirations">{{
+                                            $t('search-in-inspirations') }}</label>
+                                </div>
+
+                                <div
+                                    class="flex items-center justify-between border border-gray-1 px-2 py-1 w-full lg:max-w-[480px] lg:mr-2">
+                                    <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
+                                        v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
+                                        @keydown="(event) => { if (event.keyCode === 13) search() }">
+                                    <img width="16" height="16" class="w-4 h-4 gray-1-filter"
+                                        src="@/assets/icons/search.svg" alt="">
+                                </div>
+
+                                <span class="w-full lg:w-auto">
+                                    <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
+                                        @click="search" />
+                                </span>
+                            </div>
                         </div>
 
-                        <span class="lg:mr-20">
-                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
-                                @click="search" />
-                        </span>
-
-                        <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row lg:flex-1 justify-between">
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-products" type="checkbox" name="item"
-                                    class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
-                                    v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
-                                    for="search-in-products">{{
-                                        $t('search-in-products') }}</label>
-                            </div>
-                            <div class="flex items-center justify-start gap-2">
-                                <input id="search-in-inspirations" type="checkbox" name="item"
-                                    class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
-                                    v-model="searchInInspirations" /> <label class="whitespace-nowrap lg:text-xl"
-                                    for="search-in-inspirations">{{
-                                        $t('search-in-inspirations') }}</label>
-                            </div>
-                        </div>
-
-                        <div class="lg:w-full lg:flex lg:items-center lg:gap-10">
+                        <div class="lg:w-full lg:flex lg:items-center lg:gap-10 lg:justify-end">
                             <p class="hidden lg:block lg:text-xl">{{ $t('header-search-message') }}</p>
                             <span class="lg:hidden">
                                 <LazyButtonsTransparent :label="$t('products')" :url="localePath({ name: 'products' })"
@@ -174,7 +182,7 @@ const getLink = (item: any, subitem: any) => {
     if (subitem.path) return subitem.path;
     if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
     if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-    
+
 }
 
 const getMainLink = (item: any) => {
