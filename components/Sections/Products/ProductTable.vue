@@ -12,29 +12,29 @@
             </ul>
         </div>
 
-        <div class="overflow-x-auto pb-3 w-full">
+        <div class="table-wrapper overflow-x-auto pb-3 w-full">
             <table class="w-full">
                 <thead>
-                    <th class="border-b-[2px] border-gray-1"></th>
-                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1" v-for="header in headers">
-                        <img height="20" class="min-h-[20px] min-w-[30px] max-w-[30px] mx-auto" v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
+                    <th class="border-b-[2px] border-gray-1 w-[25px]"></th>
+                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1 w-full"
+                        v-for="header in headers">
+                        <img height="20" class="min-h-[20px] min-w-[30px] max-w-[30px] mx-auto"
+                            v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
                         <span v-else>{{ $t(`product.${header}`) }}</span>
                     </th>
-                    <th></th>
+                    <th class="w-[30px]"></th>
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
-                        <td class="pl-2"><span
+                        <td class="pl-2 w-[25px]"><span
                                 :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                 class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td v-for="header in headers" class="text-center" :class="`w-[50%]`">{{ getHeader(variant, header) }}</td>
-                        <td class="w-fit whitespace-nowrap pl-5 font-medium bg-white flex gap-4 py-1.5">
-                            <button class="size-4" @click="clipboardStore.toggleItem(variant.id)"
+                        <td v-for="header in headers" class="text-center" :class="`w-full`">{{ getHeader(variant,
+                            header) }}</td>
+                        <td class="w-[30px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                            <button @click="clipboardStore.toggleItem(variant.id)"
                                 :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
-                                    src="/assets/icons/clipboard.svg" alt=""></button>
-                            <!-- <NuxtLink class="flex gap-2 items-center size-4" :aria-label="variant?.symbol"
-                                :to="localePath({ name: 'place-to-buy' }) + `?symbol=${variant?.symbol}`"><img
-                                    class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""></NuxtLink> -->
+                                    class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
                         </td>
                     </tr>
                 </tbody>
@@ -59,10 +59,6 @@
                         <img class="size-[16px]" src="/assets/icons/clipboard.svg" alt="">
                         <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
                     </div>
-                    <!-- <div class="flex items-center gap-2">
-                        <img class="size-[16px]" src="@/assets/icons/map-pin.svg" alt="">
-                        <p class="text-sm">{{ $t('product.search-in-expositions') }}</p>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -120,3 +116,15 @@ const getRealizationColor = (realizationTime: number) => {
     }
 }
 </script>
+
+<style>
+.table-wrapper {
+    container-type: inline-size;
+}
+
+@container(min-width: 768px) {
+    table {
+        table-layout: fixed;
+    }
+}
+</style>
