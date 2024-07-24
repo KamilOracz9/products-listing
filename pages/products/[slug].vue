@@ -35,7 +35,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" /> -->
+            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" />
+            <!-- <SectionsProductsSimilarProducts :products="[...data.relationships.similar, ...data.relationships.similar, ...data.relationships.similar] ?? []" /> -->
         </div>
 
         <LoadingIndicator v-if="pending" />

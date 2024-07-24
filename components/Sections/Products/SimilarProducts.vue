@@ -3,33 +3,36 @@
         <h4 v-if="products.length" class="uppercase font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8">{{
             $t('product.similar-products') }}</h4>
 
-        <Swiper :navigation="sliderConfig.navigation" @slideChange="activeSlide = $event.realIndex" class="relative"
-            :modules="[SwiperNavigation]" :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop"
-            :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay"
-            :creative-effect="sliderConfig.creativeEffect" :space-between="sliderConfig.spaceBetween"
-            :breakpoints="sliderConfig.breakpoints">
-            <SwiperSlide v-for="(slide, index) in products" :key="index">
-                <NuxtLink :to="localePath({ name: 'products' }) + `/${slide.slug}`" class="relative group"
-                    :aria-label="slide.name">
-                    <img :src="slide.images.mobile" alt="">
-                    <div
-                        class="absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
-                        <p class="font-medium text-white uppercase leading-[120%] lg:text-[1.5rem]">{{ slide.name }}</p>
-                        <p class="uppercase text-white mt-1 flex gap-2 items-center lg:mt-4">Zobacz
-                            <Arrow :direction="'right'" class="white-filter" :width="12" />
-                        </p>
-                    </div>
-                </NuxtLink>
-            </SwiperSlide>
+        <KeepAlive>
+            <Swiper :navigation="sliderConfig.navigation" @slideChange="activeSlide = $event.realIndex" class="relative"
+                :modules="[SwiperNavigation]" :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop"
+                :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay"
+                :creative-effect="sliderConfig.creativeEffect" :space-between="sliderConfig.spaceBetween"
+                :breakpoints="sliderConfig.breakpoints">
+                <SwiperSlide v-for="(slide, index) in products" :key="index">
+                    <NuxtLink :to="localePath({ name: 'products' }) + `/${slide.slug}`" class="relative group"
+                        :aria-label="slide.name">
+                        <img :src="slide.images.mobile" alt="">
+                        <div
+                            class="absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
+                            <p class="font-medium text-white uppercase leading-[120%] lg:text-[1.5rem]">{{ slide.name }}
+                            </p>
+                            <p class="uppercase text-white mt-1 flex gap-2 items-center lg:mt-4">Zobacz
+                                <Arrow :direction="'right'" class="white-filter" :width="12" />
+                            </p>
+                        </div>
+                    </NuxtLink>
+                </SwiperSlide>
 
-            <div class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev lg:left-6">
-                <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
-            </div>
+                <div class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev lg:left-6">
+                    <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
+                </div>
 
-            <div class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next lg:right-6">
-                <img src="@/assets/icons/slider-arrow.svg" alt="">
-            </div>
-        </Swiper>
+                <div class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next lg:right-6">
+                    <img src="@/assets/icons/slider-arrow.svg" alt="">
+                </div>
+            </Swiper>
+        </KeepAlive>
     </section>
 </template>
 
