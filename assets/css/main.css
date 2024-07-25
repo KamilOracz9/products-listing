@@ -227,6 +227,10 @@
         @apply w-full grid gap-y-6 grid-cols-[repeat(auto-fit,minmax(min(100%,140px),1fr))] lg:grid-cols-5;
     }
 
+    header .content-grid .header__clipboard {
+        @apply w-full flex !overflow-x-auto;
+    }
+
     header .content-grid .header__categories a {
         @apply flex flex-col items-center text-center gap-y-2 uppercase font-medium lg:items-start;
     }
