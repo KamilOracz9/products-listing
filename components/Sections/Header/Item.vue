@@ -1,6 +1,6 @@
 <template>
-    <div class="block lg:hidden" @click="headerStore.setSubmenu(slug)">
-        <p class="header__label flex gap-2 items-center">
+    <div class="block lg:hidden">
+        <p class="header__label flex gap-2 items-center" @click="headerStore.setSubmenu(slug)">
             <img v-if="icon" width="16" height="16" class="header__icon" :src="icon" alt="">
             <span class="mx-auto lg:hidden 2xl:block">{{ $t(slug) }}</span>
         </p>

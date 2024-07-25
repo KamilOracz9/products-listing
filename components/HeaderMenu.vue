@@ -1,5 +1,5 @@
 <template>
-    <div ref="headerMenuRef" class="content-grid">
+    <div ref="headerMenuRef" class="content-grid lg px-5 3xl:px-0">
         <LazySectionsHeaderLogo />
 
         <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">

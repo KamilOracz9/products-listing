@@ -1,5 +1,5 @@
 <template>
-    <ul class="px-5 flex justify-between items-center xl:mr-[70px]">
+    <ul class="pr-5 flex justify-between items-center xl:mr-[70px]">
         <li>
             <NuxtLink :to="localePath({path: '/'})" :aria-label="$t('home-page')"><img src="@/assets/images/logo.svg" class="aspect-[auto_4/3] w-[181px] small-height:w-[100px]" width="214" alt=""></NuxtLink>
         </li>
