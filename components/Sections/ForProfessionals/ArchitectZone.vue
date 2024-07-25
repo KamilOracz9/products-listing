@@ -2,10 +2,8 @@
     <section class="mb-20" :id="slugify($t('architects-zone'))">
         <p class="section-title">{{ title }}</p>
 
-        <section class="for-professionas-section">
-            <div class="section-text grid gap-4 lg:my-0" data-aos="fade-up">
-                <p v-for="text in section_1.left.text">{{ text }}</p>
-            </div>
+        <section class="for-professionas-section mb-10">
+            <div class="section-text grid gap-4 lg:my-0" data-aos="fade-up" v-html="section_1.left.text"></div>
 
             <div data-aos="fade-up" class="my-4 grid gap-2 lg:my-0">
                 <p class="font-medium text-xl sm:text-2xl">{{ section_1.right.title }}</p>
@@ -39,9 +37,9 @@
             <section data-aos="fade-up">
                 <div class="h-[335px] relative mb-6 lg:mt-0 lg:h-full">
                     <picture>
-                        <source media="(min-width: 1024px)" :srcset="section_2.right.image">
-                        <source media="(min-width: 450px)" :srcset="section_2.right.image">
-                        <img :src="section_2.right.image" alt="" class="w-full h-full object-cover rounded-tr-[25px]">
+                        <source media="(min-width: 1024px)" :srcset="section_2.right.image.desktop">
+                        <source media="(min-width: 450px)" :srcset="section_2.right.image.tablet">
+                        <img :src="section_2.right.image.mobile" alt="" class="w-full h-full object-cover rounded-tr-[25px]">
                     </picture>
                     <div
                         class="absolute bottom-0 left-0 p-5 flex flex-col gap-5 text-white [&>a>img]:white-filter [&>a]:w-fit">

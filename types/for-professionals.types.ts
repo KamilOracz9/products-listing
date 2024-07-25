@@ -1,3 +1,4 @@
+import type { IPhoto } from ".";
 import type { DescriptionType, Page } from "./common.types"
 
 export interface ForProfessionalsPage extends Page {
@@ -44,7 +45,7 @@ export type ArchitectZoneSection2 = {
         "title": string;
         "button": string;
         "path": string;
-        "image": string;
+        "image": IPhoto;
     }
 }
 
@@ -53,25 +54,27 @@ export type ArchitectZoneSection3 = {
         "title": string;
         "text": string;
         "button": string;
-        "link": string;
+        "path": string;
     },
     "box_2": {
         "title": string;
         "text": string;
         "button": string;
-        "link": string;
+        "path": string;
     },
     "box_3": {
         "title": string;
         "text": string;
         "button": string;
-        "link": string;
+        "path": string;
+        "icon": string;
     },
     "box_4": {
         "title": string;
         "text": string;
         "button": string;
-        "link": string;
+        "path": string;
+        "icon": string;
     },
 }
 
