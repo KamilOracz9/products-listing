@@ -1,3 +1,4 @@
+import type { IPhoto } from ".";
 import type { Page } from "./common.types";
 
 export interface HomePage extends Page {
@@ -30,12 +31,14 @@ export interface HomePage extends Page {
 }
 
 export type Slide = {
-    "image"?: string;
+    "image"?: IPhoto;
     "title": string;
     "subtitle": string;
     "tab": string;
     "path": string;
-    video?: string;
+    video?: {
+        full: string;
+    };
 }
 
 export type Category = {
@@ -44,10 +47,7 @@ export type Category = {
 }
 
 export type Collection = {
-    "image": {
-        "small": string;
-        "medium": string;
-    },
+    "image": IPhoto,
     "title": string;
     "subtitle": string;
 }
@@ -66,5 +66,5 @@ export type Customized = {
     "text": string;
     "more_text": string;
     "path": string;
-    "image": string;
+    "image": IPhoto;
 }

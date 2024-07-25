@@ -10,20 +10,22 @@
                     :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
                         class="h-[582px] flex relative after:w-full after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
-                        <!-- <picture v-if="slide.image" class="w-full">
-                        <source media="(min-width:1024px)" :srcset="slide.fileUrls.lg">
-                        <source media="(min-width:640px)" :srcset="slide.fileUrls.sm">
-                        <img preset="home-swiper" :src="slide.fileUrls.base" class="h-full w-full object-cover"
+                        <picture v-if="slide.image" class="w-full">
+                            <source media="(min-width:1024px)" :srcset="slide.image.desktop">
+                            <source media="(min-width:640px)" :srcset="slide.image.tablet">
+                            <img preset="home-swiper" :src="slide.image.mobile" class="h-full w-full object-cover"
+                                :alt="slide.title ?? `New Trendy - slide-${index}`"
+                                :title="slide.title ?? `New Trendy - slide-${index}`" />
+                        </picture>
+                        <!-- <img preset="home-swiper" v-if="slide.image" :src="slide.image" class="h-full w-full object-cover"
                             :alt="slide.title ?? `New Trendy - slide-${index}`"
-                            :title="slide.title ?? `New Trendy - slide-${index}`" />
-                    </picture> -->
-                        <img preset="home-swiper" v-if="slide.image" :src="slide.image" class="h-full w-full object-cover"
-                            :alt="slide.title ?? `New Trendy - slide-${index}`"
-                            :title="slide.title ?? `New Trendy - slide-${index}`" />
+                            :title="slide.title ?? `New Trendy - slide-${index}`" /> -->
 
                         <video muted loop webkit-playsinline playsinline autoplay v-if="slide.video"
                             class="h-full w-full object-cover">
-                            <source :src="slide.video" type="video/mp4">
+                            <source
+                                :src="slide.video.full"
+                                type="video/mp4">
                         </video>
                     </div>
 
