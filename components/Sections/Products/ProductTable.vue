@@ -25,19 +25,27 @@
                     <th class="w-[60px]"></th>
                 </thead>
                 <tbody>
-                    <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
-                        <td class="pl-2 w-[25px]"><span
-                                :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
-                                class="flex size-2 -translate-y-[10%]"></span></td>
-                        <td v-for="header in headers" class="text-center" :class="`w-full`">{{ getHeader(variant,
-                            header) }}</td>
-                        <td class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
-                            <button @click="clipboardStore.toggleItem(variant.id)"
-                                :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
-                                    class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
-                            <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
-                        </td>
-                    </tr>
+                    <template v-for="variant in variants">
+                        <tr v-for="simplifiedVariant in variant.simplified_variants" class="text-sm even:bg-gray-2">
+                            <td class="w-full pl-10" :colspan="headers.length + 1">{{ simplifiedVariant }}</td>
+                        </tr>
+
+                        <tr class="text-sm even:bg-gray-2">
+                            <td class="pl-2 w-[25px]"><span
+                                    :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
+                                    class="flex size-2 -translate-y-[10%]"></span></td>
+                            <td v-for="header in headers" class="w-full"
+                                :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
+                                    header) }}</td>
+                            <td
+                                class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <button @click="clipboardStore.toggleItem(variant.id)"
+                                    :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
+                                        class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
+                                <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
+                            </td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
             <div class="flex flex-col lg:flex-row gap-10">
@@ -108,7 +116,7 @@ const headers = computed(() => (
                 }).filter(key => key)
             }).flat()
         )
-    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id'].includes(header))
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'simplified_variants'].includes(header))
 ))
 
 const clipboardStore = useClipboardStore();
