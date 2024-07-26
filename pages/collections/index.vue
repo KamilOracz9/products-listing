@@ -3,8 +3,10 @@
         <h1 class="section-title">{{ $t('pages.collections.title') }}</h1>
         <div
             class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,278px),1fr))] gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))]">
-            <NuxtLink :to="localePath({ name: 'categories', query: { 'collections[]': collection.id } })"
-                data-aos="fade-up" data-aos-once="true" :aria-label="collection.name" v-for="(collection, index) in collections">
+            <NuxtLink
+                :to="localePath({ name: 'categories' }) + `?${Object.keys(collection.parameters).map(key => Object.values(collection.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`"
+                data-aos="fade-up" data-aos-once="true" :aria-label="collection.name"
+                v-for="(collection, index) in collections">
                 <figure class="zoom-in relative rounded-br-md xs:rounded-br-lg">
                     <picture>
                         <source media="(min-width: 1024px)" :srcset="collection.media.thumbnail">
@@ -33,5 +35,6 @@ import { fetchCollections } from '~/services/api';
 const localePath = useLocalePath();
 
 const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, () => fetchCollections());
+
 const { data: collections } = toRefs(data.value);
 </script>
