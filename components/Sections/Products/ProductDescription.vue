@@ -4,7 +4,8 @@
         <div v-if="colors.length" class="my-3">
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
             <ul class="flex flex-wrap">
-                <li v-for="color in colors">
+                <li v-for="color in colors" class="relative color">
+                    <Tooltip :text="color.label" />
                     <NuxtLink :to="localePath({ name: 'products' }) + `/${color.slug}`" :aria-label="color.label">
                         <img class="w-[70px] aspect-[1/1]" :src="color.image.mobile" alt="">
                     </NuxtLink>
@@ -42,6 +43,7 @@
 
 <script setup lang="ts">
 import type { IPhoto } from '~/types';
+import Tooltip from '../Common/Tooltip.vue';
 
 const localePath = useLocalePath();
 
@@ -62,8 +64,6 @@ const props = defineProps<{
 
 const { description, doorsOpen, attributes, colors, video } = toRefs(props);
 
-console.log(attributes.value)
-
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 
@@ -77,7 +77,7 @@ const openModal = (index: number) => {
 </script>
 
 <style>
-.attribute:hover>.tooltip {
+.attribute:hover>.tooltip, .color:hover>.tooltip {
     opacity: 1;
 }
 </style>
