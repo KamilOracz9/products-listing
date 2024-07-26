@@ -34,6 +34,8 @@ export type Variant = {
     "height": number;
     "length"?: number;
     "dimensions": string;
+    "id": number;
+    "order_time_id": number;
 }
 
 export type Category = {

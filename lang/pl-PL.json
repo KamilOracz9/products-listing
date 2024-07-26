@@ -164,7 +164,8 @@
             }
         },
         "product": {
-            "toggle-clipboard": "Dodaj do schowka"
+            "toggle-clipboard": "Dodaj do schowka",
+            "generate-product-card": "Generuj kartę produktu"
         },
         "inspirations": {
             "see-all": "Zobacz wszystkie",
@@ -240,6 +241,7 @@
         "height": "Wysokość",
         "length": "Długość",
         "add-to-clipboard": "Dodaj do schowka",
+        "generate-product-card": "Generuj kartę produktu",
         "search-in-expositions": "Szukaj w ekspozycjach",
         "realization-time": {
             "2-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 2 tygodni",

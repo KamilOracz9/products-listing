@@ -28,7 +28,7 @@
                         <SectionsProductsProductDescription :video="data.video"  :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
-                        <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]"
+                        <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]" :productId="data.id"
                             :variants="variants" />
                         <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
                         <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />

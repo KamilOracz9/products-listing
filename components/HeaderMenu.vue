@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div v-if="index == 5" class="lg:px-8 lg:mb-10">
-                            <NuxtLink class=" p-4 bg-yellow-1 text-white w-max":to="localePath({ name: 'categories' })"
+                            <NuxtLink class=" p-4 bg-yellow-1 text-white w-max" :to="localePath({ name: 'categories' })"
                                 :aria-label="$t('navigation.all-products')">
                                 {{ $t('navigation.all-products') }}
                             </NuxtLink>
@@ -133,10 +133,14 @@
                             </NuxtLink>
                             <div class="flex justify-between gap-10 w-full">
                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
-                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
-                                    :aria-label="clipboardItem.symbol">
-                                    <img src="/assets/icons/delete.svg" width="12" height="12" alt="" />
-                                </button>
+                                <div class="flex gap-4">
+                                    <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
+                                        :aria-label="clipboardItem.symbol">
+                                        <img src="/assets/icons/delete.svg" width="12" height="12" alt="" />
+                                    </button>
+                                    <SectionsCommonGenerateProductCard :productId="clipboardItem.product_id"
+                                        :variantId="clipboardItem.variant_id" />
+                                </div>
                             </div>
                             <p>{{ clipboardItem.symbol }}</p>
                             <p>{{ clipboardItem.catalog_dimensions }}</p>

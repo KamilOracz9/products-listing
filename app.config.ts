@@ -4,7 +4,9 @@ export default defineAppConfig({
     gray: 'cool'
   },
   public: {
-    // apiBase: 'https://panel.newtrendy.pl/api'
-    apiBase: 'http://localhost:8000/api'
+    // base: 'https://panel.newtrendy.pl',
+    // apiBase: 'https://panel.newtrendy.pl/api',
+    base: 'http://localhost:8000',
+    apiBase: `http://localhost:8000/api`,
   }
 })

@@ -22,7 +22,7 @@
                             v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
                         <span v-else>{{ $t(`product.${header}`) }}</span>
                     </th>
-                    <th class="w-[30px]"></th>
+                    <th class="w-[60px]"></th>
                 </thead>
                 <tbody>
                     <tr v-for="variant in variants" class="text-sm even:bg-gray-2">
@@ -31,10 +31,11 @@
                                 class="flex size-2 -translate-y-[10%]"></span></td>
                         <td v-for="header in headers" class="text-center" :class="`w-full`">{{ getHeader(variant,
                             header) }}</td>
-                        <td class="w-[30px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                        <td class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                             <button @click="clipboardStore.toggleItem(variant.id)"
                                 :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
                                     class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
+                            <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                         </td>
                     </tr>
                 </tbody>
@@ -59,6 +60,10 @@
                         <img class="size-[16px]" src="/assets/icons/clipboard.svg" alt="">
                         <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
                     </div>
+                    <div class="flex items-center gap-2">
+                        <img class="size-[16px]" src="/assets/icons/pdf.svg" alt="">
+                        <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,9 +80,11 @@ import colorIcon from 'assets/icons/color_icon.svg';
 import doorsIcon from 'assets/icons/doors_icon.svg';
 import materialIcon from 'assets/icons/material_icon.svg';
 
+
 const props = defineProps<{
     techImages: IPhoto[];
     variants: Variant[];
+    productId: number;
 }>();
 
 const headerIcons = ref({
