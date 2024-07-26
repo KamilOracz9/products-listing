@@ -5,7 +5,7 @@
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
             <ul class="flex flex-wrap">
                 <li v-for="color in colors">
-                    <NuxtLink :to="localePath({name: 'products'}) + `/${color.slug}`" :aria-label="color.label">
+                    <NuxtLink :to="localePath({ name: 'products' }) + `/${color.slug}`" :aria-label="color.label">
                         <img class="w-[70px] aspect-[1/1]" :src="color.image.mobile" alt="">
                     </NuxtLink>
                 </li>
@@ -14,7 +14,8 @@
         <div v-if="attributes.length">
             <ul class="flex gap-2 flex-wrap mt-4">
                 <li v-for="attribute in attributes"
-                    class="w-1/4 sm:w-[calc(100%/7)] xl:w-auto xl:max-w-[74px]">
+                    class="w-1/4 relative attribute cursor-pointer sm:w-[calc(100%/7)] xl:w-auto xl:max-w-[74px]">
+                    <SectionsCommonTooltip :text="attribute.label" />
                     <picture>
                         <img class="aspect-[1/1] w-full" :src="attribute.image.mobile" alt="">
                     </picture>
@@ -31,8 +32,7 @@
             </ul>
         </div>
 
-        <iframe v-if="video" class="w-full aspect-video my-5" :src="video"
-            title="YouTube video player" frameborder="0"
+        <iframe v-if="video" class="w-full aspect-video my-5" :src="video" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -48,7 +48,10 @@ const localePath = useLocalePath();
 const props = defineProps<{
     description: string;
     doorsOpen: IPhoto[];
-    attributes: IPhoto[];
+    attributes: {
+        image: IPhoto;
+        label: string;
+    }[];
     colors: {
         image: IPhoto;
         label: string;
@@ -58,6 +61,8 @@ const props = defineProps<{
 }>();
 
 const { description, doorsOpen, attributes, colors, video } = toRefs(props);
+
+console.log(attributes.value)
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
@@ -70,3 +75,9 @@ const openModal = (index: number) => {
     galleryActiveSlide.value = index;
 }
 </script>
+
+<style>
+.attribute:hover>.tooltip {
+    opacity: 1;
+}
+</style>

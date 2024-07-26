@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div v-if="index == 5" class="lg:px-8 lg:mb-10">
-                            <NuxtLink :to="localePath({ name: 'categories' })"
+                            <NuxtLink class=" p-4 bg-yellow-1 text-white w-max":to="localePath({ name: 'categories' })"
                                 :aria-label="$t('navigation.all-products')">
                                 {{ $t('navigation.all-products') }}
                             </NuxtLink>
