@@ -63,11 +63,6 @@
             </div>
         </div>
         <LazySectionsCommonLightbox :images="techImages" />
-
-        <iframe v-if="video" class="w-full aspect-video" src="https://www.youtube.com/embed/wBSekO2OvEE?si=xPTMZcaUiAa9LGDP"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </SectionsCommonAccordion>
 </template>
 
@@ -83,7 +78,6 @@ import materialIcon from 'assets/icons/material_icon.svg';
 const props = defineProps<{
     techImages: IPhoto[];
     variants: Variant[];
-    video?: string;
 }>();
 
 const headerIcons = ref({
@@ -94,7 +88,7 @@ const headerIcons = ref({
     'material': materialIcon,
 });
 
-const { techImages, variants, video } = toRefs(props);
+const { techImages, variants } = toRefs(props);
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);

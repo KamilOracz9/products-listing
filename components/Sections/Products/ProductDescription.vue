@@ -31,6 +31,11 @@
             </ul>
         </div>
 
+        <iframe v-if="video" class="w-full aspect-video my-5" :src="video"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
         <LazySectionsCommonLightbox :images="doorsOpen" />
     </SectionsCommonAccordion>
 </template>
@@ -48,10 +53,11 @@ const props = defineProps<{
         image: IPhoto;
         label: string;
         slug: string;
-    }[]
+    }[],
+    video?: string;
 }>();
 
-const { description, doorsOpen, attributes, colors } = toRefs(props);
+const { description, doorsOpen, attributes, colors, video } = toRefs(props);
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
