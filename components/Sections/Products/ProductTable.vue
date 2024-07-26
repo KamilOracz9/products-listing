@@ -99,7 +99,18 @@ const { techImages, variants } = toRefs(props);
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const headers = computed(() => Object.keys(Object.fromEntries(Object.entries(variants.value[0]).filter(([key, value]) => value && !['id', 'width', 'height', 'length', 'order_time_id'].includes(key)))));
+const headers = computed(() => (
+    [
+        ...new Set(
+            variants.value.map(variant => {
+                return Object.keys(variant).map(key => {
+                    if (variant[key]) return key;
+                }).filter(key => key)
+            }).flat()
+        )
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id'].includes(header))
+))
+
 const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
