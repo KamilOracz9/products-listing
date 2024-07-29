@@ -240,6 +240,7 @@
         "width": "Szerokość",
         "height": "Wysokość",
         "length": "Długość",
+        "product_direction": "Orientacja produktu",
         "add-to-clipboard": "Dodaj do schowka",
         "generate-product-card": "Generuj kartę produktu",
         "search-in-expositions": "Szukaj w ekspozycjach",

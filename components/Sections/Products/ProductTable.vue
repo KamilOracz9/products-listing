@@ -87,7 +87,7 @@
                         <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img class="size-[16px]" src="/assets/icons/pdf.svg" alt="">
+                        <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ const headerIcons = ref({
     'symbol': symbolIcon,
     'dimensions': dimensionsIcon,
     'color': colorIcon,
-    'doors': doorsIcon,
+    'product_direction': doorsIcon,
     'material': materialIcon,
 });
 
