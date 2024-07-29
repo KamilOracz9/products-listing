@@ -36,6 +36,10 @@ export type Variant = {
     "dimensions": string;
     "id": number;
     "order_time_id": number;
+    "group"? : {
+        id: number;
+        name: string;
+    }
 }
 
 export type Category = {
