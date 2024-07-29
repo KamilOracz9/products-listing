@@ -37,7 +37,7 @@ const useGlobalStore = defineStore('global', {
         async fetchGlobalData() {
             this.isLoading = true;
 
-            const data = fetchLayoutData(1).then(response => {
+            fetchLayoutData(1).then(response => {
                 this.header = response.header;
                 this.footer = response.footer;
                 this.socials = response.socials;
