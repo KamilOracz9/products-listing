@@ -36,7 +36,6 @@ const { filters: dimensions } = toRefs(props);
 const route = useRoute();
 
 const onResetClick = (label) => {
-    console.log(label)
     const { min, max } = dimensions.value[label];
 
     productsFilterStore.activeFiltersDimensions[label].min = min;

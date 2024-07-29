@@ -23,7 +23,6 @@ const onChange = () => {
 }
 
 const onInput = debounce(() => {
-    console.log('asd')
     if (inputType.value === 'range') return;
 
     validate();

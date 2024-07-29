@@ -39,6 +39,4 @@ const props = defineProps<{
 }>();
 const { data } = toRefs(props);
 const { title, section_1, section_2, section_3 } = toRefs(data.value);
-
-console.log(section_3.value.left)
 </script>

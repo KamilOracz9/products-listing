@@ -1,21 +1,20 @@
 <template>
     <section id="top-bar"
         class="bg-gray-2 flex h-[50px] items-center justify-between px-4 rounded-b-xl lg:mx-4 3xl:mx-0">
-        <!-- class="bg-gray-2 hidden h-[50px] mx-4 items-center justify-between px-4 rounded-b-xl lg:flex 3xl:mx-0"> -->
         <!-- Select -->
         <div class="cursor-pointer relative z-10" @click="toggle($el)" @mouseenter="toggle($el)"
-            @mouseleave="toggle($el, false)">
+            @mouseleave="toggle($el)">
             <span class="flex gap-2 ml-2 items-center leading-[25px] z-10">
                 <span class="group-hover:animate-arrow-rotate-in">
                     <LazyArrow :width="10" :height="6" :direction="'down'" />
                 </span>
 
-                {{ $t(globalStore.locale.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}
+                {{ $t(globalStore.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}
             </span>
 
             <ul
                 class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
-                <li class="p-3" v-for="item in globalStore.locale.locales">
+                <li class="p-3" v-for="item in globalStore.locales">
                     <div @click="setLocale(item.code)" class="flex gap-2 group/dropdown-item">
                         <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
                         <span class="transition-opacity group-hover/dropdown-item:opacity-[70%]">{{
@@ -44,7 +43,7 @@
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import device from '@/plugins/device';
 import { useGlobalStore } from '@/stores';
 
@@ -55,8 +54,8 @@ const { locale, setLocale } = useI18n();
 const open = ref(false);
 const isMobile = device().provide.isMobile();
 
-function toggle(element) {
-    const eventType = event.type;
+function toggle(element: HTMLElement) {
+    const eventType = (<Event>event).type;
 
     if (isMobile && eventType === 'click') open.value = !open.value;
     else if (!isMobile && eventType !== 'click') open.value = eventType === 'mouseenter';

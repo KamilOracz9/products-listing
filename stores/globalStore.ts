@@ -3,39 +3,45 @@ import type { IActiveLocale } from '~/types';
 import type { Footer, Header, Socials } from '~/types/layout.types';
 
 type IGlobalStore = {
-    locale: {
-        isLoading: boolean;
-        locales: IActiveLocale[];
-    };
+    isLoading: boolean;
+    locales: IActiveLocale[];
     header?: Header;
     footer?: Footer;
-    socials?: Socials;
+    socials: Socials;
 }
 
 const useGlobalStore = defineStore('global', {
     state: (): IGlobalStore => ({
-        locale: {
-            isLoading: true,
-            locales: [],
+        isLoading: true,
+        locales: [
+            {
+                label: 'Polish',
+                code: 'pl',
+                flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/pl.svg',
+            },
+            {
+                label: 'English',
+                code: 'en',
+                flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/en.svg',
+            },
+        ],
+        socials: {
+            facebook: '',
+            instagram: '',
+            pinterest: '',
+            youtube: '',
+            linkedin: '',
         },
     }),
     actions: {
-        async fetchLocale() {
-            this.locale.isLoading = true;
-
-            return await import('@/data/activeLocales')
-                .then(response => {
-                    this.locale.locales = response.default;
-                })
-                .finally(() => this.locale.isLoading = false)
-        },
         async fetchGlobalData() {
-            const data = await fetchLayoutData(1);
-            const { header, footer, socials } = data;
+            this.isLoading = true;
 
-            this.header = header;
-            this.footer = footer;
-            this.socials = socials;
+            const data = fetchLayoutData(1).then(response => {
+                this.header = response.header;
+                this.footer = response.footer;
+                this.socials = response.socials;
+            }).finally(() => this.isLoading = false);
         }
     },
 });

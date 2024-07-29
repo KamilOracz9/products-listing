@@ -14,9 +14,6 @@ import BreuerRegular from '~/assets/fonts/BreuerText-Regular.ttf?url';
 
 const i18n = useI18n();
 const router = useRouter();
-const globalStore = useGlobalStore();
-
-await globalStore.fetchGlobalData();
 
 useHead(() => ({
   link: [

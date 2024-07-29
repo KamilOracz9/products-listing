@@ -1,30 +1,20 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <Suspense>
-            <template #default>
-                <div class="flex flex-col min-h-screen max-w-max-content w-full relative"
-                    v-if="!globalStore.locale.isLoading">
-                    <header class="relative z-30">
-                        <TopBar />
-                        <HeaderMenu />
-                    </header>
+        <div v-if="!globalStore.isLoading" class="flex flex-col min-h-screen max-w-max-content w-full relative">
+            <header class="relative z-30">
+                <TopBar />
+                <HeaderMenu />
+            </header>
 
-                    <main class="flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0">
-                        <slot />
-                    </main>
+            <main class="flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0">
+                <slot />
+            </main>
 
-                    <footer>
-                        <Footer />
-                        <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
-                    </footer>
-                </div>
-            </template>
-            <template #fallback>
-                <div class="min-h-screen">
-                    <Loading />
-                </div>
-            </template>
-        </Suspense>
+            <footer>
+                <Footer />
+                <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
+            </footer>
+        </div>
     </div>
 </template>
 
@@ -32,7 +22,7 @@
 const globalStore = useGlobalStore();
 
 onMounted(async () => {
-    globalStore.fetchLocale();
+    await globalStore.fetchGlobalData();
 
     const topBar = document.getElementById('top-bar');
 
