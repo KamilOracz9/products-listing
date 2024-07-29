@@ -1,7 +1,3 @@
-import { DataKeys } from "~/enums/dataKeys";
-import type { ProductPageParams } from "./products.types";
-import type { ProductFiltersParams } from "./productFilters.types";
-
 export type Breadcrumbs = Breadcrumb[];
 
 export type Breadcrumb = {

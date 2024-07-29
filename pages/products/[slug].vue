@@ -25,18 +25,17 @@
                     <SectionsProductsAttachments :images="images.details" />
 
                     <div class="flex flex-col gap-1 leading-4 sm:leading-6">
-                        <SectionsProductsProductDescription :video="data.video"  :description="description"
+                        <SectionsProductsProductDescription :video="data.video" :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
-                        <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]" :productId="data.id"
-                            :variants="variants" />
+                        <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]"
+                            :productId="data.id" :variants="variants" />
                         <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
                         <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />
                     </div>
                 </div>
             </div>
             <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" />
-            <!-- <SectionsProductsSimilarProducts :products="[...data.relationships.similar, ...data.relationships.similar, ...data.relationships.similar] ?? []" /> -->
         </div>
 
         <LoadingIndicator v-if="pending" />
@@ -50,15 +49,10 @@ import { DataKeys } from '~/enums/dataKeys';
 import fetchData, { fetchProductPage } from '~/services/api';
 import type { ProductPage } from '~/types/products.types';
 
-const productStore = useProductStore();
 const openAccordionId = ref('product-description');
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const route = useRoute();
-
-onMounted(async () => {
-    await productStore.fetchProduct();
-})
 
 const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
@@ -69,7 +63,6 @@ const hasGlasses = computed(() => !!images.value.glasses.length);
 setMeta(meta.value);
 
 provide('openAccordionId', openAccordionId);
-provide('productStore', productStore);
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 </script>

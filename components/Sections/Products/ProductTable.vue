@@ -105,6 +105,7 @@ import dimensionsIcon from 'assets/icons/dimensions_icon.svg';
 import colorIcon from 'assets/icons/color_icon.svg';
 import doorsIcon from 'assets/icons/doors_icon.svg';
 import materialIcon from 'assets/icons/material_icon.svg';
+import { groupBy } from '~/utils';
 
 
 const props = defineProps<{
@@ -113,7 +114,9 @@ const props = defineProps<{
     productId: number;
 }>();
 
-const headerIcons = ref({
+const headerIcons: Ref<{
+    [key: string]: string;
+}> = ref({
     'symbol': symbolIcon,
     'dimensions': dimensionsIcon,
     'color': colorIcon,
@@ -127,7 +130,9 @@ const groupedVariants = computed(() => [...groupBy(variants.value.filter(variant
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const headers = computed(() => (
+const headers: Ref<{
+    [key: string]: any;
+}> = computed(() => (
     [
         ...new Set(
             variants.value.map(variant => {
@@ -136,7 +141,7 @@ const headers = computed(() => (
                 }).filter(key => key)
             }).flat()
         )
-    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header))
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
 ))
 
 const clipboardStore = useClipboardStore();

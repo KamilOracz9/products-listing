@@ -9,10 +9,9 @@
 </template>
 
 <script setup>
-const productStore = inject('productStore');
 const modalIsOpen = inject('modalIsOpen');
 const galleryActiveSlide = inject('galleryActiveSlide');
-const gallery = ref(productStore.product.item.images.gallery);
+const gallery = ref([]);
 
 const openModal = (index) => {
     galleryActiveSlide.value = index;

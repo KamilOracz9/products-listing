@@ -1,22 +1,12 @@
-import type { IHeaderMenuItem } from '~/types/header';
-
 type IHeaderStore = {
     menuIsOpen: boolean;
     submenu: string;
-    headerMenu: {
-        isLoading: boolean;
-        items: IHeaderMenuItem[];
-    };
 }
 
 const useHeaderStore = defineStore('header', {
     state: (): IHeaderStore => ({
         menuIsOpen: false,
         submenu: '',
-        headerMenu: {
-            isLoading: true,
-            items: [],
-        },
     }),
     actions: {
         toggleMenuIsOpen(): void {

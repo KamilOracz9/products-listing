@@ -58,7 +58,7 @@ export const getBgColor = (color: Colors) => {
     return bgColor;
 }
 
-export const groupBy = (list: any, keyGetter: (item: object) => string) => {
+export const groupBy = (list: any, keyGetter: (item: any) => string) => {
     const map = new Map();
     list.forEach((item: any) => {
         const key = keyGetter(item);
