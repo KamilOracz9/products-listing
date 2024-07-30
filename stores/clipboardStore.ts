@@ -28,7 +28,7 @@ const useClipboardStore = defineStore('clipboard', {
             await this.fetchItems();
         },
         async fetchItems() {
-            if (this.getIds().length) this.items = [];
+            if (!this.getIds().length) this.items = [];
             else this.items = await fetchClipboardItems(this.getIds());
         },
     },
