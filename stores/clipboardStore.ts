@@ -10,7 +10,7 @@ const useClipboardStore = defineStore('clipboard', {
         items: [],
     }),
     getters: {
-        hasItems: (state) => (!isEmpty(state.items)),
+        hasItems: (state) => (state.items.length),
     },
     actions: {
         getIds() {
@@ -28,7 +28,7 @@ const useClipboardStore = defineStore('clipboard', {
             await this.fetchItems();
         },
         async fetchItems() {
-            if (isEmpty(this.getIds())) this.items = [];
+            if (this.getIds().length) this.items = [];
             else this.items = await fetchClipboardItems(this.getIds());
         },
     },

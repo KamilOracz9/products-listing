@@ -35,7 +35,6 @@ export default defineNuxtConfig({
   modules: [
     'nuxt3-leaflet',
     '@pinia/nuxt',
-    'nuxt-lodash',
     '@nuxtjs/i18n',
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],

@@ -49,7 +49,7 @@ const attributes = computed(() => Object.keys(filters.value).map(key => {
 
 const isDisabled = (active, disabled) => (!active && disabled);
 const isActive = (name, value) => {
-    if(isArray(route.query[`${name}[]`])) return route.query[`${name}[]`].includes(value.toString());
+    if(Array.isArray(route.query[`${name}[]`])) return route.query[`${name}[]`].includes(value.toString());
     else return route.query[`${name}[]`] == value;
 };
 
