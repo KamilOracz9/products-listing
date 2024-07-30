@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import type {PlaceToBuyPage} from '~/types/place-to-buy.types';
 import { fetchShops } from '@/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 
@@ -26,7 +27,7 @@ const mapCenter = ref([52.121, 19.108]);
 const selected = ref(null);
 const page = ref(1);
 
-const { data } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
+const { data }: {data: Ref<PlaceToBuyPage>} = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
 
 const locationsList = ref([...data.value.locationsList]);
 

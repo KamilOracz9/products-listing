@@ -54,7 +54,7 @@ const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const route = useRoute();
 
-const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, () => fetchProductPage(route.params.slug));
+const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);

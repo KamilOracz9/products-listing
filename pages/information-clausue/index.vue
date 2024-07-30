@@ -10,7 +10,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchInformationClausuePage } from '~/services/api';
 import type { InformationClausuePage } from '~/types/information-clausue.types';
 
-const { data } = await useAsyncData(DataKeys.INFORMATION_CLAUSUE_PAGE, () => fetchInformationClausuePage());
+const { data } = await useAsyncData(DataKeys.INFORMATION_CLAUSUE_PAGE, async () => fetchInformationClausuePage());
 const { breadcrumbs, meta, description } = toRefs(data.value as InformationClausuePage);
 
 setMeta(meta.value);

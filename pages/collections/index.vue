@@ -34,7 +34,7 @@ import { fetchCollections } from '~/services/api';
 
 const localePath = useLocalePath();
 
-const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, () => fetchCollections());
+const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections());
 
 const { data: collections } = toRefs(data.value);
 </script>

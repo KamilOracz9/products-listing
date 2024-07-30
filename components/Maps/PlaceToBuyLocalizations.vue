@@ -13,7 +13,7 @@ const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
 
-const { data } = await useAsyncData(DataKeys.COORDS_LIST, () => fetchCoordsList(route.query), { watch: [() => route.query] });
+const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query), { watch: [() => route.query] });
 
 let map = null;
 

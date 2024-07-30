@@ -14,6 +14,11 @@ export interface ProductPage extends Page {
         "technical": IPhoto[];
         "technical_desc": [];
         "doors_open": IPhoto[];
+        "attribute_icons": {
+            image: IPhoto;
+            label: string;
+        }[];
+        "description_icons": IPhoto[];
     },
     "files": Files;
     "similarProducts": []

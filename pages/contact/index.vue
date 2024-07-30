@@ -14,7 +14,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchContactPage } from '~/services/api';
 import type { ContactPage } from '~/types/contact.types';
 
-const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, () => fetchContactPage());
+const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchContactPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as ContactPage);
 
 setMeta(meta.value);

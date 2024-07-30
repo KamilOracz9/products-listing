@@ -44,8 +44,8 @@ const city: Ref<string | null> = ref(null);
 const city_or_code: Ref<string | null> = ref(null);
 const symbol: Ref<string | null> = ref(null);
 
-const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, () => fetchVoivodeships(voievodeship.value as string), { watch: [voievodeship] });
-const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, () => fetchCities(city.value as string), { watch: [city] });
+const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, async () => fetchVoivodeships(voievodeship.value as string), { watch: [voievodeship] });
+const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, async () => fetchCities(city.value as string), { watch: [city] });
 
 provide('voievodeship', voievodeship);
 provide('city', city);

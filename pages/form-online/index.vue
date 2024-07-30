@@ -152,7 +152,7 @@ const onSubmit = async (event: Event) => {
     };
 }
 
-const { data } = await useAsyncData(DataKeys.FORM_ONLINE_PAGE, () => fetchFormOnlinePage());
+const { data } = await useAsyncData(DataKeys.FORM_ONLINE_PAGE, async () => fetchFormOnlinePage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as FormOnlinePage);
 const { section_1, section_2, section_3 } = toRefs(description.value.content);
 </script>

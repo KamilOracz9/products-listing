@@ -58,7 +58,7 @@ const galleryActiveSlide = ref(0);
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
-const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, () => fetchInspirationPage(route.params.slug as string));
+const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string));
 const { breadcrumbs, title, related, image, gallery, description } = toRefs(data.value as InspirationPage);
 
 setMeta({

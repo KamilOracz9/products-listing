@@ -150,7 +150,7 @@ import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
 
 const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
 
-const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, () => fetchMadeToMeasurePage());
+const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);
 const { section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10 } = toRefs(description.value.content);
 

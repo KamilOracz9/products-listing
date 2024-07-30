@@ -67,7 +67,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchAboutPage } from '~/services/api';
 import type { AboutPage } from '~/types/about.types';
 
-const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, () => fetchAboutPage());
+const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, async () => fetchAboutPage());
 const { description, meta, breadcrumbs } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);

@@ -36,7 +36,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchDownload3DPage } from '~/services/api/download';
 import type { DownloadPage } from '~/types/download.types';
 
-const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, () => fetchDownload3DPage());
+const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, async () => fetchDownload3DPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as DownloadPage);
 
 setMeta(meta.value);
