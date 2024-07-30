@@ -18,4 +18,6 @@ const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchCont
 const { breadcrumbs, description, meta, title } = toRefs(data.value as ContactPage);
 
 setMeta(meta.value);
+
+console.log(description.value)
 </script>

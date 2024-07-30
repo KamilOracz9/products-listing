@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Sales } from '@/types/contact.types.ts';
+import type { Sales } from '~/types/contact.types.ts';
 
 const props = defineProps<{
     data: Sales

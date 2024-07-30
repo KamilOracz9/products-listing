@@ -32,8 +32,9 @@
             </div>
 
             <picture class="block my-6 lg:m-0 self-start xl:col-span-2" data-aos="fade-up">
-                <source media="(min-width: 640)" :srcset="image">
-                <img :src="image" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg" alt="">
+                <source media="(min-width: 1024px)" :srcset="image.desktop">
+                <source media="(min-width: 640px)" :srcset="image.tablet">
+                <img :src="image.mobile" class="w-full h-full object-contain rounded-tl-[25px] 2xl:rounded-tl-lg" alt="">
             </picture>
 
             <form method="post" @submit="onSubmit" class="flex flex-col gap-4 lg:col-span-2 xl:col-span-2"

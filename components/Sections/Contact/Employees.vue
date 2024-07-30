@@ -54,7 +54,7 @@ const selected = inject('selected');
 const activeEmployees = computed(() => {
     if (!selected) return employees.value;
     if (!selected.value) return null;
-    return employees.value.filter(employee => employee.regions.includes(selected.value.value));
+    return employees.value.filter(employee => employee.regions.includes(selected.value.value.toString()));
 })
 
 </script>
