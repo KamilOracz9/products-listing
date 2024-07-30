@@ -9,7 +9,7 @@
                     </p>
                     <ul class="flex flex-col gap-4">
                         <li class="bg-gray-2 flex justify-between font-bold p-4 sm:text-lg xl:max-w-[375px]"
-                            v-for="(contact, index) in city.items" :key="index">
+                            v-for="(contact, index) in city" :key="index">
                             <div>
                                 <p>{{ contact.name }}</p>
                                 <p>{{ contact.phone }}</p>

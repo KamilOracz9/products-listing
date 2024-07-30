@@ -24,7 +24,7 @@
             }
         }" />
         <SectionsServiceSection4 :data="{ left: section_3, right: section_4 }" />
-        <SectionsServiceSection5 :installers="Object.values(section_3.installers)" :reklamationForm="section_5" />
+        <SectionsServiceSection5 :installers="section_3.installers" :reklamationForm="section_5" />
     </div>
 </template>
 
