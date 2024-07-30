@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+const L = await import('leaflet');
 import markerIcon from '@/assets/icons/marker-icon-red.png';
 
 const zoom = ref(12);

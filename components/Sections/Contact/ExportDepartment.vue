@@ -6,7 +6,6 @@
 
         <div class="mt-6 md:grid md:grid-cols-5 lg:grid-cols-3 gap-6 lg:gap-10">
             <div data-aos="fade-up" class="md:col-span-2 lg:col-span-1">
-                {{ console.log(image) }}
                 <img class="w-full" :src="image" alt="">
             </div>
             <div data-aos="fade-up" class="md:col-span-3 lg:col-span-2">
