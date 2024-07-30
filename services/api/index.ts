@@ -18,10 +18,10 @@ export * from './collections';
 export default async function fetchData(key: DataKeys, func: () => Promise<any>, watch?: any) {
     const { data, error, pending, refresh } = await useAsyncData(key, func, watch);
 
-    switch (error.value?.statusCode) {
-        case 404: navigateTo({ path: '/' }); break;
-        case 500: navigateTo({ path: '/' }); break;
-    }
+    // switch (error.value?.statusCode) {
+        // case 404: navigateTo({ path: '/' }); break;
+        // case 500: navigateTo({ path: '/' }); break;
+    // }
 
     return { data, pending, refresh };
 };

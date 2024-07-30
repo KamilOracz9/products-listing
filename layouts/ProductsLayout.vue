@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="min-h-[100vh]">
         <div v-if="!pending && !categoryPagePending && !filtersPending">
             <SectionsCommonBreadrumbs v-if="categoryPage?.breadcrumbs" :breadcrumbs="categoryPage.breadcrumbs" />
 
