@@ -6,5 +6,5 @@
 </template>
   
 <script setup lang="ts">
-import ProductsLayout from '@/layouts/ProductsLayout.vue';
+import ProductsLayout from '~/layouts/ProductsLayout.vue';
 </script>

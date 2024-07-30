@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import type {PlaceToBuyPage} from '~/types/place-to-buy.types';
-import { fetchShops } from '@/services/api';
+import { fetchShops } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 
 const route = useRoute();
