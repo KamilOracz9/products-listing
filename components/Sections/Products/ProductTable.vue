@@ -35,9 +35,7 @@
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
-                                <button @click="clipboardStore.toggleItem(variant.id)"
-                                    :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
-                                        class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
+                                <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
@@ -57,9 +55,7 @@
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
-                                <button @click="clipboardStore.toggleItem(variant.id)"
-                                    :aria-label="`${$t('pages.product.toggle-clipboard')}: ${variant?.symbol}`"><img
-                                        class="min-w-4 min-h-4" src="/assets/icons/clipboard.svg" alt=""></button>
+                                <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
@@ -106,7 +102,6 @@ import colorIcon from 'assets/icons/color_icon.svg';
 import doorsIcon from 'assets/icons/doors_icon.svg';
 import materialIcon from 'assets/icons/material_icon.svg';
 import { groupBy } from '~/utils';
-
 
 const props = defineProps<{
     techImages: IPhoto[];

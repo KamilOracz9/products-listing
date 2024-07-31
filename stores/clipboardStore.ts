@@ -31,6 +31,9 @@ const useClipboardStore = defineStore('clipboard', {
             if (!this.getIds() || !this.getIds().length) this.items = [];
             else this.items = await fetchClipboardItems(this.getIds());
         },
+        hasItem(variantId: number) {
+            return !!this.items.find(item => item.variant_id === toValue(variantId))
+        },
     },
 });
 
