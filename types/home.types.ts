@@ -50,6 +50,7 @@ export type Collection = {
     "image": IPhoto,
     "title": string;
     "subtitle": string;
+    "path": string;
 }
 
 export type Box = {

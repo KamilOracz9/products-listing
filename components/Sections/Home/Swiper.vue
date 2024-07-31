@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Swiper :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
+        <Swiper v-if="data" :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
             @slideChange="activeSlide = $event.realIndex" class="relative rounded-tr-lg"
             :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
             :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
@@ -18,18 +18,18 @@
                                 :title="slide.title ?? `New Trendy - slide-${index}`" />
                         </picture> -->
 
-                        <img :src="slide.image?.mobile" class="h-full w-full object-cover aspect-[607/582] sm:aspect-[991/401] lg:aspect-[1680/716]"
-                                :srcset="`${slide.image?.mobile} 640w, ${slide.image?.tablet} 1024w, ${slide.image?.desktop} 1680w`"
+                        <!-- <img v-if="slide.image" :src="slide.image?.mobile" class="h-full w-full object-cover"
+                                :srcset="`${slide.image?.mobile} 639w, ${slide.image?.tablet} 1023w, ${slide.image?.desktop} 1680w`"
                                 sizes="100vw" :alt="slide.title ?? `New Trendy - slide-${index}`"
-                                :title="slide.title ?? `New Trendy - slide-${index}`" />
+                                :title="slide.title ?? `New Trendy - slide-${index}`" /> -->
 
-                        <!-- <picture v-if="slide.image" class="w-full">
+                        <picture v-if="slide.image" class="w-full">
                             <source media="(min-width:1024px)" :srcset="slide.image.desktop">
                             <source media="(min-width:640px)" :srcset="slide.image.tablet">
                             <img :src="slide.image?.mobile" class="h-full w-full object-cover"
                                 sizes="100vw" :alt="slide.title ?? `New Trendy - slide-${index}`"
-                                :title="slide.title ?? `New Trendy - slide-${index}`" />
-                        </picture> -->
+                                :title="slide.title ?? `New Trendy - slide-${index}`" width="1680" height="716" />
+                        </picture>
 
                         <ClientOnly>
                             <video muted loop webkit-playsinline playsinline autoplay v-if="slide.video"
