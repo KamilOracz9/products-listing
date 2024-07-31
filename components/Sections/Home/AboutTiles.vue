@@ -4,7 +4,7 @@
             @mouseenter="activeItem = index" class="px-8 py-6 transition-all sm:p-8" :class="activeItem === index ? 'bg-yellow-2' : 'bg-gray-2'">
             <figure class="flex items-center justify-center ">
                 <div class="max-w-[100px] flex justify-center">
-                    <img :src="aboutTile.icon" width="72" alt="" loading="lazy" />
+                    <img :src="aboutTile.icon" width="73" height="73" alt="" loading="lazy" />
                 </div>
                 <figcaption class="uppercase flex-1 pl-4">
                     <p class="text-2xl">{{ aboutTile.subtitle }}</p>
