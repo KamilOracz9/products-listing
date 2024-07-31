@@ -13,8 +13,4 @@ const props = defineProps<{
 }>();
 
 const { id, symbol } = toRefs(props);
-
-// console.log(clipboardStore.items.find(item => item.variant_id == id))
-// console.log(!!clipboardStore.items.find(item => item.variant_id === toValue(id)))
-console.log()
 </script>

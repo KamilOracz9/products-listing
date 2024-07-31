@@ -50,9 +50,6 @@ const mount = async () => {
         maxZoom: 18,
         minZoom: 6,
         gestureHandling: true,
-        // zoomSnap: 1,
-        // zoomDelta: 1,
-        // wheelPxPerZoomLevel: 200,
     });
 
     layer.addTo(map);
@@ -61,8 +58,9 @@ const mount = async () => {
 
 const drawPoints = async () => {
     const L = await import('leaflet');
+    const { MarkerClusterGroup } = await import('leaflet.markercluster');
 
-    const markers = L.markerClusterGroup({
+    const markers = new MarkerClusterGroup({
         iconCreateFunction: function (cluster) {
             var markers = cluster.getAllChildMarkers();
             var html = '<div class="group-marker">' + markers.length + '</div>';
