@@ -3,6 +3,7 @@ import pages from './lang/pages.json';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+
   nitro: {
     externals: {
       traceOptions: { base: process.cwd() }
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
     }
   },
+
   hooks: {
     'build:manifest': (manifest) => {
       // find the app entry, css list
@@ -25,6 +27,7 @@ export default defineNuxtConfig({
       }
     },
   },
+
   postcss: {
     plugins: {
       'tailwindcss/nesting': 'postcss-nesting',
@@ -32,6 +35,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
   modules: [
     'nuxt3-leaflet',
     '@pinia/nuxt',
@@ -40,15 +44,19 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
   ],
+
   swiper: {
     modules: ['navigation', 'pagination', 'autoplay'],
   },
+
   plugins: [
     '@/plugins/device',
     '@/plugins/error-handler',
     '@/plugins/router',
   ],
+
   pages: true,
+
   i18n: {
     locales: [
       {
@@ -74,4 +82,6 @@ export default defineNuxtConfig({
     customRoutes: 'config',
     pages: pages,
   },
+
+  compatibilityDate: '2024-07-31',
 })

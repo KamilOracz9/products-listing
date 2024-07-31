@@ -6,7 +6,7 @@
                 <HeaderMenu />
             </header>
 
-            <main class="flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0">
+            <main class="min-h-[80vh] flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0">
                 <slot />
             </main>
 

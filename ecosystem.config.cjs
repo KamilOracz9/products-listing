@@ -9,7 +9,7 @@ module.exports = {
     // {
     //   name: 'NewTrendy',
     //   port: '3001',
-    //   script: './.output/server/index.mjs',
+    //   script: 'node ./.output/server/index.mjs',
     // }
   ]
 }
