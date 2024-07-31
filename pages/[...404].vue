@@ -21,5 +21,6 @@ export default {
     text-align: center;
     padding: 120px 0;
     font-weight: 500;
+    min-height: 132px;
 }
 </style>

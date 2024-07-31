@@ -7,6 +7,8 @@ import markerIcon from '@/assets/icons/marker-icon-yellow.png';
 import markerIconRed from '@/assets/icons/marker-icon-red.png';
 import { fetchCoordsList } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
+const L = await import('leaflet');
+
 const route = useRoute();
 
 const zoom = inject('mapZoom');
@@ -57,7 +59,9 @@ const mount = async () => {
     map.scrollWheelZoom.disable();
 }
 
-const drawPoints = () => {
+const drawPoints = async () => {
+    const L = await import('leaflet');
+
     const markers = L.markerClusterGroup({
         iconCreateFunction: function (cluster) {
             var markers = cluster.getAllChildMarkers();

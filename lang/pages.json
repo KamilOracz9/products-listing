@@ -1,86 +1,296 @@
 {
   "search/index": {
     "en": "/search",
-    "pl": "/szukaj"
+    "pl": "/szukaj",
+    "de": "/suche",
+    "fr": "/recherche",
+    "it": "/cerca",
+    "es": "/buscar",
+    "no": "/sok",
+    "sk": "/hladat",
+    "cs": "/hledat",
+    "ro": "/cauta",
+    "ru": "/poisk",
+    "ua": "/пошук"
   },
   "information-clausue/index": {
     "en": "/information-clausue",
-    "pl": "/klauzula-informacyjna"
+    "pl": "/klauzula-informacyjna",
+    "de": "/information-klausel",
+    "fr": "/clause-informative",
+    "it": "/clausola-informativa",
+    "es": "/clausula-informativa",
+    "no": "/informasjon-klausul",
+    "sk": "/informacna-klauzula",
+    "cs": "/informacni-klauzule",
+    "ro": "/clauza-informativa",
+    "ru": "/informacionnoe-uslovie",
+    "ua": "/інформаційна-клаузула"
   },
   "privacy-policy/index": {
     "en": "/privacy-policy",
-    "pl": "/polityka-prywatnosci"
+    "pl": "/polityka-prywatnosci",
+    "de": "/datenschutz",
+    "fr": "/politique-de-confidentialite",
+    "it": "/politica-sulla-privacy",
+    "es": "/politica-de-privacidad",
+    "no": "/personvern",
+    "sk": "/ochrana-sukromia",
+    "cs": "/ochrana-soukromi",
+    "ro": "/politica-de-confidentialitate",
+    "ru": "/politika-konfidencialnosti",
+    "ua": "/політика-конфіденційності"
   },
   "made-to-measure/index": {
     "en": "/made-to-measure",
-    "pl": "/na-wymiar"
+    "pl": "/na-wymiar",
+    "de": "/nach-mass",
+    "fr": "/sur-mesure",
+    "it": "/su-misura",
+    "es": "/hecho-a-medida",
+    "no": "/skreddersydd",
+    "sk": "/na-mieru",
+    "cs": "/na-miru",
+    "ro": "/la-comanda",
+    "ru": "/na-zakaz",
+    "ua": "/на-замовлення"
   },
   "collections/index": {
     "en": "/our-collections",
-    "pl": "/nasze-kolekcje"
+    "pl": "/nasze-kolekcje",
+    "de": "/unsere-kollektionen",
+    "fr": "/nos-collections",
+    "it": "/le-nostre-collezioni",
+    "es": "/nuestras-colecciones",
+    "no": "/våre-kolleksjoner",
+    "sk": "/nase-kolekcie",
+    "cs": "/nase-kolekce",
+    "ro": "/colectiile-noastre",
+    "ru": "/nashi-kollektsii",
+    "ua": "/наші-колекції"
   },
   "form-online/index": {
     "en": "/form-online",
-    "pl": "/formularz-on-line"
+    "pl": "/formularz-on-line",
+    "de": "/online-formular",
+    "fr": "/formulaire-en-ligne",
+    "it": "/modulo-online",
+    "es": "/formulario-en-linea",
+    "no": "/online-skjema",
+    "sk": "/online-formular",
+    "cs": "/online-formular",
+    "ro": "/formular-online",
+    "ru": "/onlayn-forma",
+    "ua": "/онлайн-форма"
   },
   "download/index": {
     "en": "/download",
-    "pl": "/pobierz"
+    "pl": "/pobierz",
+    "de": "/herunterladen",
+    "fr": "/telecharger",
+    "it": "/scarica",
+    "es": "/descargar",
+    "no": "/last-ned",
+    "sk": "/stiahnut",
+    "cs": "/stahnout",
+    "ro": "/descarca",
+    "ru": "/skachat",
+    "ua": "/завантажити"
   },
   "download/3d/index": {
     "en": "/download_files_3d",
-    "pl": "/pobierz_pliki_3d"
+    "pl": "/pobierz_pliki_3d",
+    "de": "/3d_dateien_herunterladen",
+    "fr": "/telecharger_fichiers_3d",
+    "it": "/scarica_file_3d",
+    "es": "/descargar_archivos_3d",
+    "no": "/last_ned_3d_filer",
+    "sk": "/stiahnut_3d_subory",
+    "cs": "/stahnout_3d_soubory",
+    "ro": "/descarca_fisiere_3d",
+    "ru": "/skachat_3d_fayly",
+    "ua": "/завантажити_3d_файли"
   },
   "service/index": {
     "en": "/service",
-    "pl": "/serwis"
+    "pl": "/serwis",
+    "de": "/service",
+    "fr": "/service",
+    "it": "/servizio",
+    "es": "/servicio",
+    "no": "/tjeneste",
+    "sk": "/servis",
+    "cs": "/servis",
+    "ro": "/serviciu",
+    "ru": "/servis",
+    "ua": "/сервіс"
   },
   "products/index": {
     "en": "/products",
-    "pl": "/produkty"
+    "pl": "/produkty",
+    "de": "/produkte",
+    "fr": "/produits",
+    "it": "/prodotti",
+    "es": "/productos",
+    "no": "/produkter",
+    "sk": "/produkty",
+    "cs": "/produkty",
+    "ro": "/produse",
+    "ru": "/produkty",
+    "ua": "/продукти"
   },
   "products/[slug]": {
     "en": "/products/[slug]",
-    "pl": "/produkty/[slug]"
+    "pl": "/produkty/[slug]",
+    "de": "/produkte/[slug]",
+    "fr": "/produits/[slug]",
+    "it": "/prodotti/[slug]",
+    "es": "/productos/[slug]",
+    "no": "/produkter/[slug]",
+    "sk": "/produkty/[slug]",
+    "cs": "/produkty/[slug]",
+    "ro": "/produse/[slug]",
+    "ru": "/produkty/[slug]",
+    "ua": "/продукти/[slug]"
   },
   "products/[category]/index": {
     "en": "/products/[category]",
-    "pl": "/produkty/[category]"
+    "pl": "/produkty/[category]",
+    "de": "/produkte/[category]",
+    "fr": "/produits/[category]",
+    "it": "/prodotti/[category]",
+    "es": "/productos/[category]",
+    "no": "/produkter/[category]",
+    "sk": "/produkty/[category]",
+    "cs": "/produkty/[category]",
+    "ro": "/produse/[category]",
+    "ru": "/produkty/[category]",
+    "ua": "/продукти/[category]"
   },
   "categories/index": {
     "en": "/categories",
-    "pl": "/kategorie"
+    "pl": "/kategorie",
+    "de": "/kategorien",
+    "fr": "/categories",
+    "it": "/categorie",
+    "es": "/categorias",
+    "no": "/kategorier",
+    "sk": "/kategorie",
+    "cs": "/kategorie",
+    "ro": "/categorii",
+    "ru": "/kategorii",
+    "ua": "/категорії"
   },
   "categories/[category]/index": {
     "en": "/categories/[category]",
-    "pl": "/kategorie/[category]"
+    "pl": "/kategorie/[category]",
+    "de": "/kategorien/[category]",
+    "fr": "/categories/[category]",
+    "it": "/categorie/[category]",
+    "es": "/categorias/[category]",
+    "no": "/kategorier/[category]",
+    "sk": "/kategorie/[category]",
+    "cs": "/kategorie/[category]",
+    "ro": "/categorii/[category]",
+    "ru": "/kategorii/[category]",
+    "ua": "/категорії/[category]"
   },
   "place-to-buy/index": {
     "en": "/place-to-buy",
-    "pl": "/gdzie-kupic-nasze-produkty"
+    "pl": "/gdzie-kupic-nasze-produkty",
+    "de": "/verkaufsstellen",
+    "fr": "/points-de-vente",
+    "it": "/dove-comprare",
+    "es": "/donde-comprar",
+    "no": "/hvor-kjøpe",
+    "sk": "/miesta-kde-kupit",
+    "cs": "/mista-kde-koupit",
+    "ro": "/unde-cumpara",
+    "ru": "/gde-kupit",
+    "ua": "/де-купити"
   },
   "inspirations/index": {
     "en": "/inspirations",
-    "pl": "/inspiracje"
+    "pl": "/inspiracje",
+    "de": "/inspirationen",
+    "fr": "/inspirations",
+    "it": "/ispirazioni",
+    "es": "/inspiraciones",
+    "no": "/inspirasjoner",
+    "sk": "/inspiracie",
+    "cs": "/inspirace",
+    "ro": "/inspiratii",
+    "ru": "/vdochnoveniya",
+    "ua": "/натхнення"
   },
   "inspirations/[category]/index": {
     "en": "/inspirations/[category]",
-    "pl": "/inspiracje/[category]"
+    "pl": "/inspiracje/[category]",
+    "de": "/inspirationen/[category]",
+    "fr": "/inspirations/[category]",
+    "it": "/ispirazioni/[category]",
+    "es": "/inspiraciones/[category]",
+    "no": "/inspirasjoner/[category]",
+    "sk": "/inspiracie/[category]",
+    "cs": "/inspirace/[category]",
+    "ro": "/inspiratii/[category]",
+    "ru": "/vdochnoveniya/[category]",
+    "ua": "/натхнення/[category]"
   },
   "inspirations/[category]/[slug]": {
     "en": "/inspirations/[category]/[slug]",
-    "pl": "/inspiracje/[category]/[slug]"
+    "pl": "/inspiracje/[category]/[slug]",
+    "de": "/inspirationen/[category]/[slug]",
+    "fr": "/inspirations/[category]/[slug]",
+    "it": "/ispirazioni/[category]/[slug]",
+    "es": "/inspiraciones/[category]/[slug]",
+    "no": "/inspirasjoner/[category]/[slug]",
+    "sk": "/inspiracie/[category]/[slug]",
+    "cs": "/inspirace/[category]/[slug]",
+    "ro": "/inspiratii/[category]/[slug]",
+    "ru": "/vdochnoveniya/[category]/[slug]",
+    "ua": "/натхнення/[category]/[slug]"
   },
   "for-professionals/index": {
     "en": "/for-professionals",
-    "pl": "/dla-profesjonalistow"
+    "pl": "/dla-profesjonalistow",
+    "de": "/fur-fachleute",
+    "fr": "/pour-les-professionnels",
+    "it": "/per-professionisti",
+    "es": "/para-profesionales",
+    "no": "/for-profesjonelle",
+    "sk": "/pre-profesionalov",
+    "cs": "/pro-profesionaly",
+    "ro": "/pentru-profesionisti",
+    "ru": "/dlya-professionalov",
+    "ua": "/для-професіоналів"
   },
   "contact/index": {
     "en": "/contact",
-    "pl": "/kontakt"
+    "pl": "/kontakt",
+    "de": "/kontakt",
+    "fr": "/contact",
+    "it": "/contatto",
+    "es": "/contacto",
+    "no": "/kontakt",
+    "sk": "/kontakt",
+    "cs": "/kontakt",
+    "ro": "/contact",
+    "ru": "/kontakt",
+    "ua": "/контакт"
   },
   "about/index": {
     "en": "/about",
-    "pl": "/o-firmie"
+    "pl": "/o-firmie",
+    "de": "/uber-uns",
+    "fr": "/a-propos",
+    "it": "/chi-siamo",
+    "es": "/sobre-nosotros",
+    "no": "/om-oss",
+    "sk": "/o-firme",
+    "cs": "/o-firme",
+    "ro": "/despre-noi",
+    "ru": "/o-nas",
+    "ua": "/про-компанію"
   }
 }
