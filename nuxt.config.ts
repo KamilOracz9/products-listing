@@ -3,6 +3,9 @@ import pages from './lang/pages.json';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+  devServer: {
+    port: 3002
+  },
   nitro: {
     serveStatic: true,
     externals: {
