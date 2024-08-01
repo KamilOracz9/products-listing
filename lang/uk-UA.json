@@ -1,0 +1,266 @@
+{
+    "categories": "Категорії",
+    "home-page": "Головна сторінка",
+    "privacy-policy": "Політика конфіденційності",
+    "polish": "Польська",
+    "english": "Англійська",
+    "download": "Завантажити",
+    "search": "Пошук",
+    "clipboard": "Буфер обміну",
+    "no-saved-products": "Немає збережених продуктів",
+    "place-to-buy": "Де купити",
+    "our-websites": "Наші сайти",
+    "products": "Продукти",
+    "what-are-you-looking-for": "Що ви шукаєте?",
+    "search-in-products": "Пошук серед продуктів",
+    "search-in-files": "Пошук серед файлів",
+    "search-in-inspirations": "Пошук серед натхнень",
+    "header-search-message": "Шукаєте продукт за його характеристиками?",
+    "header-clipboard-delete": "Видалити з буфера обміну",
+    "go-to-products": "Перейти до продуктів",
+    "inspirations": "Натхнення",
+    "for-professionals": "Для професіоналів",
+    "about": "Про нас",
+    "about-us": "Про нас",
+    "contact": "Контакт",
+    "news": "Новини",
+    "arrangements-and-inspirations": "Оформлення / натхнення",
+    "advice-and-support": "Поради / підтримка",
+    "faq": "Часто задавані питання",
+    "partner-zone": "Зона партнерів",
+    "architects-zone": "Зона архітекторів",
+    "companys-history": "Історія компанії",
+    "office": "Офіс",
+    "awards-and-implementations": "Нагороди та досягнення",
+    "career": "Кар'єра",
+    "projects-ue": "Проекти ЄС",
+    "sales-service-department": "Відділ продажу",
+    "export-department": "Експортний відділ",
+    "custom-made-products-department": "Відділ індивідуальних замовлень",
+    "spare-parts-department": "Відділ запчастин",
+    "service": "Сервіс",
+    "certified-installers": "Сертифіковані установники",
+    "catalogs": "Каталоги",
+    "files-3d": "3D файли",
+    "atests-and-declarations": "Атестати і декларації",
+    "graphic-files": "Графічні файли",
+    "made-to-measure": "На замовлення",
+    "made-to-measure-home-link": "На замовлення",
+    "more": "Більше",
+    "filtering": "Фільтрація",
+    "sorting": "Сортування",
+    "filter": "Фільтр",
+    "pagination": {
+        "prev": "Попередній",
+        "next": "Наступний"
+    },
+    "reset-filters": "Скинути фільтри",
+    "width": "Ширина",
+    "depth": "Глибина",
+    "height": "Висота",
+    "dimension": "Розмір",
+    "reset": "Скинути",
+    "from": "Від",
+    "to": "До",
+    "or": "або",
+    "send": "Відправити",
+    "navigation": {
+        "made-to-measure": "На замовлення",
+        "all-products": "Всі продукти",
+        "measure": "Розмір",
+        "shape": "Форма",
+        "glass": "Скло",
+        "ceiling-bracket": "Кронштейн для стелі",
+        "walk-in-to-the-ceiling": "Walk-in до стелі",
+        "installation-on-internal-cubes": "Монтаж на внутрішніх кубах",
+        "rail-hanger": "Основна підвісна система",
+        "collections": "Наші колекції",
+        "slug": {
+            "made-to-measure": "На замовлення",
+            "measure": "Розміри",
+            "shape": "Форма",
+            "glass": "Скло",
+            "ceiling-bracket": "Кронштейн для стелі",
+            "walk-in-to-the-ceiling": "Walk-in стеля",
+            "installation-on-internal-cubes": "Куби",
+            "rail-hanger": "Основне обладнання",
+            "news": "Новини",
+            "arrangements-and-inspirations": "Натхнення",
+            "advice-and-support": "Поради і підтримка"
+        }
+    },
+    "filters": {
+        "collections": "Колекції",
+        "doorType": "Тип дверей",
+        "doorsCount": "Кількість дверей",
+        "color": "Колір",
+        "detailFinishing": "Оздоблення деталей",
+        "surfaceFinishing": "Оздоблення поверхні",
+        "shape": "Форма",
+        "material": "Матеріал",
+        "length": "Довжина",
+        "width": "Ширина",
+        "height": "Висота",
+        "series": "Серія",
+        "product_color": "Колір",
+        "product_detail_finishing": "Оздоблення деталей",
+        "product_door_type": "Тип дверей",
+        "product_doors_count": "Кількість дверей",
+        "product_material": "Матеріал",
+        "product_shape": "Форма",
+        "product_surface_finishing": "Оздоблення поверхні",
+        "product_walls_count": "Кількість стін"
+    },
+    "pages": {
+        "search": {
+            "title": "Результати пошуку для: ",
+            "products": "Продукти",
+            "inspirations": "Натхнення",
+            "found-positions": "Знайдені позиції: "
+        },
+        "made-to-measure": {
+            "title": "На замовлення",
+            "configurator": "Конфігурятор кабін",
+            "how-use": "Як користуватися конфігурятором кабін",
+            "transparency-level": "Рівень прозорості",
+            "discretion-level": "Рівень конфіденційності"
+        },
+        "collections": {
+            "title": "Наші колекції",
+            "discover": "Ознайомитися з колекцією"
+        },
+        "form-online": {
+            "title": "Онлайн форма",
+            "form-person": {
+                "title": "ЗАПОВНІТЬ ОСОБОВІ ДАНІ",
+                "placeholders": {
+                    "name": "ПІБ / Назва компанії",
+                    "street": "Вулиця",
+                    "home": "Номер будинку / квартири",
+                    "zip-code": "Поштовий індекс",
+                    "city": "Місто",
+                    "phone": "Телефон",
+                    "email": "Електронна пошта",
+                    "desc": "Опис несправності"
+                },
+                "statements": {
+                    "real-data": "*Підтверджую, що мої дані є добровільними і правильними.",
+                    "processing-data": "*Я ознайомлений(а) з інформаційним повідомленням і даю згоду на обробку моїх даних для обробки рекламації відповідно до Регламенту (ЄС) 2016/679 Європейського парламенту і Ради від 27 квітня 2016 року про захист фізичних осіб у зв'язку з обробкою персональних даних і про вільний рух таких даних, і про скасування Директиви 95/46/ЄС."
+                }
+            },
+            "form-product": {
+                "title": "ЗАПОВНІТЬ ДАНІ ПРОДУКТА",
+                "placeholders": {
+                    "name": "Назва / Код продукту",
+                    "number": "Номер гарантії / Номер чека",
+                    "place": "Місце покупки"
+                },
+                "add-photo": "Додати фотографію",
+                "select-file": "Виберіть файл",
+                "no-file": "Файл не вибрано",
+                "action": "Дія",
+                "warranty": "Гарантійний",
+                "post-warranty": "Післягарантійний"
+            }
+        },
+        "product": {
+            "toggle-clipboard": "Додати до буфера обміну",
+            "generate-product-card": "Створити картку продукту"
+        },
+        "inspirations": {
+            "see-all": "Переглянути всі",
+            "often-questions": "Часто задавані питання",
+            "often-questions-text": "Є питання? Ознайомтеся з нашими відповідями на часті питання."
+        },
+        "about": {
+            "awards": "Нагороди та досягнення",
+            "career": "Кар'єра",
+            "projects": "Проекти ЄС"
+        },
+        "contact": {
+            "select-region": "Оберіть регіон",
+            "address": "Адреса",
+            "phone": "Тел.",
+            "office": "Офіс",
+            "logistic-centrum": "Логістичний центр",
+            "sale-service-department": "Відділ продажу",
+            "export-department": "Експортний відділ",
+            "form": {
+                "write-to-us": "Напишіть нам",
+                "name-and-surname": "ПІБ / Назва компанії",
+                "email-address": "Електронна пошта",
+                "message": "Повідомлення",
+                "agreement": "Надсилаючи повідомлення, я даю згоду на обробку моїх особистих даних компанією New Trendy Spółka z ograniczoną odpowiedzialnością, розташованою в Радомі, вул. Садовнича 7, 26-600 Радом, наданих у контактній формі для зв'язку зі мною і для відповіді на моє повідомлення відповідно до ",
+                "privacy": "політики конфіденційності",
+                "and": " та ",
+                "info-clausue": "інформаційного повідомлення",
+                "accept": "*Я ознайомлений(а) з політикою конфіденційності та інформаційним повідомленням.",
+                "send": "Відправити"
+            },
+            "voievodship": "Область"
+        },
+        "service": {
+            "in-hours": "в робочий час"
+        },
+        "place-to-buy": {
+            "title": "Де купити наші продукти",
+            "select-voievodship": "Оберіть область",
+            "select-city": "Оберіть місто",
+            "input-placeholder": "Введіть назву міста або поштовий індекс",
+            "search-by-my-localization": "Шукати за моєю локацією",
+            "show-on-map": "Показати на карті",
+            "check-directions": "Перевірте маршрут",
+            "locations-not-found": "Магазини в цій зоні не знайдено",
+            "symbol": "Символ"
+        }
+    },
+    "product": {
+        "yellow-box": "Налаштуйте свою кабіну",
+        "desc-colors": "Доступний також у кольорах",
+        "desc-doors": "Спосіб відкриття дверей",
+        "product-description": "Опис продукту",
+        "product-table": "Таблиця продукту",
+        "glass-types": "Типи скла",
+        "download-files": "Файли для завантаження",
+        "parts": "Частини",
+        "similar-products": "Схожі продукти",
+        "symbol": "Символ",
+        "dimensions": "Розміри",
+        "doors": "Двері",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Ширина",
+        "height": "Висота",
+        "length": "Довжина",
+        "add-to-clipboard": "Додати до буфера обміну",
+        "generate-product-card": "Створити картку продукту",
+        "search-in-expositions": "Шукати в експозиціях",
+        "realization-time": {
+            "2-weeks": "Продукт доступний під замовлення. Час виготовлення близько 2 тижнів",
+            "4-weeks": "Продукт доступний під замовлення. Час виготовлення близько 4 тижнів",
+            "6-weeks": "Продукт доступний під замовлення. Час виготовлення близько 6 тижнів"
+        },
+        "toggle-toggle-clipboard": "Переключити продукт у буфер обміну"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "В нашій пропозиції ви знайдете безліч кольорів фурнітури для душових кабін:",
+            "variants": "Також у нас є великий вибір варіантів у наших колекціях:"
+        },
+        "additional-content": {
+            "use-searching": "Використовуйте наш пошуковий механізм, щоб знайти магазини з душовими кабінами."
+        },
+        "map": {
+            "title": "Знайти фізичний магазин",
+            "placeholder": "Введіть назву міста або поштовий індекс"
+        }
+    }
+}

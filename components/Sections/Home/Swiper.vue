@@ -78,7 +78,7 @@ const sliderConfig = {
     'loop': true,
     'effect': 'creative',
     'autoplay': {
-        delay: 1000000,
+        delay: 10000,
         disableOnInteraction: true,
     },
     'creativeEffect': {
@@ -98,7 +98,7 @@ const sliderConfig = {
         clickable: true,
         el: '.swiper-pagination',
         renderBullet: function (index: number, className: string) {
-            return `<span class="${className}">${data.value[index].tab ?? ''}</span>`;
+            return `<span class="${className}">${data.value[index]?.tab ?? ''}</span>`;
         },
     }
 };

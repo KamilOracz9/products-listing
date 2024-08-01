@@ -44,8 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import device from '@/plugins/device';
-import { useGlobalStore } from '@/stores';
+import device from '~/plugins/device';
+import { useGlobalStore } from '~/stores';
 
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();

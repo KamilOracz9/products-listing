@@ -3,8 +3,8 @@ import pages from './lang/pages.json';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-
   nitro: {
+    serveStatic: true,
     externals: {
       traceOptions: { base: process.cwd() }
     },
@@ -68,6 +68,56 @@ export default defineNuxtConfig({
         code: 'pl',
         iso: 'pl_PL',
         file: 'pl-PL.json',
+      },
+      {
+        code: 'de',
+        iso: 'de_DE',
+        file: 'de-DE.json',
+      },
+      // {
+      //   code: 'fr',
+      //   iso: 'fr_FR',
+      //   file: 'fr-FR.json',
+      // },
+      // {
+      //   code: 'it',
+      //   iso: 'it_IT',
+      //   file: 'it-IT.json',
+      // },
+      // {
+      //   code: 'es',
+      //   iso: 'es_ES',
+      //   file: 'es-ES.json',
+      // },
+      // {
+      //   code: 'no',
+      //   iso: 'no_NO',
+      //   file: 'no-NO.json',
+      // },
+      // {
+      //   code: 'cs',
+      //   iso: 'cs_CZ',
+      //   file: 'cs-CZ.json',
+      // },
+      {
+        code: 'ro',
+        iso: 'ro_RO',
+        file: 'ro-RO.json',
+      },
+      // {
+      //   code: 'ru',
+      //   iso: 'ru_RU',
+      //   file: 'ru-RU.json',
+      // },
+      {
+        code: 'uk',
+        iso: 'uk_UA',
+        file: 'uk-UA.json',
+      },
+      {
+        code: 'sk',
+        iso: 'sk_SK',
+        file: 'sk-SK.json',
       },
     ],
     defaultLocale: 'pl',

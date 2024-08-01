@@ -156,7 +156,7 @@
 
             <div class="w-full justify-center flex lg:w-fit lg:justify-start">
                 <NuxtLink :to="localePath('place-to-buy')" :aria-label="$t('place-to-buy')"
-                    class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:w-[150px] 2xl:text-xl 2xl:py-2">
+                    class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:min-w-[150px] 2xl:text-xl 2xl:py-2">
                     {{ $t('place-to-buy') }}</NuxtLink>
             </div>
         </div>
@@ -180,6 +180,8 @@ const { header } = toRefs(globalStore);
 
 const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
 const categories: Ref = ref([]);
+
+console.log('asd')
 
 const getLink = (item: any, subitem: any) => {
 
