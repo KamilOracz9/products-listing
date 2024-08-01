@@ -69,6 +69,7 @@ import type { Slide } from '~/types/home.types';
 const props = defineProps<{
     data: Slide[];
 }>();
+
 const { data } = toRefs(props);
 
 const activeSlide = ref(0);
