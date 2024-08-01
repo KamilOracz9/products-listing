@@ -11,7 +11,7 @@ import { fetchPrivacyPolicyPage } from '~/services/api';
 import type { PrivacyPolicyPage } from '~/types/privacy-policy.types';
 
 const { data } = await useAsyncData(DataKeys.PRIVACY_POLICY_PAGE, async () => fetchPrivacyPolicyPage());
-const { breadcrumbs, title, description, meta } = toRefs(data.value as PrivacyPolicyPage);
+const { breadcrumbs, description, meta } = toRefs(data.value as PrivacyPolicyPage);
 
 setMeta(meta.value);
 </script>

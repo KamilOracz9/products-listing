@@ -181,8 +181,6 @@ const { header } = toRefs(globalStore);
 const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
 const categories: Ref = ref([]);
 
-console.log('asd')
-
 const getLink = (item: any, subitem: any) => {
 
     if (subitem.path) return subitem.path;

@@ -11,6 +11,7 @@ import BreuerBold from '~/assets/fonts/BreuerText-Bold.ttf?url';
 import BreuerLight from '~/assets/fonts/BreuerText-Light.ttf?url';
 import BreuerMedium from '~/assets/fonts/BreuerText-Medium.ttf?url';
 import BreuerRegular from '~/assets/fonts/BreuerText-Regular.ttf?url';
+import { fetchLayoutData } from './services/api/layout';
 
 const i18n = useI18n();
 const router = useRouter();

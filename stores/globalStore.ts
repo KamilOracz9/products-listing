@@ -15,7 +15,7 @@ const useGlobalStore = defineStore('global', {
         isLoading: true,
         locales: [
             {
-                label: 'Polski',
+                label: 'Polish',
                 code: 'pl',
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/pl.svg',
             },
@@ -25,7 +25,7 @@ const useGlobalStore = defineStore('global', {
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/en.svg',
             },
             {
-                label: 'Deutsch',
+                label: 'German',
                 code: 'de',
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/de.svg',
             },
@@ -50,17 +50,17 @@ const useGlobalStore = defineStore('global', {
             //     flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/no.svg',
             // },
             {
-                label: 'Slovenský',
+                label: 'Slovak',
                 code: 'sk',
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/sk.svg',
             },
             // {
-                // label: 'čeština',
-                // code: 'cs',
-                // flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/cs.svg',
+            // label: 'čeština',
+            // code: 'cs',
+            // flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/cs.svg',
             // },
             {
-                label: 'Ruminski',
+                label: 'Romanian',
                 code: 'ro',
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/ro.svg',
             },
@@ -70,7 +70,7 @@ const useGlobalStore = defineStore('global', {
             //     flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/ru.svg',
             // },
             {
-                label: 'українська',
+                label: 'Ukrainian',
                 code: 'uk',
                 flagUrl: 'https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/uk.svg',
             },
@@ -84,15 +84,24 @@ const useGlobalStore = defineStore('global', {
         },
     }),
     actions: {
-        async fetchGlobalData() {
+        async fetchGlobalData(locale?: string) {
             this.isLoading = true;
 
-            fetchLayoutData(1).then(response => {
-                this.header = response.header;
-                this.footer = response.footer;
-                this.socials = response.socials;
-            }).finally(() => this.isLoading = false);
-        }
+            if (locale) {
+                await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/cms/layout?site_id=1`).then(response => {
+                    this.header = response.header;
+                    this.footer = response.footer;
+                    this.socials = response.socials;
+                }).finally(() => this.isLoading = false);
+            }
+            else {
+                await fetchLayoutData(1).then(response => {
+                    this.header = response.header;
+                    this.footer = response.footer;
+                    this.socials = response.socials;
+                }).finally(() => this.isLoading = false);
+            }
+        },
     },
 });
 
