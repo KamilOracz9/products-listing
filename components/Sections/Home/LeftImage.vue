@@ -8,7 +8,7 @@
         </picture>
         <div class="uppercase p-6 lg:pl-0 lg:max-w-[90%] xl:max-w-[70%]">
             <p class="text-lg xl:text-[1.625rem]">{{ data.subtitle }}</p>
-            <p class="text-[1.75rem] mt-2 xl:text-[3.75rem] xl:mt-8">{{ data.title }}</p>
+            <p class="text-[1.75rem] mt-2 leading-[100%] xl:text-[3.75rem] xl:mt-8">{{ data.title }}</p>
             <p class="normal-case py-6 text-sm lg:text-base">{{ data.text }}</p>
             <NuxtLink :to="data.path" class="flex gap-2 text-[1.25rem] font-medium" :aria-label="data.title">{{
                 data.more_text }}

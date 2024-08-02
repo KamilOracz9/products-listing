@@ -23,15 +23,16 @@
 
 <script setup lang="ts">
 import Loading from '~/components/Loading.vue';
-import LoadingIndicator from '~/components/LoadingIndicator.vue';
 
 const globalStore = useGlobalStore();
 const { locale, locales } = useI18n();
+const route = useRoute();
 
 watch(locale, async (value: string) => {
     await globalStore.fetchGlobalData(locales.value.filter(({ code }: { code: string }) => code === value)[0].iso);
-});
 
+    if (route.name.split('___')[0] !== 'categories') window.history.pushState({}, '', route.path);
+});
 
 onMounted(async () => {
     await globalStore.fetchGlobalData();

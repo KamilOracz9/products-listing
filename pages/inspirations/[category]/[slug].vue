@@ -51,6 +51,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import fetchData, { fetchInspirationPage } from '~/services/api';
 import type { InspirationPage } from '~/types/inspirations.types';
 
+const localePath = useLocalePath();
 const route = useRoute();
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
@@ -66,6 +67,10 @@ setMeta({
     meta_keywords: title.value,
     meta_description: title.value,
 });
+
+onMounted(() => {
+    window.history.pushState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path));
+})
 </script>
 
 <style lang="css">

@@ -23,7 +23,17 @@ import { fetchInspirationCategoryPage } from '~/services/api';
 import type { InspirationCategoryPage } from '~/types/inspirations.types';
 
 const route = useRoute();
+const localeRoute = useLocaleRoute();
+const {locale} = useI18n();
 
 const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORY_PAGE, async () => fetchInspirationCategoryPage(route.params.category as string));
-const { breadcrumbs, items, title } = toRefs(data.value as InspirationCategoryPage);
+const { breadcrumbs, items, title, slug } = toRefs(data.value as InspirationCategoryPage);
+const linkPath = computed(() => {
+    const route = localeRoute('inspirations', locale.value)
+    return route != null ? route.path : '/'
+})
+
+onMounted(() => {
+    window.history.pushState({}, '', linkPath.value + `/${slug.value}`);
+})
 </script>

@@ -1,7 +1,7 @@
 <template>
     <li>
         <NuxtLink :aria-label="article.title"
-            :to="localePath({ name: 'inspirations' }) + `/${route.params.category}/${article.slug}`">
+            :to="localePath({ name: 'inspirations' }) + `/${route.params.category ?? categorySlug}/${article.slug}`">
             <picture>
                 <source media="(min-width: 1280px)" :srcset="article.image.tablet">
                 <source media="(min-width: 768px)" :srcset="article.image.mobile">
@@ -32,7 +32,8 @@ const localePath = useLocalePath();
 const route = useRoute();
 const props = defineProps<{
     article: Article;
+    categorySlug?: string;
 }>();
 
-const { article } = toRefs(props);
+const { article, categorySlug } = toRefs(props);
 </script>

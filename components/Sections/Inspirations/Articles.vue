@@ -1,6 +1,6 @@
 <template>
     <ul class="gap-10 grid md:grid-cols-3" :class="listClass ? listClass : ''">
-        <SectionsInspirationsArticlesItem v-for="(article, index) in articles" :key="index" :article="article"
+        <SectionsInspirationsArticlesItem :categorySlug="categorySlug" v-for="(article, index) in articles" :key="index" :article="article"
             data-aos="fade-up" :data-aos-delay="100 * index" />
     </ul>
 </template>
@@ -11,9 +11,10 @@ import type { Article } from '~/types/inspirations.types';
 const props = withDefaults(defineProps<{
     listClass?: string;
     articles: Article[];
+    categorySlug: string;
 }>(), {
     listClass: '',
 });
 
-const { articles, listClass } = toRefs(props);
+
 </script>

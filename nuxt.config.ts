@@ -4,10 +4,9 @@ import pages from './lang/pages.json';
 export default defineNuxtConfig({
   ssr: true,
   devServer: {
-    port: 3004
+    port: 3008
   },
   nitro: {
-    serveStatic: true,
     externals: {
       traceOptions: { base: process.cwd() }
     },
