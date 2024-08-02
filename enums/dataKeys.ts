@@ -26,4 +26,5 @@ export enum DataKeys {
     CLIPBOARD_ITEMS_LIST = 'clipboard-items-list',
 
     SEARCH_RESULT = 'search-result',
+    LAYOUT = 'layout',
 }

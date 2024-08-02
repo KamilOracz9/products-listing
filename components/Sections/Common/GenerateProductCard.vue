@@ -1,6 +1,6 @@
 <template>
     <NuxtLink
-        :to="`${useAppConfig().public.base}/pim/products/${productId}/variants/${variantId}/export-to-pdf?locale=${getLocaleIso}`"
+        :to="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variantId}/export-to-pdf?locale=${getLocaleIso}`"
         target="_blank">
         <img src="/assets/icons/product_card.svg" alt="" class="min-w-4 min-h-4">
     </NuxtLink>

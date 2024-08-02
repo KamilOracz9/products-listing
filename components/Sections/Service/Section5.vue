@@ -27,10 +27,12 @@
             <p class="section-text">{{ reklamationForm.text }}</p>
             <ul class="flex flex-col gap-4 [&>li>a]:justify-between [&>li>a]:border-black">
                 <li class="xl:max-w-[344px]">
-                    <ButtonsTransparent tagType="link" :url="localePath({name: 'download'})" :label="reklamationForm.button_1" />
+                    <ButtonsTransparent tagType="link" :url="localePath({ name: 'download' })"
+                        :label="reklamationForm.button_1" />
                 </li>
                 <li class="xl:max-w-[344px]">
-                    <ButtonsTransparent tagType="link" :url="localePath({name: 'form-online'})" :label="reklamationForm.button_2" />
+                    <ButtonsTransparent tagType="link" :url="localePath({ name: 'form-online' })"
+                        :label="reklamationForm.button_2" />
                 </li>
             </ul>
         </div>
@@ -48,7 +50,9 @@ const selected = inject<{
 }>('selected');
 
 const props = defineProps<{
-    installers: Installer[];
+    installers: {
+        [key: string]: Installer
+    };
     reklamationForm: {
         title: string;
         text: string;

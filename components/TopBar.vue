@@ -4,7 +4,7 @@
         <!-- Select -->
         <div class="cursor-pointer relative z-10" @click="toggle($el)" @mouseenter="toggle($el)"
             @mouseleave="toggle($el)">
-            <span class="flex gap-2 ml-2 items-center leading-[25px] z-10">
+            <span class="flex gap-2 ml-2 items-center leading-[25px] z-10 capitalize">
                 <span class="group-hover:animate-arrow-rotate-in">
                     <LazyArrow :width="10" :height="6" :direction="'down'" />
                 </span>
@@ -15,11 +15,11 @@
             <ul
                 class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                 <li class="p-3" v-for="item in globalStore.locales">
-                    <div @click="setLocale(item.code)" class="flex gap-2 group/dropdown-item">
+                    <NuxtLink :to="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
                         <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
-                        <span class="transition-opacity group-hover/dropdown-item:opacity-[70%]">{{
+                        <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                             $t(item.label.toLowerCase()) }}</span>
-                    </div>
+                    </NuxtLink>
                 </li>
             </ul>
         </div>
@@ -44,12 +44,13 @@
 </template>
 
 <script setup lang="ts">
-import device from '@/plugins/device';
-import { useGlobalStore } from '@/stores';
+import device from '~/plugins/device';
+import { useGlobalStore } from '~/stores';
 
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
-const { locale, setLocale } = useI18n();
+const { locale } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();

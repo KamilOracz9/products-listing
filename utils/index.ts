@@ -34,17 +34,20 @@ export const setMeta = (meta: Meta) => {
     })
 }
 
-export const slugify = (string: string) => {
-    return String(string)
+export const slugify = (string: string, withSpecialChars: boolean = true): string => {
+    let transformedString = String(string)
         .replace('/', '')
         .replace('`', '')
         .normalize('NFKD') // split accented characters into their base characters and diacritical marks
         .replace(/[\u0300-\u036f]/g, '') // remove all the accents, which happen to be all in the \u03xx UNICODE block.
         .trim() // trim leading or trailing whitespace
         .toLowerCase() // convert to lowercase
-        // .replace(/[^a-z0-9 -]/g, '') // remove non-alphanumeric characters
         .replace(/\s+/g, '-') // replace spaces with hyphens
         .replace(/-+/g, '-'); // remove consecutive hyphens
+
+    if(!withSpecialChars) transformedString = transformedString.replace(/[^a-z0-9 -]/g, '') // remove non-alphanumeric characters
+
+    return transformedString;
 }
 
 export const getBgColor = (color: Colors) => {

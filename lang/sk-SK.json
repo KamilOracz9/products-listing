@@ -1,0 +1,272 @@
+{
+    "categories": "Kategórie",
+    "home-page": "Domovská stránka",
+    "privacy-policy": "Zásady ochrany osobných údajov",
+    "polish": "Poľský",
+    "english": "Anglický",
+    "german": "Nemecký",
+    "slovak": "Slovenský",
+    "romanian": "Rumunský",
+    "ukrainian": "Ukrajinský",
+    "download": "Stiahnuť",
+    "search": "Hľadať",
+    "clipboard": "Schránka",
+    "no-saved-products": "Žiadne uložené produkty",
+    "place-to-buy": "Kde kúpiť",
+    "our-websites": "Naše webové stránky",
+    "products": "Produkty",
+    "what-are-you-looking-for": "Napíšte, čo hľadáte",
+    "search-in-products": "Hľadať v produktoch",
+    "search-in-files": "Hľadať v súboroch",
+    "search-in-inspirations": "Hľadať v inšpiráciách",
+    "header-search-message": "Chcete presne vyhľadať produkt podľa jeho vlastností?",
+    "header-clipboard-delete": "Odstrániť zo schránky",
+    "go-to-products": "Prejsť na produkty",
+    "inspirations": "Inšpirácie",
+    "for-professionals": "Pre profesionálov",
+    "about": "O nás",
+    "about-us": "O nás",
+    "contact": "Kontakt",
+    "news": "Novinky",
+    "arrangements-and-inspirations": "Aranžmány / inšpirácie",
+    "advice-and-support": "Poradenstvo / podpora",
+    "faq": "FAQ",
+    "partner-zone": "Partner zona",
+    "architects-zone": "Architektonická zóna",
+    "companys-history": "História spoločnosti",
+    "office": "Kancelária",
+    "awards-and-implementations": "Ocenenia a vyznamenania",
+    "career": "Kariéra",
+    "projects-ue": "EU projekty",
+    "sales-service-department": "Oddelenie predaja",
+    "export-department": "Exportné oddelenie",
+    "custom-made-products-department": "Oddelenie zakázkových produktov",
+    "spare-parts-department": "Oddelenie náhradných dielov",
+    "service": "Servis",
+    "certified-installers": "Certifikovaní inštalatéri",
+    "catalogs": "Katalógy",
+    "files-3d": "3D súbory",
+    "atests-and-declarations": "Certifikáty a vyhlásenia",
+    "graphic-files": "Grafické súbory",
+    "made-to-measure": "Spravené na mieru",
+    "made-to-measure-home-link": "Spravené na mieru",
+    "more": "Viac",
+    "filtering": "Filtrovanie",
+    "sorting": "Triedenie",
+    "filter": "Filtrovať",
+    "pagination": {
+        "prev": "Predchádzajúca",
+        "next": "Ďalšia"
+    },
+    "reset-filters": "Obnoviť filtre",
+    "width": "Šírka",
+    "depth": "Hĺbka",
+    "height": "Výška",
+    "dimension": "Rozmer",
+    "reset": "Obnoviť",
+    "from": "Od",
+    "to": "Do",
+    "or": "alebo",
+    "send": "Odoslať",
+    "navigation": {
+        "made-to-measure": "Na mieru",
+        "all-products": "Všetky produkty",
+        "measure": "Rozmer",
+        "shape": "Tvar",
+        "glass": "Sklo",
+        "ceiling-bracket": "Stropné uchytenie",
+        "walk-in-to-the-ceiling": "Walk-in až po strop",
+        "installation-on-internal-cubes": "Inštalácia na vnútorné kocky",
+        "rail-hanger": "Hlavný zavesenie",
+        "collections": "Naše kolekcie",
+        "slug": {
+            "made-to-measure": "Na mieru",
+            "measure": "Rozmery",
+            "shape": "Tvar",
+            "glass": "Sklo",
+            "ceiling-bracket": "Stropné uchytenie",
+            "walk-in-to-the-ceiling": "Walk-in strop",
+            "installation-on-internal-cubes": "Kocky",
+            "rail-hanger": "Hlavný zavesenie",
+            "news": "Novinky",
+            "arrangements-and-inspirations": "Inšpirácie",
+            "advice-and-support": "Poradenstvo a podpora"
+        }
+    },
+    "filters": {
+        "collections": "Kolekcie",
+        "doorType": "Typ dverí",
+        "doorsCount": "Počet dverí",
+        "color": "Farba",
+        "detailFinishing": "Dokončenie detailov",
+        "surfaceFinishing": "Dokončenie povrchu",
+        "shape": "Tvar",
+        "material": "Materiál",
+        "length": "Dĺžka",
+        "width": "Šírka",
+        "height": "Výška",
+        "series": "Séria",
+        "product_color": "Farba",
+        "product_detail_finishing": "Dokončenie detailov",
+        "product_door_type": "Typ dverí",
+        "product_doors_count": "Počet dverí",
+        "product_material": "Materiál",
+        "product_shape": "Tvar",
+        "product_surface_finishing": "Dokončenie",
+        "product_walls_count": "Počet stien"
+    },
+    "pages": {
+        "search": {
+            "title": "Výsledky vyhľadávania pre: ",
+            "products": "Produkty",
+            "inspirations": "Inšpirácie",
+            "found-positions": "Nájdené pozície: "
+        },
+        "made-to-measure": {
+            "title": "Na mieru",
+            "configurator": "Konfigurátor kabín",
+            "how-use": "Ako používať konfigurátor kabín",
+            "transparency-level": "Úroveň priehľadnosti",
+            "discretion-level": "Úroveň diskrétnosti"
+        },
+        "collections": {
+            "title": "Naše kolekcie",
+            "discover": "Objavte kolekciu"
+        },
+        "form-online": {
+            "title": "Online formulár",
+            "form-person": {
+                "title": "VYPLŇTE OSOBNÉ ÚDAJE",
+                "placeholders": {
+                    "name": "Meno a priezvisko / Názov firmy",
+                    "street": "Ulica",
+                    "home": "Číslo domu / bytu",
+                    "zip-code": "PSČ",
+                    "city": "Mesto",
+                    "phone": "Telefón",
+                    "email": "Emailová adresa",
+                    "desc": "Popis poškodenia"
+                },
+                "statements": {
+                    "real-data": "*Vyhlasujem, že svoje údaje poskytujem dobrovoľne a že uvedené údaje sú pravdivé.",
+                    "processing-data": "*Oboznámil/a som sa s informačnou doložkou a súhlasím so spracovaním svojich údajov na účely vybavenia reklamácie v súlade s Nariadením Európskeho parlamentu a Rady (EÚ) 2016/679 z 27. apríla 2016 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe týchto údajov a o zrušení smernice 95/46/ES."
+                }
+            },
+            "form-product": {
+                "title": "VYPLŇTE ÚDAJE O PRODUKTE",
+                "placeholders": {
+                    "name": "Názov / Kód produktu",
+                    "number": "Číslo záruky / Číslo dokladu o nákupe",
+                    "place": "Miesto nákupu"
+                },
+                "add-photo": "Pridať fotografiu",
+                "select-file": "Vybrať súbor",
+                "no-file": "Súbor nebol vybraný",
+                "action": "Akcia",
+                "warranty": "Záruka",
+                "post-warranty": "Po záruke"
+            }
+        },
+        "product": {
+            "toggle-clipboard": "Pridať do schránky",
+            "generate-product-card": "Generovať kartu produktu"
+        },
+        "inspirations": {
+            "see-all": "Zobraziť všetky",
+            "often-questions": "Často kladené otázky",
+            "often-questions-text": "Máte otázky? Pozrite si naše odpovede na najčastejšie kladené otázky."
+        },
+        "about": {
+            "awards": "Ocenenia a vyznamenania",
+            "career": "Kariéra",
+           
+
+ "projects": "EU projekty"
+        },
+        "contact": {
+            "select-region": "Vyberte región",
+            "address": "Adresa",
+            "phone": "Tel.",
+            "office": "Kancelária",
+            "logistic-centrum": "Logistické centrum",
+            "sale-service-department": "Oddelenie predaja",
+            "export-department": "Exportné oddelenie",
+            "form": {
+                "write-to-us": "Napíšte nám",
+                "name-and-surname": "Meno a priezvisko / Názov firmy",
+                "email-address": "Emailová adresa",
+                "message": "Správa",
+                "agreement": "Odoslaním správy súhlasím so spracovaním mojich osobných údajov spoločnosťou New Trendy Sp. z o.o. so sídlom v Radome, ul. Sadownicza 7, 26-600 Radom, uvedených vo kontaktnom formulári na účely kontaktovania so mnou a odpovedania na moju správu v súlade s ",
+                "privacy": "zásadami ochrany osobných údajov",
+                "and": " a ",
+                "info-clausue": "informačnou doložkou",
+                "accept": "*Oboznámil/a som sa so zásadami ochrany osobných údajov a informačnou doložkou.",
+                "send": "Odoslať"
+            },
+            "voievodship": "Kraj"
+        },
+        "service": {
+            "in-hours": "v pracovných hodinách"
+        },
+        "place-to-buy": {
+            "title": "Kde kúpiť naše produkty",
+            "select-voievodship": "Vyberte kraj",
+            "select-city": "Vyberte mesto",
+            "input-placeholder": "Zadajte názov mesta alebo PSČ",
+            "search-by-my-localization": "Vyhľadať podľa mojej polohy",
+            "show-on-map": "Zobraziť na mape",
+            "check-directions": "Skontrolovať cestu",
+            "locations-not-found": "Obchody v tejto oblasti neboli nájdené",
+            "symbol": "Symbol"
+        }
+    },
+    "product": {
+        "yellow-box": "Prispôsobte si svoju kabínu",
+        "desc-colors": "K dispozícii aj v farbách",
+        "desc-doors": "Spôsob otvárania dverí",
+        "product-description": "Popis produktu",
+        "product-table": "Tabuľka produktu",
+        "glass-types": "Typy skla",
+        "download-files": "Stiahnuť súbory",
+        "parts": "Diely",
+        "similar-products": "Podobné produkty",
+        "symbol": "Symbol",
+        "dimensions": "Rozmery",
+        "doors": "Dvere",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Šírka",
+        "height": "Výška",
+        "length": "Dĺžka",
+        "add-to-clipboard": "Pridať do schránky",
+        "generate-product-card": "Generovať kartu produktu",
+        "search-in-expositions": "Hľadať v expozíciách",
+        "realization-time": {
+            "2-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 2 týždne",
+            "4-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 4 týždne",
+            "6-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 6 týždňov"
+        },
+        "toggle-toggle-clipboard": "Prepnúť produkt v schránke"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "V našej ponuke nájdete mnoho farieb príslušenstva k sprchovým kabínam:",
+            "variants": "Máte tiež široký výber variantov v kolekciách:"
+        },
+        "additional-content": {
+            "use-searching": "Použite náš vyhľadávač na nájdenie predajní so sprchovými kabínami."
+        },
+        "map": {
+            "title": "Nájdite kamenný obchod",
+            "placeholder": "Zadajte názov mesta alebo PSČ"
+        }
+    }
+}

@@ -15,11 +15,24 @@
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>
         </div>
+        <div class="flex min-h-screen items-center justify-center" v-if="globalStore.isLoading">
+            <Loading />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import Loading from '~/components/Loading.vue';
+
 const globalStore = useGlobalStore();
+const { locale, locales } = useI18n();
+const route = useRoute();
+
+watch(locale, async (value: string) => {
+    await globalStore.fetchGlobalData(locales.value.filter(({ code }: { code: string }) => code === value)[0].iso);
+
+    if (route.name.split('___')[0] !== 'categories') window.history.pushState({}, '', route.path);
+});
 
 onMounted(async () => {
     await globalStore.fetchGlobalData();

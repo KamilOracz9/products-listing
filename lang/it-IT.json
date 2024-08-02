@@ -1,0 +1,265 @@
+{
+    "categories": "Categorie",
+    "home-page": "Pagina principale",
+    "privacy-policy": "Politica sulla privacy",
+    "polish": "Polacco",
+    "english": "Inglese",
+    "download": "Scarica",
+    "search": "Cerca",
+    "clipboard": "Appunti",
+    "no-saved-products": "Nessun prodotto salvato",
+    "place-to-buy": "Dove comprare",
+    "our-websites": "I nostri siti",
+    "products": "Prodotti",
+    "what-are-you-looking-for": "Scrivi cosa stai cercando",
+    "search-in-products": "Cerca nei prodotti",
+    "search-in-files": "Cerca nei file",
+    "search-in-inspirations": "Cerca nelle ispirazioni",
+    "header-search-message": "Vuoi cercare un prodotto per caratteristiche?",
+    "header-clipboard-delete": "Rimuovi dagli appunti",
+    "go-to-products": "Vai ai prodotti",
+    "inspirations": "Ispirazioni",
+    "for-professionals": "Per i professionisti",
+    "about": "Informazioni",
+    "about-us": "Chi siamo",
+    "contact": "Contatti",
+    "news": "Notizie",
+    "arrangements-and-inspirations": "Arrangiamenti / Ispirazioni",
+    "advice-and-support": "Consigli / Supporto",
+    "faq": "FAQ",
+    "partner-zone": "Zona partner",
+    "architects-zone": "Zona architetti",
+    "companys-history": "Storia dell'azienda",
+    "office": "Ufficio",
+    "awards-and-implementations": "Premi e realizzazioni",
+    "career": "Carriera",
+    "projects-ue": "Progetti UE",
+    "sales-service-department": "Dipartimento commerciale",
+    "export-department": "Dipartimento export",
+    "custom-made-products-department": "Dipartimento prodotti su misura",
+    "spare-parts-department": "Dipartimento pezzi di ricambio",
+    "service": "Servizio",
+    "certified-installers": "Installatori certificati",
+    "catalogs": "Cataloghi",
+    "files-3d": "File 3D",
+    "atests-and-declarations": "Certificati e dichiarazioni",
+    "graphic-files": "File grafici",
+    "made-to-measure": "Cabine doccia su misura",
+    "made-to-measure-home-link": "Cabine doccia su misura",
+    "more": "Di più",
+    "filtering": "Filtraggio",
+    "sorting": "Ordinamento",
+    "filter": "Filtro",
+    "pagination": {
+        "prev": "Precedente",
+        "next": "Successivo"
+    },
+    "reset-filters": "Reimposta filtri",
+    "width": "Larghezza",
+    "depth": "Profondità",
+    "height": "Altezza",
+    "dimension": "Dimensione",
+    "reset": "Reimposta",
+    "from": "Da",
+    "to": "A",
+    "or": "o",
+    "send": "Invia",
+    "navigation": {
+        "made-to-measure": "Su misura",
+        "all-products": "Tutti i prodotti",
+        "measure": "Misura",
+        "shape": "Forma",
+        "glass": "Vetro",
+        "ceiling-bracket": "Staffa per soffitto",
+        "walk-in-to-the-ceiling": "Walk-In al soffitto",
+        "installation-on-internal-cubes": "Installazione su cubi interni",
+        "rail-hanger": "Supporto per binario",
+        "collections": "Le nostre collezioni",
+        "slug": {
+            "made-to-measure": "Su misura",
+            "measure": "Misura",
+            "shape": "Forma",
+            "glass": "Vetro",
+            "ceiling-bracket": "Staffa per soffitto",
+            "walk-in-to-the-ceiling": "Soffitto",
+            "installation-on-internal-cubes": "Cubi",
+            "rail-hanger": "Supporto",
+            "news": "Notizie",
+            "arrangements-and-inspirations": "Ispirazioni",
+            "advice-and-support": "Consigli e supporto"
+        }
+    },
+    "filters": {
+        "collections": "Collezioni",
+        "doorType": "Tipo di porta",
+        "doorsCount": "Numero di porte",
+        "color": "Colore",
+        "detailFinishing": "Finitura dettagli",
+        "surfaceFinishing": "Finitura superficie",
+        "shape": "Forma",
+        "material": "Materiale",
+        "length": "Lunghezza",
+        "width": "Larghezza",
+        "height": "Altezza",
+        "series": "Serie",
+        "product_color": "Colore",
+        "product_detail_finishing": "Finitura dettagli",
+        "product_door_type": "Tipo di porta",
+        "product_doors_count": "Numero di porte",
+        "product_material": "Materiale",
+        "product_shape": "Forma",
+        "product_surface_finishing": "Finitura superficie",
+        "product_walls_count": "Numero di pareti"
+    },
+    "pages": {
+        "search": {
+            "title": "Risultati della ricerca per: ",
+            "products": "Prodotti",
+            "inspirations": "Ispirazioni",
+            "found-positions": "Posizioni trovate: "
+        },
+        "made-to-measure": {
+            "title": "Su misura",
+            "configurator": "Configuratore di cabina",
+            "how-use": "Come usare il configuratore di cabina",
+            "transparency-level": "Livello di trasparenza",
+            "discretion-level": "Livello di discrezione"
+        },
+        "collections": {
+            "title": "Le nostre collezioni",
+            "discover": "Scopri la collezione"
+        },
+        "form-online": {
+            "title": "Modulo online",
+            "form-person": {
+                "title": "INSERISCI I DATI PERSONALI",
+                "placeholders": {
+                    "name": "Nome / Nome azienda",
+                    "street": "Via",
+                    "home": "Numero civico / Appartamento",
+                    "zip-code": "Codice postale",
+                    "city": "Città",
+                    "phone": "Telefono",
+                    "email": "Indirizzo e-mail",
+                    "desc": "Descrizione del danno"
+                },
+                "statements": {
+                    "real-data": "*Dichiaro di fornire i miei dati volontariamente e che i dati forniti sono veritieri.",
+                    "processing-data": "*Ho letto l'informativa e accetto il trattamento dei miei dati per il processo di reclamo in conformità al Regolamento (UE) 2016/679 del Parlamento europeo e del Consiglio del 27 aprile 2016 relativo alla protezione delle persone fisiche e alla libera circolazione dei dati, e che abroga la direttiva 95/46/CE."
+                }
+            },
+            "form-product": {
+                "title": "INSERISCI I DATI DEL PRODOTTO",
+                "placeholders": {
+                    "name": "Nome prodotto / Codice prodotto",
+                    "number": "Numero della carta di garanzia / Numero della prova d'acquisto",
+                    "place": "Luogo d'acquisto"
+                },
+                "add-photo": "Aggiungi una foto",
+                "select-file": "Seleziona un file",
+                "no-file": "Nessun file selezionato",
+                "action": "Azione",
+                "warranty": "Garanzia",
+                "post-warranty": "Fuori garanzia"
+            }
+        },
+        "product": {
+            "toggle-clipboard": "Aggiungi agli appunti",
+            "generate-product-card": "Genera scheda prodotto"
+        },
+        "inspirations": {
+            "see-all": "Vedi tutto",
+            "often-questions": "Domande frequenti",
+            "often-questions-text": "Hai dei dubbi? Consulta le nostre risposte alle domande più frequenti."
+        },
+        "about": {
+            "awards": "Premi e riconoscimenti",
+            "career": "Carriera",
+            "projects": "Progetti UE"
+        },
+        "contact": {
+            "select-region": "Seleziona una regione",
+            "address": "Indirizzo",
+            "phone": "Tel.",
+            "office": "Ufficio",
+            "logistic-centrum": "Centro logistico",
+            "sale-service-department": "Dipartimento commerciale",
+            "export-department": "Dipartimento export",
+            "form": {
+                "write-to-us": "Scrivici",
+                "name-and-surname": "Nome e Cognome / Nome azienda",
+                "email-address": "Indirizzo e-mail",
+                "message": "Messaggio",
+                "agreement": "Inviando un messaggio, accetto il trattamento dei miei dati personali da parte di New Trendy Spółka z ograniczoną odpowiedzialnością, con sede a Radom 26-600 ul. Sadownicza 7, forniti in modo volontario nel modulo di contatto per rispondere alla mia richiesta. Ho letto l'informativa sulla privacy.",
+                "and": " e ",
+                "info-clausue": "clausola informativa",
+                "accept": "*Ho letto l'informativa sulla privacy e la clausola informativa.",
+                "send": "Invia"
+            },
+            "voievodship": "Voivodato"
+        },
+        "service": {
+            "in-hours": "durante le ore"
+        },
+        "place-to-buy": {
+            "title": "Dove acquistare i nostri prodotti",
+            "select-voievodship": "Seleziona un voivodato",
+            "select-city": "Seleziona una città",
+            "input-placeholder": "Inserisci il nome della città o il codice postale",
+            "search-by-my-localization": "Cerca con la mia posizione",
+            "show-on-map": "Mostra sulla mappa",
+            "check-directions": "Controlla le indicazioni",
+            "locations-not-found": "Nessun negozio trovato in questa zona",
+            "symbol": "Simbolo"
+        }
+    },
+    "product": {
+        "yellow-box": "Personalizza la tua cabina doccia",
+        "desc-colors": "Disponibile anche in colori",
+        "desc-doors": "Modalità di apertura delle porte",
+        "product-description": "Descrizione del prodotto",
+        "product-table": "Tabella dei prodotti",
+        "glass-types": "Tipi di vetro",
+        "download-files": "Scarica i file",
+        "parts": "Pezzi",
+        "similar-products": "Prodotti simili",
+        "symbol": "Simbolo",
+        "dimensions": "Dimensioni",
+        "doors": "Porte",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Larghezza",
+        "height": "Altezza",
+        "length": "Lunghezza",
+        "add-to-clipboard": "Aggiungi agli appunti",
+        "generate-product-card": "Genera scheda prodotto",
+        "search-in-expositions": "Cerca nelle esposizioni",
+        "realization-time": {
+            "2-weeks": "Prodotto disponibile su ordinazione. Tempo di consegna di circa 2 settimane",
+            "4-weeks": "Prodotto disponibile su ordinazione. Tempo di consegna di circa 4 settimane",
+            "6-weeks": "Prodotto disponibile su ordinazione. Tempo di consegna di circa 6 settimane"
+        },
+        "toggle-toggle-clipboard": "Attiva/disattiva prodotto negli appunti"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "Nella nostra offerta troverai molti colori per gli accessori della cabina doccia:",
+            "variants": "Hai anche una vasta scelta di varianti nelle collezioni:"
+        },
+        "additional-content": {
+            "use-searching": "Usa la nostra funzione di ricerca e trova il tuo negozio di cabine doccia."
+        },
+        "map": {
+            "title": "Trova un negozio fisico",
+            "placeholder": "Inserisci il nome della città o il codice postale"
+        }
+    }
+}

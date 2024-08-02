@@ -1,0 +1,270 @@
+{
+    "categories": "Kategorien",
+    "home-page": "Startseite",
+    "privacy-policy": "Datenschutzrichtlinie",
+    "polish": "Polnisch",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "slovak": "Slowakisch",
+    "romanian": "Rumänisch",
+    "ukrainian": "Ukrainisch",
+    "download": "Herunterladen",
+    "search": "Suche",
+    "clipboard": "Zwischenablage",
+    "no-saved-products": "Keine gespeicherten Produkte",
+    "place-to-buy": "Wo zu kaufen",
+    "our-websites": "Unsere Websites",
+    "products": "Produkte",
+    "what-are-you-looking-for": "Schreiben Sie, wonach Sie suchen",
+    "search-in-products": "Produkte durchsuchen",
+    "search-in-files": "Dateien durchsuchen",
+    "search-in-inspirations": "Inspirationen durchsuchen",
+    "header-search-message": "Möchten Sie ein Produkt anhand seiner Eigenschaften genau suchen?",
+    "header-clipboard-delete": "Aus der Zwischenablage entfernen",
+    "go-to-products": "Zur Produktseite",
+    "inspirations": "Inspirationen",
+    "for-professionals": "Für Fachleute",
+    "about": "Über die Firma",
+    "about-us": "Über uns",
+    "contact": "Kontakt",
+    "news": "Neuigkeiten",
+    "arrangements-and-inspirations": "Arrangements / Inspirationen",
+    "advice-and-support": "Ratschläge / Unterstützung",
+    "faq": "Häufige Fragen",
+    "partner-zone": "Partnerzone",
+    "architects-zone": "Architektenzone",
+    "companys-history": "Firmengeschichte",
+    "office": "Büro",
+    "awards-and-implementations": "Auszeichnungen und Umsetzungen",
+    "career": "Karriere",
+    "projects-ue": "EU-Projekte",
+    "sales-service-department": "Vertriebsabteilung",
+    "export-department": "Exportabteilung",
+    "custom-made-products-department": "Abteilung für maßgeschneiderte Produkte",
+    "spare-parts-department": "Ersatzteilabteilung",
+    "service": "Service",
+    "certified-installers": "Zertifizierte Installateure",
+    "catalogs": "Kataloge",
+    "files-3d": "3D-Dateien",
+    "atests-and-declarations": "Zertifikate und Erklärungen",
+    "graphic-files": "Grafikdateien",
+    "made-to-measure": "Duschkabinen nach Maß",
+    "made-to-measure-home-link": "Duschkabinen nach Maß",
+    "more": "Mehr",
+    "filtering": "Filtern",
+    "sorting": "Sortieren",
+    "filter": "Filtern",
+    "pagination": {
+        "prev": "Vorherige",
+        "next": "Nächste"
+    },
+    "reset-filters": "Filter zurücksetzen",
+    "width": "Breite",
+    "depth": "Tiefe",
+    "height": "Höhe",
+    "dimension": "Abmessung",
+    "reset": "Zurücksetzen",
+    "from": "Von",
+    "to": "Bis",
+    "or": "oder",
+    "send": "Senden",
+    "navigation": {
+        "made-to-measure": "Nach Maß",
+        "all-products": "Alle Produkte",
+        "measure": "Maß",
+        "shape": "Form",
+        "glass": "Glas",
+        "ceiling-bracket": "Deckenhalterung",
+        "walk-in-to-the-ceiling": "Walk-In bis zur Decke",
+        "installation-on-internal-cubes": "Installation auf internen Würfeln",
+        "rail-hanger": "Schienenhalterung",
+        "collections": "Unsere Kollektionen",
+        "slug": {
+            "made-to-measure": "Nach Maß",
+            "measure": "Maße",
+            "shape": "Form",
+            "glass": "Glas",
+            "ceiling-bracket": "Deckenhalterung",
+            "walk-in-to-the-ceiling": "Walk-In-Decke",
+            "installation-on-internal-cubes": "Würfel",
+            "rail-hanger": "Halterung",
+            "news": "Neuigkeiten",
+            "arrangements-and-inspirations": "Inspirationen",
+            "advice-and-support": "Ratschläge und Unterstützung"
+        }
+    },
+    "filters": {
+        "collections": "Kollektionen",
+        "doorType": "Türtyp",
+        "doorsCount": "Anzahl der Türen",
+        "color": "Farbe",
+        "detailFinishing": "Detailverarbeitung",
+        "surfaceFinishing": "Oberflächenverarbeitung",
+        "shape": "Form",
+        "material": "Material",
+        "length": "Länge",
+        "width": "Breite",
+        "height": "Höhe",
+        "series": "Serie",
+        "product_color": "Farbe",
+        "product_detail_finishing": "Detailverarbeitung",
+        "product_door_type": "Türart",
+        "product_doors_count": "Anzahl der Türen",
+        "product_material": "Material",
+        "product_shape": "Form",
+        "product_surface_finishing": "Oberflächenverarbeitung",
+        "product_walls_count": "Anzahl der Wände"
+    },
+    "pages": {
+        "search": {
+            "title": "Suchergebnisse für: ",
+            "products": "Produkte",
+            "inspirations": "Inspirationen",
+            "found-positions": "Gefundene Positionen: "
+        },
+        "made-to-measure": {
+            "title": "Nach Maß",
+            "configurator": "Kabinenkonfigurator",
+            "how-use": "So verwenden Sie den Kabinenkonfigurator",
+            "transparency-level": "Transparenzstufe",
+            "discretion-level": "Diskretionsstufe"
+        },
+        "collections": {
+            "title": "Unsere Kollektionen",
+            "discover": "Kollektion entdecken"
+        },
+        "form-online": {
+            "title": "Online-Formular",
+            "form-person": {
+                "title": "PERSÖNLICHE DATEN AUSFÜLLEN",
+                "placeholders": {
+                    "name": "Name / Firmenname",
+                    "street": "Straße",
+                    "home": "Hausnummer / Wohnung",
+                    "zip-code": "Postleitzahl",
+                    "city": "Stadt",
+                    "phone": "Telefon",
+                    "email": "E-Mail-Adresse",
+                    "desc": "Beschreibung des Schadens"
+                },
+                "statements": {
+                    "real-data": "*Ich erkläre, dass ich meine Daten freiwillig angebe und dass die angegebenen Daten wahrheitsgemäß sind.",
+                    "processing-data": "*Ich habe die Informationsklausel gelesen und stimme der Verarbeitung meiner Daten zum Zwecke der Abwicklung des Reklamationsprozesses gemäß der Verordnung des Europäischen Parlaments und des Rates (EU) 2016/679 vom 27. April 2016 über den Schutz natürlicher Personen und den freien Datenverkehr sowie zur Aufhebung der Richtlinie 95/46/EG zu."
+                }
+            },
+            "form-product": {
+                "title": "PRODUKTDATEN AUSFÜLLEN",
+                "placeholders": {
+                    "name": "Produktname / Produktcode",
+                    "number": "Garantie-Kartennummer / Kaufbelegnummer",
+                    "place": "Kaufort"
+                },
+                "add-photo": "Foto anhängen",
+                "select-file": "Datei auswählen",
+                "no-file": "Keine Datei ausgewählt",
+                "action": "Aktion",
+                "warranty": "Garantie",
+                "post-warranty": "Nachgarantie"
+            }
+        },
+        "product": {
+            "toggle-clipboard": "Zur Zwischenablage hinzufügen",
+            "generate-product-card": "Produktkarte generieren"
+        },
+        "inspirations": {
+            "see-all": "Alle anzeigen",
+            "often-questions": "Häufig gestellte Fragen",
+            "often-questions-text": "Haben Sie Zweifel? Überprüfen Sie unsere Antworten auf die am häufigsten gestellten Fragen."
+        },
+        "about": {
+            "awards": "Auszeichnungen und Anerkennungen",
+            "career": "Karriere",
+            "projects": "EU-Projekte"
+        },
+        "contact": {
+            "select-region": "Region auswählen",
+            "address": "Adresse",
+            "phone": "Tel.",
+            "office": "Büro",
+            "logistic-centrum": "Logistikzentrum",
+            "sale-service-department": "Vertriebsabteilung",
+            "export-department": "Exportabteilung",
+            "form": {
+                "write-to-us": "Schreiben Sie uns",
+                "name-and-surname": "Name und Vorname / Firmenname",
+                "email-address": "E-Mail-Adresse",
+                "message": "Nachricht",
+                "agreement": "Durch das Senden einer Nachricht stimme ich der Verarbeitung meiner personenbezogenen Daten durch New Trendy Spółka z ograniczoną odpowiedzialnością mit Sitz in Radom 26-600 ul. Sadownicza 7, die im Kontaktformular angegeben sind, zu dem Zweck zu, mit mir Kontakt aufzunehmen und auf meine Nachricht zu antworten, gemäß der ",
+                "privacy": "Datenschutzrichtlinie",
+                "and": " und ",
+                "info-clausue": "Informationsklausel",
+                "accept": "*Ich habe die Datenschutzrichtlinie und die Informationsklausel gelesen.",
+                "send": "Senden"
+            },
+            "voievodship": "Wojewodschaft"
+        },
+        "service": {
+            "in-hours": "zu den Stunden"
+        },
+        "place-to-buy": {
+            "title": "Wo man unsere Produkte kaufen kann",
+            "select-voievodship": "Wählen Sie eine Wojewodschaft",
+            "select-city": "Stadt auswählen",
+            "input-placeholder": "Geben Sie den Namen der Stadt oder die Postleitzahl ein",
+            "search-by-my-localization": "Nach meinem Standort suchen",
+            "show-on-map": "Auf der Karte anzeigen",
+            "check-directions": "Wegbeschreibung prüfen",
+            "locations-not-found": "Keine Geschäfte in dieser Umgebung gefunden",
+            "symbol": "Symbol"
+        }
+    },
+    "product": {
+        "yellow-box": "Personalisieren Sie Ihre Duschkabine",
+        "desc-colors": "Auch in Farben erhältlich",
+        "desc-doors": "Öffnungsweise der Türen",
+        "product-description": "Produktbeschreibung",
+        "product-table": "Produkttabelle",
+        "glass-types": "Glasarten",
+        "download-files": "Dateien herunterladen",
+        "parts": "Teile",
+        "similar-products": "Ähnliche Produkte",
+        "symbol": "Symbol",
+        "dimensions": "Abmessungen",
+        "doors": "Türen",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Breite",
+        "height": "Höhe",
+        "length": "Länge",
+        "add-to-clipboard": "Zur Zwischenablage hinzufügen",
+        "generate-product-card": "Produktkarte generieren",
+        "search-in-expositions": "In Ausstellungen suchen",
+        "realization-time": {
+            "2-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 2 Wochen",
+            "4-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 4 Wochen",
+            "6-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 6 Wochen"
+        },
+        "toggle-toggle-clipboard": "Produkt in der Zwischenablage umschalten"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "In unserem Angebot finden Sie viele Farben für Duschkabinenbeschläge:",
+            "variants": "Sie haben auch eine große Auswahl an Varianten in den Kollektionen:"
+        },
+        "additional-content": {
+            "use-searching": "Nutzen Sie unsere Suchfunktion und finden Sie Ihr Geschäft mit Duschkabinen."
+        },
+        "map": {
+            "title": "Finden Sie ein stationäres Geschäft",
+            "placeholder": "Geben Sie den Namen der Stadt oder die Postleitzahl ein"
+        }
+    }
+}

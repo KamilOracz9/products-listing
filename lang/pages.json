@@ -11,7 +11,7 @@
     "cs": "/hledat",
     "ro": "/cauta",
     "ru": "/poisk",
-    "ua": "/пошук"
+    "uk": "/пошук"
   },
   "information-clausue/index": {
     "en": "/information-clausue",
@@ -25,7 +25,7 @@
     "cs": "/informacni-klauzule",
     "ro": "/clauza-informativa",
     "ru": "/informacionnoe-uslovie",
-    "ua": "/інформаційна-клаузула"
+    "uk": "/інформаційна-клаузула"
   },
   "privacy-policy/index": {
     "en": "/privacy-policy",
@@ -39,7 +39,7 @@
     "cs": "/ochrana-soukromi",
     "ro": "/politica-de-confidentialitate",
     "ru": "/politika-konfidencialnosti",
-    "ua": "/політика-конфіденційності"
+    "uk": "/політика-конфіденційності"
   },
   "made-to-measure/index": {
     "en": "/made-to-measure",
@@ -53,7 +53,7 @@
     "cs": "/na-miru",
     "ro": "/la-comanda",
     "ru": "/na-zakaz",
-    "ua": "/на-замовлення"
+    "uk": "/на-замовлення"
   },
   "collections/index": {
     "en": "/our-collections",
@@ -67,7 +67,7 @@
     "cs": "/nase-kolekce",
     "ro": "/colectiile-noastre",
     "ru": "/nashi-kollektsii",
-    "ua": "/наші-колекції"
+    "uk": "/наші-колекції"
   },
   "form-online/index": {
     "en": "/form-online",
@@ -81,7 +81,7 @@
     "cs": "/online-formular",
     "ro": "/formular-online",
     "ru": "/onlayn-forma",
-    "ua": "/онлайн-форма"
+    "uk": "/онлайн-форма"
   },
   "download/index": {
     "en": "/download",
@@ -95,7 +95,7 @@
     "cs": "/stahnout",
     "ro": "/descarca",
     "ru": "/skachat",
-    "ua": "/завантажити"
+    "uk": "/завантажити"
   },
   "download/3d/index": {
     "en": "/download_files_3d",
@@ -109,7 +109,7 @@
     "cs": "/stahnout_3d_soubory",
     "ro": "/descarca_fisiere_3d",
     "ru": "/skachat_3d_fayly",
-    "ua": "/завантажити_3d_файли"
+    "uk": "/завантажити_3d_файли"
   },
   "service/index": {
     "en": "/service",
@@ -123,7 +123,7 @@
     "cs": "/servis",
     "ro": "/serviciu",
     "ru": "/servis",
-    "ua": "/сервіс"
+    "uk": "/сервіс"
   },
   "products/index": {
     "en": "/products",
@@ -137,7 +137,7 @@
     "cs": "/produkty",
     "ro": "/produse",
     "ru": "/produkty",
-    "ua": "/продукти"
+    "uk": "/продукти"
   },
   "products/[slug]": {
     "en": "/products/[slug]",
@@ -151,7 +151,7 @@
     "cs": "/produkty/[slug]",
     "ro": "/produse/[slug]",
     "ru": "/produkty/[slug]",
-    "ua": "/продукти/[slug]"
+    "uk": "/продукти/[slug]"
   },
   "products/[category]/index": {
     "en": "/products/[category]",
@@ -165,7 +165,7 @@
     "cs": "/produkty/[category]",
     "ro": "/produse/[category]",
     "ru": "/produkty/[category]",
-    "ua": "/продукти/[category]"
+    "uk": "/продукти/[category]"
   },
   "categories/index": {
     "en": "/categories",
@@ -179,7 +179,7 @@
     "cs": "/kategorie",
     "ro": "/categorii",
     "ru": "/kategorii",
-    "ua": "/категорії"
+    "uk": "/категорії"
   },
   "categories/[category]/index": {
     "en": "/categories/[category]",
@@ -193,7 +193,7 @@
     "cs": "/kategorie/[category]",
     "ro": "/categorii/[category]",
     "ru": "/kategorii/[category]",
-    "ua": "/категорії/[category]"
+    "uk": "/категорії/[category]"
   },
   "place-to-buy/index": {
     "en": "/place-to-buy",
@@ -207,7 +207,7 @@
     "cs": "/mista-kde-koupit",
     "ro": "/unde-cumpara",
     "ru": "/gde-kupit",
-    "ua": "/де-купити"
+    "uk": "/де-купити"
   },
   "inspirations/index": {
     "en": "/inspirations",
@@ -221,7 +221,7 @@
     "cs": "/inspirace",
     "ro": "/inspiratii",
     "ru": "/vdochnoveniya",
-    "ua": "/натхнення"
+    "uk": "/натхнення"
   },
   "inspirations/[category]/index": {
     "en": "/inspirations/[category]",
@@ -235,7 +235,7 @@
     "cs": "/inspirace/[category]",
     "ro": "/inspiratii/[category]",
     "ru": "/vdochnoveniya/[category]",
-    "ua": "/натхнення/[category]"
+    "uk": "/натхнення/[category]"
   },
   "inspirations/[category]/[slug]": {
     "en": "/inspirations/[category]/[slug]",
@@ -249,12 +249,12 @@
     "cs": "/inspirace/[category]/[slug]",
     "ro": "/inspiratii/[category]/[slug]",
     "ru": "/vdochnoveniya/[category]/[slug]",
-    "ua": "/натхнення/[category]/[slug]"
+    "uk": "/натхнення/[category]/[slug]"
   },
   "for-professionals/index": {
     "en": "/for-professionals",
     "pl": "/dla-profesjonalistow",
-    "de": "/fur-fachleute",
+    "de": "/fuer-profis",
     "fr": "/pour-les-professionnels",
     "it": "/per-professionisti",
     "es": "/para-profesionales",
@@ -263,7 +263,7 @@
     "cs": "/pro-profesionaly",
     "ro": "/pentru-profesionisti",
     "ru": "/dlya-professionalov",
-    "ua": "/для-професіоналів"
+    "uk": "/dlya-profesiynih"
   },
   "contact/index": {
     "en": "/contact",
@@ -277,20 +277,20 @@
     "cs": "/kontakt",
     "ro": "/contact",
     "ru": "/kontakt",
-    "ua": "/контакт"
+    "uk": "/контакт"
   },
   "about/index": {
     "en": "/about",
     "pl": "/o-firmie",
-    "de": "/uber-uns",
+    "de": "/ueber-uns",
     "fr": "/a-propos",
     "it": "/chi-siamo",
     "es": "/sobre-nosotros",
     "no": "/om-oss",
-    "sk": "/o-firme",
+    "sk": "/o-nas",
     "cs": "/o-firme",
     "ro": "/despre-noi",
     "ru": "/o-nas",
-    "ua": "/про-компанію"
+    "uk": "/pro-nas"
   }
 }

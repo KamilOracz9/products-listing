@@ -1,0 +1,270 @@
+{
+    "categories": "Categorii",
+    "home-page": "Pagina principală",
+    "privacy-policy": "Politica de confidențialitate",
+    "polish": "Poloneză",
+    "english": "Engleză",
+    "german": "Germană",
+    "slovak": "Slovacă",
+    "romanian": "Română",
+    "ukrainian": "Ucraineană",
+    "download": "Descarcă",
+    "search": "Căutare",
+    "clipboard": "Clipboard",
+    "no-saved-products": "Niciun produs salvat",
+    "place-to-buy": "Locuri de cumpărare",
+    "our-websites": "Site-urile noastre",
+    "products": "Produse",
+    "what-are-you-looking-for": "Ce cauți?",
+    "search-in-products": "Căutare în produse",
+    "search-in-files": "Căutare în fișiere",
+    "search-in-inspirations": "Căutare în inspirații",
+    "header-search-message": "Doriți să căutați un produs exact după caracteristicile sale?",
+    "header-clipboard-delete": "Ștergeți din clipboard",
+    "go-to-products": "Accesați produsele",
+    "inspirations": "Inspirații",
+    "for-professionals": "Pentru profesioniști",
+    "about": "Despre noi",
+    "about-us": "Despre noi",
+    "contact": "Contact",
+    "news": "Știri",
+    "arrangements-and-inspirations": "Aranjamente / inspirații",
+    "advice-and-support": "Sfaturi / suport",
+    "faq": "FAQ",
+    "partner-zone": "Zona partenerilor",
+    "architects-zone": "Zona arhitecților",
+    "companys-history": "Istoricul companiei",
+    "office": "Birou",
+    "awards-and-implementations": "Premii și realizări",
+    "career": "Carieră",
+    "projects-ue": "Proiecte UE",
+    "sales-service-department": "Departamentul de vânzări",
+    "export-department": "Departamentul de export",
+    "custom-made-products-department": "Departamentul de produse personalizate",
+    "spare-parts-department": "Departamentul de piese de schimb",
+    "service": "Serviciu",
+    "certified-installers": "Instalatori certificați",
+    "catalogs": "Cataloage",
+    "files-3d": "Fișiere 3D",
+    "atests-and-declarations": "Certificate și declarații",
+    "graphic-files": "Fișiere grafice",
+    "made-to-measure": "La comandă",
+    "made-to-measure-home-link": "La comandă",
+    "more": "Mai multe",
+    "filtering": "Filtrare",
+    "sorting": "Sortare",
+    "filter": "Filtrează",
+    "pagination": {
+        "prev": "Precedent",
+        "next": "Următor"
+    },
+    "reset-filters": "Resetează filtrele",
+    "width": "Lățime",
+    "depth": "Adâncime",
+    "height": "Înălțime",
+    "dimension": "Dimensiune",
+    "reset": "Resetează",
+    "from": "De la",
+    "to": "La",
+    "or": "sau",
+    "send": "Trimite",
+    "navigation": {
+        "made-to-measure": "La comandă",
+        "all-products": "Toate produsele",
+        "measure": "Dimensiune",
+        "shape": "Formă",
+        "glass": "Sticlă",
+        "ceiling-bracket": "Suport de tavan",
+        "walk-in-to-the-ceiling": "Walk-in până la tavan",
+        "installation-on-internal-cubes": "Instalare pe cuburi interioare",
+        "rail-hanger": "Suspensie principală",
+        "collections": "Colecțiile noastre",
+        "slug": {
+            "made-to-measure": "La comandă",
+            "measure": "Dimensiuni",
+            "shape": "Formă",
+            "glass": "Sticlă",
+            "ceiling-bracket": "Suport de tavan",
+            "walk-in-to-the-ceiling": "Walk-in tavan",
+            "installation-on-internal-cubes": "Cuburi",
+            "rail-hanger": "Suspensie principală",
+            "news": "Știri",
+            "arrangements-and-inspirations": "Inspirații",
+            "advice-and-support": "Sfaturi și suport"
+        }
+    },
+    "filters": {
+        "collections": "Colecții",
+        "doorType": "Tip ușă",
+        "doorsCount": "Număr uși",
+        "color": "Culoare",
+        "detailFinishing": "Finisare detalii",
+        "surfaceFinishing": "Finisare suprafață",
+        "shape": "Formă",
+        "material": "Material",
+        "length": "Lungime",
+        "width": "Lățime",
+        "height": "Înălțime",
+        "series": "Serie",
+        "product_color": "Culoare",
+        "product_detail_finishing": "Finisare detalii",
+        "product_door_type": "Tip ușă",
+        "product_doors_count": "Număr uși",
+        "product_material": "Material",
+        "product_shape": "Formă",
+        "product_surface_finishing": "Finisare suprafață",
+        "product_walls_count": "Număr pereți"
+    },
+    "pages": {
+        "search": {
+            "title": "Rezultatele căutării pentru: ",
+            "products": "Produse",
+            "inspirations": "Inspirații",
+            "found-positions": "Poziții găsite: "
+        },
+        "made-to-measure": {
+            "title": "La comandă",
+            "configurator": "Configurare cabine",
+            "how-use": "Cum să folosești configuratorul pentru cabine",
+            "transparency-level": "Nivel de transparență",
+            "discretion-level": "Nivel de discreție"
+        },
+        "collections": {
+            "title": "Colecțiile noastre",
+            "discover": "Descoperă colecția"
+        },
+        "form-online": {
+            "title": "Formular online",
+            "form-person": {
+                "title": "COMPLETAȚI DATELE PERSONALE",
+                "placeholders": {
+                    "name": "Nume și prenume / Denumire firmă",
+                    "street": "Stradă",
+                    "home": "Număr casă / apartament",
+                    "zip-code": "Cod poștal",
+                    "city": "Oraș",
+                    "phone": "Telefon",
+                    "email": "Adresă de email",
+                    "desc": "Descrierea defecțiunii"
+                },
+                "statements": {
+                    "real-data": "*Declar că îmi furnizez datele voluntar și că datele furnizate sunt corecte.",
+                    "processing-data": "*Am fost informat/ă despre documentul informativ și sunt de acord cu prelucrarea datelor mele pentru a rezolva reclamația conform Regulamentului (UE) 2016/679 al Parlamentului European și al Consiliului din 27 aprilie 2016 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal și privind libera circulație a acestor date și de abrogare a Directivei 95/46/CE."
+                }
+            },
+            "form-product": {
+                "title": "COMPLETAȚI DATELE PRODUSULUI",
+                "placeholders": {
+                    "name": "Nume / Cod produs",
+                    "number": "Număr garanție / Număr dovadă achiziție",
+                    "place": "Locul achiziției"
+                },
+                "add-photo": "Adaugă fotografie",
+                "select-file": "Selectați fișier",
+                "no-file": "Niciun fișier selectat",
+                "action": "Acțiune",
+                "warranty": "Garanție",
+                "post-warranty": "După garanție"
+            }
+        },
+        "product": {
+            "toggle-clipboard": "Adaugă în clipboard",
+            "generate-product-card": "Generați cardul produsului"
+        },
+        "inspirations": {
+            "see-all": "Vezi toate",
+            "often-questions": "Întrebări frecvente",
+            "often-questions-text": "Aveți întrebări? Consultați răspunsurile noastre la cele mai frecvente întrebări."
+        },
+        "about": {
+            "awards": "Premii și distincții",
+            "career": "Carieră",
+            "projects": "Proiecte UE"
+        },
+        "contact": {
+            "select-region": "Selectați regiunea",
+            "address": "Adresă",
+            "phone": "Tel.",
+            "office": "Birou",
+            "logistic-centrum": "Centru logistic",
+            "sale-service-department": "Departamentul de vânzări",
+            "export-department": "Departamentul de export",
+            "form": {
+                "write-to-us": "Scrieți-ne",
+                "name-and-surname": "Nume și prenume / Denumire firmă",
+                "email-address": "Adresă de email",
+                "message": "Mesaj",
+                "agreement": "Prin trimiterea mesajului, sunt de acord cu prelucrarea datelor mele personale de către New Trendy Sp. z o.o. cu sediul în Radom, ul. Sadownicza 7, 26-600 Radom, furnizate în formularul de contact pentru a lua legătura cu mine și pentru a răspunde mesajului meu în conformitate cu ",
+                "privacy": "politica de confidențialitate",
+                "and": " și ",
+                "info-clausue": "clauza informativă",
+                "accept": "*Am citit politica de confidențialitate și clauza informativă.",
+                "send": "Trimite"
+            },
+            "voievodship": "Voievodat"
+        },
+        "service": {
+            "in-hours": "în timpul orelor de lucru"
+        },
+        "place-to-buy": {
+            "title": "Unde să cumpărați produsele noastre",
+            "select-voievodship": "Selectați voievodatul",
+            "select-city": "Selectați orașul",
+            "input-placeholder": "Introduceți numele orașului sau codul poștal",
+            "search-by-my-localization": "Căutați după locația mea",
+            "show-on-map": "Arată pe hartă",
+            "check-directions": "Verificați traseul",
+            "locations-not-found": "Magazine în această zonă nu au fost găsite",
+            "symbol": "Simbol"
+        }
+    },
+    "product": {
+        "yellow-box": "Personalizează-ți cabina",
+        "desc-colors": "Disponibil și în culori",
+        "desc-doors": "Modul de deschidere al ușilor",
+        "product-description": "Descrierea produsului",
+        "product-table": "Tabelul produsului",
+        "glass-types": "Tipuri de sticlă",
+        "download-files": "Descarcă fișiere",
+        "parts": "Piese",
+        "similar-products": "Produse similare",
+        "symbol": "Simbol",
+        "dimensions": "Dimensiuni",
+        "doors": "Uși",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Lățime",
+        "height": "Înălțime",
+        "length": "Lungime",
+        "add-to-clipboard": "Adaugă în clipboard",
+        "generate-product-card": "Generează cardul produsului",
+        "search-in-expositions": "Caută în expoziții",
+        "realization-time": {
+            "2-weeks": "Produs disponibil pe comandă. Timp de realizare cca 2 săptămâni",
+            "4-weeks": "Produs disponibil pe comandă. Timp de realizare cca 4 săptămâni",
+            "6-weeks": "Produs disponibil pe comandă. Timp de realizare cca 6 săptămâni"
+        },
+        "toggle-toggle-clipboard": "Comută produsul în clipboard"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "În oferta noastră găsiți multe culori de accesorii pentru cabine de duș:",
+            "variants": "Aveți, de asemenea, o selecție largă de variante în colecțiile noastre:"
+        },
+        "additional-content": {
+            "use-searching": "Utilizați motorul nostru de căutare pentru a găsi magazinele cu cabine de duș."
+        },
+        "map": {
+            "title": "Găsiți magazinul fizic",
+            "placeholder": "Introduceți numele orașului sau codul poștal"
+        }
+    }
+}
