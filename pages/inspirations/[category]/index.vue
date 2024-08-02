@@ -34,6 +34,6 @@ const linkPath = computed(() => {
 })
 
 onMounted(() => {
-    window.history.pushState({}, '', linkPath.value + `/${slug.value}`);
+    window.history.replaceState({}, '', linkPath.value + `/${slug.value}`);
 })
 </script>
