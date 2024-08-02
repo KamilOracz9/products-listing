@@ -215,7 +215,8 @@
             "show-on-map": "Auf der Karte anzeigen",
             "check-directions": "Wegbeschreibung prüfen",
             "locations-not-found": "Keine Geschäfte in dieser Umgebung gefunden",
-            "symbol": "Symbol"
+            "symbol": "Symbol",
+            "map-hint": "Bitte drücken Sie STRG (oder ⌘) + Scrollen, um zu zoomen."
         }
     },
     "product": {

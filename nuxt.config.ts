@@ -4,7 +4,7 @@ import pages from './lang/pages.json';
 export default defineNuxtConfig({
   ssr: true,
   devServer: {
-    port: 3009,
+    port: 3012,
   },
   nitro: {
     externals: {
@@ -76,41 +76,11 @@ export default defineNuxtConfig({
         iso: 'de_DE',
         file: 'de-DE.json',
       },
-      // {
-      //   code: 'fr',
-      //   iso: 'fr_FR',
-      //   file: 'fr-FR.json',
-      // },
-      // {
-      //   code: 'it',
-      //   iso: 'it_IT',
-      //   file: 'it-IT.json',
-      // },
-      // {
-      //   code: 'es',
-      //   iso: 'es_ES',
-      //   file: 'es-ES.json',
-      // },
-      // {
-      //   code: 'no',
-      //   iso: 'no_NO',
-      //   file: 'no-NO.json',
-      // },
-      // {
-      //   code: 'cs',
-      //   iso: 'cs_CZ',
-      //   file: 'cs-CZ.json',
-      // },
       {
         code: 'ro',
         iso: 'ro_RO',
         file: 'ro-RO.json',
       },
-      // {
-      //   code: 'ru',
-      //   iso: 'ru_RU',
-      //   file: 'ru-RU.json',
-      // },
       {
         code: 'uk',
         iso: 'uk_UA',

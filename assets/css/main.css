@@ -10,8 +10,16 @@
         scroll-behavior: smooth;
     }
 
+    html * {
+        @apply font-breuer;
+    }
+
+    html[lang='uk'] * {
+        @apply font-source;
+    }
+
     body {
-        @apply font-breuer font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
+        @apply font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
     }
 
     * {
@@ -58,6 +66,10 @@
 }
 
 @layer components {
+    #place-to-buy {
+        
+    }
+
     .transparent-button {
         @apply text-xl flex gap-5 uppercase leading-[1.625rem] py-3.5 px-6 border w-full items-center transition-all border-white hover:border-black hover:bg-black hover:text-white;
     }

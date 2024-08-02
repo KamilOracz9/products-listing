@@ -98,18 +98,18 @@
     "uk": "/завантажити"
   },
   "download/3d/index": {
-    "en": "/download_files_3d",
-    "pl": "/pobierz_pliki_3d",
-    "de": "/3d_dateien_herunterladen",
-    "fr": "/telecharger_fichiers_3d",
-    "it": "/scarica_file_3d",
-    "es": "/descargar_archivos_3d",
-    "no": "/last_ned_3d_filer",
-    "sk": "/stiahnut_3d_subory",
-    "cs": "/stahnout_3d_soubory",
-    "ro": "/descarca_fisiere_3d",
-    "ru": "/skachat_3d_fayly",
-    "uk": "/завантажити_3d_файли"
+    "en": "/download-files-3d",
+    "pl": "/pobierz-pliki-3d",
+    "de": "/3d-dateien-herunterladen",
+    "fr": "/telecharger-fichiers-3d",
+    "it": "/scarica-file-3d",
+    "es": "/descargar-archivos-3d",
+    "no": "/last-ned-3d-filer",
+    "sk": "/stiahnut-3d-subory",
+    "cs": "/stahnout-3d-soubory",
+    "ro": "/descarca-fisiere-3d",
+    "ru": "/skachat-3d-fayly",
+    "uk": "/завантажити-3d-файли"
   },
   "service/index": {
     "en": "/service",

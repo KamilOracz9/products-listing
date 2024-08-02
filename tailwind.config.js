@@ -13,6 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       breuer: ['Breuer', 'sans-serif'],
+      source: ['SourceSans', 'sans-serif'],
       aller: ['Aller', 'sans-serif'],
       'minion-pro': ['MinionPro', 'sans-serif'],
     },

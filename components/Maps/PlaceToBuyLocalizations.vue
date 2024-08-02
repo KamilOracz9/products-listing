@@ -1,5 +1,8 @@
 <template>
-    <section class="w-full map h-[400px] relative z-10 lg:col-span-3 lg:h-[700px]" id="map"></section>
+    <section class="relative w-full lg:col-span-3" id="place-to-buy" ref="sectionRef">
+        <div class="w-full map h-[400px] relative z-10 lg:h-[700px]" id="map"></div>
+        <div class="map-hint hidden transition-all absolute top-0 left-0 w-full h-full items-center justify-center z-10 bg-[rgba(0,0,0,.3)] text-lg text-white opacity-0 lg:flex">{{ $t('pages.place-to-buy.map-hint') }}</div>
+    </section>
 </template>
 
 <script setup>
@@ -14,6 +17,8 @@ const route = useRoute();
 const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
+
+const sectionRef = ref();
 
 const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query), { watch: [() => route.query] });
 
@@ -53,7 +58,7 @@ const mount = async () => {
     });
 
     layer.addTo(map);
-    map.scrollWheelZoom.disable();
+    // map.scrollWheelZoom.disable();
 }
 
 const drawPoints = async () => {
@@ -69,14 +74,30 @@ const drawPoints = async () => {
         spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: false
     });
 
-    data.value.forEach(({lat, lon}, index) => {
-        if(lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon }));
+    data.value.forEach(({ lat, lon }, index) => {
+        if (lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon }));
     });
 
     map.addLayer(markers);
 }
 
+const removeMapHint = (event) => {
+    event.preventDefault();
+    event.currentTarget.querySelector('.map-hint')?.remove();
+    event.currentTarget.removeEventListener('wheel', removeMapHint, false);
+    event.currentTarget.removeEventListener('mouseleave', removeMapHint);
+};
+
 onMounted(() => mount().then(() => {
     drawPoints();
+
+    sectionRef.value.addEventListener('wheel', removeMapHint, false);
+    sectionRef.value.addEventListener('mouseleave', removeMapHint);
 }))
 </script>
+
+<style>
+#place-to-buy:hover > .map-hint{
+    opacity: 1;
+}
+</style>

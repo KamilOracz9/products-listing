@@ -203,7 +203,8 @@
             "show-on-map": "Show on map",
             "check-directions": "Check directions",
             "locations-not-found": "No stores found in this area",
-            "symbol": "Symbol"
+            "symbol": "Symbol",
+            "map-hint": "Press CTRL (or ⌘) + scroll to zoom in"
         },
         "search": {
             "products": "Produkty",

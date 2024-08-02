@@ -217,7 +217,8 @@
             "show-on-map": "Zobraziť na mape",
             "check-directions": "Skontrolovať cestu",
             "locations-not-found": "Obchody v tejto oblasti neboli nájdené",
-            "symbol": "Symbol"
+            "symbol": "Symbol",
+            "map-hint": "Stlačte prosím CTRL (alebo ⌘) + posúvanie pre priblíženie."
         }
     },
     "product": {

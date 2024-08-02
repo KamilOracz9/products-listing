@@ -215,7 +215,8 @@
             "show-on-map": "Arată pe hartă",
             "check-directions": "Verificați traseul",
             "locations-not-found": "Magazine în această zonă nu au fost găsite",
-            "symbol": "Simbol"
+            "symbol": "Simbol",
+            "map-hint": "Vă rugăm să apăsați CTRL (sau ⌘) + derulați pentru a mări."
         }
     },
     "product": {
