@@ -5,11 +5,11 @@
         <SectionsPlaceToBuySearch />
 
         <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
-            <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
+            <div class="lg:col-span-2  text-2xl font-medium" v-if="!data.locationsList.length">
                 {{ $t('pages.place-to-buy.locations-not-found') }}
             </div>
-            <SectionsPlaceToBuyLocationsList v-else />
-            <MapsPlaceToBuyLocalizations :key="mapKey" />
+            <SectionsPlaceToBuyLocationsList :locationsList="data.locationsList" v-else />
+            <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
         </div>
     </div>
 </template>
@@ -26,8 +26,9 @@ const mapZoom = ref(6);
 const mapCenter = ref([52.121, 19.108]);
 const selected = ref(null);
 const page = ref(1);
+const locationsIds = ref();
 
-const { data }: {data: Ref<PlaceToBuyPage>} = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value), { watch: [() => route.query, page] });
+const { data }: {data: Ref<PlaceToBuyPage>} = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
 const locationsList = ref([...data.value.locationsList]);
 
@@ -46,4 +47,5 @@ provide('mapKey', mapKey);
 provide('selected', selected);
 provide('page', page);
 provide('locationsList', locationsList);
+provide('locationsIds', locationsIds);
 </script>

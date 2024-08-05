@@ -17,10 +17,11 @@ const route = useRoute();
 const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
+const locationsIds = inject('locationsIds');
 
 const sectionRef = ref();
 
-const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query), { watch: [() => route.query] });
+const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, locationsIds.value), { watch: [() => route.query, locationsIds] });
 
 let map = null;
 
@@ -71,15 +72,25 @@ const drawPoints = async () => {
             var html = '<div class="group-marker">' + markers.length + '</div>';
             return L.divIcon({ html: html });
         },
-        spiderfyOnMaxZoom: false, showCoverageOnHover: true, zoomToBoundsOnClick: false
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: true
     });
 
-    data.value.forEach(({ lat, lon }, index) => {
-        if (lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon }));
+    markers.on('clusterclick', function(event) {
+        locationsIds.value = event.layer.getAllChildMarkers().map(child => (child.options.id));
+    });
+
+    data.value.forEach(({ lat, lon, id }, index) => {
+        if (lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon, id }));
     });
 
     map.addLayer(markers);
 }
+
+// watch(data, async () => {
+    // await map._panes.markerPane.remove();
+    // await drawPoints();
+    // console.log(map)
+// })
 
 const removeMapHint = (event) => {
     event.preventDefault();
@@ -93,6 +104,7 @@ onMounted(() => mount().then(() => {
 
     sectionRef.value.addEventListener('wheel', removeMapHint, false);
     sectionRef.value.addEventListener('mouseleave', removeMapHint);
+    sectionRef.value.addEventListener('click', removeMapHint);
 }))
 </script>
 

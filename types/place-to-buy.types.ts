@@ -6,6 +6,7 @@ export interface PlaceToBuyPage extends Page
 }
 
 export type Location = {
+    id: number;
     title: string;
     subtitle?: string;
     contact: {

@@ -14,10 +14,12 @@
                     <div class="grid justify-left gap-2 xs:justify-end">
                         <button @click="() => onShowOnMap(location.coords, index)"
                             class="w-fit flex gap-2 items-center"><img class="size-[16px]"
-                                src="@/assets/icons/map-pin.svg" alt="" :aria-label="$t('pages.place-to-buy.show-on-map')"> {{
+                                src="@/assets/icons/map-pin.svg" alt=""
+                                :aria-label="$t('pages.place-to-buy.show-on-map')"> {{
                                     $t('pages.place-to-buy.show-on-map') }}</button>
                         <button @click="onCheckTrace(location.coords)" class="flex gap-2 items-center"><img
-                                class="size-[16px]" src="@/assets/icons/map-pin.svg" alt="" :aria-label="$t('pages.place-to-buy.check-directions')"> {{
+                                class="size-[16px]" src="@/assets/icons/map-pin.svg" alt=""
+                                :aria-label="$t('pages.place-to-buy.check-directions')"> {{
                                     $t('pages.place-to-buy.check-directions') }}</button>
                     </div>
                 </div>
@@ -27,25 +29,32 @@
 </template>
 
 <script setup lang="ts">
+import type { Location } from '~/types/place-to-buy.types';
+
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
 const mapKey: Ref<number> | undefined = inject('mapKey');
 const selected: Ref<number> | undefined = inject('selected');
 const page: Ref<number> | undefined = inject('page') ?? ref(1);
-const locationsList: Ref<Location[]> | undefined = inject('locationsList');
 
 const route = useRoute();
 
+const props = defineProps<{
+    locationsList: Location[];
+}>();
+
+const { locationsList } = toRefs(props);
+
 function shuffle(array) {
-  let currentIndex = array.length;
+    let currentIndex = array.length;
 
-  while (currentIndex != 0) {
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+    while (currentIndex != 0) {
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
 }
 
 
@@ -73,6 +82,6 @@ const onCheckTrace = async ({ lat, lng }: { lat: number; lng: number }) => {
 }
 
 onMounted(async () => {
-    if(route.query.symbol) shuffle(locationsList.value)
+    if (route.query.symbol) shuffle(locationsList.value)
 })
 </script>
