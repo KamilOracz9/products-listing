@@ -1,7 +1,9 @@
 <template>
     <section class="relative w-full lg:col-span-3" id="place-to-buy" ref="sectionRef">
         <div class="w-full map h-[400px] relative z-10 lg:h-[700px]" id="map"></div>
-        <div class="map-hint hidden transition-all absolute top-0 left-0 w-full h-full items-center justify-center z-10 bg-[rgba(0,0,0,.3)] text-lg text-white opacity-0 lg:flex">{{ $t('pages.place-to-buy.map-hint') }}</div>
+        <div
+            class="map-hint hidden transition-all absolute top-0 left-0 w-full h-full items-center justify-center z-10 bg-[rgba(0,0,0,.3)] text-lg text-white opacity-0 lg:flex">
+            {{ $t('pages.place-to-buy.map-hint') }}</div>
     </section>
 </template>
 
@@ -11,6 +13,8 @@ import markerIconRed from '@/assets/icons/marker-icon-red.png';
 import { fetchCoordsList } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 const L = await import('leaflet');
+const { MarkerClusterGroup } = await import('leaflet.markercluster');
+const { GestureHandling } = await import('leaflet-gesture-handling');
 
 const route = useRoute();
 
@@ -18,12 +22,7 @@ const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
 const locationsIds = inject('locationsIds');
-
-const sectionRef = ref();
-
-const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, locationsIds.value), { watch: [() => route.query, locationsIds] });
-
-let map = null;
+const mapKey = inject('mapKey');
 
 const icon = L.icon({
     iconUrl: markerIcon,
@@ -37,35 +36,41 @@ const iconRed = L.icon({
 
 const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-const mount = async () => {
-    const L = await import('leaflet');
-    const { MarkerClusterGroup } = await import('leaflet.markercluster');
-    const { GestureHandling } = await import('leaflet-gesture-handling');
+const sectionRef = ref();
+const locationsIdsByZoom = ref([]);
 
-    L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
-    L.Map.addInitHook("addHandler", "markerClusterGroup", MarkerClusterGroup);
+const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, locationsIds.value), { watch: [() => route.query, locationsIds] });
 
+const map = computed(() => {
     const container = L.DomUtil.get('map');
     if (container != null) {
         container._leaflet_id = null;
-    }
+    };
 
-    map = L.map("map", {
+    const map = L.map("map", {
         center: center.value,
         zoom: zoom.value,
         maxZoom: 18,
         minZoom: 6,
         gestureHandling: true,
+        zoomSnap: 3,
+    });
+
+    map.on('zoomend', function (event) {
+        const prevLocationsIds = locationsIdsByZoom.value[event.sourceTarget.getZoom()];
+
+        if (prevLocationsIds) locationsIds.value = prevLocationsIds;
+        else if (event.sourceTarget.getZoom() <= 6) locationsIds.value = [];
+
+        delete locationsIdsByZoom.value[event.sourceTarget.getZoom() + 3];
     });
 
     layer.addTo(map);
-    // map.scrollWheelZoom.disable();
-}
 
-const drawPoints = async () => {
-    const L = await import('leaflet');
-    const { MarkerClusterGroup } = await import('leaflet.markercluster');
+    return map;
+});
 
+const markers = computed(() => {
     const markers = new MarkerClusterGroup({
         iconCreateFunction: function (cluster) {
             var markers = cluster.getAllChildMarkers();
@@ -75,22 +80,22 @@ const drawPoints = async () => {
         spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: true
     });
 
-    markers.on('clusterclick', function(event) {
-        locationsIds.value = event.layer.getAllChildMarkers().map(child => (child.options.id));
-    });
+    return markers;
+});
+
+const refreshMarkers = () => {
+    markers.value.clearLayers();
 
     data.value.forEach(({ lat, lon, id }, index) => {
-        if (lat && lon) markers.addLayer(L.marker([lat, lon], { icon: selected.value === index ? iconRed : icon, id }));
+        const marker = L.marker([lat, lon], { icon: selected.value === id ? iconRed : icon, id });
+
+        marker.addEventListener('click', () => {
+            selected.value = id;
+        })
+
+        if (lat && lon) markers.value.addLayer(marker);
     });
-
-    map.addLayer(markers);
 }
-
-// watch(data, async () => {
-    // await map._panes.markerPane.remove();
-    // await drawPoints();
-    // console.log(map)
-// })
 
 const removeMapHint = (event) => {
     event.preventDefault();
@@ -99,17 +104,28 @@ const removeMapHint = (event) => {
     event.currentTarget.removeEventListener('mouseleave', removeMapHint);
 };
 
-onMounted(() => mount().then(() => {
-    drawPoints();
+onMounted(() => {
+    refreshMarkers();
+
+    markers.value.on('clusterclick', function (event) {
+        if (!locationsIdsByZoom.value) locationsIdsByZoom.value[map.value.getZoom() + 3] = [];
+        locationsIdsByZoom.value[map.value.getZoom() + 3] = event.layer.getAllChildMarkers().map(child => (child.options.id));
+    });
+
+    map.value.addLayer(markers.value);
 
     sectionRef.value.addEventListener('wheel', removeMapHint, false);
     sectionRef.value.addEventListener('mouseleave', removeMapHint);
     sectionRef.value.addEventListener('click', removeMapHint);
-}))
+
+    watch(data, () => {
+        refreshMarkers();
+    })
+})
 </script>
 
 <style>
-#place-to-buy:hover > .map-hint{
+#place-to-buy:hover>.map-hint {
     opacity: 1;
 }
 </style>

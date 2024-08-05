@@ -12,7 +12,7 @@
                         </div>
                         <figcaption>
                             <p class="font-medium uppercase text-base pt-2 pb-3">{{ product.name }}</p>
-                            <p class="text-sm text-gray-4">{{ product.description_short }}</p>
+                            <div class="text-sm text-gray-4" v-html="product.description_short"></div>
                         </figcaption>
                     </figure>
                 </NuxtLink>

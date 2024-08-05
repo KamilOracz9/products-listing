@@ -1,7 +1,7 @@
 <template>
     <section class="lg:col-span-2">
         <ul class="grid gap-4 max-h-[400px] lg:max-h-[700px] overflow-y-auto pr-2" @scroll="onScroll">
-            <li :class="selected === index ? 'border-black' : 'border-gray-2'"
+            <li :class="selected === location.id ? 'border-black' : 'border-gray-2'"
                 class="bg-gray-2 px-6 py-5 rounded-br-[25px] border" v-for="(location, index) in locationsList"
                 :key="index">
                 <p class="font-medium text-lg xs:text-xl">{{ location.title }}</p>
@@ -12,7 +12,7 @@
                         <p>{{ location.contact.phone }}</p>
                     </div>
                     <div class="grid justify-left gap-2 xs:justify-end">
-                        <button @click="() => onShowOnMap(location.coords, index)"
+                        <button @click="() => onShowOnMap(location.coords, location.id)"
                             class="w-fit flex gap-2 items-center"><img class="size-[16px]"
                                 src="@/assets/icons/map-pin.svg" alt=""
                                 :aria-label="$t('pages.place-to-buy.show-on-map')"> {{
