@@ -8,6 +8,8 @@
     } */
     html {
         scroll-behavior: smooth;
+        scroll-padding-top: 144px;
+        scroll-margin-top: 20px;
     }
 
     html * {
@@ -26,9 +28,9 @@
         @apply font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
     }
 
-    * {
-        scroll-margin-top: 144px;
-    }
+    /* * [id] {
+        scroll-margin-top: 200px;
+    } */
 
     h1 {
         /* @apply text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]; */
@@ -182,6 +184,7 @@
     }
 
     header .content-grid {
+        /* @apply py-7 sticky top-0 h-[4rem] w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row; */
         @apply py-7 fixed w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row;
     }
 
