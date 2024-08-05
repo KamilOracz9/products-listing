@@ -190,7 +190,7 @@
     }
 
     header .content-grid .header__dropdown > div {
-        @apply pt-4 px-4 overflow-hidden lg:absolute lg:h-0 lg:bg-white lg:pt-0;
+        @apply mt-4 px-4 overflow-hidden lg:absolute lg:h-0 lg:bg-white lg:mt-0;
     }
 
     header .content-grid .header__dropdown[data-active=true] > div {
@@ -204,7 +204,7 @@
     header .content-grid .header__items {
         grid-auto-rows: min-content;
         /* grid-auto-columns: min-content; */
-        @apply hidden max-h-[calc(100vh-114px)] min-h-[calc(100vh-114px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-8 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
+        @apply hidden max-h-[calc(100vh-148px)] min-h-[calc(100vh-148px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-8 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
     }
 
     header .content-grid .header__items[data-active=true] {
