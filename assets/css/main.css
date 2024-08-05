@@ -16,6 +16,10 @@
 
     html[lang='uk'] * {
         @apply font-source;
+
+        p {
+            @apply text-sm    
+        }
     }
 
     body {
