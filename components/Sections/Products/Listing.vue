@@ -6,7 +6,6 @@
                     :to="localePath({ name: 'products' }) + `/${product.slug}`">
                     <figure>
                         <div class="relative">
-                            {{ console.log(product) }}
                             <SectionsProductsBadge :badge="product.badge" />
                             <img class="w-full rounded-br-sm" :src="product.media?.main['460_613']" :alt="product.name"
                                 :title="product.name">
