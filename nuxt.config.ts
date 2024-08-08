@@ -4,7 +4,7 @@ import pages from './lang/pages.json';
 export default defineNuxtConfig({
   ssr: true,
   devServer: {
-    port: 3015,
+    port: 3000,
   },
   nitro: {
     externals: {
