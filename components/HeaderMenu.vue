@@ -230,6 +230,9 @@ onMounted(async () => {
     navObserver.observe(document.getElementById('top-bar') as Element);
 
     document.addEventListener('scroll', () => headerStore.setSubmenu(''));
+    document.addEventListener('click', () => {
+        if(!event?.target.closest('.header__items')) headerStore.setSubmenu('');
+    })
 
     await clipboardStore.fetchItems();
 

@@ -11,7 +11,6 @@ import BreuerBold from '~/assets/fonts/BreuerText-Bold.ttf?url';
 import BreuerLight from '~/assets/fonts/BreuerText-Light.ttf?url';
 import BreuerMedium from '~/assets/fonts/BreuerText-Medium.ttf?url';
 import BreuerRegular from '~/assets/fonts/BreuerText-Regular.ttf?url';
-import { fetchLayoutData } from './services/api/layout';
 
 const i18n = useI18n();
 const router = useRouter();
@@ -79,12 +78,10 @@ useSeoMeta({
   ogSiteName: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,
   twitterCard: 'summary_large_image',
   robots: {
-    UserAgent: '*',
     Disallow: '',
     Index: true,
     Follow: true,
   },
-  // cacheControl: 'public, max-age=31536000, immutable',
 })
 </script>
 

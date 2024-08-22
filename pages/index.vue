@@ -1,11 +1,11 @@
 <template>
   <div>
-    <NuxtLink to="https://konfiguratorkabin.pl" aria-label="konfiguratorkabin.pl"
+    <NuxtLink :to="localePath('made-to-measure')" aria-label="konfiguratorkabin.pl"
       class="flex text-[.7rem] mt-8 mb-7 group xs:text-sm md:text-xl md:w-fit">
       <span
-        class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">konfiguratorkabin.pl</span>
+        class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{ configuratorLink }}</span>
       <span class="px-2 uppercase font-medium xs:px-4 xs:py-2 md:px-5 md:py-3">{{ $t('made-to-measure-home-link')
-        }}</span>
+      }}</span>
     </NuxtLink>
 
     <SectionsHomeSwiper :data="Object.values(slides)" />
@@ -27,6 +27,15 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchHomePage } from '~/services/api';
 import type { HomePage } from '~/types/home.types';
+
+const { locale } = useI18n();
+const localePath = useLocalePath();
+
+const configuratorLink = computed(() => {
+  if(locale.value === 'pl') return 'konfiguratorkabin.pl';
+  if(locale.value === 'sk') return 'konfiguratorkabin.sk';
+  else return 'konfiguratorkabin.eu';
+})
 
 const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage());
 const { description } = toRefs(data.value as HomePage);
