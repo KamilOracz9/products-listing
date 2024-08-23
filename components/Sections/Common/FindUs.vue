@@ -1,5 +1,5 @@
 <template>
-    <section class="hidden relative mt-16 mb-12 md:block">
+    <section v-if="locale === 'pl'" class="hidden relative mt-16 mb-12 md:block">
         <div class="lg:h-[360px]">
             <img class="h-full w-full object-cover" src="@/assets/images/find-shops.webp" alt="" loading="lazy" />
         </div>
@@ -18,6 +18,7 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
 const localePath = useLocalePath();
 
 const city_or_code = ref('');
