@@ -3,7 +3,7 @@
         :class="boxClass ? boxClass : ''">
         <p class="font-medium text-lg mb-2 sm:text-xl">{{ box.title }}</p>
         <div class="mb-auto sm:text-lg" v-html="box.text"></div>
-        <ButtonsTransparent v-if="!type" :label="box.button" tagType="link" :url="box.path" />
+        <ButtonsTransparent v-if="!type" :label="box.button" tagType="link" :url="box.path" :target="target" />
         <slot />
     </div>
 </template>
@@ -18,6 +18,7 @@ const props = defineProps<{
     };
     boxClass?: string;
     type?: string;
+    target?: '_blank';
 }>();
-const { box, boxClass, type } = toRefs(props);
+const { box, boxClass, type, target } = toRefs(props);
 </script>

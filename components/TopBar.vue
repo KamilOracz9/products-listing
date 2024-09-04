@@ -9,7 +9,12 @@
                     <LazyArrow :width="10" :height="6" :direction="'down'" />
                 </span>
 
-                {{ $t(globalStore.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}
+                <div class="flex gap-2 items-center">
+                    {{ $t(globalStore.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}
+                    <img height="12" width="18"
+                        :src="`https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/${locale}.svg`" alt=""
+                        title="" />
+                </div>
             </span>
 
             <ul

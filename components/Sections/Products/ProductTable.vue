@@ -30,7 +30,7 @@
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
-                            <td v-for="header in headers" class="w-full break-keep whitespace-nowrap"
+                            <td v-for="header in headers" class="break-keep whitespace-nowrap"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
                                     header) }}</td>
                             <td
@@ -50,7 +50,7 @@
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
-                            <td v-for="header in headers" class="w-full break-keep whitespace-nowrap"
+                            <td v-for="header in headers" class="break-keep whitespace-nowrap"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
                                     header) }}</td>
                             <td
@@ -168,7 +168,7 @@ const getRealizationColor = (realizationTime: number) => {
     container-type: inline-size;
 }
 
-@container(min-width: 768px) {
+@container(min-width: 1280px) {
     table {
         table-layout: fixed;
     }

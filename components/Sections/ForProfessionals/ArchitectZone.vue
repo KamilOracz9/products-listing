@@ -53,7 +53,7 @@
 
         <div class="grid gap-6 lg:gap-10 lg:mt-10 xl:grid-cols-2">
             <section class="sm:grid sm:gap-6 sm:grid-cols-2 lg:gap-10 lg:mt-0 2xl:grid-cols-2">
-                <SectionsCommonBox boxClass="bg-gray-5 lg:order-1 xl:-order-1" :box="section_3.box_1" />
+                <SectionsCommonBox boxClass="bg-gray-5 lg:order-1 xl:-order-1" :box="section_3.box_1" target="_blank" />
                 <SectionsCommonBox boxClass="bg-yellow-2 rounded-br-[25px] mt-6 md:rounded-br-lg sm:mt-0"
                     :box="section_3.box_2" />
             </section>
