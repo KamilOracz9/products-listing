@@ -77,11 +77,11 @@ useSeoMeta({
   ogUrl: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,
   ogSiteName: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,
   twitterCard: 'summary_large_image',
-  robots: {
-    Disallow: '',
-    Index: true,
-    Follow: true,
-  },
+  // robots: {
+  //   Disallow: '',
+  //   Index: true,
+  //   Follow: true,
+  // },
 })
 </script>
 
