@@ -5,17 +5,17 @@
         <SectionsPlaceToBuySearch />
 
         <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
-            <div class="lg:col-span-2  text-2xl font-medium" v-if="!data.locationsList.length">
+            <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
                 {{ $t('pages.place-to-buy.locations-not-found') }}
             </div>
-            <SectionsPlaceToBuyLocationsList :locationsList="data.locationsList" v-else />
+            <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
             <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import type {PlaceToBuyPage} from '~/types/place-to-buy.types';
+import type { PlaceToBuyPage } from '~/types/place-to-buy.types';
 import { fetchShops } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 
@@ -27,18 +27,24 @@ const mapCenter = ref([52.121, 19.108]);
 const selected = ref(null);
 const page = ref(1);
 const locationsIds = ref();
+const locationsList: Ref = ref([]);
 
-const { data }: {data: Ref<PlaceToBuyPage>} = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
+const { data }: { data: Ref<PlaceToBuyPage> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
-const locationsList = ref([...data.value.locationsList]);
 
-watch(() => route.query, () => {
-    locationsList.value = [];
-    selected.value = null;
-})
 
-watch(data, value => {
-    locationsList.value = [...locationsList.value, ...value.locationsList];
+onMounted(() => {
+    watch(() => route.query, () => {
+        page.value = 1;
+        locationsList.value = [];
+        selected.value = null;
+    })
+
+    watch(() => data.value, value => {
+        locationsList.value = [...locationsList.value, ...value.locationsList];
+    })
+
+    locationsList.value = data.value.locationsList;
 })
 
 provide('mapZoom', mapZoom);
