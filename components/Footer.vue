@@ -21,8 +21,8 @@
                     <img src="@/assets/icons/glob.svg" class="footer__icon" loading="lazy" width="16" height="16"
                         alt="Icon" title="" />
                     <div class="flex flex-col">
-                        <a v-for="item in bottom.our_websites.items" class="flex gap-3 footer__url" :href="item">{{ item
-                            }}</a>
+                       
+                        <a v-for="item in bottom.our_websites.items" class="flex gap-3 footer__url" target="_blank" :href="`https://${item}`">{{ item }}</a>
                     </div>
                 </div>
             </li>
