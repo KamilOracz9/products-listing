@@ -3,19 +3,19 @@
         class="bg-black-2 text-white px-5 py-12 rounded-br-md lg:py-[61.5px] lg:pl-[46px] lg:pr-[78px] lg:rounded-br-lg">
         <!-- Items -->
         <ul class="footer__items">
-            <LazyFooterDropdown v-for="item in Object.values(top)" :translate="false" :item="item" />
+            <FooterDropdown v-for="item in Object.values(top)" :translate="false" :item="item" />
         </ul>
 
         <ul
             class="flex w-full flex-col gap-y-7 mt-6 lg:mt-12 lg:flex-row lg:flex-wrap lg:gap-y-24 lg:border-t lg:border-opacity-50 lg:border-white lg:pt-12">
             <!-- Contacts -->
-            <LazyFooterContact data-aos="fade-up" v-for="item in [{
+            <FooterContact v-for="item in [{
                 title: bottom.company.title,
                 address: [bottom.company.address],
                 email: [bottom.company.email],
             }, ...bottom.departments]" :item="item" />
             <!-- Websites -->
-            <li class="lg:w-1/4" data-aos="fade-up">
+            <li class="lg:w-1/4">
                 <p class="text-medium-lg uppercase">{{ bottom.our_websites.title }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="footer__icon" loading="lazy" width="16" height="16"

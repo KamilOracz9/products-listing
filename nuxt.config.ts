@@ -104,6 +104,5 @@ export default defineNuxtConfig({
     customRoutes: 'config',
     pages: pages,
   },
-
   compatibilityDate: '2024-07-31',
 })
