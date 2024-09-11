@@ -1,16 +1,16 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <div v-if="!globalStore.isLoading" class="flex flex-col min-h-screen max-w-max-content w-full relative">
+        <div v-if="!globalStore.isLoading" class="flex flex-col min-h-screen w-full relative">
             <header class="relative z-30">
                 <TopBar />
                 <HeaderMenu />
             </header>
 
-            <main class="min-h-[80vh] flex-1 mt-[144px] px-4 small-height:mt-[76px] relative 3xl:px-0">
+            <main class="min-h-[80vh] flex-1 mt-[144px] small-height:mt-[76px] relative grid-content">
                 <slot />
             </main>
 
-            <footer>
+            <footer class="grid-content">
                 <Footer />
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>

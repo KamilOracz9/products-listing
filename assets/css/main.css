@@ -3,6 +3,37 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --padding-inline: 1rem;
+        --content-max-width: 1680px;
+        --breakout-max-width: 1680px;
+        --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+    }
+
+    .grid-content {
+        display: grid;
+        grid-template-columns:
+            [full-width-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+    }
+
+    .grid-content>* {
+        grid-column: content;
+    }
+
+    .grid-content>.breakout {
+        grid-column: breakout;
+    }
+
+    .grid-content>.full-width {
+        grid-column: full-width;
+    }
+
+    @media screen and (min-width: 640px) {
+        :root {
+            --padding-inline: 2rem;
+        }
+    }
+
     /* section {
         scroll-margin-top: 300px;
     } */
@@ -185,7 +216,7 @@
 
     header .content-grid {
         /* @apply py-7 sticky top-0 h-[4rem] w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row; */
-        @apply py-7 fixed w-full bg-white max-w-max-content small-height:py-2 grid lg:flex lg:flex-row;
+        @apply py-7 fixed w-full bg-white small-height:py-2;
     }
 
     header .content-grid .header__dropdown {
@@ -193,7 +224,7 @@
     }
 
     header .content-grid .header__dropdown > div {
-        @apply mt-4 px-4 overflow-hidden lg:absolute lg:h-0 lg:bg-white lg:mt-0;
+        @apply mt-4 px-4 overflow-hidden lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:h-0 lg:bg-white lg:mt-0;
     }
 
     header .content-grid .header__dropdown[data-active=true] > div {
