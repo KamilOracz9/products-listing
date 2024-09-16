@@ -113,6 +113,10 @@ onMounted(() => {
     markers.value.on('clusterclick', function (event) {
         if (!locationsIdsByZoom.value) locationsIdsByZoom.value[map.value.getZoom() + 3] = [];
         locationsIdsByZoom.value[map.value.getZoom() + 3] = event.layer.getAllChildMarkers().map(child => (child.options.id));
+
+        locationsIds.value = locationsIdsByZoom.value[map.value.getZoom() + 3].flat();
+
+        map.value.zoomIn(3)
     });
 
     map.value.addLayer(markers.value);

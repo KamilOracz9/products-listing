@@ -31,13 +31,15 @@ const locationsList: Ref = ref([]);
 
 const { data }: { data: Ref<PlaceToBuyPage> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
-
-
 onMounted(() => {
     watch(() => route.query, () => {
         page.value = 1;
         locationsList.value = [];
         selected.value = null;
+    })
+
+    watch(locationsIds, value => {
+        console.log(value)
     })
 
     watch(() => data.value, value => {
