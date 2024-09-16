@@ -14,7 +14,6 @@ import { fetchCoordsList } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 const L = await import('leaflet');
 const { MarkerClusterGroup } = await import('leaflet.markercluster');
-const { GestureHandling } = await import('leaflet-gesture-handling');
 
 const route = useRoute();
 
@@ -22,7 +21,6 @@ const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
 const locationsIds = inject('locationsIds');
-const mapKey = inject('mapKey');
 
 const icon = L.icon({
     iconUrl: markerIcon,
@@ -103,6 +101,11 @@ const removeMapHint = (event) => {
     event.currentTarget.removeEventListener('wheel', removeMapHint, false);
     event.currentTarget.removeEventListener('mouseleave', removeMapHint);
 };
+
+watch(sectionRef, () => {
+    document.querySelector('.leaflet-control-zoom-in').addEventListener('click', () => map.value.zoomIn(3));
+    document.querySelector('.leaflet-control-zoom-out').addEventListener('click', () => map.value.zoomOut(3));
+})
 
 onMounted(() => {
     refreshMarkers();
