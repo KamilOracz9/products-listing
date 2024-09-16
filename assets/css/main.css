@@ -254,7 +254,7 @@
     }
 
     header .content-grid a:not([role='button']):hover, header .content-grid .header__label:hover {
-        @apply lg:text-gray-4;
+        @apply text-gray-4;
     }
 
     header .content-grid .header__label:hover {
