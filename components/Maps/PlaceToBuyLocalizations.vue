@@ -114,7 +114,16 @@ onMounted(() => {
         if (!locationsIdsByZoom.value) locationsIdsByZoom.value[map.value.getZoom() + 3] = [];
         locationsIdsByZoom.value[map.value.getZoom() + 3] = event.layer.getAllChildMarkers().map(child => (child.options.id));
 
-        locationsIds.value = locationsIdsByZoom.value[map.value.getZoom() + 3].flat();
+        // center.value = [
+        //     event.layer._latlng.lat,
+        //     event.layer._latlng.lng,
+        // ]
+
+        // console.log(event.layer._latlng, center.value)
+        // console.log(map.value.getCenter())
+
+
+        // locationsIds.value = locationsIdsByZoom.value[map.value.getZoom() + 3].flat();
 
         map.value.zoomIn(3)
     });
