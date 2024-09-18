@@ -1,14 +1,14 @@
-export default defineNuxtPlugin((nuxtApp) => {
-    // if (process.server) return;
-    
-    // const router = useRouter();
+export default defineNuxtPlugin(() => {
+    const localePath = useLocalePath();
 
-    // nuxtApp.hook('page:finish', async () => {
-    //     console.log('asd')
-    //     const hash = router.currentRoute.value.hash;
+    addRouteMiddleware('redirect-middleware', (to, from) => {
+        switch (to.name?.split('__')[0]) {
+            case "categories": return navigateTo(localePath({ name: 'products', query: to.query }));
+            case "categories-category": return navigateTo(localePath({ name: 'products' }) + `/${to.params.category}`);
+        }
 
-    //     if (hash) await setTimeout(() => {
-    //         document?.querySelector(hash)?.scrollIntoView();
-    //     }, 200)
-    // })
+        if(to.fullPath[to.fullPath.length - 1] !== '/' && Object.keys(to.query).length === 0) return navigateTo(`${to.fullPath}/`);
+    },
+        { global: true }
+    )
 })
