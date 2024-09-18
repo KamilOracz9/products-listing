@@ -51,10 +51,10 @@
                 <div class="text-xs sm:text-sm">
                     <p>
                         {{ $t('pages.contact.form.agreement') }}
-                        <NuxtLink :to="localePath({ name: 'privacy-policy' })" class="font-bold" :aria-label="$t('pages.contact.form.privacy')">{{
+                        <NuxtLink :to="localePath({ name: 'privacy-policy' }) + '/'" class="font-bold" :aria-label="$t('pages.contact.form.privacy')">{{
                             $t('pages.contact.form.privacy') }}</NuxtLink>
                         {{ $t('pages.contact.form.and') }}
-                        <NuxtLink :to="localePath({ name: 'information-clausue' })" class="font-bold" :aria-label="$t('pages.contact.form.info-clausue')">{{
+                        <NuxtLink :to="localePath({ name: 'information-clausue' }) + '/'" class="font-bold" :aria-label="$t('pages.contact.form.info-clausue')">{{
                             $t('pages.contact.form.info-clausue') }}</NuxtLink>
                     </p>
 

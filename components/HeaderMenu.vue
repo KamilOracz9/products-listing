@@ -22,7 +22,7 @@
                             </LazySectionsHeaderColumn>
                             <LazySectionsHeaderColumn v-for="(column, index) in columns" class="hidden lg:block">
                                 <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
-                                    item.url = item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : localePath({ name: item.type })
+                                    item.url = item.slug ? localePath({ name: 'categories' }) + `/${item.slug}/` : localePath({ name: item.type }) + '/'
 
                                     return item;
                                 })">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div v-if="index == 5" class="lg:px-8 lg:mb-10">
                                     <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
-                                        :to="localePath({ name: 'categories' })"
+                                        :to="localePath({ name: 'categories' }) + '/'"
                                         :aria-label="$t('navigation.all-products')">
                                         {{ $t('navigation.all-products') }}
                                     </NuxtLink>
@@ -61,7 +61,7 @@
                         <div class="header__links-ref">
                             <div class="header__links">
                                 <NuxtLink :external="false" v-for="item in header[slug].items"
-                                    :to="localePath(item.path)" :aria-label="item.label">
+                                    :to="localePath(item.path) + '/'" :aria-label="item.label">
                                     {{ item.label }}
                                 </NuxtLink>
                             </div>
@@ -70,7 +70,7 @@
 
                     <NuxtLink
                         class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
-                        :to="localePath({ name: 'download' })" :aria-label="$t('download')">
+                        :to="localePath({ name: 'download' }) + '/'" :aria-label="$t('download')">
                         <img width="16" height="16" class="header__icon" src="@/assets/icons/download.svg" alt="">
                         <p class="lg:hidden xl:block">{{ $t('download') }}</p>
                     </NuxtLink>
@@ -117,11 +117,11 @@
                                     <p class="hidden lg:block lg:text-xl">{{ $t('header-search-message') }}</p>
                                     <span class="lg:hidden">
                                         <LazyButtonsTransparent :label="$t('products')"
-                                            :url="localePath({ name: 'products' })" tag-type="link" />
+                                            :url="localePath({ name: 'products' }) + '/'" tag-type="link" />
                                     </span>
                                     <span class="hidden lg:block">
                                         <LazyButtonsTransparent :label="$t('go-to-products')"
-                                            :url="localePath({ name: 'products' })" tag-type="link" />
+                                            :url="localePath({ name: 'products' }) + '/'" tag-type="link" />
                                     </span>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                 <img class="aspect-[3/4]" width="390" height="520" :src="clipboardItem.image"
                                     :alt="clipboardItem.symbol" :title="clipboardItem.symbol">
                                 <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                                    <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`"
+                                    <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}/`"
                                         :aria-label="clipboardItem.symbol" class="text-base font-bold">{{
                                             clipboardItem.collection }}
                                     </NuxtLink>
@@ -164,7 +164,7 @@
 
                     <div class="w-full justify-center flex lg:w-fit lg:justify-start">
                         <NuxtLink
-                            :to="locale === 'pl' ? localePath('place-to-buy') : localePath({ name: 'contact' }) + `#${slugify($t('export-department'))}`"
+                            :to="locale === 'pl' ? localePath('place-to-buy') + '/' : localePath({ name: 'contact' }) + `#${slugify($t('export-department'))}/`"
                             :aria-label="$t('place-to-buy')"
                             class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:min-w-[150px] 2xl:text-xl 2xl:py-2">
                             {{ $t('place-to-buy') }}</NuxtLink>
@@ -195,23 +195,23 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories: Ref = ref([]);
 
 const getLink = (item: any, subitem: any) => {
-    if (subitem.path) return localePath(subitem.path);
-    if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}`;
-    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+    if (subitem.path) return localePath(subitem.path) + '/';
+    if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}/`;
+    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}/`
 
 }
 
 const getMainLink = (item: any) => {
-    if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
-    if (item.type === 'collections') return localePath({ name: 'collections' });
-    return localePath({ name: 'categories' }) + `/${item.slug}`;
+    if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' }) + '/';
+    if (item.type === 'collections') return localePath({ name: 'collections' }) + '/';
+    return localePath({ name: 'categories' }) + `/${item.slug}/`;
 }
 
 Object.values(columns.value).map(column => {
     column?.map(item => {
         categories.value.push({
             'name': item.name,
-            'path': item.slug ? localePath({ name: 'categories' }) + `/${item.slug}` : slugify(item.name),
+            'path': item.slug ? localePath({ name: 'categories' }) + `/${item.slug}/` : slugify(item.name),
             'image': item.image,
         });
     })
@@ -228,7 +228,7 @@ const search = () => {
         searchInInspirations: searchInInspirations.value,
     }
 
-    navigateTo(localePath({ name: 'search', query: (Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false))) as LocationQueryRaw }));
+    navigateTo(localePath({ name: 'search', query: (Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false))) as LocationQueryRaw }) + '/');
 }
 
 const headerMenuRef = ref();

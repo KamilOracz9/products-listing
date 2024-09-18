@@ -31,7 +31,7 @@
 
             <!-- Icons -->
             <div class="text-gray-1 hidden gap-[14px] items-center lg:flex">
-                <NuxtLink :to="localePath({ name: 'privacy-policy' })" :aria-label="$t('privacy-policy')"
+                <NuxtLink :to="localePath({ name: 'privacy-policy' }) + '/'" :aria-label="$t('privacy-policy')"
                     class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}
                 </NuxtLink>
                 <a :href="globalStore.socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon"

@@ -69,7 +69,7 @@ setMeta({
 });
 
 onMounted(() => {
-    window.history.replaceState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path));
+    window.history.replaceState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path) + '/');
 })
 </script>
 
