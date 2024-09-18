@@ -69,7 +69,9 @@ const onCheckTrace = async ({ lat, lng }: { lat: number; lng: number }) => {
 }
 
 watch(selected, value => {
-    scrollToElm(listRef.value, document.getElementById(`locations-list-${value}`));
+    const element = document.getElementById(`locations-list-${value}`);
+    
+    if(element) scrollToElm(listRef.value, element);
 })
 
 function scrollToElm(container, elm) {
