@@ -31,7 +31,7 @@ const route = useRoute();
 watch(locale, async (value: string) => {
     await globalStore.fetchGlobalData(locales.value.filter(({ code }: { code: string }) => code === value)[0].iso);
 
-    if (route.name.split('___')[0] !== 'categories') window.history.replaceState({}, '', route.path);
+    if (route.name.split('___')[0] !== 'products') window.history.replaceState({}, '', route.path);
 });
 
 onMounted(async () => {

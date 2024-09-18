@@ -139,19 +139,19 @@
     "ru": "/produkty",
     "uk": "/продукти"
   },
-  "products/[slug]": {
-    "en": "/products/[slug]",
-    "pl": "/produkty/[slug]",
-    "de": "/produkte/[slug]",
-    "fr": "/produits/[slug]",
-    "it": "/prodotti/[slug]",
-    "es": "/productos/[slug]",
-    "no": "/produkter/[slug]",
-    "sk": "/produkty/[slug]",
-    "cs": "/produkty/[slug]",
-    "ro": "/produse/[slug]",
-    "ru": "/produkty/[slug]",
-    "uk": "/продукти/[slug]"
+  "products/[category]/[slug]": {
+    "en": "/products/[category]/[slug]",
+    "pl": "/produkty/[category]/[slug]",
+    "de": "/produkte/[category]/[slug]",
+    "fr": "/produits/[category]/[slug]",
+    "it": "/prodotti/[category]/[slug]",
+    "es": "/productos/[category]/[slug]",
+    "no": "/produkter/[category]/[slug]",
+    "sk": "/produkty/[category]/[slug]",
+    "cs": "/produkty/[category]/[slug]",
+    "ro": "/produse/[category]/[slug]",
+    "ru": "/produkty/[category]/[slug]",
+    "uk": "/продукти/[category]/[slug]"
   },
   "products/[category]/index": {
     "en": "/products/[category]",

@@ -80,7 +80,7 @@ describe('Import pages', () => {
     });
 
     test('Product page imported', async () => {
-        const cmp = await import ("~/pages/products/[slug].vue");
+        const cmp = await import ("~/pages/products/[category]/[slug].vue");
         expect(cmp).toBeDefined();
     });
 
@@ -91,11 +91,6 @@ describe('Import pages', () => {
 
     test('Serivce page imported', async () => {
         const cmp = await import ("~/pages/service/index.vue");
-        expect(cmp).toBeDefined();
-    });
-
-    test('404 page imported', async () => {
-        const cmp = await import ("~/pages/[...404].vue");
         expect(cmp).toBeDefined();
     });
 

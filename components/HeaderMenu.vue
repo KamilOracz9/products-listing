@@ -22,7 +22,7 @@
                             </LazySectionsHeaderColumn>
                             <LazySectionsHeaderColumn v-for="(column, index) in columns" class="hidden lg:block">
                                 <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
-                                    item.url = item.slug ? localePath({ name: 'categories' }) + `/${item.slug}/` : localePath({ name: item.type }) + '/'
+                                    item.url = item.slug ? localePath({ name: 'products' }) + `/${item.slug}/` : localePath({ name: item.type }) + '/'
 
                                     return item;
                                 })">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div v-if="index == 5" class="lg:px-8 lg:mb-10">
                                     <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
-                                        :to="localePath({ name: 'categories' }) + '/'"
+                                        :to="localePath({ name: 'products' }) + '/'"
                                         :aria-label="$t('navigation.all-products')">
                                         {{ $t('navigation.all-products') }}
                                     </NuxtLink>
@@ -196,22 +196,22 @@ const categories: Ref = ref([]);
 
 const getLink = (item: any, subitem: any) => {
     if (subitem.path) return localePath(subitem.path) + '/';
-    if (!subitem.parameters) return localePath({ name: 'categories' }) + `/${subitem.slug}/`;
-    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'categories' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}/`
+    if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}/`;
+    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
 
 }
 
 const getMainLink = (item: any) => {
     if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' }) + '/';
     if (item.type === 'collections') return localePath({ name: 'collections' }) + '/';
-    return localePath({ name: 'categories' }) + `/${item.slug}/`;
+    return localePath({ name: 'products' }) + `/${item.slug}/`;
 }
 
 Object.values(columns.value).map(column => {
     column?.map(item => {
         categories.value.push({
             'name': item.name,
-            'path': item.slug ? localePath({ name: 'categories' }) + `/${item.slug}/` : slugify(item.name),
+            'path': item.slug ? localePath({ name: 'products' }) + `/${item.slug}/` : slugify(item.name),
             'image': item.image,
         });
     })
