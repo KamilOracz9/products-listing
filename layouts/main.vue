@@ -11,7 +11,7 @@
             </main>
 
             <footer class="grid-content">
-                <Footer />
+                <!-- <Footer /> -->
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>
         </div>
@@ -31,7 +31,7 @@ const route = useRoute();
 watch(locale, async (value: string) => {
     await globalStore.fetchGlobalData(locales.value.filter(({ code }: { code: string }) => code === value)[0].iso);
 
-    if (route.name.split('___')[0] !== 'products') window.history.replaceState({}, '', route.path);
+    // if (route.name.split('___')[0] !== 'products') window.history.replaceState({}, '', route.path);
 });
 
 onMounted(async () => {

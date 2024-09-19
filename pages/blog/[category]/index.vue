@@ -29,7 +29,7 @@ const {locale} = useI18n();
 const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORY_PAGE, async () => fetchInspirationCategoryPage(route.params.category as string));
 const { breadcrumbs, items, title, slug } = toRefs(data.value as InspirationCategoryPage);
 const linkPath = computed(() => {
-    const route = localeRoute('inspirations', locale.value)
+    const route = localeRoute('blog', locale.value)
     return route != null ? route.path : '/'
 })
 

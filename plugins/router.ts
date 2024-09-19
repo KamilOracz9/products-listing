@@ -7,7 +7,7 @@ export default defineNuxtPlugin(() => {
             case "categories-category": return navigateTo(localePath({ name: 'products' }) + `/${to.params.category}`);
         }
 
-        if(to.fullPath[to.fullPath.length - 1] !== '/' && Object.keys(to.query).length === 0) return navigateTo(`${to.fullPath}/`);
+        // if(to.fullPath[to.fullPath.length - 1] !== '/' && Object.keys(to.query).length === 0) return navigateTo(`${to.fullPath}/`);
     },
         { global: true }
     )
