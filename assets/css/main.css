@@ -278,6 +278,10 @@
     }
 
     header .content-grid .header__clipboard {
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
         @apply w-full flex !overflow-x-auto;
     }
 

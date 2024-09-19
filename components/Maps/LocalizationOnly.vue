@@ -34,7 +34,6 @@ onMounted(async () => {
         center: center.value,
         zoom: zoom.value,
         maxZoom: 18,
-        minZoom: zoom.value,
         gestureHandling: true,
     });
 
