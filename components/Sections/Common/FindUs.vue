@@ -10,7 +10,7 @@
                     class="border-0 bg-white py-4 px-[1.125rem] flex-1" />
                 <div class="[&>a]:border-black">
                     <ButtonsTransparent :label="$t('search')" tagType="link"
-                        :url="localePath({ name: 'place-to-buy', query: { city_or_code } }) + '/'" />
+                        :url="localePath({ name: 'place-to-buy', query: { city_or_code } })" />
                 </div>
             </div>
         </div>

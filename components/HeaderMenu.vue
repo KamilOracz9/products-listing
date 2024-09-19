@@ -228,7 +228,7 @@ const search = () => {
         searchInInspirations: searchInInspirations.value,
     }
 
-    navigateTo(localePath({ name: 'search', query: (Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false))) as LocationQueryRaw }) + '/');
+    navigateTo(localePath({ name: 'search', query: (Object.fromEntries(Object.entries(query).filter(([, value]) => value !== false))) as LocationQueryRaw }));
 }
 
 const headerMenuRef = ref();
