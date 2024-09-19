@@ -282,7 +282,7 @@
             height: 8px;
         }
 
-        @apply w-full flex !overflow-x-auto;
+        @apply w-full flex !overflow-x-auto relative;
     }
 
     header .content-grid .header__categories a {

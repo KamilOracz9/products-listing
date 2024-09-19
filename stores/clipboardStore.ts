@@ -14,7 +14,8 @@ const useClipboardStore = defineStore('clipboard', {
     },
     actions: {
         getIds() {
-            return JSON.parse(localStorage.getItem('clipboard-ids') as string);
+            if(localStorage.getItem('clipboard-ids')) return JSON.parse(localStorage.getItem('clipboard-ids') as string);
+            else return [];
         },
         async toggleItem(variantId: number) {
             let ids = this.getIds() ?? [];
@@ -24,15 +25,24 @@ const useClipboardStore = defineStore('clipboard', {
             else ids = ids.filter((id: number) => id != variantId);
 
             localStorage.setItem('clipboard-ids', JSON.stringify(ids));
+            
+            // console.log(localStorage.getItem('clipboard-ids'))
+            // console.log('asd');
 
             await this.fetchItems();
         },
         async fetchItems() {
+            // console.log(!this.getIds() || !this.getIds().length)
+            // console.log('asdasd')
             if (!this.getIds() || !this.getIds().length) this.items = [];
-            else this.items = await fetchClipboardItems(this.getIds());
+            else this.items = await fetchClipboardItems(this.getIds()) as [];
         },
         hasItem(variantId: number) {
             return !!this.items.find(item => item.variant_id === toValue(variantId))
+        },
+        async clear() {
+            this.items = [];
+            localStorage.setItem('clipboard-ids', '');
         },
     },
 });
