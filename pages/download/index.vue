@@ -23,7 +23,7 @@
                 </ul>
 
                 <div class="self-start [&>a]:border-black">
-                    <ButtonsTransparent v-if="section.button" tagType="link" :url="localePath({ name: 'download-3d' }) + '/'"
+                    <ButtonsTransparent v-if="section.button" tagType="link" :url="localePath({ name: 'download-3d' })"
                         :label="section.button" />
                 </div>
             </li>

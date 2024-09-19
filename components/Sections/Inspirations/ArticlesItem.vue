@@ -1,7 +1,7 @@
 <template>
     <li>
         <NuxtLink :aria-label="article.title"
-            :to="localePath({ name: 'inspirations' }) + `/${route.params.category ?? categorySlug}/${article.slug}/`">
+            :to="localePath({ name: 'inspirations' }) + `/${route.params.category ?? categorySlug}/${article.slug}`">
             <picture>
                 <source media="(min-width: 1280px)" :srcset="article.image.tablet">
                 <source media="(min-width: 768px)" :srcset="article.image.mobile">
