@@ -8,7 +8,7 @@
                 {{ categoryPage?.name ?? $t('products') }}</h1>
 
             <div class="mt-10 flex gap-10">
-                <SectionsProductsSidebar />
+                <LazySectionsProductsSidebar />
                 <div class="w-full lg:w-3/4 xl:w-full">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
@@ -19,10 +19,10 @@
                         :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
-                    <SectionsProductsListing v-if="!pending" :products="data.data" />
+                    <LazySectionsProductsListing v-if="!pending" :products="data.data" />
 
 
-                    <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
+                    <LazySectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
                     <p v-if="categoryPage?.description"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
