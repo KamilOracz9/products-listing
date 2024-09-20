@@ -8,7 +8,7 @@ module.exports = {
     // }
     {
       name: 'NewTrendy',
-      port: '3000',
+      port: '3001',
       script: 'node .output/server/index.mjs',
     }
   ]
