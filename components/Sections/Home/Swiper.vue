@@ -2,21 +2,32 @@
     <div>
         <Swiper v-if="data" :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
             @slideChange="activeSlide = $event.realIndex" class="relative rounded-tr-lg"
-            :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
-            :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
-            :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
+            :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]" :slides-per-view="sliderConfig.slidesPerView"
+            :loop="sliderConfig.loop" :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay"
+            :creative-effect="sliderConfig.creativeEffect">
             <SwiperSlide v-for="(slide, index) in data" :key="index">
                 <NuxtLink :to="slide.path" class="relative" :aria-label="slide.title ?? `New Trendy - slide-${index}`"
                     :key="index" :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
                         class="h-[582px] flex relative after:w-full after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
-                        <picture v-if="slide.image" class="w-full">
+                        <!-- <picture v-if="slide.image" class="w-full">
                             <source media="(min-width:1024px)" :srcset="slide.image.desktop">
                             <source media="(min-width:640px)" :srcset="slide.image.tablet">
                             <img :src="slide.image?.mobile" class="h-full w-full object-cover"
                                 sizes="100vw" :alt="slide.title ?? `New Trendy - slide-${index}`"
                                 :title="slide.title ?? `New Trendy - slide-${index}`" width="1680" height="716" />
-                        </picture>
+                        </picture> -->
+
+                        <img decoding="async" :src="slide.image?.mobile"
+                            :srcset="`
+                                ${slide.image?.mobile} 607w,
+                                ${slide.image?.tablet} 991w,
+                                ${slide.image?.desktop} 1680w,
+                            `"
+                            :alt="slide.title ?? `New Trendy - slide-${index}`"
+                            :title="slide.title ?? `New Trendy - slide-${index}`"
+                            class="h-full w-full object-cover"
+                         />
 
                         <ClientOnly>
                             <video muted loop webkit-playsinline playsinline autoplay v-if="slide.video"
