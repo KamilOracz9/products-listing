@@ -7,11 +7,7 @@ export const toGetParams = (params: any) => (
     }).filter(prop => prop).join('&')
 );
 
-export const getLocaleIso = computed(() => {
-    console.log(useI18n().locales.value)
-
-    return useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].iso;
-});
+export const getLocaleIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
 
 export const setMeta = (meta: Meta) => {
     const route = useRoute();
