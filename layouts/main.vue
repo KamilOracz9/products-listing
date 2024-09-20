@@ -15,7 +15,7 @@
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>
         </div>
-        <div class="flex min-h-screen items-center justify-center" v-if="globalStore.isLoading">
+        <div class="flex min-h-screen items-center justify-center" v-else>
             <Loading />
         </div>
     </div>

@@ -2,7 +2,7 @@
         <div class="mb-10 flex flex-col gap-10">
             <h1 v-if="route.query.search" class="section-title">{{ $t('pages.search.title') + route.query.search }}</h1>
 
-            <template v-if="!pending">
+            <template v-if="!pending && data">
                 <div
                     v-if="(!route.query.searchInProducts && !route.query.searchInInspirations) || route.query.searchInProducts">
                     <div class="flex justify-between pb-6 border-b border-gray-1">
@@ -16,7 +16,7 @@
                             v-for="product in data?.products" class="flex flex-col gap-2 relative">
                             <SectionsProductsBadge :badge="product.badge" />
                             <div>
-                                <img loading="lazy" :src="product.media?.main['460_613']" alt="">
+                                <img width="460" height="613" :src="product.media?.main['460_613']" alt="">
                             </div>
                             <p class="font-semibold leading-[1.1]">{{ product.name }}</p>
                             <p class="text-sm leading-[1.1]">{{ product.description_short }}</p>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </template>
-            <Loading v-if="pending || !data" />
+            <Loading v-else />
         </div>
 </template>
 
