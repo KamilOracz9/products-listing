@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLink :to="localePath('made-to-measure')" aria-label="konfiguratorkabin.pl"
+    <NuxtLink :to="localePath('made-to-measure')" :aria-label="configuratorLink"
       class="flex text-[.7rem] mt-8 mb-7 group xs:text-sm md:text-xl md:w-fit">
       <span
         class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{ configuratorLink }}</span>
@@ -39,7 +39,7 @@ const configuratorLink = computed(() => {
 
 const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage());
 const { description, meta } = toRefs(data.value as HomePage);
-const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(reactive(description.value.content));
+const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
 
 setMeta(meta.value);
 </script>

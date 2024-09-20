@@ -11,7 +11,7 @@ export interface HomePage extends Page {
             "box": Box[];
             "customized": Customized,
             "quality": {
-                "image": string;
+                "image": IPhoto;
                 "html": string;
             },
             "products": {
