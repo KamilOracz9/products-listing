@@ -22,6 +22,6 @@ const props = defineProps<{
 
 const { category } = toRefs(props);
 
-const path = computed(() => localePath({ name: 'inspirations' }) + `/${category.value.slug}`);
+const path = computed(() => localePath({ name: 'blog' }) + `/${category.value.slug}`);
 
 </script>
