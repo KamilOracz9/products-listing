@@ -67,11 +67,11 @@ useHead(() => ({
 }))
 
 useSeoMeta({
-  title: 'NEW TRENDY - Producent Kabin Prysznicowych',
-  keywords: 'NEW TRENDY - Producent Kabin Prysznicowych',
-  ogTitle: 'NEW TRENDY - Producent Kabin Prysznicowych',
-  description: 'NEW TRENDY - Producent Kabin Prysznicowych',
-  ogDescription: 'NEW TRENDY - Producent Kabin Prysznicowych',
+  title: null,
+  keywords: null,
+  ogTitle: null,
+  description: null,
+  ogDescription: null,
   ogImage: logo,
   ogLocale: i18n.locale.value,
   ogUrl: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,

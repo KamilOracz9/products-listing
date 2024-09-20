@@ -41,5 +41,10 @@ const localePath = useLocalePath();
 const { data } = await useAsyncData(DataKeys.DOWNLOAD_PAGE, async () => fetchDownloadPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as DownloadPage);
 
-meta?.value && setMeta(meta.value);
+console.log(data.value)
+
+setMeta({
+    meta_title: 'Do pobrania | NEW TRENDY',
+    meta_description: 'Pobierz katalogi, instrukcje montażu i inne materiały dotyczące kabin prysznicowych, brodzików i akcesoriów. Sprawdź dostępne pliki do pobrania!'
+});
 </script>

@@ -68,4 +68,9 @@ provide('page', page);
 provide('lastPage', lastPage);
 provide('locationsList', locationsList);
 provide('locationsIds', locationsIds);
+
+setMeta({
+    meta_title: 'Kabiny New Trendy - gdzie kupić kabinę prysznicową? | NEW TRENDY',
+    meta_description: 'Zastanawiasz się, gdzie kupić kabinę prysznicową NEW TRENDY? Sprawdź listę autoryzowanych punktów sprzedaży i znajdź nas w swojej okolicy!'
+});
 </script>

@@ -60,4 +60,11 @@ watch(() => route.query.page, value => {
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);
+
+console.log(categoryPage.value)
+
+setMeta({
+    meta_title: 'Kabiny prysznicowe, brodziki, akcesoria do kabin prysznicowych i inne | NEW TRENDY',
+    meta_description: 'Oferujemy kabiny prysznicowe, brodziki oraz akcesoria do kabin. Znajdź idealne rozwiązania do Twojej łazienki i stwórz swoją wyjątkową przestrzeń!'
+})
 </script>
