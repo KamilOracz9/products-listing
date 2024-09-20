@@ -15,7 +15,7 @@
                             <source media="(min-width:640px)" :srcset="slide.image.tablet">
                             <img :src="slide.image?.mobile" class="h-full w-full object-cover"
                                 sizes="100vw" :alt="slide.title ?? `New Trendy - slide-${index}`"
-                                :title="slide.title ?? `New Trendy - slide-${index}`" width="1680" height="716" />
+                                :title="slide.title ?? `New Trendy - slide-${index}`" width="1680" height="716" loading="lazy" />
                         </picture>
 
                         <ClientOnly>
