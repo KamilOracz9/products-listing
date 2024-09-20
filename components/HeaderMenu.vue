@@ -2,7 +2,7 @@
     <div ref="headerMenuRef" class="full-width content-grid">
         <div class="grid-content">
             <div class="flex justify-between w-full relative flex-col lg:flex-row">
-                <LazySectionsHeaderLogo />
+                <SectionsHeaderLogo />
 
                 <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
                     <LazySectionsHeaderItem slug="products">

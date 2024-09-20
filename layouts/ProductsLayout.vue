@@ -16,8 +16,7 @@
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                     <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
-                        class="my-10 underline text-2xl lg:hidden">{{
+                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
                     <SectionsProductsListing v-if="!pending" :products="data.data" />
@@ -54,17 +53,17 @@ const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () =>
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category));
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
-watch(() => route.query.page, value => {
-    if (value) document.querySelector('h1').scrollIntoView();
-})
-
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);
 
-console.log(categoryPage.value)
+onMounted(() => {
+    watch(() => route.query.page, value => {
+        if (value) document.querySelector('h1').scrollIntoView();
+    })
 
-setMeta({
-    meta_title: 'Kabiny prysznicowe, brodziki, akcesoria do kabin prysznicowych i inne | NEW TRENDY',
-    meta_description: 'Oferujemy kabiny prysznicowe, brodziki oraz akcesoria do kabin. Znajdź idealne rozwiązania do Twojej łazienki i stwórz swoją wyjątkową przestrzeń!'
+    setMeta({
+        meta_title: 'Kabiny prysznicowe, brodziki, akcesoria do kabin prysznicowych i inne | NEW TRENDY',
+        meta_description: 'Oferujemy kabiny prysznicowe, brodziki oraz akcesoria do kabin. Znajdź idealne rozwiązania do Twojej łazienki i stwórz swoją wyjątkową przestrzeń!'
+    })
 })
 </script>

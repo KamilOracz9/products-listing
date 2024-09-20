@@ -45,7 +45,12 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
+    '@nuxt/image',
   ],
+
+  image: {
+    dir: 'assets/images',
+  },
 
   swiper: {
     modules: ['navigation', 'pagination', 'autoplay'],
