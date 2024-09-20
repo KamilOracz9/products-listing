@@ -11,7 +11,7 @@
             </main>
 
             <footer class="grid-content">
-                <!-- <Footer /> -->
+                <Footer />
                 <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
             </footer>
         </div>
