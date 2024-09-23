@@ -154,8 +154,5 @@ const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => f
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);
 const { section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10 } = toRefs(description.value.content);
 
-setMeta({
-    meta_title: 'Kabiny, brodziki i szyby na wymiar | NEW TRENDY',
-    meta_description: 'Zamów kabiny prysznicowe, brodziki oraz szyby na wymiar w New Trendy. Dopasuj produkty do swoich potrzeb i ciesz się z nami idealną łazienką!'
-});
+setMeta(meta.value);
 </script>
