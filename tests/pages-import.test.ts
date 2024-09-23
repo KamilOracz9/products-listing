@@ -45,17 +45,17 @@ describe('Import pages', () => {
     });
 
     test('Inspirations page imported', async () => {
-        const cmp = await import ("~/pages/inspirations/index.vue");
+        const cmp = await import ("~/pages/blog/index.vue");
         expect(cmp).toBeDefined();
     });
 
     test('Inspirations category page imported', async () => {
-        const cmp = await import ("~/pages/inspirations/[category]/index.vue");
+        const cmp = await import ("~/pages/blog/[category]/index.vue");
         expect(cmp).toBeDefined();
     });
 
     test('Inspiration page imported', async () => {
-        const cmp = await import ("~/pages/inspirations/[category]/[slug].vue");
+        const cmp = await import ("~/pages/blog/[category]/[slug].vue");
         expect(cmp).toBeDefined();
     });
 
