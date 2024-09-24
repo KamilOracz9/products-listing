@@ -1,6 +1,8 @@
 <template>
     <div>
-        <p class="section-title">{{ $t('pages.place-to-buy.title') }}</p>
+        <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
+        
+        <p class="section-title">{{ title }}</p>
 
         <SectionsPlaceToBuySearch />
 
@@ -37,6 +39,8 @@ const locationsList: Ref = ref([]);
 
 const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
+const { meta, breadcrumbs, title } = toRefs(data.value);
+
 onMounted(() => {
     watch(() => route.query, () => {
         page.value = 1;
@@ -54,7 +58,7 @@ onMounted(() => {
 
     watch(() => data.value, value => {
         locationsList.value = [...locationsList.value, ...value.locationsList];
-        if(value.locationsList.length < 25) lastPage.value = true;
+        if (value.locationsList.length < 25) lastPage.value = true;
     })
 
     locationsList.value = data.value.locationsList;
@@ -69,5 +73,7 @@ provide('lastPage', lastPage);
 provide('locationsList', locationsList);
 provide('locationsIds', locationsIds);
 
-setMeta(data.value.meta);
+console.log(data.value)
+
+setMeta(meta.value);
 </script>
