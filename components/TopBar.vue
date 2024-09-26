@@ -10,9 +10,9 @@
                     </span>
 
                     <div class="flex gap-2 items-center">
-                        {{ $t(globalStore.locales.filter(({ code }) => code === locale)[0].label.toLowerCase()) }}
+                        {{ $t(globalStore.locales.filter(({ code }) => code === $i18n.locale)[0].label.toLowerCase()) }}
                         <img height="12" width="18"
-                            :src="`https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/${locale}.svg`"
+                            :src="`https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/${$i18n.locale}.svg`"
                             alt="" title="" />
                     </div>
                 </span>
@@ -20,11 +20,21 @@
                 <ul
                     class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                     <li class="p-3" v-for="item in globalStore.locales">
-                        <NuxtLink :to="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
+                        <button type="button" @click="changeLanguage(item.code)" class="flex items-center gap-2 group/dropdown-item">
                             <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
                             <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                 $t(item.label.toLowerCase()) }}</span>
-                        </NuxtLink>
+                        </button>
+                        <!-- <a :href="changeLanguage(item.code)" class="flex gap-2 group/dropdown-item">
+                            <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
+                            <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
+                                $t(item.label.toLowerCase()) }}</span>
+                        </a> -->
+                        <!-- <NuxtLink :to="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
+                            <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
+                            <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
+                                $t(item.label.toLowerCase()) }}</span>
+                        </NuxtLink> -->
                     </li>
                 </ul>
             </div>
@@ -36,12 +46,10 @@
                 </NuxtLink>
                 <a :href="globalStore.socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon"
                         src="@/assets/icons/social/facebook.svg" width="10" height="20" alt="" title="" /></a>
-                <a :href="globalStore.socials.instagram" target="_blank" aria-label="Instagram"><img
-                        class="top-bar-icon" src="@/assets/icons/social/instagram.svg" width="19" height="18" alt=""
-                        title="" /></a>
-                <a :href="globalStore.socials.pinterest" target="_blank" aria-label="Pinterest"><img
-                        class="top-bar-icon" src="@/assets/icons/social/pinterest.svg" width="19" height="20" alt=""
-                        title="" /></a>
+                <a :href="globalStore.socials.instagram" target="_blank" aria-label="Instagram"><img class="top-bar-icon"
+                        src="@/assets/icons/social/instagram.svg" width="19" height="18" alt="" title="" /></a>
+                <a :href="globalStore.socials.pinterest" target="_blank" aria-label="Pinterest"><img class="top-bar-icon"
+                        src="@/assets/icons/social/pinterest.svg" width="19" height="20" alt="" title="" /></a>
                 <a :href="globalStore.socials.youtube" target="_blank" aria-label="Youtube"><img class="top-bar-icon"
                         src="@/assets/icons/social/youtube.svg" width="23" height="16" alt="" title="" /></a>
                 <a :href="globalStore.socials.linkedin" target="_blank" aria-label="Linkedin"><img class="top-bar-icon"
@@ -55,13 +63,18 @@
 import device from '~/plugins/device';
 import { useGlobalStore } from '~/stores';
 
+const { setLocale } = useI18n();
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
-const { locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();
+
+const changeLanguage = async (lang: string) => {
+    await setLocale(lang);
+    window.location.reload();
+}
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;

@@ -42,18 +42,18 @@
     "uk": "/політика-конфіденційності"
   },
   "made-to-measure/index": {
-    "en": "/made-to-measure",
+    "en": "/products/made-to-measure",
     "pl": "/produkty/na-wymiar",
-    "de": "/nach-mass",
-    "fr": "/sur-mesure",
-    "it": "/su-misura",
-    "es": "/hecho-a-medida",
-    "no": "/skreddersydd",
-    "sk": "/na-mieru",
-    "cs": "/na-miru",
-    "ro": "/la-comanda",
-    "ru": "/na-zakaz",
-    "uk": "/на-замовлення"
+    "de": "/produkte/nach-mass",
+    "fr": "/produits/sur-mesure",
+    "it": "/prodotti/su-misura",
+    "es": "/productos/hecho-a-medida",
+    "no": "/produkter/skreddersydd",
+    "sk": "/produkty/na-mieru",
+    "cs": "/produkty/na-miru",
+    "ro": "/produse/la-comanda",
+    "ru": "/produkty/na-zakaz",
+    "uk": "/продукти/на-замовлення"
   },
   "collections/index": {
     "en": "/our-collections",
