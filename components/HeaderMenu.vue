@@ -220,8 +220,6 @@ Object.values(columns.value).map(column => {
     })
 });
 
-console.log(localePath({name: 'made-to-measure'}))
-
 const searchQuery = ref('');
 const searchInProducts = ref(false);
 const searchInInspirations = ref(false);
