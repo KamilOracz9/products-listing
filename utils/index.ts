@@ -22,7 +22,7 @@ export const setMeta = (meta: Meta) => {
     }))
 
     useSeoMeta({
-        title: meta.meta_title ?? null,
+        title: meta.meta_title ?? 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
         keywords: meta.meta_keywords ?? null,
         ogTitle: meta.meta_title ?? null,
         description: meta.meta_description ?? null,
