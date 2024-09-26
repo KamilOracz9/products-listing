@@ -63,6 +63,8 @@
 import device from '~/plugins/device';
 import { useGlobalStore } from '~/stores';
 
+const setIsRefreshing = inject('setIsRefreshing');
+
 const { setLocale } = useI18n();
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
@@ -72,8 +74,10 @@ const open = ref(false);
 const isMobile = device().provide.isMobile();
 
 const changeLanguage = async (lang: string) => {
+    await setIsRefreshing();
     await setLocale(lang);
     window.location.reload();
+    // await refreshAll();
 }
 
 function toggle(element: HTMLElement) {

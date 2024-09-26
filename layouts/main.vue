@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center font-breuer">
-        <div v-if="!globalStore.isLoading" class="flex flex-col min-h-screen w-full relative">
+        <div v-if="!globalStore.isLoading && !refreshing" class="flex flex-col min-h-screen w-full relative">
             <header class="relative z-30">
                 <TopBar />
                 <HeaderMenu />
@@ -27,12 +27,21 @@ import Loading from '~/components/Loading.vue';
 const globalStore = useGlobalStore();
 const { locale, locales } = useI18n();
 const route = useRoute();
+const refreshing = ref(false)
+
+const setIsRefreshing = async () => refreshing.value = true;
+
+provide('setIsRefreshing', setIsRefreshing);
 
 watch(locale, async (value: string) => {
     await globalStore.fetchGlobalData(locales.value.filter(({ code }: { code: string }) => code === value)[0].iso);
 
     // if (route.name.split('___')[0] !== 'products') window.history.replaceState({}, '', route.path);
 });
+
+// created() {
+//   window.addEventListener('beforeunload', this.handler)
+// }
 
 onMounted(async () => {
     await globalStore.fetchGlobalData();
