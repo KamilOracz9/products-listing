@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run generate --modern=server && pm2 restart ecosystem.config.cjs",
+    "deploy": "npm run build --modern=server && pm2 restart ecosystem.config.cjs",
     "test": "vitest"
   },
   "devDependencies": {
