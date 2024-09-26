@@ -6,7 +6,7 @@
             <ul class="flex flex-wrap">
                 <li v-for="color in colors" class="relative color">
                     <Tooltip :text="color.label" />
-                    <NuxtLink :to="localePath({ name: 'products' }) + `/${color.slug}`" :aria-label="color.label">
+                    <NuxtLink :to="localePath({ name: 'products' }) + `/${categorySlug}/${color.slug}`" :aria-label="color.label">
                         <img class="w-[70px] aspect-[1/1]" :src="color.image.mobile" alt="">
                     </NuxtLink>
                 </li>
@@ -60,9 +60,10 @@ const props = defineProps<{
         slug: string;
     }[],
     video?: string;
+    categorySlug: string;
 }>();
 
-const { description, doorsOpen, attributes, colors, video } = toRefs(props);
+const { description, doorsOpen, attributes, colors, video, categorySlug } = toRefs(props);
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);

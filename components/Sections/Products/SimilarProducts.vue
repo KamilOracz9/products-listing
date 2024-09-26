@@ -10,7 +10,7 @@
                 :creative-effect="sliderConfig.creativeEffect" :space-between="sliderConfig.spaceBetween"
                 :breakpoints="sliderConfig.breakpoints">
                 <SwiperSlide v-for="(slide, index) in products" :key="index">
-                    <NuxtLink :to="localePath({ name: 'products' }) + `/${slide.slug}`" class="relative group"
+                    <NuxtLink :to="localePath({ name: 'products' }) + `/${categorySlug}/${slide.slug}`" class="relative group"
                         :aria-label="slide.name">
                         <img :src="slide.images.mobile" alt="">
                         <div
@@ -46,12 +46,13 @@ const props = defineProps<{
         images: IPhoto;
         name: string;
         slug: string;
-    }[]
+    }[];
+    categorySlug: string;
 }>();
 
 const activeSlide = ref(0);
 
-const { products } = toRefs(props);
+const { products, categorySlug } = toRefs(props);
 
 const sliderConfig = {
     'slidesPerView': 1,

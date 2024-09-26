@@ -25,7 +25,7 @@
                     <SectionsProductsAttachments :images="images.details" />
 
                     <div class="flex flex-col gap-1 leading-4 sm:leading-6">
-                        <SectionsProductsProductDescription :video="data.video" :description="description"
+                        <SectionsProductsProductDescription :categorySlug="category.slug" :video="data.video" :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
                         <SectionsProductsProductTable :techImages="[...images.technical, ...images.technical_desc]"
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" />
+            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" :categorySlug="category.slug" />
         </div>
 
         <LoadingIndicator v-if="pending" />

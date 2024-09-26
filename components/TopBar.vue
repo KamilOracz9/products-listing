@@ -20,11 +20,11 @@
                 <ul
                     class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                     <li class="p-3" v-for="item in globalStore.locales">
-                        <NuxtLink :to="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
+                        <a :href="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
                             <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
                             <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                 $t(item.label.toLowerCase()) }}</span>
-                        </NuxtLink>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -62,6 +62,8 @@ const switchLocalePath = useSwitchLocalePath();
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();
+
+console.log()
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;

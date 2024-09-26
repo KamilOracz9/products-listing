@@ -73,7 +73,5 @@ provide('lastPage', lastPage);
 provide('locationsList', locationsList);
 provide('locationsIds', locationsIds);
 
-console.log(data.value)
-
 setMeta(meta.value);
 </script>
