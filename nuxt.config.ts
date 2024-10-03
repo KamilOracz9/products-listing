@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3001,
   },
+  experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } } },
   nitro: {
     externals: {
       traceOptions: { base: process.cwd() }

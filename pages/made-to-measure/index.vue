@@ -40,7 +40,7 @@
                 <div class="column">
                     <h2>{{ section_3.title }}</h2>
                     <h3 v-for="(item, index) in section_3.items" :data-aos-delay="index * 100">
-                        <NuxtLink :aria-label="item.label" :to="item.hashtag" class=""><img loading="lazy"
+                        <NuxtLink :aria-label="item.label" :to="localePath({name: 'made-to-measure', hash: item.hashtag})" class=""><img loading="lazy"
                                 :src="plusIcon" width="20" height="20" alt="">{{ item.label }}</NuxtLink>
                     </h3>
                 </div>
@@ -149,6 +149,8 @@ import { fetchMadeToMeasurePage } from '~/services/api';
 import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
 
 const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
+
+const localePath = useLocalePath();
 
 const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);

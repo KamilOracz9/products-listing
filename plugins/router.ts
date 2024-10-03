@@ -1,13 +1,12 @@
 export default defineNuxtPlugin(() => {
     const localePath = useLocalePath();
+    const nuxt = useNuxtApp();
+    const i18n = nuxt.$i18n;
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
-        switch (to.name?.split('__')[0]) {
-            case "categories": return navigateTo(localePath({ name: 'products', query: to.query }));
-            case "categories-category": return navigateTo(localePath({ name: 'products' }) + `/${to.params.category}`);
+        if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.eu') {
+            return navigateTo(localePath(to.fullPath, 'en'))
         }
-
-        if(to.fullPath[to.fullPath.length - 1] !== '/' && Object.keys(to.query).length === 0) return navigateTo(`${to.fullPath}/`);
     },
         { global: true }
     )

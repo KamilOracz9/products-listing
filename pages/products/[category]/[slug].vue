@@ -74,6 +74,6 @@ provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 onMounted(() => {
-    window.history.replaceState({}, '', linkPath.value + `/${category.value.slug}/${data.value.slug}`);
+    window.history.replaceState({}, '', linkPath.value + `/${category.value.slug}/${data.value.slug}/`);
 })
 </script>
