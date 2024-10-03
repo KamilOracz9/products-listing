@@ -84,23 +84,14 @@ const useGlobalStore = defineStore('global', {
         },
     }),
     actions: {
-        async fetchGlobalData(locale?: string) {
+        async fetchGlobalData() {
             this.isLoading = true;
 
-            if (locale) {
-                await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/cms/layout?site_id=1`).then(response => {
-                    this.header = response.header;
-                    this.footer = response.footer;
-                    this.socials = response.socials;
-                }).finally(() => this.isLoading = false);
-            }
-            else {
-                await fetchLayoutData(1).then(response => {
-                    this.header = response.header;
-                    this.footer = response.footer;
-                    this.socials = response.socials;
-                }).finally(() => this.isLoading = false);
-            }
+            await fetchLayoutData(1).then(response => {
+                this.header = response.header;
+                this.footer = response.footer;
+                this.socials = response.socials;
+            }).finally(() => this.isLoading = false);
         },
     },
 });

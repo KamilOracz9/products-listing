@@ -19,22 +19,13 @@
 
                 <ul
                     class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
-                    <li class="p-3" v-for="item in globalStore.locales">
-                        <button type="button" @click="changeLanguage(item.code)" class="flex items-center gap-2 group/dropdown-item">
+                    <li v-for="item in globalStore.locales">
+                        <button v-if="!(isWebsiteEu && item.code === 'pl')" type="button" @click="changeLanguage(item.code)"
+                            class="p-3 flex items-center gap-2 group/dropdown-item">
                             <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
                             <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                 $t(item.label.toLowerCase()) }}</span>
                         </button>
-                        <!-- <a :href="changeLanguage(item.code)" class="flex gap-2 group/dropdown-item">
-                            <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
-                            <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
-                                $t(item.label.toLowerCase()) }}</span>
-                        </a> -->
-                        <!-- <NuxtLink :to="switchLocalePath(item.code)" class="flex gap-2 group/dropdown-item">
-                            <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
-                            <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
-                                $t(item.label.toLowerCase()) }}</span>
-                        </NuxtLink> -->
                     </li>
                 </ul>
             </div>
@@ -68,7 +59,6 @@ const setIsRefreshing = inject('setIsRefreshing');
 const { setLocale } = useI18n();
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
-const switchLocalePath = useSwitchLocalePath();
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();
@@ -77,8 +67,9 @@ const changeLanguage = async (lang: string) => {
     await setIsRefreshing();
     await setLocale(lang);
     window.location.reload();
-    // await refreshAll();
 }
+
+const isWebsiteEu = computed(() => window.location.host === 'newtrendy.eu');
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;
