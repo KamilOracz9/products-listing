@@ -155,7 +155,8 @@
                                 <button type="button" @click="clipboardStore.clear()"
                                     class="fixed bottom-0 right-6 mx-4 mb-10 px-6 pb-[11px] pt-[14px] border-black border flex gap-6 items-center hover:bg-black transition-all hover:text-white group/button">
                                     <p class="text-xl uppercase">{{ $t('header-clipboard-clear') }}</p>
-                                    <img width="18" class="-translate-y-[3px] group-hover/button:white-filter" src="/assets/icons/delete.svg" alt="">
+                                    <img width="18" class="-translate-y-[3px] group-hover/button:white-filter"
+                                        src="/assets/icons/delete.svg" alt="">
                                 </button>
                             </template>
                             <div v-else
@@ -198,10 +199,10 @@ const columns = computed(() => Object.groupBy([header?.value?.products.items['ma
 const categories: Ref = ref([]);
 
 const getLink = (item: any, subitem: any) => {
+    if(item.type === 'made-to-measure') return `${item.url}${subitem.hash}`;
     if (subitem.path) return localePath(subitem.path);
     if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}`;
     if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-
 }
 
 const getMainLink = (item: any) => {
