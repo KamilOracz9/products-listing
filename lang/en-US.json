@@ -274,5 +274,6 @@
     "Pole numer jest wymagane.": "The number field is required.",
     "Pole miejsce jest wymagane.": "The location field is required.",
     "Pole działanie jest wymagane.": "The action field is required.",
-    "Pole prawidłowe dane musi zostać zaakceptowane.": "The valid data field must be accepted."
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "The valid data field must be accepted.",
+    "Wiadomość została wysłana": "The message has been sent."
 }

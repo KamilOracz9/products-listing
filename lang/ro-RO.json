@@ -282,5 +282,6 @@
     "Pole numer jest wymagane.": "Câmpul număr este obligatoriu.",
     "Pole miejsce jest wymagane.": "Câmpul locație este obligatoriu.",
     "Pole działanie jest wymagane.": "Câmpul acțiune este obligatoriu.",
-    "Pole prawidłowe dane musi zostać zaakceptowane.": "Câmpul date corecte trebuie să fie acceptat."
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Câmpul date corecte trebuie să fie acceptat.",
+    "Wiadomość została wysłana": "Mesajul a fost trimis."
 }
