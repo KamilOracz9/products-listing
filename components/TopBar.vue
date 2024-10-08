@@ -12,7 +12,7 @@
                     <div class="flex gap-2 items-center">
                         {{ $t(globalStore.locales.filter(({ code }) => code === $i18n.locale)[0].label.toLowerCase()) }}
                         <img height="12" width="18"
-                            :src="`https://newtrendy.pl/app/plugins/sitepress-multilingual-cms/res/flags/${$i18n.locale}.svg`"
+                            :src="`/assets/langs/${$i18n.locale}.svg`"
                             alt="" title="" />
                     </div>
                 </span>
@@ -22,7 +22,7 @@
                     <li v-for="item in globalStore.locales">
                         <button v-if="!(isWebsiteEu && item.code === 'pl')" type="button" @click="changeLanguage(item.code)"
                             class="p-3 flex items-center gap-2 group/dropdown-item">
-                            <img height="12" width="18" :src="item.flagUrl" alt="" title="" />
+                            <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" alt="" title="" />
                             <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                 $t(item.label.toLowerCase()) }}</span>
                         </button>

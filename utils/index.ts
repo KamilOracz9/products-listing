@@ -16,7 +16,7 @@ export const setMeta = (meta: Meta) => {
         link: [
             {
                 rel: 'canonical',
-                href: meta.canonical_tag ?? `https://newtrendy.pl${route.path}`,
+                href: meta.canonical_tag ?? window?.location?.href,
             },
         ],
     }))

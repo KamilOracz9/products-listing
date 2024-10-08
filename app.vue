@@ -13,21 +13,12 @@ import BreuerMedium from '~/assets/fonts/BreuerText-Medium.ttf?url';
 import BreuerRegular from '~/assets/fonts/BreuerText-Regular.ttf?url';
 
 const i18n = useI18n();
-const router = useRouter();
 
 useHead(() => ({
   link: [
     {
       rel: 'canonical',
-      href: `https://newtrendy.pl${router.currentRoute.value.fullPath}`,
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://newtrendy.pl',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://newtrendy.usermd.net',
+      href: window?.location?.href,
     },
     {
       rel: 'preload',
@@ -74,8 +65,8 @@ useSeoMeta({
   ogDescription: null,
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,
-  ogSiteName: `https://newtrendy.pl/${router.currentRoute.value.fullPath}`,
+  ogUrl: window?.location?.href,
+  ogSiteName: window?.location?.href,
   twitterCard: 'summary_large_image',
   robots: {
     // 'User-agent': '*',

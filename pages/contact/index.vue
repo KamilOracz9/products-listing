@@ -3,7 +3,7 @@
     <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
     <SectionsContactMain :data="description.content.contact" :title="title" />
     <SectionsContactTiles :data="description.content.departments" />
-    <SectionsContactSaleServiceDepartment :data="description.content.sales" />
+    <SectionsContactSaleServiceDepartment :data="description.content.sales" v-if="locale === 'pl'" />
     <SectionsContactExportDepartment :data="description.content.export" />
     <MapsLocalizationOnly />
   </div>
@@ -13,6 +13,8 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchContactPage } from '~/services/api';
 import type { ContactPage } from '~/types/contact.types';
+
+const { locale } = useI18n();
 
 const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchContactPage());
 const { breadcrumbs, description, meta, title } = toRefs(data.value as ContactPage);

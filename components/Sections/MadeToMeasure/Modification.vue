@@ -1,7 +1,7 @@
 <template>
     <div class="row modifications" :id="data.hashtag.replace('#', '')" >
         <div class="column" data-aos="fade-up">
-            <h2><img :src="plusIcon" width="30" height="30" alt="">{{ data.title }}</h2>
+            <h2><img src="@/assets/icons/cross.webp" width="30" height="30" alt="">{{ data.title }}</h2>
             <div v-html="data.html" />
             <div class="flex flex-col gap-4 xs:flex-row">
                 <NuxtLink to="#menu" aira-label="menu"
@@ -18,8 +18,6 @@
 
 <script setup lang="ts">
 import type { BaseSection, Section10, Section5 } from '~/types/made-to-measure.types';
-
-const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
 
 const props = withDefaults(defineProps<{
     data: BaseSection | Section5 | Section10;

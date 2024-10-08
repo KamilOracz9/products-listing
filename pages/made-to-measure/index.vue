@@ -41,7 +41,7 @@
                     <h2>{{ section_3.title }}</h2>
                     <h3 v-for="(item, index) in section_3.items" :data-aos-delay="index * 100">
                         <NuxtLink :aria-label="item.label" :to="localePath({name: 'made-to-measure', hash: item.hashtag})" class=""><img loading="lazy"
-                                :src="plusIcon" width="20" height="20" alt="">{{ item.label }}</NuxtLink>
+                                src="@/assets/icons/cross.webp" width="20" height="20" alt="">{{ item.label }}</NuxtLink>
                     </h3>
                 </div>
             </div>
@@ -147,8 +147,6 @@ import Breadrumbs from '~/components/Sections/Common/Breadrumbs.vue';
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchMadeToMeasurePage } from '~/services/api';
 import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
-
-const plusIcon = 'https://newtrendy.pl/app/uploads/2023/07/krzyzyk.jpg';
 
 const localePath = useLocalePath();
 
