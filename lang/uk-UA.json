@@ -267,5 +267,20 @@
             "title": "Знайти фізичний магазин",
             "placeholder": "Введіть назву міста або поштовий індекс"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "Поле імені є обов'язковим.",
+    "Pole adres e-mail jest wymagane.": "Поле електронної пошти є обов'язковим.",
+    "Pole wiadomość jest wymagane.": "Поле повідомлення є обов'язковим.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "Поле особистих даних повинно бути прийнято.",
+    "Pole ulica jest wymagane.": "Поле вулиця є обов'язковим.",
+    "Pole numer domu jest wymagane.": "Поле номер будинку є обов'язковим.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Поле поштовий індекс повинно бути рядком символів.",
+    "Pole miasto jest wymagane.": "Поле місто є обов'язковим.",
+    "Pole numer telefonu jest wymagane.": "Поле номер телефону є обов'язковим.",
+    "Pole opis jest wymagane.": "Поле опис є обов'язковим.",
+    "Pole nazwa produktu jest wymagane.": "Поле назва продукту є обов'язковим.",
+    "Pole numer jest wymagane.": "Поле номер є обов'язковим.",
+    "Pole miejsce jest wymagane.": "Поле місце є обов'язковим.",
+    "Pole działanie jest wymagane.": "Поле дія є обов'язковою.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Поле правильні дані повинно бути прийнято."
 }

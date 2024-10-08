@@ -1,7 +1,7 @@
 <template>
     <div class="absolute bottom-0 right-0 translate-y-full p-5 grid gap-2">
         <div v-for="message in messages" class="p-2 rounded-xs shadow-md" :class="getTheme(message.type)">
-            {{ message.message }}
+            {{ $t(message.message) }}
         </div>
     </div>
 </template>

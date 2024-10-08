@@ -23,8 +23,33 @@
                 text: section_2.text_image
             }
         }" />
-        <SectionsServiceSection4 :data="{ left: section_3, right: section_4 }" />
-        <SectionsServiceSection5 :installers="section_3.installers" :reklamationForm="section_5" />
+        <section v-if="locale !== 'pl'" class="mt-6 grid gap-4 md:grid-cols-2 md:gap-10 lg:mt-10"
+            :id="slugify($t('certified-installers'))">
+            <SectionsCommonBox boxClass="bg-gray-5 rounded-br-[25px] md:rounded-br-lg lg:mt-0" :box="{
+                button: section_4.button,
+                path: 'mailto:czesci@newtrendy.pl',
+                text: section_4.text,
+                title: section_4.title
+            }" />
+            <div class="flex flex-col gap-6">
+                <p class="font-medium text-xl sm:text-xl">{{ section_5.title }}</p>
+                <p class="section-text">{{ section_5.text }}</p>
+                <ul class="flex flex-col gap-4 [&>li>a]:justify-between [&>li>a]:border-black">
+                    <li class="xl:max-w-[344px]">
+                        <ButtonsTransparent tagType="link" :url="localePath({ name: 'download' })"
+                            :label="section_5.button_1" />
+                    </li>
+                    <li class="xl:max-w-[344px]">
+                        <ButtonsTransparent tagType="link" :url="localePath({ name: 'form-online' })"
+                            :label="section_5.button_2" />
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <template v-else>
+            <SectionsServiceSection4 :data="{ left: section_3, right: section_4 }" />
+            <SectionsServiceSection5 :installers="section_3.installers" :reklamationForm="section_5" />
+        </template>
     </div>
 </template>
 
@@ -32,6 +57,9 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchServicePage } from '~/services/api';
 import type { ServicePage } from '~/types/service.types';
+
+const { locale } = useI18n();
+const localePath = useLocalePath();
 
 const selected: Ref<{
     label: string;

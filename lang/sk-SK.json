@@ -269,5 +269,20 @@
             "title": "Nájdite kamenný obchod",
             "placeholder": "Zadajte názov mesta alebo PSČ"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "Pole meno je povinné.",
+    "Pole adres e-mail jest wymagane.": "Pole e-mail je povinné.",
+    "Pole wiadomość jest wymagane.": "Pole správa je povinné.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "Pole osobné údaje musí byť akceptované.",
+    "Pole ulica jest wymagane.": "Pole ulica je povinné.",
+    "Pole numer domu jest wymagane.": "Pole číslo domu je povinné.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Pole PSČ musí byť reťazec znakov.",
+    "Pole miasto jest wymagane.": "Pole mesto je povinné.",
+    "Pole numer telefonu jest wymagane.": "Pole telefónne číslo je povinné.",
+    "Pole opis jest wymagane.": "Pole opis je povinné.",
+    "Pole nazwa produktu jest wymagane.": "Pole názov produktu je povinné.",
+    "Pole numer jest wymagane.": "Pole číslo je povinné.",
+    "Pole miejsce jest wymagane.": "Pole miesto je povinné.",
+    "Pole działanie jest wymagane.": "Pole akcia je povinné.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Pole správne údaje musí byť akceptované."
 }

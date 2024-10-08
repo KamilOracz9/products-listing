@@ -267,5 +267,20 @@
             "title": "Finden Sie ein stationäres Geschäft",
             "placeholder": "Geben Sie den Namen der Stadt oder die Postleitzahl ein"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "Das Namensfeld ist erforderlich.",
+    "Pole adres e-mail jest wymagane.": "Das E-Mail-Feld ist erforderlich.",
+    "Pole wiadomość jest wymagane.": "Das Nachrichtenfeld ist erforderlich.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "Das Feld für persönliche Daten muss akzeptiert werden.",
+    "Pole ulica jest wymagane.": "Das Straßenfeld ist erforderlich.",
+    "Pole numer domu jest wymagane.": "Das Hausnummernfeld ist erforderlich.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Das Postleitzahlenfeld muss eine Zeichenkette sein.",
+    "Pole miasto jest wymagane.": "Das Stadtfeld ist erforderlich.",
+    "Pole numer telefonu jest wymagane.": "Das Telefonnummernfeld ist erforderlich.",
+    "Pole opis jest wymagane.": "Das Beschreibungsfeld ist erforderlich.",
+    "Pole nazwa produktu jest wymagane.": "Das Produktnamenfeld ist erforderlich.",
+    "Pole numer jest wymagane.": "Das Nummernfeld ist erforderlich.",
+    "Pole miejsce jest wymagane.": "Das Ortsfeld ist erforderlich.",
+    "Pole działanie jest wymagane.": "Das Aktionsfeld ist erforderlich.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Das Feld für gültige Daten muss akzeptiert werden."
 }

@@ -267,5 +267,20 @@
             "title": "Găsiți magazinul fizic",
             "placeholder": "Introduceți numele orașului sau codul poștal"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "Câmpul nume este obligatoriu.",
+    "Pole adres e-mail jest wymagane.": "Câmpul adresă de e-mail este obligatoriu.",
+    "Pole wiadomość jest wymagane.": "Câmpul mesaj este obligatoriu.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "Câmpul date personale trebuie să fie acceptat.",
+    "Pole ulica jest wymagane.": "Câmpul stradă este obligatoriu.",
+    "Pole numer domu jest wymagane.": "Câmpul număr casă este obligatoriu.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Câmpul cod poștal trebuie să fie un șir de caractere.",
+    "Pole miasto jest wymagane.": "Câmpul oraș este obligatoriu.",
+    "Pole numer telefonu jest wymagane.": "Câmpul număr de telefon este obligatoriu.",
+    "Pole opis jest wymagane.": "Câmpul descriere este obligatoriu.",
+    "Pole nazwa produktu jest wymagane.": "Câmpul denumirea produsului este obligatoriu.",
+    "Pole numer jest wymagane.": "Câmpul număr este obligatoriu.",
+    "Pole miejsce jest wymagane.": "Câmpul locație este obligatoriu.",
+    "Pole działanie jest wymagane.": "Câmpul acțiune este obligatoriu.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Câmpul date corecte trebuie să fie acceptat."
 }

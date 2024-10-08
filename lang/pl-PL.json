@@ -268,5 +268,20 @@
             "title": "Znajdź sklep stacjonarny",
             "placeholder": "Wpisz nazwę miasta lub kod pocztowy"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "Pole nazwa jest wymagane.",
+    "Pole adres e-mail jest wymagane.": "Pole adres e-mail jest wymagane.",
+    "Pole wiadomość jest wymagane.": "Pole wiadomość jest wymagane.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "Pole dane osobowe musi zostać zaakceptowane.",
+    "Pole ulica jest wymagane.": "Pole ulica jest wymagane.",
+    "Pole numer domu jest wymagane.": "Pole numer domu jest wymagane.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Pole kod pocztowy musi być ciągiem znaków.",
+    "Pole miasto jest wymagane.": "Pole miasto jest wymagane.",
+    "Pole numer telefonu jest wymagane.": "Pole numer telefonu jest wymagane.",
+    "Pole opis jest wymagane.": "Pole opis jest wymagane.",
+    "Pole nazwa produktu jest wymagane.": "Pole nazwa produktu jest wymagane.",
+    "Pole numer jest wymagane.": "Pole numer jest wymagane.",
+    "Pole miejsce jest wymagane.": "Pole miejsce jest wymagane.",
+    "Pole działanie jest wymagane.": "Pole działanie jest wymagane.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "Pole prawidłowe dane musi zostać zaakceptowane."
 }

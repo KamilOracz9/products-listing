@@ -259,5 +259,20 @@
             "title": "Find a stationary store",
             "placeholder": "Enter the city name or zip code"
         }
-    }
+    },
+    "Pole nazwa jest wymagane.": "The name field is required.",
+    "Pole adres e-mail jest wymagane.": "The email address field is required.",
+    "Pole wiadomość jest wymagane.": "The message field is required.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "The personal data field must be accepted.",
+    "Pole ulica jest wymagane.": "The street field is required.",
+    "Pole numer domu jest wymagane.": "The house number field is required.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "The postal code field must be a string.",
+    "Pole miasto jest wymagane.": "The city field is required.",
+    "Pole numer telefonu jest wymagane.": "The phone number field is required.",
+    "Pole opis jest wymagane.": "The description field is required.",
+    "Pole nazwa produktu jest wymagane.": "The product name field is required.",
+    "Pole numer jest wymagane.": "The number field is required.",
+    "Pole miejsce jest wymagane.": "The location field is required.",
+    "Pole działanie jest wymagane.": "The action field is required.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "The valid data field must be accepted."
 }
