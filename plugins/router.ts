@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
         if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.eu') {
-            return navigateTo(localePath(to.fullPath, 'en'))
+            return navigateTo(localePath(to.fullPath, 'en').replace('/pl', ''))
         }
     },
         { global: true }
