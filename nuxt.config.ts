@@ -105,6 +105,7 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
+      alwaysRedirect: true
     },
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     customRoutes: 'config',
