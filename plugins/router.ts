@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
         if (i18n.locale.value === 'pl' && window?.location.host === 'localhost:3001') {
-            return navigateTo(localePath(to.fullPath, 'en').replace('/pl', ''))
+            return navigateTo(localePath(to.fullPath, 'en'))
         }
     },
         { global: true }
