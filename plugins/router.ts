@@ -8,10 +8,10 @@ export default defineNuxtPlugin(() => {
             return navigateTo(localePath(to.fullPath, 'en'))
         }
 
-        if(window?.location.host === 'newtrendy.de') return navigateTo(localePath(to.fullPath, 'de'));
-        if(window?.location.host === 'newtrendy.sk') return navigateTo(localePath(to.fullPath, 'sk'));
-        if(window?.location.host === 'newtrendy.ro') return navigateTo(localePath(to.fullPath, 'ro'));
-        if(window?.location.host === 'newtrendy.ua') return navigateTo(localePath(to.fullPath, 'ua'));
+        if(window?.location.host === 'newtrendy.de') i18n.setLocale('de')
+        if(window?.location.host === 'newtrendy.sk') i18n.setLocale('sk');
+        if(window?.location.host === 'newtrendy.ro') i18n.setLocale('ro');
+        if(window?.location.host === 'newtrendy.ua') i18n.setLocale('ua');
     },
         { global: true }
     )
