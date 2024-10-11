@@ -102,10 +102,7 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'lang/',
     strategy: 'prefix_except_default',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-    },
+    detectBrowserLanguage: false,
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     customRoutes: 'config',
     pages: pages,

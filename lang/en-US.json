@@ -21,6 +21,7 @@
     "search-in-inspirations": "Search in inspirations",
     "header-search-message": "Do you want to accurately search for a product by its properties?",
     "header-clipboard-delete": "Delete from clipboard",
+    "header-clipboard-clear": "Clear clipboard",
     "go-to-products": "Go to products page",
     "inspirations": "Blog",
     "for-professionals": "For professionals",
@@ -246,6 +247,7 @@
             "6-weeks": "Product available on request. Delivery time approx. 6 weeks"
         },
         "toggle-toggle-clipboard": "Toggle product in clipboard"
+        
     },
     "home": {
         "in-offer": {
