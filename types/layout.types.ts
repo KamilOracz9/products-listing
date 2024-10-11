@@ -5,40 +5,21 @@ export type Layout = {
 }
 
 export type Socials = {
-    "facebook": string;
-    "instagram": string;
-    "pinterest": string;
-    "youtube": string;
-    "linkedin": string;
+    "facebook"?: string;
+    "instagram"?: string;
+    "pinterest"?: string;
+    "youtube"?: string;
+    "linkedin"?: string;
 }
 
 export type Header = {
-    "products": {
-        "title": string;
-        "items": {
-            "made-to-measure": {
-                "name": string;
-                "image": string;
-                "menu_column": number;
-                "items": {
-                    "name": string;
-                    "path": string;
-                }[];
-            };
-            "categories": Category[];
-            "collections": {
-                "image": string;
-                "menu_column": number;
-                "items": Collection[];
-            }
-        }
-    };
-    "inspirations": MenuItem;
-    "for-professionals": MenuItem;
-    "about-us": MenuItem;
-    "contact": MenuItem;
-    "place-to-buy": MenuItem;
-}
+    "name": string;
+    "path"?: string | null;
+    "hash"?: string | null;
+    "query"?: string | null;
+    "columns"?: LayoutItem[][];
+    "items"?: LayoutItem[] | null;
+}[];
 
 export type Footer = {
     "top": FooterTop;
@@ -46,20 +27,37 @@ export type Footer = {
 }
 
 export type FooterTop = {
-    "products": MenuItem;
-    "inspirations": MenuItem;
-    "for-professionals": MenuItem;
-    "about-us": MenuItem;
-    "contact": MenuItem;
+    "name": string;
+    "path"?: string | null;
+    "hash"?: string | null;
+    "query"?: string | null;
+    "items"?: LayoutItem[] | null;
+}[];
+
+export type LayoutItem = {
+    "name": string;
+    "image"?: string | null;
+    "path"?: string | null;
+    "hash"?: string | null;
+    "query"?: string | null;
+    "items"?: LayoutItem[] | null;
 }
 
 export type FooterBottom = {
-    "company": FooterCompany;
-    "departments": FooterDepartment[];
+    "company": {
+        "title": string;
+        "address": string;
+        "email": string;
+    };
+    "departments": {
+        "title": string;
+        "phone": string[];
+        "email": string[];
+    }[];
     "our_websites": {
         "title": string;
-        "items": string[];
-    }
+        "items": string[] | null;
+    };
 }
 
 export type Category = {

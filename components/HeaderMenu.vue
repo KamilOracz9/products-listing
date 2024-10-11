@@ -5,7 +5,7 @@
                 <SectionsHeaderLogo />
 
                 <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
-                    <LazySectionsHeaderItem slug="products">
+                    <!-- <LazySectionsHeaderItem slug="products">
                         <div class="header__categories lg:[&_a]:!text-left">
                             <LazySectionsHeaderColumn class="lg:hidden">
                                 <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
@@ -52,9 +52,9 @@
                                 </div>
                             </LazySectionsHeaderColumn>
                         </div>
-                    </LazySectionsHeaderItem>
+                    </LazySectionsHeaderItem> -->
 
-                    <LazySectionsHeaderItem :slug="slug" position="sticky"
+                    <!-- <LazySectionsHeaderItem :slug="slug" position="sticky"
                         v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
                         <div class="header__links-ref">
                             <div class="header__links">
@@ -64,7 +64,37 @@
                                 </NuxtLink>
                             </div>
                         </div>
-                    </LazySectionsHeaderItem>
+                    </LazySectionsHeaderItem> -->
+
+                    <SectionsHeaderItem :name="headerItem.name" :slug="slugify(headerItem.name)"
+                        :position="headerItem.columns ? null : 'sticky'" v-for="headerItem in header">
+                        <div v-if="headerItem.columns"
+                            class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                            <!-- <NuxtLink v-for="column in headerItem.columns" class="text-center flex items-center flex-col"> -->
+                            <!-- <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image" alt=""
+                                    :title="item.name" />
+                                <p class="py-3">{{ item.type === 'collections' ?
+                                    $t('navigation.collections') :
+                                    item.name }}</p> -->
+                            <!-- </NuxtLink> -->
+                            <div v-for="column in headerItem.columns">
+                                <NuxtLink v-for="columnItem in column" class="text-center flex items-center flex-col">
+                                    <img loading="lazy" width="65" height="65" class="size-[65px]" :src="columnItem.image"
+                                        alt="" :title="columnItem.name" />
+                                    <p class="py-3">{{ columnItem.name }}</p>
+                                </NuxtLink>
+                            </div>
+                        </div>
+
+                        <div v-else class="header__links-ref">
+                            <div class="header__links">
+                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="item.path"
+                                    :aria-label="item.name">
+                                    {{ item.name }}
+                                </NuxtLink>
+                            </div>
+                        </div>
+                    </SectionsHeaderItem>
 
                     <NuxtLink
                         class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
@@ -75,14 +105,15 @@
 
                     <LazySectionsHeaderItem slug="search" :icon="searchIcon">
                         <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
-                            <div class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
+                            <div
+                                class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                                 <div class="flex flex-col lg:flex-row lg:flex-wrap lg:ml-auto">
                                     <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row">
                                         <div class="flex items-center justify-start gap-2">
                                             <input id="search-in-products" type="checkbox" name="item"
                                                 class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
-                                                v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
-                                                for="search-in-products">{{
+                                                v-model="searchInProducts" /> <label
+                                                class="whitespace-nowrap lg:text-xl" for="search-in-products">{{
                                                     $t('search-in-products') }}</label>
                                         </div>
                                         <div class="flex items-center justify-start gap-2 lg:mx-10">
@@ -95,16 +126,17 @@
 
                                         <div
                                             class="flex items-center justify-between border border-gray-1 px-2 py-1 w-full lg:max-w-[480px] lg:mr-2">
-                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
+                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search"
+                                                type="text" v-model="searchQuery"
+                                                :placeholder="$t('what-are-you-looking-for')"
                                                 @keydown="(event) => { if (event.keyCode === 13) search() }">
                                             <img width="16" height="16" class="w-4 h-4 gray-1-filter"
                                                 src="@/assets/icons/search.svg" alt="">
                                         </div>
 
                                         <span class="w-full lg:w-auto">
-                                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
-                                                @click="search" />
+                                            <LazyButtonsTransparent :label="$t('search')" type="button"
+                                                tag-type="button" @click="search" />
                                         </span>
                                     </div>
                                 </div>
@@ -195,31 +227,33 @@ const { locale } = useI18n();
 
 const { header } = toRefs(globalStore);
 
-const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
-const categories: Ref = ref([]);
+console.log(header.value)
 
-const getLink = (item: any, subitem: any) => {
-    if(item.type === 'made-to-measure') return `${item.url}${subitem.hash}`;
-    if (subitem.path) return localePath(subitem.path);
-    if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}`;
-    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-}
+// const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
+// const categories: Ref = ref([]);
 
-const getMainLink = (item: any) => {
-    if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
-    if (item.type === 'collections') return localePath({ name: 'collections' });
-    return localePath({ name: 'products' }) + `/${item.slug}`;
-}
+// const getLink = (item: any, subitem: any) => {
+//     if(item.type === 'made-to-measure') return `${item.url}${subitem.hash}`;
+//     if (subitem.path) return localePath(subitem.path);
+//     if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}`;
+//     if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
+// }
 
-Object.values(columns.value).map(column => {
-    column?.map(item => {
-        categories.value.push({
-            'name': item.name,
-            'path': item.slug ? localePath({ name: 'products' }) + `/${item.slug}` : slugify(item.name),
-            'image': item.image,
-        });
-    })
-});
+// const getMainLink = (item: any) => {
+//     if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
+//     if (item.type === 'collections') return localePath({ name: 'collections' });
+//     return localePath({ name: 'products' }) + `/${item.slug}`;
+// }
+
+// Object.values(columns.value).map(column => {
+//     column?.map(item => {
+//         categories.value.push({
+//             'name': item.name,
+//             'path': item.slug ? localePath({ name: 'products' }) + `/${item.slug}` : slugify(item.name),
+//             'image': item.image,
+//         });
+//     })
+// });
 
 const searchQuery = ref('');
 const searchInProducts = ref(false);

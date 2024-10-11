@@ -1,6 +1,7 @@
 import { fetchLayoutData } from '~/services/api/layout';
 import type { IActiveLocale } from '~/types';
 import type { Footer, Header, Socials } from '~/types/layout.types';
+import layoutData from '~/data/layout';
 
 type IGlobalStore = {
     isLoading: boolean;
@@ -51,10 +52,16 @@ const useGlobalStore = defineStore('global', {
         async fetchGlobalData() {
             this.isLoading = true;
 
+            // console.log(layoutData.);
+
+            this.header = layoutData.header;
+            this.footer = layoutData.footer;
+            this.socials = layoutData.socials;
+
             await fetchLayoutData(1).then(response => {
-                this.header = response.header;
-                this.footer = response.footer;
-                this.socials = response.socials;
+                // this.header = response.header;
+                // this.footer = response.footer;
+                // this.socials = response.socials;
             }).finally(() => this.isLoading = false);
         },
     },
