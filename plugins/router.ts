@@ -21,7 +21,7 @@ export default defineNuxtPlugin(() => {
         }
 
         if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.ua') {
-            return navigateTo(localePath(to.fullPath, 'ua').replace('/pl', ''))
+            return navigateTo(localePath(to.fullPath, 'uk').replace('/pl', ''))
         }
     },
         { global: true }
