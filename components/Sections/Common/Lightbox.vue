@@ -3,7 +3,7 @@
         @hide="close" :zoom-scale="0.5" :loop="true">
         <template v-if="images.length > 1" v-slot:prev-btn="{ prev }">
             <div @click="prev" class="left-4 modal-slider-arrow modal-slider-arrow-prev lg:left-6">
-                <Arrow :width="25" :height="25" class="rotate-90" />
+                <Arrow :width="25" :height="25" :direction="'left'" />
             </div>
         </template>
 
