@@ -69,7 +69,7 @@ const changeLanguage = async (lang: string) => {
     window.location.reload();
 }
 
-const isWebsiteEu = computed(() => window.location.host === 'newtrendy.eu');
+const isWebsiteEu = computed(() => window.location.host !== 'newtrendy.pl');
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;
