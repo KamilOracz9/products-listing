@@ -17,7 +17,7 @@
 
                 <a href="https://www.google.com/maps/place/New+Trendy+Sp.+z+o.o./@51.3789493,21.078195,17z/data=!4m6!3m5!1s0x47185969fe0bb7d9:0xe64e431891bc9fa4!8m2!3d51.3789493!4d21.0807699!16s%2Fg%2F1q675dmtz?entry=tts&shorturl=1"
                     target="_blank" data-aos="fade-up">
-                    <img src="/assets/images/contact_map_button.png" class="w-[200px] h-[50px]" width="200" height="50"
+                    <img :src="data.office.button_map" class="w-[200px] h-[50px]" width="200" height="50"
                         alt="">
                 </a>
 
