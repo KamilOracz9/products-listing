@@ -97,13 +97,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div v-if="index == 5" class="lg:px-8 lg:mb-10">
+                                <div v-if="index === headerItem.columns.length - 1" class="lg:px-8 lg:mb-10">
                                     <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
                                         :to="localePath({ name: 'products' })"
                                         :aria-label="$t('navigation.all-products')">
                                         {{ $t('navigation.all-products') }}
                                     </NuxtLink>
-                                </div> -->
+                                </div>
                             </LazySectionsHeaderColumn>
                         </div>
 
