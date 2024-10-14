@@ -38,7 +38,7 @@ export default {
                 ],
                 [
                     {
-                        "name": "Shower enclousures",
+                        "name": "Shower enclosures",
                         "image": "http://localhost:8000/storage/categories/e9b92a85-e3f4-4193-b453-d0c849bf78cd/drzwi-wnekowe.webp",
                         "path": "/en/products/shower-enclosures",
                         "items": [
