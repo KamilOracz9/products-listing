@@ -54,14 +54,16 @@ const useGlobalStore = defineStore('global', {
 
             // console.log(layoutData.);
 
-            this.header = layoutData.header;
-            this.footer = layoutData.footer;
-            this.socials = layoutData.socials;
+
 
             await fetchLayoutData(1).then(response => {
                 // this.header = response.header;
                 // this.footer = response.footer;
                 // this.socials = response.socials;
+
+                this.header = layoutData.header;
+                this.footer = layoutData.footer;
+                this.socials = layoutData.socials;
             }).finally(() => this.isLoading = false);
         },
     },

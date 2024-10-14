@@ -37,6 +37,6 @@ const label = ref();
 const submenu = ref();
 
 onMounted(() => {
-    if (position.value === 'sticky') submenu.value.querySelector('.header__links').style.left = `${submenu.value.offsetLeft - 16}px`;
+    if (position.value === 'sticky' && submenu.value.querySelector('.header__links')) submenu.value.querySelector('.header__links').style.left = `${submenu.value.offsetLeft - 16}px`;
 })
 </script>
