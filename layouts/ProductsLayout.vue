@@ -9,7 +9,7 @@
 
             <div class="mt-10 flex gap-10">
                 <LazySectionsProductsSidebar />
-                <div class="w-full lg:w-3/4 xl:w-full">
+                <div class="w-full">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
 

@@ -1,6 +1,6 @@
 <template>
     <div ref="formRef" :class="productsFilterStore.isOpen ? '' : 'hidden'"
-        class="fixed p-5 top-0 left-0 bg-white w-full h-screen overflow-y-auto z-40 flex-col pb-10 lg:pb-0 lg:h-fit lg:overflow-hidden lg:p-0 lg:!flex lg:relative lg:z-0 lg:w-[250px]">
+        class="fixed p-5 top-0 left-0 bg-white w-full h-screen overflow-y-auto z-40 flex-col pb-10 lg:pb-0 lg:h-fit lg:overflow-hidden lg:p-0 lg:!flex lg:relative lg:z-0 lg:w-min lg:min-w-min">
         <div class="text-[1.25rem] flex justify-between lg:hidden">
             <span class="underline">{{ $t('filtering') }} / {{ $t('sorting') }}</span>
             <button type="button" class="lg:hidden" :aria-label="$t('filtering')" @click="toggleMenuIsOpen">
