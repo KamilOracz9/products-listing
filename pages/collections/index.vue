@@ -38,8 +38,6 @@ const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetch
 
 const { data: collections } = toRefs(data.value);
 
-console.log(data.value)
-
 setMeta({
     meta_title: 'Nasze kolekcje pryszniców | NEW TRENDY',
     meta_description: 'Przeglądaj wyjątkowe kolekcje kabin prysznicowych New Trendy. Odkryj różnorodność stylów, rozmiarów i wykończeń, idealnych do każdej łazienki!'

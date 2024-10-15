@@ -8,6 +8,7 @@ type IGlobalStore = {
     header?: Header;
     footer?: Footer;
     socials: Socials;
+    pageIsLoading: boolean,
 }
 
 const useGlobalStore = defineStore('global', {
@@ -46,6 +47,7 @@ const useGlobalStore = defineStore('global', {
             youtube: '',
             linkedin: '',
         },
+        pageIsLoading: false,
     }),
     actions: {
         async fetchGlobalData() {

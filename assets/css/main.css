@@ -56,7 +56,15 @@
     }
 
     body {
-        @apply font-normal text-base overflow-x-hidden lg:!overflow-y-auto;
+        @apply font-normal text-base overflow-x-hidden;
+    }
+
+    body[data-noscroll="true"]{
+        @apply lg:!overflow-y-hidden;
+    }
+
+    body[data-noscroll="false"]{
+        @apply lg:!overflow-y-auto;
     }
 
     /* * [id] {
