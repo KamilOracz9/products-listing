@@ -14,7 +14,7 @@ export type Socials = {
 
 export type Header = {
     "name": string;
-    "path"?: string | null;
+    "path": string;
     "hash"?: string | null;
     "query"?: string | null;
     "columns"?: LayoutItem[][];
@@ -28,7 +28,7 @@ export type Footer = {
 
 export type FooterTop = {
     "name": string;
-    "path"?: string | null;
+    "path": string;
     "hash"?: string | null;
     "query"?: string | null;
     "items"?: LayoutItem[] | null;
@@ -37,7 +37,7 @@ export type FooterTop = {
 export type LayoutItem = {
     "name": string;
     "image"?: string | null;
-    "path"?: string | null;
+    "path": string;
     "hash"?: string | null;
     "query"?: string | null;
     "items"?: LayoutItem[] | null;
