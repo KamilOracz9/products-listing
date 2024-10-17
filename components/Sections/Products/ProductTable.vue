@@ -141,12 +141,11 @@ const headers: Ref<{
     ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
 ))
 
-const clipboardStore = useClipboardStore();
-
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 const getHeader = (variant: Variant, header: string) => {
+    console.log(variant)
     return variant[header];
 }
 

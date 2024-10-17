@@ -38,8 +38,6 @@
             <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" :categorySlug="category.slug" />
         </div>
 
-        <LoadingIndicator v-if="pending" />
-
         <SectionsCommonFindUs />
     </section>
 </template>
