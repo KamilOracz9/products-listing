@@ -5,84 +5,14 @@
                 <SectionsHeaderLogo />
 
                 <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
-                    <!-- <LazySectionsHeaderItem slug="products">
-                        <div class="header__categories lg:[&_a]:!text-left">
-                            <LazySectionsHeaderColumn class="lg:hidden">
-                                <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                                    <NuxtLink class="text-center flex items-center flex-col" :to="getMainLink(item)"
-                                        :aria-label="item.name ?? item.type" v-for="item in Object.values(columns).flat()">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
-                                            alt="" :title="item.name" />
-                                        <p class="py-3">{{ item.type === 'collections' ?
-                                            $t('navigation.collections') :
-                                            item.name }}</p>
-                                    </NuxtLink>
-                                </div>
-                            </LazySectionsHeaderColumn>
-                            <LazySectionsHeaderColumn v-for="(column, index) in columns" class="hidden lg:block">
-                                <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
-                                    item.url = item.slug ? localePath({ name: 'products' }) + `/${item.slug}/` : localePath({ name: item.type })
-
-                                    return item;
-                                })">
-                                    <NuxtLink :to="item.url" :aria-label="item.name ?? item.type">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
-                                            alt="" :title="item.name" />
-                                        <p class="py-3">{{ item.type === 'collections' ?
-                                            $t('navigation.collections') :
-                                            item.name }}</p>
-                                    </NuxtLink>
-                                    <div class="text-sm" v-for="subitem in item.items">
-                                        <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
-                                            {{ subitem.name }}</NuxtLink>
-
-                                        <div class="text-[0.8125rem] my-2 ml-2"
-                                            v-if="subitem.items ? !!subitem.items.length : false">
-                                            <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                                :to="getLink(item, subsubitem)">
-                                                {{ subsubitem.name }}</NuxtLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div v-if="index == 5" class="lg:px-8 lg:mb-10">
-                                    <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
-                                        :to="localePath({ name: 'products' })" :aria-label="$t('navigation.all-products')">
-                                        {{ $t('navigation.all-products') }}
-                                    </NuxtLink>
-                                </div>
-                            </LazySectionsHeaderColumn>
-                        </div>
-                    </LazySectionsHeaderItem> -->
-
-                    <!-- <LazySectionsHeaderItem :slug="slug" position="sticky"
-                        v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
-                        <div class="header__links-ref">
-                            <div class="header__links">
-                                <NuxtLink :external="false" v-for="item in header[slug].items" :to="localePath(item.path)"
-                                    :aria-label="item.label">
-                                    {{ item.label }}
-                                </NuxtLink>
-                            </div>
-                        </div>
-                    </LazySectionsHeaderItem> -->
-
                     <SectionsHeaderItem :name="headerItem.name" :slug="slugify(headerItem.name)"
                         :position="headerItem.columns ? null : 'sticky'" v-for="headerItem in header">
                         <div v-if="headerItem.columns" class="header__categories lg:[&_a]:!text-left">
-                            <!-- <LazySectionsHeaderColumn v-for="column in headerItem.columns">
-                                    <NuxtLink v-for="columnItem in column"
-                                        class="text-center flex items-center flex-col text-[0.8125rem] my-2 ml-2">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]"
-                                            :src="columnItem.image" alt="" :title="columnItem.name" />
-                                        <p class="py-3">{{ columnItem.name }}</p>
-                                    </NuxtLink>
-                            </LazySectionsHeaderColumn> -->
-
                             <LazySectionsHeaderColumn class="lg:hidden">
                                 <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                                     <NuxtLink class="text-center flex items-center flex-col" :to="item.path"
                                         :aria-label="item.name" v-for="item in headerItem.columns.flat()">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image ?? ''"
                                             alt="" :title="item.name" />
                                         <p class="py-3">{{ item.name }}</p>
                                     </NuxtLink>
@@ -91,19 +21,19 @@
 
                             <LazySectionsHeaderColumn v-for="(column, index) in headerItem.columns" class="hidden lg:block">
                                 <div class="lg:px-8 lg:mb-10" v-for="item in column">
-                                    <NuxtLink :to="item.path" :aria-label="item.name">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                                    <NuxtLink :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)" :aria-label="item.name">
+                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image ?? ''"
                                             alt="" :title="item.name" />
                                         <p class="py-3">{{ item.name }}</p>
                                     </NuxtLink>
                                     <div class="text-sm" v-for="subitem in item.items">
-                                        <NuxtLink :to="subitem.path" :aria-label="subitem.name">
+                                        <NuxtLink :to="decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`)" :aria-label="subitem.name">
                                             {{ subitem.name }}</NuxtLink>
 
                                         <div class="text-[0.8125rem] my-2 ml-2"
                                             v-if="subitem.items ? !!subitem.items.length : false">
                                             <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                                :to="subsubitem.path">
+                                                :to="decodeURI(`${subsubitem.path}${subsubitem.query ? '?' + subsubitem.query : ''}${subsubitem.hash ?? ''}`)">
                                                 {{ subsubitem.name }}</NuxtLink>
                                         </div>
                                     </div>
@@ -126,29 +56,6 @@
                                 </NuxtLink>
                             </div>
                         </div>
-
-                        <!-- <div class="header__categories lg:[&_a]:!text-left">
-                            <div v-if="headerItem.columns"
-                                class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                                <LazySectionsHeaderColumn v-for="column in headerItem.columns">
-                                    <NuxtLink v-for="columnItem in column"
-                                        class="text-center flex items-center flex-col">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]"
-                                            :src="columnItem.image" alt="" :title="columnItem.name" />
-                                        <p class="py-3">{{ columnItem.name }}</p>
-                                    </NuxtLink>
-                                </LazySectionsHeaderColumn>
-                            </div>
-                        </div> -->
-                        <!-- 
-                        <div v-else class="header__links-ref">
-                            <div class="header__links">
-                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="item.path"
-                                    :aria-label="item.name">
-                                    {{ item.name }}
-                                </NuxtLink>
-                            </div>
-                        </div> -->
                     </SectionsHeaderItem>
 
                     <NuxtLink
@@ -281,35 +188,6 @@ const route = useRoute();
 const { locale } = useI18n();
 
 const { header } = toRefs(globalStore);
-
-// console.log(header.value)
-
-// const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
-// const categories: Ref = ref([]);
-
-// const getLink = (item: any, subitem: any) => {
-//     if(item.type === 'made-to-measure') return `${item.url}${subitem.hash}`;
-//     if (subitem.path) return localePath(subitem.path);
-//     if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}`;
-//     if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-// }
-
-// const getMainLink = (item: any) => {
-//     if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
-//     if (item.type === 'collections') return localePath({ name: 'collections' });
-//     return localePath({ name: 'products' }) + `/${item.slug}`;
-// }
-
-// Object.values(columns.value).map(column => {
-//     column?.map(item => {
-//         categories.value.push({
-//             'name': item.name,
-//             'path': item.slug ? localePath({ name: 'products' }) + `/${item.slug}` : slugify(item.name),
-//             'image': item.image,
-//         });
-//     })
-// });
-
 const searchQuery = ref('');
 const searchInProducts = ref(false);
 const searchInInspirations = ref(false);
@@ -336,7 +214,7 @@ onMounted(async () => {
 
     document.addEventListener('scroll', () => headerStore.setSubmenu(''));
     document.addEventListener('click', () => {
-        if (!event?.target.closest('.header__items')) headerStore.setSubmenu('');
+        if (!(event?.target as Element)?.closest('.header__items')) headerStore.setSubmenu('');
     })
 
     await clipboardStore.fetchItems();
