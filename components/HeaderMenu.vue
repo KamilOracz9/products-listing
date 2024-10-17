@@ -5,66 +5,58 @@
                 <SectionsHeaderLogo />
 
                 <div class="header__items" :data-active="headerStore.menuIsOpen" :key="headerStore.submenu">
-                    <LazySectionsHeaderItem slug="products">
-                        <div class="header__categories lg:[&_a]:!text-left">
+                    <SectionsHeaderItem :name="headerItem.name" :slug="slugify(headerItem.name)"
+                        :position="headerItem.columns ? null : 'sticky'" v-for="headerItem in header">
+                        <div v-if="headerItem.columns" class="header__categories lg:[&_a]:!text-left">
                             <LazySectionsHeaderColumn class="lg:hidden">
                                 <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                                    <NuxtLink class="text-center flex items-center flex-col" :to="getMainLink(item)"
-                                        :aria-label="item.name ?? item.type" v-for="item in Object.values(columns).flat()">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                                    <NuxtLink class="text-center flex items-center flex-col" :to="item.path"
+                                        :aria-label="item.name" v-for="item in headerItem.columns.flat()">
+                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image ?? ''"
                                             alt="" :title="item.name" />
-                                        <p class="py-3">{{ item.type === 'collections' ?
-                                            $t('navigation.collections') :
-                                            item.name }}</p>
+                                        <p class="py-3">{{ item.name }}</p>
                                     </NuxtLink>
                                 </div>
                             </LazySectionsHeaderColumn>
-                            <LazySectionsHeaderColumn v-for="(column, index) in columns" class="hidden lg:block">
-                                <div class="lg:px-8 lg:mb-10" v-for="item in column?.map(item => {
-                                    item.url = item.slug ? localePath({ name: 'products' }) + `/${item.slug}/` : localePath({ name: item.type })
 
-                                    return item;
-                                })">
-                                    <NuxtLink :to="item.url" :aria-label="item.name ?? item.type">
-                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                            <LazySectionsHeaderColumn v-for="(column, index) in headerItem.columns" class="hidden lg:block">
+                                <div class="lg:px-8 lg:mb-10" v-for="item in column">
+                                    <NuxtLink :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)" :aria-label="item.name">
+                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image ?? ''"
                                             alt="" :title="item.name" />
-                                        <p class="py-3">{{ item.type === 'collections' ?
-                                            $t('navigation.collections') :
-                                            item.name }}</p>
+                                        <p class="py-3">{{ item.name }}</p>
                                     </NuxtLink>
                                     <div class="text-sm" v-for="subitem in item.items">
-                                        <NuxtLink :to="getLink(item, subitem)" :aria-label="subitem.name">
+                                        <NuxtLink :to="decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`)" :aria-label="subitem.name">
                                             {{ subitem.name }}</NuxtLink>
 
                                         <div class="text-[0.8125rem] my-2 ml-2"
                                             v-if="subitem.items ? !!subitem.items.length : false">
                                             <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                                :to="getLink(item, subsubitem)">
+                                                :to="decodeURI(`${subsubitem.path}${subsubitem.query ? '?' + subsubitem.query : ''}${subsubitem.hash ?? ''}`)">
                                                 {{ subsubitem.name }}</NuxtLink>
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="index == 5" class="lg:px-8 lg:mb-10">
+                                <div v-if="index === headerItem.columns.length - 1" class="lg:px-8 lg:mb-10">
                                     <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
-                                        :to="localePath({ name: 'products' })" :aria-label="$t('navigation.all-products')">
+                                        :to="localePath({ name: 'products' })"
+                                        :aria-label="$t('navigation.all-products')">
                                         {{ $t('navigation.all-products') }}
                                     </NuxtLink>
                                 </div>
                             </LazySectionsHeaderColumn>
                         </div>
-                    </LazySectionsHeaderItem>
 
-                    <LazySectionsHeaderItem :slug="slug" position="sticky"
-                        v-for="slug in ['inspirations', 'for-professionals', 'about-us', 'contact']">
-                        <div class="header__links-ref">
+                        <div v-else class="header__links-ref">
                             <div class="header__links">
-                                <NuxtLink :external="false" v-for="item in header[slug].items" :to="localePath(item.path)"
-                                    :aria-label="item.label">
-                                    {{ item.label }}
+                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="item.path"
+                                    :aria-label="item.name">
+                                    {{ item.name }}
                                 </NuxtLink>
                             </div>
                         </div>
-                    </LazySectionsHeaderItem>
+                    </SectionsHeaderItem>
 
                     <NuxtLink
                         class="header__label w-full flex justify-center mb-4 lg:w-fit gap-2 items-center lg:mx-4 lg:ml-auto lg:my-auto"
@@ -75,14 +67,15 @@
 
                     <LazySectionsHeaderItem slug="search" :icon="searchIcon">
                         <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
-                            <div class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
+                            <div
+                                class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                                 <div class="flex flex-col lg:flex-row lg:flex-wrap lg:ml-auto">
                                     <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row">
                                         <div class="flex items-center justify-start gap-2">
                                             <input id="search-in-products" type="checkbox" name="item"
                                                 class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
-                                                v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
-                                                for="search-in-products">{{
+                                                v-model="searchInProducts" /> <label
+                                                class="whitespace-nowrap lg:text-xl" for="search-in-products">{{
                                                     $t('search-in-products') }}</label>
                                         </div>
                                         <div class="flex items-center justify-start gap-2 lg:mx-10">
@@ -95,16 +88,17 @@
 
                                         <div
                                             class="flex items-center justify-between border border-gray-1 px-2 py-1 w-full lg:max-w-[480px] lg:mr-2">
-                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
+                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search"
+                                                type="text" v-model="searchQuery"
+                                                :placeholder="$t('what-are-you-looking-for')"
                                                 @keydown="(event) => { if (event.keyCode === 13) search() }">
                                             <img width="16" height="16" class="w-4 h-4 gray-1-filter"
                                                 src="@/assets/icons/search.svg" alt="">
                                         </div>
 
                                         <span class="w-full lg:w-auto">
-                                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
-                                                @click="search" />
+                                            <LazyButtonsTransparent :label="$t('search')" type="button"
+                                                tag-type="button" @click="search" />
                                         </span>
                                     </div>
                                 </div>
@@ -194,33 +188,6 @@ const route = useRoute();
 const { locale } = useI18n();
 
 const { header } = toRefs(globalStore);
-
-const columns = computed(() => Object.groupBy([header?.value?.products.items['made-to-measure'], ...header?.value?.products.items.categories, header?.value?.products.items.collections], ({ menu_column }) => menu_column));
-const categories: Ref = ref([]);
-
-const getLink = (item: any, subitem: any) => {
-    if(item.type === 'made-to-measure') return `${item.url}${subitem.hash}`;
-    if (subitem.path) return localePath(subitem.path);
-    if (!subitem.parameters) return localePath({ name: 'products' }) + `/${subitem.slug}`;
-    if (subitem.parameters) return `${item.type === 'collections' ? localePath({ name: 'products' }) : item.url}?${Object.keys(subitem.parameters).map(key => Object.values(subitem.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`
-}
-
-const getMainLink = (item: any) => {
-    if (item.type === 'made-to-measure') return localePath({ name: 'made-to-measure' });
-    if (item.type === 'collections') return localePath({ name: 'collections' });
-    return localePath({ name: 'products' }) + `/${item.slug}`;
-}
-
-Object.values(columns.value).map(column => {
-    column?.map(item => {
-        categories.value.push({
-            'name': item.name,
-            'path': item.slug ? localePath({ name: 'products' }) + `/${item.slug}` : slugify(item.name),
-            'image': item.image,
-        });
-    })
-});
-
 const searchQuery = ref('');
 const searchInProducts = ref(false);
 const searchInInspirations = ref(false);
@@ -247,7 +214,7 @@ onMounted(async () => {
 
     document.addEventListener('scroll', () => headerStore.setSubmenu(''));
     document.addEventListener('click', () => {
-        if (!event?.target.closest('.header__items')) headerStore.setSubmenu('');
+        if (!(event?.target as Element)?.closest('.header__items')) headerStore.setSubmenu('');
     })
 
     await clipboardStore.fetchItems();

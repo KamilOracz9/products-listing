@@ -1,5 +1,6 @@
 export type ClipboardItem = {
     "variant_id": number;
+    "product_id": number;
     "slug": string;
     "category": string;
     "collection": string;

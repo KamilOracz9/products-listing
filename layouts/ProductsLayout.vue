@@ -8,7 +8,7 @@
                 {{ categoryPage?.name ?? $t('products') }}</h1>
 
             <div class="mt-10 flex gap-10">
-                <SectionsProductsSidebar />
+                <LazySectionsProductsSidebar />
                 <div class="w-full">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
@@ -46,7 +46,7 @@ const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
 
-const activeCategory = computed(() => globalStore.header?.products.items.categories.filter(category => category.slug === route.params.category)[0]);
+const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': route.params.category ?? null }), { watch: [() => route.query] });
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category));
