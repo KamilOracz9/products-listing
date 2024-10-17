@@ -97,6 +97,16 @@ export default defineNuxtConfig({
         iso: 'sk_SK',
         file: 'sk-SK.json',
       },
+      {
+        code: 'cs',
+        iso: 'cs_CZ',
+        file: 'cs-CZ.json',
+      },
+      {
+        code: 'hu',
+        iso: 'hu_HU',
+        file: 'hu-HU.json',
+      },
     ],
     defaultLocale: 'pl',
     lazy: true,

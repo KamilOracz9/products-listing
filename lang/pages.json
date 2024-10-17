@@ -11,7 +11,8 @@
     "cs": "/hledat",
     "ro": "/cauta",
     "ru": "/poisk",
-    "uk": "/пошук"
+    "uk": "/пошук",
+    "hu": "/kereses"
   },
   "information-clausue/index": {
     "en": "/information-clausue",
@@ -25,7 +26,8 @@
     "cs": "/informacni-klauzule",
     "ro": "/clauza-informativa",
     "ru": "/informacionnoe-uslovie",
-    "uk": "/інформаційна-клаузула"
+    "uk": "/інформаційна-клаузула",
+    "hu": "/informacios-zaradek"
   },
   "privacy-policy/index": {
     "en": "/privacy-policy",
@@ -39,7 +41,8 @@
     "cs": "/ochrana-soukromi",
     "ro": "/politica-de-confidentialitate",
     "ru": "/politika-konfidencialnosti",
-    "uk": "/політика-конфіденційності"
+    "uk": "/політика-конфіденційності",
+    "hu": "/adatvedelmi-szabalyzat"
   },
   "made-to-measure/index": {
     "en": "/products/made-to-measure",
@@ -53,7 +56,8 @@
     "cs": "/produkty/na-miru",
     "ro": "/produse/la-comanda",
     "ru": "/produkty/na-zakaz",
-    "uk": "/продукти/на-замовлення"
+    "uk": "/продукти/на-замовлення",
+    "hu": "/termekek/meretre-szabott"
   },
   "collections/index": {
     "en": "/our-collections",
@@ -67,7 +71,8 @@
     "cs": "/nase-kolekce",
     "ro": "/colectiile-noastre",
     "ru": "/nashi-kollektsii",
-    "uk": "/наші-колекції"
+    "uk": "/наші-колекції",
+    "hu": "/kollekcioink"
   },
   "form-online/index": {
     "en": "/form-online",
@@ -81,7 +86,8 @@
     "cs": "/online-formular",
     "ro": "/formular-online",
     "ru": "/onlayn-forma",
-    "uk": "/онлайн-форма"
+    "uk": "/онлайн-форма",
+    "hu": "/online-nyomtatvany"
   },
   "download/index": {
     "en": "/download",
@@ -95,7 +101,8 @@
     "cs": "/stahnout",
     "ro": "/descarca",
     "ru": "/skachat",
-    "uk": "/завантажити"
+    "uk": "/завантажити",
+    "hu": "/letoltes"
   },
   "download/3d/index": {
     "en": "/download-files-3d",
@@ -109,7 +116,8 @@
     "cs": "/stahnout-3d-soubory",
     "ro": "/descarca-fisiere-3d",
     "ru": "/skachat-3d-fayly",
-    "uk": "/завантажити-3d-файли"
+    "uk": "/завантажити-3d-файли",
+    "hu": "/letoltes-3d-fajlok"
   },
   "service/index": {
     "en": "/service",
@@ -123,7 +131,8 @@
     "cs": "/servis",
     "ro": "/serviciu",
     "ru": "/servis",
-    "uk": "/сервіс"
+    "uk": "/сервіс",
+    "hu": "/szerviz"
   },
   "products/index": {
     "en": "/products",
@@ -137,7 +146,8 @@
     "cs": "/produkty",
     "ro": "/produse",
     "ru": "/produkty",
-    "uk": "/продукти"
+    "uk": "/продукти",
+    "hu": "/termekek"
   },
   "products/[category]/[slug]": {
     "en": "/products/[category]/[slug]",
@@ -151,7 +161,8 @@
     "cs": "/produkty/[category]/[slug]",
     "ro": "/produse/[category]/[slug]",
     "ru": "/produkty/[category]/[slug]",
-    "uk": "/продукти/[category]/[slug]"
+    "uk": "/продукти/[category]/[slug]",
+    "hu": "/termekek/[category]/[slug]"
   },
   "products/[category]/index": {
     "en": "/products/[category]",
@@ -165,7 +176,8 @@
     "cs": "/produkty/[category]",
     "ro": "/produse/[category]",
     "ru": "/produkty/[category]",
-    "uk": "/продукти/[category]"
+    "uk": "/продукти/[category]",
+    "hu": "/termekek/[category]"
   },
   "categories/index": {
     "en": "/categories",
@@ -179,7 +191,8 @@
     "cs": "/kategorie",
     "ro": "/categorii",
     "ru": "/kategorii",
-    "uk": "/категорії"
+    "uk": "/категорії",
+    "hu": "/kategoriak"
   },
   "categories/[category]/index": {
     "en": "/categories/[category]",
@@ -193,7 +206,8 @@
     "cs": "/kategorie/[category]",
     "ro": "/categorii/[category]",
     "ru": "/kategorii/[category]",
-    "uk": "/категорії/[category]"
+    "uk": "/категорії/[category]",
+    "hu": "/kategoriak/[category]"
   },
   "place-to-buy/index": {
     "en": "/place-to-buy",
@@ -207,7 +221,8 @@
     "cs": "/mista-kde-koupit",
     "ro": "/unde-cumpara",
     "ru": "/gde-kupit",
-    "uk": "/де-купити"
+    "uk": "/де-купити",
+    "hu": "/hol-lehet-megvenni"
   },
   "blog/index": {
     "en": "/blog",
@@ -221,7 +236,8 @@
     "cs": "/blog",
     "ro": "/blog",
     "ru": "/блог",
-    "uk": "/блог"
+    "uk": "/блог",
+    "hu": "/blog"
   },
   "blog/[category]/index": {
     "en": "/blog/[category]",
@@ -235,7 +251,8 @@
     "cs": "/blog/[category]",
     "ro": "/blog/[category]",
     "ru": "/блог/[category]",
-    "uk": "/блог/[category]"
+    "uk": "/блог/[category]",
+    "hu": "/blog/[category]"
   },
   "blog/[category]/[slug]": {
     "en": "/blog/[category]/[slug]",
@@ -249,7 +266,8 @@
     "cs": "/blog/[category]/[slug]",
     "ro": "/blog/[category]/[slug]",
     "ru": "/блог/[category]/[slug]",
-    "uk": "/блог/[category]/[slug]"
+    "uk": "/блог/[category]/[slug]",
+    "hu": "/blog/[category]/[slug]"
   },
   "for-professionals/index": {
     "en": "/for-professionals",
@@ -263,7 +281,8 @@
     "cs": "/pro-profesionaly",
     "ro": "/pentru-profesionisti",
     "ru": "/dlya-professionalov",
-    "uk": "/dlya-profesiynih"
+    "uk": "/dlya-profesiynih",
+    "hu": "/szakembereknek"
   },
   "contact/index": {
     "en": "/contact",
@@ -277,7 +296,8 @@
     "cs": "/kontakt",
     "ro": "/contact",
     "ru": "/kontakt",
-    "uk": "/контакт"
+    "uk": "/контакт",
+    "hu": "/kapcsolat"
   },
   "about/index": {
     "en": "/about",
@@ -291,6 +311,7 @@
     "cs": "/o-firme",
     "ro": "/despre-noi",
     "ru": "/o-nas",
-    "uk": "/pro-nas"
+    "uk": "/pro-nas",
+    "hu": "/rolunk"
   }
 }
