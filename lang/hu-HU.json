@@ -19,38 +19,38 @@
     "search-in-products": "Keresés a termékek között",
     "search-in-files": "Keresés a fájlok között",
     "search-in-inspirations": "Keresés az inspirációk között",
-    "header-search-message": "Szeretne pontosan keresni egy terméket annak tulajdonságai alapján?",
+    "header-search-message": "Pontosan szeretné keresni a terméket a tulajdonságai alapján?",
     "header-clipboard-delete": "Törlés a vágólapról",
     "header-clipboard-clear": "Vágólap törlése",
-    "go-to-products": "Menjen a termékoldalra",
+    "go-to-products": "Ugrás a termékek oldalára",
     "inspirations": "Blog",
     "for-professionals": "Szakembereknek",
     "about": "Rólunk",
     "about-us": "Rólunk",
     "contact": "Kapcsolat",
     "news": "Hírek",
-    "arrangements-and-inspirations": "Elrendezések / inspirációk",
-    "advice-and-support": "Tanácsok / támogatás",
+    "arrangements-and-inspirations": "Berendezések / inspirációk",
+    "advice-and-support": "Tanácsadás / támogatás",
     "faq": "GYIK",
-    "partner-zone": "Partnerzóna",
+    "partner-zone": "Partner zóna",
     "architects-zone": "Építészek zónája",
     "office": "Iroda",
-    "companys-history": "A cég története",
+    "companys-history": "Cég története",
     "awards-and-implementations": "Díjak és megvalósítások",
     "career": "Karrier",
-    "projects-ue": "EU Projektek",
+    "projects-ue": "EU projektek",
     "sales-service-department": "Értékesítési osztály",
     "export-department": "Export osztály",
-    "custom-made-products-department": "Egyedi gyártás osztály",
-    "spare-parts-department": "Alkatrész osztály",
-    "service": "Szerviz",
-    "certified-installers": "Hitelesített telepítők",
+    "custom-made-products-department": "Egyedi termékek osztály",
+    "spare-parts-department": "Pótlóalkatrészek osztály",
+    "service": "Szolgáltatás",
+    "certified-installers": "Tanúsított telepítők",
     "catalogs": "Katalógusok",
     "files-3d": "3D fájlok",
     "atests-and-declarations": "Tanúsítványok és nyilatkozatok",
-    "graphic-files": "Grafikus fájlok",
-    "made-to-measure": "Méretre szabott",
-    "made-to-measure-home-link": "Méretre szabott",
+    "graphic-files": "Grafikai fájlok",
+    "made-to-measure": "Méretek szerint készült",
+    "made-to-measure-home-link": "Méretek szerint készült",
     "more": "Több",
     "filtering": "Szűrés",
     "sorting": "Rendezés",
@@ -58,7 +58,7 @@
     "width": "Szélesség",
     "depth": "Mélység",
     "height": "Magasság",
-    "dimension": "Méret",
+    "dimension": "Méretezés",
     "reset": "Visszaállítás",
     "from": "Tól",
     "to": "Ig",
@@ -68,5 +68,213 @@
     "pagination": {
         "prev": "Előző",
         "next": "Következő"
-    }
+    },
+    "navigation": {
+        "made-to-measure": "Méretek szerint készült",
+        "all-products": "Összes termék",
+        "measure": "Mérés",
+        "shape": "Forma",
+        "glass": "Üveg",
+        "ceiling-bracket": "Függesztő konzol",
+        "walk-in-to-the-ceiling": "Belépés a mennyezethez",
+        "installation-on-internal-cubes": "Telepítés belső kockákra",
+        "rail-hanger": "Sínes akasztó",
+        "collections": "Gyűjteményeink",
+        "slug": {
+            "made-to-measure": "Méretek szerint készült",
+            "measure": "Mérés",
+            "shape": "Forma",
+            "glass": "Üveg",
+            "ceiling-bracket": "Függesztő konzol",
+            "walk-in-to-the-ceiling": "Belépés a mennyezethez",
+            "installation-on-internal-cubes": "Telepítés belső kockákra",
+            "rail-hanger": "Sínes akasztó",
+            "news": "Hírek",
+            "arrangements-and-inspirations": "Inspirációk",
+            "advice-and-support": "Tanácsadás és támogatás"
+        }
+    },
+    "filters": {
+        "collections": "Gyűjtemények",
+        "doorType": "Ajtó típus",
+        "doorsCount": "Ajtók száma",
+        "color": "Szín",
+        "detailFinishing": "Részletek befejezése",
+        "surfaceFinishing": "Felület befejezése",
+        "shape": "Forma",
+        "material": "Anyag",
+        "length": "Hosszúság",
+        "width": "Szélesség",
+        "height": "Magasság",
+        "series": "Sorozat",
+        "product_color": "Szín",
+        "product_detail_finishing": "Részletek befejezése",
+        "product_door_type": "Ajtó típus",
+        "product_doors_count": "Ajtók száma",
+        "product_material": "Anyag",
+        "product_shape": "Forma",
+        "product_surface_finishing": "Felület",
+        "product_walls_count": "Falak száma"
+    },
+    "pages": {
+        "made-to-measure": {
+            "title": "Méretek szerint készült",
+            "configurator": "Kabinj konfigurátor",
+            "how-use": "Hogyan használjuk a kabinj konfigurátort"
+        },
+        "collections": {
+            "title": "Gyűjteményeink",
+            "discover": "Fedezze fel a gyűjteményt"
+        },
+        "form-online": {
+            "title": "Online űrlap",
+            "form-person": {
+                "title": "SZEMÉLYES ADATOK KITÖLTÉSE",
+                "placeholders": {
+                    "name": "Név / Cég neve",
+                    "street": "Utca",
+                    "home": "Ház/Szám",
+                    "zip-code": "Irányítószám",
+                    "city": "Város",
+                    "phone": "Telefon",
+                    "email": "E-mail cím",
+                    "desc": "Károsodás leírása"
+                },
+                "statements": {
+                    "real-data": "*Nyilatkozom, hogy az adataimat önként adom meg, és hogy az általam megadott adatok valósak.",
+                    "processing-data": "*Elolvastam az tájékoztatót, és hozzájárulok az adataim kezeléséhez a panaszkezelés céljából, az (EU) 2016/679 számú rendelet értelmében, amely a személyes adatok védelméről és azok szabad mozgásáról szól, és amely hatályon kívül helyezi a 95/46/EK irányelvet."
+                }
+            },
+            "form-product": {
+                "title": "TERMÉK ADATOK KITÖLTÉSE",
+                "placeholders": {
+                    "name": "Termék neve / Kód",
+                    "number": "Garancia kártya száma / Vásárlási bizonylat száma",
+                    "place": "Termék neve / Kód"
+                },
+                "add-photo": "Csatoljon fényképet",
+                "select-file": "Fájl kiválasztása",
+                "no-file": "Nincs kiválasztott fájl",
+                "action": "Akció",
+                "warranty": "Garancia",
+                "post-warranty": "Garancia után"
+            }
+        },
+        "inspirations": {
+            "see-all": "Összes megtekintése",
+            "often-questions": "Gyakran feltett kérdések",
+            "often-questions-text": "Kérdései vannak? Nézze meg a gyakran feltett kérdésekre adott válaszainkat."
+        },
+        "about": {
+            "awards": "Díjak és megvalósítások",
+            "career": "Karrier",
+            "projects": "EU projektek"
+        },
+        "contact": {
+            "address": "Cím",
+            "phone": "Tel.",
+            "office": "Iroda",
+            "logistic-centrum": "Logisztikai központ",
+            "sale-service-department": "Értékesítési osztály",
+            "export-department": "Export osztály",
+            "select-region": "Válasszon megyét",
+            "form": {
+                "write-to-us": "Írjon nekünk",
+                "name-and-surname": "Név / vezetéknév",
+                "email-address": "E-mail cím",
+                "message": "Üzenet",
+                "agreement": "Az üzenet elküldésével hozzájárulok a New Trendy Spółka z ograniczoną odpowiedzialnością személyes adatainak kezeléséhez, amelynek székhelye: Radom 26-600 ul. Sadownicza 7, az érintkezési űrlapon megadott adatok alapján, hogy kapcsolatba lépjen velem, és válaszoljon üzenetemre az ",
+                "privacy": "adatvédelmi irányelvek",
+                "and": " és ",
+                "info-clausue": "információs nyilatkozat",
+                "accept": "*Elolvastam az adatvédelmi irányelveket és az információs nyilatkozatot.",
+                "send": "Küldés"
+            },
+            "voievodship": "Megye"
+        },
+        "service": {
+            "in-hours": "óra alatt"
+        },
+        "place-to-buy": {
+            "title": "Hol vásárolhatja meg termékeinket",
+            "select-voievodship": "Válasszon megyét",
+            "select-city": "Válasszon várost",
+            "input-placeholder": "Írja be a város nevét vagy az irányítószámot",
+            "search-by-my-localization": "Keresés a helyszínem alapján",
+            "show-on-map": "Mutasd a térképen",
+            "check-directions": "Útvonal ellenőrzése",
+            "locations-not-found": "Nincs bolt ezen a területen",
+            "symbol": "Szimbólum",
+            "map-hint": "Nyomja meg a CTRL (vagy ⌘) + görgessen a nagyításhoz"
+        },
+        "search": {
+            "products": "Termékek",
+            "found-positions": "Megtalált pozíciók: ",
+            "inspirations": "Inspirációk"
+        }
+    },
+    "product": {
+        "yellow-box": "Személyre szabhatja a kabinját",
+        "desc-colors": "Elérhető színekben",
+        "desc-doors": "Ajtók nyitásának módja",
+        "product-description": "Termékleírás",
+        "product-table": "Termék táblázat",
+        "glass-types": "Üveg típusok",
+        "download-files": "Letölthető fájlok",
+        "parts": "Részek",
+        "similar-products": "Hasonló termékek",
+        "symbol": "Szimbólum",
+        "dimensions": "Méretek",
+        "doors": "Ajtók",
+        "dimension_a": "A",
+        "dimension_b": "B",
+        "dimension_c": "C",
+        "dimension_d": "D",
+        "dimension_e": "E",
+        "dimension_f": "F",
+        "dimension_w": "W",
+        "dimension_h": "H",
+        "dimension_axis_x1": "X1",
+        "dimension_axis_x2": "X2",
+        "width": "Szélesség",
+        "height": "Magasság",
+        "add-to-clipboard": "Hozzáadás a vágólaphoz",
+        "generate-product-card": "Termékkártya generálása",
+        "search-in-expositions": "Keresés a kiállításokban",
+        "realization-time": {
+            "2-weeks": "A termék kérésre elérhető. Szállítási idő kb. 2 hét.",
+            "4-weeks": "A termék kérésre elérhető. Szállítási idő kb. 4 hét.",
+            "6-weeks": "A termék kérésre elérhető. Szállítási idő kb. 6 hét."
+        },
+        "toggle-toggle-clipboard": "Termék váltása a vágólapon"
+    },
+    "home": {
+        "in-offer": {
+            "colors": "Ajánlatunkban sok színű részletet talál:",
+            "variants": "Hatalmas választékot kínálunk a gyűjteményekben:"
+        },
+        "additional-content": {
+            "use-searching": "Használja keresőnket, hogy megtalálja zuhanyzó boltját."
+        },
+        "map": {
+            "title": "Találjon egy állandó boltot",
+            "placeholder": "Írja be a város nevét vagy az irányítószámot"
+        }
+    },
+    "Pole nazwa jest wymagane.": "A név mező kitöltése kötelező.",
+    "Pole adres e-mail jest wymagane.": "Az e-mail cím mező kitöltése kötelező.",
+    "Pole wiadomość jest wymagane.": "Az üzenet mező kitöltése kötelező.",
+    "Pole dane osobowe musi zostać zaakceptowane.": "A személyes adatok mezőt el kell fogadni.",
+    "Pole ulica jest wymagane.": "Az utca mező kitöltése kötelező.",
+    "Pole numer domu jest wymagane.": "A házszám mező kitöltése kötelező.",
+    "Pole kod pocztowy musi być ciągiem znaków.": "Az irányítószám mezőnek karakterláncnak kell lennie.",
+    "Pole miasto jest wymagane.": "A város mező kitöltése kötelező.",
+    "Pole numer telefonu jest wymagane.": "A telefon szám mező kitöltése kötelező.",
+    "Pole opis jest wymagane.": "A leírás mező kitöltése kötelező.",
+    "Pole nazwa produktu jest wymagane.": "A termék neve mező kitöltése kötelező.",
+    "Pole numer jest wymagane.": "A szám mező kitöltése kötelező.",
+    "Pole miejsce jest wymagane.": "A hely mező kitöltése kötelező.",
+    "Pole działanie jest wymagane.": "A művelet mező kitöltése kötelező.",
+    "Pole prawidłowe dane musi zostać zaakceptowane.": "A helyes adatok mezőt el kell fogadni.",
+    "Wiadomość została wysłana": "Az üzenet elküldve."
 }

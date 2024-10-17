@@ -45,6 +45,9 @@ import { fetchCategoryPage } from '~/services/api/category';
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
+const localePath = useLocalePath();
+
+console.log(globalStore);
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
@@ -60,6 +63,11 @@ const loading = computed(() => pending.value || categoryPagePending.value || fil
 watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
+
+// console.log(activeCategory?.value?.id)
+// console.log(route.params.category)
+// console.log(data.value)
+// console.log(filtersData.value)
 
 onMounted(() => {
     watch(() => route.query.page, value => {
