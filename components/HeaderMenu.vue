@@ -78,6 +78,17 @@
                                     </NuxtLink>
                             </LazySectionsHeaderColumn> -->
 
+                            <LazySectionsHeaderColumn class="lg:hidden">
+                                <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                                    <NuxtLink class="text-center flex items-center flex-col" :to="item.path"
+                                        :aria-label="item.name" v-for="item in headerItem.columns.flat()">
+                                        <img loading="lazy" width="65" height="65" class="size-[65px]" :src="item.image"
+                                            alt="" :title="item.name" />
+                                        <p class="py-3">{{ item.name }}</p>
+                                    </NuxtLink>
+                                </div>
+                            </LazySectionsHeaderColumn>
+
                             <LazySectionsHeaderColumn v-for="(column, index) in headerItem.columns" class="hidden lg:block">
                                 <div class="lg:px-8 lg:mb-10" v-for="item in column">
                                     <NuxtLink :to="item.path" :aria-label="item.name">
