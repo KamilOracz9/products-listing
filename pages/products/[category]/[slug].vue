@@ -62,8 +62,6 @@ const linkPath = computed(() => {
 const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
 
-console.log(category.value)
-
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
 const hasGlasses = computed(() => !!images.value.glasses.length);
 
