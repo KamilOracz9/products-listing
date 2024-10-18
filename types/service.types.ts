@@ -24,7 +24,7 @@ export type Installer = {
 export type ContactItem = {
     "title": string;
     "phone": string;
-    "phone_hours": string;
+    "hours": string;
 }
 
 export type Section1 = {

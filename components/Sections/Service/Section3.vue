@@ -5,7 +5,7 @@
                 <div>
                     <p class="pb-2 text-[1.25rem] font-medium md:text-[1.5rem]">{{ item.title }}</p>
                     <p class="flex gap-2 items-center"><img src="@/assets/icons/phone.svg" class="size-[18px]" alt=""> {{ item.phone }}</p>
-                    <p class="flex gap-2 items-center"><img src="@/assets/icons/clock.svg" class="size-[18px]" alt=""> {{ item.phone_hours }}</p>
+                    <p class="flex gap-2 items-center"><img src="@/assets/icons/clock.svg" class="size-[18px]" alt=""> {{ item.hours }}</p>
                 </div>
             </li>
         </ul>
