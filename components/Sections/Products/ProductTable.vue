@@ -145,7 +145,6 @@ provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 const getHeader = (variant: Variant, header: string) => {
-    console.log(variant)
     return variant[header];
 }
 
