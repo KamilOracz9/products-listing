@@ -8,6 +8,8 @@
     "slovak": "Slovenský",
     "romanian": "Rumunský",
     "ukrainian": "Ukrajinský",
+    "czech": "Český",
+    "hungarian": "Maďarský",
     "download": "Stiahnuť",
     "search": "Hľadať",
     "clipboard": "Schránka",
@@ -180,9 +182,7 @@
         "about": {
             "awards": "Ocenenia a vyznamenania",
             "career": "Kariéra",
-           
-
- "projects": "EU projekty"
+            "projects": "EU projekty"
         },
         "contact": {
             "select-region": "Vyberte región",
