@@ -23,6 +23,10 @@ export default defineNuxtPlugin(() => {
         if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.ua') {
             return navigateTo(localePath(to.fullPath, 'uk').replace('/pl', ''))
         }
+
+        if (i18n.locale.value !== 'pl' && to.name?.split('___')[0] === 'service') {
+            return navigateTo(`/${i18n.locale.value}`);
+        }
     },
         { global: true }
     )
