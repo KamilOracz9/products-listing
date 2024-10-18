@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div v-if="!pending">
+        <div v-if="!pending" class="mb-12">
             <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
             <div class="pb-10 w-full lg:flex lg:gap-10">

@@ -14,7 +14,7 @@
     <SectionsHomeAboutTiles :data="boxes" />
     <SectionsHomeLeftImage :data="customized" />
     <SectionsHomeRightImage :data="quality" />
-    <div class="lg:grid lg:grid-cols-2 lg:gap-10">
+    <div class="mb-12 lg:grid lg:grid-cols-2 lg:gap-10">
       <SectionsHomeInOffer :data="products" />
       <SectionsHomeAdditionalContent :data="{ information, yellow, welcome }" />
     </div>
