@@ -46,14 +46,12 @@ const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
 const localePath = useLocalePath();
-const router = useRouter();
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
 const { data: category } = await useAsyncData(DataKeys.CATEGORY, async () => fetchCategory(route.params.category));
-// console.log(category.value.slug)
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': category.value.slug ?? null }), { watch: [() => route.query] });
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(category.value.slug));
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': category.value?.slug ?? null }), { watch: [() => route.query] });
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(category?.value?.slug));
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }));
 
 provide('filtersData', filtersData);
@@ -66,9 +64,13 @@ watch(loading, (newValue) => {
 })
 
 onMounted(() => {
-    const query = Object.keys(route.query).map(key => (`${key}=${route.query[key]}`)).join('&');
+    const query = Object.keys(route.query).map(key => (
+        Array.isArray(route.query[key]) 
+            ? route.query[key].map(value => (`${key}=${value}`)).join('&')
+            : `${key}=${route.query[key]}`
+    )).join('&');
 
-    window.history.replaceState({}, '', `${localePath({name: 'products', params: {}})}/${category.value ? category.value.slug : ''}${query ? `?${query}` : ''}`);
+    if(category.value) window.history.replaceState({}, '', `${localePath({name: 'products', params: {}})}/${category.value ? category.value.slug : ''}${query ? `?${query}` : ''}`);
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();
