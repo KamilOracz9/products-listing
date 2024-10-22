@@ -108,14 +108,14 @@
                             <p class="uppercase font-medium">{{ $t('pages.made-to-measure.transparency-level') }}</p>
                             <div class="flex gap-1 items-center stars">
                                 <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_transparency))"
-                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_zolta-1.png"
+                                    src="/assets/icons/star-full.png"
                                     width="20" height="20" alt="">
                                 <img loading="lazy" v-if="parseFloat(item.level_transparency) % 1"
-                                    src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
+                                    src="/assets/icons/star-half.png"
                                     width="20" height="20" alt="">
                                 <img loading="lazy"
                                     v-for="index in (5 - parseInt(item.level_transparency) - Math.ceil((parseFloat(item.level_transparency) % 1)))"
-                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
+                                    src="/assets/icons/star-empty.png"
                                     width="20" height="20" alt="">
                             </div>
                         </div>
@@ -124,14 +124,14 @@
                                 $t('pages.made-to-measure.discretion-level') }}</p>
                             <div class="flex gap-1 items-center stars">
                                 <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_discretion))"
-                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_zolta-1.png"
+                                    src="/assets/icons/star-full.png"
                                     width="20" height="20" alt="">
                                 <img loading="lazy" v-if="parseFloat(item.level_discretion) % 1"
-                                    src="http://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_50na50-1.png"
+                                    src="/assets/icons/star-half.png"
                                     width="20" height="20" alt="">
                                 <img loading="lazy"
                                     v-for="index in (5 - parseInt(item.level_discretion) - Math.ceil((parseFloat(item.level_discretion) % 1)))"
-                                    src="https://techniczne.newtrendy.pl/wp-content/uploads/2021/09/gwiazdka_szara-1.png"
+                                    src="/assets/icons/star-empty.png"
                                     width="20" height="20" alt="">
                             </div>
                         </div>
