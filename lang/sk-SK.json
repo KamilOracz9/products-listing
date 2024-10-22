@@ -8,6 +8,8 @@
     "slovak": "Slovenský",
     "romanian": "Rumunský",
     "ukrainian": "Ukrajinský",
+    "czech": "Český",
+    "hungarian": "Maďarský",
     "download": "Stiahnuť",
     "search": "Hľadať",
     "clipboard": "Schránka",
@@ -180,9 +182,7 @@
         "about": {
             "awards": "Ocenenia a vyznamenania",
             "career": "Kariéra",
-           
-
- "projects": "EU projekty"
+            "projects": "EU projekty"
         },
         "contact": {
             "select-region": "Vyberte región",
@@ -243,6 +243,9 @@
         "dimension_f": "F",
         "dimension_w": "W",
         "dimension_h": "H",
+        "dimension_z": "Z",
+        "dimension_z1": "Z1",
+        "dimension_z2": "Z2",
         "dimension_axis_x1": "X1",
         "dimension_axis_x2": "X2",
         "width": "Šírka",

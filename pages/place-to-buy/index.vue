@@ -1,7 +1,7 @@
 <template>
     <div>
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
-        
+
         <p class="section-title">{{ title }}</p>
 
         <SectionsPlaceToBuySearch />
@@ -13,9 +13,7 @@
                 </div>
                 <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
             </template>
-            <div v-else class="lg:col-span-2  text-2xl font-medium">
-                <Loading />
-            </div>
+
             <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
         </div>
     </div>

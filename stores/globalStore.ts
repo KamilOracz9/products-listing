@@ -8,6 +8,7 @@ type IGlobalStore = {
     header?: Header;
     footer?: Footer;
     socials: Socials;
+    pageIsLoading: boolean,
 }
 
 const useGlobalStore = defineStore('global', {
@@ -38,6 +39,14 @@ const useGlobalStore = defineStore('global', {
                 label: 'Ukrainian',
                 code: 'uk',
             },
+            {
+                label: 'Czech',
+                code: 'cs',
+            },
+            {
+                label: 'Hungarian',
+                code: 'hu',
+            },
         ],
         socials: {
             facebook: '',
@@ -46,12 +55,13 @@ const useGlobalStore = defineStore('global', {
             youtube: '',
             linkedin: '',
         },
+        pageIsLoading: false,
     }),
     actions: {
         async fetchGlobalData() {
             this.isLoading = true;
 
-            await fetchLayoutData(1).then(response => {
+            await fetchLayoutData().then(response => {
                 this.header = response.header;
                 this.footer = response.footer;
                 this.socials = response.socials;

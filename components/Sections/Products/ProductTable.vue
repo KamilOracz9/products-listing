@@ -15,14 +15,16 @@
         <div class="table-wrapper overflow-x-auto pb-3 w-full">
             <table class="w-full">
                 <thead>
-                    <th class="border-b-[2px] border-gray-1 w-[25px]"></th>
-                    <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1 w-full"
-                        v-for="header in headers">
-                        <img height="20" class="min-h-[20px] min-w-[30px] max-w-[30px] mx-auto"
-                            v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
-                        <span v-else>{{ $t(`product.${header}`) }}</span>
-                    </th>
-                    <th class="w-[60px]"></th>
+                    <tr>
+                        <th class="border-b-[2px] border-gray-1 w-[25px]"></th>
+                        <th class="text-lg font-medium px-8 pb-4 border-b-[2px] border-gray-1 w-full"
+                            v-for="header in headers">
+                            <img height="20" class="min-h-[20px] min-w-[30px] max-w-[30px] mx-auto"
+                                v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
+                            <span v-else>{{ $t(`product.${header}`) }}</span>
+                        </th>
+                        <th class="w-[60px]"></th>
+                    </tr>
                 </thead>
                 <tbody>
                     <template v-for="variant in ungroupedVariants">
@@ -138,8 +140,6 @@ const headers: Ref<{
         )
     ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
 ))
-
-const clipboardStore = useClipboardStore();
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);

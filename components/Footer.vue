@@ -3,7 +3,7 @@
         class="bg-black-2 text-white px-5 py-12 rounded-br-md lg:py-[61.5px] lg:pl-[46px] lg:pr-[78px] lg:rounded-br-lg">
         <!-- Items -->
         <ul class="footer__items">
-            <FooterDropdown v-for="item in Object.values(top)" :translate="false" :item="item" />
+            <FooterDropdown v-for="item in top" :translate="false" :item="item" />
         </ul>
 
         <ul

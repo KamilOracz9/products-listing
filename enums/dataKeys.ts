@@ -25,6 +25,8 @@ export enum DataKeys {
     COLLECTIONS_LIST = 'collections-list',
     CLIPBOARD_ITEMS_LIST = 'clipboard-items-list',
 
+    CATEGORY = 'CATEGORY',
+
     SEARCH_RESULT = 'search-result',
     LAYOUT = 'layout',
 }
