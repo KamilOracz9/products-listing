@@ -16,6 +16,7 @@ const i18n = useI18n();
 const nuxtApp = useNuxtApp();
 const globalStore = useGlobalStore();
 const { pageIsLoading } = storeToRefs(globalStore);
+const router = useRouter();
 
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;
@@ -67,6 +68,8 @@ useHead(() => ({
   // }
 }))
 
+console.log();
+
 useSeoMeta({
   title: 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
   keywords: null,
@@ -83,8 +86,7 @@ useSeoMeta({
     // Disallow: '',
     // Index: false,
     // Follow: false,
-    'noindex': true,
-    'nofollow': true,
+
   },
 })
 
@@ -93,6 +95,12 @@ onMounted(() => {
     document.querySelector('body').dataset.noscroll = value.pageIsLoading.value;
   }, { deep: true });
 
+  useSeoMeta({
+    robots: {
+      'noindex': i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl',
+      'nofollow': i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl',
+    },
+  })
 })
 </script>
 
