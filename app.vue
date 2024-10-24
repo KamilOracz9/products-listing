@@ -81,8 +81,10 @@ useSeoMeta({
   robots: {
     // 'User-agent': '*',
     // Disallow: '',
-    // Index: true,
-    // Follow: true,
+    // Index: false,
+    // Follow: false,
+    'noindex': true,
+    'nofollow': true,
   },
 })
 
