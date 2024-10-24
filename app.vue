@@ -68,8 +68,6 @@ useHead(() => ({
   // }
 }))
 
-console.log();
-
 useSeoMeta({
   title: 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
   keywords: null,
@@ -86,7 +84,6 @@ useSeoMeta({
     // Disallow: '',
     // Index: false,
     // Follow: false,
-
   },
 })
 
