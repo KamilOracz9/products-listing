@@ -1,7 +1,7 @@
 <template>
     <section v-if="locale === 'pl'" class="hidden relative mt-16 md:block">
         <div class="lg:h-[360px]">
-            <img class="h-full w-full object-cover" src="@/assets/images/find-shops.webp" alt="" loading="lazy" />
+            <img class="h-full w-full object-cover" src="@/assets/images/find-shops.webp" :title="$t('find-shops')" :alt="$t('find-shops')" loading="lazy" />
         </div>
         <div class="absolute top-1/2 -translate-y-1/2 left-0 w-full p-5 lg:w-1/2 lg:left-1/2 lg:-translate-x-1/2">
             <p class="text-4xl whitespace-nowrap uppercase">{{ $t('home.map.title') }}</p>

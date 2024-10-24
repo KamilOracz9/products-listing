@@ -2,9 +2,9 @@
     <div>
         <Swiper v-if="data" :navigation="sliderConfig.navigation" :pagination="sliderConfig.pagination"
             @slideChange="activeSlide = $event.realIndex" class="relative rounded-tr-lg"
-            :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
-            :slides-per-view="sliderConfig.slidesPerView" :loop="sliderConfig.loop" :effect="sliderConfig.effect"
-            :autoplay="sliderConfig.autoplay" :creative-effect="sliderConfig.creativeEffect">
+            :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]" :slides-per-view="sliderConfig.slidesPerView"
+            :loop="sliderConfig.loop" :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay"
+            :creative-effect="sliderConfig.creativeEffect">
             <SwiperSlide v-for="(slide, index) in data" :key="index">
                 <NuxtLink :to="slide.path" class="relative" :aria-label="slide.title ?? `New Trendy - slide-${index}`"
                     :key="index" :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
@@ -13,8 +13,8 @@
 
                         <img v-if="slide.image" decoding="async" :src="slide.image?.mobile" :srcset="`
                                 ${slide.image?.mobile} 607w,
-                                ${slide.image?.tablet} 991w,
-                                ${slide.image?.desktop} 1680w,
+                                                        ${slide.image?.tablet} 991w,
+                                                        ${slide.image?.desktop} 1680w,
                             `" :alt="slide.title ?? `New Trendy - slide-${index}`"
                             :title="slide.title ?? `New Trendy - slide-${index}`" class="h-full w-full object-cover" />
 
@@ -28,24 +28,24 @@
 
                     <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-32 lg:left-20">
                         <p class="text-3xl">{{ slide.subtitle }}</p>
-                        <h2 v-if="slide.title"
+                        <p v-if="slide.title"
                             class="text-[2.5rem] font-medium leading-[3rem] uppercase xl:text-[50px] xl:leading-[60px]">
                             {{ slide.title }}
-                        </h2>
+                        </p>
                     </div>
                 </NuxtLink>
             </SwiperSlide>
 
             <img src="@/assets/icons/slider-arrow.svg"
                 class="left-4 main-slider-arrow main-slider-arrow-prev block rotate-180 lg:left-14 xl:left-16 2xl:left-20"
-                alt="">
+                :alt="$t('slider-arrow-left')" :title="$t('slider-arrow-left')">
 
             <div
                 class="swiper-pagination hidden absolute bottom-3 text-white z-20 !left-1/2 !-translate-x-1/2 !w-[80%] border-t border-white pt-2 lg:flex lg:text-base lg:!bottom-7 xl:!w-[85%]">
             </div>
 
             <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-14 xl:right-16 2xl:right-20"
-                src="@/assets/icons/slider-arrow.svg" alt="">
+                src="@/assets/icons/slider-arrow.svg" :alt="$t('slider-arrow-left')" :title="$t('slider-arrow-left')">
         </Swiper>
     </div>
 </template>

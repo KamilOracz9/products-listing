@@ -274,6 +274,12 @@
             "placeholder": "Wpisz nazwę miasta lub kod pocztowy"
         }
     },
+    "slider-arrow-left": "Poprzedni slide",
+    "slider-arrow-nest": "Nastepny slide",
+    "find-shops": "Znajdź sklepy",
+    "map-pin": "Znacznik mapy",
+    "phone-number": "Numer telefonu",
+    "email-address": "Adres email",
     "Pole nazwa jest wymagane.": "Pole nazwa jest wymagane.",
     "Pole adres e-mail jest wymagane.": "Pole adres e-mail jest wymagane.",
     "Pole wiadomość jest wymagane.": "Pole wiadomość jest wymagane.",

@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-10 lg:grid lg:grid-cols-2 lg:gap-10" data-aos="fade-up">
+    <section class="mt-10 lg:grid lg:grid-cols-2 lg:gap-10 [&_h2]:text-[1.875rem] [&_h2]:font-medium [&_h2]:leading-[120%] [&_h2]:mb-5" data-aos="fade-up">
         <div class="text-sm description sm:text-base" v-html="data.html"></div>
         <div class="mt-6 h-[275px] md:h-[385px] lg:h-full lg:mt-0">
             <picture v-if="data.image">

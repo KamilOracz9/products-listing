@@ -8,8 +8,8 @@
                 <img class="object-cover w-full h-full" loading="lazy" :src="product.image.mobile" :alt="product.title" :title="product.title" />
             </picture>
             <div class="absolute z-10 text-white bottom-4 left-4 uppercase">
-                <h3 class="font-medium text-xl sm:text-[1.875rem]">{{ product.title }}</h3>
-                <h4 class="text-md sm:text-[1.25rem]">{{ product.subtitle }}</h4>
+                <p class="font-medium text-xl sm:text-[1.875rem]">{{ product.title }}</p>
+                <p class="text-md sm:text-[1.25rem]">{{ product.subtitle }}</p>
             </div>
         </NuxtLink>
     </section>

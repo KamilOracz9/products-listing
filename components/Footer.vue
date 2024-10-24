@@ -19,7 +19,7 @@
                 <p class="text-medium-lg uppercase">{{ bottom.our_websites.title }}</p>
                 <div class="flex mt-2 gap-3">
                     <img src="@/assets/icons/glob.svg" class="footer__icon" loading="lazy" width="16" height="16"
-                        alt="Icon" title="" />
+                        :alt="$t('our-websites')" :title="$t('our-websites')" />
                     <div class="flex flex-col">
                        
                         <a v-for="item in bottom.our_websites.items" class="flex gap-3 footer__url" target="_blank" :href="`https://${item}`">{{ item }}</a>
