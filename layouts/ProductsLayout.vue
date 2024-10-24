@@ -59,23 +59,57 @@ provide('filtersRefresh', filtersRefresh);
 
 const loading = computed(() => pending.value || categoryPagePending.value || filtersPending.value);
 
+const headLinks = computed(() => {
+    const links = [
+        {
+            rel: 'canonical',
+            href: route.params.category ?? '',
+        },
+    ];
+
+    if (data.value.meta.current_page < data.value.meta.last_page) {
+        const query = { ...route.query };
+        query.page = data.value.meta.current_page + 1;
+
+        const queryString = createQueryString(query);
+
+        links.push({
+            rel: 'next',
+            href: `${localePath({ name: 'products' })}${route.params.category ?? ''}${queryString ? '?' + queryString : ''}`
+        })
+    }
+
+    return links;
+})
+
 watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
+// watch(headLinks, value => {
+//     console.log(value)
+//     useHead({
+//         links: value,
+//     })
+// })
+
 onMounted(() => {
     const query = Object.keys(route.query).map(key => (
-        Array.isArray(route.query[key]) 
+        Array.isArray(route.query[key])
             ? route.query[key].map(value => (`${key}=${value}`)).join('&')
             : `${key}=${route.query[key]}`
     )).join('&');
 
-    if(category.value) window.history.replaceState({}, '', `${localePath({name: 'products', params: {}})}/${category.value ? category.value.slug : ''}${query ? `?${query}` : ''}`);
+    if (category.value) window.history.replaceState({}, '', `${localePath({ name: 'products', params: {} })}/${category.value ? category.value.slug : ''}${query ? `?${query}` : ''}`);
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();
     })
 
-    setMeta(categoryPage.value.meta)
+    setMeta(categoryPage.value.meta);
+
+    useHead({
+        links: headLinks.value,
+    })
 })
 </script>

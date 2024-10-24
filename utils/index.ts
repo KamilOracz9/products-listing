@@ -10,8 +10,6 @@ export const toGetParams = (params: any) => (
 export const getLocaleIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
 
 export const setMeta = (meta: Meta) => {
-    const route = useRoute();
-
     useHead(() => ({
         link: [
             {
@@ -78,4 +76,12 @@ export const groupBy = (list: any, keyGetter: (item: any) => string) => {
         }
     });
     return map;
+}
+
+export const createQueryString = (query: any) => {
+    return Object.keys(query).map(key => (
+        Array.isArray(query[key])
+            ? query[key].map((value: string | number) => (`${key}=${value}`)).join('&')
+            : `${key}=${query[key]}`
+    )).join('&');
 }
