@@ -84,8 +84,8 @@ onMounted(() => {
 
   useSeoMeta({
     robots: {
-      'noindex': i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl',
-      'nofollow': i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl',
+      'noindex': (i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl') || (window.location.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+      'nofollow': (i18n.locale.value === 'pl' && window.location.host !== 'newtrendy.pl') || (window.location.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
     },
   })
 })
