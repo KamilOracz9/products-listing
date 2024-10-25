@@ -16,7 +16,8 @@
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                     <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
+                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
+                        class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
                     <SectionsProductsListing v-if="!pending" :products="data.data" />
@@ -45,7 +46,9 @@ import { fetchCategoryPage } from '~/services/api/category';
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
+const router = useRouter();
 const localePath = useLocalePath();
+const url = useRequestURL();
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
@@ -59,39 +62,42 @@ provide('filtersRefresh', filtersRefresh);
 
 const loading = computed(() => pending.value || categoryPagePending.value || filtersPending.value);
 
-const headLinks = computed(() => {
-    const links = [
-        {
-            rel: 'canonical',
-            href: route.params.category ?? '',
-        },
-    ];
-
-    if (data.value.meta.current_page < data.value.meta.last_page) {
-        const query = { ...route.query };
-        query.page = data.value.meta.current_page + 1;
-
-        const queryString = createQueryString(query);
-
-        links.push({
-            rel: 'next',
-            href: `${localePath({ name: 'products' })}${route.params.category ?? ''}${queryString ? '?' + queryString : ''}`
-        })
-    }
-
-    return links;
-})
-
 watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-// watch(headLinks, value => {
-//     console.log(value)
-//     useHead({
-//         links: value,
-//     })
-// })
+const canonical = computed(() => `${url.origin}${url.pathname}`);
+
+const next = computed(() => {
+    const page = route.query.page ? parseInt(route.query.page) : 1;
+
+    return page < data.value.meta.last_page ? `${canonical.value}?page=${page + 1}` : null
+});
+
+const prev = computed(() => {
+    const page = route.query.page ? parseInt(route.query.page) : 1;
+
+    return page > 1 ? `${canonical.value}?page=${page - 1}` : null
+});
+
+const headLinks = computed(() => {
+    const links = [];
+
+    canonical.value && links.push({ rel: 'canonical', href: canonical.value });
+    next.value && links.push({ rel: 'next', href: next.value });
+    prev.value && links.push({ rel: 'prev', href: prev.value });
+
+    return links;
+});
+
+watch(router.currentRoute, () => {
+    document.querySelector('link[rel="next"]')?.remove();
+    document.querySelector('link[rel="prev"]')?.remove();
+
+    useHead(() => ({
+        link: headLinks.value,
+    }))
+}, { deep: true })
 
 onMounted(() => {
     const query = Object.keys(route.query).map(key => (
@@ -106,10 +112,10 @@ onMounted(() => {
         if (value) document.querySelector('h1').scrollIntoView();
     })
 
-    setMeta(categoryPage.value.meta);
+    useHead(() => ({
+        link: headLinks.value,
+    }))
 
-    useHead({
-        links: headLinks.value,
-    })
+    setMeta(categoryPage.value.meta);
 })
 </script>

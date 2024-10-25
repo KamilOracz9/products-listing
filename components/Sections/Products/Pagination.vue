@@ -18,7 +18,9 @@
                 </span>
             </li>
             <li v-if="meta.current_page < meta.last_page">
-                <NuxtLink :aria-label="meta.current_page + 1"
+                <!-- {{ setRelNext(localePath({ query: { ...router.currentRoute.value.query, page: meta.current_page + 1 } })) }} -->
+
+                <NuxtLink :aria-label="meta.current_page + 1" rel="next" 
                     :to="localePath({ query: { ...router.currentRoute.value.query, page: meta.current_page + 1 } })"
                     class="pagination-button ml-4">
                     {{ $t('pagination.next') }}
@@ -34,4 +36,8 @@ const props = defineProps(['meta'])
 const { meta } = toRefs(props);
 const localePath = useLocalePath();
 const router = useRouter();
+
+// const setRelNext = (url: string) => {
+//     console.log(url);
+// }
 </script>

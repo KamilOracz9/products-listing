@@ -16,7 +16,6 @@ const i18n = useI18n();
 const nuxtApp = useNuxtApp();
 const globalStore = useGlobalStore();
 const { pageIsLoading } = storeToRefs(globalStore);
-const router = useRouter();
 
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;
@@ -27,10 +26,10 @@ nuxtApp.hook("page:finish", () => {
 
 useHead(() => ({
   link: [
-    {
-      rel: 'canonical',
-      href: window?.location?.href,
-    },
+    // {
+    //   rel: 'canonical',
+    //   href: nuxtApp.$canonical(),
+    // },
     {
       rel: 'preload',
       type: 'font/ttf',

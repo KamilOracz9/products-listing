@@ -10,14 +10,16 @@ export const toGetParams = (params: any) => (
 export const getLocaleIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
 
 export const setMeta = (meta: Meta) => {
-    useHead(() => ({
-        link: [
-            {
-                rel: 'canonical',
-                href: meta.canonical_tag ?? window?.location?.href,
-            },
-        ],
-    }))
+    const nuxt = useNuxtApp();
+
+    // useHead(() => ({
+        // link: [
+        //     {
+        //         rel: 'canonical',
+        //         href: meta.canonical_tag ?? nuxt.$canonical(),
+        //     },
+        // ],
+    // }))
 
     useSeoMeta({
         title: meta.meta_title ?? 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
