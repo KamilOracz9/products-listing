@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10" :id="slugify($t('pages.contact.export-department'))">
+    <section class="pt-10" :id="slugify($t('pages.contact.export-department'), false)">
         <p data-aos="fade-up" class="section-subtitle">{{ title }}</p>
 
         <div data-aos="fade-up" class="section-text" v-html="text"></div>

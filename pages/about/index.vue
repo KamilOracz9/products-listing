@@ -1,7 +1,7 @@
 <template>
   <div>
     <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
-    <section :id="slugify($t('companys-history'))">
+    <section :id="slugify($t('companys-history'), false)">
       <p class="section-title">{{ $t('companys-history') }}</p>
 
       <div class="flex flex-col gap-6 pt-10 sm:gap-0 xl:flex-row xl:gap-10">
@@ -33,7 +33,7 @@
       </div>
     </section>
 
-    <section class="mt-10" :id="slugify(description.content.section_2.title)">
+    <section class="mt-10" :id="slugify(description.content.section_2.title, false)">
       <p class="section-title" data-aos="fade-up">{{ description.content.section_2.title }}</p>
       <div class="section-text" data-aos="fade-up" v-html="description.content.section_2.html"></div>
       <div class="overflow-x-auto no-scrollbar">
@@ -45,12 +45,12 @@
       </div>
     </section>
 
-    <section class="xl:w-1/2" :id="slugify(description.content.section_3.title)">
+    <section class="xl:w-1/2" :id="slugify(description.content.section_3.title, false)">
       <p class="section-title" data-aos="fade-up">{{ description.content.section_3.title }}</p>
       <div class="section-text" data-aos="fade-up" v-html="description.content.section_3.html"></div>
     </section>
 
-    <section class="mt-10" :id="slugify(description.content.section_4.title)">
+    <section class="mt-10" :id="slugify(description.content.section_4.title, false)">
       <p data-aos="fade-up" class="section-title">{{ description.content.section_4.title }}</p>
       <div class="grid xl:grid-cols-2 gap-6 section-text lg:gap-10">
         <div data-aos="fade-up" v-html="description.content.section_4.column_left.html"></div>

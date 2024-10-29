@@ -56,7 +56,7 @@
 
                         <div v-else class="header__links-ref">
                             <div class="header__links">
-                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="item.path"
+                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)"
                                     :title="item.name" :aria-label="item.name">
                                     {{ item.name }}
                                 </NuxtLink>
