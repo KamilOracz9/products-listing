@@ -56,7 +56,8 @@
 
                         <div v-else class="header__links-ref">
                             <div class="header__links">
-                                <NuxtLink :external="false" v-for="item in headerItem.items" :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)"
+                                <NuxtLink :external="false" v-for="item in headerItem.items"
+                                    :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)"
                                     :title="item.name" :aria-label="item.name">
                                     {{ item.name }}
                                 </NuxtLink>
@@ -170,9 +171,8 @@
                     </LazySectionsHeaderItem>
 
                     <div class="w-full justify-center flex lg:w-fit lg:justify-start">
-                        <NuxtLink
-                            :to="locale === 'pl' ? localePath('place-to-buy') + '/' : localePath({ name: 'contact' }) + `#${slugify($t('export-department'))}`"
-                            :aria-label="$t('place-to-buy')" :title="$t('place-to-buy')"
+                        <NuxtLink :to="$getLocaleRoute('place-to-buy')" :aria-label="$t('place-to-buy')"
+                            :title="$t('place-to-buy')"
                             class="!text-white uppercase bg-black-2 text-medium-lg w-fit whitespace-nowrap px-2 flex items-center justify-center rounded-br-[15px] z-10 xl:min-w-[150px] 2xl:text-xl 2xl:py-2">
                             {{ $t('place-to-buy') }}</NuxtLink>
                     </div>
@@ -194,7 +194,6 @@ const localePath = useLocalePath();
 const headerStore = useHeaderStore();
 const globalStore = useGlobalStore();
 const route = useRoute();
-const { locale } = useI18n();
 
 const { header } = toRefs(globalStore);
 const searchQuery = ref('');

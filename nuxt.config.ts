@@ -87,6 +87,7 @@ export default defineNuxtConfig({
     '@/plugins/device',
     '@/plugins/error-handler',
     '@/plugins/router',
+    '@/plugins/locale',
   ],
 
   pages: true,

@@ -13,6 +13,7 @@
                 </div>
                 <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
             </template>
+            <div v-else class="lg:col-span-2"></div>
 
             <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
         </div>
@@ -24,11 +25,12 @@ import type { PlaceToBuyPage } from '~/types/place-to-buy.types';
 import { fetchShops } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 
+const { $getMapCenter } = useNuxtApp();
 const route = useRoute();
 
 const mapKey = ref(0);
 const mapZoom = ref(6);
-const mapCenter = ref([52.121, 19.108]);
+const mapCenter = ref($getMapCenter());
 const selected = ref(null);
 const page = ref(1);
 const lastPage = ref(false);
