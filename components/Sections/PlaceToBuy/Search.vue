@@ -34,6 +34,7 @@ import { fetchCities, fetchVoivodeships } from '~/services/api';
 
 const route = useRoute();
 const router = useRouter();
+const { $getMapCenter } = useNuxtApp();
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
@@ -87,7 +88,7 @@ const onSubmit = async () => {
 
     router.push({ query });
 
-    if (mapCenter) mapCenter.value = [52.121, 19.108];
+    if (mapCenter) mapCenter.value = $getMapCenter();
     if (mapZoom) mapZoom.value = 6;
     if (mapKey) mapKey.value += 1;
 }
