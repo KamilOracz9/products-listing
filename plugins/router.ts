@@ -24,7 +24,7 @@ export default defineNuxtPlugin(() => {
             return navigateTo(localePath(to.fullPath, 'uk').replace('/pl', ''))
         }
 
-        if (i18n.locale.value !== 'pl' && to.name?.split('___')[0] === 'service') {
+        if (!['pl', 'sk'].includes(i18n.locale.value) && to.name?.split('___')[0] === 'service') {
             return navigateTo(`/${i18n.locale.value}`);
         }
     },

@@ -23,7 +23,7 @@
                 text: section_2.text_image
             }
         }" />
-        <section v-if="locale !== 'pl'" class="mt-6 grid gap-4 md:grid-cols-2 md:gap-10 lg:mt-10"
+        <section v-if="!['pl'].includes(locale)" class="mt-6 grid gap-4 md:grid-cols-2 md:gap-10 lg:mt-10"
             :id="slugify($t('certified-installers'))">
             <SectionsCommonBox boxClass="bg-gray-5 rounded-br-[25px] md:rounded-br-lg lg:mt-0" :box="{
                 button: section_4.button,
