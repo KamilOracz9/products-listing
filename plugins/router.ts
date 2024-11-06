@@ -24,9 +24,12 @@ export default defineNuxtPlugin(() => {
             return navigateTo(localePath(to.fullPath, 'uk').replace('/pl', ''))
         }
 
-        if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.cz') {
-            return navigateTo(localePath(to.fullPath, 'cs').replace('/pl', ''))
-        }
+        // if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.cz') {
+        //     return navigateTo(localePath(to.fullPath, 'cs').replace('/pl', ''))
+        // }
+
+        if (window?.location.host === 'newtrendy.cz') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'cs').replace('/pl', '')}`, { external: true, redirectCode: 301 });
+        // if (window?.location.host === 'localhost:3002') navigateTo(`http://localhost:3000${localePath(to.fullPath, 'de').replace('/pl', '')}`, { external: true, redirectCode: 301 });
 
         if (!['pl', 'sk'].includes(i18n.locale.value) && to.name?.split('___')[0] === 'service') {
             return navigateTo(`/${i18n.locale.value}`);

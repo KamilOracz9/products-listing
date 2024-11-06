@@ -3,8 +3,6 @@ export default defineNuxtPlugin(() => {
     const nuxt = useNuxtApp();
     const i18n = nuxt.$i18n;
 
-    console.log(typeof(nuxt.$i18n))
-
     const localeRoutes: {
         [key: string]: {
             locales: string[];
