@@ -152,7 +152,7 @@
                                         </div>
                                         <p>{{ clipboardItem.symbol }}</p>
                                         <p>{{ clipboardItem.catalog_dimensions }}</p>
-                                        <p>{{ clipboardItem.price }}</p>
+                                        <p v-if="!$isNewtrendyEU()">{{ clipboardItem.price }}</p>
                                     </div>
                                 </div>
                                 <button type="button" @click="clipboardStore.clear()"

@@ -3,6 +3,7 @@ declare module '#app' {
         $i18n: any,
         $getLocaleRoute(routeName: string): string,
         $getMapCenter(): number[],
+        $isNewtrendyEU(): boolean,
     }
 }
 
@@ -11,6 +12,7 @@ declare module '@vue/runtime-core' {
         $i18n: any,
         $getLocaleRoute(routeName: string): string,
         $getMapCenter(): number[],
+        $isNewtrendyEU(): boolean,
     }
 }
 
