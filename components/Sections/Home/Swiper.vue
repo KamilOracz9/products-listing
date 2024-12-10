@@ -66,7 +66,7 @@ const sliderConfig = {
     'loop': true,
     'effect': 'creative',
     'autoplay': {
-        delay: 10000,
+        delay: 5000,
         disableOnInteraction: true,
     },
     'creativeEffect': {
