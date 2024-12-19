@@ -134,6 +134,11 @@ export default defineNuxtConfig({
         iso: 'hu_HU',
         file: 'hu-HU.json',
       },
+      {
+        code: 'et',
+        iso: 'et_EE',
+        file: 'et-EE.json',
+      },
     ],
     defaultLocale: 'pl',
     lazy: true,
