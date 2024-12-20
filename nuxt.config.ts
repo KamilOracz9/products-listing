@@ -139,6 +139,16 @@ export default defineNuxtConfig({
         iso: 'et_EE',
         file: 'et-EE.json',
       },
+      {
+        code: 'lv',
+        iso: 'lv_LV',
+        file: 'lv-LV.json',
+      },
+      {
+        code: 'lt',
+        iso: 'lt_LT',
+        file: 'lt-LT.json',
+      },
     ],
     defaultLocale: 'pl',
     lazy: true,

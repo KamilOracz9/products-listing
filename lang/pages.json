@@ -157,7 +157,7 @@
     "ru": "/servis",
     "uk": "/сервіс",
     "hu": "/szerviz",
-    "et": "/teenus",
+    "et": "/teenused",
     "lv": "/serviss",
     "lt": "/paslaugos"
   },
@@ -265,7 +265,7 @@
     "ru": "/gde-kupit",
     "uk": "/де-купити",
     "hu": "/hol-lehet-megvenni",
-    "et": "/kust osta",
+    "et": "/kus-osta-meie-tooted",
     "lv": "/pirkuma-vieta",
     "lt": "/kur-pirkti"
   },
@@ -373,7 +373,7 @@
     "ru": "/o-nas",
     "uk": "/pro-nas",
     "hu": "/rolunk",
-    "et": "/meist",
+    "et": "/ettevote-kohta",
     "lv": "/par-mums",
     "lt": "/apie-mus"
   }
