@@ -1,6 +1,6 @@
 {
     "categories": "Categories",
-    "home-page": "Strona główna",
+    "home-page": "Home Page",
     "privacy-policy": "Privacy policy",
     "polish": "Polish",
     "english": "English",
@@ -225,6 +225,7 @@
         "download-files": "Files to download",
         "parts": "Parts",
         "similar-products": "similar products",
+        "similar-product-see": "See",
         "symbol": "Symbol",
         "dimensions": "Dimensions",
         "doors": "Doors",
