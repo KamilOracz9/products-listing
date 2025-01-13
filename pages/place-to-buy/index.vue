@@ -6,17 +6,19 @@
 
         <SectionsPlaceToBuySearch />
 
-        <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
-            <template v-if="!pending">
-                <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
-                    {{ $t('pages.place-to-buy.locations-not-found') }}
-                </div>
-                <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
-            </template>
-            <div v-else class="lg:col-span-2"></div>
+        <ClientOnly>
+            <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
+                <template v-if="!pending">
+                    <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
+                        {{ $t('pages.place-to-buy.locations-not-found') }}
+                    </div>
+                    <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
+                </template>
+                <div v-else class="lg:col-span-2"></div>
 
-            <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
-        </div>
+                <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
+            </div>
+        </ClientOnly>
     </div>
 </template>
 

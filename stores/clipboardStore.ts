@@ -14,7 +14,7 @@ const useClipboardStore = defineStore('clipboard', {
     },
     actions: {
         getIds() {
-            if(localStorage.getItem('clipboard-ids')) return JSON.parse(localStorage.getItem('clipboard-ids') as string);
+            if (localStorage.getItem('clipboard-ids')) return JSON.parse(localStorage.getItem('clipboard-ids') as string);
             else return [];
         },
         async toggleItem(variantId: number) {
@@ -25,7 +25,7 @@ const useClipboardStore = defineStore('clipboard', {
             else ids = ids.filter((id: number) => id != variantId);
 
             localStorage.setItem('clipboard-ids', JSON.stringify(ids));
-            
+
             // console.log(localStorage.getItem('clipboard-ids'))
             // console.log('asd');
 
