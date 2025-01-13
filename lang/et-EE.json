@@ -10,6 +10,9 @@
     "ukrainian": "Ukraina",
     "czech": "Tšehhi",
     "hungarian": "Ungari",
+    "estonian": "Eesti",
+    "latvian": "Läti keel",
+    "lithuanian": "Leedu keel",
     "download": "Laadi alla",
     "search": "Otsi",
     "clipboard": "Lõikelauale",
@@ -267,6 +270,12 @@
             "placeholder": "Sisesta linna nimi või postiindeks"
         }
     },
+    "slider-arrow-left": "Eelmine slaid",
+    "slider-arrow-nest": "Järgmine slaid",
+    "find-shops": "Leia poed",
+    "map-pin": "Kaardi märk",
+    "phone-number": "Telefoninumber",
+    "email-address": "E-posti aadress",
     "Pole nazwa jest wymagane.": "Nime väli on kohustuslik.",
     "Pole adres e-mail jest wymagane.": "E-posti aadressi väli on kohustuslik.",
     "Pole wiadomość jest wymagane.": "Sõnumi väli on kohustuslik.",

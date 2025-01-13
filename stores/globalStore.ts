@@ -47,6 +47,18 @@ const useGlobalStore = defineStore('global', {
                 label: 'Hungarian',
                 code: 'hu',
             },
+            {
+                label: 'Estonian',
+                code: 'et',
+            },
+            {
+                label: 'Lithuanian',
+                code: 'lt',
+            },
+            {
+                label: 'Latvian',
+                code: 'lv',
+            }
         ],
         socials: {
             facebook: '',
