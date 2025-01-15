@@ -23,12 +23,13 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchLayoutData } from '~/services/api/layout';
 
 const refreshing = ref(false)
+const { $locale } = useNuxtApp();
 
 const setIsRefreshing = async () => refreshing.value = true;
 
 provide('setIsRefreshing', setIsRefreshing);
 
-const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData());
+const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData($locale));
 
 onMounted(async () => {
     const topBar = document.getElementById('top-bar');

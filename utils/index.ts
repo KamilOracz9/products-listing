@@ -8,7 +8,8 @@ export const toGetParams = (params: any) => (
 );
 
 export const getLocaleIso = () => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0]?.language);
-// export const getLocaleIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
+
+export const localeIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
 
 export const setMeta = (meta: Meta) => {
     const nuxt = useNuxtApp();

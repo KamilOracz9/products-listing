@@ -46,11 +46,12 @@ const localePath = useLocalePath();
 const route = useRoute();
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
+const { $locale } = useNuxtApp();
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
-const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string));
+const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string, $locale));
 const { breadcrumbs, title, related, image, gallery, description } = toRefs(data.value as InspirationPage);
 
 setMeta({
