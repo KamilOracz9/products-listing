@@ -120,7 +120,7 @@
                                             :url="localePath({ name: 'products' })" tag-type="link" />
                                     </span>
                                 </div>
-                            </div>
+                            </div>locale
                         </div>
                     </LazySectionsHeaderItem>
 
@@ -129,8 +129,9 @@
                             <template v-if="clipboardStore.hasItems">
                                 <div v-for=" clipboardItem in clipboardStore.items "
                                     class="pb-28 px-6 flex flex-col items-center gap-2 min-w-full xs:min-w-[50%] xs:max-w-[50%] sm:min-w-[33%] sm:max-w-[33%] md:min-w-[25%] md:max-w-[25%] lg:min-w-[20%] lg:max-w-[20%] lg:mt-10">
-                                    <img class="aspect-[3/4] rounded-br-sm" width="390" height="520" :src="clipboardItem.image"
-                                        :alt="clipboardItem.symbol" :title="clipboardItem.symbol">
+                                    <img class="aspect-[3/4] rounded-br-sm" width="390" height="520"
+                                        :src="clipboardItem.image" :alt="clipboardItem.symbol"
+                                        :title="clipboardItem.symbol">
                                     <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
                                         <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`"
                                             :aria-label="clipboardItem.symbol" :title="clipboardItem.symbol"
@@ -188,14 +189,20 @@
 import searchIcon from '@/assets/icons/search.svg';
 import clipboardIcon from '@/assets/icons/clipboard.svg';
 import type { LocationQueryRaw } from 'vue-router';
+import type { Header } from '~/types/layout.types';
+
+const props = defineProps<{
+    data: Header;
+}>();
+
+const { data: header } = toRefs(props);
 
 const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const headerStore = useHeaderStore();
-const globalStore = useGlobalStore();
 const route = useRoute();
+const { locale } = useI18n();
 
-const { header } = toRefs(globalStore);
 const searchQuery = ref('');
 const searchInProducts = ref(false);
 const searchInInspirations = ref(false);

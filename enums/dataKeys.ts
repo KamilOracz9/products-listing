@@ -1,4 +1,5 @@
 export enum DataKeys {
+    LAYOUT_DATA = 'layout-data',
     ABOUT_PAGE = 'about-page',
     CONTACT_PAGE = 'contact-page',
     DOWNLOAD_PAGE = 'download-page',
