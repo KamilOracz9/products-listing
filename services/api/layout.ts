@@ -1,4 +1,3 @@
 import type { Layout } from "~/types/layout.types";
-import { getLocaleIso } from "~/utils"
 
-export const fetchLayoutData = async (): Promise<Layout> => (await $fetch(`${useAppConfig().public.apiBase}/v2/${getLocaleIso()}/cms/layout`));
+export const fetchLayoutData = async (locale: string): Promise<Layout> => (await $fetch(`${useAppConfig().public.apiBase}/v2/${locale}/cms/layout`));

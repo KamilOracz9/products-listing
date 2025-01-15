@@ -1,3 +1,1 @@
-import { getLocaleIso } from "~/utils"
-
-export const fetchPrivacyPolicyPage = async () => (await $fetch(`${useAppConfig().public.apiBase}/v1/${getLocaleIso()}/cms/page/privacy-policy`));
+export const fetchPrivacyPolicyPage = async (locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/cms/page/privacy-policy`));
