@@ -1,3 +1,1 @@
-import { getLocaleIso } from "~/utils"
-
-export const fetchFormOnlinePage = async () => (await $fetch(`${useAppConfig().public.apiBase}/v1/${getLocaleIso.value}/cms/page/form-online`));
+export const fetchFormOnlinePage = async (locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/cms/page/form-online`));

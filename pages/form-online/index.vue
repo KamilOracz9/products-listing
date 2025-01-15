@@ -128,6 +128,7 @@ const flashMessages = useFlashMessageStore();
 const fileInputRef = ref();
 const fileName = ref();
 const formResponse = ref({ ...SERVICE_FORM_INITIAL_RESPONSE });
+const { $locale } = useNuxtApp();
 
 const onSubmit = async (event: Event) => {
     event.preventDefault();
@@ -152,7 +153,7 @@ const onSubmit = async (event: Event) => {
     };
 }
 
-const { data } = await useAsyncData(DataKeys.FORM_ONLINE_PAGE, async () => fetchFormOnlinePage());
+const { data } = await useAsyncData(DataKeys.FORM_ONLINE_PAGE, async () => fetchFormOnlinePage($locale));
 const { breadcrumbs, description, meta, title } = toRefs(data.value as FormOnlinePage);
 const { section_1, section_2, section_3 } = toRefs(description.value.content);
 </script>

@@ -59,7 +59,7 @@ const setIsRefreshing = inject('setIsRefreshing');
 const { setLocale } = useI18n();
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
-const url = useRequestURL();
+const switchLocalePath = useSwitchLocalePath()
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();
@@ -70,9 +70,10 @@ const changeLanguage = async (lang: string) => {
     // clearNuxtData();
     // clearNuxtState();
     window.location.reload();
+    // console.log(switchLocalePath(lang))
 }
 
-const isWebsiteEu = computed(() => (url.host  !== 'newtrendy.pl' && url.host !== 'localhost:3001'));
+const isWebsiteEu = computed(() => (useRequestURL().host !== 'newtrendy.pl' && useRequestURL().host !== 'localhost:3001'));
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;
