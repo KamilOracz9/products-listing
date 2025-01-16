@@ -4,9 +4,10 @@ export default defineNuxtPlugin(() => {
     const i18n = nuxt.$i18n;
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
-        if (nuxt.$locale === 'pl' && useRequestURL().host === 'newtrendy.eu') {
-            return navigateTo(localePath(to.fullPath, 'en').replace('/pl', ''))
-        }
+        // console.log(i18n.locale.value)
+        // if (i18n.locale.value === 'pl' && window?.location.host === 'localhost:3001') {
+        //     return navigateTo(localePath(to.fullPath, 'en').replace('/pl', ''))
+        // }
 
         // if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.de') {
         //     return navigateTo(localePath(to.fullPath, 'de').replace('/pl', ''))
@@ -29,6 +30,7 @@ export default defineNuxtPlugin(() => {
         // }
 
         // if (useRequestURL().host === 'newtrendy.eu') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'en').replace('/pl', '')}`, { external: true, redirectCode: 301 });
+        if (useRequestURL().host === 'newtrendy.eu' && i18n.locale.value === 'pl') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'en').replace('/pl', '')}`, { external: true, redirectCode: 301 });
         if (useRequestURL().host === 'newtrendy.de') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'de').replace('/pl', '')}`, { external: true, redirectCode: 301 });
         if (useRequestURL().host === 'newtrendy.sk') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'sk').replace('/pl', '')}`, { external: true, redirectCode: 301 });
         if (useRequestURL().host === 'newtrendy.ua') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'uk').replace('/pl', '')}`, { external: true, redirectCode: 301 });
@@ -38,8 +40,8 @@ export default defineNuxtPlugin(() => {
         if (useRequestURL().host === 'newtrendy.et') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'et').replace('/pl', '')}`, { external: true, redirectCode: 301 });
         // if (window?.location.host === 'localhost:3002') navigateTo(`http://localhost:3000${localePath(to.fullPath, 'de').replace('/pl', '')}`, { external: true, redirectCode: 301 });
 
-        if (!['pl', 'sk'].includes(nuxt.$locale) && to.name?.split('___')[0] === 'service') {
-            return navigateTo(`/${nuxt.$locale.value}`);
+        if (!['pl', 'sk'].includes(i18n.locale.value) && to.name?.split('___')[0] === 'service') {
+            return navigateTo(`/${i18n.locale.value}`);
         }
     },
         { global: true }
