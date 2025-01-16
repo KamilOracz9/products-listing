@@ -4,7 +4,7 @@ export default defineNuxtPlugin(() => {
     const i18n = nuxt.$i18n;
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
-        if (i18n.locale.value === 'pl' && window?.location.host === 'newtrendy.eu') {
+        if (nuxt.$locale === 'pl' && useRequestURL().host === 'newtrendy.eu') {
             return navigateTo(localePath(to.fullPath, 'en').replace('/pl', ''))
         }
 
@@ -38,8 +38,8 @@ export default defineNuxtPlugin(() => {
         if (useRequestURL().host === 'newtrendy.et') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, 'et').replace('/pl', '')}`, { external: true, redirectCode: 301 });
         // if (window?.location.host === 'localhost:3002') navigateTo(`http://localhost:3000${localePath(to.fullPath, 'de').replace('/pl', '')}`, { external: true, redirectCode: 301 });
 
-        if (!['pl', 'sk'].includes(i18n.locale.value) && to.name?.split('___')[0] === 'service') {
-            return navigateTo(`/${i18n.locale.value}`);
+        if (!['pl', 'sk'].includes(nuxt.$locale) && to.name?.split('___')[0] === 'service') {
+            return navigateTo(`/${nuxt.$locale.value}`);
         }
     },
         { global: true }
