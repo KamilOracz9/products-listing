@@ -1,4 +1,3 @@
-// plugins/fetch-middleware.js
 export default defineNuxtPlugin(() => {
     const originalFetch = globalThis.$fetch
 
