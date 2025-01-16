@@ -71,8 +71,8 @@ useSeoMeta({
   title: 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: window?.location?.href,
-  ogSiteName: window?.location?.href,
+  ogUrl: useRequestURL().href,
+  ogSiteName: useRequestURL().href,
   twitterCard: 'summary_large_image',
 })
 

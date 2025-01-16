@@ -5,7 +5,9 @@
     <SectionsContactTiles :data="description.content.departments" />
     <SectionsContactSaleServiceDepartment :data="description.content.sales" v-if="locale === 'pl'" />
     <SectionsContactExportDepartment :data="description.content.export" />
-    <MapsLocalizationOnly />
+    <ClientOnly>
+      <MapsLocalizationOnly />
+    </ClientOnly>
   </div>
 </template>
 
