@@ -68,8 +68,7 @@ const isMobile = device().provide.isMobile();
 const changeLanguage = async (lang: string) => {
     await setIsRefreshing();
     await setLocale(lang);
-
-    useRouter().replace('')
+    window.location.reload();
 }
 
 const isWebsiteEu = computed(() => (useRequestURL().host !== 'newtrendy.pl' && useRequestURL().host !== 'localhost:3001'));
