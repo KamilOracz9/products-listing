@@ -1,7 +1,10 @@
 <template>
     <div class="pb-10" id="privacy-policy">
-        <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
-        <div class="[&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6 leading-6 break-all sm:break-normal" v-html="description.content.html"></div>
+        <ClientOnly>
+            <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
+            <div class="[&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6 leading-6 break-all sm:break-normal"
+                v-html="description.content.html"></div>
+        </ClientOnly>
     </div>
 </template>
 
