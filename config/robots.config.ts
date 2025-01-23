@@ -10,4 +10,19 @@ export default [
 
     { UserAgent: 'ClaudeBot' },
     { Disallow: '/' },
+
+    { UserAgent: 'YandexBot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'YandexRenderResourcesBot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'BacklinksExtendedBot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'RU_Bot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'PetalBot' },
+    { Disallow: '/' },
 ]
