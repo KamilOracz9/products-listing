@@ -2,9 +2,6 @@ export default [
     { UserAgent: 'Googlebot' },
     { Allow: '/' },
 
-    { UserAgent: '*' },
-    { Disallow: '/' },
-
     { UserAgent: 'Amazonbot' },
     { Disallow: '/' },
 
@@ -24,5 +21,8 @@ export default [
     { Disallow: '/' },
 
     { UserAgent: 'PetalBot' },
+    { Disallow: '/' },
+
+    { UserAgent: '*' },
     { Disallow: '/' },
 ]
