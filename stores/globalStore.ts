@@ -70,15 +70,15 @@ const useGlobalStore = defineStore('global', {
         pageIsLoading: false,
     }),
     actions: {
-        async fetchGlobalData() {
-            this.isLoading = true;
+        // async fetchGlobalData() {
+        //     this.isLoading = true;
 
-            await fetchLayoutData().then(response => {
-                this.header = response.header;
-                this.footer = response.footer;
-                this.socials = response.socials;
-            }).finally(() => this.isLoading = false);
-        },
+        //     await fetchLayoutData().then(response => {
+        //         this.header = response.header;
+        //         this.footer = response.footer;
+        //         this.socials = response.socials;
+        //     }).finally(() => this.isLoading = false);
+        // },
     },
 });
 

@@ -6,32 +6,6 @@ export default defineNuxtConfig({
   devServer: {
     port: 3001,
   },
-  routeRules: {
-    '/en/serwis/': { redirect: { to: '/en/', statusCode: 301 } },
-    '/en/o_firmie/': { redirect: { to: '/en/about/', statusCode: 301 } },
-    '/en/produkty/': { redirect: { to: '/en/products/', statusCode: 301 } },
-    '/en/architects-area/': { redirect: { to: '/en/for-professionals/', statusCode: 301 } },
-    '/en/information-clause/': { redirect: { to: '/en/information-clausue/', statusCode: 301 } },
-    '/en/inspiracje/': { redirect: { to: '/en/blog/', statusCode: 301 } },
-    '/en/protective-coatings/': { redirect: { to: '/en/', statusCode: 301 } },
-    '/en/en/na_wymiar/': { redirect: { to: '/en/products/made-to-measure/', statusCode: 301 } },
-    '/sk/ochranne-natery/': { redirect: { to: '/sk/', statusCode: 301 } },
-    '/sk/oblast-architekta/': { redirect: { to: '/sk/pre-profesionalov/', statusCode: 301 } },
-    '/en/nasze-kolekcje/': { redirect: { to: '/en/our-collections/', statusCode: 301 } },
-    '/de/nach-mass/': { redirect: { to: '/de/produkte/massgeschneidert/', statusCode: 301 } },
-    '/en/where-to-buy/': { redirect: { to: '/en/contact/#export-department', statusCode: 301 } },
-    '/en/strefa-partnera/': { redirect: { to: '/en/for-professionals/', statusCode: 301 } },
-    '/en/strefa-architekta/': { redirect: { to: '/en/for-professionals/', statusCode: 301 } },
-    '/en/product-category/bathtub-screens/': { redirect: { to: '/en/products/bathtub-screen', statusCode: 301 } },
-    '/en/categories/': { redirect: { to: '/en/products/', statusCode: 301 } },
-    '/de/datenschutzbestimmungen/': { redirect: { to: '/de/datenschutz', statusCode: 301 } },
-    '/de/bereich-des-partners/': { redirect: { to: '/de/fuer-profis/', statusCode: 301 } },
-    '/de/visio-slim-modernes-linienentwaesserungssystem/': { redirect: { to: '/de/', statusCode: 301 } },
-    '/en/product/avexa-shower-enclosure-pentagonal/': { redirect: { to: '/en/products?series[]=2&product_color[]=10&product_detail_finishing[]=16&product_shape[]=119', statusCode: 301 } },
-    '/de/geschichte-auszeichnungen-karriere-eu/': { redirect: { to: '/de/ueber-uns/', statusCode: 301 } },
-    '/de/produkt/avexa-schwarze-nischentur/': { redirect: { to: '/de/produkte/nischenturen?series[]=2&product_color[]=11', statusCode: 301 } },
-    '/en/product/suvia-shower-cabin-square/': { redirect: { to: '/en/products/shower-enclosures?series[]=24', statusCode: 301 } },
-  },
   experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } } },
   nitro: {
     externals: {
@@ -43,19 +17,19 @@ export default defineNuxtConfig({
     }
   },
 
-  // hooks: {
-  //   'build:manifest': (manifest) => {
-  //     // find the app entry, css list
-  //     const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
-  //     if (css) {
-  //       // start from the end of the array and go to the beginning
-  //       for (let i = css.length - 1; i >= 0; i--) {
-  //         // if it starts with 'entry', remove it from the list
-  //         if (css[i].startsWith('entry')) css.splice(i, 1)
-  //       }
-  //     }
-  //   },
-  // },
+  hooks: {
+    'build:manifest': (manifest) => {
+      // find the app entry, css list
+      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
+      if (css) {
+        // start from the end of the array and go to the beginning
+        for (let i = css.length - 1; i >= 0; i--) {
+          // if it starts with 'entry', remove it from the list
+          if (css[i].startsWith('entry')) css.splice(i, 1)
+        }
+      }
+    },
+  },
 
   postcss: {
     plugins: {

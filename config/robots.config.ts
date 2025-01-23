@@ -1,4 +1,13 @@
 export default [
+    { UserAgent: 'Googlebot' },
+    { Allow: '/' },
+
     { UserAgent: '*' },
-    // { Disallow: '/' },
+    { Disallow: '/' },
+
+    { UserAgent: 'Amazonbot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'ClaudeBot' },
+    { Disallow: '/' },
 ]
