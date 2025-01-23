@@ -25,4 +25,5 @@ export default [
 
     { UserAgent: '*' },
     { Disallow: '/' },
+    { CrawlDelay: '10' },
 ]
