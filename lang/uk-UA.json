@@ -278,6 +278,12 @@
             "placeholder": "Введіть назву міста або поштовий індекс"
         }
     },
+    "slider-arrow-left": "Попередній слайд",
+    "slider-arrow-nest": "Наступний слайд",
+    "find-shops": "Знайти магазини",
+    "map-pin": "Позначка на мапі",
+    "phone-number": "Номер телефону",
+    "email-address": "Електронна адреса",
     "Pole nazwa jest wymagane.": "Поле імені є обов'язковим.",
     "Pole adres e-mail jest wymagane.": "Поле електронної пошти є обов'язковим.",
     "Pole wiadomość jest wymagane.": "Поле повідомлення є обов'язковим.",
