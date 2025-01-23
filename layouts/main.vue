@@ -10,10 +10,12 @@
                 <slot />
             </main>
 
-            <footer class="grid-content">
-                <Footer :data="data.footer" />
-                <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
-            </footer>
+            <LazyClientOnly>
+                <footer class="grid-content">
+                    <Footer :data="data.footer" />
+                    <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2024</p>
+                </footer>
+            </LazyClientOnly>
         </div>
     </div>
 </template>

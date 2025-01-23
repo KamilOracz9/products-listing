@@ -3,7 +3,8 @@
     <NuxtLink :to="localePath('made-to-measure')" :aria-label="configuratorLink"
       class="flex text-[.7rem] mt-8 mb-7 group xs:text-sm md:text-xl md:w-fit">
       <span
-        class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{ configuratorLink }}</span>
+        class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{
+          configuratorLink }}</span>
       <span class="px-2 uppercase font-medium xs:px-4 xs:py-2 md:px-5 md:py-3">{{ $t('made-to-measure-home-link')
       }}</span>
     </NuxtLink>
@@ -18,8 +19,10 @@
       <SectionsHomeInOffer :data="products" />
       <SectionsHomeAdditionalContent :data="{ information, yellow, welcome }" />
     </div>
-    <SectionsCommonFindUs />
-    <SectionsCommonUE />
+    <LazyClientOnly>
+      <SectionsCommonFindUs />
+      <SectionsCommonUE />
+    </LazyClientOnly>
   </div>
 </template>
 
@@ -33,8 +36,8 @@ const localePath = useLocalePath();
 const { $locale } = useNuxtApp();
 
 const configuratorLink = computed(() => {
-  if(locale.value === 'pl') return 'konfiguratorkabin.pl';
-  if(locale.value === 'sk') return 'konfiguratorkabin.sk';
+  if (locale.value === 'pl') return 'konfiguratorkabin.pl';
+  if (locale.value === 'sk') return 'konfiguratorkabin.sk';
   else return 'konfiguratorkabin.eu';
 })
 
