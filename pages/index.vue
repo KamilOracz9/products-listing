@@ -19,10 +19,8 @@
       <SectionsHomeInOffer :data="products" />
       <SectionsHomeAdditionalContent :data="{ information, yellow, welcome }" />
     </div>
-    <LazyClientOnly>
-      <SectionsCommonFindUs />
-      <SectionsCommonUE />
-    </LazyClientOnly>
+    <SectionsCommonFindUs />
+    <SectionsCommonUE />
   </div>
 </template>
 

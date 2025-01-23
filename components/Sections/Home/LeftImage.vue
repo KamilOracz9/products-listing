@@ -1,13 +1,11 @@
 <template>
     <section class="bg-gray-2 mt-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10" data-aos="fade-up">
-        <LazyClientOnly>
-            <picture class="h-[400px] block lg:h-fit">
-                <source media="(min-width: 1024px)" :srcset="data.image.desktop" />
-                <source media="(min-width: 640px)" :srcset="data.image.tablet" />
-                <img :title="'Kabiny prysznicowe'" loading="lazy" :src="data.image.mobile" :alt="'Kabiny prysznicowe'"
-                    class="w-full h-full object-cover rounded-br-lg">
-            </picture>
-        </LazyClientOnly>
+        <picture class="h-[400px] block lg:h-fit">
+            <source media="(min-width: 1024px)" :srcset="data.image.desktop" />
+            <source media="(min-width: 640px)" :srcset="data.image.tablet" />
+            <img :title="'Kabiny prysznicowe'" loading="lazy" :src="data.image.mobile" :alt="'Kabiny prysznicowe'"
+                class="w-full h-full object-cover rounded-br-lg">
+        </picture>
         <div class="uppercase p-6 lg:pl-0 lg:max-w-[90%] xl:max-w-[70%]">
             <p class="text-lg xl:text-[1.625rem]">{{ data.subtitle }}</p>
             <p class="text-[1.75rem] mt-2 leading-[100%] xl:text-[3.75rem] xl:mt-8">{{ data.title }}</p>

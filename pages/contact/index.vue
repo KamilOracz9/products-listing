@@ -1,13 +1,11 @@
 <template>
   <div class="mb-10">
-    <ClientOnly>
-      <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
-      <SectionsContactMain :data="description.content.contact" :title="title" />
-      <SectionsContactTiles :data="description.content.departments" />
-      <SectionsContactSaleServiceDepartment :data="description.content.sales" v-if="locale === 'pl'" />
-      <SectionsContactExportDepartment :data="description.content.export" />
-      <MapsLocalizationOnly />
-    </ClientOnly>
+    <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
+    <SectionsContactMain :data="description.content.contact" :title="title" />
+    <SectionsContactTiles :data="description.content.departments" />
+    <SectionsContactSaleServiceDepartment :data="description.content.sales" v-if="locale === 'pl'" />
+    <SectionsContactExportDepartment :data="description.content.export" />
+    <MapsLocalizationOnly />
   </div>
 </template>
 
