@@ -23,6 +23,9 @@ export default [
     { UserAgent: 'ByteDanceSpider' },
     { Disallow: '/' },
     
+    { UserAgent: 'Bytespider' },
+    { Disallow: '/' },
+    
     { UserAgent: 'HTTrack' },
     { Disallow: '/' },
     
