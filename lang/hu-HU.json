@@ -122,10 +122,18 @@
         "product_walls_count": "Falak száma"
     },
     "pages": {
+        "search": {
+            "title": "Keresési eredmények a kifejezésre: ",
+            "products": "Termékek",
+            "inspirations": "Inspirációk",
+            "found-positions": "Talált pozíciók: "
+        },
         "made-to-measure": {
-            "title": "Méretek szerint készült",
-            "configurator": "Kabinj konfigurátor",
-            "how-use": "Hogyan használjuk a kabinj konfigurátort"
+            "title": "Méretezett",
+            "configurator": "Kabinkonfigurátor",
+            "how-use": "Hogyan használjuk a kabinkonfigurátort",
+            "transparency-level": "Átlátszósági szint",
+            "discretion-level": "Diszkréció szint"
         },
         "collections": {
             "title": "Gyűjteményeink",
@@ -211,11 +219,6 @@
             "locations-not-found": "Nincs bolt ezen a területen",
             "symbol": "Szimbólum",
             "map-hint": "Nyomja meg a CTRL (vagy ⌘) + görgessen a nagyításhoz"
-        },
-        "search": {
-            "products": "Termékek",
-            "found-positions": "Megtalált pozíciók: ",
-            "inspirations": "Inspirációk"
         }
     },
     "product": {

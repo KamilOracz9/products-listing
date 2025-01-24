@@ -122,10 +122,18 @@
         "product_walls_count": "Sienu skaits"
     },
     "pages": {
+        "search": {
+            "title": "Meklēšanas rezultāti frāzei: ",
+            "products": "Produkti",
+            "inspirations": "Iedvesmas",
+            "found-positions": "Atrastas pozīcijas: "
+        },
         "made-to-measure": {
             "title": "Pēc pasūtījuma",
-            "configurator": "Kabīņu konfigurators",
-            "how-use": "Kā lietot kabīņu konfiguratoru"
+            "configurator": "Kabīnes konfigurators",
+            "how-use": "Kā izmantot kabīnes konfiguratoru",
+            "transparency-level": "Caurspīdīguma līmenis",
+            "discretion-level": "Diskrētuma līmenis"
         },
         "collections": {
             "title": "Mūsu kolekcijas",
@@ -211,11 +219,6 @@
             "locations-not-found": "Šajā apgabalā veikali netika atrasti",
             "symbol": "Simbols",
             "map-hint": "Tuvināt, nospiežot CTRL (vai ⌘) un ritinot ritenīti"
-        },
-        "search": {
-            "products": "Produkti",
-            "found-positions": "Atrastās pozīcijas: ",
-            "inspirations": "Iedvesma"
         }
     },
     "product": {

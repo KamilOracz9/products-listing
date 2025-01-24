@@ -122,10 +122,18 @@
         "product_walls_count": "Sienų skaičius"
     },
     "pages": {
+        "search": {
+            "title": "Paieškos rezultatai frazei: ",
+            "products": "Produktai",
+            "inspirations": "Įkvėpimai",
+            "found-positions": "Rasta pozicijų: "
+        },
         "made-to-measure": {
-            "title": "Pagaminti pagal užsakymą",
-            "configurator": "Kabinų konfiguratorius",
-            "how-use": "Kaip naudotis kabinų konfiguratoriumi"
+            "title": "Pagal užsakymą",
+            "configurator": "Kabinos konfigūratorius",
+            "how-use": "Kaip naudotis kabinos konfigūratoriumi",
+            "transparency-level": "Skaidrumo lygis",
+            "discretion-level": "Diskretiškumo lygis"
         },
         "collections": {
             "title": "Mūsų kolekcijos",
@@ -211,11 +219,6 @@
             "locations-not-found": "Šiame rajone parduotuvių nerasta",
             "symbol": "Simbolis",
             "map-hint": "Priartinkite paspausdami CTRL (arba ⌘) + slinkdami pelę"
-        },
-        "search": {
-            "products": "Produktai",
-            "found-positions": "Rasti rezultatai: ",
-            "inspirations": "Įkvėpimai"
         }
     },
     "product": {

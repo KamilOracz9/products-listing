@@ -122,10 +122,18 @@
         "product_walls_count": "Seinte arv"
     },
     "pages": {
+       "search": {
+            "title": "Otsingutulemused fraasi jaoks: ",
+            "products": "Tooted",
+            "inspirations": "Inspiratsioonid",
+            "found-positions": "Leitud positsioone: "
+        },
         "made-to-measure": {
-            "title": "Mõõdu järgi",
-            "configurator": "Kabinite konfiguraator",
-            "how-use": "Kuidas kasutada kabinite konfiguraatorit"
+            "title": "Kohandatud",
+            "configurator": "Kabini konfigurator",
+            "how-use": "Kuidas kasutada kabini konfiguratorit",
+            "transparency-level": "Läbipaistvuse tase",
+            "discretion-level": "Diskreetsuse tase"
         },
         "collections": {
             "title": "Meie kollektsioonid",
@@ -211,11 +219,6 @@
             "locations-not-found": "Selles piirkonnas pole poode leitud",
             "symbol": "Sümbol",
             "map-hint": "Suurendamiseks vajuta CTRL (või ⌘) + kerimine"
-        },
-        "search": {
-            "products": "Tooted",
-            "found-positions": "Leitud positsioonid: ",
-            "inspirations": "Inspiratsioonid"
         }
     },
     "product": {

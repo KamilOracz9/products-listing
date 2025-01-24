@@ -122,18 +122,18 @@
         "product_walls_count": "Anzahl der Wände"
     },
     "pages": {
-        "search": {
+       "search": {
             "title": "Suchergebnisse für: ",
             "products": "Produkte",
             "inspirations": "Inspirationen",
             "found-positions": "Gefundene Positionen: "
         },
         "made-to-measure": {
-            "title": "Nach Maß",
+            "title": "Maßgeschneidert",
             "configurator": "Kabinenkonfigurator",
-            "how-use": "So verwenden Sie den Kabinenkonfigurator",
-            "transparency-level": "Transparenzstufe",
-            "discretion-level": "Diskretionsstufe"
+            "how-use": "Wie man den Kabinenkonfigurator benutzt",
+            "transparency-level": "Transparenzlevel",
+            "discretion-level": "Diskretionsebene"
         },
         "collections": {
             "title": "Unsere Kollektionen",
