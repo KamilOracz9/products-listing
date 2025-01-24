@@ -5,13 +5,13 @@
             <input v-model="seriesSearch" v-if="name === 'series'" type="text" :placeholder="$t('search')"
                 class="border rounded-[3px] p-1" />
             <ul class="max-h-[150px] overflow-y-auto">
-                <li v-for="option in getFilterOptions(options, name)" class="flex gap-3 items-center group">
-                    <input :checked="checkFilterUsed(`${name}`, option.value)" :name="`${name}`" :value="option.value"
-                        :disabled="isDisabled(isActive(name, option.value), option.disabled)" @change="onChange"
+                <li v-for="option in getFilterOptions(options.options, name)" class="flex gap-3 items-center group">
+                    <input :checked="checkFilterUsed(`${options.value_slug}`, option.value_slug)" :name="options.value_slug" :value="option.value_slug"
+                        :disabled="isDisabled(isActive(name, option.value_slug), option.disabled)" @change="onChange"
                         type="checkbox" class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
-                        :id="`${name}-${option.value}`" />
-                    <label :for="`${name}-${option.value}`"
-                        :class="isDisabled(isActive(name, option.value), option.disabled) ? 'text-gray-4' : 'text-black'">
+                        :id="`${name}-${option.value_slug}`" />
+                    <label :for="`${name}-${option.value_slug}`"
+                        :class="isDisabled(isActive(name, option.value_slug), option.disabled) ? 'text-gray-4' : 'text-black'">
                         {{ option.label }}
                     </label>
                 </li>
@@ -60,6 +60,8 @@ const onChange = async (event) => {
 
 const checkFilterUsed = (filterName, optionValue) => {
     const query = route.query;
+
+    console.log(filterName)
 
     if (typeof (query[`${filterName}[]`]) === 'string') return query[`${filterName}[]`] == optionValue;
 

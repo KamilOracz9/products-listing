@@ -120,7 +120,7 @@
                                             :url="localePath({ name: 'products' })" tag-type="link" />
                                     </span>
                                 </div>
-                            </div>locale
+                            </div>
                         </div>
                     </LazySectionsHeaderItem>
 
@@ -201,7 +201,6 @@ const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const headerStore = useHeaderStore();
 const route = useRoute();
-const { locale } = useI18n();
 
 const searchQuery = ref('');
 const searchInProducts = ref(false);

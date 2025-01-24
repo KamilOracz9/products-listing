@@ -1,2 +1,2 @@
 
-export const fetchFilters = async (query: any, locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/products/filters`, { query }));
+export const fetchFilters = async (query: any, locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v2/${locale}/products/filters`, { query }));
