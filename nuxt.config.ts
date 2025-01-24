@@ -27,6 +27,7 @@ export default defineNuxtConfig({
           routes.add(element);
         });
 
+        routes.add("/");
         routes.add("/en");
         routes.add("/de");
         routes.add("/fr");
