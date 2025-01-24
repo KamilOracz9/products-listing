@@ -4,8 +4,44 @@ export default [
 
     { UserAgent: 'Amazonbot' },
     { Disallow: '/' },
+    
+    { UserAgent: 'Meta-ExternalAgent' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'dotbot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'GPTBot' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'OAI-SearchBot' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'Baiduspider' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'ByteDanceSpider' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'HTTrack' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'Sogou web spider' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'TeleportPro' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'WebCopier' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'WebStripper' },
+    { Disallow: '/' },
 
     { UserAgent: 'ClaudeBot' },
+    { Disallow: '/' },
+
+    { UserAgent: 'Yandex' },
     { Disallow: '/' },
 
     { UserAgent: 'YandexBot' },
@@ -21,6 +57,9 @@ export default [
     { Disallow: '/' },
 
     { UserAgent: 'PetalBot' },
+    { Disallow: '/' },
+    
+    { UserAgent: 'wget' },
     { Disallow: '/' },
 
     { UserAgent: '*' },
