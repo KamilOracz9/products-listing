@@ -16,7 +16,7 @@
                         :aria-label="product.name" v-for="product in data?.products" class="flex flex-col gap-2 relative">
                         <SectionsProductsBadge :badge="product.badge" />
                         <div>
-                            <img width="460" height="613" :src="product.media?.main['460_613']" alt="">
+                            <img width="460" height="613" :src="product.media['460_613']" alt="">
                         </div>
                         <p class="font-semibold leading-[1.1]">{{ product.name }}</p>
                         <p class="text-sm leading-[1.1]">{{ product.description_short }}</p>

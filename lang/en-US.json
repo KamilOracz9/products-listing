@@ -122,10 +122,18 @@
         "product_walls_count": "Walls count"
     },
     "pages": {
+       "search": {
+            "title": "Search results for: ",
+            "products": "Products",
+            "inspirations": "Inspirations",
+            "found-positions": "Found positions: "
+        },
         "made-to-measure": {
             "title": "Made to measure",
-            "configurator": "Cabins configurator",
-            "how-use": "How to use cabins configurator"
+            "configurator": "Cabin configurator",
+            "how-use": "How to use the cabin configurator",
+            "transparency-level": "Transparency level",
+            "discretion-level": "Discretion level"
         },
         "collections": {
             "title": "Our collections",
@@ -211,11 +219,6 @@
             "locations-not-found": "No stores found in this area",
             "symbol": "Symbol",
             "map-hint": "Press CTRL (or ⌘) + scroll to zoom in"
-        },
-        "search": {
-            "products": "Produkty",
-            "found-positions": "Found positions: ",
-            "inspirations": "Inspirations"
         }
     },
     "product": {

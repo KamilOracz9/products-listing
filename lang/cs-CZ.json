@@ -122,10 +122,18 @@
         "product_walls_count": "Počet stěn"
     },
     "pages": {
+        "search": {
+            "title": "Výsledky hledání pro: ",
+            "products": "Produkty",
+            "inspirations": "Inspirace",
+            "found-positions": "Nalezeno pozic: "
+        },
         "made-to-measure": {
             "title": "Na míru",
             "configurator": "Konfigurátor kabin",
-            "how-use": "Jak používat konfigurátor kabin"
+            "how-use": "Jak používat konfigurátor kabin",
+            "transparency-level": "Úroveň průhlednosti",
+            "discretion-level": "Úroveň diskrétnosti"
         },
         "collections": {
             "title": "Naše kolekce",
@@ -211,11 +219,6 @@
             "locations-not-found": "V této oblasti nebyly nalezeny žádné obchody",
             "symbol": "Symbol",
             "map-hint": "Stiskněte CTRL (nebo ⌘) + posunutí pro přiblížení"
-        },
-        "search": {
-            "products": "Produkty",
-            "found-positions": "Nalezené položky: ",
-            "inspirations": "Inspirace"
         }
     },
     "product": {
