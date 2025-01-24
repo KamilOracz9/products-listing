@@ -278,6 +278,12 @@
             "placeholder": "Introduceți numele orașului sau codul poștal"
         }
     },
+    "slider-arrow-left": "Slide anterior",
+    "slider-arrow-nest": "Slide următor",
+    "find-shops": "Găsește magazine",
+    "map-pin": "Marcator hartă",
+    "phone-number": "Număr de telefon",
+    "email-address": "Adresă de email",
     "Pole nazwa jest wymagane.": "Câmpul nume este obligatoriu.",
     "Pole adres e-mail jest wymagane.": "Câmpul adresă de e-mail este obligatoriu.",
     "Pole wiadomość jest wymagane.": "Câmpul mesaj este obligatoriu.",

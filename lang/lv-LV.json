@@ -270,6 +270,12 @@
             "placeholder": "Ievadiet pilsētas nosaukumu vai pasta indeksu"
         }
     },
+    "slider-arrow-left": "Iepriekšējais slaids",
+    "slider-arrow-nest": "Nākamais slaids",
+    "find-shops": "Atrast veikalus",
+    "map-pin": "Kartes marķieris",
+    "phone-number": "Telefona numurs",
+    "email-address": "E-pasta adrese",
     "Pole nazwa jest wymagane.": "Vārda lauks ir obligāts.",
     "Pole adres e-mail jest wymagane.": "E-pasta adrese ir obligāts lauks.",
     "Pole wiadomość jest wymagane.": "Ziņojuma lauks ir obligāts.",

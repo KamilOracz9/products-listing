@@ -270,6 +270,12 @@
             "placeholder": "Zadejte název města nebo PSČ"
         }
     },
+    "slider-arrow-left": "Předchozí snímek",
+    "slider-arrow-nest": "Další snímek",
+    "find-shops": "Najít obchody",
+    "map-pin": "Ikona mapy",
+    "phone-number": "Telefonní číslo",
+    "email-address": "E-mailová adresa",
     "Pole nazwa jest wymagane.": "Pole jméno je povinné.",
     "Pole adres e-mail jest wymagane.": "Pole e-mailová adresa je povinné.",
     "Pole wiadomość jest wymagane.": "Pole zpráva je povinné.",

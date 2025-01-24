@@ -28,6 +28,9 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchHomePage } from '~/services/api';
 import type { HomePage } from '~/types/home.types';
+import pages from '../lang/pages.json';
+
+// defineRouteRules({ prerender: true });
 
 const { locale } = useI18n();
 const localePath = useLocalePath();
@@ -44,4 +47,24 @@ const { description, meta } = toRefs(data.value as HomePage);
 const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
 
 setMeta(meta.value);
+
+// prerenderRoutes();
+
+// console.log(useRouter().options.routes.filter(route => {
+//   const name = route.name?.toString() ?? '';
+
+//   return (!name.includes('products') || (name.includes('products') || name.includes('made-to-measure')))
+//     && !name.includes('blog') 
+//     && !name.includes('categories')
+// }).map(route => route.path))
+
+// defineRouteRules({
+//   prerender: true,
+// });
+
+// console.log(Object.entries(pages).filter(route => {
+//   return !route[0].includes('products') 
+//     && !route[0].includes('blog') 
+//     && !route[0].includes('categories')
+// }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1].loc.source : `/${lang[0]}${lang[1].loc.source}`)).flat())
 </script>

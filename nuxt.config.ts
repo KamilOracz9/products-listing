@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3001,
   },
-  experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } } },
+  experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
   nitro: {
     externals: {
       traceOptions: { base: process.cwd() }
@@ -14,7 +14,36 @@ export default defineNuxtConfig({
     routeRules: {
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
-    }
+    },
+    preset: 'node-server',
+    hooks: {
+      "prerender:routes"(routes) {
+        // routes.pu
+        Object.entries(pages).filter(route => {
+          return !route[0].includes('products')
+            && !route[0].includes('blog')
+            && !route[0].includes('categories')
+        }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
+          routes.add(element);
+        });
+
+        routes.add("/en");
+        routes.add("/de");
+        routes.add("/fr");
+        routes.add("/it");
+        routes.add("/es");
+        routes.add("/no");
+        routes.add("/sk");
+        routes.add("/cs");
+        routes.add("/ro");
+        routes.add("/ru");
+        routes.add("/uk");
+        routes.add("/hu");
+        routes.add("/et");
+        routes.add("/lv");
+        routes.add("/lt");
+      }
+    },
   },
 
   hooks: {
