@@ -53,7 +53,10 @@ const nuxt = useNuxtApp();
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
-const { data: category } = await useAsyncData(DataKeys.CATEGORY, async () => fetchCategory(route.params.category, nuxt.$locale));
+let category = ref(null);
+
+if(route.params.category) category = await useAsyncData(DataKeys.CATEGORY, async () => fetchCategory(route.params.category, nuxt.$locale).error(error => (null)));
+
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': category.value?.slug ?? null }, nuxt.$locale), { watch: [() => route.query] });
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(category?.value?.slug, nuxt.$locale));
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }, nuxt.$locale));
