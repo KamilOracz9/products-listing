@@ -270,6 +270,12 @@
             "placeholder": "Írja be a város nevét vagy az irányítószámot"
         }
     },
+    "slider-arrow-left": "Előző dia",
+    "slider-arrow-nest": "Következő dia",
+    "find-shops": "Boltok keresése",
+    "map-pin": "Térképjelző",
+    "phone-number": "Telefonszám",
+    "email-address": "Email-cím",
     "Pole nazwa jest wymagane.": "A név mező kitöltése kötelező.",
     "Pole adres e-mail jest wymagane.": "Az e-mail cím mező kitöltése kötelező.",
     "Pole wiadomość jest wymagane.": "Az üzenet mező kitöltése kötelező.",

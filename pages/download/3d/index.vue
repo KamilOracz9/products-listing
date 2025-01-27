@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-10">
+    <div class="mb-10" v-if="data">
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
         <p class="section-title">{{ title }}</p>
@@ -39,7 +39,7 @@ import type { DownloadPage } from '~/types/download.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, async () => fetchDownload3DPage($locale));
-const { breadcrumbs, description, meta, title } = toRefs(data.value as DownloadPage);
+const { breadcrumbs, description, meta, title } = toRefs(data?.value as DownloadPage);
 
-setMeta(meta.value);
+if(data.value) setMeta(meta.value);
 </script>

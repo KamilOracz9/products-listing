@@ -28,6 +28,9 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchHomePage } from '~/services/api';
 import type { HomePage } from '~/types/home.types';
+import pages from '../lang/pages.json';
+
+// defineRouteRules({ prerender: true });
 
 const { locale } = useI18n();
 const localePath = useLocalePath();

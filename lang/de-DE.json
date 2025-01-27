@@ -278,6 +278,12 @@
             "placeholder": "Geben Sie den Namen der Stadt oder die Postleitzahl ein"
         }
     },
+    "slider-arrow-left": "Vorherige Folie",
+    "slider-arrow-nest": "Nächste Folie",
+    "find-shops": "Geschäfte finden",
+    "map-pin": "Kartensymbol",
+    "phone-number": "Telefonnummer",
+    "email-address": "E-Mail-Adresse",
     "Pole nazwa jest wymagane.": "Das Namensfeld ist erforderlich.",
     "Pole adres e-mail jest wymagane.": "Das E-Mail-Feld ist erforderlich.",
     "Pole wiadomość jest wymagane.": "Das Nachrichtenfeld ist erforderlich.",

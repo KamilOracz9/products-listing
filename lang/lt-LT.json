@@ -273,6 +273,12 @@
             "placeholder": "Įveskite miesto pavadinimą arba pašto kodą"
         }
     },
+    "slider-arrow-left": "Ankstesnis skaidrė",
+    "slider-arrow-nest": "Kita skaidrė",
+    "find-shops": "Rasti parduotuves",
+    "map-pin": "Žemėlapio žymeklis",
+    "phone-number": "Telefono numeris",
+    "email-address": "El. pašto adresas",
     "Pole nazwa jest wymagane.": "Vardas yra privalomas laukas.",
     "Pole adres e-mail jest wymagane.": "El. pašto adresas yra privalomas laukas.",
     "Pole wiadomość jest wymagane.": "Žinutė yra privalomas laukas.",

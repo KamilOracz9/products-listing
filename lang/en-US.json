@@ -274,6 +274,12 @@
             "placeholder": "Enter the city name or zip code"
         }
     },
+    "slider-arrow-left": "Previous slide",
+    "slider-arrow-nest": "Next slide",
+    "find-shops": "Find shops",
+    "map-pin": "Map marker",
+    "phone-number": "Phone number",
+    "email-address": "Email address",
     "Pole nazwa jest wymagane.": "The name field is required.",
     "Pole adres e-mail jest wymagane.": "The email address field is required.",
     "Pole wiadomość jest wymagane.": "The message field is required.",
