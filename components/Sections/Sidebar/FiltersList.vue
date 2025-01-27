@@ -61,8 +61,6 @@ const onChange = async (event) => {
 const checkFilterUsed = (filterName, optionValue) => {
     const query = route.query;
 
-    console.log(filterName)
-
     if (typeof (query[`${filterName}[]`]) === 'string') return query[`${filterName}[]`] == optionValue;
 
     return query[`${filterName}[]`] && !!Object.values(query[`${filterName}[]`]).filter(filter => filter == optionValue)[0];

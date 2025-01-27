@@ -40,7 +40,7 @@
 
 <script setup>
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchCategory, fetchFilters, fetchProducts } from '~/services/api';
+import { fetchFilters, fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
 
 const globalStore = useGlobalStore();
@@ -53,12 +53,8 @@ const nuxt = useNuxtApp();
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
-let category = ref(null);
-
-if(route.params.category) category = await useAsyncData(DataKeys.CATEGORY, async () => fetchCategory(route.params.category, nuxt.$locale).error(error => (null)));
-
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': category.value?.slug ?? null }, nuxt.$locale), { watch: [() => route.query] });
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(category?.value?.slug, nuxt.$locale));
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, nuxt.$locale));
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, nuxt.$locale), { watch: [() => route.query] });
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }, nuxt.$locale));
 
 provide('filtersData', filtersData);
@@ -109,8 +105,8 @@ onMounted(() => {
             ? route.query[key].map(value => (`${key}=${value}`)).join('&')
             : `${key}=${route.query[key]}`
     )).join('&');
-
-    if (category.value) window.history.replaceState({}, '', `${localePath({ name: 'products', params: {} })}/${category.value ? category.value.slug : ''}${query ? `?${query}` : ''}`);
+    
+    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: {'category': categoryPage.value.slug} }));
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();

@@ -68,10 +68,11 @@ const isMobile = device().provide.isMobile();
 const changeLanguage = async (lang: string) => {
     await setIsRefreshing();
     await setLocale(lang);
-    window.location.reload();
+
+    window.location = window.location.href.split('?')[0];
 }
 
-const isWebsiteEu = computed(() => (useRequestURL().host !== 'newtrendy.pl' && useRequestURL().host !== 'newtrendy.eu'));
+const isWebsiteEu = computed(() => (useRequestURL().host !== 'newtrendy.pl' && useRequestURL().host !== 'localhost:3001'));
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;
