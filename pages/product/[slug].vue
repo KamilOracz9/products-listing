@@ -51,14 +51,7 @@ const openAccordionId = ref('product-description');
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const route = useRoute();
-const localeRoute = useLocaleRoute();
-const { locale } = useI18n();
 const nuxt = useNuxtApp();
-
-const linkPath = computed(() => {
-    const route = localeRoute('products', locale.value)
-    return route != null ? route.path : '/'
-})
 
 const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug, nuxt.$locale));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
@@ -71,8 +64,4 @@ setMeta(meta.value);
 provide('openAccordionId', openAccordionId);
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
-
-onMounted(() => {
-    window.history.replaceState({}, '', linkPath.value + `/${category.value.slug}/${data.value.slug}/`);
-})
 </script>
