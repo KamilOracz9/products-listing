@@ -37,10 +37,10 @@
 
                                         <div class="text-[0.8125rem] my-2 ml-2"
                                             v-if="subitem.items ? !!subitem.items.length : false">
-                                            <NuxtLink v-for="subsubitem in subitem.items" :aria-label="subitem.name"
-                                                :title="subitem.name"
-                                                :to="decodeURI(`${subsubitem.path}${subsubitem.query ? '?' + subsubitem.query : ''}${subsubitem.hash ?? ''}`)">
-                                                {{ subsubitem.name }}</NuxtLink>
+                                            <a v-for="subsubitem in subitem.items" :aria-label="subitem.name"
+                                                :title="subitem.name" class="cursor-pointer"
+                                                v-on:click="router.push(decodeURI(`${subsubitem.path}${subsubitem.query ? '?' + subsubitem.query : ''}${subsubitem.hash ?? ''}`))">
+                                                {{ subsubitem.name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -201,6 +201,7 @@ const clipboardStore = useClipboardStore();
 const localePath = useLocalePath();
 const headerStore = useHeaderStore();
 const route = useRoute();
+const router = useRouter();
 
 const searchQuery = ref('');
 const searchInProducts = ref(false);

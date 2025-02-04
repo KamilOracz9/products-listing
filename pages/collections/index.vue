@@ -3,9 +3,8 @@
         <h1 class="section-title">{{ $t('pages.collections.title') }}</h1>
         <div
             class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,278px),1fr))] gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))]">
-            <NuxtLink
-                :to="localePath({ name: 'products' }) + `?${Object.keys(collection.parameters).map(key => Object.values(collection.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`"
-                data-aos="fade-up" data-aos-once="true" :aria-label="collection.name"
+            <a v-on:click="router.push(localePath({ name: 'products' }) + `?${Object.keys(collection.parameters).map(key => Object.values(collection.parameters[key]).map(id => `${key}[]=${id}`)).flat().join('&')}`)"
+                data-aos="fade-up" data-aos-once="true" :aria-label="collection.name" class="cursor-pointer"
                 v-for="(collection, index) in collections">
                 <figure class="zoom-in relative rounded-br-md xs:rounded-br-lg">
                     <picture>
@@ -23,7 +22,7 @@
                     {{ $t('pages.collections.discover') }}
                     <Arrow :direction="'right'" />
                 </p>
-            </NuxtLink>
+            </a>
         </div>
     </div>
 </template>
@@ -32,8 +31,9 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchCollections } from '~/services/api';
 
-const {$locale} = useNuxtApp();
+const { $locale } = useNuxtApp();
 const localePath = useLocalePath();
+const router = useRouter();
 
 const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections($locale));
 
