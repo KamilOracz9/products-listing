@@ -76,17 +76,17 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-onMounted(() => {
-  watch(() => ({ pageIsLoading }), value => {
-    document.querySelector('body').dataset.noscroll = value.pageIsLoading.value;
-  }, { deep: true });
-
-  useSeoMeta({
+useSeoMeta({
     robots: {
       'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
       'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
     },
   })
+
+onMounted(() => {
+  watch(() => ({ pageIsLoading }), value => {
+    document.querySelector('body').dataset.noscroll = value.pageIsLoading.value;
+  }, { deep: true });
 })
 </script>
 

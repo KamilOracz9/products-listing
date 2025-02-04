@@ -16,8 +16,7 @@
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                     <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
-                        class="my-10 underline text-2xl lg:hidden">{{
+                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
                     <SectionsProductsListing v-if="!pending" :products="data.data" />
@@ -43,6 +42,11 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchFilters, fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
 
+const FILTERS_DISABLED_FROM_INDEXING = [
+    'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max'
+];
+
+const i18n = useI18n();
 const globalStore = useGlobalStore();
 const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
@@ -66,7 +70,7 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-const canonical = computed(() => `${url.origin}${url.pathname}`);
+const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
@@ -90,23 +94,33 @@ const headLinks = computed(() => {
     return links;
 });
 
+const hasNonIndexableFilters = computed(() => !!Object.keys(Object.fromEntries(Object.entries(route.query).filter(item => FILTERS_DISABLED_FROM_INDEXING.includes(item[0])))).length);
+const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
+const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
+
+const isWebsiteEu = computed(() => (url.host !== 'newtrendy.pl' && url.host !== 'localhost:3001'));
+const isWebsitePL = computed(() => (url.host !== 'newtrendy.eu' && url.host !== 'localhost:3001'));
+
+const meta = computed(() => ([
+    {
+        name: 'robots', content: (pageIndexable.value && ((isWebsiteEu.value ? i18n.locale.value !== 'pl' : true) || (isWebsitePL.value ? i18n.locale.value === 'pl' : true)))
+            ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
+            : `noindex, nofollow`
+    },
+]))
+
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
     document.querySelector('link[rel="prev"]')?.remove();
 
     useHead(() => ({
         link: headLinks.value,
+        meta: meta.value,
     }))
 }, { deep: true })
 
 onMounted(() => {
-    const query = Object.keys(route.query).map(key => (
-        Array.isArray(route.query[key])
-            ? route.query[key].map(value => (`${key}=${value}`)).join('&')
-            : `${key}=${route.query[key]}`
-    )).join('&');
-    
-    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: {'category': categoryPage.value.slug} }));
+    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();
@@ -114,8 +128,7 @@ onMounted(() => {
 
     useHead(() => ({
         link: headLinks.value,
+        meta: meta.value,
     }))
-
-    setMeta(categoryPage.value.meta);
 })
 </script>
