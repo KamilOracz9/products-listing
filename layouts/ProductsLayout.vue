@@ -5,7 +5,8 @@
 
             <h1
                 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }}</h1>
+                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${getFilterBySlug(firstParam)?.label ?? ''}` : ''
+                }}</h1>
 
             <div class="mt-10 flex gap-10">
                 <LazySectionsProductsSidebar />
@@ -94,8 +95,16 @@ const headLinks = computed(() => {
     return links;
 });
 
+const firstParam = computed(() => {
+    switch (typeof(Object.values(route.query)[0])){
+        case 'string': return Object.values(route.query)[0];
+        case 'object': return Object.values(route.query)[0][0];
+    }
+})
+
 const hasNonIndexableFilters = computed(() => !!Object.keys(Object.fromEntries(Object.entries(route.query).filter(item => FILTERS_DISABLED_FROM_INDEXING.includes(item[0])))).length);
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
+const hasOneFilter = computed(() => new URLSearchParams(route.query).size === 1 && typeof (Object.values(route.query)[0]) === 'string' || Object.values(route.query)[0]?.length === 1);
 const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
 
 const meta = computed(() => ([
@@ -105,6 +114,8 @@ const meta = computed(() => ([
             : `noindex, nofollow`
     },
 ]))
+
+const getFilterBySlug = (slug) => Object.values(filtersData.value.filters).flatMap(({ options }) => options).find(({ value_slug }) => value_slug === slug);
 
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
@@ -116,12 +127,12 @@ watch(router.currentRoute, () => {
     }))
 
     useSeoMeta({
-        title: `${i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+        title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
     })
 }, { deep: true })
 
 useSeoMeta({
-    title: `${i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+    title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
 })
 
 useHead(() => ({
