@@ -6,7 +6,7 @@
             :loop="sliderConfig.loop" :effect="sliderConfig.effect" :autoplay="sliderConfig.autoplay"
             :creative-effect="sliderConfig.creativeEffect">
             <SwiperSlide v-for="(slide, index) in data" :key="index">
-                <NuxtLink :to="slide.path" class="relative" :aria-label="slide.title ?? `New Trendy - slide-${index}`"
+                <a v-on:click="router.push(slide.path)" class="relative" :aria-label="slide.title ?? `New Trendy - slide-${index}`"
                     :key="index" :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
                         class="h-[582px] flex relative after:w-full after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
@@ -33,7 +33,7 @@
                             {{ slide.title }}
                         </p>
                     </div>
-                </NuxtLink>
+                </a>
             </SwiperSlide>
 
             <img src="@/assets/icons/slider-arrow.svg"
@@ -52,6 +52,8 @@
 
 <script setup lang="ts">
 import type { Slide } from '~/types/home.types';
+
+const router = useRouter();
 
 const props = defineProps<{
     data: Slide[];

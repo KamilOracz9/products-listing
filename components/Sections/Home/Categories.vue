@@ -1,15 +1,17 @@
 <template>
     <section class="my-8 flex overflow-x-auto no-scrollbar">
-        <NuxtLink v-for="(category, index) in data" data-aos="fade-up" :data-aos-delay="100 * index"
+        <a v-for="(category, index) in data" data-aos="fade-up" :data-aos-delay="100 * index"
             :aria-label="category.name" :key="index"
             class="border-l-2 border-black px-5 text-medium-lg uppercase flex items-center aos-init aos-animate hover:text-gray-4 xs:pr-20 sm:pr-40 sm:text-xl lg:pr-5 lg:flex-1"
             style="transition: all 150ms;"
-            :to="category.path" v-html="category.name"></NuxtLink>
+            v-on:click="router.push(category.path)" v-html="category.name"></a>
     </section>
 </template>
 
 <script setup lang="ts">
 import type { Category } from '~/types/home.types';
+
+const router = useRouter();
 
 const props = defineProps<{
     data: Category[];

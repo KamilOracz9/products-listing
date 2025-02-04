@@ -98,12 +98,9 @@ const hasNonIndexableFilters = computed(() => !!Object.keys(Object.fromEntries(O
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
 
-const isWebsiteEu = computed(() => (url.host !== 'newtrendy.pl' && url.host !== 'localhost:3001'));
-const isWebsitePL = computed(() => (url.host !== 'newtrendy.eu' && url.host !== 'localhost:3001'));
-
 const meta = computed(() => ([
     {
-        name: 'robots', content: (pageIndexable.value && ((isWebsiteEu.value ? i18n.locale.value !== 'pl' : true) || (isWebsitePL.value ? i18n.locale.value === 'pl' : true)))
+        name: 'robots', content: (pageIndexable.value && ((nuxt.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxt.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)))
             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
             : `noindex, nofollow`
     },
@@ -117,7 +114,20 @@ watch(router.currentRoute, () => {
         link: headLinks.value,
         meta: meta.value,
     }))
+
+    useSeoMeta({
+        title: `${i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+    })
 }, { deep: true })
+
+useSeoMeta({
+    title: `${i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+})
+
+useHead(() => ({
+    link: headLinks.value,
+    meta: meta.value,
+}))
 
 onMounted(() => {
     if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
@@ -125,10 +135,5 @@ onMounted(() => {
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();
     })
-
-    useHead(() => ({
-        link: headLinks.value,
-        meta: meta.value,
-    }))
 })
 </script>

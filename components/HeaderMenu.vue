@@ -30,7 +30,11 @@
                                         <p class="py-3">{{ item.name }}</p>
                                     </NuxtLink>
                                     <div class="text-sm" v-for="subitem in item.items">
-                                        <NuxtLink
+                                        <a v-if="hasMoreThenOneFilter(subitem.query)" class="cursor-pointer"
+                                            v-on:click="router.push(decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`))"
+                                            :title="subitem.name" :aria-label="subitem.name">
+                                            {{ subitem.name }}</a>
+                                        <NuxtLink v-else
                                             :to="decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`)"
                                             :title="subitem.name" :aria-label="subitem.name">
                                             {{ subitem.name }}</NuxtLink>
@@ -206,6 +210,8 @@ const router = useRouter();
 const searchQuery = ref('');
 const searchInProducts = ref(false);
 const searchInInspirations = ref(false);
+
+const hasMoreThenOneFilter = (query: any) => new URLSearchParams(query).size > 1;
 
 const search = () => {
     const query = {

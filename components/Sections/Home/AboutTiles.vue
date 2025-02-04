@@ -1,7 +1,7 @@
 <template>
     <section class="grid pt-6 gap-10 md:grid-cols-2 xl:grid-cols-4">
-        <NuxtLink :key="index" :to="aboutTile.path" v-for="(aboutTile, index) in data" :aria-label="aboutTile.title"
-            @mouseenter="activeItem = index" class="px-8 py-6 transition-all sm:p-8"
+        <a :key="index" v-on:click="router.push(aboutTile.path)" v-for="(aboutTile, index) in data" :aria-label="aboutTile.title"
+            @mouseenter="activeItem = index" class="px-8 py-6 transition-all cursor-pointer sm:p-8"
             :class="activeItem === index ? 'bg-yellow-2' : 'bg-gray-2'">
             <figure class="flex items-center justify-center ">
                 <div class="max-w-[100px] flex justify-center">
@@ -21,12 +21,14 @@
                     <Arrow :direction="'right'" />
                 </p>
             </div>
-        </NuxtLink>
+        </a>
     </section>
 </template>
 
 <script setup lang="ts">
 import type { Box } from '~/types/home.types';
+
+const router = useRouter();
 
 const props = defineProps<{
     data: Box[];

@@ -299,5 +299,10 @@
     "Pole miejsce jest wymagane.": "Pole miejsce jest wymagane.",
     "Pole działanie jest wymagane.": "Pole działanie jest wymagane.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Pole prawidłowe dane musi zostać zaakceptowane.",
-    "Wiadomość została wysłana": "Wiadomość została wysłana"
+    "Wiadomość została wysłana": "Wiadomość została wysłana",
+    "meta": {
+        "products": {
+            "title": "Kabiny prysznicowe"
+        }
+    }
 }
