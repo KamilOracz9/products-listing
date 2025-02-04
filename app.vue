@@ -79,8 +79,8 @@ useSeoMeta({
 
 useSeoMeta({
     robots: {
-      'noindex': (nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true),
-      'nofollow': (nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true),
+      'noindex': !((nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)),
+      'nofollow': !((nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)),
     },
   })
 
