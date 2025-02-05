@@ -109,7 +109,7 @@ const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreT
 
 const meta = computed(() => ([
     {
-        name: 'robots', content: (pageIndexable.value && ((nuxt.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxt.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)))
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
             : `noindex, nofollow`
     },

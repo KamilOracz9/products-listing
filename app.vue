@@ -78,11 +78,11 @@ useSeoMeta({
 })
 
 useSeoMeta({
-    robots: {
-      'noindex': !((nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)),
-      'nofollow': !((nuxtApp.$isNewtrendyEU ? i18n.locale.value !== 'pl' : true) || (nuxtApp.$isNewtrendyPL ? i18n.locale.value === 'pl' : true)),
-    },
-  })
+  robots: {
+    'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+    'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+  },
+})
 
 onMounted(() => {
   watch(() => ({ pageIsLoading }), value => {
