@@ -79,8 +79,8 @@ useSeoMeta({
 
 useSeoMeta({
   robots: {
-    'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
-    'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+    'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.newtrendy.usermd.net') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+    'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.newtrendy.usermd.net') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
   },
 })
 

@@ -109,7 +109,7 @@ const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreT
 
 const meta = computed(() => ([
     {
-        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.newtrendy.usermd.net') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
             : `noindex, nofollow`
     },

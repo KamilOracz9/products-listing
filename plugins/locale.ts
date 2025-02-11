@@ -28,7 +28,7 @@ export default defineNuxtPlugin(() => {
             getLocaleRoute: (routeName: string) => (localeRoutes[routeName].locales.includes(i18n.locale.value) ? localePath({ name: routeName }) : localeRoutes[routeName].redirect),
             getMapCenter: () => (mapCenter[i18n.locale.value]),
             isNewtrendyEU: () => url.host === 'newtrendy.eu',
-            isNewtrendyPL: () => url.host === 'newtrendy.pl',
+            isNewtrendyPL: () => url.host === 'newtrendy.newtrendy.usermd.net',
             locale: i18n.locales.value.find(item => item.code === i18n.locale.value).language,
         },
     };
