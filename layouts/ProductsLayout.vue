@@ -45,7 +45,7 @@ import { fetchFilters, fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
 
 const FILTERS_DISABLED_FROM_INDEXING = [
-    'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max'
+    'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max', 'page'
 ];
 
 const i18n = useI18n();
@@ -103,10 +103,19 @@ const firstParam = computed(() => {
     }
 })
 
-const hasNonIndexableFilters = computed(() => !!Object.keys(Object.fromEntries(Object.entries(route.query).filter(item => FILTERS_DISABLED_FROM_INDEXING.includes(item[0])))).length);
+const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(route.query).filter(item => !FILTERS_DISABLED_FROM_INDEXING.includes(item[0]))));
+
+const hasNonIndexableFilters = computed(() => !!Object.keys(indexedQueryParams.value).length);
+
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
-const hasOneFilter = computed(() => new URLSearchParams(route.query).size === 1 && typeof (Object.values(route.query)[0]) === 'string' || Object.values(route.query)[0]?.length === 1);
+
+const hasOneFilter = computed(() =>
+    new URLSearchParams(indexedQueryParams.value).size === 1
+    && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
+    || Object.values(indexedQueryParams.value)[0]?.length === 1);
+
 const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
+
 const metaParams = computed(() => Object.values(filtersData.value.filters)
     .flatMap(({ options }) => options)
     .filter(({ value_slug }) => Object.values(route.query).flat().includes(value_slug))
@@ -128,7 +137,7 @@ watch(router.currentRoute, () => {
     document.querySelector('link[rel="prev"]')?.remove();
 }, { deep: true })
 
-setMeta({...categoryPage.value.meta, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`})
+setMeta({ ...categoryPage.value.meta, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
 useHead(() => ({
     link: headLinks.value,
