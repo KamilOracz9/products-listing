@@ -21,7 +21,7 @@
                     <ul
                         class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                         <li v-for="item in globalStore.locales">
-                            <button v-if="!(isWebsiteEu && item.code === 'pl')" type="button" @click="changeLanguage(item.code)"
+                            <button v-if="isWebsiteEu || (!isWebsiteEu && (item.code === 'pl' || item.code === 'en'))" type="button" @click="changeLanguage(item.code)"
                                 class="p-3 flex items-center gap-2 group/dropdown-item">
                                 <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code" :title="item.code" />
                                 <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
@@ -73,6 +73,8 @@ const changeLanguage = async (lang: string) => {
 }
 
 const isWebsiteEu = computed(() => (useRequestURL().host !== 'newtrendy.newtrendy.usermd.net' && useRequestURL().host !== 'localhost:3001'));
+
+console.log(isWebsiteEu.value)
 
 function toggle(element: HTMLElement) {
     const eventType = (<Event>event).type;
