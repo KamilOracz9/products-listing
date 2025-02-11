@@ -10,7 +10,7 @@
                 :creative-effect="sliderConfig.creativeEffect" :space-between="sliderConfig.spaceBetween"
                 :breakpoints="sliderConfig.breakpoints">
                 <SwiperSlide v-for="(slide, index) in products" :key="index">
-                    <NuxtLink :to="localePath({ name: 'products' }) + `/${categorySlug}/${slide.slug}`" class="relative group"
+                    <NuxtLink :to="localePath({ name: 'product-slug', params: {slug: slide.slug} })" class="relative group"
                         :aria-label="slide.name">
                         <img :src="slide.images.mobile" alt="">
                         <div
