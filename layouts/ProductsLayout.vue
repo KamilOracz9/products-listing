@@ -26,7 +26,7 @@
 
                     <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
 
-                    <p v-if="categoryPage?.description"
+                    <p v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
                         v-html="categoryPage?.description"></p>
                 </div>
