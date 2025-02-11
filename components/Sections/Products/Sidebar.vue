@@ -24,12 +24,14 @@
 <script setup lang="ts">
 const data = inject('filtersData');
 const refresh = inject('filtersRefresh');
+const route = useRoute();
+const localePath = useLocalePath();
 
 const productsFilterStore = useProductsFilterStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
 
 const resetFilters = async () => {
-    await navigateTo({ query: {} });
+    await navigateTo(`${localePath(route.name.split('___'))}/`);
     refresh();
 }
 
