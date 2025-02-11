@@ -36,8 +36,4 @@ const props = defineProps(['meta'])
 const { meta } = toRefs(props);
 const localePath = useLocalePath();
 const router = useRouter();
-
-// const setRelNext = (url: string) => {
-//     console.log(url);
-// }
 </script>

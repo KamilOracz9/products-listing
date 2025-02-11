@@ -26,14 +26,9 @@ const useClipboardStore = defineStore('clipboard', {
 
             localStorage.setItem('clipboard-ids', JSON.stringify(ids));
 
-            // console.log(localStorage.getItem('clipboard-ids'))
-            // console.log('asd');
-
             await this.fetchItems();
         },
         async fetchItems() {
-            // console.log(!this.getIds() || !this.getIds().length)
-            // console.log('asdasd')
             if (!this.getIds() || !this.getIds().length) this.items = [];
             else this.items = await fetchClipboardItems(this.getIds()) as [];
         },
