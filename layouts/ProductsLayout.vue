@@ -126,20 +126,9 @@ const getFilterBySlug = (slug) => Object.values(filtersData.value.filters).flatM
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
     document.querySelector('link[rel="prev"]')?.remove();
-
-    useHead(() => ({
-        link: headLinks.value,
-        meta: meta.value,
-    }))
-
-    useSeoMeta({
-        title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`,
-    })
 }, { deep: true })
 
-useSeoMeta({
-    title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`,
-})
+setMeta({...categoryPage.value.meta, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`})
 
 useHead(() => ({
     link: headLinks.value,
