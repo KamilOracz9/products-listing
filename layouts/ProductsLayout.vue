@@ -105,8 +105,6 @@ const firstParam = computed(() => {
 
 const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(route.query).filter(item => !FILTERS_DISABLED_FROM_INDEXING.includes(item[0]))));
 
-const hasNonIndexableFilters = computed(() => !!Object.keys(indexedQueryParams.value).length);
-
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 
 const hasOneFilter = computed(() =>
@@ -114,7 +112,7 @@ const hasOneFilter = computed(() =>
     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
     || Object.values(indexedQueryParams.value)[0]?.length === 1);
 
-const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
+const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
 const metaParams = computed(() => Object.values(filtersData.value.filters)
     .flatMap(({ options }) => options)
