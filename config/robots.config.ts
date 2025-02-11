@@ -1,71 +1,74 @@
 export default [
-    { UserAgent: 'Googlebot' },
-    { Allow: '/' },
+    // { UserAgent: 'Googlebot' },
+    // { Allow: '/' },
 
-    { UserAgent: 'Amazonbot' },
-    { Disallow: '/' },
+    // { UserAgent: 'Amazonbot' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'Meta-ExternalAgent' },
-    { Disallow: '/' },
+    // { UserAgent: 'Meta-ExternalAgent' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'dotbot' },
-    { Disallow: '/' },
+    // { UserAgent: 'dotbot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'GPTBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'GPTBot' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'OAI-SearchBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'OAI-SearchBot' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'Baiduspider' },
-    { Disallow: '/' },
+    // { UserAgent: 'Baiduspider' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'ByteDanceSpider' },
-    { Disallow: '/' },
+    // { UserAgent: 'ByteDanceSpider' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'Bytespider' },
-    { Disallow: '/' },
+    // { UserAgent: 'Bytespider' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'HTTrack' },
-    { Disallow: '/' },
+    // { UserAgent: 'HTTrack' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'Sogou web spider' },
-    { Disallow: '/' },
+    // { UserAgent: 'Sogou web spider' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'TeleportPro' },
-    { Disallow: '/' },
+    // { UserAgent: 'TeleportPro' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'WebCopier' },
-    { Disallow: '/' },
+    // { UserAgent: 'WebCopier' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'WebStripper' },
-    { Disallow: '/' },
+    // { UserAgent: 'WebStripper' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'ClaudeBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'ClaudeBot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'Yandex' },
-    { Disallow: '/' },
+    // { UserAgent: 'Yandex' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'YandexBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'YandexBot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'YandexRenderResourcesBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'YandexRenderResourcesBot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'BacklinksExtendedBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'BacklinksExtendedBot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'RU_Bot' },
-    { Disallow: '/' },
+    // { UserAgent: 'RU_Bot' },
+    // { Disallow: '/' },
 
-    { UserAgent: 'PetalBot' },
-    { Disallow: '/' },
+    // { UserAgent: 'PetalBot' },
+    // { Disallow: '/' },
     
-    { UserAgent: 'wget' },
-    { Disallow: '/' },
+    // { UserAgent: 'wget' },
+    // { Disallow: '/' },
 
     // { UserAgent: '*' },
     // { Disallow: '/' },
-    { CrawlDelay: '10' },
+    // { CrawlDelay: '10' },
+
+    { UserAgent: '*' },
+    { Allow: '/' },
 ]
