@@ -5,7 +5,8 @@
 
             <h1
                 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${getFilterBySlug(firstParam)?.label ?? ''}` : ''
+                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${getFilterBySlug(firstParam)?.label ??
+                    ''}` : ''
                 }}</h1>
 
             <div class="mt-10 flex gap-10">
@@ -96,7 +97,7 @@ const headLinks = computed(() => {
 });
 
 const firstParam = computed(() => {
-    switch (typeof(Object.values(route.query)[0])){
+    switch (typeof (Object.values(route.query)[0])) {
         case 'string': return Object.values(route.query)[0];
         case 'object': return Object.values(route.query)[0][0];
     }
@@ -106,6 +107,11 @@ const hasNonIndexableFilters = computed(() => !!Object.keys(Object.fromEntries(O
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 const hasOneFilter = computed(() => new URLSearchParams(route.query).size === 1 && typeof (Object.values(route.query)[0]) === 'string' || Object.values(route.query)[0]?.length === 1);
 const pageIndexable = computed(() => (!hasNonIndexableFilters.value && !hasMoreThenOneFilter.value));
+const metaParams = computed(() => Object.values(filtersData.value.filters)
+    .flatMap(({ options }) => options)
+    .filter(({ value_slug }) => Object.values(route.query).flat().includes(value_slug))
+    .map((({ label }) => label))
+    .join(', '));
 
 const meta = computed(() => ([
     {
@@ -127,12 +133,12 @@ watch(router.currentRoute, () => {
     }))
 
     useSeoMeta({
-        title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+        title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`,
     })
 }, { deep: true })
 
 useSeoMeta({
-    title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${Object.keys(route.query).length ? ` - ${Object.values(route.query).map(param => typeof (param) === 'object' ? param.join(', ') : param).join(', ')}` : ''} | New Trendy`,
+    title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy`,
 })
 
 useHead(() => ({
