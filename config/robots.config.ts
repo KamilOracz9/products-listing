@@ -65,7 +65,7 @@ export default [
     { UserAgent: 'wget' },
     { Disallow: '/' },
 
-    { UserAgent: '*' },
-    { Disallow: '/' },
+    // { UserAgent: '*' },
+    // { Disallow: '/' },
     { CrawlDelay: '10' },
 ]
