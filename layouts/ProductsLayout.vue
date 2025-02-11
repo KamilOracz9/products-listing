@@ -135,6 +135,8 @@ const getFilterBySlug = (slug) => Object.values(filtersData.value.filters).flatM
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
     document.querySelector('link[rel="prev"]')?.remove();
+
+    setMeta({ ...categoryPage.value.meta, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 }, { deep: true })
 
 setMeta({ ...categoryPage.value.meta, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
