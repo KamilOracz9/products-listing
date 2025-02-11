@@ -72,7 +72,7 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}`);
+const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}/`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;

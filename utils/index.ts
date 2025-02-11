@@ -12,32 +12,12 @@ export const getLocaleIso = () => (useI18n().locales.value.filter(locale => loca
 export const localeIso = computed(() => (useI18n().locales.value.filter(locale => locale.code === useI18n().locale.value)[0].language));
 
 export const setMeta = (meta: Meta) => {
-    const nuxt = useNuxtApp();
-
-    // useHead(() => ({
-        // link: [
-        //     {
-        //         rel: 'canonical',
-        //         href: meta.canonical_tag ?? nuxt.$canonical(),
-        //     },
-        // ],
-    // }))
-
     useSeoMeta({
         title: meta.meta_title ?? 'Producent kabin prysznicowych. Kabiny prysznicowe na wymiar | NEW TRENDY',
         keywords: meta.meta_keywords ?? null,
         ogTitle: meta.meta_title ?? null,
         description: meta.meta_description ?? null,
         ogDescription: meta.meta_description ?? null,
-        // title: meta.meta_title ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
-        // keywords: meta.meta_keywords ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
-        // ogTitle: meta.meta_title ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
-        // description: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
-        // ogDescription: meta.meta_description ?? 'NEW TRENDY - Producent Kabin Prysznicowych',
-        // robots: {
-        //     Index: meta.noindex ? !meta.noindex : true,
-        //     Follow: meta.nofollow ? !meta.nofollow : true,
-        // }
     })
 }
 

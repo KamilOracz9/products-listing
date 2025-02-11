@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
     return {
         provide: {
             isHomePage: (): boolean => (route.name as string)?.split('___')[0] === 'index',
-            canonical: (): string => (`${url.origin}${url.pathname}`),
+            canonical: (): string => (`${url.origin}${url.pathname}/`),
         }
     }
 })
