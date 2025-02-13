@@ -14,7 +14,7 @@
             </template>
             <div v-else class="lg:col-span-2"></div>
             <ClientOnly>
-                <MapsPlaceToBuyLocalizations :locationsList="data.locationsList" :key="mapKey" />
+                <MapsPlaceToBuyLocalizations :key="mapKey" />
             </ClientOnly>
         </div>
     </div>
