@@ -63,6 +63,7 @@ export default defineNuxtConfig({
             && !route[0].includes('categories')
             && !route[0].includes('search')
             && !route[0].includes('product')
+            && !route[0].includes('place-to-buy')
         }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
           routes.add(element);
         });
