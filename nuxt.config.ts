@@ -118,7 +118,12 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
     'nuxt-aos',
     '@nuxt/image',
+    'nuxt-schema-org',
   ],
+
+  schemaOrg: {
+    defaults: false
+  },
 
   image: {
     dir: 'assets/images',

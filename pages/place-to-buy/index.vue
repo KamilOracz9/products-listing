@@ -39,7 +39,7 @@ const locationsList: Ref = ref([]);
 
 const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, $locale, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
-const { meta, breadcrumbs, title } = toRefs(data.value);
+const { meta, breadcrumbs, title, schema } = toRefs(data.value);
 
 onMounted(() => {
     watch(() => route.query, () => {
@@ -74,4 +74,8 @@ provide('locationsList', locationsList);
 provide('locationsIds', locationsIds);
 
 setMeta(meta.value);
+
+// useSchemaOrg([
+//   schema.value
+// ])
 </script>

@@ -40,7 +40,11 @@ const localePath = useLocalePath();
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.DOWNLOAD_PAGE, async () => fetchDownloadPage($locale));
-const { breadcrumbs, description, meta, title } = toRefs(data.value as DownloadPage);
+const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as DownloadPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

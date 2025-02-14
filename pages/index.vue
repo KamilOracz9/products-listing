@@ -6,7 +6,7 @@
         class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{
           configuratorLink }}</span>
       <span class="px-2 uppercase font-medium xs:px-4 xs:py-2 md:px-5 md:py-3">{{ $t('made-to-measure-home-link')
-      }}</span>
+        }}</span>
     </NuxtLink>
 
     <SectionsHomeSwiper :data="Object.values(slides)" />
@@ -40,8 +40,12 @@ const configuratorLink = computed(() => {
 })
 
 const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage($locale));
-const { description, meta } = toRefs(data.value as HomePage);
+const { description, meta, schema } = toRefs(data.value as HomePage);
 const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

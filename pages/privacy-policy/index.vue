@@ -14,9 +14,13 @@ import type { PrivacyPolicyPage } from '~/types/privacy-policy.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.PRIVACY_POLICY_PAGE, async () => fetchPrivacyPolicyPage($locale));
-const { breadcrumbs, description, meta } = toRefs(data.value as PrivacyPolicyPage);
+const { breadcrumbs, description, meta, schema } = toRefs(data.value as PrivacyPolicyPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>
 
 <style>

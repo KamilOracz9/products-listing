@@ -14,9 +14,13 @@ import type { InformationClausuePage } from '~/types/information-clausue.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.INFORMATION_CLAUSUE_PAGE, async () => fetchInformationClausuePage($locale));
-const { breadcrumbs, meta, description } = toRefs(data.value as InformationClausuePage);
+const { breadcrumbs, meta, description, schema } = toRefs(data.value as InformationClausuePage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>
 
 <style>

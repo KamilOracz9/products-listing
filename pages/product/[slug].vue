@@ -54,12 +54,16 @@ const route = useRoute();
 const nuxt = useNuxtApp();
 
 const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug, nuxt.$locale));
-const { badge, breadcrumbs, category, description, files, images, meta, name, variants } = toRefs(data.value as ProductPage);
+const { badge, breadcrumbs, category, description, files, images, meta, name, variants, schema } = toRefs(data.value as ProductPage);
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
 const hasGlasses = computed(() => !!images.value.glasses.length);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 
 provide('openAccordionId', openAccordionId);
 provide('modalIsOpen', modalIsOpen);

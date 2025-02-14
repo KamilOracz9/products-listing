@@ -70,7 +70,11 @@ import type { AboutPage } from '~/types/about.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, async () => fetchAboutPage($locale));
-const { description, meta, breadcrumbs } = toRefs(data.value as AboutPage);
+const { description, meta, breadcrumbs, schema } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

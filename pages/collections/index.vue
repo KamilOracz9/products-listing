@@ -43,4 +43,8 @@ setMeta({
     meta_title: 'Nasze kolekcje pryszniców | NEW TRENDY',
     meta_description: 'Przeglądaj wyjątkowe kolekcje kabin prysznicowych New Trendy. Odkryj różnorodność stylów, rozmiarów i wykończeń, idealnych do każdej łazienki!'
 })
+
+// useSchemaOrg([
+//   schema.value
+// ])
 </script>

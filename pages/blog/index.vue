@@ -20,7 +20,11 @@ import type { InspirationCategoriesPage } from '~/types/inspirations.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORIES_PAGE, async () => fetchInspirationCategoriesPage($locale));
-const { breadcrumbs, description, meta, title } = toRefs(data.value as InspirationCategoriesPage);
+const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as InspirationCategoriesPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

@@ -20,7 +20,11 @@ const { locale } = useI18n();
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchContactPage($locale));
-const { breadcrumbs, description, meta, title } = toRefs(data.value as ContactPage);
+const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as ContactPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

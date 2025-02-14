@@ -14,7 +14,11 @@ import type { ForProfessionalsPage } from '~/types/for-professionals.types';
 const { $locale } = useNuxtApp();
 
 const { data } = await useAsyncData(DataKeys.FOR_PROFESSIONALS_PAGE, async () => fetchForProfessionalsPage($locale));
-const { meta, breadcrumbs, description } = toRefs(data.value as ForProfessionalsPage);
+const { meta, breadcrumbs, description, schema } = toRefs(data.value as ForProfessionalsPage);
 
 setMeta(meta.value);
+
+useSchemaOrg([
+  schema.value
+])
 </script>

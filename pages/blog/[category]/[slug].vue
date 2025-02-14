@@ -52,13 +52,17 @@ provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string, $locale));
-const { breadcrumbs, title, related, image, gallery, description } = toRefs(data.value as InspirationPage);
+const { breadcrumbs, title, related, image, gallery, description, schema } = toRefs(data.value as InspirationPage);
 
 setMeta({
     meta_title: title.value,
     meta_keywords: title.value,
     meta_description: title.value,
 });
+
+useSchemaOrg([
+  schema.value
+])
 
 onMounted(() => {
     window.history.replaceState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path) + '/');
