@@ -37,14 +37,11 @@ const router = useRouter();
 
 const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections($locale));
 
-const { data: collections } = toRefs(data.value);
+const { data: collections, meta, schema } = toRefs(data.value);
 
-setMeta({
-    meta_title: 'Nasze kolekcje pryszniców | NEW TRENDY',
-    meta_description: 'Przeglądaj wyjątkowe kolekcje kabin prysznicowych New Trendy. Odkryj różnorodność stylów, rozmiarów i wykończeń, idealnych do każdej łazienki!'
-})
+setMeta(meta.value)
 
-// useSchemaOrg([
-//   schema.value
-// ])
+useSchemaOrg([
+  schema.value
+])
 </script>

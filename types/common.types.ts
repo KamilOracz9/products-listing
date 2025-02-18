@@ -23,6 +23,7 @@ export interface Page {
     "meta": Meta;
     "title": string;
     "slug": string,
+    "schema": string;
 }
 
 export type DescriptionType = 'simple' | 'extended';

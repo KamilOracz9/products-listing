@@ -43,7 +43,7 @@ const { breadcrumbs, description, meta, title, schema } = toRefs(data?.value as 
 
 if(data.value) setMeta(meta.value);
 
-// useSchemaOrg([
-//   schema.value
-// ])
+useSchemaOrg([
+  schema?.value ?? ''
+])
 </script>

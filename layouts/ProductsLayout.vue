@@ -144,6 +144,8 @@ useHead(() => ({
     meta: meta.value,
 }))
 
+useSchemaOrg([categoryPage.value.schema])
+
 onMounted(() => {
     if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
 
