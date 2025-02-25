@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div v-if="!pending && !categoryPagePending && !filtersPending">
+        <div>
             <SectionsCommonBreadrumbs v-if="categoryPage?.breadcrumbs" :breadcrumbs="categoryPage.breadcrumbs" />
 
             <h1
@@ -10,7 +10,7 @@
                 }}</h1>
 
             <div class="mt-10 flex gap-10">
-                <LazySectionsProductsSidebar />
+                <SectionsProductsSidebar />
                 <div class="w-full">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
@@ -21,7 +21,7 @@
                         :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
-                    <SectionsProductsListing v-if="!pending" :products="data.data" />
+                    <SectionsProductsListing :products="data.data" />
 
 
                     <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
@@ -139,9 +139,10 @@ watch(router.currentRoute, () => {
 
 setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
+useSeoMeta(meta.value)
+
 useHead(() => ({
     link: headLinks.value,
-    meta: meta.value,
 }))
 
 useSchemaOrg([categoryPage.value.schema])

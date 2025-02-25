@@ -11,8 +11,7 @@
 
                     <div class="flex gap-2 items-center">
                         {{ $t(globalStore.locales.filter(({ code }) => code === $i18n.locale)[0].label.toLowerCase()) }}
-                        <img height="12" width="18"
-                            :src="`/assets/langs/${$i18n.locale}.svg`"
+                        <img height="12" width="18" :src="`/assets/langs/${$i18n.locale}.svg`"
                             :alt="`Choosen language ${$i18n.locale}`" :title="`Choosen language ${$i18n.locale}`" />
                     </div>
                 </span>
@@ -21,9 +20,12 @@
                     <ul
                         class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                         <li v-for="item in globalStore.locales">
-                            <button v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl' || item.code === 'en'))" type="button" @click="changeLanguage(item.code)"
+                            <button
+                                v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl' || item.code === 'en'))"
+                                type="button" @click="changeLanguage(item.code)"
                                 class="p-3 flex items-center gap-2 group/dropdown-item">
-                                <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code" :title="item.code" />
+                                <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code"
+                                    :title="item.code" />
                                 <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                     $t(item.label.toLowerCase()) }}</span>
                             </button>
@@ -38,15 +40,19 @@
                     class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}
                 </NuxtLink>
                 <a :href="globalStore.socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon"
-                        src="@/assets/icons/social/facebook.svg" width="10" height="20" alt="Facebook" title="Facebook" /></a>
+                        src="@/assets/icons/social/facebook.svg" width="10" height="20" alt="Facebook"
+                        title="Facebook" /></a>
                 <a :href="globalStore.socials.instagram" target="_blank" aria-label="Instagram"><img class="top-bar-icon"
-                        src="@/assets/icons/social/instagram.svg" width="19" height="18" alt="Instagram" title="Instagram" /></a>
+                        src="@/assets/icons/social/instagram.svg" width="19" height="18" alt="Instagram"
+                        title="Instagram" /></a>
                 <a :href="globalStore.socials.pinterest" target="_blank" aria-label="Pinterest"><img class="top-bar-icon"
-                        src="@/assets/icons/social/pinterest.svg" width="19" height="20" alt="Pinterest" title="Pinterest" /></a>
+                        src="@/assets/icons/social/pinterest.svg" width="19" height="20" alt="Pinterest"
+                        title="Pinterest" /></a>
                 <a :href="globalStore.socials.youtube" target="_blank" aria-label="Youtube"><img class="top-bar-icon"
                         src="@/assets/icons/social/youtube.svg" width="23" height="16" alt="Youtube" title="Youtube" /></a>
                 <a :href="globalStore.socials.linkedin" target="_blank" aria-label="Linkedin"><img class="top-bar-icon"
-                        src="@/assets/icons/social/linkedin.svg" width="21" height="20" alt="Linkedin" title="Linkedin" /></a>
+                        src="@/assets/icons/social/linkedin.svg" width="21" height="20" alt="Linkedin"
+                        title="Linkedin" /></a>
             </div>
         </section>
     </div>
