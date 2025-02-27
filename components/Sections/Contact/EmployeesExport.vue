@@ -11,15 +11,15 @@
                     <p>{{ employee.title }}</p>
                 </div>
 
-                <ul class="flex flex-col gap-4">
-                    <li class="flex gap-2 items-center" v-for="(phone, index) in employee.phone" :key="index">
+                <div class="flex flex-col gap-4">
+                    <a :href="`tel:${phone}`" class="flex gap-2 items-center" v-for="(phone, index) in employee.phone" :key="index">
                         <img class="h-5" src="@/assets/icons/phone.svg" alt=""> {{ phone }}
-                    </li>
+                    </a>
 
-                    <li class="flex gap-2 items-center" v-for="(email, index) in employee.email" :key="index">
+                    <a :href="`mailto:${email}`" class="flex gap-2 items-center" v-for="(email, index) in employee.email" :key="index">
                         <img class="h-5" src="@/assets/icons/envelope.svg" alt=""> {{ email }}
-                    </li>
-                </ul>
+                    </a>
+                </div>
 
                 <p v-html="employee.info"></p>
             </li>
