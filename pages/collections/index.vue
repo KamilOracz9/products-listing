@@ -14,9 +14,7 @@
                     </picture>
                 </figure>
 
-                <figCaption>
-                    <h2 class="pt-4">{{ collection.name }}</h2>
-                </figCaption>
+                <p class="pt-4">{{ collection.name }}</p>
 
                 <p class="uppercase w-full justify-end flex gap-2 font-medium text-base mt-2 sm:text-lg lg:mt-10">
                     {{ $t('pages.collections.discover') }}
@@ -42,6 +40,6 @@ const { data: collections, meta, schema } = toRefs(data.value);
 setMeta(meta.value)
 
 useSchemaOrg([
-  schema.value
+    schema.value
 ])
 </script>
