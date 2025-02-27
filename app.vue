@@ -64,7 +64,7 @@ useHead(() => ({
     lang: i18n.locale.value
   },
   script: {
-    src: `https://consent.cookiebot.com/uc.js?cbid=${process.env.COOKIEBOT_CBID}`,
+    src: 'https://consent.cookiebot.com/uc.js?cbid=90e49277-0bdd-4186-9847-6827cbf3e895',
   }
 }))
 
