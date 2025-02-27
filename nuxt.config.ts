@@ -8,10 +8,10 @@ export default defineNuxtConfig({
   },
   experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
   router: {
-    // trailingSlash: true,
     options: {
       strict: false,
-    },
+      trailingSlash: true
+    }
   },
   nitro: {
     externals: {
