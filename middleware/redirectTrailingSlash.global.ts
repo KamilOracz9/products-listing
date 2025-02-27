@@ -1,8 +1,8 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-    if (to.path !== '/' && !to.path.endsWith('/')) {
-        const { path, query, hash } = to
-        const nextRoute = { path: `${path}/`, query, hash }
+    // if (to.path !== '/' && !to.path.endsWith('/')) {
+    //     const { path, query, hash } = to
+    //     const nextRoute = { path: `${path}/`, query, hash }
 
-        return navigateTo(nextRoute, { redirectCode: 301 })
-    }
+    //     return navigateTo(nextRoute, { redirectCode: 301 })
+    // }
 })
