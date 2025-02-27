@@ -2,7 +2,7 @@
     <div class="flex justify-center font-breuer">
         <div v-if="!pending && data" class="flex flex-col min-h-screen w-full relative">
             <header class="relative z-30">
-                <TopBar />
+                <TopBar :data="data.socials" />
                 <HeaderMenu :data="data.header" />
             </header>
 

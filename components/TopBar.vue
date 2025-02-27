@@ -39,18 +39,18 @@
                 <NuxtLink :to="localePath({ name: 'privacy-policy' }) + '/'" :aria-label="$t('privacy-policy')"
                     class="mr-2 text-black opacity-[70%] transition-all hover-opacity-60">{{ $t('privacy-policy') }}
                 </NuxtLink>
-                <a :href="globalStore.socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon"
+                <a :href="socials.facebook" target="_blank" aria-label="Facebook"><img class="top-bar-icon"
                         src="@/assets/icons/social/facebook.svg" width="10" height="20" alt="Facebook"
                         title="Facebook" /></a>
-                <a :href="globalStore.socials.instagram" target="_blank" aria-label="Instagram"><img class="top-bar-icon"
+                <a :href="socials.instagram" target="_blank" aria-label="Instagram"><img class="top-bar-icon"
                         src="@/assets/icons/social/instagram.svg" width="19" height="18" alt="Instagram"
                         title="Instagram" /></a>
-                <a :href="globalStore.socials.pinterest" target="_blank" aria-label="Pinterest"><img class="top-bar-icon"
+                <a :href="socials.pinterest_url" target="_blank" aria-label="Pinterest"><img class="top-bar-icon"
                         src="@/assets/icons/social/pinterest.svg" width="19" height="20" alt="Pinterest"
                         title="Pinterest" /></a>
-                <a :href="globalStore.socials.youtube" target="_blank" aria-label="Youtube"><img class="top-bar-icon"
+                <a :href="socials.youtube_url" target="_blank" aria-label="Youtube"><img class="top-bar-icon"
                         src="@/assets/icons/social/youtube.svg" width="23" height="16" alt="Youtube" title="Youtube" /></a>
-                <a :href="globalStore.socials.linkedin" target="_blank" aria-label="Linkedin"><img class="top-bar-icon"
+                <a :href="socials.linkedin_url" target="_blank" aria-label="Linkedin"><img class="top-bar-icon"
                         src="@/assets/icons/social/linkedin.svg" width="21" height="20" alt="Linkedin"
                         title="Linkedin" /></a>
             </div>
@@ -61,6 +61,15 @@
 <script setup lang="ts">
 import device from '~/plugins/device';
 import { useGlobalStore } from '~/stores';
+import type { Socials } from '~/types/layout.types';
+
+const props = defineProps<{
+    data: Socials;
+}>();
+
+const { data: socials } = toRefs(props);
+
+console.log(socials.value)
 
 const setIsRefreshing = inject('setIsRefreshing');
 
