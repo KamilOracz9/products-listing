@@ -20,7 +20,8 @@
                                 </div>
                             </LazySectionsHeaderColumn>
 
-                            <LazySectionsHeaderColumn v-for="(column, index) in headerItem.columns" class="hidden lg:block">
+                            <LazySectionsHeaderColumn v-for="(column, index) in headerItem.columns"
+                                class="hidden lg:block">
                                 <div class="lg:px-8 lg:mb-10" v-for="item in column">
                                     <NuxtLink
                                         :to="decodeURI(`${item.path}${item.query ? '?' + item.query : ''}${item.hash ?? ''}`)"
@@ -79,14 +80,15 @@
 
                     <LazySectionsHeaderItem slug="search" :icon="searchIcon">
                         <div class="w-full flex justify-center left-0 [&_a]:border-black [&_button]:border-black">
-                            <div class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
+                            <div
+                                class="w-[90%] max-w-[1300px] flex flex-col gap-4 py-4 lg:pb-8 lg:flex-row lg:flex-wrap">
                                 <div class="flex flex-col lg:flex-row lg:flex-wrap lg:ml-auto">
                                     <div class="flex gap-2 flex-wrap lg:flex-nowrap lg:flex-row">
                                         <div class="flex items-center justify-start gap-2">
                                             <input id="search-in-products" type="checkbox" name="item"
                                                 class="lg:-translate-y-[2px] border border-black w-4 h-4 text-black focus:ring-0"
-                                                v-model="searchInProducts" /> <label class="whitespace-nowrap lg:text-xl"
-                                                for="search-in-products">{{
+                                                v-model="searchInProducts" /> <label
+                                                class="whitespace-nowrap lg:text-xl" for="search-in-products">{{
                                                     $t('search-in-products') }}</label>
                                         </div>
                                         <div class="flex items-center justify-start gap-2 lg:mx-10">
@@ -99,16 +101,18 @@
 
                                         <div
                                             class="flex items-center justify-between border border-gray-1 px-2 py-1 w-full lg:max-w-[480px] lg:mr-2">
-                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search" type="text"
-                                                v-model="searchQuery" :placeholder="$t('what-are-you-looking-for')"
+                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search"
+                                                type="text" v-model="searchQuery"
+                                                :placeholder="$t('what-are-you-looking-for')"
                                                 @keydown="(event) => { if (event.keyCode === 13) search() }">
-                                            <img width="16" height="16" class="w-4 h-4 gray-1-filter" :alt="$t('search')"
-                                                :title="$t('search')" src="@/assets/icons/search.svg">
+                                            <img width="16" height="16" class="w-4 h-4 gray-1-filter"
+                                                :alt="$t('search')" :title="$t('search')"
+                                                src="@/assets/icons/search.svg">
                                         </div>
 
                                         <span class="w-full lg:w-auto">
-                                            <LazyButtonsTransparent :label="$t('search')" type="button" tag-type="button"
-                                                @click="search" />
+                                            <LazyButtonsTransparent :label="$t('search')" type="button"
+                                                tag-type="button" @click="search" />
                                         </span>
                                     </div>
                                 </div>
@@ -129,50 +133,60 @@
                     </LazySectionsHeaderItem>
 
                     <LazySectionsHeaderItem slug="clipboard" :icon="clipboardIcon">
-                        <div class="header__clipboard left-0">
-                            <template v-if="clipboardStore.hasItems">
-                                <div v-for=" clipboardItem in clipboardStore.items "
-                                    class="pb-28 px-6 flex flex-col items-center gap-2 min-w-full xs:min-w-[50%] xs:max-w-[50%] sm:min-w-[33%] sm:max-w-[33%] md:min-w-[25%] md:max-w-[25%] lg:min-w-[20%] lg:max-w-[20%] lg:mt-10">
-                                    <img class="aspect-[3/4] rounded-br-sm" width="390" height="520"
-                                        :src="clipboardItem.image" :alt="clipboardItem.symbol"
-                                        :title="clipboardItem.symbol">
-                                    <div class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
-                                        <NuxtLink :to="localePath({ name: 'products' }) + `/${clipboardItem.slug}`"
-                                            :aria-label="clipboardItem.symbol" :title="clipboardItem.symbol"
-                                            class="text-base font-bold">{{
-                                                clipboardItem.collection }}
-                                        </NuxtLink>
-                                        <div class="flex justify-between gap-10 w-full">
-                                            <p class="text-gray-3">{{ clipboardItem.category }}</p>
-                                            <div class="flex gap-4">
-                                                <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
-                                                    :aria-label="clipboardItem.symbol" :title="clipboardItem.symbol">
-                                                    <img src="/assets/icons/delete.svg" width="12" height="12"
-                                                        :title="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`"
-                                                        :alt="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`" />
-                                                </button>
-                                                <SectionsCommonGenerateProductCard :productId="clipboardItem.product_id"
-                                                    :variantId="clipboardItem.variant_id" />
+                        <template v-if="clipboardStore.hasItems">
+                            <div>
+                                <div class="header__clipboard left-0">
+                                    <div v-for="clipboardItem in clipboardStore.items"
+                                        class="pb-28 px-6 flex flex-col items-center gap-2 lg:mt-10">
+                                        <!-- <div v-for="clipboardItem in clipboardStore.items"
+                                    class="pb-28 px-6 flex flex-col items-center gap-2 min-w-full xs:min-w-[50%] xs:max-w-[50%] sm:min-w-[33%] sm:max-w-[33%] md:min-w-[25%] md:max-w-[25%] lg:min-w-[20%] lg:max-w-[20%] lg:mt-10"> -->
+                                        <img class="aspect-[3/4] rounded-br-sm" width="390" height="520"
+                                            :src="clipboardItem.image" :alt="clipboardItem.symbol"
+                                            :title="clipboardItem.symbol">
+                                        <div
+                                            class="w-full flex flex-col items-start text-left text-xs gap-1.5 lg:pb-10">
+                                            <NuxtLink
+                                                :to="localePath({ name: 'product-slug', params: { slug: clipboardItem.slug } })"
+                                                :aria-label="clipboardItem.symbol" :title="clipboardItem.symbol"
+                                                class="text-base font-bold">{{
+                                                    clipboardItem.collection }}
+                                            </NuxtLink>
+                                            <div class="flex justify-between gap-10 w-full">
+                                                <p class="text-gray-3">{{ clipboardItem.category }}</p>
+                                                <div class="flex gap-4">
+                                                    <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
+                                                        :aria-label="clipboardItem.symbol"
+                                                        :title="clipboardItem.symbol">
+                                                        <img src="/assets/icons/delete.svg" width="12" height="12"
+                                                            :title="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`"
+                                                            :alt="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`" />
+                                                    </button>
+                                                    <SectionsCommonGenerateProductCard
+                                                        :productId="clipboardItem.product_id"
+                                                        :variantId="clipboardItem.variant_id" />
+                                                </div>
                                             </div>
+                                            <p>{{ clipboardItem.symbol }}</p>
+                                            <p>{{ clipboardItem.catalog_dimensions }}</p>
+                                            <p v-if="!$isNewtrendyEU()">{{ clipboardItem.price }}</p>
                                         </div>
-                                        <p>{{ clipboardItem.symbol }}</p>
-                                        <p>{{ clipboardItem.catalog_dimensions }}</p>
-                                        <p v-if="!$isNewtrendyEU()">{{ clipboardItem.price }}</p>
                                     </div>
                                 </div>
+
                                 <button type="button" @click="clipboardStore.clear()"
-                                    class="fixed bottom-0 right-6 mx-4 mb-10 px-6 pb-[11px] pt-[14px] border-black border flex gap-6 items-center hover:bg-black transition-all hover:text-white group/button">
+                                    class="relative ml-auto my-10 px-6 pb-[11px] pt-[14px] border-black border flex gap-6 items-center bg-white hover:bg-black transition-all hover:text-white group/button">
                                     <p class="text-xl uppercase">{{ $t('header-clipboard-clear') }}</p>
                                     <img width="18" class="-translate-y-[3px] group-hover/button:white-filter"
                                         src="/assets/icons/delete.svg" :title="$t('header-clipboard-clear')"
                                         :alt="$t('header-clipboard-clear')">
                                 </button>
-                            </template>
-                            <div v-else
-                                class="flex lg:h-[300px] justify-center items-center lg:col-span-5 lg:text-4xl font-medium">
-                                {{ $t('no-saved-products') }}
                             </div>
+                        </template>
+                        <div v-else
+                            class="flex lg:h-[300px] justify-center items-center lg:col-span-5 lg:text-4xl font-medium">
+                            {{ $t('no-saved-products') }}
                         </div>
+
                     </LazySectionsHeaderItem>
 
                     <div class="w-full justify-center flex lg:w-fit lg:justify-start">
