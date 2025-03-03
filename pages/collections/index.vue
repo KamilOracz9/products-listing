@@ -14,9 +14,7 @@
                     </picture>
                 </figure>
 
-                <figCaption>
-                    <h2 class="pt-4">{{ collection.name }}</h2>
-                </figCaption>
+                <p class="pt-4">{{ collection.name }}</p>
 
                 <p class="uppercase w-full justify-end flex gap-2 font-medium text-base mt-2 sm:text-lg lg:mt-10">
                     {{ $t('pages.collections.discover') }}
@@ -37,14 +35,11 @@ const router = useRouter();
 
 const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections($locale));
 
-const { data: collections } = toRefs(data.value);
+const { data: collections, meta, schema } = toRefs(data.value);
 
-setMeta({
-    meta_title: 'Nasze kolekcje pryszniców | NEW TRENDY',
-    meta_description: 'Przeglądaj wyjątkowe kolekcje kabin prysznicowych New Trendy. Odkryj różnorodność stylów, rozmiarów i wykończeń, idealnych do każdej łazienki!'
-})
+setMeta(meta.value)
 
-// useSchemaOrg([
-//   schema.value
-// ])
+useSchemaOrg([
+    schema.value
+])
 </script>

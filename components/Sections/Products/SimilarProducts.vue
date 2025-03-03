@@ -49,12 +49,11 @@ const props = defineProps<{
         name: string;
         slug: string;
     }[];
-    categorySlug: string;
 }>();
 
 const activeSlide = ref(0);
 
-const { products, categorySlug } = toRefs(props);
+const { products } = toRefs(props);
 
 const sliderConfig = {
     'slidesPerView': 1,

@@ -113,4 +113,5 @@ export type Department = {
     "phone": string[];
     "email": string[];
     "icon": string;
+    slug: string;
 }

@@ -8,7 +8,7 @@
         <ul class="flex flex-col gap-1">
             <li v-for="(item, index) in items">
                 <SectionsCommonAccordion :label="item.question" :id="`faq-question-${index}`">
-                    <p>{{ item.answer }}</p>
+                    <p v-html="item.answer"></p>
                 </SectionsCommonAccordion>
             </li>
         </ul>

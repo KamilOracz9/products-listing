@@ -7,9 +7,9 @@ export type Layout = {
 export type Socials = {
     "facebook"?: string;
     "instagram"?: string;
-    "pinterest"?: string;
-    "youtube"?: string;
-    "linkedin"?: string;
+    "pinterest_url"?: string;
+    "youtube_url"?: string;
+    "linkedin_url"?: string;
 }
 
 export type Header = {

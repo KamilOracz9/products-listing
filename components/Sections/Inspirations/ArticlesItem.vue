@@ -17,7 +17,7 @@
 
         <p class="upperacse font-medium text-xl">{{ article.title }}</p>
 
-        <p class="leading-5 my-4 md:line-clamp-2">{{ article.description_short }}</p>
+        <p class="leading-5 my-4 md:line-clamp-2" v-html="article.description_short"></p>
 
         <NuxtLink class="flex gap-2 items-center" :aria-label="$t('more')">{{ $t('more') }}
             <Arrow :direction="'right'" />

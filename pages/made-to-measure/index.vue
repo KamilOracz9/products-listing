@@ -9,8 +9,7 @@
                 <div class="column">
                     <h2>{{ section_1.title }}</h2>
                     <div v-html="section_1.html.top" />
-                    <img :src="section_1.images.svg" width="500" height="152" class="aspect-[auto_500/152] mx-auto"
-                        alt="">
+                    <img :src="section_1.images.svg" width="500" height="152" class="aspect-[auto_500/152] mx-auto" alt="">
                     <div v-html="section_1.html.bottom" />
                     <ButtonsTransparent v-for="button in section_1.buttons" tag-type="link" :label="button.button"
                         :url="button.link" />
@@ -40,8 +39,9 @@
                 <div class="column">
                     <h2>{{ section_3.title }}</h2>
                     <h3 v-for="(item, index) in section_3.items" :data-aos-delay="index * 100">
-                        <NuxtLink :aria-label="item.label" :to="localePath({name: 'made-to-measure', hash: item.hashtag})" class=""><img loading="lazy"
-                                src="@/assets/icons/cross.webp" width="20" height="20" alt="">{{ item.label }}</NuxtLink>
+                        <NuxtLink :aria-label="item.label" :to="localePath({ name: 'made-to-measure', hash: item.hashtag })"
+                            class=""><img loading="lazy" src="@/assets/icons/cross.webp" width="20" height="20" alt="">{{
+                                item.label }}</NuxtLink>
                     </h3>
                 </div>
             </div>
@@ -53,10 +53,10 @@
 
             <SectionsMadeToMeasureModification imgClass="rounded-bl-md md:rounded-bl-lg" :data="section_5">
                 <div class="row col-span-2">
-                    <div class="section-img"><img loading="lazy" width="1000" height="667"
-                            :src="section_5.images[0].left" alt="" class="rounded-tl-md md:rounded-tl-lg"></div>
-                    <div class="section-img"><img loading="lazy" width="1000" height="667"
-                            :src="section_5.images[0].right" alt="" class="rounded-br-md md:rounded-br-lg"></div>
+                    <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_5.images[0].left"
+                            alt="" class="rounded-tl-md md:rounded-tl-lg"></div>
+                    <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_5.images[0].right"
+                            alt="" class="rounded-br-md md:rounded-br-lg"></div>
                 </div>
 
                 <div class="row tech-pictures col-span-2">
@@ -94,7 +94,9 @@
                         <p>{{ item.text }}</p>
                         <table class="mt-auto">
                             <thead>
-                                <th v-for="row in Object.values(item.table[0].thead[0])">{{ row }}</th>
+                                <tr>
+                                    <th v-for="row in Object.values(item.table[0].thead[0])">{{ row }}</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="row in Object.values(item.table[0].tbody)">
@@ -108,15 +110,12 @@
                             <p class="uppercase font-medium">{{ $t('pages.made-to-measure.transparency-level') }}</p>
                             <div class="flex gap-1 items-center stars">
                                 <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_transparency))"
-                                    src="/assets/icons/star-full.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-full.png" width="20" height="20" alt="">
                                 <img loading="lazy" v-if="parseFloat(item.level_transparency) % 1"
-                                    src="/assets/icons/star-half.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-half.png" width="20" height="20" alt="">
                                 <img loading="lazy"
                                     v-for="index in (5 - parseInt(item.level_transparency) - Math.ceil((parseFloat(item.level_transparency) % 1)))"
-                                    src="/assets/icons/star-empty.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-empty.png" width="20" height="20" alt="">
                             </div>
                         </div>
                         <div class="flex justify-between">
@@ -124,15 +123,12 @@
                                 $t('pages.made-to-measure.discretion-level') }}</p>
                             <div class="flex gap-1 items-center stars">
                                 <img loading="lazy" v-for="index in Math.floor(parseInt(item.level_discretion))"
-                                    src="/assets/icons/star-full.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-full.png" width="20" height="20" alt="">
                                 <img loading="lazy" v-if="parseFloat(item.level_discretion) % 1"
-                                    src="/assets/icons/star-half.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-half.png" width="20" height="20" alt="">
                                 <img loading="lazy"
                                     v-for="index in (5 - parseInt(item.level_discretion) - Math.ceil((parseFloat(item.level_discretion) % 1)))"
-                                    src="/assets/icons/star-empty.png"
-                                    width="20" height="20" alt="">
+                                    src="/assets/icons/star-empty.png" width="20" height="20" alt="">
                             </div>
                         </div>
                     </div>

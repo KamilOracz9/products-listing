@@ -75,7 +75,7 @@ provide('locationsIds', locationsIds);
 
 setMeta(meta.value);
 
-// useSchemaOrg([
-//   schema.value
-// ])
+useSchemaOrg([
+  schema.value
+])
 </script>

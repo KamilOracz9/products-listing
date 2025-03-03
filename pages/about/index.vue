@@ -6,7 +6,7 @@
 
       <div class="flex flex-col gap-6 pt-10 sm:gap-0 xl:flex-row xl:gap-10">
         <div class="section-text mt-0 xl:w-[50%]">
-          <p data-aos="fade-up" v-html="description.content.section_1.html"></p>
+          <div data-aos="fade-up" v-html="description.content.section_1.html"></div>
           <ul class="pt-10">
             <li v-for="(item, index) in description.content.section_1.timeline" :key="index"
               class="flex [&:last-child>div]:border-l-0" data-aos="fade-up" :data-aos-delay="index * 100">

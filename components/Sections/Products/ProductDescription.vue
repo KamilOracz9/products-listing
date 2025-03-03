@@ -60,10 +60,9 @@ const props = defineProps<{
         slug: string;
     }[],
     video?: string;
-    categorySlug: string;
 }>();
 
-const { description, doorsOpen, attributes, colors, video, categorySlug } = toRefs(props);
+const { description, doorsOpen, attributes, colors, video } = toRefs(props);
 
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
