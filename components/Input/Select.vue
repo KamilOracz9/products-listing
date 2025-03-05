@@ -5,7 +5,7 @@
             <Arrow />
         </button>
         <ul :class="isOpen ? '' : 'hidden'"
-            class="top-[calc(100%+1px)] absolute bg-white w-[calc(100%+2px)] -left-[1px] border border-black border-t-0">
+            class="top-[calc(100%+1px)] absolute bg-white w-[calc(100%+2px)] -left-[1px] border border-black border-t-0 max-h-[200px] overflow-y-auto">
             <li class="px-5 h-[50px] flex items-center border-b border-black last:border-b-0"
                 @click="onSelected(option)"
                 v-for="(option, index) in options.filter(option => option.value !== selected?.value)" :key="index">{{

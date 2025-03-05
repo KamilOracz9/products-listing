@@ -1,6 +1,6 @@
 <template>
     <section class="mt-6 grid gap-4 md:grid-cols-2 md:gap-10 lg:mt-10" :id="slugify($t('certified-installers'))">
-        <SectionsCommonBox boxClass="bg-yellow-2" :box="{
+        <SectionsCommonBox boxClass="bg-yellow-2 z-10" :box="{
             button: '',
             path: '',
             text: left.text,
