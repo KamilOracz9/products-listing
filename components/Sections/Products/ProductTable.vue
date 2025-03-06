@@ -65,7 +65,7 @@
                 </tbody>
             </table>
             <div class="flex flex-col lg:flex-row gap-10">
-                <div class="flex flex-col gap-4 mt-10">
+                <div v-if="ungroupedVariants.find(({order_time_id}) => order_time_id !== 1)" class="flex flex-col gap-4 mt-10">
                     <div class="flex items-center gap-2">
                         <span :class="[`${getRealizationColor(2)}`]" class="flex size-2 -translate-y-[10%]"></span>
                         <p class="text-sm">{{ $t('product.realization-time.2-weeks') }}</p>
