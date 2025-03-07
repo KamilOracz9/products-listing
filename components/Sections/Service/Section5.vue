@@ -5,14 +5,14 @@
             <ul v-if="selected">
                 <li v-for="(city, index) in cities" :key="index">
                     <p class="font-medium text-lg flex gap-2 mb-2 mt-6 lg:mt-10 lg:mb-6">
-                        <Arrow :direction="'upper'" /> {{ city.name }}
+                        <Arrow :direction="'upper'" /> {{ index }}
                     </p>
                     <ul class="flex flex-col gap-4">
                         <li class="bg-gray-2 flex justify-between font-bold p-4 sm:text-lg xl:max-w-[375px]"
                             v-for="(contact, index) in city" :key="index">
                             <div>
                                 <p>{{ contact.name }}</p>
-                                <p>{{ contact.phone }}</p>
+                                <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a>
                             </div>
 
                             <img src="@/assets/icons/phone.svg" class="h-[50px] w-[32px]" alt="">
@@ -64,4 +64,5 @@ const props = defineProps<{
 const { installers, reklamationForm } = toRefs(props);
 
 const cities = computed(() => (installers.value[selected?.value?.value]));
+
 </script>
