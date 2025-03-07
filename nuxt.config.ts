@@ -4,8 +4,8 @@ import pages from './lang/pages.json';
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      cookiebotToken: "90e49277-0bdd-4186-9847-6827cbf3e895",
-      gtmToken: "TTL3NSXX",
+      cookiebotToken: process.env.COOKIEBOT_TOKEN,
+      gtmToken: process.env.GTM_TOKEN,
     }
   },
   ssr: true,

@@ -60,7 +60,7 @@ useHead(() => ({
   htmlAttrs: {
     lang: i18n.locale.value
   },
-  script: url.host.includes('localhost:3001') ? [
+  script: [
     {
       src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
       tagPosition: 'bodyClose',
@@ -83,7 +83,7 @@ useHead(() => ({
         })(window,document,'script','dataLayer','${runtimeConfig.public.GTM_TOKEN}');
       `
     },
-  ] : [],
+  ],
 }))
 
 useSeoMeta({
