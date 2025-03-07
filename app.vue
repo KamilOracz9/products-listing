@@ -17,6 +17,7 @@ const nuxtApp = useNuxtApp();
 const globalStore = useGlobalStore();
 const { pageIsLoading } = storeToRefs(globalStore);
 const url = useRequestURL();
+const runtimeConfig = useRuntimeConfig()
 
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;
@@ -27,10 +28,6 @@ nuxtApp.hook("page:finish", () => {
 
 useHead(() => ({
   link: [
-    // {
-    //   rel: 'canonical',
-    //   href: nuxtApp.$canonical(),
-    // },
     {
       rel: 'preload',
       type: 'font/ttf',
@@ -63,9 +60,30 @@ useHead(() => ({
   htmlAttrs: {
     lang: i18n.locale.value
   },
-  script: {
-    src: 'https://consent.cookiebot.com/uc.js?cbid=90e49277-0bdd-4186-9847-6827cbf3e895',
-  }
+  script: url.host.includes('localhost:3001') ? [
+    {
+      src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
+      tagPosition: 'bodyClose',
+    },
+    {
+      src: `https://www.googletagmanager.com/ns.html?id=${runtimeConfig.public.NUXT_PUBLIC_GTM_TOKEN}`,
+      height: 0,
+      width: 0,
+      style: "display:none;visibility:hidden",
+      tagPosition: 'bodyOpen',
+    },
+    {
+      type: 'text/javascript',
+      body: true,
+      innerHTML: `
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
+        })(window,document,'script','dataLayer','${runtimeConfig.public.GTM_TOKEN}');
+      `
+    },
+  ] : [],
 }))
 
 useSeoMeta({
@@ -82,11 +100,11 @@ onMounted(() => {
   }, { deep: true });
 
   useSeoMeta({
-  robots: {
-    'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
-    'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
-  },
-})
+    robots: {
+      'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+      'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+    },
+  })
 })
 </script>
 

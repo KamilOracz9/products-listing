@@ -2,6 +2,7 @@ export default defineNuxtPlugin(() => {
     const localePath = useLocalePath();
     const nuxt = useNuxtApp();
     const i18n = nuxt.$i18n;
+    const url = useRequestURL();
 
     addRouteMiddleware('redirect-middleware', (to, from) => {
         if (useRequestURL().host.includes('newtrendy.pl') && i18n.locale.value !== 'pl') navigateTo(`https://newtrendy.eu${localePath(to.fullPath, i18n.locale.value)}`, { external: true, redirectCode: 301 });

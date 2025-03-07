@@ -17,6 +17,7 @@
     "@nuxtjs/i18n": "^8.0.0",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "@unhead/schema-org": "^1.11.19",
+    "@unhead/vue": "^1.11.20",
     "@vitejs/plugin-vue": "^5.1.1",
     "autoprefixer": "^10.4.16",
     "node-mocks-http": "^1.15.0",

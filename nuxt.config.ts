@@ -2,6 +2,12 @@ import pages from './lang/pages.json';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      cookiebotToken: process.env.COOKIEBOT_TOKEN,
+      gtmToken: process.env.GTM_TOKEN,
+    }
+  },
   ssr: true,
   devServer: {
     port: 3001,
