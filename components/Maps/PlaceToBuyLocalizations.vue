@@ -76,11 +76,17 @@ const markers = computed(() => {
             var html = '<div class="group-marker">' + markers.length + '</div>';
             return L.divIcon({ html: html });
         },
-        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: true
+        spiderfyOnMaxZoom: false,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: false,
+        disableClusteringAtZoom: 13,
+
     });
 
     return markers;
 });
+
+console.log(markers.value)
 
 const refreshMarkers = () => {
     markers.value.clearLayers();
@@ -115,7 +121,10 @@ onMounted(() => {
         if (!locationsIdsByZoom.value) locationsIdsByZoom.value[map.value.getZoom() + 3] = [];
         locationsIdsByZoom.value[map.value.getZoom() + 3] = event.layer.getAllChildMarkers().map(child => (child.options.id));
 
-        map.value.zoomIn(3)
+        map.value.flyTo(Object.values(event.latlng), map.value.getZoom() + 3, {
+            animate: true,
+            duration: .5,
+        });
     });
 
     map.value.addLayer(markers.value);
