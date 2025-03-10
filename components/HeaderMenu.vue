@@ -137,7 +137,7 @@
                             <div>
                                 <div class="header__clipboard left-0">
                                     <div v-for="clipboardItem in clipboardStore.items"
-                                        class="pb-28 px-6 flex flex-col items-center gap-2 lg:mt-10">
+                                        class="pb-6 px-6 flex flex-col items-center gap-2 lg:mt-10">
                                         <!-- <div v-for="clipboardItem in clipboardStore.items"
                                     class="pb-28 px-6 flex flex-col items-center gap-2 min-w-full xs:min-w-[50%] xs:max-w-[50%] sm:min-w-[33%] sm:max-w-[33%] md:min-w-[25%] md:max-w-[25%] lg:min-w-[20%] lg:max-w-[20%] lg:mt-10"> -->
                                         <img class="aspect-[3/4] rounded-br-sm" width="390" height="520"

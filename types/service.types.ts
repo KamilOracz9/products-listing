@@ -52,6 +52,7 @@ export type Section4 = {
     "title": string;
     "text": string;
     "button": string;
+    "button_path": string;
 }
 
 export type Section5 = {

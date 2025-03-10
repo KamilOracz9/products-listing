@@ -10,7 +10,7 @@
         </SectionsCommonBox>
         <SectionsCommonBox boxClass="bg-gray-5 rounded-br-[25px] md:rounded-br-lg lg:mt-0" :box="{
             button: right.button,
-            path: 'mailto:czesci@newtrendy.pl',
+            path: right.button_path,
             text: right.text,
             title: right.title
         }" />
