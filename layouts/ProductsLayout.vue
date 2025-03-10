@@ -18,7 +18,8 @@
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                     <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`" class="my-10 underline text-2xl lg:hidden">{{
+                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
+                        class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
                     <SectionsProductsListing :products="data.data" />
@@ -59,9 +60,11 @@ const nuxt = useNuxtApp();
 
 const activeCategory = computed(() => categoryPage.value.categories.filter(category => category.slug === route.params.category)[0]);
 
+const routeQuery = computed(() => route.query)
+
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, nuxt.$locale));
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, nuxt.$locale), { watch: [() => route.query] });
-const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }, nuxt.$locale));
+const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': activeCategory.value?.id ? [activeCategory.value?.id] : null }, nuxt.$locale), { watch: [routeQuery] });
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);

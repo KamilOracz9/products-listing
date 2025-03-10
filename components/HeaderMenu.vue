@@ -32,7 +32,7 @@
                                     </NuxtLink>
                                     <div class="text-sm" v-for="subitem in item.items">
                                         <a v-if="hasMoreThenOneFilter(subitem.query)" class="cursor-pointer"
-                                            v-on:click="router.push(decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`))"
+                                            v-on:click="navigateTo(decodeURI(`${subitem.path}${subitem.query ? '?' + subitem.query : ''}${subitem.hash ?? ''}`))"
                                             :title="subitem.name" :aria-label="subitem.name">
                                             {{ subitem.name }}</a>
                                         <NuxtLink v-else

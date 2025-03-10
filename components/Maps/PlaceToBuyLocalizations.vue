@@ -86,8 +86,6 @@ const markers = computed(() => {
     return markers;
 });
 
-console.log(markers.value)
-
 const refreshMarkers = () => {
     markers.value.clearLayers();
 
