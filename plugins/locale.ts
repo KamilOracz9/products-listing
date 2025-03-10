@@ -23,6 +23,8 @@ export default defineNuxtPlugin(() => {
         'sk': [48.82981184541454, 19.346531896082798],
     }
 
+    const getActiveDomain = () => Object.entries(useRuntimeConfig().public.localeDomains).filter(item => item[1] === url.host)[0][1];
+
     return {
         provide: {
             getLocaleRoute: (routeName: string) => (localeRoutes[routeName].locales.includes(i18n.locale.value) ? localePath({ name: routeName }) : localeRoutes[routeName].redirect),
@@ -30,6 +32,8 @@ export default defineNuxtPlugin(() => {
             isNewtrendyEU: () => url.host === 'newtrendy.eu',
             isNewtrendyPL: () => url.host === 'newtrendy.pl',
             locale: i18n.locales.value.find(item => item.code === i18n.locale.value).language,
+            activeDomain: getActiveDomain(),
+            availableLocales: i18n.locales.value.filter(({ domains }) => domains?.includes(getActiveDomain()))
         },
     };
 })
