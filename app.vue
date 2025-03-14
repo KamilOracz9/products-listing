@@ -60,26 +60,36 @@ useHead(() => ({
   htmlAttrs: {
     lang: i18n.locale.value
   },
+  noscript: [{
+    innerHTML: `
+      <iframe src="https://www.googletagmanager.com/ns.html?id=${runtimeConfig.public.gtmToken}" 
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    `,
+    tagPosition: 'bodyOpen'
+  }],
   script: [
     {
       src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
       tagPosition: 'bodyClose',
     },
-    {
-      src: `https://www.googletagmanager.com/ns.html?id=${runtimeConfig.public.gtmToken}`,
-      height: 0,
-      width: 0,
-      style: "display:none;visibility:hidden",
-      tagPosition: 'bodyOpen',
-    },
+    // {
+    //   src: `https://www.googletagmanager.com/ns.html?id=${runtimeConfig.public.gtmToken}`,
+    //   height: 0,
+    //   width: 0,
+    //   style: "display:none;visibility:hidden",
+    //   tagPosition: 'bodyOpen',
+    // },
     {
       type: 'text/javascript',
-      body: true,
       innerHTML: `
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
+
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
+
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
+
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
+
         })(window,document,'script','dataLayer','${runtimeConfig.public.gtmToken}');
       `
     },
