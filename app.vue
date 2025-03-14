@@ -72,13 +72,6 @@ useHead(() => ({
       src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
       tagPosition: 'bodyClose',
     },
-    // {
-    //   src: `https://www.googletagmanager.com/ns.html?id=${runtimeConfig.public.gtmToken}`,
-    //   height: 0,
-    //   width: 0,
-    //   style: "display:none;visibility:hidden",
-    //   tagPosition: 'bodyOpen',
-    // },
     {
       type: 'text/javascript',
       innerHTML: `
