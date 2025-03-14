@@ -19,14 +19,14 @@
                 <ClientOnly>
                     <ul
                         class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
-                        <li v-for="item in globalStore.locales">
-                            <button v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl'))"
-                                type="button" @click="changeLanguage(item.code)"
+                        <li v-for="locale in $availableLocales">
+                            <button 
+                                type="button" @click="changeLanguage(locale.code)"
                                 class="p-3 flex items-center gap-2 group/dropdown-item">
-                                <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code"
-                                    :title="item.code" />
+                                <img height="12" width="18" :src="`/assets/langs/${locale.code}.svg`" :alt="locale.code"
+                                    :title="locale.code" />
                                 <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
-                                    $t(item.label.toLowerCase()) }}</span>
+                                    $t(locale.language) }}</span>
                             </button>
                         </li>
                         <li v-if="!isWebsiteEu">
@@ -36,6 +36,23 @@
                                     class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">Angielski</span>
                             </a>
                         </li>
+                        <!-- <li v-for="item in locales">
+                            <button v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl'))"
+                                type="button" @click="changeLanguage(item.code)"
+                                class="p-3 flex items-center gap-2 group/dropdown-item">
+                                <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code"
+                                    :title="item.code" />
+                                <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
+                                    $t(item.code.toLowerCase()) }}</span>
+                            </button>
+                        </li>
+                        <li v-if="!isWebsiteEu">
+                            <a href="https://newtrendy.eu/en" class="p-3 flex items-center gap-2 group/dropdown-item">
+                                <img height="12" width="18" :src="`/assets/langs/en.svg`" :alt="'en'" :title="'en'" />
+                                <span
+                                    class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">Angielski</span>
+                            </a>
+                        </li> -->
                     </ul>
                 </ClientOnly>
             </div>
@@ -90,6 +107,8 @@ const changeLanguage = async (lang: string) => {
 
     window.location = window.location.href.split('?')[0];
 }
+
+console.log();
 
 const isWebsiteEu = computed(() => (!useRequestURL().host.includes('newtrendy.pl') && useRequestURL().host !== 'localhost:3001'));
 

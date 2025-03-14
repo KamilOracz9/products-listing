@@ -64,9 +64,9 @@ useSchemaOrg([
   schema.value
 ])
 
-onMounted(() => {
-    window.history.replaceState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path) + '/');
-})
+// onMounted(() => {
+//     window.history.replaceState({}, '', localePath([...toValue(breadcrumbs)].reverse()[0].path) + '/');
+// })
 </script>
 
 <style lang="css">
