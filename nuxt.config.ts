@@ -1,5 +1,4 @@
 import pages from './lang/pages.json';
-import { locales, localeDomains } from './config/i18n.config'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -7,7 +6,6 @@ export default defineNuxtConfig({
     public: {
       cookiebotToken: process.env.COOKIEBOT_TOKEN,
       gtmToken: process.env.GTM_TOKEN,
-      localeDomains: localeDomains,
     }
   },
   ssr: true,
@@ -25,12 +23,6 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
-      '/': { static: true },
-      '/for-professionals': { static: true },
-      '/about': { static: true },
-      '/contact': { static: true },
-      '/download': { static: true },
-      '/download-3d': { static: true },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       '/kategoria-produktu/kabiny-prysznicowe/kwadratowe-prostokatne/': { redirect: { to: '/kategoria-produktu/kabiny-prysznicowe?ksztalkt-produktu[]=kwadratowa', statusCode: 301 } },
@@ -76,40 +68,38 @@ export default defineNuxtConfig({
       '/strefa-partnera/': { redirect: { to: '/dla-profesjonalistow/#strefa-partnera', statusCode: 301 } },
     },
     preset: 'node-server',
-  //   hooks: {
-  //     "prerender:routes"(routes) {
-  //       // routes.pu
+    hooks: {
+      "prerender:routes"(routes) {
+        // routes.pu
+        Object.entries(pages).filter(route => {
+          return !route[0].includes('products')
+            && !route[0].includes('blog')
+            && !route[0].includes('categories')
+            && !route[0].includes('search')
+            && !route[0].includes('product')
+            && !route[0].includes('place-to-buy')
+        }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
+          routes.add(element);
+        });
 
-  //       console.log(routes)
-  //       Object.entries(pages).filter(route => {
-  //         return !route[0].includes('products')
-  //           && !route[0].includes('blog')
-  //           && !route[0].includes('categories')
-  //           && !route[0].includes('search')
-  //           && !route[0].includes('product')
-  //           && !route[0].includes('place-to-buy')
-  //       }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
-  //         routes.add(element);
-  //       });
-
-  //       routes.add("/");
-  //       routes.add("/en");
-  //       routes.add("/de");
-  //       routes.add("/fr");
-  //       routes.add("/it");
-  //       routes.add("/es");
-  //       routes.add("/no");
-  //       routes.add("/sk");
-  //       routes.add("/cs");
-  //       routes.add("/ro");
-  //       routes.add("/ru");
-  //       routes.add("/uk");
-  //       routes.add("/hu");
-  //       routes.add("/et");
-  //       routes.add("/lv");
-  //       routes.add("/lt");
-  //     }
-  //   },
+        routes.add("/");
+        routes.add("/en");
+        routes.add("/de");
+        routes.add("/fr");
+        routes.add("/it");
+        routes.add("/es");
+        routes.add("/no");
+        routes.add("/sk");
+        routes.add("/cs");
+        routes.add("/ro");
+        routes.add("/ru");
+        routes.add("/uk");
+        routes.add("/hu");
+        routes.add("/et");
+        routes.add("/lv");
+        routes.add("/lt");
+      }
+    },
   },
 
   hooks: {
@@ -167,18 +157,67 @@ export default defineNuxtConfig({
   pages: true,
 
   i18n: {
-    locales: locales.map(item => ({
-      code: item.split('_')[0],
-      iso: item,
-      file: `${item.replace('_', '-')}.json`,
-      domains: item === 'pl_PL' ? [localeDomains.pl] : [localeDomains.eu],
-      defaultForDomains: item === 'pl_PL' ? [localeDomains.pl] : (item === 'en_US' ? [localeDomains.eu] : []),
-    })),
+    locales: [
+      {
+        code: 'en',
+        iso: 'en_US',
+        file: 'en-US.json',
+      },
+      {
+        code: 'pl',
+        iso: 'pl_PL',
+        file: 'pl-PL.json',
+      },
+      {
+        code: 'de',
+        iso: 'de_DE',
+        file: 'de-DE.json',
+      },
+      {
+        code: 'ro',
+        iso: 'ro_RO',
+        file: 'ro-RO.json',
+      },
+      {
+        code: 'uk',
+        iso: 'uk_UA',
+        file: 'uk-UA.json',
+      },
+      {
+        code: 'sk',
+        iso: 'sk_SK',
+        file: 'sk-SK.json',
+      },
+      {
+        code: 'cs',
+        iso: 'cs_CZ',
+        file: 'cs-CZ.json',
+      },
+      {
+        code: 'hu',
+        iso: 'hu_HU',
+        file: 'hu-HU.json',
+      },
+      {
+        code: 'et',
+        iso: 'et_EE',
+        file: 'et-EE.json',
+      },
+      {
+        code: 'lv',
+        iso: 'lv_LV',
+        file: 'lv-LV.json',
+      },
+      {
+        code: 'lt',
+        iso: 'lt_LT',
+        file: 'lt-LT.json',
+      },
+    ],
+    defaultLocale: 'pl',
     lazy: true,
     langDir: 'lang/',
     strategy: 'prefix_except_default',
-    multiDomainLocales: true,
-    differentDomains: true,
     detectBrowserLanguage: false,
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     customRoutes: 'config',

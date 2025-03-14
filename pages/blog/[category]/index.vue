@@ -28,7 +28,7 @@ const linkPath = computed(() => {
 
 setMeta(meta.value);
 
-// onMounted(() => {
-//     window.history.replaceState({}, '', linkPath.value + `/${slug.value}/`);
-// })
+onMounted(() => {
+    window.history.replaceState({}, '', linkPath.value + `/${slug.value}/`);
+})
 </script>
