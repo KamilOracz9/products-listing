@@ -68,8 +68,6 @@ const props = defineProps<{
 
 const { data } = toRefs(props);
 
-console.log(data.value)
-
 const activeSlide = ref(0);
 
 const sliderConfig = {
