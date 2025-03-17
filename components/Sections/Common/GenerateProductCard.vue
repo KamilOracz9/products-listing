@@ -1,13 +1,13 @@
 <template>
     <NuxtLink
-        :to="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variantId}/export-to-pdf?locale=${localeIso}`"
+        :to="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variantId}/export-to-pdf?locale=${locales.find(({code}) => code === locale)?.language}`"
         target="_blank">
         <img src="/assets/icons/product_card.svg" :alt="$t('product.generate-product-card')" class="min-w-4 min-h-4" :title="$t('product.generate-product-card')">
     </NuxtLink>
 </template>
 
 <script setup lang="ts">
-import { localeIso } from "~/utils";
+const {locale, locales} = useI18n();
 
 const props = defineProps<{
     productId: number;
