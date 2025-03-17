@@ -36,6 +36,13 @@
                                     class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">Angielski</span>
                             </a>
                         </li>
+                        <li v-if="isWebsiteEu">
+                            <a href="https://newtrendy.pl" class="p-3 flex items-center gap-2 group/dropdown-item">
+                                <img height="12" width="18" :src="`/assets/langs/en.svg`" :alt="'en'" :title="'en'" />
+                                <span
+                                    class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">Polski</span>
+                            </a>
+                        </li>
                     </ul>
                 </ClientOnly>
             </div>
