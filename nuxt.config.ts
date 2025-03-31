@@ -117,114 +117,114 @@ export default defineNuxtConfig({
     //       }
     //     }
     //   },
-    // },
+  },
 
-    postcss: {
-      plugins: {
-        'tailwindcss/nesting': 'postcss-nesting',
-        tailwindcss: {},
-        autoprefixer: {},
+  postcss: {
+    plugins: {
+      'tailwindcss/nesting': 'postcss-nesting',
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+  modules: [
+    'nuxt3-leaflet',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    'nuxt-swiper',
+    ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
+    'nuxt-aos',
+    '@nuxt/image',
+    'nuxt-schema-org',
+  ],
+
+  schemaOrg: {
+    defaults: false
+  },
+
+  image: {
+    dir: 'assets/images',
+  },
+
+  swiper: {
+    modules: ['navigation', 'pagination', 'autoplay'],
+  },
+
+  plugins: [
+    '@/plugins/device',
+    '@/plugins/error-handler',
+    '@/plugins/router',
+    '@/plugins/locale',
+  ],
+
+  pages: true,
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        iso: 'en_US',
+        file: 'en-US.json',
       },
-    },
-
-    modules: [
-      'nuxt3-leaflet',
-      '@pinia/nuxt',
-      '@nuxtjs/i18n',
-      'nuxt-swiper',
-      ['@nuxtjs/robots', { configPath: "~/config/robots.config" }],
-      'nuxt-aos',
-      '@nuxt/image',
-      'nuxt-schema-org',
+      {
+        code: 'pl',
+        iso: 'pl_PL',
+        file: 'pl-PL.json',
+      },
+      {
+        code: 'de',
+        iso: 'de_DE',
+        file: 'de-DE.json',
+      },
+      {
+        code: 'ro',
+        iso: 'ro_RO',
+        file: 'ro-RO.json',
+      },
+      {
+        code: 'uk',
+        iso: 'uk_UA',
+        file: 'uk-UA.json',
+      },
+      {
+        code: 'sk',
+        iso: 'sk_SK',
+        file: 'sk-SK.json',
+      },
+      {
+        code: 'cs',
+        iso: 'cs_CZ',
+        file: 'cs-CZ.json',
+      },
+      {
+        code: 'hu',
+        iso: 'hu_HU',
+        file: 'hu-HU.json',
+      },
+      {
+        code: 'et',
+        iso: 'et_EE',
+        file: 'et-EE.json',
+      },
+      {
+        code: 'lv',
+        iso: 'lv_LV',
+        file: 'lv-LV.json',
+      },
+      {
+        code: 'lt',
+        iso: 'lt_LT',
+        file: 'lt-LT.json',
+      },
     ],
-
-    schemaOrg: {
-      defaults: false
-    },
-
-    image: {
-      dir: 'assets/images',
-    },
-
-    swiper: {
-      modules: ['navigation', 'pagination', 'autoplay'],
-    },
-
-    plugins: [
-      '@/plugins/device',
-      '@/plugins/error-handler',
-      '@/plugins/router',
-      '@/plugins/locale',
-    ],
-
-    pages: true,
-
-    i18n: {
-      locales: [
-        {
-          code: 'en',
-          iso: 'en_US',
-          file: 'en-US.json',
-        },
-        {
-          code: 'pl',
-          iso: 'pl_PL',
-          file: 'pl-PL.json',
-        },
-        {
-          code: 'de',
-          iso: 'de_DE',
-          file: 'de-DE.json',
-        },
-        {
-          code: 'ro',
-          iso: 'ro_RO',
-          file: 'ro-RO.json',
-        },
-        {
-          code: 'uk',
-          iso: 'uk_UA',
-          file: 'uk-UA.json',
-        },
-        {
-          code: 'sk',
-          iso: 'sk_SK',
-          file: 'sk-SK.json',
-        },
-        {
-          code: 'cs',
-          iso: 'cs_CZ',
-          file: 'cs-CZ.json',
-        },
-        {
-          code: 'hu',
-          iso: 'hu_HU',
-          file: 'hu-HU.json',
-        },
-        {
-          code: 'et',
-          iso: 'et_EE',
-          file: 'et-EE.json',
-        },
-        {
-          code: 'lv',
-          iso: 'lv_LV',
-          file: 'lv-LV.json',
-        },
-        {
-          code: 'lt',
-          iso: 'lt_LT',
-          file: 'lt-LT.json',
-        },
-      ],
-      defaultLocale: 'pl',
-      lazy: true,
-      langDir: 'lang/',
-      strategy: 'prefix_except_default',
-      detectBrowserLanguage: false,
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-      customRoutes: 'config',
-      pages: pages,
-    },
-    compatibilityDate: '2024-07-31',
-  })
+    defaultLocale: 'pl',
+    lazy: true,
+    langDir: 'lang/',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: false,
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    customRoutes: 'config',
+    pages: pages,
+  },
+  compatibilityDate: '2024-07-31',
+})
