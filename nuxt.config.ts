@@ -23,9 +23,9 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
-      '/**': { isr: true },
-      '/products': { isr: false },
-      '/search': { isr: false },
+      '/**': { swr: true },
+      '/products': { swr: false },
+      '/search': { swr: false },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       '/kategoria-produktu/kabiny-prysznicowe/kwadratowe-prostokatne/': { redirect: { to: '/kategoria-produktu/kabiny-prysznicowe?ksztalkt-produktu[]=kwadratowa', statusCode: 301 } },
