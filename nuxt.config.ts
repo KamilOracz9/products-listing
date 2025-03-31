@@ -23,6 +23,9 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
+      '/**': { swr: true },
+      '/products': { swr: false },
+      '/search': { swr: false },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       '/kategoria-produktu/kabiny-prysznicowe/kwadratowe-prostokatne/': { redirect: { to: '/kategoria-produktu/kabiny-prysznicowe?ksztalkt-produktu[]=kwadratowa', statusCode: 301 } },
@@ -67,53 +70,53 @@ export default defineNuxtConfig({
       '/strefa-architekta/': { redirect: { to: '/dla-profesjonalistow/#strefa-architekta', statusCode: 301 } },
       '/strefa-partnera/': { redirect: { to: '/dla-profesjonalistow/#strefa-partnera', statusCode: 301 } },
     },
-    preset: 'node-server',
-    hooks: {
-      "prerender:routes"(routes) {
-        // routes.pu
-        Object.entries(pages).filter(route => {
-          return !route[0].includes('products')
-            && !route[0].includes('blog')
-            && !route[0].includes('categories')
-            && !route[0].includes('search')
-            && !route[0].includes('product')
-            && !route[0].includes('place-to-buy')
-        }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
-          routes.add(element);
-        });
+    //   preset: 'node-server',
+    //   hooks: {
+    //     "prerender:routes"(routes) {
+    //       // routes.pu
+    //       Object.entries(pages).filter(route => {
+    //         return !route[0].includes('products')
+    //           && !route[0].includes('blog')
+    //           && !route[0].includes('categories')
+    //           && !route[0].includes('search')
+    //           && !route[0].includes('product')
+    //           && !route[0].includes('place-to-buy')
+    //       }).map(route => Object.entries(route[1]).map(lang => lang[0] === 'pl' ? lang[1] : `/${lang[0]}${lang[1]}`)).flat().forEach(element => {
+    //         routes.add(element);
+    //       });
 
-        routes.add("/");
-        routes.add("/en");
-        routes.add("/de");
-        routes.add("/fr");
-        routes.add("/it");
-        routes.add("/es");
-        routes.add("/no");
-        routes.add("/sk");
-        routes.add("/cs");
-        routes.add("/ro");
-        routes.add("/ru");
-        routes.add("/uk");
-        routes.add("/hu");
-        routes.add("/et");
-        routes.add("/lv");
-        routes.add("/lt");
-      }
-    },
-  },
+    //       routes.add("/");
+    //       routes.add("/en");
+    //       routes.add("/de");
+    //       routes.add("/fr");
+    //       routes.add("/it");
+    //       routes.add("/es");
+    //       routes.add("/no");
+    //       routes.add("/sk");
+    //       routes.add("/cs");
+    //       routes.add("/ro");
+    //       routes.add("/ru");
+    //       routes.add("/uk");
+    //       routes.add("/hu");
+    //       routes.add("/et");
+    //       routes.add("/lv");
+    //       routes.add("/lt");
+    //     }
+    //   },
+    // },
 
-  hooks: {
-    'build:manifest': (manifest) => {
-      // find the app entry, css list
-      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
-      if (css) {
-        // start from the end of the array and go to the beginning
-        for (let i = css.length - 1; i >= 0; i--) {
-          // if it starts with 'entry', remove it from the list
-          if (css[i].startsWith('entry')) css.splice(i, 1)
-        }
-      }
-    },
+    // hooks: {
+    //   'build:manifest': (manifest) => {
+    //     // find the app entry, css list
+    //     const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css
+    //     if (css) {
+    //       // start from the end of the array and go to the beginning
+    //       for (let i = css.length - 1; i >= 0; i--) {
+    //         // if it starts with 'entry', remove it from the list
+    //         if (css[i].startsWith('entry')) css.splice(i, 1)
+    //       }
+    //     }
+    //   },
   },
 
   postcss: {
