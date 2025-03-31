@@ -24,7 +24,7 @@
 const props = defineProps(['filters']);
 const route = useRoute();
 const { filters } = toRefs(props);
-const refresh = inject('refresh');
+// const refresh = inject('refresh');
 const seriesSearch = ref('');
 
 const isDisabled = (active, disabled) => (!active && disabled);
@@ -55,7 +55,7 @@ const onChange = async (event) => {
     delete query.page;
 
     await navigateTo({ query });
-    refresh();
+    // refresh();
 }
 
 const checkFilterUsed = (filterName, optionValue) => {

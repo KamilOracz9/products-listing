@@ -4,5 +4,5 @@ export const fetchCategory = async (slug: string, locale: string) => {
     } catch (error) {
     };
 };
-export const fetchProducts = async (query: any, locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v2/${locale}/products`, { query: Object.fromEntries(Object.entries(query).filter(([, value]) => value)) }));
+export const fetchProducts = async (query: any, locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v3/${locale}/products`, { query: Object.fromEntries(Object.entries(query).filter(([, value]) => value)) }));
 export const fetchProductPage = async (slug: any, locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/products/${slug}`));
