@@ -10,15 +10,14 @@
                 :creative-effect="sliderConfig.creativeEffect" :space-between="sliderConfig.spaceBetween"
                 :breakpoints="sliderConfig.breakpoints">
                 <SwiperSlide v-for="(slide, index) in products" :key="index">
-                    <NuxtLink :to="localePath({ name: 'product-slug', params: {slug: slide.slug} })" class="relative group"
-                        :aria-label="slide.name">
+                    <NuxtLink :to="localePath({ name: 'product-slug', params: { slug: slide.slug } })"
+                        class="relative block group" :aria-label="slide.name">
                         <img :src="slide.images.mobile" alt="">
                         <div
                             class="absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
                             <p class="font-medium text-white uppercase leading-[120%] lg:text-[1.5rem]">{{ slide.name }}
                             </p>
                             <p class="uppercase text-white mt-1 flex gap-2 items-center lg:mt-4">
-                                <!-- Zobacz -->
                                 {{ $t('product.similar-product-see') }}
                                 <Arrow :direction="'right'" class="white-filter" :width="12" />
                             </p>
