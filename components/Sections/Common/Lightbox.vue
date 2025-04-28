@@ -1,5 +1,5 @@
 <template>
-    <VueEasyLightbox class="lightbox" :visible="visibleRef" :imgs="imgsRef" :index="indexRef" @on-index-change="index => onChangeIndex(index)"
+    <VueEasyLightbox class="lightbox" :visible="visibleRef" :imgs="imgsRef" :index="indexRef" @on-index-change="index => onChangeIndex(index + 1)"
         @hide="close" :zoom-scale="0.5" :loop="true">
         <template v-if="images.length > 1" v-slot:prev-btn="{ prev }">
             <div @click="prev" class="left-4 modal-slider-arrow modal-slider-arrow-prev lg:left-6">
@@ -15,7 +15,7 @@
 
         <template #toolbar>
             <div class="p-6 flex items-center">
-                <p v-if="images.length > 1" class="text-lg">{{ activeIndex + 1 }} / {{ images.length }}</p>
+                <!-- <p v-if="images.length > 1" class="text-lg">{{ activeIndex + 1 }} / {{ imgsRef.length }}</p> -->
                 <img src="@/assets/icons/close.svg" loading="lazy" class="w-[25px] ml-auto cursor-pointer" alt="" @click="close">
             </div>
         </template>
