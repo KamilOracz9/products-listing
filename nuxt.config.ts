@@ -2,6 +2,9 @@ import pages from './lang/pages.json';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: {
+    enabled: false,
+  },
   runtimeConfig: {
     public: {
       cookiebotToken: process.env.COOKIEBOT_TOKEN,
