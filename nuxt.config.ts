@@ -23,8 +23,15 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
-      '/**': { swr: true },
+      '/': { swr: true },
+      '/download': { swr: true },
+      '/contact': { swr: true },
+      '/about': { swr: true },
+      '/servis': { swr: true },
+      '/blog': { swr: true },
+      '/made-to-measure': { swr: true },
       '/products': { swr: false },
+      '/products/**': { swr: false },
       '/search': { swr: false },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
@@ -70,7 +77,7 @@ export default defineNuxtConfig({
       '/strefa-architekta/': { redirect: { to: '/dla-profesjonalistow/#strefa-architekta', statusCode: 301 } },
       '/strefa-partnera/': { redirect: { to: '/dla-profesjonalistow/#strefa-partnera', statusCode: 301 } },
     },
-    //   preset: 'node-server',
+    preset: 'node-server',
     //   hooks: {
     //     "prerender:routes"(routes) {
     //       // routes.pu
