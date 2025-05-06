@@ -26,8 +26,15 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
-      '/**': { swr: true },
+      '/': { swr: true },
+      '/download': { swr: true },
+      '/contact': { swr: true },
+      '/about': { swr: true },
+      '/servis': { swr: true },
+      '/blog': { swr: true },
+      '/made-to-measure': { swr: true },
       '/products': { swr: false },
+      '/products/**': { swr: false },
       '/search': { swr: false },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
