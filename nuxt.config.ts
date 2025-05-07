@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     }
   },
   alias: {
-    [resolve(__dirname, 'app.js')]: resolve(__dirname, 'empty.js'),
+    [resolve(__dirname, 'app.js')]: resolve(__dirname, 'app.vue'),
   },
   nitro: {
     externals: {
