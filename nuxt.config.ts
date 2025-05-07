@@ -1,4 +1,5 @@
 import pages from './lang/pages.json';
+import { resolve } from 'pathe'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -20,6 +21,9 @@ export default defineNuxtConfig({
     options: {
       strict: false,
     }
+  },
+  alias: {
+    [resolve(__dirname, 'app.js')]: resolve(__dirname, 'empty.js'),
   },
   nitro: {
     externals: {
