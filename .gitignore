@@ -26,3 +26,4 @@ logs
 
 # Configs
 ecosystem.config.cjs
+app.js

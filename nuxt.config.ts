@@ -39,7 +39,7 @@ export default defineNuxtConfig({
       // '/products': { swr: false },
       // '/products/**': { swr: false },
       // '/search': { swr: false },
-      "/**": { swr: 3600 },
+      "/**": { swr: 60 },
       "/products": { swr: false, },
       "/produkty": { swr: false, },
       "/produkte": { swr: false, },
