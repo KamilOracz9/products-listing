@@ -7,7 +7,12 @@
             </header>
 
             <main class="min-h-[80vh] flex-1 mt-[144px] small-height:mt-[76px] relative grid-content">
-                <slot />
+                <template v-if="pending">
+                    <Loading />
+                </template>
+                <template v-else>
+                    <slot />
+                </template>
             </main>
 
             <footer class="grid-content">
@@ -40,7 +45,9 @@ watch(switchLocalePath, () => {
     lang.value = locales.value.find(({ code }) => code === locale.value)?.language;
 })
 
-const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(lang.value), {watch: [lang]});
+
+
+const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(lang.value), { watch: [lang] });
 
 onMounted(async () => {
     const topBar = document.getElementById('top-bar');

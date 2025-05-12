@@ -154,7 +154,7 @@
                                             <div class="flex justify-between gap-10 w-full">
                                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
                                                 <div class="flex gap-4">
-                                                    <button @click="clipboardStore.toggleItem(clipboardItem.variant_id)"
+                                                    <button @click="clipboardStore.toggleItem(clipboardItem.variant_id, locale)"
                                                         :aria-label="clipboardItem.symbol"
                                                         :title="clipboardItem.symbol">
                                                         <img src="/assets/icons/delete.svg" width="12" height="12"
@@ -220,6 +220,7 @@ const localePath = useLocalePath();
 const headerStore = useHeaderStore();
 const route = useRoute();
 const router = useRouter();
+const locale = ref(getLocaleIso());
 
 const searchQuery = ref('');
 const searchInProducts = ref(false);
@@ -252,7 +253,7 @@ onMounted(async () => {
         if (!(event?.target as Element)?.closest('.header__items')) headerStore.setSubmenu('');
     })
 
-    await clipboardStore.fetchItems();
+    await clipboardStore.fetchItems(locale.value);
 
     searchQuery.value = (route.query.search ?? '') as string;
     searchInInspirations.value = (route.query.searchInInspirations ?? false) as boolean;
