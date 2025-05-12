@@ -22,13 +22,25 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchLayoutData } from '~/services/api/layout';
 
-const refreshing = ref(false)
+// const refreshing = ref(false)
 
-const setIsRefreshing = async () => refreshing.value = true;
+// const setIsRefreshing = async () => refreshing.value = true;
 
-provide('setIsRefreshing', setIsRefreshing);
+// provide('setIsRefreshing', setIsRefreshing);
 
-const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(getLocaleIso()));
+const { locales, locale } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
+
+provide('switchLocalePath', switchLocalePath);
+
+const lang = ref(getLocaleIso());
+
+watch(switchLocalePath, () => {
+    // console.log(locales.value.find(({ code }) => code === locale.value)?.language)
+    lang.value = locales.value.find(({ code }) => code === locale.value)?.language;
+})
+
+const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(lang.value), {watch: [lang]});
 
 onMounted(async () => {
     const topBar = document.getElementById('top-bar');
