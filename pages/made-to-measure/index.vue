@@ -145,9 +145,8 @@ import { fetchMadeToMeasurePage } from '~/services/api';
 import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
 
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
-const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage($locale));
+const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage(getLocaleIso()));
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);
 const { section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10 } = toRefs(description.value.content);
 

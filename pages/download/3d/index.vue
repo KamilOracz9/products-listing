@@ -36,9 +36,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchDownload3DPage } from '~/services/api/download';
 import type { DownloadPage } from '~/types/download.types';
 
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, async () => fetchDownload3DPage($locale));
+const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, async () => fetchDownload3DPage(getLocaleIso()));
 const { breadcrumbs, description, meta, title, schema } = toRefs(data?.value as DownloadPage);
 
 if(data.value) setMeta(meta.value);

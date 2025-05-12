@@ -29,11 +29,10 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchCollections } from '~/services/api';
 
-const { $locale } = useNuxtApp();
 const localePath = useLocalePath();
 const router = useRouter();
 
-const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections($locale));
+const { data } = await useAsyncData(DataKeys.COLLECTIONS_LIST, async () => fetchCollections(getLocaleIso()));
 
 const { data: collections, meta, schema } = toRefs(data.value);
 

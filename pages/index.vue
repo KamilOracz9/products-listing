@@ -31,7 +31,6 @@ import type { HomePage } from '~/types/home.types';
 
 const { locale } = useI18n();
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
 const configuratorLink = computed(() => {
   if (locale.value === 'pl') return 'konfiguratorkabin.pl';
@@ -39,7 +38,7 @@ const configuratorLink = computed(() => {
   else return 'konfiguratorkabin.eu';
 })
 
-const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage($locale));
+const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage(getLocaleIso()));
 const { description, meta, schema } = toRefs(data.value as HomePage);
 const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
 

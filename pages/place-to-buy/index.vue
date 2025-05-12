@@ -25,7 +25,7 @@ import type { PlaceToBuyPage } from '~/types/place-to-buy.types';
 import { fetchShops } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
 
-const { $getMapCenter, $locale } = useNuxtApp();
+const { $getMapCenter } = useNuxtApp();
 const route = useRoute();
 
 const mapKey = ref(0);
@@ -37,7 +37,7 @@ const lastPage = ref(false);
 const locationsIds = ref();
 const locationsList: Ref = ref([]);
 
-const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, $locale, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
+const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, getLocaleIso(), locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
 const { meta, breadcrumbs, title, schema } = toRefs(data.value);
 

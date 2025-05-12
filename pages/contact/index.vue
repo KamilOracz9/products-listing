@@ -17,9 +17,8 @@ import { fetchContactPage } from '~/services/api';
 import type { ContactPage } from '~/types/contact.types';
 
 const { locale } = useI18n();
-const { $locale } = useNuxtApp();
 
-const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchContactPage($locale));
+const { data } = await useAsyncData(DataKeys.CONTACT_PAGE, async () => fetchContactPage(getLocaleIso()));
 const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as ContactPage);
 
 setMeta(meta.value);

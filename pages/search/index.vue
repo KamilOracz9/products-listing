@@ -53,7 +53,6 @@ import { fetchSearchResults } from '~/services/api/search';
 
 const route = useRoute();
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
 const query = computed(() => ({
     search: route.query.search as string,
@@ -61,5 +60,5 @@ const query = computed(() => ({
     searchInInspirations: + !!route.query.searchInInspirations,
 }))
 
-const { data, pending } = await useAsyncData(DataKeys.SEARCH_RESULT, async () => fetchSearchResults($locale, query.value), { watch: [query] });
+const { data, pending } = await useAsyncData(DataKeys.SEARCH_RESULT, async () => fetchSearchResults(getLocaleIso(), query.value), { watch: [query] });
 </script>

@@ -67,9 +67,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchAboutPage } from '~/services/api';
 import type { AboutPage } from '~/types/about.types';
 
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, async () => fetchAboutPage($locale));
+const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, async () => fetchAboutPage(getLocaleIso()));
 const { description, meta, breadcrumbs, schema } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);

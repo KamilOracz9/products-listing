@@ -50,9 +50,8 @@ const openAccordionId = ref('product-description');
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const route = useRoute();
-const nuxt = useNuxtApp();
 
-const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug, nuxt.$locale));
+const { data, pending } = await fetchData(DataKeys.PRODUCT_PAGE, async () => fetchProductPage(route.params.slug, getLocaleIso()));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants, schema } = toRefs(data.value as ProductPage);
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);

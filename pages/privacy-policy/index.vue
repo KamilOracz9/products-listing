@@ -11,9 +11,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchPrivacyPolicyPage } from '~/services/api';
 import type { PrivacyPolicyPage } from '~/types/privacy-policy.types';
 
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.PRIVACY_POLICY_PAGE, async () => fetchPrivacyPolicyPage($locale));
+const { data } = await useAsyncData(DataKeys.PRIVACY_POLICY_PAGE, async () => fetchPrivacyPolicyPage(getLocaleIso()));
 const { breadcrumbs, description, meta, schema } = toRefs(data.value as PrivacyPolicyPage);
 
 setMeta(meta.value);
