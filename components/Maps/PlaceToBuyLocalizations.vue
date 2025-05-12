@@ -16,8 +16,6 @@ const L = await import('leaflet');
 const { MarkerClusterGroup } = await import('leaflet.markercluster');
 
 const route = useRoute();
-const { $locale } = useNuxtApp();
-
 const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
@@ -38,7 +36,7 @@ const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
 const sectionRef = ref();
 const locationsIdsByZoom = ref([]);
 
-const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, $locale, locationsIds.value), { watch: [() => route.query, locationsIds] });
+const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, getLocaleIso(), locationsIds.value), { watch: [() => route.query, locationsIds] });
 
 const map = computed(() => {
     const container = L.DomUtil.get('map');

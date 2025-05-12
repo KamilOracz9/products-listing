@@ -34,7 +34,7 @@ import { fetchCities, fetchVoivodeships } from '~/services/api';
 
 const route = useRoute();
 const router = useRouter();
-const { $getMapCenter, $locale } = useNuxtApp();
+const { $getMapCenter } = useNuxtApp();
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
@@ -45,8 +45,8 @@ const city: Ref<string | null> = ref(null);
 const city_or_code: Ref<string | null> = ref(null);
 const symbol: Ref<string | null> = ref(null);
 
-const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, async () => fetchVoivodeships(voievodeship.value as string, $locale), { watch: [voievodeship] });
-const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, async () => fetchCities(city.value as string, $locale), { watch: [city] });
+const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, async () => fetchVoivodeships(voievodeship.value as string, getLocaleIso()), { watch: [voievodeship] });
+const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, async () => fetchCities(city.value as string, getLocaleIso()), { watch: [city] });
 
 provide('voievodeship', voievodeship);
 provide('city', city);
