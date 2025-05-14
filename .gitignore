@@ -26,3 +26,6 @@ logs
 
 # Configs
 ecosystem.config.cjs
+
+public/*.xml
+public/**/*.xml

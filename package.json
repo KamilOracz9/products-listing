@@ -46,6 +46,7 @@
     "nuxt-schema-org": "^4.1.1",
     "nuxt-swiper": "^1.2.2",
     "nuxt3-leaflet": "^1.0.12",
+    "ofetch": "^1.4.1",
     "pinia": "^2.1.7",
     "vue-easy-lightbox": "^1.17.0"
   },
