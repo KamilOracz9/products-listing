@@ -60,5 +60,9 @@ const query = computed(() => ({
     searchInInspirations: + !!route.query.searchInInspirations,
 }))
 
+watch(query, () => {
+    refreshNuxtData()
+})
+
 const { data, pending } = await useAsyncData(DataKeys.SEARCH_RESULT, async () => fetchSearchResults(getLocaleIso(), query.value), { watch: [query] });
 </script>
