@@ -1,6 +1,6 @@
 <template>
     <div class="border relative">
-        <input :disabled="disabled" :class="modelKey ? `select-${modelKey}` : ''" type="text" v-model="model" @mousedown="toggleOpen"
+        <input autocomplete="off" :disabled="disabled" :class="modelKey ? `select-${modelKey}` : ''" type="text" v-model="model" :onfocus="() => toggleOpen()"
             @input="($event) => onInput((<HTMLInputElement>$event.target)?.value)"
             class="disabled:bg-gray-6 border-0 w-full py-3.5 px-5 focus:ring-0 placeholder:text-gray-1 placeholder:text-sm"
             :placeholder="placeholder">
@@ -19,7 +19,6 @@ import debounce from 'debounce';
 const props = defineProps(['modelKey', 'options', 'placeholder', 'disabled'])
 
 const { options, placeholder, modelKey } = toRefs(props);
-
 
 const model = inject<Ref<string>>(modelKey?.value) ?? ref('');
 const isOpen = ref(false);

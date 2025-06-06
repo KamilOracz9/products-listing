@@ -35,6 +35,7 @@ import { fetchCities, fetchVoivodeships } from '~/services/api';
 const route = useRoute();
 const router = useRouter();
 const { $getMapCenter } = useNuxtApp();
+const {locale, locales} = useI18n();
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
@@ -45,8 +46,11 @@ const city: Ref<string | null> = ref(null);
 const city_or_code: Ref<string | null> = ref(null);
 const symbol: Ref<string | null> = ref(null);
 
-const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, async () => fetchVoivodeships(voievodeship.value as string, getLocaleIso()), { watch: [voievodeship] });
-const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, async () => fetchCities(city.value as string, getLocaleIso()), { watch: [city] });
+const cities = ref([]);
+const voivodeships = ref([]);
+
+// const { data: voivodeships } = await useAsyncData(DataKeys.VOIVODESHIPS_LIST, async () => fetchVoivodeships(voievodeship.value as string, getLocaleIso()), { watch: [voievodeship] });
+// const { data: cities } = await useAsyncData(DataKeys.CITIES_LIST, async () => fetchCities(city.value as string, getLocaleIso()), { watch: [city.value] });
 
 provide('voievodeship', voievodeship);
 provide('city', city);
@@ -93,10 +97,20 @@ const onSubmit = async () => {
     if (mapKey) mapKey.value += 1;
 }
 
+watch(city, (value) => {
+    fetchCities(value as string, locales.value.find(item => item.code === locale.value).language).then(response => cities.value = response)
+})
+
+watch(voievodeship, (value) => {
+    fetchVoivodeships(value as string, locales.value.find(item => item.code === locale.value).language).then(response => voivodeships.value = response)
+})
+
 onMounted(async () => {
     voievodeship.value = <string>route.query.voievodeship ?? null;
     city.value = <string>route.query.city ?? null;
     city_or_code.value = <string>route.query.city_or_code ?? null;
     symbol.value = <string>route.query.symbol ?? null;
+
+    
 })
 </script>
