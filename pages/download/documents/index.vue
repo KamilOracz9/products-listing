@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-10">
+    <div class="mb-10" v-if="data">
         <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
         <p class="section-title">{{ title }}</p>
@@ -22,7 +22,7 @@
                     </li>
                 </ul>
 
-                <div class="self-start [&>a]:border-black">
+                <div class="self-start">
                     <ButtonsTransparent v-if="section.button" tagType="link" :url="section.link"
                         :label="section.button" />
                 </div>
@@ -33,15 +33,15 @@
 
 <script setup lang="ts">
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchDownloadPage } from '~/services/api/download';
+import { fetchDownloadDocumentsPage } from '~/services/api/download';
 import type { DownloadPage } from '~/types/download.types';
 
-const { data } = await useAsyncData(DataKeys.DOWNLOAD_PAGE, async () => fetchDownloadPage(getLocaleIso()));
-const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as DownloadPage);
+const { data } = await useAsyncData(DataKeys.DOWNLOAD_3D_PAGE, async () => fetchDownloadDocumentsPage(getLocaleIso()));
+const { breadcrumbs, description, meta, title, schema } = toRefs(data?.value as DownloadPage);
 
-setMeta(meta.value);
+if(data.value) setMeta(meta.value);
 
 useSchemaOrg([
-  schema.value
+  schema?.value ?? ''
 ])
 </script>

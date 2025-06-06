@@ -143,6 +143,24 @@
     "lv": "/lejupielade-3d-faili",
     "lt": "/atsisiusti-3d-failus"
   },
+  "download/documents/index": {
+    "en": "/download-documents",
+    "pl": "/pobierz-dokumenty",
+    "de": "/dokumente-herunterladen",
+    "fr": "/telecharger-documents",
+    "it": "/scarica-documenti",
+    "es": "/descargar-documentos",
+    "no": "/last-ned-dokumenter",
+    "sk": "/stiahnut-dokumenty",
+    "cs": "/stahnout-dokumenty",
+    "ro": "/descarca-documente",
+    "ru": "/skachat-dokumenty",
+    "uk": "/завантажити-документи",
+    "hu": "/letoltes-dokumentumok",
+    "et": "/dokumentide-allalaadimine",
+    "lv": "/lejupielade-dokumenti",
+    "lt": "/atsisiusti-dokumentus"
+  },
   "service/index": {
     "en": "/service",
     "pl": "/serwis",
