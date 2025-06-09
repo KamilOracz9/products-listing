@@ -145,6 +145,11 @@ provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 const getHeader = (variant: Variant, header: string) => {
+    
+    // if(variant[header].startsWith('66-')) return 
+
+    if(header.startsWith('dimension_') && variant[header].startsWith('0-')) return `max ${variant[header].split('-')[1]}`;
+
     return variant[header];
 }
 
