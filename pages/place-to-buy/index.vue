@@ -48,13 +48,8 @@ onMounted(() => {
         locationsList.value = [];
         selected.value = null;
         lastPage.value = false;
-    })
 
-    watch(locationsIds, () => {
-        page.value = 1;
-        locationsList.value = [];
-        selected.value = null;
-        lastPage.value = false;
+        mapKey.value = mapKey.value + 1;
     })
 
     watch(() => data.value, value => {

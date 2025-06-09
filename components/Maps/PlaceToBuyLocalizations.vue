@@ -87,7 +87,7 @@ const markers = computed(() => {
 const refreshMarkers = () => {
     markers.value.clearLayers();
 
-    data.value.forEach(({ lat, lon, id }, index) => {
+    (data.value ?? []).forEach(({ lat, lon, id }, index) => {
         const marker = L.marker([lat, lon], { icon: selected.value === id ? iconRed : icon, id });
 
         marker.addEventListener('click', () => {

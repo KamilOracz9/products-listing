@@ -2,15 +2,18 @@
     <div>
         <div class="bg-gray-2 p-4 grid gap-4 items-center lg:grid-cols-6">
             <div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }" :disabled="!!city_or_code" modelKey="voievodeship" :options="voivodeships"
+                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }"
+                    :disabled="!!city_or_code" modelKey="voievodeship" :options="voivodeships"
                     :placeholder="$t('pages.place-to-buy.select-voievodship')" />
-                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }" :disabled="!!city_or_code"
-                    modelKey="city" :options="cities" :placeholder="$t('pages.place-to-buy.select-city')" />
+                <InputSelect2 :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }"
+                    :disabled="!!city_or_code" modelKey="city" :options="cities"
+                    :placeholder="$t('pages.place-to-buy.select-city')" />
             </div>
 
             <div class="text-lg text-center">{{ $t('or') }}</div>
 
-            <input :disabled="!!voievodeship || !!city" v-model="city_or_code" type="text" :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }"
+            <input :disabled="!!voievodeship || !!city" v-model="city_or_code" type="text"
+                :onkeydown="(event) => { if (event.keyCode === 13) onSubmit() }"
                 class="disabled:bg-gray-6 border-gray-6 focus:border-gray-6 lg:col-span-2 w-full py-3.5 px-5 focus:ring-0 placeholder:text-gray-1 placeholder:text-sm"
                 :placeholder="$t('pages.place-to-buy.input-placeholder')">
             <div class="[&>button]:border-black [&>button]:justify-center [&>button]:h-[52px]">
@@ -35,7 +38,7 @@ import { fetchCities, fetchVoivodeships } from '~/services/api';
 const route = useRoute();
 const router = useRouter();
 const { $getMapCenter } = useNuxtApp();
-const {locale, locales} = useI18n();
+const { locale, locales } = useI18n();
 
 const mapZoom: Ref<number> | undefined = inject('mapZoom');
 const mapCenter: Ref<number[]> | undefined = inject('mapCenter');
@@ -97,20 +100,18 @@ const onSubmit = async () => {
     if (mapKey) mapKey.value += 1;
 }
 
-watch(city, (value) => {
-    fetchCities(value as string, locales.value.find(item => item.code === locale.value).language).then(response => cities.value = response)
-})
-
-watch(voievodeship, (value) => {
-    fetchVoivodeships(value as string, locales.value.find(item => item.code === locale.value).language).then(response => voivodeships.value = response)
-})
-
-onMounted(async () => {
+onMounted(() => {
     voievodeship.value = <string>route.query.voievodeship ?? null;
     city.value = <string>route.query.city ?? null;
     city_or_code.value = <string>route.query.city_or_code ?? null;
     symbol.value = <string>route.query.symbol ?? null;
 
-    
+    watch(city, (value) => {
+        fetchCities(value as string, locales.value.find(item => item.code === locale.value).language).then(response => cities.value = response)
+    })
+
+    watch(voievodeship, (value) => {
+        fetchVoivodeships(value as string, locales.value.find(item => item.code === locale.value).language).then(response => voivodeships.value = response)
+    })
 })
 </script>
