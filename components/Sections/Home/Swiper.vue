@@ -10,7 +10,7 @@
                     :aria-label="slide.title ?? `New Trendy - slide-${index}`" :key="index"
                     :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
-                        class="mx-auto h-[582px] flex relative after:w-full after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
+                        class="mx-auto h-[362px] flex relative lg:after:w-full lg:after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[288px] lg:h-[612px] 2xl:h-[716px]">
 
                         <!-- <img v-if="slide.image" decoding="async" :srcset="`
                                 ${slide.image?.mobile} 607w,
@@ -22,7 +22,7 @@
                         <picture v-if="slide.image" >
                             <source media="(min-width:1024px)" :srcset="slide.image?.desktop">
                             <source media="(min-width:640px)" :srcset="slide.image?.tablet">
-                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="h-full w-full object-cover">
+                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="lg:h-full w-full lg:object-cover">
                         </picture>
 
                         <ClientOnly>
