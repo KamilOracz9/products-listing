@@ -21,6 +21,4 @@ const props = defineProps<{
 }>();
 
 const { files } = toRefs(props);
-
-console.log(files.value)
 </script>
