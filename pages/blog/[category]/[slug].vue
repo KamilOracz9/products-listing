@@ -113,7 +113,8 @@ onMounted(() => {
     padding-left: 1.25rem;
 }
 
-.article-content a:not(.img-url) {
+.article-content > a:not(.img-url),
+.article-content div > a:not(.img-url) {
     font-size: 1.375rem;
     border: 1px solid #1d1d1b;
     position: relative;
