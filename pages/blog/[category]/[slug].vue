@@ -75,6 +75,16 @@ onMounted(() => {
     gap: 2.5rem;
 }
 
+.article-content p a:hover {
+    background-color: unset !important;
+    color: unset !important;
+    text-decoration: underline;
+}
+
+.article-content p a {
+    text-decoration: underline;
+}
+
 .article-content p,
 .article-content a,
 .article-content li {
