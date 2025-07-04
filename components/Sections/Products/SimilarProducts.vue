@@ -13,8 +13,9 @@
                         class="relative block group" :aria-label="slide.name">
                         <img :src="slide.images.mobile" alt="">
                         <div
-                            class="absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
-                            <p class="font-medium text-white uppercase leading-[120%] lg:text-[1.5rem]">{{ slide.name }}
+                            style="container-type: inline-size;"
+                            class="container absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-8 transition-opacity group-hover:opacity-[1]">
+                            <p class="font-medium text-white uppercase leading-[120%] text-[10cqi]">{{ slide.name }}
                             </p>
                             <p class="uppercase text-white mt-1 flex gap-2 items-center lg:mt-4">
                                 {{ $t('product.similar-product-see') }}
