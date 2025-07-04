@@ -1,7 +1,6 @@
 <template>
     <section>
-        <h4 v-if="products.length" class="uppercase font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8">{{
-            $t('product.similar-products') }}</h4>
+        <h4 v-if="products.length" class="uppercase font-medium text-2xl mt-0 mb-2 sm:text-[1.625rem] sm:leading-8">{{ title }}</h4>
 
         <KeepAlive>
             <Swiper :navigation="sliderConfig.navigation" @slideChange="activeSlide = $event.realIndex" class="relative"
@@ -25,11 +24,11 @@
                     </NuxtLink>
                 </SwiperSlide>
 
-                <div class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev lg:left-6">
+                <div v-if="products.length > 5" class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev lg:left-6">
                     <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
                 </div>
 
-                <div class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next lg:right-6">
+                <div v-if="products.length > 5" class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next lg:right-6">
                     <img src="@/assets/icons/slider-arrow.svg" alt="">
                 </div>
             </Swiper>
@@ -48,6 +47,7 @@ const props = defineProps<{
         name: string;
         slug: string;
     }[];
+    title: string;
 }>();
 
 const activeSlide = ref(0);

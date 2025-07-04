@@ -27,14 +27,17 @@
                         <SectionsProductsProductDescription :video="data.video" :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
-                        <SectionsProductsProductTable v-if="variants" :techImages="[...images.technical, ...images.technical_desc]"
-                            :productId="data.id" :variants="variants" />
+                        <SectionsProductsProductTable v-if="variants"
+                            :techImages="[...images.technical, ...images.technical_desc]" :productId="data.id"
+                            :variants="variants" />
                         <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
                         <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />
                     </div>
                 </div>
             </div>
-            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" />
+            <SectionsProductsSimilarProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
+            <span class="mb-10 block"></span>
+            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" :title="$t('product.similar-products')" />
         </div>
 
         <SectionsCommonFindUs />
@@ -60,7 +63,7 @@ const hasGlasses = computed(() => !!images.value.glasses.length);
 setMeta(meta.value);
 
 useSchemaOrg([
-  schema.value
+    schema.value
 ])
 
 provide('openAccordionId', openAccordionId);
