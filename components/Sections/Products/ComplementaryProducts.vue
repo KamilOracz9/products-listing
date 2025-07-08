@@ -14,10 +14,10 @@
                         <img :src="slide.images.mobile" alt="">
                         <div
                             style="container-type: inline-size;"
-                            class="container absolute w-full h-full flex bg-[rgba(0,0,0,.5)] opacity-0 z-10 top-0 left-0 flex-col justify-end p-[1.5cqi] transition-opacity group-hover:opacity-[1]">
-                            <p class="font-medium text-white uppercase leading-[120%] text-[8cqi]">{{ slide.name }}
+                            class="container full grid justify-end mt-4 h-full">
+                            <p class="font-medium uppercase text-[7cqi] leading-[120%] line-clamp-[2]">{{ slide.name }}
                             </p>
-                            <p class="uppercase text-white flex gap-2 items-center text-[8cqi] mt-[6cqi]">
+                            <p class="uppercase mt-2 flex gap-2 items-center text-white bg-black w-fit px-2 py-[.125rem] rounded-br-xs hover:bg-yellow-1 transition-all">
                                 {{ $t('product.similar-product-see') }}
                                 <Arrow :direction="'right'" class="white-filter" :width="12" />
                             </p>
@@ -25,11 +25,11 @@
                     </NuxtLink>
                 </SwiperSlide>
 
-                <div v-if="products.length > 5" class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev lg:left-6">
+                <div v-if="products.length > 5" class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev -translate-y-[120%] lg:-translate-y-[65%] lg:left-6">
                     <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
                 </div>
 
-                <div v-if="products.length > 5" class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next lg:right-6">
+                <div v-if="products.length > 5" class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next -translate-y-[120%] lg:-translate-y-[65%] lg:right-6">
                     <img src="@/assets/icons/slider-arrow.svg" alt="">
                 </div>
             </Swiper>

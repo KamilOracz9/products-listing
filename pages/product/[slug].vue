@@ -35,7 +35,8 @@
                     </div>
                 </div>
             </div>
-            <SectionsProductsSimilarProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
+            <SectionsProductsComplementaryProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
+            <!-- <SectionsComplementarySimilarProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" /> -->
             <span class="mb-10 block"></span>
             <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" :title="$t('product.similar-products')" />
         </div>
