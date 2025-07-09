@@ -35,9 +35,11 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28">
-                <ProductsSlider :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
-                <ProductsSlider :products="data.relationships.similar ?? []" :title="$t('product.similar-products')" />
+            <div :class="hasAllRelationships && 'flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28'">
+                <ProductsSlider :sliderConfig="sliderConfig" :products="data.relationships.complementary ?? []"
+                    :title="$t('product.complementary-products')" />
+                <ProductsSlider :sliderConfig="sliderConfig" :products="data.relationships.similar ?? []"
+                    :title="$t('product.similar-products')" />
             </div>
         </div>
 
@@ -61,6 +63,31 @@ const { badge, breadcrumbs, category, description, files, images, meta, name, va
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
 const hasGlasses = computed(() => !!images.value.glasses.length);
+const hasAllRelationships = computed(() => !!(data.value.relationships.similar.length && data.value.relationships.complementary.length))
+
+const sliderConfig = computed(() => (
+    {
+        'slidesPerView': 1,
+        autoplay: false,
+        loop: true,
+        navigation: {
+            nextEl: '.similar-products-slider-arrow-next',
+            prevEl: '.similar-products-slider-arrow-prev',
+        },
+        spaceBetween: 20,
+        breakpoints: hasAllRelationships.value ? {
+            450: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 2, spaceBetween: 30 },
+            1280: { slidesPerView: 3, spaceBetween: 40 },
+        } : {
+            450: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 4, spaceBetween: 30 },
+            1280: { slidesPerView: 5, spaceBetween: 40 },
+        }
+    }
+));
 
 setMeta(meta.value);
 

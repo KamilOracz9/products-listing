@@ -21,7 +21,7 @@
                         <div
                             style="container-type: inline-size;"
                             class="container full grid justify-end mt-4 h-full">
-                            <p class="font-medium uppercase text-[7cqi] line-clamp-[2]">{{ slide.name }}
+                            <p class="font-medium uppercase text-[7cqi] line-clamp-[2] leading-[10cqi]">{{ slide.name }}
                             </p>
                             <p class="uppercase mt-2 flex gap-2 items-center text-white bg-black w-fit px-2 py-[.125rem] rounded-br-xs group-hover:bg-yellow-1 transition-all">
                                 {{ $t('product.similar-product-see') }}
@@ -55,6 +55,17 @@ const props = defineProps<{
         slug: string;
     }[];
     title: string;
+    sliderConfig: {
+        slidesPerView: number,
+        autoplay: boolean,
+        loop: boolean,
+        navigation: {
+            nextEl: string,
+            prevEl: string,
+        },
+        spaceBetween: number,
+        breakpoints: {[key: number]: {[key: string]: number}}
+    };
 }>();
 
 const swiperModules = [SwiperNavigation];
@@ -62,21 +73,4 @@ const swiperModules = [SwiperNavigation];
 const activeSlide = ref(0);
 
 const { products } = toRefs(props);
-
-const sliderConfig = {
-    'slidesPerView': 1,
-    autoplay: false,
-    loop: true,
-    navigation: {
-        nextEl: '.similar-products-slider-arrow-next',
-        prevEl: '.similar-products-slider-arrow-prev',
-    },
-    spaceBetween: 20,
-    breakpoints: {
-        450: { slidesPerView: 2 },
-        640: { slidesPerView: 3 },
-        1024: { slidesPerView: 2, spaceBetween: 30 },
-        1280: { slidesPerView: 3, spaceBetween: 40 },
-    }
-};
 </script>
