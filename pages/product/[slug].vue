@@ -35,10 +35,10 @@
                     </div>
                 </div>
             </div>
-            <SectionsProductsComplementaryProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
-            <!-- <SectionsComplementarySimilarProducts :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" /> -->
-            <span class="mb-10 block"></span>
-            <SectionsProductsSimilarProducts :products="data.relationships.similar ?? []" :title="$t('product.similar-products')" />
+            <div class="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28">
+                <ProductsSlider :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')" />
+                <ProductsSlider :products="data.relationships.similar ?? []" :title="$t('product.similar-products')" />
+            </div>
         </div>
 
         <SectionsCommonFindUs />
@@ -46,6 +46,7 @@
 </template>
 
 <script setup lang="ts">
+import ProductsSlider from '~/components/Sections/Products/ProductsSlider.vue';
 import { DataKeys } from '~/enums/dataKeys';
 import fetchData, { fetchProductPage } from '~/services/api';
 import type { ProductPage } from '~/types/products.types';
