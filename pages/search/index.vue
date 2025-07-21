@@ -15,7 +15,7 @@
                     <NuxtLink :to="localePath({ name: 'product-slug', params: {slug: product.slug} })"
                         :aria-label="product.name" v-for="product in data?.products" class="flex flex-col gap-2 relative">
                         <SectionsProductsBadge :badge="product.badge" />
-                        <p :class="product.symbol.toLowerCase() !== route.query.search.toLowerCase() ? 'text-gray-1' : ''" class="font-semibold text-lg leading-[1.1]">{{ product.symbol }}</p>
+                        <!-- <p :class="product.symbol.toLowerCase() !== route.query.search.toLowerCase() ? 'text-gray-1' : ''" class="font-semibold text-lg leading-[1.1]">{{ product.symbol }}</p> -->
                         <div>
                             <img width="460" height="613" :src="product.media['460_613']" alt="">
                         </div>
