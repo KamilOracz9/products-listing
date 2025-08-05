@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div v-if="!pending" class="mb-12">
+    <section v-if="data && !pending">
+        <div class="mb-12">
             <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" />
 
             <div class="pb-10 w-full lg:flex lg:gap-10">
@@ -89,9 +89,9 @@ const sliderConfig = computed(() => (
     }
 ));
 
-setMeta(meta.value);
+if(meta) setMeta(meta.value);
 
-useSchemaOrg([
+if(schema) useSchemaOrg([
     schema.value
 ])
 
