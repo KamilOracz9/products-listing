@@ -564,7 +564,7 @@
     }
 
     #made-to-measure .section-img img {
-        @apply max-h-[400px] w-full object-cover;
+        /* @apply w-full object-cover; */
     }
 
     /* Contact */
