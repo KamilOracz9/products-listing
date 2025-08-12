@@ -100,14 +100,16 @@
                                         </div>
 
                                         <div
-                                            class="flex items-center justify-between border border-gray-1 px-2 py-1 w-full lg:max-w-[480px] lg:mr-2">
-                                            <input class="p-2 outline-none border-0 focus:ring-0" name="search"
+                                            class="flex items-center justify-between border border-gray-1 pl-2 w-full lg:max-w-[480px] lg:mr-2">
+                                            <input class="px-2 py-3 outline-none border-0 w-full focus:ring-0" name="search"
                                                 type="text" v-model="searchQuery"
                                                 :placeholder="$t('what-are-you-looking-for')"
                                                 @keydown="(event) => { if (event.keyCode === 13) search() }">
-                                            <img width="16" height="16" class="w-4 h-4 gray-1-filter"
+                                            <button v-on:click="search()" class="flex justify-center items-center w-10 h-full">
+                                                <img width="16" height="16" class="w-4 h-4 gray-1-filter"
                                                 :alt="$t('search')" :title="$t('search')"
                                                 src="@/assets/icons/search.svg">
+                                            </button>
                                         </div>
 
                                         <span class="w-full lg:w-auto">
@@ -240,6 +242,18 @@ const search = () => {
 
 const headerMenuRef = ref();
 
+function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
 onMounted(async () => {
     const navObserver = new IntersectionObserver((entries) => {
         headerMenuRef.value?.classList.toggle('top-0', !entries[0].isIntersecting);
@@ -248,7 +262,7 @@ onMounted(async () => {
 
     navObserver.observe(document.getElementById('top-bar') as Element);
 
-    document.addEventListener('scroll', () => headerStore.setSubmenu(''));
+    if(!iOS()) document.addEventListener('scroll', () => headerStore.setSubmenu(''));
     document.addEventListener('click', () => {
         if (!(event?.target as Element)?.closest('.header__items')) headerStore.setSubmenu('');
     })
