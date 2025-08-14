@@ -4,7 +4,7 @@
         <div :class="footerStore.isActive(slugify(name)) ? 'max-lg:active' : 'max-lg:inactive'">
             <div>
                 <NuxtLink v-for="item in items" class="text-normal-base hover-opacity-60 cursor-pointer transition-all"
-                    :to="item.path ?? '#'" :aria-label="item.name">{{ item.name }}</NuxtLink>
+                    :to="item.path ? `${item.path}${item.hash ?? ''}` : '#'" :aria-label="item.name">{{ item.name }}</NuxtLink>
             </div>
         </div>
     </li>

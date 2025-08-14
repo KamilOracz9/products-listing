@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3001,
   },
-  experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
+  // experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
   router: {
     options: {
       strict: false,
