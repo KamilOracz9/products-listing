@@ -259,7 +259,9 @@
             "4-weeks": "Produkts pieejams pēc pieprasījuma. Piegādes laiks aptuveni 4 nedēļas",
             "6-weeks": "Produkts pieejams pēc pieprasījuma. Piegādes laiks aptuveni 6 nedēļas"
         },
-        "toggle-toggle-clipboard": "Pārslēgt produktu uzlīmētavā" 
+        "toggle-toggle-clipboard": "Pārslēgt produktu uzlīmētavā",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

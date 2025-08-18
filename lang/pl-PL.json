@@ -264,7 +264,9 @@
             "4-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 4 tygodni",
             "6-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 6 tygodni"
         },
-        "toggle-toggle-clipboard": "Przełącz produkt w schowku"
+        "toggle-toggle-clipboard": "Przełącz produkt w schowku",
+        "L": "L",
+        "P": "P"
     },
     "home": {
         "in-offer": {

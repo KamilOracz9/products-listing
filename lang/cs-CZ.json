@@ -259,7 +259,9 @@
             "4-weeks": "Produkt je dostupný na objednávku. Dodací lhůta cca 4 týdny",
             "6-weeks": "Produkt je dostupný na objednávku. Dodací lhůta cca 6 týdnů"
         },
-        "toggle-toggle-clipboard": "Přepnout produkt ve schránce"
+        "toggle-toggle-clipboard": "Přepnout produkt ve schránce",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

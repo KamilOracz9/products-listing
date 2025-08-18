@@ -33,8 +33,7 @@
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
-                                :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
-                                    header) }}</td>
+                                :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />

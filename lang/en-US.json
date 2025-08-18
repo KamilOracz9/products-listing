@@ -259,8 +259,9 @@
             "4-weeks": "PProduct available on request. Delivery time approx. 4 weeks",
             "6-weeks": "Product available on request. Delivery time approx. 6 weeks"
         },
-        "toggle-toggle-clipboard": "Toggle product in clipboard"
-        
+        "toggle-toggle-clipboard": "Toggle product in clipboard",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

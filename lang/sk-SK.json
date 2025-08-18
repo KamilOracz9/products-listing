@@ -264,7 +264,9 @@
             "4-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 4 týždne",
             "6-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 6 týždňov"
         },
-        "toggle-toggle-clipboard": "Prepnúť produkt v schránke"
+        "toggle-toggle-clipboard": "Prepnúť produkt v schránke",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

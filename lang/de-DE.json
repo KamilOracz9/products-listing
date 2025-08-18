@@ -264,7 +264,9 @@
             "4-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 4 Wochen",
             "6-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 6 Wochen"
         },
-        "toggle-toggle-clipboard": "Produkt in der Zwischenablage umschalten"
+        "toggle-toggle-clipboard": "Produkt in der Zwischenablage umschalten",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

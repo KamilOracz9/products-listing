@@ -259,7 +259,9 @@
             "4-weeks": "Produktas prieinamas pagal užsakymą. Pristatymo laikas apie 4 savaites",
             "6-weeks": "Produktas prieinamas pagal užsakymą. Pristatymo laikas apie 6 savaites"
         },
-        "toggle-toggle-clipboard": "Perjungti produktą iškarpinėje" 
+        "toggle-toggle-clipboard": "Perjungti produktą iškarpinėje",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

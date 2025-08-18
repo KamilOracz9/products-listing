@@ -259,7 +259,9 @@
             "4-weeks": "Toode saadaval soovi korral. Kohaletoimetamise aeg umbes 4 nädalat",
             "6-weeks": "Toode saadaval soovi korral. Kohaletoimetamise aeg umbes 6 nädalat"
         },
-        "toggle-toggle-clipboard": "Lülita toode lõikelaual"
+        "toggle-toggle-clipboard": "Lülita toode lõikelaual",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

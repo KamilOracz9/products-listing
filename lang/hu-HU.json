@@ -256,7 +256,9 @@
             "4-weeks": "A termék kérésre elérhető. Szállítási idő kb. 4 hét.",
             "6-weeks": "A termék kérésre elérhető. Szállítási idő kb. 6 hét."
         },
-        "toggle-toggle-clipboard": "Termék váltása a vágólapon"
+        "toggle-toggle-clipboard": "Termék váltása a vágólapon",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

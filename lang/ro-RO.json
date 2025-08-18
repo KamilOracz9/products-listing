@@ -264,7 +264,9 @@
             "4-weeks": "Produs disponibil pe comandă. Timp de realizare cca 4 săptămâni",
             "6-weeks": "Produs disponibil pe comandă. Timp de realizare cca 6 săptămâni"
         },
-        "toggle-toggle-clipboard": "Comută produsul în clipboard"
+        "toggle-toggle-clipboard": "Comută produsul în clipboard",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {
