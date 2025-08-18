@@ -1,9 +1,9 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.glass-types')" id="glass-types">
-        <div>
-            <ul class="flex gap-2 overflow-x-auto pb-3">
+        <div class="overflow-x-auto">
+            <ul class="flex gap-2 pb-3 max-w-[63cqi]">
                 <li v-for="(glass, index) in glasses" @click="openModal(index)"
-                    class="min-w-[128px] max-w-[128px] aspect-[1/1] cursor-pointer">
+                    class="min-w-[128px] aspect-[1/1] cursor-pointer">
                     <img :src="glass.thumbnail" alt="">
                 </li>
             </ul>
