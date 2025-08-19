@@ -101,14 +101,15 @@
 
                                         <div
                                             class="flex items-center justify-between border border-gray-1 pl-2 w-full lg:max-w-[480px] lg:mr-2">
-                                            <input class="px-2 py-3 outline-none border-0 w-full focus:ring-0" name="search"
-                                                type="text" v-model="searchQuery"
+                                            <input class="px-2 py-3 outline-none border-0 w-full focus:ring-0"
+                                                name="search" type="text" v-model="searchQuery"
                                                 :placeholder="$t('what-are-you-looking-for')"
                                                 @keydown="(event) => { if (event.keyCode === 13) search() }">
-                                            <button v-on:click="search()" class="flex justify-center items-center w-10 h-full">
+                                            <button v-on:click="search()"
+                                                class="flex justify-center items-center w-10 h-full">
                                                 <img width="16" height="16" class="w-4 h-4 gray-1-filter"
-                                                :alt="$t('search')" :title="$t('search')"
-                                                src="@/assets/icons/search.svg">
+                                                    :alt="$t('search')" :title="$t('search')"
+                                                    src="@/assets/icons/search.svg">
                                             </button>
                                         </div>
 
@@ -155,11 +156,13 @@
                                             </NuxtLink>
                                             <div class="flex justify-between gap-10 w-full">
                                                 <p class="text-gray-3">{{ clipboardItem.category }}</p>
-                                                <div class="flex gap-4">
-                                                    <button @click="clipboardStore.toggleItem(clipboardItem.variant_id, locale)"
-                                                        :aria-label="clipboardItem.symbol"
+                                                <div class="grid grid-cols-[repeat(2,12px)] gap-4">
+                                                    <button
+                                                        @click="clipboardStore.toggleItem(clipboardItem.variant_id, locale)"
+                                                        class="size-3" :aria-label="clipboardItem.symbol"
                                                         :title="clipboardItem.symbol">
-                                                        <img src="/assets/icons/delete.svg" width="12" height="12"
+                                                        <img class="" src="/assets/icons/delete.svg"
+                                                            width="12" height="12"
                                                             :title="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`"
                                                             :alt="`${$t('header-clipboard-delete')}: ${clipboardItem.symbol}`" />
                                                     </button>
@@ -243,15 +246,15 @@ const search = () => {
 const headerMenuRef = ref();
 
 function iOS() {
-  return [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod'
-  ].includes(navigator.platform)
-  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ].includes(navigator.platform)
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
 onMounted(async () => {
@@ -262,7 +265,7 @@ onMounted(async () => {
 
     navObserver.observe(document.getElementById('top-bar') as Element);
 
-    if(!iOS()) document.addEventListener('scroll', () => headerStore.setSubmenu(''));
+    if (!iOS()) document.addEventListener('scroll', () => headerStore.setSubmenu(''));
     document.addEventListener('click', () => {
         if (!(event?.target as Element)?.closest('.header__items')) headerStore.setSubmenu('');
     })
