@@ -15,7 +15,7 @@
         </div>
 
         <div class="flex flex-col gap-8 text-sm relative" v-if="data">
-            <SectionsSidebarFiltersList :filters="data.filters" />
+            <SectionsSidebarFiltersList :filters="data.filters" :allFilters="data.allFilters" />
             <SectionsSidebarDimensions :filters="data.dimensions" />
         </div>
     </div>
