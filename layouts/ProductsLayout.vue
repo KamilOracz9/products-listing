@@ -77,7 +77,7 @@ const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = 
 // console.log(Object.fromEntries(Object.entries(route.query).map(([filterCategory, value]) => ([filterCategory, filtersData.value.filters[filterCategory.replace('[]', '')]]))))
 // console.log(Object.fromEntries(Object.entries(route.query).map(([filterCategory, value]) => ([filterCategory, filtersData.value.filters[filterCategory.replace('[]', '')].find(item => item.value == value).value_slug]))))
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...{}, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);

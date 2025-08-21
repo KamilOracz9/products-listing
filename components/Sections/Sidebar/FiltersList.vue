@@ -45,6 +45,8 @@ const params = ref(
 const filterFilters = () => {
     filters.value = props.filters;
 
+    // console.log(filters.value)
+
     const results = {
         series: {
             series: new Set,
@@ -236,7 +238,9 @@ const onChange = (filterCategory, value) => {
 
     params.value = [...newParams];
 
-    updateQueryParam(newParams)
+    console.log(param)
+
+    // updateQueryParam(newParams)
 }
 
 const getSelectedParams = () => {
