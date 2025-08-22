@@ -62,112 +62,100 @@ const localePath = useLocalePath();
 const url = useRequestURL();
 const { $locale } = useNuxtApp();
 
-const routeQuery = computed(() => Object.fromEntries(
-    Object.entries(route.query).map(([filterCategory, value_slug]) => ([
-        filterCategory,
-        typeof (value_slug) !== 'object'
-            ? filtersData.value.filters[filterCategory.replace('[]', '')].find(filter => filter.value_slug == value_slug).value
-            : value_slug.map(item => filtersData.value.filters[filterCategory.replace('[]', '')].find(filter => filter.value_slug == item).value)
-    ]))
-))
-
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
-
-// console.log(Object.fromEntries(Object.entries(route.query).map(([filterCategory, value]) => ([filterCategory, filtersData.value.filters[filterCategory.replace('[]', '')]]))))
-// console.log(Object.fromEntries(Object.entries(route.query).map(([filterCategory, value]) => ([filterCategory, filtersData.value.filters[filterCategory.replace('[]', '')].find(item => item.value == value).value_slug]))))
-
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...{}, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);
 
-// const loading = computed(() => pending.value || categoryPagePending.value || filtersPending.value);
+const loading = computed(() => pending.value || categoryPagePending.value || filtersPending.value);
 
-// watch(loading, (newValue) => {
-//     globalStore.pageIsLoading = newValue;
-// })
+watch(loading, (newValue) => {
+    globalStore.pageIsLoading = newValue;
+})
 
-// const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}/`);
+const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}/`);
 
-// const next = computed(() => {
-//     const page = route.query.page ? parseInt(route.query.page) : 1;
+const next = computed(() => {
+    const page = route.query.page ? parseInt(route.query.page) : 1;
 
-//     return page < data.value.meta.last_page ? `${canonical.value}?page=${page + 1}` : null
-// });
+    return page < data.value.meta.last_page ? `${canonical.value}?page=${page + 1}` : null
+});
 
-// const prev = computed(() => {
-//     const page = route.query.page ? parseInt(route.query.page) : 1;
+const prev = computed(() => {
+    const page = route.query.page ? parseInt(route.query.page) : 1;
 
-//     return page > 1 ? `${canonical.value}?page=${page - 1}` : null
-// });
+    return page > 1 ? `${canonical.value}?page=${page - 1}` : null
+});
 
-// const headLinks = computed(() => {
-//     const links = [];
+const headLinks = computed(() => {
+    const links = [];
 
-//     canonical.value && links.push({ rel: 'canonical', href: canonical.value });
-//     next.value && links.push({ rel: 'next', href: next.value });
-//     prev.value && links.push({ rel: 'prev', href: prev.value });
+    canonical.value && links.push({ rel: 'canonical', href: canonical.value });
+    next.value && links.push({ rel: 'next', href: next.value });
+    prev.value && links.push({ rel: 'prev', href: prev.value });
 
-//     return links;
-// });
+    return links;
+});
 
-// const firstParam = computed(() => {
-//     switch (typeof (Object.values(route.query)[0])) {
-//         case 'string': return Object.values(route.query)[0];
-//         case 'object': return Object.values(route.query)[0][0];
-//     }
-// })
+const firstParam = computed(() => {
+    switch (typeof (Object.values(route.query)[0])) {
+        case 'string': return Object.values(route.query)[0];
+        case 'object': return Object.values(route.query)[0][0];
+    }
+})
 
-// const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(route.query).filter(item => !FILTERS_DISABLED_FROM_INDEXING.includes(item[0]))));
+const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(route.query).filter(item => !FILTERS_DISABLED_FROM_INDEXING.includes(item[0]))));
 
-// const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
+const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 
-// const hasOneFilter = computed(() =>
-//     new URLSearchParams(indexedQueryParams.value).size === 1
-//     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
-//     || Object.values(indexedQueryParams.value)[0]?.length === 1);
+const flattenFilters = computed(() => Object.values(filtersData.value.filters).flat());
 
-// const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
+const hasOneFilter = computed(() =>
+    new URLSearchParams(indexedQueryParams.value).size === 1
+    && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
+    || Object.values(indexedQueryParams.value)[0]?.length === 1);
 
-// const metaParams = computed(() => Object.values(filtersData.value.filters)
-//     .flatMap(({ options }) => options)
-//     .filter(({ value_slug }) => Object.values(route.query).flat().includes(value_slug))
-//     .map((({ label }) => label))
-//     .join(', '));
+const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
-// const meta = computed(() => ([
-//     {
-//         name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
-//             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
-//             : `noindex, nofollow`
-//     },
-// ]))
+const metaParams = computed(() => flattenFilters.value
+    .filter(({ value }) => Object.values(route.query).flat().includes(value))
+    .map((({ label }) => label))
+    .join(', '));
 
-// const getFilterBySlug = (slug) => Object.values(filtersData.value.filters).flatMap(({ options }) => options).find(({ value_slug }) => value_slug === slug);
+const meta = computed(() => ([
+    {
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
+            ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
+            : `noindex, nofollow`
+    },
+]))
 
-// watch(router.currentRoute, () => {
-//     document.querySelector('link[rel="next"]')?.remove();
-//     document.querySelector('link[rel="prev"]')?.remove();
+const getFilterBySlug = (slug) => flattenFilters.value.find(({ value }) => value === slug);
 
-//     setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
-// }, { deep: true })
+watch(router.currentRoute, () => {
+    document.querySelector('link[rel="next"]')?.remove();
+    document.querySelector('link[rel="prev"]')?.remove();
 
-// setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+    setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+}, { deep: true })
 
-// useSeoMeta(meta.value)
+setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
-// useHead(() => ({
-//     link: headLinks.value,
-// }))
+useSeoMeta(meta.value)
 
-// useSchemaOrg([categoryPage.value.schema])
+useHead(() => ({
+    link: headLinks.value,
+}))
 
-// onMounted(() => {
-//     if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
+useSchemaOrg([categoryPage.value.schema])
 
-//     watch(() => route.query.page, value => {
-//         if (value) document.querySelector('h1').scrollIntoView();
-//     })
-// })
+onMounted(() => {
+    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
+
+    watch(() => route.query.page, value => {
+        if (value) document.querySelector('h1').scrollIntoView();
+    })
+})
 </script>

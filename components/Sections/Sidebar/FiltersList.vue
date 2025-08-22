@@ -2,7 +2,7 @@
     <ul class="flex flex-col gap-8">
         <li v-for="[filterCategory, options] in Object.entries(filters)"
             class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-            <span class="font-medium uppercase">{{ $t(`filters.${filterCategory}`) }}</span>
+            <span class="font-medium uppercase">{{ labels[filterCategory]}}</span>
             <input v-model="seriesSearch" v-if="filterCategory === 'series'" type="text" :placeholder="$t('search')"
                 class="border rounded-[3px] p-1" />
             <ul class="max-h-[150px] overflow-y-auto">
@@ -13,7 +13,8 @@
                         type="checkbox" :id="`option-${option.value}`"
                         @change="() => onChange(filterCategory, option.value)"
                         :checked="getSelectedParams().includes(`${filterCategory}[]=${option.value.toString()}`)" />
-                    <label :for="`option-${option.value}`" :class="option.disabled && !getSelectedParams().includes(`${filterCategory}[]=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
+                    <label :for="`option-${option.value}`"
+                        :class="option.disabled && !getSelectedParams().includes(`${filterCategory}[]=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
                         {{ option.label }}
                     </label>
                 </li>
@@ -25,10 +26,9 @@
 <script setup>
 import debounce from 'debounce';
 
-const props = defineProps(['filters', 'allFilters']);
+const props = defineProps(['filters', 'allFilters', 'labels']);
 const route = useRoute();
-const { filters, allFilters } = toRefs(props);
-const refresh = inject('refresh');
+const { filters, allFilters, labels } = toRefs(props);
 const router = useRouter()
 const seriesSearch = ref('');
 
@@ -45,58 +45,15 @@ const params = ref(
 const filterFilters = () => {
     filters.value = props.filters;
 
-    // console.log(filters.value)
-
-    const results = {
-        series: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-        product_color: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-        product_detail_finishing: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-        product_door_type: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-        product_doors_count: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-        product_shape: {
-            series: new Set,
-            product_color: new Set,
-            product_detail_finishing: new Set,
-            product_door_type: new Set,
-            product_doors_count: new Set,
-            product_shape: new Set,
-        },
-    };
+    const results = Object.fromEntries(
+        Object.keys(filters.value).map(item => [
+            item,
+            [Object.fromEntries(Object.keys(filters.value).map(subitem => [
+                subitem,
+                new Set
+            ]))][0]
+        ])
+    );
 
     if (params.value.length) {
         params.value.forEach(item => {
@@ -106,7 +63,7 @@ const filterFilters = () => {
 
             const result = {};
 
-            const filter = Object.fromEntries([[filterName, parseInt(filterValue)]]);
+            const filter = Object.fromEntries([[filterName, filterValue]]);
 
             const extractUnique = (list, key) => [...new Set(list.map((item) => item[key]))];
 
@@ -134,62 +91,24 @@ const filterFilters = () => {
         })
     }
 
-    const disableSeries = Object.entries(results).map(item => ([...results[item[0]].series].flat())).filter(item => item.length);
-    const disableProductColors = Object.entries(results).map(item => ([...results[item[0]].product_color].flat())).filter(item => item.length);
-    const disableProductDetailFinishings = Object.entries(results).map(item => ([...results[item[0]].product_detail_finishing].flat())).filter(item => item.length);
-    const disableProductDoorsTypes = Object.entries(results).map(item => ([...results[item[0]].product_door_type].flat())).filter(item => item.length);
-    const disableProductDoorsCount = Object.entries(results).map(item => ([...results[item[0]].product_doors_count].flat())).filter(item => item.length);
-    const disableProductShapes = Object.entries(results).map(item => ([...results[item[0]].product_shape].flat())).filter(item => item.length);
+    const disabledFilters = Object.fromEntries(
+        Object.keys(filters.value).map(key => [
+            key,
+            Object.entries(results).map(item => ([...results[item[0]][key]].flat())).filter(item => item.length),
+        ])
+    );
 
-    filters.value = {
-        ...filters.value,
-        series: (filters.value.series ?? []).map((item) => {
-            if (disableSeries.length) item.disabled = !findCommonElements(disableSeries).includes(item.value)
-            else item.disabled = false
-
-            return item
-        }),
-        product_color: (filters.value.product_color ?? []).map(
-            (item) => {
-                if (disableProductColors.length) item.disabled = !findCommonElements(disableProductColors).includes(item.value)
+    Object.fromEntries(
+        Object.keys(filters.value).map(key => [
+            key,
+            (filters.value[key] ?? []).map((item) => {
+                if (disabledFilters[key].length) item.disabled = !findCommonElements(disabledFilters[key]).includes(item.value)
                 else item.disabled = false
 
                 return item
-            }
-        ),
-        product_detail_finishing: (filters.value.product_detail_finishing ?? []).map(
-            (item) => {
-                if (disableProductDetailFinishings.length) item.disabled = !findCommonElements(disableProductDetailFinishings).includes(item.value)
-                else item.disabled = false
-
-                return item
-            }
-        ),
-        product_door_type: (filters.value.product_door_type ?? []).map(
-            (item) => {
-                if (disableProductDoorsTypes.length) item.disabled = !findCommonElements(disableProductDoorsTypes).includes(item.value)
-                else item.disabled = false
-
-                return item
-            }
-        ),
-        product_doors_count: (filters.value.product_doors_count ?? []).map(
-            (item) => {
-                if (disableProductDoorsCount.length) item.disabled = !findCommonElements(disableProductDoorsCount).includes(item.value)
-                else item.disabled = false
-
-                return item
-            }
-        ),
-        product_shape: (filters.value.product_shape ?? []).map(
-            (item) => {
-                if (disableProductShapes.length) item.disabled = !findCommonElements(disableProductShapes).includes(item.value)
-                else item.disabled = false
-
-                return item
-            }
-        )
-    }
+            })
+        ])
+    )
 }
 
 function findCommonElements(arr) {
@@ -238,9 +157,7 @@ const onChange = (filterCategory, value) => {
 
     params.value = [...newParams];
 
-    console.log(param)
-
-    // updateQueryParam(newParams)
+    updateQueryParam(newParams)
 }
 
 const getSelectedParams = () => {
@@ -257,7 +174,7 @@ onMounted(() => {
     });
 
     seriesSearch.value = localStorage.getItem('seriesSearch') ?? '';
-    
+
     filterFilters();
 })
 </script>
