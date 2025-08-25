@@ -22,7 +22,7 @@ const routeRules = Object.fromEntries(
 
     if (regex.test(route)) {
       return Object.entries(languages).map(([language, data]) => {
-        return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : data.replace(/\[.*?\]/g, "*")}`, { swr: true }];
+        return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
       })
     }
   }).filter(item => item)
