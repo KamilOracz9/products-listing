@@ -65,7 +65,7 @@ const nuxtApp = useNuxtApp();
 
 
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
-// const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
+const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
 
 // const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
 //   `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
@@ -77,15 +77,15 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
 //   }
 // )
 
-const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(
-  `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
-  () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
-  {
-    getCachedData(key) {
-        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
-    }
-  }
-)
+// const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(
+//   `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
+//   () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
+//   {
+//     getCachedData(key) {
+//         return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+//     }
+//   }
+// )
 
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
 
