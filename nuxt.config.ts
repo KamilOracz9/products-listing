@@ -1,5 +1,33 @@
 import pages from './lang/pages.json';
 
+// const languages = ['pl', 'en', 'de']
+
+// const productRouteRules = Object.fromEntries(
+//   languages.map(lang => [`/${lang}/products`, { swr: true }])
+// )
+
+// const routeRules = Object.entries(pages).flatMap(([route, languages]) => {
+//   const regex = /^(index|.*(products).*)$/
+
+//   if (regex.test(route)) {
+//     return Object.entries(languages).map(([language, data]) => {
+//       return Object.fromEntries([[`/${language === 'pl' ? '' : language}${route === 'index' ? '' : data.loc.source.replace(/\[.*?\]/g, "*")}`, { swr: true }]]);
+//     })
+//   }
+// }).filter(item => item);
+
+const routeRules = Object.fromEntries(
+  Object.entries(pages).flatMap(([route, languages]) => {
+    const regex = /^(index|.*(products).*)$/
+
+    if (regex.test(route)) {
+      return Object.entries(languages).map(([language, data]) => {
+        return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : data.replace(/\[.*?\]/g, "*")}`, { swr: true }];
+      })
+    }
+  }).filter(item => item)
+);
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: {
@@ -26,6 +54,8 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
+      ...routeRules,
+      // ...productRouteRules,
       // ...() => ({
       //   '/': { swr: true },
       // }),
@@ -36,7 +66,7 @@ export default defineNuxtConfig({
       // '/servis': { swr: true },
       // '/blog': { swr: true },
       // '/made-to-measure': { swr: true },
-      // '/products': { swr: false },
+      // '/products': { swr: true },
       // '/products/**': { swr: false },
       // '/search': { swr: false },
       // "/**": { ssr: true },
