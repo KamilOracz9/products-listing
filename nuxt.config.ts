@@ -18,7 +18,7 @@ import pages from './lang/pages.json';
 
 const routeRules = Object.fromEntries(
   Object.entries(pages).flatMap(([route, languages]) => {
-    const regex = /^(index|.*(products).*)$/
+    const regex = /^(index|.*(products).*|products\/[^/]+\/index)$/
 
     if (regex.test(route)) {
       return Object.entries(languages).map(([language, data]) => {
