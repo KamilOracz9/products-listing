@@ -24,30 +24,6 @@
             </div>
         </div>
     </li>
-    <!-- <li class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-        <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
-        <div class="mb-4">
-            <button @click="onResetClick(dimension.name)" :aria-label="$t('reset')">{{ $t('reset') }}</button>
-        </div>
-        <div class="range-slider relative h-[35px]">
-            <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_min`] ?? dimension.min"
-                type="min" inputType="range" />
-            <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_max`] ?? dimension.max"
-                type="max" inputType="range" />
-        </div>
-        <div class="flex gap-2 uppercase justify-start">
-            <div class="flex items-center gap-2">
-                {{ $t('from') }}
-                <SectionsSidebarSlider :value="route.query[`${dimension.name}_min`] ?? dimension.min"
-                    :dimension="dimension" type="min" inputType="number" class="min-w-[60px] h-[26px]" />
-            </div>
-            <div class="flex items-center gap-2">
-                {{ $t('to') }}
-                <SectionsSidebarSlider :value="route.query[`${dimension.name}_max`] ?? dimension.max"
-                    :dimension="dimension" type="max" inputType="number" class="min-w-[60px] h-[26px]" />
-            </div>
-        </div>
-    </li> -->
 </template>
 
 <script setup lang="ts">
@@ -55,64 +31,105 @@ import debounce from 'debounce';
 
 const router = useRouter();
 const props = defineProps<{
-    dimension: {
-        enabled: boolean;
-        label: string;
-        max: number;
-        min: number;
-        name: string;
-        type: "range" | "numner";
-    },
-    onResetClick: (label: string) => void;
+  dimension: {
+    enabled: boolean;
+    label: string;
+    max: number;
+    min: number;
+    name: string;
+    type: "range" | "number";
+  },
+  onResetClick: (label: string) => void;
 }>();
 
 const { dimension } = toRefs(props);
 
 const initialMinValue = computed(() => {
-    const queryValue = parseInt(router.currentRoute.value.query[`${dimension.value.name}_min[]`]);
-
-    if(queryValue > dimension.value.min && queryValue <= dimension.value.max - 10) return queryValue;
-    else return dimension.value.min;
+  const queryValue = parseInt(
+    router.currentRoute.value.query[`${dimension.value.name}_min[]`]
+  );
+  if (queryValue > dimension.value.min && queryValue <= dimension.value.max - 10) {
+    return queryValue;
+  }
+  return dimension.value.min;
 });
-const initialMaxValue = computed(() => {
-    const queryValue = parseInt(router.currentRoute.value.query[`${dimension.value.name}_max[]`]);
 
-    if(queryValue < dimension.value.max && queryValue >= dimension.value.min + 10) return queryValue;
-    else return dimension.value.max;
+const initialMaxValue = computed(() => {
+  const queryValue = parseInt(
+    router.currentRoute.value.query[`${dimension.value.name}_max[]`]
+  );
+  if (queryValue < dimension.value.max && queryValue >= dimension.value.min + 10) {
+    return queryValue;
+  }
+  return dimension.value.max;
 });
 
 const minValue = ref(initialMinValue.value);
 const maxValue = ref(initialMaxValue.value);
 
-const setDimensions = debounce((type: 'min[]' | 'max[]') => {
-    const newValue = type === 'min[]' ? minValue.value : maxValue.value;
+const saveToQuery = (type: 'min[]' | 'max[]', newValue: number) => {
+  const query = router.currentRoute.value.query;
+  const key = `${dimension.value.name}_${type}`;
+  const params = { ...query, [key]: newValue };
 
-    const query = router.currentRoute.value.query;
+  navigateTo({ query: params });
+};
 
-    const key = `${dimension.value.name}_${type}`;
+const validateMin = (val: number) => {
+  let newVal = parseInt(val as any);
+  if (newVal > maxValue.value - 10) newVal = maxValue.value - 10;
+  if (newVal < dimension.value.min) newVal = dimension.value.min;
+  return newVal;
+};
 
-    const params = { ...query, ...{ [key]: newValue } };
+const validateMax = (val: number) => {
+  let newVal = parseInt(val as any);
+  if (newVal < minValue.value + 10) newVal = minValue.value + 10;
+  if (newVal > dimension.value.max) newVal = dimension.value.max;
+  return newVal;
+};
 
-    navigateTo({ query: params });
-}, 1000)
+const debouncedRangeMin = debounce((val: number) => {
+  const validated = validateMin(val);
+  minValue.value = validated;
+  saveToQuery('min[]', validated);
+}, 1000);
 
-watch(minValue, value => {
-    const newValue = parseInt(value);
+const debouncedRangeMax = debounce((val: number) => {
+  const validated = validateMax(val);
+  maxValue.value = validated;
+  saveToQuery('max[]', validated);
+}, 1000);
 
-    if (newValue > maxValue.value - 10) minValue.value = maxValue.value - 10;
-    else if (newValue < 0) minValue.value = 0;
-    else if (newValue < minValue.value) minValue.value = minValue.value;
+const debouncedNumberMin = debounce((val: number) => {
+  const validated = validateMin(val);
+  minValue.value = validated;
+  saveToQuery('min[]', validated);
+}, 1000);
 
-    setDimensions('min[]');
+const debouncedNumberMax = debounce((val: number) => {
+  const validated = validateMax(val);
+  maxValue.value = validated;
+  saveToQuery('max[]', validated);
+}, 1000);
+
+watch(minValue, (val, _, onCleanup) => {
+  if (dimension.value.type === 'range') {
+    debouncedRangeMin(val);
+    onCleanup(() => debouncedRangeMin.clear?.());
+  } else {
+    debouncedNumberMin(val);
+    onCleanup(() => debouncedNumberMin.clear?.());
+  }
 });
 
-watch(maxValue, value => {
-    const newValue = parseInt(value);
-
-    if (newValue < minValue.value + 10) maxValue.value = minValue.value + 10;
-    else if (newValue > maxValue.value) maxValue.value = dimension.value.max;
-    else if (newValue > dimension.value.max) maxValue.value = dimension.value.max;
-
-    setDimensions('max[]');
+watch(maxValue, (val, _, onCleanup) => {
+  if (dimension.value.type === 'range') {
+    debouncedRangeMax(val);
+    onCleanup(() => debouncedRangeMax.clear?.());
+  } else {
+    debouncedNumberMax(val);
+    onCleanup(() => debouncedNumberMax.clear?.());
+  }
 });
 </script>
