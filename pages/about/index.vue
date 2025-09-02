@@ -75,8 +75,6 @@ const { description, meta, breadcrumbs, schema } = toRefs(data.value as AboutPag
 
 setMeta(meta.value);
 
-console.log(description.value.content.section_3.iframe)
-
 useSchemaOrg([
   schema.value
 ])
