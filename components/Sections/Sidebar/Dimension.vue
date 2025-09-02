@@ -29,6 +29,9 @@
 <script setup lang="ts">
 import debounce from 'debounce';
 
+const MIN_MAX_DIFF = 0;
+const DEBOUNCE_TIME = 1000;
+
 const router = useRouter();
 const props = defineProps<{
   dimension: {
@@ -48,7 +51,7 @@ const initialMinValue = computed(() => {
   const queryValue = parseInt(
     router.currentRoute.value.query[`${dimension.value.name}_min[]`]
   );
-  if (queryValue > dimension.value.min && queryValue <= dimension.value.max - 10) {
+  if (queryValue > dimension.value.min && queryValue <= dimension.value.max - MIN_MAX_DIFF) {
     return queryValue;
   }
   return dimension.value.min;
@@ -58,7 +61,7 @@ const initialMaxValue = computed(() => {
   const queryValue = parseInt(
     router.currentRoute.value.query[`${dimension.value.name}_max[]`]
   );
-  if (queryValue < dimension.value.max && queryValue >= dimension.value.min + 10) {
+  if (queryValue < dimension.value.max && queryValue >= dimension.value.min + MIN_MAX_DIFF) {
     return queryValue;
   }
   return dimension.value.max;
@@ -77,14 +80,14 @@ const saveToQuery = (type: 'min[]' | 'max[]', newValue: number) => {
 
 const validateMin = (val: number) => {
   let newVal = parseInt(val as any);
-  if (newVal > maxValue.value - 10) newVal = maxValue.value - 10;
+  if (newVal > maxValue.value - MIN_MAX_DIFF) newVal = maxValue.value - MIN_MAX_DIFF;
   if (newVal < dimension.value.min) newVal = dimension.value.min;
   return newVal;
 };
 
 const validateMax = (val: number) => {
   let newVal = parseInt(val as any);
-  if (newVal < minValue.value + 10) newVal = minValue.value + 10;
+  if (newVal < minValue.value + MIN_MAX_DIFF) newVal = minValue.value + MIN_MAX_DIFF;
   if (newVal > dimension.value.max) newVal = dimension.value.max;
   return newVal;
 };
@@ -93,25 +96,25 @@ const debouncedRangeMin = debounce((val: number) => {
   const validated = validateMin(val);
   minValue.value = validated;
   saveToQuery('min[]', validated);
-}, 1000);
+}, DEBOUNCE_TIME);
 
 const debouncedRangeMax = debounce((val: number) => {
   const validated = validateMax(val);
   maxValue.value = validated;
   saveToQuery('max[]', validated);
-}, 1000);
+}, DEBOUNCE_TIME);
 
 const debouncedNumberMin = debounce((val: number) => {
   const validated = validateMin(val);
   minValue.value = validated;
   saveToQuery('min[]', validated);
-}, 1000);
+}, DEBOUNCE_TIME);
 
 const debouncedNumberMax = debounce((val: number) => {
   const validated = validateMax(val);
   maxValue.value = validated;
   saveToQuery('max[]', validated);
-}, 1000);
+}, DEBOUNCE_TIME);
 
 watch(minValue, (val, _, onCleanup) => {
   if (dimension.value.type === 'range') {
