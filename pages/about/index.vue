@@ -45,9 +45,12 @@
       </div>
     </section>
 
-    <section class="xl:w-1/2" :id="slugify(description.content.section_3.title, false)">
+    <section class="mt-10" :id="slugify(description.content.section_3.title, false)">
       <p class="section-title" data-aos="fade-up">{{ description.content.section_3.title }}</p>
-      <div class="section-text" data-aos="fade-up" v-html="description.content.section_3.html"></div>
+      <div class="flex flex-col gap-10 xl:flex-row">
+        <div class="section-text flex-1" data-aos="fade-up" v-html="description.content.section_3.html"></div>
+        <div class="w-full flex-1 flex items-center justify-center" v-html="description.content.section_3.iframe"></div>
+      </div>
     </section>
 
     <section class="mt-10" :id="slugify(description.content.section_4.title, false)">
@@ -71,6 +74,8 @@ const { data } = await useAsyncData(DataKeys.ABOUT_PAGE, async () => fetchAboutP
 const { description, meta, breadcrumbs, schema } = toRefs(data.value as AboutPage);
 
 setMeta(meta.value);
+
+console.log(description.value.content.section_3.iframe)
 
 useSchemaOrg([
   schema.value
