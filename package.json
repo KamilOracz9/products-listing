@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "deploy": "npm run build && pm2 restart ecosystem.config.cjs",
+    "deploy-mydevil": "npm run build && devil www restart dev.newtrendy.usermd.net",
     "test": "vitest"
   },
   "devDependencies": {

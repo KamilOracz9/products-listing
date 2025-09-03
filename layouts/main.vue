@@ -35,6 +35,7 @@ import { fetchLayoutData } from '~/services/api/layout';
 
 const { locales, locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
+const nuxtApp = useNuxtApp()
 
 provide('switchLocalePath', switchLocalePath);
 
@@ -47,7 +48,17 @@ watch(switchLocalePath, () => {
 
 
 
-const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(lang.value), { watch: [lang] });
+// const { data, pending } = await useAsyncData(DataKeys.LAYOUT_DATA, async () => fetchLayoutData(lang.value), { watch: [lang] });
+
+const { data, pending } = await useAsyncData(
+  `${DataKeys.LAYOUT_DATA}-${lang.value}`,
+  () => fetchLayoutData(lang.value),
+  {
+    getCachedData(key) {
+        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+    }
+  }
+)
 
 onMounted(async () => {
     const topBar = document.getElementById('top-bar');

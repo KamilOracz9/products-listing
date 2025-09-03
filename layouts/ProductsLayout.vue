@@ -22,10 +22,14 @@
                         class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }} / {{ $t('sorting') }}</button>
 
-                    <SectionsProductsListing :products="data.data" />
+                    <template v-if="!pending">
+                        <SectionsProductsListing :products="data.data" />
 
-
-                    <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
+                        <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
+                    </template>
+                    <template v-else>
+                        <Loading />
+                    </template>
 
                     <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
@@ -34,7 +38,7 @@
             </div>
 
             <div>
-                <slot />
+                <!-- <slot /> -->
             </div>
         </div>
     </section>
@@ -57,12 +61,33 @@ const router = useRouter();
 const localePath = useLocalePath();
 const url = useRequestURL();
 const { $locale } = useNuxtApp();
+const nuxtApp = useNuxtApp();
 
-const routeQuery = computed(() => route.query)
 
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
+// const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
+// const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
+
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
+  `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
+  () => fetchCategoryPage(route.params.category, $locale),
+  {
+    getCachedData(key) {
+        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+    }
+  }
+)
+
+const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(
+  `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
+  () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
+  {
+    getCachedData(key) {
+        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+    }
+  }
+)
+
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
-const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ ...route.query, 'category': categoryPage.value.id ? [categoryPage.value.id] : null }, $locale), { watch: [routeQuery] });
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);
@@ -108,6 +133,8 @@ const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(rout
 
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 
+const flattenFilters = computed(() => Object.values(filtersData.value.filters).flat());
+
 const hasOneFilter = computed(() =>
     new URLSearchParams(indexedQueryParams.value).size === 1
     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
@@ -115,9 +142,8 @@ const hasOneFilter = computed(() =>
 
 const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
-const metaParams = computed(() => Object.values(filtersData.value.filters)
-    .flatMap(({ options }) => options)
-    .filter(({ value_slug }) => Object.values(route.query).flat().includes(value_slug))
+const metaParams = computed(() => flattenFilters.value
+    .filter(({ value }) => Object.values(route.query).flat().includes(value))
     .map((({ label }) => label))
     .join(', '));
 
@@ -129,7 +155,7 @@ const meta = computed(() => ([
     },
 ]))
 
-const getFilterBySlug = (slug) => Object.values(filtersData.value.filters).flatMap(({ options }) => options).find(({ value_slug }) => value_slug === slug);
+const getFilterBySlug = (slug) => flattenFilters.value.find(({ value }) => value === slug);
 
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
