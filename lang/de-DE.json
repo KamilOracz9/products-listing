@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Installation auf internen Würfeln",
         "rail-hanger": "Schienenhalterung",
         "collections": "Unsere Kollektionen",
+        "new-products": "Neue Produkte",
         "slug": {
             "made-to-measure": "Nach Maß",
             "measure": "Maße",
@@ -119,7 +120,13 @@
         "product_material": "Material",
         "product_shape": "Form",
         "product_surface_finishing": "Oberflächenverarbeitung",
-        "product_walls_count": "Anzahl der Wände"
+        "product_walls_count": "Anzahl der Wände",
+        "is_new": "Neuheit"
+    },
+    "meta": {
+        "products": {
+            "title": "Duschkabinen"
+        }
     },
     "pages": {
        "search": {

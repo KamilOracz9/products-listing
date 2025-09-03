@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Montáž na vnitřní kostky",
         "rail-hanger": "Relingový věšák",
         "collections": "Naše kolekce",
+        "new-products": "Nové produkty",
         "slug": {
             "made-to-measure": "Na míru",
             "measure": "Rozměry",
@@ -119,7 +120,8 @@
         "product_material": "Materiál",
         "product_shape": "Tvar",
         "product_surface_finishing": "Povrchová úprava",
-        "product_walls_count": "Počet stěn"
+        "product_walls_count": "Počet stěn",
+        "is_new": "Novinka"
     },
     "pages": {
         "search": {
@@ -297,5 +299,10 @@
     "Pole miejsce jest wymagane.": "Pole místo je povinné.",
     "Pole działanie jest wymagane.": "Pole akce je povinné.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Pole platné údaje musí být přijato.",
-    "Wiadomość została wysłana": "Zpráva byla odeslána."
+    "Wiadomość została wysłana": "Zpráva byla odeslána.",
+    "meta": {
+        "products": {
+            "title": "Sprchové kouty"
+        }
+    }
 }

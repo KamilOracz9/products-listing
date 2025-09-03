@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Instalare pe cuburi interioare",
         "rail-hanger": "Suspensie principală",
         "collections": "Colecțiile noastre",
+        "new-products": "Produse noi",
         "slug": {
             "made-to-measure": "La comandă",
             "measure": "Dimensiuni",
@@ -119,7 +120,8 @@
         "product_material": "Material",
         "product_shape": "Formă",
         "product_surface_finishing": "Finisare suprafață",
-        "product_walls_count": "Număr pereți"
+        "product_walls_count": "Număr pereți",
+        "is_new": "Noutate"
     },
     "pages": {
         "search": {
@@ -302,5 +304,10 @@
     "Pole miejsce jest wymagane.": "Câmpul locație este obligatoriu.",
     "Pole działanie jest wymagane.": "Câmpul acțiune este obligatoriu.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Câmpul date corecte trebuie să fie acceptat.",
-    "Wiadomość została wysłana": "Mesajul a fost trimis."
+    "Wiadomość została wysłana": "Mesajul a fost trimis.",
+    "meta": {
+        "products": {
+            "title": "Cabine de duș"
+        }
+    }
 }

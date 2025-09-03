@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Installation on internal cubes",
         "rail-hanger": "Rail hanger",
         "collections": "Our collections",
+        "new-products": "New products",
         "slug": {
             "made-to-measure": "Made to measure",
             "measure": "Measure",
@@ -119,7 +120,13 @@
         "product_material": "Meterial",
         "product_shape": "Shape",
         "product_surface_finishing": "Surface",
-        "product_walls_count": "Walls count"
+        "product_walls_count": "Walls count",
+        "is_new": "New"
+    },
+    "meta": {
+        "products": {
+            "title": "Shower enclosures"
+        }
     },
     "pages": {
        "search": {

@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Uzstādīšana uz iekšējiem kubiem",
         "rail-hanger": "Sliedes pakaramais",
         "collections": "Mūsu kolekcijas",
+        "new-products": "Jauni produkti",
         "slug": {
             "made-to-measure": "Pecas-pasutijuma", 
             "measure": "Izmerit",
@@ -119,7 +120,8 @@
         "product_material": "Materiāls",
         "product_shape": "Forma",
         "product_surface_finishing": "Virtuves apdare", 
-        "product_walls_count": "Sienu skaits"
+        "product_walls_count": "Sienu skaits",
+        "is_new": "Jaunums"
     },
     "pages": {
         "search": {

@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Paigaldus sisekuubikutele",
         "rail-hanger": "Rööpa riputi",
         "collections": "Meie kollektsioonid",
+        "new-products": "Uued tooted",
         "slug": {
             "made-to-measure": "Mõõdu järgi",
             "measure": "Mõõt",
@@ -119,7 +120,8 @@
         "product_material": "Materjal",
         "product_shape": "Kuju",
         "product_surface_finishing": "Pind",
-        "product_walls_count": "Seinte arv"
+        "product_walls_count": "Seinte arv",
+        "is_new": "Uus"
     },
     "pages": {
        "search": {
@@ -297,5 +299,10 @@
     "Pole miejsce jest wymagane.": "Asukoha väli on kohustuslik.",
     "Pole działanie jest wymagane.": "Tegevuse väli on kohustuslik.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Kehtivad andmed tuleb aktsepteerida.",
-    "Wiadomość została wysłana": "Sõnum on saadetud."
+    "Wiadomość została wysłana": "Sõnum on saadetud.",
+    "meta": {
+        "products": {
+            "title": "Dušikabiinid"
+        }
+    }
 }
