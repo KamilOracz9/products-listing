@@ -49,11 +49,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="index === headerItem.columns.length - 1" class="lg:px-8 lg:mb-10">
+                                <div v-if="index === headerItem.columns.length - 1" class="lg:px-8 lg:mb-10 flex flex-col gap-4">
                                     <NuxtLink class=" p-4 bg-yellow-1 text-white w-max hover:!text-black"
                                         :to="localePath({ name: 'products' })" :title="$t('navigation.all-products')"
                                         :aria-label="$t('navigation.all-products')">
                                         {{ $t('navigation.all-products') }}
+                                    </NuxtLink>
+                                    <NuxtLink class=" p-4 bg-black text-white w-max hover:!text-black hover:bg-white border border-black"
+                                        :to="localePath({ name: 'products' }) + `?${slugify($t('filters.is_new'))}=1`" :title="$t('navigation.new-products')"
+                                        :aria-label="$t('navigation.new-products')">
+                                        {{ $t('navigation.new-products') }}
                                     </NuxtLink>
                                 </div>
                             </LazySectionsHeaderColumn>

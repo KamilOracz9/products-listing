@@ -68,26 +68,33 @@ const nuxtApp = useNuxtApp();
 // const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
 
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-  `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
-  () => fetchCategoryPage(route.params.category, $locale),
-  {
-    getCachedData(key) {
-        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+    `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
+    () => fetchCategoryPage(route.params.category, $locale),
+    {
+        getCachedData(key) {
+            return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+        }
     }
-  }
 )
 
 const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(
-  `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
-  () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
-  {
-    getCachedData(key) {
-        return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+    `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
+    () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
+    {
+        getCachedData(key) {
+            return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
+        }
     }
-  }
 )
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.slug ?? null }, $locale), { watch: [() => route.query] });
+const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({
+    ...Object.fromEntries(
+        Object.entries(route.query).map(([key, value]) => {
+            if (key === slugify(i18n.t('filters.is_new'))) return ['is_new', value];
+            else return [key, value]
+        })
+    ), 'category': categoryPage.value.slug ?? null
+}, $locale), { watch: [() => route.query] });
 
 provide('filtersData', filtersData);
 provide('filtersRefresh', filtersRefresh);
