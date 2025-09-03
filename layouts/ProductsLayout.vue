@@ -5,8 +5,8 @@
 
             <h1
                 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${getFilterBySlug(firstParam)?.label ??
-                    ''}` : ''
+                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') : (getFilterBySlug(firstParam)?.label ??
+                    '')}` : ''
                 }}</h1>
 
             <div class="mt-10 flex gap-10">
@@ -62,7 +62,6 @@ const localePath = useLocalePath();
 const url = useRequestURL();
 const { $locale } = useNuxtApp();
 const nuxtApp = useNuxtApp();
-
 
 // const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
 // const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
@@ -146,7 +145,7 @@ const hasOneFilter = computed(() =>
     new URLSearchParams(indexedQueryParams.value).size === 1
     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
     || Object.values(indexedQueryParams.value)[0]?.length === 1);
-
+    
 const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
 const metaParams = computed(() => flattenFilters.value
