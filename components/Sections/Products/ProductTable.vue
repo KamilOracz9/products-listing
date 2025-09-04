@@ -28,16 +28,18 @@
                 </thead>
                 <tbody>
                     <template v-for="variant in ungroupedVariants">
-                        <tr class="text-sm even:bg-gray-2">
+                        <tr class="text-sm even:bg-gray-2 cursor-pointer">
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
-                            <td v-for="header in headers" class="break-keep whitespace-nowrap"
+                            <td v-for="header in headers" class="break-keep whitespace-nowrap" 
+                                @click="openPdfInNewTab($event, variant.id)" 
+                                :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
-                                <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
+                                <!-- <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" /> -->
                             </td>
                         </tr>
                     </template>
@@ -57,7 +59,7 @@
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
-                                <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
+                                <!-- <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" /> -->
                             </td>
                         </tr>
                     </template>
@@ -124,6 +126,7 @@ const { techImages, variants } = toRefs(props);
 const ungroupedVariants = computed(() => variants.value.filter(variant => !variant.group));
 const groupedVariants = computed(() => [...groupBy(variants.value.filter(variant => variant.group), variant => variant.group.name)].sort());
 
+const localeIso = ref(getLocaleIso());
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const headers: Ref<{
@@ -162,6 +165,14 @@ const getRealizationColor = (realizationTime: number) => {
         default: return '';
     }
 }
+
+const openPdfInNewTab = (event: Event, variantId: number) => {
+  const target = event.currentTarget as HTMLElement;
+  const url = target.getAttribute('data-href');
+  if (url) {
+    window.open(url, '_blank');
+  }
+};
 </script>
 
 <style>
