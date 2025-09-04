@@ -14,10 +14,10 @@
         <li v-for="[filterCategory, options] in Object.entries(filters)"
             class="flex flex-col gap-4 border-b border-gray-1 pb-4">
             <span class="font-medium uppercase">{{ labels[filterCategory] }}</span>
-            <input v-model="seriesSearch" v-if="filterCategory === 'series'" type="text" :placeholder="$t('search')"
+            <input v-model="seriesSearch" v-if="filterCategory === slugify($t('filters.series'))" type="text" :placeholder="$t('search')"
                 class="border rounded-[3px] p-1" />
             <ul class="max-h-[150px] overflow-y-auto">
-                <li v-for="option in options" class="flex gap-3 items-center group">
+                <li v-for="option in getFilterOptions(options, filterCategory)" class="flex gap-3 items-center group">
                     <input class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
                         :name="getName(filterCategory)" :value="option.value"
                         :disabled="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)"
@@ -186,6 +186,11 @@ const getSelectedParams = () => {
 
         return filter[1].split(',').map(item => `${filter[0]}=${item}`)
     }).flat()
+}
+
+const getFilterOptions = (options, name) => {
+    if (name === slugify(i18n.t('filters.series'))) return options.filter(option => option.label.toLocaleLowerCase().includes(seriesSearch.value.toLocaleLowerCase()))
+    return options;
 }
 
 onMounted(() => {
