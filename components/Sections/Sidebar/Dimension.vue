@@ -1,5 +1,5 @@
 <template>
-    <li class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+    <li class="flex flex-col gap-4 border-b border-gray-1 pb-4" v-if="dimension.min < dimension.max">
         <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
         <div class="mb-4">
             <button @click="onResetClick(dimension.name)" :aria-label="$t('reset')">{{ $t('reset') }}</button>

@@ -11,26 +11,29 @@
             </label>
         </li> -->
 
-        <li v-for="[filterCategory, options] in Object.entries(filters)"
-            class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-            <span class="font-medium uppercase">{{ labels[filterCategory] }}</span>
-            <input v-model="seriesSearch" v-if="filterCategory === slugify($t('filters.series'))" type="text" :placeholder="$t('search')"
-                class="border rounded-[3px] p-1" />
-            <ul class="max-h-[150px] overflow-y-auto">
-                <li v-for="option in getFilterOptions(options, filterCategory)" class="flex gap-3 items-center group">
-                    <input class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
-                        :name="getName(filterCategory)" :value="option.value"
-                        :disabled="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)"
-                        type="checkbox" :id="`option-${option.value}`"
-                        @change="() => onChange(`${getName(filterCategory)}`, option.value)"
-                        :checked="getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)" />
-                    <label :for="`option-${option.value}`"
-                        :class="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
-                        {{ filterCategory === 'is_new' ? i18n.t('filters.is_new') : option.label }}
-                    </label>
-                </li>
-            </ul>
-        </li>
+        <template v-for="[filterCategory, options] in Object.entries(filters)">
+            <li v-if="getFilterOptions(options, filterCategory).length"
+                class="flex flex-col gap-4 border-b border-gray-1 pb-4">
+                <span class="font-medium uppercase">{{ labels[filterCategory] }}</span>
+                <input v-model="seriesSearch" v-if="filterCategory === slugify($t('filters.series'))" type="text"
+                    :placeholder="$t('search')" class="border rounded-[3px] p-1" />
+                <ul class="max-h-[150px] overflow-y-auto">
+                    <li v-for="option in getFilterOptions(options, filterCategory)"
+                        class="flex gap-3 items-center group">
+                        <input class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black"
+                            :name="getName(filterCategory)" :value="option.value"
+                            :disabled="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)"
+                            type="checkbox" :id="`option-${option.value}`"
+                            @change="() => onChange(`${getName(filterCategory)}`, option.value)"
+                            :checked="getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)" />
+                        <label :for="`option-${option.value}`"
+                            :class="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
+                            {{ filterCategory === 'is_new' ? i18n.t('filters.is_new') : option.label }}
+                        </label>
+                    </li>
+                </ul>
+            </li>
+        </template>
     </ul>
 </template>
 
@@ -75,8 +78,8 @@ const filterFilters = () => {
         params.value.forEach(item => {
             const itemArray = item.split('=')
             let filterName = itemArray[0].replace('[]', '')
-            
-            if(filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new';
+
+            if (filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new';
 
             const filterValue = itemArray[1]
 
