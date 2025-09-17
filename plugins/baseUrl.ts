@@ -6,10 +6,12 @@ export default defineNuxtPlugin(() => {
     const url = useRequestURL();
 
     return computed(() => {
+      const path = url.pathname + url.search;
       if (process.server) {
-        return i18n.locale.value === 'pl' 
+        const domain = i18n.locale.value === 'pl' 
           ? 'https://newtrendy.pl' 
           : 'https://newtrendy.eu';
+        return domain + path;
       }
       return url.href;
     });
