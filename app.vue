@@ -19,6 +19,9 @@ const { pageIsLoading } = storeToRefs(globalStore);
 const url = useRequestURL();
 const runtimeConfig = useRuntimeConfig()
 
+const { $baseUrl } = useNuxtApp();
+const baseUrl = $baseUrl();
+
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;
 });
@@ -92,8 +95,8 @@ useHead(() => ({
 useSeoMeta({
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: url.href,
-  ogSiteName: url.href,
+  ogUrl: baseUrl,
+  ogSiteName: baseUrl,
   twitterCard: 'summary_large_image',
 })
 

@@ -59,12 +59,9 @@ const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
 const router = useRouter();
 const localePath = useLocalePath();
-const url = useRequestURL();
-const { $locale } = useNuxtApp();
+const { $locale, $baseUrl } = useNuxtApp();
+const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
-
-// const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, $locale));
-// const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(DataKeys.FILTERS_LIST, async () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale));
 
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
@@ -104,7 +101,7 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}/`);
+const canonical = computed(() => pageIndexable.value ? baseUrl.value : `${baseUrl.value.split('?')[0]}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
@@ -155,7 +152,8 @@ const metaParams = computed(() => flattenFilters.value
 
 const meta = computed(() => ([
     {
-        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.includes('newtrendy.pl')) || 
+            (!baseUrl.value.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
             : `noindex, nofollow`
     },
