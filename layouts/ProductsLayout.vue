@@ -101,7 +101,7 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-const canonical = computed(() => pageIndexable.value ? baseUrl.value : `${baseUrl.value.split('?')[0]}`);
+const canonical = computed(() => pageIndexable.value ? baseUrl.value.fullUrl : `${baseUrl.value.domain}${baseUrl.value.path.split('?')[0]}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
@@ -150,15 +150,6 @@ const metaParams = computed(() => flattenFilters.value
     .map((({ label }) => label))
     .join(', '));
 
-const meta = computed(() => ([
-    {
-        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.includes('newtrendy.pl')) || 
-            (!baseUrl.value.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
-            ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
-            : `noindex, nofollow`
-    },
-]))
-
 const getFilterBySlug = (slug) => flattenFilters.value.find(({ value }) => value === slug);
 
 watch(router.currentRoute, () => {
@@ -170,7 +161,14 @@ watch(router.currentRoute, () => {
 
 setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
-useSeoMeta(meta.value)
+useSeoMeta({
+  robots: computed(() => 
+    (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
+    (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
+    ? 'index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1'
+    : 'noindex, nofollow'
+  )
+});
 
 useHead(() => ({
     link: headLinks.value,

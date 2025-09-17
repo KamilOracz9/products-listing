@@ -6,14 +6,17 @@ export default defineNuxtPlugin(() => {
     const url = useRequestURL();
 
     return computed(() => {
+      const domain = i18n.locale.value === 'pl' 
+        ? 'https://newtrendy.pl' 
+        : 'https://newtrendy.eu';
+      
       const path = url.pathname + url.search;
-      if (process.server) {
-        const domain = i18n.locale.value === 'pl' 
-          ? 'https://newtrendy.pl' 
-          : 'https://newtrendy.eu';
-        return domain + path;
-      }
-      return url.href;
+      
+      return {
+        domain,
+        fullUrl: process.server ? domain + path : url.href,
+        path
+      };
     });
   };
 

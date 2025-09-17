@@ -95,8 +95,8 @@ useHead(() => ({
 useSeoMeta({
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: baseUrl,
-  ogSiteName: baseUrl,
+  ogUrl: baseUrl.value.fullUrl,
+  ogSiteName: baseUrl.value.domain,
   twitterCard: 'summary_large_image',
 })
 
@@ -107,8 +107,10 @@ onMounted(() => {
 
   useSeoMeta({
     robots: {
-      'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
-      'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+      'noindex': (i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
+                (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl'),
+      'nofollow': (i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
+                (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl'),
     },
   })
 })
