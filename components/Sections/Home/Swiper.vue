@@ -10,7 +10,7 @@
                     :aria-label="slide.title ?? `New Trendy - slide-${index}`" :key="index"
                     :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
-                        class="mx-auto h-[362px] flex relative lg:after:w-full lg:after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[288px] lg:h-[612px] 2xl:h-[716px]">
+                        class="mx-auto flex relative lg:after:w-full lg:after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] aspect-[607/582] sm:aspect-[991/401] lg:aspect-[420/179]">
 
                         <!-- <img v-if="slide.image" decoding="async" :srcset="`
                                 ${slide.image?.mobile} 607w,
@@ -22,7 +22,7 @@
                         <picture v-if="slide.image" >
                             <source media="(min-width:1024px)" :srcset="slide.image?.desktop">
                             <source media="(min-width:640px)" :srcset="slide.image?.tablet">
-                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="lg:h-full w-full lg:object-cover">
+                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="h-full w-full">
                         </picture>
 
                         <ClientOnly>
@@ -34,9 +34,9 @@
                     </div>
 
                     <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-32 lg:left-20">
-                        <p class="text-3xl">{{ slide.subtitle }}</p>
+                        <p class="text-xl sm:text-2xl md:text-3xl">{{ slide.subtitle }}</p>
                         <p v-if="slide.title"
-                            class="text-[2.5rem] font-medium leading-[3rem] uppercase xl:text-[50px] xl:leading-[60px]">
+                            class="text-[1.5rem] font-medium leading-[125%] uppercase sm:text-[2rem] md:text-[2.5rem] xl:text-[50px] xl:leading-[60px]">
                             {{ slide.title }}
                         </p>
                     </div>
