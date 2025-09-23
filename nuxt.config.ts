@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3001,
   },
-  // experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
+  experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
   router: {
     options: {
       strict: false,
@@ -168,7 +168,7 @@ export default defineNuxtConfig({
       '/uslugi-dodatkowe-w-ofercie-new-trendy/': { redirect: { to: '/blog/porady-i-wsparcie/uslugi-dodatkowe-w-ofercie-new-trendy/', statusCode: 301 } },
       '/powloki-ochronne-w-produktach-new-trendy/': { redirect: { to: '/blog/porady-i-wsparcie/powloki-ochronne-w-produktach-new-trendy/', statusCode: 301 } },
       '/inspiracje/': { redirect: { to: '/blog/', statusCode: 301 } },
-      '/strefa-architekta/': { redirect: { to: '/dla-profesjonalistow/#strefa-architekta', statusCode: 301 } },
+      '/strefa-architekta/': { redirect: { to: '/dla-architektow/#strefa-architekta', statusCode: 301 } },
       '/strefa-partnera/': { redirect: { to: '/dla-profesjonalistow/#strefa-partnera', statusCode: 301 } },
     },
     preset: 'node-server',

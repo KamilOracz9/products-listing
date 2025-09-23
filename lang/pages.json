@@ -377,6 +377,24 @@
     "lv": "/profesionaliem",
     "lt": "/profesionalams"
   },
+  "for-architects/index": {
+    "en": "/for-architects",
+    "pl": "/dla-architektow",
+    "de": "/fuer-architekten",
+    "fr": "/pour-les-architectes",
+    "it": "/per-architetti",
+    "es": "/para-arquitectos",
+    "no": "/for-arkitekter",
+    "sk": "/pre-architektov",
+    "cs": "/pro-architekty",
+    "ro": "/pentru-arhitecti",
+    "ru": "/dlya-arhitektorov",
+    "uk": "/dlya-arkhitektoriv",
+    "hu": "/epiteszeknek",
+    "et": "/arhitektidele",
+    "lv": "/arhitektiem",
+    "lt": "/architektams"
+  },
   "contact/index": {
     "en": "/contact",
     "pl": "/kontakt",

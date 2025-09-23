@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <SectionsCommonBreadrumbs :breadcrumbs="breadcrumbs" /> -->
-    <SectionsForProfessionalsPartnerZone :data="description.content.partner_zone" />
+    <SectionsForProfessionalsArchitectZone :data="description.content.architect_zone" />
   </div>
 </template>
 
