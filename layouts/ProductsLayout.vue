@@ -136,7 +136,7 @@ const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(rout
 
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 
-const flattenFilters = computed(() => Object.values(filtersData.value.filters).flat());
+const flattenFilters = computed(() => Object.values(filtersData.value?.filters ?? {}).flat());
 
 const hasOneFilter = computed(() =>
     new URLSearchParams(indexedQueryParams.value).size === 1

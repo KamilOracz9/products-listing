@@ -40,7 +40,7 @@
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
-                                <!-- <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" /> -->
+                                <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
                     </template>
