@@ -50,17 +50,19 @@
                             <td class="w-full pl-10" :colspan="headers.length + 1">{{ group[0] }}</td>
                         </tr>
 
-                        <tr v-for="variant in group[1]" class="text-sm even:bg-gray-2">
+                        <tr v-for="variant in group[1]" class="text-sm even:bg-gray-2 cursor-pointer">
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
+                                :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
+                                @click="openPdfInNewTab($event, variant.id)"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
-                                <!-- <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" /> -->
+                                <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
                     </template>
