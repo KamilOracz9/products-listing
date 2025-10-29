@@ -23,9 +23,9 @@
                     </ul>
                 </div>
 
-                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl 2xl:w-[calc(50%-1.25rem)] 2xl:ml-auto"
+                <div class="bg-yellow-2 rounded-tl-[25px] mt-6 text-lg lg:text-xl w-full flex"
                     data-aos="fade-up">
-                    <ul class="flex flex-col gap-6" style="font-size: clamp(1rem, 3cqw, 1.25rem);">
+                    <div class="flex flex-col gap-6 p-8" style="font-size: clamp(1rem, 3cqw, 1.25rem);">
                         <div class="flex gap-4 items-center" v-if="section_2.left.person">
                             <img class="w-[28px] aspect-[1/1]"src="@/assets/icons/person.svg" alt=""> {{ section_2.left.person }}
                         </div>
@@ -33,7 +33,10 @@
                                 src="@/assets/icons/phone.svg" alt=""> {{ section_2.left.phone }}</a>
                         <a class="flex gap-4 items-center" :href="`mailto:${section_2.left.email}`"><img class="w-[28px] aspect-[1/1]"
                                 src="@/assets/icons/envelope.svg" alt=""> {{ section_2.left.email }}</a>
-                    </ul>
+                    </div>
+                    <div class="ml-auto">
+                        <img src="@/assets/images/rooster.webp" class="h-[196px]" alt="">
+                    </div>
                 </div>
             </section>
 
