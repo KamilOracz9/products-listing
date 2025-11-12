@@ -33,9 +33,9 @@
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
-                                @click="openPdfInNewTab($event, variant.id)"
+                                @click="openPdfInNewTab($event, variant.id, header)"
                                 :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
-                                :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{
+                                :class="['symbol'].includes(header) ? 'pl-4 cursor-default' : 'text-center'">{{
                                     $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
@@ -56,7 +56,7 @@
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
                                 :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
-                                @click="openPdfInNewTab($event, variant.id)"
+                                @click="openPdfInNewTab($event, variant.id, header)"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
                                     header) }}</td>
                             <td
@@ -175,7 +175,12 @@ const getRealizationColor = (realizationTime: number) => {
     }
 }
 
-const openPdfInNewTab = (event: Event, variantId: number) => {
+const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
+    if(header === 'symbol') {
+        event.stopPropagation();
+        return;
+    }
+
     const target = event.currentTarget as HTMLElement;
     const url = target.getAttribute('data-href');
     if (url) {
