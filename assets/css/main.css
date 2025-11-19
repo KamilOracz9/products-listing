@@ -181,6 +181,13 @@
     .range-slider input {
         @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px];
     }
+    .range-slider input:last-child {
+        @apply bg-transparent;
+    }
+
+    .range-slider input::-moz-range-track {
+        /* @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px]; */
+    }
 
     /* Swiper */
    .swiper-pagination > .swiper-pagination-bullet {
@@ -196,6 +203,14 @@
 
     .range-slider input::-webkit-slider-thumb {
         @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
+
+    .range-slider input::-moz-range-thumb {
+        @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
+
+    .range-slider input::-moz-range-progress {
+        @apply bg-transparent;
     }
 
     /* Pagination */

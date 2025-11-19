@@ -18,9 +18,9 @@
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                     <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
+                        :aria-label="`${$t('filtering')}}`"
                         class="my-10 underline text-2xl lg:hidden">{{
-                            $t('filtering') }} / {{ $t('sorting') }}</button>
+                            $t('filtering') }}</button>
 
                     <template v-if="!pending">
                         <SectionsProductsListing :products="data.data" />
