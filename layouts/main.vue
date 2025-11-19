@@ -17,7 +17,7 @@
 
             <footer class="grid-content">
                 <Footer :data="data.footer" />
-                <p class="text-center py-6 uppercase text-[1.25rem]">New trendy 2025</p>
+                <p class="text-center py-6 uppercase text-[1.25rem]">New trendy {{ new Date().getFullYear() }}</p>
             </footer>
         </div>
     </div>
