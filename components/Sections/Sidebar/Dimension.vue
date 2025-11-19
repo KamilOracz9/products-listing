@@ -11,16 +11,15 @@
                 v-model="maxValue">
         </div>
         <div class="flex gap-2 uppercase justify-start">
-
             <div class="flex items-center gap-2">
                 {{ $t('from') }}
                 <input :name="`${dimension.name}_min[]`" :min="dimension.min" :max="dimension.max" type="number"
-                    class="min-w-[60px] h-[26px]" v-model="minValue">
+                    class="min-w-[60px] max-w-[70px] h-[26px]" v-model="minValue">
             </div>
             <div class="flex items-center gap-2">
                 {{ $t('to') }}
                 <input :name="`${dimension.name}_max[]`" :min="dimension.min" :max="dimension.max" type="number"
-                    class="min-w-[60px] h-[26px]" v-model="maxValue">
+                    class="min-w-[60px] max-w-[70px] h-[26px]" v-model="maxValue">
             </div>
         </div>
     </li>
