@@ -72,6 +72,7 @@ useHead(() => ({
   }],
   script: [
     {
+      'data-culture': i18n.locale.value,
       src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
       tagPosition: 'bodyClose',
     },

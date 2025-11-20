@@ -1,16 +1,5 @@
 <template>
     <ul class="flex flex-col gap-8">
-        <!-- <li class="flex gap-3 items-center group">
-            <input class="border border-black w-4 h-4 focus:ring-0 disabled:border-gray-4 text-black" :name="`is_new`"
-                :value="1" type="checkbox" :id="'is_new'"
-                @change="() => onChange(slugify($t('filters.is_new')), '1')"
-                :checked="getSelectedParams().includes(`${slugify($t('filters.is_new'))}=1`)"
-                />
-            <label :for="`is_new`" class="text-black">
-                {{ $t('filters.is_new') }}
-            </label>
-        </li> -->
-
         <template v-for="[filterCategory, options] in Object.entries(filters)">
             <li v-if="getFilterOptions(options, filterCategory).length"
                 class="flex flex-col gap-4 border-b border-gray-1 pb-4">
@@ -61,88 +50,53 @@ const params = ref(
         .flat()
 )
 
-const filterFilters = () => {
+const filterFilters = (excludeCategory = null) => {
     filters.value = props.filters;
 
-    const results = Object.fromEntries(
-        Object.keys(filters.value).map(item => [
-            item,
-            [Object.fromEntries(Object.keys(filters.value).map(subitem => [
-                subitem,
-                new Set
-            ]))][0]
-        ])
-    );
-
-    if (params.value.length) {
-        params.value.forEach(item => {
-            const itemArray = item.split('=')
-            let filterName = itemArray[0].replace('[]', '')
-
-            if (filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new';
-
-            const filterValue = itemArray[1]
-
-            const result = {};
-
-            const filter = Object.fromEntries([[filterName, filterValue]]);
-
-            const extractUnique = (list, key) => [...new Set(list.map((item) => item[key]))];
-
-            const matched = allFilters.value.filter((item) =>
-                Object.entries(filter).every(([key, value]) => item[key] == value)
-            );
-
-            Object.keys(allFilters.value[0]).forEach(key => {
-                if (filter.hasOwnProperty(key)) {
-                    result[key] = [];
-                } else {
-                    const allValues = new Set(extractUnique(allFilters.value, key));
-                    const matchedValues = new Set(extractUnique(matched, key));
-
-                    const diff = [...allValues].filter(val => matchedValues.has(val)).filter(item => item !== null);
-
-                    result[key] = diff;
-                }
+    if (params.value.length === 0) {
+        Object.keys(filters.value).forEach(key => {
+            (filters.value[key] ?? []).forEach(item => {
+                item.disabled = false;
             });
-
-            Object.entries(result).forEach(item => {
-                if (results[filterName] && results[filterName][item[0]]) {
-                    results[filterName][item[0]].add(item[1])
-                }
-            })
-        })
+        });
+        return;
     }
 
-    const disabledFilters = Object.fromEntries(
-        Object.keys(filters.value).map(key => [
-            key,
-            Object.entries(results).map(item => ([...results[item[0]][key]].flat())).filter(item => item.length),
-        ])
-    );
+    const selectedFilters = {};
+    params.value.forEach(param => {
+        const itemArray = param.split('=');
+        let filterName = itemArray[0].replace('[]', '');
+        if (filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new';
+        const filterValue = itemArray[1];
 
-    Object.fromEntries(
-        Object.keys(filters.value).map(key => [
-            key,
-            (filters.value[key] ?? []).map((item) => {
-                if (disabledFilters[key].length) item.disabled = !findCommonElements(disabledFilters[key]).includes(item.value)
-                else item.disabled = false
-
-                return item
-            })
-        ])
-    )
-}
-
-function findCommonElements(arr) {
-    let arrCopy = arr.slice();
-    let commonElements = arrCopy.shift().filter(function (v) {
-        return arrCopy.every(function (a) {
-            return a.indexOf(v) !== -1;
-        });
+        if (!selectedFilters[filterName]) {
+            selectedFilters[filterName] = [];
+        }
+        selectedFilters[filterName].push(filterValue);
     });
 
-    return commonElements;
+    Object.keys(filters.value).forEach(categoryKey => {
+        (filters.value[categoryKey] ?? []).forEach(option => {
+            const testFilters = {};
+            
+            Object.entries(selectedFilters).forEach(([key, values]) => {
+                if (key !== categoryKey) {
+                    testFilters[key] = [...values];
+                }
+            });
+            
+            testFilters[categoryKey] = [option.value.toString()];
+            
+            const hasMatchingProducts = allFilters.value.some((product) => {
+                const matches = Object.entries(testFilters).every(([key, values]) => {
+                    return values.some(value => product[key] == value);
+                });
+                return matches;
+            });
+
+            option.disabled = !hasMatchingProducts;
+        });
+    });
 }
 
 const updateQueryParam = debounce((newParams) => {
@@ -180,6 +134,8 @@ const onChange = (filterCategory, value) => {
 
     params.value = [...newParams];
 
+    filterFilters();
+    
     updateQueryParam(newParams)
 }
 
