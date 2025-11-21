@@ -317,6 +317,11 @@ export default defineNuxtConfig({
         iso: 'lt_LT',
         file: 'lt-LT.json',
       },
+      {
+        code: 'fr',
+        iso: 'fr_FR',
+        file: 'fr-FR.json',
+      },
     ],
     defaultLocale: 'pl',
     lazy: true,
