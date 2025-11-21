@@ -15,7 +15,7 @@
                             type="checkbox" :id="`option-${option.value}`"
                             @change="() => onChange(`${getName(filterCategory)}`, option.value)"
                             :checked="getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)" />
-                        <label :for="`option-${option.value}`"
+                        <label :for="`option-${option.value}`" class="break-keep whitespace-nowrap"
                             :class="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
                             {{ filterCategory === 'is_new' ? i18n.t('filters.is_new') : option.label }}
                         </label>
