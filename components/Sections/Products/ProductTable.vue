@@ -1,4 +1,27 @@
 <template>
+    <div>
+        <UiDialog :is-open="showDialog" @close="showDialog = false">
+            <template #message>
+                <div class="">
+                    <!-- <h2 class="text-lg font-medium mb-4">{{ $t('product.parts-catalog.title') }}</h2> -->
+                    <div class="flex justify-center items-center">
+                        <img :src="techImages[0].desktop" alt="">
+                    </div>
+                    <ul class="max-w-full text-xs flex flex-col gap-2 max-h-[200px] overflow-y-auto">
+                        <li class="flex items-center gap-2 justify-between" v-for="part in partsList" :key="part.name">
+                            <p>{{ part.name }}</p>
+                            <input type="checkbox">
+                        </li>
+                    </ul>
+                </div>
+            </template>
+
+            <template #actions>
+                <button @click="handleConfirm">Potwierdź</button>
+            </template>
+        </UiDialog>
+    </div>
+
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
@@ -23,7 +46,7 @@
                                 v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
                             <span v-else>{{ $t(`product.${header}`) }}</span>
                         </th>
-                        <th class="w-[60px]"></th>
+                        <th class="w-[100px]"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,11 +61,23 @@
                                 :class="['symbol'].includes(header) ? 'pl-4 cursor-default' : 'text-center'">{{
                                     $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
-                                class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                class="w-[100px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4"
+                                        src="/assets/icons/gear.svg"></button>
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
+                        <!-- <tr v-for="part in variant.parts_catalog" class="text-sm even:bg-gray-2">
+                            <td class="pl-2 w-[25px]"></td>
+                            <td class="break-keep whitespace-nowrap pl-10" :colspan="headers.length">
+                                <div class="w-full">{{ part.name }}</div>
+                            </td>
+                            <td
+                                class="w-[60px] pl-1.5 whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <SectionsCommonAskForPart :productId="productId" :variantId="variant.id" />
+                            </td>
+                        </tr> -->
                     </template>
 
                     <template v-for="group in groupedVariants">
@@ -109,7 +144,6 @@ import colorIcon from 'assets/icons/color_icon.svg';
 import doorsIcon from 'assets/icons/doors_icon.svg';
 import materialIcon from 'assets/icons/material_icon.svg';
 import { groupBy } from '~/utils';
-import { map } from 'leaflet';
 
 const props = defineProps<{
     techImages: IPhoto[];
@@ -149,7 +183,7 @@ const headers: Ref<{
                 }).filter(key => key)
             }).flat()
         )
-    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group', 'parts_catalog'].includes(header as string))
 ))
 
 provide('modalIsOpen', modalIsOpen);
@@ -176,7 +210,7 @@ const getRealizationColor = (realizationTime: number) => {
 }
 
 const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
-    if(header === 'symbol') {
+    if (header === 'symbol') {
         event.stopPropagation();
         return;
     }
@@ -187,6 +221,24 @@ const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
         window.open(url, '_blank');
     }
 };
+
+const showDialog = ref(false)
+const selectedVariantId = ref<number | null>(null)
+
+const openDialog = (variantId: number) => {
+    selectedVariantId.value = variantId
+    showDialog.value = true
+}
+
+const handleConfirm = () => {
+    showDialog.value = false
+}
+
+const partsList = computed(() => {
+    const variant = variants.value.find(v => v.id === selectedVariantId.value)
+    return variant ? variant.parts_catalog : []
+})
+
 </script>
 
 <style>

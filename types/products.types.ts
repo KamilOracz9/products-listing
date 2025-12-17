@@ -44,7 +44,14 @@ export type Variant = {
     "group"? : {
         id: number;
         name: string;
-    }
+    },
+    parts_catalog: {
+        bom_uuid: string;
+        code: string;
+        mar_uuid: string;
+        media: string;
+        name: string;
+    }[];
 }
 
 export type Category = {

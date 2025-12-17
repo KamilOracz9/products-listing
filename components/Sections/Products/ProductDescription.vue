@@ -1,5 +1,5 @@
 <template>
-    <SectionsCommonAccordion :label="$t('product.product-description')" id="product-description">
+    <!-- <SectionsCommonAccordion :label="$t('product.product-description')" id="product-description"> -->
         <div v-html="description"></div>
         <div v-if="colors.length" class="my-3">
             <p class="font-medium">{{ $t('product.desc-colors') }}</p>
@@ -38,7 +38,7 @@
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         <LazySectionsCommonLightbox :images="doorsOpen" />
-    </SectionsCommonAccordion>
+    <!-- </SectionsCommonAccordion> -->
 </template>
 
 <script setup lang="ts">
