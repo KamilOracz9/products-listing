@@ -1,28 +1,9 @@
 <template>
-    <div>
-        <UiDialog :is-open="showDialog" @close="showDialog = false">
-            <template #message>
-                <div class="">
-                    <!-- <h2 class="text-lg font-medium mb-4">{{ $t('product.parts-catalog.title') }}</h2> -->
-                    <div class="flex justify-center items-center">
-                        <img :src="techImages[0].desktop" alt="">
-                    </div>
-                    <ul class="max-w-full text-xs flex flex-col gap-2 max-h-[200px] overflow-y-auto">
-                        <li class="flex items-center gap-2 justify-between" v-for="part in partsList" :key="part.name">
-                            <p>{{ part.name }}</p>
-                            <input type="checkbox">
-                        </li>
-                    </ul>
-                </div>
-            </template>
-
-            <template #actions>
-                <button @click="handleConfirm">Potwierdź</button>
-            </template>
-        </UiDialog>
-    </div>
+    
 
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
+        <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList" :defaultImage="techImages[0].desktop" @close="showDialog = false" />
+
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
                 <li v-for="(techImage, index) in techImages" class="min-w-[128px] lg:w-[300px] cursor-pointer"
@@ -228,10 +209,6 @@ const selectedVariantId = ref<number | null>(null)
 const openDialog = (variantId: number) => {
     selectedVariantId.value = variantId
     showDialog.value = true
-}
-
-const handleConfirm = () => {
-    showDialog.value = false
 }
 
 const partsList = computed(() => {

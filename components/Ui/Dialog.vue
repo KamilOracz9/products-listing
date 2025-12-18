@@ -7,12 +7,26 @@
     font-size: 1rem;
     background-color: white;
     width: max-content;
+    /* width: 90%;
+    height: 90vh;
+    max-height: 90vh; */
+    overflow: hidden;
 
-    &>.message {
-        margin-bottom: 2rem;
+    &>.dialog-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
 
-    &>form {
+    &>.dialog-content>.message {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    &>.dialog-content>form {
+        flex-shrink: 0;
         display: flex;
         justify-content: center;
     }
@@ -25,18 +39,11 @@
 
 <template>
     <dialog ref="dialogRef" class="dialog" @click="handleBackdropClick">
-        <div class="dialog-content min-h-[90vh] flex flex-col" @click.stop>
-            <div class="message flex-1">
+        <div class="dialog-content" @click.stop>
+            <div class="message">
                 <slot name="message">
-                    <!-- <p>Domyślna wiadomość dialogu</p> -->
                 </slot>
             </div>
-
-            <form method="dialog">
-                <slot name="actions">
-                    <!-- <button type="submit" @click="closeDialog">OK</button> -->
-                </slot>
-            </form>
         </div>
     </dialog>
 </template>
