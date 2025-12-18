@@ -49,7 +49,7 @@ export type Variant = {
         bom_uuid: string;
         code: string;
         mar_uuid: string;
-        media: string;
+        media: string[];
         name: string;
     }[];
 }

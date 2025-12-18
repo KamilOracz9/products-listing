@@ -7,9 +7,6 @@
     font-size: 1rem;
     background-color: white;
     width: max-content;
-    /* width: 90%;
-    height: 90vh;
-    max-height: 90vh; */
     overflow: hidden;
 
     &>.dialog-content {
