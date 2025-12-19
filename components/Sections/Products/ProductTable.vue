@@ -1,7 +1,8 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
         <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList"
-            :defaultImage="techImages[0].desktop" @close="showDialog = false" :productSymbol="selectedVariant?.symbol ?? ''" />
+            :defaultImage="techImages[0].desktop" @close="showDialog = false"
+            :productSymbol="selectedVariant?.symbol ?? ''" />
 
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
@@ -42,8 +43,8 @@
                                     $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
                                 class="w-[100px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
-                                <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4"
-                                        src="/assets/icons/gear.svg"></button>
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4"
+                                        src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -66,6 +67,8 @@
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4" -->
+                                <!-- src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -98,10 +101,10 @@
                         <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
-                        <div class="flex items-center gap-2">
-                            <img class="size-[16px]" src="/assets/icons/gear.svg" alt="">
-                            <p class="text-sm">{{ $t('pages.product.parts-catalog-title') }}</p>
-                        </div>
+                    <!-- <div class="flex items-center gap-2">
+                        <img class="size-[16px]" src="/assets/icons/gear.svg" alt="">
+                        <p class="text-sm">{{ $t('pages.product.parts-catalog-title') }}</p>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -209,7 +212,7 @@ const selectedVariant = computed(() => {
 })
 
 const partsList = computed(() => {
-    if(!selectedVariant.value) return []
+    if (!selectedVariant.value) return []
 
     return selectedVariant.value.parts_catalog || []
 })
