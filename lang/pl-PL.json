@@ -179,7 +179,9 @@
             "toggle-clipboard": "Dodaj do schowka",
             "generate-product-card": "Generuj kartę produktu",
             "send-request": "Wyślij zapytanie",
-            "email-label": "Wpisz swój email"
+            "email-label": "Wpisz swój email",
+            "phone-label": "Wpisz nr telefonu",
+            "parts-catalog-title": "Katalog części"
         },
         "inspirations": {
             "see-all": "Zobacz wszystkie",

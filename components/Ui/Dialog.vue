@@ -35,7 +35,7 @@
 </style>
 
 <template>
-    <dialog ref="dialogRef" class="dialog" @click="handleBackdropClick">
+    <dialog ref="dialogRef" class="dialog" tabindex="-1" @click="handleBackdropClick">
         <div class="dialog-content" @click.stop>
             <div class="message">
                 <slot name="message">
@@ -68,6 +68,10 @@ watch(() => props.isOpen, (newValue) => {
 
     if (newValue) {
         dialogRef.value.showModal()
+        // Zapobiegnij automatycznemu focus na pierwszym input
+        setTimeout(() => {
+            dialogRef.value?.focus()
+        }, 0)
         emit('open')
     } else {
         dialogRef.value.close()

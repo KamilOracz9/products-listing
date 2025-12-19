@@ -1,8 +1,7 @@
 <template>
-    
-
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
-        <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList" :defaultImage="techImages[0].desktop" @close="showDialog = false" />
+        <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList"
+            :defaultImage="techImages[0].desktop" @close="showDialog = false" :productSymbol="selectedVariant?.symbol ?? ''" />
 
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
@@ -49,16 +48,6 @@
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
                         </tr>
-                        <!-- <tr v-for="part in variant.parts_catalog" class="text-sm even:bg-gray-2">
-                            <td class="pl-2 w-[25px]"></td>
-                            <td class="break-keep whitespace-nowrap pl-10" :colspan="headers.length">
-                                <div class="w-full">{{ part.name }}</div>
-                            </td>
-                            <td
-                                class="w-[60px] pl-1.5 whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
-                                <SectionsCommonAskForPart :productId="productId" :variantId="variant.id" />
-                            </td>
-                        </tr> -->
                     </template>
 
                     <template v-for="group in groupedVariants">
@@ -211,9 +200,14 @@ const openDialog = (variantId: number) => {
     showDialog.value = true
 }
 
+const selectedVariant = computed(() => {
+    return variants.value.find(v => v.id === selectedVariantId.value)
+})
+
 const partsList = computed(() => {
-    const variant = variants.value.find(v => v.id === selectedVariantId.value)
-    return variant ? variant.parts_catalog : []
+    if(!selectedVariant.value) return []
+
+    return selectedVariant.value.parts_catalog || []
 })
 
 </script>
