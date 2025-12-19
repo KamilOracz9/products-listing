@@ -80,13 +80,17 @@
             height: var(--button-height);
         }
     }
+
+    .loader {
+        @apply items-center justify-center h-full w-full absolute top-0 left-0 bg-white z-10;
+    }
 }
 </style>
 
 <template>
     <UiDialog :is-open="showDialog" @close="handleClose">
         <template #message>
-            <div class="parts-container" :class="!pending ? '' : 'hidden'">
+            <div class="parts-container">
                 <!-- Fixed title section -->
                 <div class="title">
                     <p>{{ t('pages.product.parts-catalog-title') }}: {{ productSymbol }}</p>
@@ -112,17 +116,18 @@
 
                 <!-- Fixed footer section -->
                 <div class="footer">
-                    <input type="text" :placeholder="t('pages.product.email-label')" id="request_email"
+                    <input type="email" :placeholder="t('pages.product.email-label')" id="request_email"
                         name="request_email" class="" />
                     <p class="hidden md:block">{{ t('or') }}</p>
-                    <input type="text" :placeholder="t('pages.product.phone-label')" id="request_phone"
+                    <input type="tel" :placeholder="t('pages.product.phone-label')" id="request_phone"
                         name="request_phone" class="" />
                     <button @click="handleConfirm" class="confirm-button">{{ t('pages.product.send-request')
                         }}</button>
                 </div>
-            </div>
-            <div class="flex items-center justify-center h-full" :class="!pending ? 'hidden' : ''">
-                <LoadingIndicator />
+
+                <div class="loader" :class="pending ? 'flex' : 'hidden'">
+                    <LoadingIndicator />
+                </div>
             </div>
         </template>
     </UiDialog>
@@ -130,6 +135,8 @@
 
 <script setup lang="ts">
 import type { Variant } from '~/types/products.types';
+
+const toast = useToast();
 
 interface Props {
     showDialog: boolean;
@@ -170,6 +177,7 @@ const handleConfirm = () => {
         .map(({ mar_uuid, bom_uuid }) => ({ mar_uuid, bom_uuid }));
 
     const emailInput = document.getElementById('request_email') as HTMLInputElement;
+    const phoneInput = document.getElementById('request_phone') as HTMLInputElement;
 
     pending.value = true;
 
@@ -180,6 +188,7 @@ const handleConfirm = () => {
         },
         body: JSON.stringify({
             request_email: emailInput.value,
+            request_phone: phoneInput.value,
             items: parts,
         }),
     })
@@ -190,8 +199,14 @@ const handleConfirm = () => {
                 });
 
                 emailInput.value = '';
+                phoneInput.value = '';
 
                 emit('close')
+
+                toast.success({
+                    message: t('pages.product.request-sent-success'),
+                    timeout: 5000,
+                })
             }
         })
         .finally(() => {
