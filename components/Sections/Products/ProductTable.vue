@@ -1,5 +1,9 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
+        <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList"
+            :defaultImage="techImages[0].desktop" @close="showDialog = false"
+            :productSymbol="selectedVariant?.symbol ?? ''" />
+
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
                 <li v-for="(techImage, index) in techImages" class="min-w-[128px] lg:w-[300px] cursor-pointer"
@@ -23,7 +27,7 @@
                                 v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
                             <span v-else>{{ $t(`product.${header}`) }}</span>
                         </th>
-                        <th class="w-[60px]"></th>
+                        <th class="w-[100px]"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +42,9 @@
                                 :class="['symbol'].includes(header) ? 'pl-4 cursor-default' : 'text-center'">{{
                                     $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
-                                class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                class="w-[100px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4"
+                                        src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -61,6 +67,8 @@
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4" -->
+                                <!-- src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -93,6 +101,10 @@
                         <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
+                    <!-- <div class="flex items-center gap-2">
+                        <img class="size-[16px]" src="/assets/icons/gear.svg" alt="">
+                        <p class="text-sm">{{ $t('pages.product.parts-catalog-title') }}</p>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -109,7 +121,6 @@ import colorIcon from 'assets/icons/color_icon.svg';
 import doorsIcon from 'assets/icons/doors_icon.svg';
 import materialIcon from 'assets/icons/material_icon.svg';
 import { groupBy } from '~/utils';
-import { map } from 'leaflet';
 
 const props = defineProps<{
     techImages: IPhoto[];
@@ -149,7 +160,7 @@ const headers: Ref<{
                 }).filter(key => key)
             }).flat()
         )
-    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group', 'parts_catalog'].includes(header as string))
 ))
 
 provide('modalIsOpen', modalIsOpen);
@@ -176,7 +187,7 @@ const getRealizationColor = (realizationTime: number) => {
 }
 
 const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
-    if(header === 'symbol') {
+    if (header === 'symbol') {
         event.stopPropagation();
         return;
     }
@@ -187,6 +198,25 @@ const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
         window.open(url, '_blank');
     }
 };
+
+const showDialog = ref(false)
+const selectedVariantId = ref<number | null>(null)
+
+const openDialog = (variantId: number) => {
+    selectedVariantId.value = variantId
+    showDialog.value = true
+}
+
+const selectedVariant = computed(() => {
+    return variants.value.find(v => v.id === selectedVariantId.value)
+})
+
+const partsList = computed(() => {
+    if (!selectedVariant.value) return []
+
+    return selectedVariant.value.parts_catalog || []
+})
+
 </script>
 
 <style>
