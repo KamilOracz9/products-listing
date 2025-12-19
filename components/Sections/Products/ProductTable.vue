@@ -98,6 +98,10 @@
                         <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
+                        <div class="flex items-center gap-2">
+                            <img class="size-[16px]" src="/assets/icons/gear.svg" alt="">
+                            <p class="text-sm">{{ $t('pages.product.parts-catalog-title') }}</p>
+                        </div>
                 </div>
             </div>
         </div>
