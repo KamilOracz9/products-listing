@@ -1,4 +1,8 @@
 <template>
+    <!-- <ClientOnly> -->
+        <!-- <UiDialog /> -->
+    <!-- </ClientOnly> -->
+
     <div class="flex justify-center font-breuer">
         <div v-if="!pending && data" class="flex flex-col min-h-screen w-full relative">
             <header class="relative z-30">

@@ -177,7 +177,12 @@
         },
         "product": {
             "toggle-clipboard": "Dodaj do schowka",
-            "generate-product-card": "Generuj kartę produktu"
+            "generate-product-card": "Generuj kartę produktu",
+            "send-request": "Wyślij zapytanie",
+            "email-label": "Wpisz swój email",
+            "phone-label": "Wpisz nr telefonu",
+            "parts-catalog-title": "Katalog części",
+            "request-sent-success": "Twoje zapytanie zostało wysłane pomyślnie!"
         },
         "inspirations": {
             "see-all": "Zobacz wszystkie",

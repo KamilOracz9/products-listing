@@ -27,14 +27,18 @@
                         <SectionsProductsProductDescription :video="data.video" :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
-                        <SectionsProductsProductTable v-if="variants"
-                            :techImages="[...images.technical, ...images.technical_desc]" :productId="data.id"
-                            :variants="variants" />
-                        <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
-                        <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />
                     </div>
                 </div>
             </div>
+
+            <div class="flex flex-col leading-4 mb-6 sm:leading-6">
+                <SectionsProductsProductTable v-if="variants"
+                    :techImages="[...images.technical, ...images.technical_desc]" :productId="data.id"
+                    :variants="variants" />
+                <SectionsProductsGlassTypes v-if="hasGlasses" :glasses="images.glasses" />
+                <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />
+            </div>
+
             <div :class="hasAllRelationships && 'flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28'">
                 <ProductsSlider :sliderConfig="sliderConfig" :products="data.relationships.complementary ?? []"
                     :title="$t('product.complementary-products')" />
@@ -89,9 +93,9 @@ const sliderConfig = computed(() => (
     }
 ));
 
-if(meta) setMeta(meta.value);
+if (meta) setMeta(meta.value);
 
-if(schema) useSchemaOrg([
+if (schema) useSchemaOrg([
     schema.value
 ])
 

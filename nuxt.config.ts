@@ -237,6 +237,7 @@ export default defineNuxtConfig({
     'nuxt-aos',
     '@nuxt/image',
     'nuxt-schema-org',
+    'nuxt-toast'
   ],
 
   schemaOrg: {

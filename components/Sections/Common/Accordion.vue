@@ -1,5 +1,5 @@
 <template>
-    <div class="border border-t-0 border-black">
+    <div class="border [&:not(:last-child)]:border-b-0 border-black">
         <div class="flex justify-between px-5 py-4 cursor-pointer" @click="openAccordionId === id ? openAccordionId = '' : openAccordionId = id;">
             <p class="text-lg font-medium leading-5" :id="id">{{ label }}</p>
             <Arrow />
