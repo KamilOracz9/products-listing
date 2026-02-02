@@ -1,7 +1,7 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
         <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList"
-            :defaultImage="techImages[0].desktop" @close="showDialog = false"
+            :defaultImage="techImages[0]?.desktop" @close="showDialog = false"
             :productSymbol="selectedVariant?.symbol ?? ''" />
 
         <div>
