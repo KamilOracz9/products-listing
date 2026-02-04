@@ -31,11 +31,11 @@
                     </NuxtLink>
                 </SwiperSlide>
 
-                <div v-if="products.length > 5" class="left-4 similar-products-slider-arrow similar-products-slider-arrow-prev -translate-y-[120%] lg:-translate-y-[65%] lg:left-6">
+                <div :class="['left-4', 'similar-products-slider-arrow', prevButtonClass, '-translate-y-[120%]', 'lg:-translate-y-[65%]', 'lg:left-6']">
                     <img src="@/assets/icons/slider-arrow.svg" class="rotate-180" alt="">
                 </div>
 
-                <div v-if="products.length > 5" class="right-4 similar-products-slider-arrow similar-products-slider-arrow-next -translate-y-[120%] lg:-translate-y-[65%] lg:right-6">
+                <div :class="['right-4', 'similar-products-slider-arrow', nextButtonClass, '-translate-y-[120%]', 'lg:-translate-y-[65%]', 'lg:right-6']">
                     <img src="@/assets/icons/slider-arrow.svg" alt="">
                 </div>
             </Swiper>
@@ -66,6 +66,8 @@ const props = defineProps<{
         spaceBetween: number,
         breakpoints: {[key: number]: {[key: string]: number}}
     };
+    prevButtonClass?: string;
+    nextButtonClass?: string;
 }>();
 
 const swiperModules = [SwiperNavigation];
@@ -73,4 +75,5 @@ const swiperModules = [SwiperNavigation];
 const activeSlide = ref(0);
 
 const { products } = toRefs(props);
+const { prevButtonClass, nextButtonClass } = toRefs(props);
 </script>

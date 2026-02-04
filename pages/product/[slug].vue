@@ -40,10 +40,10 @@
             </div>
 
             <div :class="hasAllRelationships && 'flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28'">
-                <ProductsSlider :sliderConfig="sliderConfig" :products="data.relationships.complementary ?? []"
-                    :title="$t('product.complementary-products')" />
-                <ProductsSlider :sliderConfig="sliderConfig" :products="data.relationships.similar ?? []"
-                    :title="$t('product.similar-products')" />
+                <ProductsSlider :sliderConfig="complementarySliderConfig" :products="data.relationships.complementary ?? []"
+                    :title="$t('product.complementary-products')" prevButtonClass="complementary-products-slider-arrow-prev" nextButtonClass="complementary-products-slider-arrow-next" />
+                <ProductsSlider :sliderConfig="similarSliderConfig" :products="data.relationships.similar ?? []"
+                    :title="$t('product.similar-products')" prevButtonClass="similar-products-slider-arrow-prev" nextButtonClass="similar-products-slider-arrow-next" />
             </div>
         </div>
 
@@ -74,10 +74,6 @@ const sliderConfig = computed(() => (
         'slidesPerView': 1,
         autoplay: false,
         loop: true,
-        navigation: {
-            nextEl: '.similar-products-slider-arrow-next',
-            prevEl: '.similar-products-slider-arrow-prev',
-        },
         spaceBetween: 20,
         breakpoints: hasAllRelationships.value ? {
             450: { slidesPerView: 2 },
@@ -90,6 +86,26 @@ const sliderConfig = computed(() => (
             1024: { slidesPerView: 4, spaceBetween: 30 },
             1280: { slidesPerView: 5, spaceBetween: 40 },
         }
+    }
+));
+
+const complementarySliderConfig = computed(() => (
+    {
+        ...sliderConfig.value,
+        navigation: {
+            nextEl: '.complementary-products-slider-arrow-next',
+            prevEl: '.complementary-products-slider-arrow-prev',
+        },
+    }
+));
+
+const similarSliderConfig = computed(() => (
+    {
+        ...sliderConfig.value,
+        navigation: {
+            nextEl: '.similar-products-slider-arrow-next',
+            prevEl: '.similar-products-slider-arrow-prev',
+        },
     }
 ));
 
