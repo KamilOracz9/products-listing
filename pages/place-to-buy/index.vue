@@ -34,7 +34,7 @@ const mapCenter = ref($getMapCenter());
 const selected = ref(null);
 const page = ref(1);
 const lastPage = ref(false);
-const locationsIds = ref();
+const locationsIds = ref([]);
 const locationsList: Ref = ref([]);
 const { $locale } = useNuxtApp();
 
@@ -42,23 +42,40 @@ const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = 
 
 const { meta, breadcrumbs, title, schema } = toRefs(data.value);
 
+// Watch for route changes and reset state
+watch(() => route.query, () => {
+    page.value = 1;
+    locationsList.value = [];
+    selected.value = null;
+    lastPage.value = false;
+    mapKey.value = mapKey.value + 1;
+}, { deep: true });
+
+// Watch for new data and handle pagination properly
+watch(() => data.value, (newData) => {
+    if (!newData) return;
+    
+    if (page.value === 1) {
+        // Reset list for new search/filter
+        locationsList.value = [...newData.locationsList];
+    } else {
+        // Append for pagination, avoiding duplicates
+        const existingIds = new Set(locationsList.value.map(loc => loc.id));
+        const newLocations = newData.locationsList.filter(loc => !existingIds.has(loc.id));
+        locationsList.value = [...locationsList.value, ...newLocations];
+    }
+    
+    if (newData.locationsList.length < 25) {
+        lastPage.value = true;
+    }
+}, { immediate: true });
+
+// Initialize locationsList on mount
 onMounted(() => {
-    watch(() => route.query, () => {
-        page.value = 1;
-        locationsList.value = [];
-        selected.value = null;
-        lastPage.value = false;
-
-        mapKey.value = mapKey.value + 1;
-    })
-
-    watch(() => data.value, value => {
-        locationsList.value = [...locationsList.value, ...value.locationsList];
-        if (value.locationsList.length < 25) lastPage.value = true;
-    })
-
-    locationsList.value = data.value.locationsList;
-})
+    if (data.value?.locationsList) {
+        locationsList.value = [...data.value.locationsList];
+    }
+});
 
 provide('mapZoom', mapZoom);
 provide('mapCenter', mapCenter);

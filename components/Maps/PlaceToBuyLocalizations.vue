@@ -12,8 +12,6 @@ import markerIcon from '@/assets/icons/marker-icon-yellow.png';
 import markerIconRed from '@/assets/icons/marker-icon-red.png';
 import { fetchCoordsList } from '~/services/api';
 import { DataKeys } from '~/enums/dataKeys';
-const L = await import('leaflet');
-const { MarkerClusterGroup } = await import('leaflet.markercluster');
 
 const route = useRoute();
 const zoom = inject('mapZoom');
@@ -21,30 +19,28 @@ const center = inject('mapCenter');
 const selected = inject('selected');
 const locationsIds = inject('locationsIds');
 
-const icon = L.icon({
-    iconUrl: markerIcon,
-    iconSize: [23, 31],
-});
-
-const iconRed = L.icon({
-    iconUrl: markerIconRed,
-    iconSize: [23, 31],
-});
-
-const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
-
 const sectionRef = ref();
-const locationsIdsByZoom = ref([]);
+const locationsIdsByZoom = ref({});
+let map = null;
+let markers = null;
+let L = null;
+let MarkerClusterGroup = null;
 
 const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, getLocaleIso(), locationsIds.value), { watch: [() => route.query, locationsIds] });
 
-const map = computed(() => {
+const initMap = async () => {
+    if (!L) {
+        L = await import('leaflet');
+        const cluster = await import('leaflet.markercluster');
+        MarkerClusterGroup = cluster.MarkerClusterGroup;
+    }
+
     const container = L.DomUtil.get('map');
     if (container != null) {
         container._leaflet_id = null;
-    };
+    }
 
-    const map = L.map("map", {
+    map = L.map("map", {
         center: center.value,
         zoom: zoom.value,
         maxZoom: 18,
@@ -53,86 +49,156 @@ const map = computed(() => {
         zoomSnap: 3,
     });
 
-    map.on('zoomend', function (event) {
-        const prevLocationsIds = locationsIdsByZoom.value[event.sourceTarget.getZoom()];
-
-        if (prevLocationsIds) locationsIds.value = prevLocationsIds;
-        else if (event.sourceTarget.getZoom() <= 6) locationsIds.value = [];
-
-        delete locationsIdsByZoom.value[event.sourceTarget.getZoom() + 3];
-    });
-
+    const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png');
     layer.addTo(map);
 
-    return map;
-});
-
-const markers = computed(() => {
-    const markers = new MarkerClusterGroup({
+    markers = new MarkerClusterGroup({
         iconCreateFunction: function (cluster) {
-            var markers = cluster.getAllChildMarkers();
-            var html = '<div class="group-marker">' + markers.length + '</div>';
+            var childMarkers = cluster.getAllChildMarkers();
+            var html = '<div class="group-marker">' + childMarkers.length + '</div>';
             return L.divIcon({ html: html });
         },
         spiderfyOnMaxZoom: false,
         showCoverageOnHover: false,
         zoomToBoundsOnClick: false,
         disableClusteringAtZoom: 13,
-
     });
 
-    return markers;
-});
+    map.addLayer(markers);
 
-const refreshMarkers = () => {
-    markers.value.clearLayers();
+    // Handle zoom events
+    map.on('zoomend', function (event) {
+        const currentZoom = event.sourceTarget.getZoom();
+        const savedIds = locationsIdsByZoom.value[currentZoom];
 
-    (data.value ?? []).forEach(({ lat, lon, id }, index) => {
-        const marker = L.marker([lat, lon], { icon: selected.value === id ? iconRed : icon, id });
+        if (savedIds && savedIds.length > 0) {
+            locationsIds.value = savedIds;
+        } else if (currentZoom <= 6) {
+            locationsIds.value = [];
+        }
 
-        marker.addEventListener('click', () => {
-            selected.value = id;
-        })
-
-        if (lat && lon) markers.value.addLayer(marker);
-    });
-}
-
-const removeMapHint = (event) => {
-    event.preventDefault();
-    event.currentTarget.querySelector('.map-hint')?.remove();
-    event.currentTarget.removeEventListener('wheel', removeMapHint, false);
-    event.currentTarget.removeEventListener('mouseleave', removeMapHint);
-};
-
-watch(sectionRef, () => {
-    document.querySelector('.leaflet-control-zoom-in').addEventListener('click', () => map.value.zoomIn(3));
-    document.querySelector('.leaflet-control-zoom-out').addEventListener('click', () => map.value.zoomOut(3));
-})
-
-onMounted(() => {
-    refreshMarkers();
-
-    markers.value.on('clusterclick', function (event) {
-        if (!locationsIdsByZoom.value) locationsIdsByZoom.value[map.value.getZoom() + 3] = [];
-        locationsIdsByZoom.value[map.value.getZoom() + 3] = event.layer.getAllChildMarkers().map(child => (child.options.id));
-
-        map.value.flyTo(Object.values(event.latlng), map.value.getZoom() + 3, {
-            animate: true,
-            duration: .5,
+        // Clean up old zoom levels
+        Object.keys(locationsIdsByZoom.value).forEach(zoomLevel => {
+            if (parseInt(zoomLevel) <= currentZoom - 3) {
+                delete locationsIdsByZoom.value[zoomLevel];
+            }
         });
     });
 
-    map.value.addLayer(markers.value);
+    // Handle cluster clicks
+    markers.on('clusterclick', function (event) {
+        const newZoom = Math.min(map.getZoom() + 3, 18);
+        const clusterIds = event.layer.getAllChildMarkers().map(marker => marker.options.id);
+        
+        // Store the filtered IDs for the new zoom level
+        locationsIdsByZoom.value[newZoom] = clusterIds;
 
-    sectionRef.value.addEventListener('wheel', removeMapHint, false);
-    sectionRef.value.addEventListener('mouseleave', removeMapHint);
-    sectionRef.value.addEventListener('click', removeMapHint);
+        map.flyTo([event.latlng.lat, event.latlng.lng], newZoom, {
+            animate: true,
+            duration: 0.5,
+        });
+    });
 
-    watch(data, () => {
-        refreshMarkers();
-    })
-})
+    setupZoomControls();
+};
+
+const createIcons = () => {
+    const icon = L.icon({
+        iconUrl: markerIcon,
+        iconSize: [23, 31],
+    });
+
+    const iconRed = L.icon({
+        iconUrl: markerIconRed,
+        iconSize: [23, 31],
+    });
+
+    return { icon, iconRed };
+};
+
+const refreshMarkers = () => {
+    if (!markers || !L || !data.value) return;
+
+    markers.clearLayers();
+    const { icon, iconRed } = createIcons();
+
+    data.value.forEach(({ lat, lon, id }) => {
+        if (!lat || !lon) return;
+
+        const markerIcon = selected.value === id ? iconRed : icon;
+        const marker = L.marker([lat, lon], { icon: markerIcon, id });
+
+        marker.addEventListener('click', () => {
+            selected.value = id;
+        });
+
+        markers.addLayer(marker);
+    });
+};
+
+const setupZoomControls = () => {
+    nextTick(() => {
+        const zoomIn = document.querySelector('.leaflet-control-zoom-in');
+        const zoomOut = document.querySelector('.leaflet-control-zoom-out');
+        
+        if (zoomIn) {
+            zoomIn.removeEventListener('click', handleZoomIn);
+            zoomIn.addEventListener('click', handleZoomIn);
+        }
+        if (zoomOut) {
+            zoomOut.removeEventListener('click', handleZoomOut);
+            zoomOut.addEventListener('click', handleZoomOut);
+        }
+    });
+};
+
+const handleZoomIn = () => map?.zoomIn(3);
+const handleZoomOut = () => map?.zoomOut(3);
+
+const removeMapHint = (event) => {
+    event.preventDefault();
+    const hint = event.currentTarget.querySelector('.map-hint');
+    if (hint) {
+        hint.remove();
+        event.currentTarget.removeEventListener('wheel', removeMapHint);
+        event.currentTarget.removeEventListener('mouseleave', removeMapHint);
+        event.currentTarget.removeEventListener('click', removeMapHint);
+    }
+};
+
+// Watchers
+watch([center, zoom], ([newCenter, newZoom]) => {
+    if (map) {
+        map.setView(newCenter, newZoom);
+    }
+});
+
+watch(selected, () => {
+    refreshMarkers();
+});
+
+watch(data, () => {
+    refreshMarkers();
+}, { deep: true });
+
+onMounted(async () => {
+    await initMap();
+    refreshMarkers();
+
+    if (sectionRef.value) {
+        sectionRef.value.addEventListener('wheel', removeMapHint);
+        sectionRef.value.addEventListener('mouseleave', removeMapHint);
+        sectionRef.value.addEventListener('click', removeMapHint);
+    }
+});
+
+onUnmounted(() => {
+    if (map) {
+        map.remove();
+        map = null;
+        markers = null;
+    }
+});
 </script>
 
 <style>
