@@ -18,6 +18,8 @@ const zoom = inject('mapZoom');
 const center = inject('mapCenter');
 const selected = inject('selected');
 const locationsIds = inject('locationsIds');
+const locationsStore = inject('locationsStore');
+const updateTrigger = inject('updateTrigger');
 
 const sectionRef = ref();
 const locationsIdsByZoom = ref({});
@@ -27,6 +29,36 @@ let L = null;
 let MarkerClusterGroup = null;
 
 const { data } = await useAsyncData(DataKeys.COORDS_LIST, async () => fetchCoordsList(route.query, getLocaleIso(), locationsIds.value), { watch: [() => route.query, locationsIds] });
+
+const updateVisibleLocations = () => {
+    if (!map || !data.value || !locationsStore) return;
+    
+    try {
+        const bounds = map.getBounds();
+        const currentZoom = map.getZoom();
+        
+        // Update zoom in store
+        locationsStore.setMapZoom(currentZoom);
+        
+        if (currentZoom <= 6) {
+            locationsStore.updateVisibleLocations([]);
+        } else {
+            const visible = data.value
+                .filter(({ lat, lon }) => {
+                    if (!lat || !lon) return false;
+                    return bounds.contains(L.latLng(lat, lon));
+                })
+                .map(({ id }) => id);
+            
+            locationsStore.updateVisibleLocations(visible);
+        }
+    } catch (error) {
+        console.error('Error updating visible locations:', error);
+        if (locationsStore) {
+            locationsStore.updateVisibleLocations([]);
+        }
+    }
+};
 
 const initMap = async () => {
     if (!L) {
@@ -83,6 +115,18 @@ const initMap = async () => {
                 delete locationsIdsByZoom.value[zoomLevel];
             }
         });
+
+        // Update visible locations after zoom with delay
+        setTimeout(() => {
+            updateVisibleLocations();
+        }, 200);
+    });
+
+    // Handle map movement
+    map.on('moveend', () => {
+        setTimeout(() => {
+            updateVisibleLocations();
+        }, 100);
     });
 
     // Handle cluster clicks
@@ -90,13 +134,19 @@ const initMap = async () => {
         const newZoom = Math.min(map.getZoom() + 3, 18);
         const clusterIds = event.layer.getAllChildMarkers().map(marker => marker.options.id);
         
-        // Store the filtered IDs for the new zoom level
         locationsIdsByZoom.value[newZoom] = clusterIds;
 
         map.flyTo([event.latlng.lat, event.latlng.lng], newZoom, {
             animate: true,
             duration: 0.5,
         });
+    });
+
+    // Initial update of visible locations
+    map.whenReady(() => {
+        setTimeout(() => {
+            updateVisibleLocations();
+        }, 1000);
     });
 
     setupZoomControls();
@@ -134,6 +184,11 @@ const refreshMarkers = () => {
 
         markers.addLayer(marker);
     });
+
+    // Update visible locations after markers refresh with delay
+    setTimeout(() => {
+        updateVisibleLocations();
+    }, 100);
 };
 
 const setupZoomControls = () => {
@@ -177,9 +232,9 @@ watch(selected, () => {
     refreshMarkers();
 });
 
-watch(data, () => {
+watch(data, (newData) => {
     refreshMarkers();
-}, { deep: true });
+}, { deep: true, immediate: false });
 
 onMounted(async () => {
     await initMap();

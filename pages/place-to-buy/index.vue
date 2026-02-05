@@ -7,10 +7,12 @@
         <SectionsPlaceToBuySearch />
         <div class="grid gap-6 mb-10 lg:grid-cols-5 lg:gap-10">
             <template v-if="!pending">
-                <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsList.length">
+                <div class="lg:col-span-2  text-2xl font-medium" v-if="!locationsStore.state.displayedLocations.length">
                     {{ $t('pages.place-to-buy.locations-not-found') }}
                 </div>
-                <SectionsPlaceToBuyLocationsList :locationsList="locationsList" v-else />
+                <SectionsPlaceToBuyLocationsList 
+                    :locationsList="locationsStore.state.displayedLocations" 
+                    v-else />
             </template>
             <div v-else class="lg:col-span-2"></div>
             <ClientOnly>
@@ -28,6 +30,8 @@ import { DataKeys } from '~/enums/dataKeys';
 const { $getMapCenter } = useNuxtApp();
 const route = useRoute();
 
+const locationsStore = usePlaceToBuyStore();
+
 const mapKey = ref(0);
 const mapZoom = ref(6);
 const mapCenter = ref($getMapCenter());
@@ -35,19 +39,24 @@ const selected = ref(null);
 const page = ref(1);
 const lastPage = ref(false);
 const locationsIds = ref([]);
-const locationsList: Ref = ref([]);
 const { $locale } = useNuxtApp();
 
 const { data, pending }: { data: Ref<PlaceToBuyPage>, pending: Ref<boolean> } = await useAsyncData(DataKeys.PLACE_TO_BUY_SHOPS_LIST, async () => fetchShops(route.query, page.value, $locale, locationsIds.value), { watch: [() => route.query, page, locationsIds] });
 
 const { meta, breadcrumbs, title, schema } = toRefs(data.value);
 
+// Watch mapZoom and update store
+watch(mapZoom, (newZoom) => {
+    locationsStore.setMapZoom(newZoom);
+});
+
 // Watch for route changes and reset state
 watch(() => route.query, () => {
     page.value = 1;
-    locationsList.value = [];
     selected.value = null;
     lastPage.value = false;
+    locationsIds.value = [];
+    locationsStore.reset();
     mapKey.value = mapKey.value + 1;
 }, { deep: true });
 
@@ -56,13 +65,9 @@ watch(() => data.value, (newData) => {
     if (!newData) return;
     
     if (page.value === 1) {
-        // Reset list for new search/filter
-        locationsList.value = [...newData.locationsList];
+        locationsStore.setAllLocations(newData.locationsList);
     } else {
-        // Append for pagination, avoiding duplicates
-        const existingIds = new Set(locationsList.value.map(loc => loc.id));
-        const newLocations = newData.locationsList.filter(loc => !existingIds.has(loc.id));
-        locationsList.value = [...locationsList.value, ...newLocations];
+        locationsStore.addLocations(newData.locationsList);
     }
     
     if (newData.locationsList.length < 25) {
@@ -70,10 +75,10 @@ watch(() => data.value, (newData) => {
     }
 }, { immediate: true });
 
-// Initialize locationsList on mount
+// Initialize locations on mount
 onMounted(() => {
     if (data.value?.locationsList) {
-        locationsList.value = [...data.value.locationsList];
+        locationsStore.setAllLocations(data.value.locationsList);
     }
 });
 
@@ -83,8 +88,8 @@ provide('mapKey', mapKey);
 provide('selected', selected);
 provide('page', page);
 provide('lastPage', lastPage);
-provide('locationsList', locationsList);
 provide('locationsIds', locationsIds);
+provide('locationsStore', locationsStore);
 
 setMeta(meta.value);
 
