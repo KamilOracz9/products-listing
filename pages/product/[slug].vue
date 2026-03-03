@@ -24,7 +24,7 @@
                     <SectionsProductsAttachments :images="images.details" />
 
                     <div class="flex flex-col gap-1 leading-4 sm:leading-6">
-                        <SectionsProductsProductDescription :video="data.video" :description="description"
+                        <SectionsProductsProductDescription :description="description"
                             :attributes="images.attribute_icons" :doorsOpen="images.description_icons"
                             :colors="data.other_colors" />
                     </div>
@@ -39,11 +39,19 @@
                 <SectionsProductsDownloadFiles v-if="hasFiles" :files="files" />
             </div>
 
+            <iframe v-if="data.video" class="w-full aspect-video my-5 max-h-[800px]" :src="data.video" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
             <div :class="hasAllRelationships && 'flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28'">
-                <ProductsSlider :sliderConfig="complementarySliderConfig" :products="data.relationships.complementary ?? []"
-                    :title="$t('product.complementary-products')" prevButtonClass="complementary-products-slider-arrow-prev" nextButtonClass="complementary-products-slider-arrow-next" />
+                <ProductsSlider :sliderConfig="complementarySliderConfig"
+                    :products="data.relationships.complementary ?? []" :title="$t('product.complementary-products')"
+                    prevButtonClass="complementary-products-slider-arrow-prev"
+                    nextButtonClass="complementary-products-slider-arrow-next" />
                 <ProductsSlider :sliderConfig="similarSliderConfig" :products="data.relationships.similar ?? []"
-                    :title="$t('product.similar-products')" prevButtonClass="similar-products-slider-arrow-prev" nextButtonClass="similar-products-slider-arrow-next" />
+                    :title="$t('product.similar-products')" prevButtonClass="similar-products-slider-arrow-prev"
+                    nextButtonClass="similar-products-slider-arrow-next" />
             </div>
         </div>
 
