@@ -15,7 +15,7 @@ export * from './made-to-measure';
 export * from './home';
 export * from './collections';
 
-export default async function fetchData(key: DataKeys, func: () => Promise<any>, watch?: any) {
+export default async function fetchData(key: string, func: () => Promise<any>, watch?: any) {
     const { data, error, pending, refresh } = await useAsyncData(key, func, watch);
 
     switch (error.value?.statusCode) {
