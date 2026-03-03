@@ -230,6 +230,17 @@
             "locations-not-found": "Nie znaleziono sklepów w tej okolicy",
             "symbol": "Symbol",
             "map-hint": "Proszę wcisnąć CTRL (lub ⌘) + scroll aby przybliżyć"
+        },
+        "download-declarations": {
+            "group_0": {
+                "title": "Atesty"
+            },
+            "group_1": {
+                "title": "Karty gwarancyjne"
+            },
+            "group_2": {
+                "title": "Deklaracje"
+            }
         }
     },
     "product": {

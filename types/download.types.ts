@@ -15,6 +15,15 @@ export type Section = {
     "items": Item[];
     "button"?: string;
     "link"?: string;
+    "Group_0"?: {
+        "items": Item[];
+    },
+    "Group_1"?: {
+        "items": Item[];
+    },
+    "Group_2"?: {
+        "items": Item[];
+    },
 }
 
 export type Item = {
