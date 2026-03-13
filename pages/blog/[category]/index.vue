@@ -17,9 +17,8 @@ import type { InspirationCategoryPage } from '~/types/inspirations.types';
 const route = useRoute();
 const localeRoute = useLocaleRoute();
 const { locale } = useI18n();
-const { $locale } = useNuxtApp();
 
-const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORY_PAGE, async () => fetchInspirationCategoryPage(route.params.category as string, $locale));
+const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORY_PAGE, async () => fetchInspirationCategoryPage(route.params.category as string, getLocaleIso()));
 const { breadcrumbs, items, title, slug, meta } = toRefs(data.value as InspirationCategoryPage);
 const linkPath = computed(() => {
     const route = localeRoute('blog', locale.value)

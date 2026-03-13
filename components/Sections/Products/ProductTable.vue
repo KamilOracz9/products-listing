@@ -1,5 +1,9 @@
 <template>
     <SectionsCommonAccordion :label="$t('product.product-table')" id="product-table">
+        <ProductPagePartsCatalogDialog :showDialog="showDialog" :partsList="partsList"
+            :defaultImage="techImages[0]?.desktop" @close="showDialog = false"
+            :productSymbol="selectedVariant?.symbol ?? ''" />
+
         <div>
             <ul class="flex gap-2 overflow-x-auto pb-3 mb-10">
                 <li v-for="(techImage, index) in techImages" class="min-w-[128px] lg:w-[300px] cursor-pointer"
@@ -23,20 +27,24 @@
                                 v-if="headerIcons[header]" :src="headerIcons[header]" alt="">
                             <span v-else>{{ $t(`product.${header}`) }}</span>
                         </th>
-                        <th class="w-[60px]"></th>
+                        <th class="w-[100px]"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <template v-for="variant in ungroupedVariants">
-                        <tr class="text-sm even:bg-gray-2">
+                        <tr class="text-sm even:bg-gray-2 cursor-pointer">
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
-                                :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
-                                    header) }}</td>
+                                @click="openPdfInNewTab($event, variant.id, header)"
+                                :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
+                                :class="['symbol'].includes(header) ? 'pl-4 cursor-default' : 'text-center'">{{
+                                    $t(`product.${getHeader(variant, header)}`, getHeader(variant, header)) }}</td>
                             <td
-                                class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                class="w-[100px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4"
+                                        src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -48,15 +56,19 @@
                             <td class="w-full pl-10" :colspan="headers.length + 1">{{ group[0] }}</td>
                         </tr>
 
-                        <tr v-for="variant in group[1]" class="text-sm even:bg-gray-2">
+                        <tr v-for="variant in group[1]" class="text-sm even:bg-gray-2 cursor-pointer">
                             <td class="pl-2 w-[25px]"><span
                                     :class="[`${variant.order_time_id && getRealizationColor(variant.order_time_id)}`]"
                                     class="flex size-2 -translate-y-[10%]"></span></td>
                             <td v-for="header in headers" class="break-keep whitespace-nowrap"
+                                :data-href="`${useAppConfig().public.base}/api/v1/products/${productId}/variants/${variant.id}/export-to-pdf?locale=${localeIso}`"
+                                @click="openPdfInNewTab($event, variant.id, header)"
                                 :class="['symbol'].includes(header) ? 'pl-4' : 'text-center'">{{ getHeader(variant,
                                     header) }}</td>
                             <td
                                 class="w-[60px] justify-center whitespace-nowrap font-medium bg-white flex gap-4 py-1.5">
+                                <!-- <button @click="openDialog(variant.id)"><img class="min-w-4 min-h-4" -->
+                                <!-- src="/assets/icons/gear.svg"></button> -->
                                 <SectionsCommonToggleClipboard :id="variant.id" :symbol="variant.symbol" />
                                 <SectionsCommonGenerateProductCard :productId="productId" :variantId="variant.id" />
                             </td>
@@ -65,7 +77,8 @@
                 </tbody>
             </table>
             <div class="flex flex-col lg:flex-row gap-10">
-                <div v-if="ungroupedVariants.find(({order_time_id}) => order_time_id !== 1)" class="flex flex-col gap-4 mt-10">
+                <div v-if="ungroupedVariants.find(({ order_time_id }) => order_time_id !== 1)"
+                    class="flex flex-col gap-4 mt-10">
                     <div class="flex items-center gap-2">
                         <span :class="[`${getRealizationColor(2)}`]" class="flex size-2 -translate-y-[10%]"></span>
                         <p class="text-sm">{{ $t('product.realization-time.2-weeks') }}</p>
@@ -88,6 +101,10 @@
                         <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
+                    <!-- <div class="flex items-center gap-2">
+                        <img class="size-[16px]" src="/assets/icons/gear.svg" alt="">
+                        <p class="text-sm">{{ $t('pages.product.parts-catalog-title') }}</p>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -123,8 +140,13 @@ const headerIcons: Ref<{
 
 const { techImages, variants } = toRefs(props);
 const ungroupedVariants = computed(() => variants.value.filter(variant => !variant.group));
-const groupedVariants = computed(() => [...groupBy(variants.value.filter(variant => variant.group), variant => variant.group.name)].sort());
+const groupedVariants = computed(() => [...groupBy(variants.value.filter(variant => variant.group), variant => variant.group.name)].map(([groupName, groupVariants]) => [groupName, groupVariants.sort((a, b) => {
+    const aDim = parseFloat(a.dimensions as string) || 0;
+    const bDim = parseFloat(b.dimensions as string) || 0;
+    return aDim - bDim;
+})]));
 
+const localeIso = ref(getLocaleIso());
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const headers: Ref<{
@@ -138,13 +160,15 @@ const headers: Ref<{
                 }).filter(key => key)
             }).flat()
         )
-    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group'].includes(header as string))
+    ].filter(header => !['id', 'width', 'height', 'length', 'order_time_id', 'group', 'parts_catalog'].includes(header as string))
 ))
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
 const getHeader = (variant: Variant, header: string) => {
+    if (header && header.startsWith('dimension_') && variant[header] && variant[header].startsWith('0-')) return `max ${variant[header].split('-')[1]}`;
+
     return variant[header];
 }
 
@@ -161,6 +185,38 @@ const getRealizationColor = (realizationTime: number) => {
         default: return '';
     }
 }
+
+const openPdfInNewTab = (event: Event, variantId: number, header: string) => {
+    if (header === 'symbol') {
+        event.stopPropagation();
+        return;
+    }
+
+    const target = event.currentTarget as HTMLElement;
+    const url = target.getAttribute('data-href');
+    if (url) {
+        window.open(url, '_blank');
+    }
+};
+
+const showDialog = ref(false)
+const selectedVariantId = ref<number | null>(null)
+
+const openDialog = (variantId: number) => {
+    selectedVariantId.value = variantId
+    showDialog.value = true
+}
+
+const selectedVariant = computed(() => {
+    return variants.value.find(v => v.id === selectedVariantId.value)
+})
+
+const partsList = computed(() => {
+    if (!selectedVariant.value) return []
+
+    return selectedVariant.value.parts_catalog || []
+})
+
 </script>
 
 <style>

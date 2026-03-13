@@ -15,6 +15,7 @@
                     <NuxtLink :to="localePath({ name: 'product-slug', params: {slug: product.slug} })"
                         :aria-label="product.name" v-for="product in data?.products" class="flex flex-col gap-2 relative">
                         <SectionsProductsBadge :badge="product.badge" />
+                        <!-- <p :class="product.symbol.toLowerCase() !== route.query.search.toLowerCase() ? 'text-gray-1' : ''" class="font-semibold text-lg leading-[1.1]">{{ product.symbol }}</p> -->
                         <div>
                             <img width="460" height="613" :src="product.media['460_613']" alt="">
                         </div>
@@ -53,7 +54,6 @@ import { fetchSearchResults } from '~/services/api/search';
 
 const route = useRoute();
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
 const query = computed(() => ({
     search: route.query.search as string,
@@ -61,5 +61,9 @@ const query = computed(() => ({
     searchInInspirations: + !!route.query.searchInInspirations,
 }))
 
-const { data, pending } = await useAsyncData(DataKeys.SEARCH_RESULT, async () => fetchSearchResults($locale, query.value), { watch: [query] });
+watch(query, () => {
+    refreshNuxtData()
+})
+
+const { data, pending } = await useAsyncData(DataKeys.SEARCH_RESULT, async () => fetchSearchResults(getLocaleIso(), query.value), { watch: [query] });
 </script>

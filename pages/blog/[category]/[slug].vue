@@ -46,12 +46,11 @@ const localePath = useLocalePath();
 const route = useRoute();
 const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
-const { $locale } = useNuxtApp();
 
 provide('modalIsOpen', modalIsOpen);
 provide('galleryActiveSlide', galleryActiveSlide);
 
-const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string, $locale));
+const { data } = await fetchData(DataKeys.INSPIRATION_PAGE, async () => fetchInspirationPage(route.params.slug as string, getLocaleIso()));
 const { breadcrumbs, title, related, image, gallery, description, schema } = toRefs(data.value as InspirationPage);
 
 setMeta({
@@ -74,6 +73,16 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+}
+
+.article-content p a:hover {
+    background-color: unset !important;
+    color: unset !important;
+    text-decoration: underline;
+}
+
+.article-content p a {
+    text-decoration: underline;
 }
 
 .article-content p,
@@ -114,7 +123,8 @@ onMounted(() => {
     padding-left: 1.25rem;
 }
 
-.article-content a:not(.img-url) {
+.article-content > a:not(.img-url),
+.article-content div > a:not(.img-url) {
     font-size: 1.375rem;
     border: 1px solid #1d1d1b;
     position: relative;

@@ -12,7 +12,7 @@ export default [
     { Disallow: '/' },
 
     { UserAgent: 'GPTBot' },
-    { Disallow: '/' },
+    { Allow: '/' },
     
     { UserAgent: 'OAI-SearchBot' },
     { Disallow: '/' },
@@ -42,7 +42,7 @@ export default [
     { Disallow: '/' },
 
     { UserAgent: 'ClaudeBot' },
-    { Disallow: '/' },
+    { Allow: '/' },
 
     { UserAgent: 'Yandex' },
     { Disallow: '/' },
@@ -64,6 +64,9 @@ export default [
     
     { UserAgent: 'wget' },
     { Disallow: '/' },
+
+    { UserAgent: 'Google-Extended' },
+    { Allow: '/' },
 
     { UserAgent: '*' },
     { Disallow: '/' },

@@ -1,4 +1,22 @@
 {
+  "index": {
+    "en": "/",
+    "pl": "/",
+    "de": "/",
+    "fr": "/",
+    "it": "/",
+    "es": "/",
+    "no": "/",
+    "sk": "/",
+    "cs": "/",
+    "ro": "/",
+    "ru": "/",
+    "uk": "/",
+    "hu": "/",
+    "et": "/",
+    "lv": "/",
+    "lt": "/"
+  },
   "search/index": {
     "en": "/search",
     "pl": "/szukaj",
@@ -142,6 +160,24 @@
     "et": "/3d-failide-allalaadimine",
     "lv": "/lejupielade-3d-faili",
     "lt": "/atsisiusti-3d-failus"
+  },
+  "download/documents/index": {
+    "en": "/download-documents",
+    "pl": "/pobierz-dokumenty",
+    "de": "/dokumente-herunterladen",
+    "fr": "/telecharger-documents",
+    "it": "/scarica-documenti",
+    "es": "/descargar-documentos",
+    "no": "/last-ned-dokumenter",
+    "sk": "/stiahnut-dokumenty",
+    "cs": "/stahnout-dokumenty",
+    "ro": "/descarca-documente",
+    "ru": "/skachat-dokumenty",
+    "uk": "/завантажити-документи",
+    "hu": "/letoltes-dokumentumok",
+    "et": "/dokumentide-allalaadimine",
+    "lv": "/lejupielade-dokumenti",
+    "lt": "/atsisiusti-dokumentus"
   },
   "service/index": {
     "en": "/service",
@@ -340,6 +376,24 @@
     "et": "/professionaalidele",
     "lv": "/profesionaliem",
     "lt": "/profesionalams"
+  },
+  "for-architects/index": {
+    "en": "/for-architects",
+    "pl": "/dla-architektow",
+    "de": "/fuer-architekten",
+    "fr": "/pour-les-architectes",
+    "it": "/per-architetti",
+    "es": "/para-arquitectos",
+    "no": "/for-arkitekter",
+    "sk": "/pre-architektov",
+    "cs": "/pro-architekty",
+    "ro": "/pentru-arhitecti",
+    "ru": "/dlya-arhitektorov",
+    "uk": "/dlya-arkhitektoriv",
+    "hu": "/epiteszeknek",
+    "et": "/arhitektidele",
+    "lv": "/arhitektiem",
+    "lt": "/architektams"
   },
   "contact/index": {
     "en": "/contact",

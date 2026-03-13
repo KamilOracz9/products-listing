@@ -5,6 +5,15 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: [
+    () => {
+      const event = useRequestEvent()
+      setResponseStatus(event, 404)
+    }
+  ],
+});
+
 useHead(() => ({
   status: 404,
   title: "Page not found",

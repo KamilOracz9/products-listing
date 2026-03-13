@@ -7,7 +7,7 @@
                     <figure>
                         <div class="relative">
                             <SectionsProductsBadge :badge="product.badge" />
-                            <img class="w-full rounded-br-sm aspect-[460/613]" :src="product.media?.main['460_613']" width="460" height="613" :alt="product.name"
+                            <img class="w-full rounded-br-sm aspect-[460/613]" :src="product.media['460x613']" width="460" height="613" :alt="product.name"
                                 :title="product.name">
                         </div>
                         <figcaption>

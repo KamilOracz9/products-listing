@@ -27,7 +27,7 @@
             <p class="section-text">{{ reklamationForm.text }}</p>
             <ul class="flex flex-col gap-4 [&>li>a]:justify-between [&>li>a]:border-black">
                 <li class="xl:max-w-[344px]">
-                    <ButtonsTransparent tagType="link" :url="localePath({ name: 'download' })"
+                    <ButtonsTransparent tagType="link" :url="localePath({ name: 'download-documents' })"
                         :label="reklamationForm.button_1" />
                 </li>
                 <li class="xl:max-w-[344px]">

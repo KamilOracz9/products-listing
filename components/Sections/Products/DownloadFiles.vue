@@ -3,7 +3,10 @@
         <div>
             <ul>
                 <li v-for="file in Object.values(files).filter(file => file)">
-                    <NuxtLink :to="file.value" target="blank" :aria-label="file.label">{{ file.label }}</NuxtLink>
+                    <NuxtLink v-if="file.value" :to="file.value" target="blank" :aria-label="file.label">{{ file.label }}</NuxtLink>
+                    <template v-else>
+                        <NuxtLink v-for="fileChild in file" :to="fileChild.value" target="blank" class="block" :aria-label="fileChild.label">{{ fileChild.label }}</NuxtLink>
+                    </template>
                 </li>
             </ul>
         </div>

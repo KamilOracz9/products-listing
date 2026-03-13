@@ -68,18 +68,60 @@
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_6">
-                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_6.image" alt=""
-                        class="rounded-tl-md md:rounded-tl-lg"></div>
+                <div class="section-img">
+                    <img 
+                        loading="lazy" 
+                        :src="section_6.image" 
+                        :srcset="`
+                            ${section_6.images['697x405']} 449w,
+                            ${section_6.images['820x410']} 768w,
+                            ${section_6.images['960x480']} 1023w,
+                            ${section_6.images['697x405']} 1279w
+                            ${section_6.images['820x410']} 1679w
+                        `" 
+                        sizes="(max-width: 449px) 449px, (max-width: 768px) 768px, (max-width: 1023px) 1023px, (max-width: 1279px) 1279px, (max-width: 1679px) 1679px, 1680px"
+                        alt=""
+                        class="rounded-tl-md aspect-[2/1] md:rounded-tl-lg"
+                    />
+                </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_7">
-                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_7.image" alt="">
+                <div class="section-img">
+                    <img 
+                        loading="lazy" 
+                        :src="section_6.image" 
+                        :srcset="`
+                            ${section_7.images['697x405']} 449w,
+                            ${section_7.images['820x410']} 768w,
+                            ${section_7.images['960x480']} 1023w,
+                            ${section_7.images['697x405']} 1279w
+                            ${section_7.images['820x410']} 1679w
+                        `" 
+                        sizes="(max-width: 449px) 449px, (max-width: 768px) 768px, (max-width: 1023px) 1023px, (max-width: 1279px) 1279px, (max-width: 1679px) 1679px, 1680px"
+                        alt=""
+                        class="rounded-tl-md aspect-[2/1] md:rounded-tl-lg"
+                    />
                 </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_8">
-                <div class="section-img"><img loading="lazy" width="1000" height="667" :src="section_8.image" alt=""
-                        class="rounded-br-md md:rounded-br-lg"></div>
+                <div class="section-img">
+                    <img 
+                        loading="lazy" 
+                        :src="section_6.image" 
+                        :srcset="`
+                            ${section_8.images['697x405']} 449w,
+                            ${section_8.images['820x410']} 768w,
+                            ${section_8.images['960x480']} 1023w,
+                            ${section_8.images['697x405']} 1279w
+                            ${section_8.images['820x410']} 1679w
+                        `" 
+                        sizes="(max-width: 449px) 449px, (max-width: 768px) 768px, (max-width: 1023px) 1023px, (max-width: 1279px) 1279px, (max-width: 1679px) 1679px, 1680px"
+                        alt=""
+                        class="rounded-tl-md aspect-[2/1] md:rounded-tl-lg"
+                    />
+                </div>
             </SectionsMadeToMeasureModification>
 
             <SectionsMadeToMeasureModification :data="section_9">
@@ -145,9 +187,8 @@ import { fetchMadeToMeasurePage } from '~/services/api';
 import type { MadeToMeasurePage } from '~/types/made-to-measure.types';
 
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
-const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage($locale));
+const { data } = await useAsyncData(DataKeys.MADE_TO_MEASURE_PAGE, async () => fetchMadeToMeasurePage(getLocaleIso()));
 const { breadcrumbs, description, meta, title } = toRefs(data.value as MadeToMeasurePage);
 const { section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10 } = toRefs(description.value.content);
 

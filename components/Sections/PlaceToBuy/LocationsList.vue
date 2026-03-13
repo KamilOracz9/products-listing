@@ -4,7 +4,7 @@
             <li :id="`locations-list-${(location.id).toString()}`"
                 :class="selected == location.id ? 'border-black' : 'border-gray-2'"
                 class="bg-gray-2 px-6 py-5 rounded-br-[25px] border" v-for="(location, index) in locationsList"
-                :key="index">
+                :key="location.id">
                 <p class="font-medium text-lg xs:text-xl">{{ location.title }}</p>
                 <p>{{ location.subtitle }}</p>
                 <div class="mt-4 grid gap-4 text-sm xs:grid-cols-2 xs:gap-6 sm:text-base">
@@ -37,6 +37,7 @@ const mapKey: Ref<number> | undefined = inject('mapKey');
 const selected = <Ref<number>>inject('selected');
 const page: Ref<number> | undefined = inject('page') ?? ref(1);
 const lastPage = <Ref<boolean>>inject('lastPage');
+const locationsStore = inject('locationsStore');
 const listRef = ref(null);
 
 const props = defineProps<{
@@ -46,10 +47,17 @@ const props = defineProps<{
 const { locationsList } = toRefs(props);
 
 const onScroll = (e: Event) => {
+    // Only handle scroll for pagination when not filtering by map view
+    if (locationsStore && locationsStore.state.isFiltering) {
+        return; // Don't paginate when showing filtered results
+    }
+
     const element = e.currentTarget as HTMLElement;
 
-    if (element.scrollTop + element.offsetHeight >= element.scrollHeight) {
-        if (!lastPage.value) page.value = page.value + 1;
+    if (element.scrollTop + element.offsetHeight >= element.scrollHeight - 10) {
+        if (!lastPage.value && page) {
+            page.value = page.value + 1;
+        }
     }
 }
 

@@ -36,4 +36,8 @@ const props = defineProps(['meta'])
 const { meta } = toRefs(props);
 const localePath = useLocalePath();
 const router = useRouter();
+
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>

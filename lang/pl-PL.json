@@ -77,6 +77,7 @@
     "navigation": {
         "made-to-measure": "Na wymiar",
         "all-products": "Wszystkie produkty",
+        "new-products": "Nowe produkty",
         "measure": "Wymiar",
         "shape": "Kształt",
         "glass": "Szkło",
@@ -100,6 +101,7 @@
         }
     },
     "filters": {
+        "is_new": "Nowość",
         "collections": "Kolekcje",
         "doorType": "Typ drzwi",
         "doorsCount": "Liczba drzwi",
@@ -175,7 +177,12 @@
         },
         "product": {
             "toggle-clipboard": "Dodaj do schowka",
-            "generate-product-card": "Generuj kartę produktu"
+            "generate-product-card": "Generuj kartę produktu",
+            "send-request": "Wyślij zapytanie",
+            "email-label": "Wpisz swój email",
+            "phone-label": "Wpisz nr telefonu",
+            "parts-catalog-title": "Katalog części",
+            "request-sent-success": "Twoje zapytanie zostało wysłane pomyślnie!"
         },
         "inspirations": {
             "see-all": "Zobacz wszystkie",
@@ -235,6 +242,7 @@
         "download-files": "Pliki do pobrania",
         "parts": "Części",
         "similar-products": "Podobne produkty",
+        "complementary-products": "Pamiętaj o ...",
         "similar-product-see": "Zobacz",
         "symbol": "Symbol",
         "dimensions": "Wymiary",
@@ -263,7 +271,9 @@
             "4-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 4 tygodni",
             "6-weeks": "Produkt dostępny na zamówienie. Czas realizacji ok. 6 tygodni"
         },
-        "toggle-toggle-clipboard": "Przełącz produkt w schowku"
+        "toggle-toggle-clipboard": "Przełącz produkt w schowku",
+        "L": "L",
+        "P": "P"
     },
     "home": {
         "in-offer": {

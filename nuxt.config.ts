@@ -1,7 +1,38 @@
 import pages from './lang/pages.json';
 
+// const languages = ['pl', 'en', 'de']
+
+// const productRouteRules = Object.fromEntries(
+//   languages.map(lang => [`/${lang}/products`, { swr: true }])
+// )
+
+// const routeRules = Object.entries(pages).flatMap(([route, languages]) => {
+//   const regex = /^(index|.*(products).*)$/
+
+//   if (regex.test(route)) {
+//     return Object.entries(languages).map(([language, data]) => {
+//       return Object.fromEntries([[`/${language === 'pl' ? '' : language}${route === 'index' ? '' : data.loc.source.replace(/\[.*?\]/g, "*")}`, { swr: true }]]);
+//     })
+//   }
+// }).filter(item => item);
+
+// const routeRules = Object.fromEntries(
+//   Object.entries(pages).flatMap(([route, languages]) => {
+//     const regex = /^(index|.*(products).*|products\/[^/]+\/index)$/
+
+//     if (regex.test(route)) {
+//       return Object.entries(languages).map(([language, data]) => {
+//         return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
+//       })
+//     }
+//   }).filter(item => item)
+// );
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: {
+    enabled: false,
+  },
   runtimeConfig: {
     public: {
       cookiebotToken: process.env.COOKIEBOT_TOKEN,
@@ -74,7 +105,7 @@ export default defineNuxtConfig({
       '/uslugi-dodatkowe-w-ofercie-new-trendy/': { redirect: { to: '/blog/porady-i-wsparcie/uslugi-dodatkowe-w-ofercie-new-trendy/', statusCode: 301 } },
       '/powloki-ochronne-w-produktach-new-trendy/': { redirect: { to: '/blog/porady-i-wsparcie/powloki-ochronne-w-produktach-new-trendy/', statusCode: 301 } },
       '/inspiracje/': { redirect: { to: '/blog/', statusCode: 301 } },
-      '/strefa-architekta/': { redirect: { to: '/dla-profesjonalistow/#strefa-architekta', statusCode: 301 } },
+      '/strefa-architekta/': { redirect: { to: '/dla-architektow/#strefa-architekta', statusCode: 301 } },
       '/strefa-partnera/': { redirect: { to: '/dla-profesjonalistow/#strefa-partnera', statusCode: 301 } },
     },
     preset: 'node-server',
@@ -143,6 +174,7 @@ export default defineNuxtConfig({
     'nuxt-aos',
     '@nuxt/image',
     'nuxt-schema-org',
+    'nuxt-toast'
   ],
 
   schemaOrg: {
@@ -222,6 +254,11 @@ export default defineNuxtConfig({
         code: 'lt',
         iso: 'lt_LT',
         file: 'lt-LT.json',
+      },
+      {
+        code: 'fr',
+        iso: 'fr_FR',
+        file: 'fr-FR.json',
       },
     ],
     defaultLocale: 'pl',

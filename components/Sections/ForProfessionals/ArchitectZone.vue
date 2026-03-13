@@ -23,14 +23,20 @@
                     </ul>
                 </div>
 
-                <div class="bg-yellow-2 p-8 rounded-tl-[25px] mt-6 text-lg lg:text-xl 2xl:w-[calc(50%-1.25rem)] 2xl:ml-auto"
+                <div class="bg-yellow-2 rounded-tl-[25px] mt-6 text-lg lg:text-xl w-full flex"
                     data-aos="fade-up">
-                    <ul class="flex flex-col gap-6" style="font-size: clamp(1rem, 3cqw, 1.25rem);">
+                    <div class="flex flex-col gap-6 p-8" style="font-size: clamp(1rem, 3cqw, 1.25rem);">
+                        <div class="flex gap-4 items-center" v-if="section_2.left.person">
+                            <img class="w-[28px] aspect-[1/1]"src="@/assets/icons/person.svg" alt=""> {{ section_2.left.person }}
+                        </div>
                         <a class="flex gap-4 items-center" :href="`tel:${section_2.left.phone}`"><img class="w-[28px] aspect-[1/1]"
                                 src="@/assets/icons/phone.svg" alt=""> {{ section_2.left.phone }}</a>
                         <a class="flex gap-4 items-center" :href="`mailto:${section_2.left.email}`"><img class="w-[28px] aspect-[1/1]"
                                 src="@/assets/icons/envelope.svg" alt=""> {{ section_2.left.email }}</a>
-                    </ul>
+                    </div>
+                    <div class="ml-auto">
+                        <img src="@/assets/images/rooster.webp" class="h-[196px]" alt="">
+                    </div>
                 </div>
             </section>
 
@@ -60,13 +66,13 @@
 
             <section class="sm:grid sm:grid-cols-2 sm:gap-6 lg:mt-0 lg:gap-10 2xl:grid-cols-2">
                 <NuxtLink data-aos="fade-up" :to="section_3.box_3.path" class="h-fit" :aria-label="section_3.box_3.title">
-                    <div class="bg-gray-5 mb-4 flex justify-center">
+                    <div class="bg-gray-5 mb-4 flex justify-center hover:bg-yellow-2 transition-all">
                         <img :src="section_3.box_3.icon" alt="" class="h-full max-h-[235px]">
                     </div>
                     <p class="text-lg font-medium text-center leading-5">{{ section_3.box_3.title }}</p>
                 </NuxtLink>
                 <NuxtLink data-aos="fade-up" :to="section_3.box_4.path" class="h-fit" :aria-label="section_3.box_4.title">
-                    <div class="bg-gray-5 mb-4 flex justify-center">
+                    <div class="bg-gray-5 mb-4 flex justify-center hover:bg-yellow-2 transition-all">
                         <img :src="section_3.box_4.icon" alt="" class="h-full max-h-[235px]">
                     </div>
                     <p class="text-lg font-medium text-center leading-5">{{ section_3.box_4.title }}</p>

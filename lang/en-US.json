@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Installation on internal cubes",
         "rail-hanger": "Rail hanger",
         "collections": "Our collections",
+        "new-products": "New products",
         "slug": {
             "made-to-measure": "Made to measure",
             "measure": "Measure",
@@ -119,7 +120,13 @@
         "product_material": "Meterial",
         "product_shape": "Shape",
         "product_surface_finishing": "Surface",
-        "product_walls_count": "Walls count"
+        "product_walls_count": "Walls count",
+        "is_new": "New"
+    },
+    "meta": {
+        "products": {
+            "title": "Shower enclosures"
+        }
     },
     "pages": {
        "search": {
@@ -231,6 +238,7 @@
         "download-files": "Files to download",
         "parts": "Parts",
         "similar-products": "similar products",
+        "complementary-products": "Complementary Products",
         "similar-product-see": "See",
         "symbol": "Symbol",
         "dimensions": "Dimensions",
@@ -258,8 +266,9 @@
             "4-weeks": "PProduct available on request. Delivery time approx. 4 weeks",
             "6-weeks": "Product available on request. Delivery time approx. 6 weeks"
         },
-        "toggle-toggle-clipboard": "Toggle product in clipboard"
-        
+        "toggle-toggle-clipboard": "Toggle product in clipboard",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

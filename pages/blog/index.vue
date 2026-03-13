@@ -17,9 +17,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchInspirationCategoriesPage } from '~/services/api';
 import type { InspirationCategoriesPage } from '~/types/inspirations.types';
 
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORIES_PAGE, async () => fetchInspirationCategoriesPage($locale));
+const { data } = await useAsyncData(DataKeys.INSPIRATIONS_CATEGORIES_PAGE, async () => fetchInspirationCategoriesPage(getLocaleIso()));
 const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as InspirationCategoriesPage);
 
 setMeta(meta.value);

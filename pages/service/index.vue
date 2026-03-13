@@ -60,7 +60,6 @@ import type { ServicePage } from '~/types/service.types';
 
 const { locale } = useI18n();
 const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
 
 const selected: Ref<{
     label: string;
@@ -69,7 +68,7 @@ const selected: Ref<{
 
 provide('selected', selected)
 
-const { data } = await useAsyncData(DataKeys.SERVICE_PAGE, async () => fetchServicePage($locale));
+const { data } = await useAsyncData(DataKeys.SERVICE_PAGE, async () => fetchServicePage(getLocaleIso()));
 const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as ServicePage);
 const { section_1, section_2, section_3, section_4, section_5 } = toRefs(description.value.content);
 

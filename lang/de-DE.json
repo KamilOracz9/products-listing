@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Installation auf internen Würfeln",
         "rail-hanger": "Schienenhalterung",
         "collections": "Unsere Kollektionen",
+        "new-products": "Neue Produkte",
         "slug": {
             "made-to-measure": "Nach Maß",
             "measure": "Maße",
@@ -119,7 +120,13 @@
         "product_material": "Material",
         "product_shape": "Form",
         "product_surface_finishing": "Oberflächenverarbeitung",
-        "product_walls_count": "Anzahl der Wände"
+        "product_walls_count": "Anzahl der Wände",
+        "is_new": "Neuheit"
+    },
+    "meta": {
+        "products": {
+            "title": "Duschkabinen"
+        }
     },
     "pages": {
        "search": {
@@ -235,6 +242,7 @@
         "download-files": "Dateien herunterladen",
         "parts": "Teile",
         "similar-products": "Ähnliche Produkte",
+        "complementary-products": "Ergänzungsprodukte",
         "similar-product-see": "Ansehen",
         "symbol": "Symbol",
         "dimensions": "Abmessungen",
@@ -263,7 +271,9 @@
             "4-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 4 Wochen",
             "6-weeks": "Produkt auf Bestellung erhältlich. Lieferzeit ca. 6 Wochen"
         },
-        "toggle-toggle-clipboard": "Produkt in der Zwischenablage umschalten"
+        "toggle-toggle-clipboard": "Produkt in der Zwischenablage umschalten",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

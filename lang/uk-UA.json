@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Монтаж на внутрішніх кубах",
         "rail-hanger": "Основна підвісна система",
         "collections": "Наші колекції",
+        "new-products": "Нові продукти",
         "slug": {
             "made-to-measure": "На замовлення",
             "measure": "Розміри",
@@ -119,7 +120,8 @@
         "product_material": "Матеріал",
         "product_shape": "Форма",
         "product_surface_finishing": "Оздоблення поверхні",
-        "product_walls_count": "Кількість стін"
+        "product_walls_count": "Кількість стін",
+        "is_new": "Новинка"
     },
     "pages": {
         "search": {
@@ -235,6 +237,7 @@
         "download-files": "Файли для завантаження",
         "parts": "Частини",
         "similar-products": "Схожі продукти",
+        "complementary-products": "Комплементарні продукти",
         "similar-product-see": "Переглянути",
         "symbol": "Символ",
         "dimensions": "Розміри",
@@ -263,7 +266,9 @@
             "4-weeks": "Продукт доступний під замовлення. Час виготовлення близько 4 тижнів",
             "6-weeks": "Продукт доступний під замовлення. Час виготовлення близько 6 тижнів"
         },
-        "toggle-toggle-clipboard": "Переключити продукт у буфер обміну"
+        "toggle-toggle-clipboard": "Переключити продукт у буфер обміну",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {
@@ -299,5 +304,10 @@
     "Pole miejsce jest wymagane.": "Поле місце є обов'язковим.",
     "Pole działanie jest wymagane.": "Поле дія є обов'язковою.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Поле правильні дані повинно бути прийнято.",
-    "Wiadomość została wysłana": "Повідомлення було надіслано."
+    "Wiadomość została wymagane": "Повідомлення було надіслано.",
+    "meta": {
+        "products": {
+            "title": "Душові кабіни"
+        }
+    }
 }

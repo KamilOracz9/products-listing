@@ -5,8 +5,10 @@
 
             <h1
                 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${getFilterBySlug(firstParam)?.label ??
-                    ''}` : ''
+                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` -
+                ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') :
+                        (getFilterBySlug(firstParam)?.label ??
+                            '')}` : ''
                 }}</h1>
 
             <div class="mt-10 flex gap-10">
@@ -17,15 +19,16 @@
 
                     <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
-                    <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}} / ${$t('sorting')}`"
+                    <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
                         class="my-10 underline text-2xl lg:hidden">{{
-                            $t('filtering') }} / {{ $t('sorting') }}</button>
+                            $t('filtering') }}</button>
 
                     <SectionsProductsListing :products="data.products.data" />
 
 
-                    <SectionsProductsPagination v-if="data.products.last_page > 1" :meta="{...data.products, data: null}" />
+                    <SectionsProductsPagination v-if="data.products.last_page > 1"
+                        :meta="{ ...data.products, data: null }" />
+
 
                     <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
@@ -34,7 +37,7 @@
             </div>
 
             <div>
-                <slot />
+                <!-- <slot /> -->
             </div>
         </div>
     </section>
@@ -55,8 +58,9 @@ const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
 const router = useRouter();
 const localePath = useLocalePath();
-const url = useRequestURL();
-const nuxt = useNuxtApp();
+const { $locale, $baseUrl } = useNuxtApp();
+const baseUrl = $baseUrl();
+const nuxtApp = useNuxtApp();
 
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, nuxt.$locale));
 const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.id ?? null }, nuxt.$locale), { watch: [() => route.query] });
@@ -70,7 +74,7 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
-const canonical = computed(() => pageIndexable.value ? url.href : `${url.origin}${url.pathname}/`);
+const canonical = computed(() => pageIndexable.value ? baseUrl.value.fullUrl : `${baseUrl.value.domain}${baseUrl.value.path.split('?')[0]}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
@@ -105,6 +109,8 @@ const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(rout
 
 const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
 
+const flattenFilters = computed(() => Object.values(filtersData.value?.filters ?? {}).flat());
+
 const hasOneFilter = computed(() =>
     new URLSearchParams(indexedQueryParams.value).size === 1
     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
@@ -137,7 +143,14 @@ watch(router.currentRoute, () => {
 
 setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
-useSeoMeta(meta.value)
+useSeoMeta({
+    robots: computed(() =>
+        (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) ||
+            (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
+            ? 'index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1'
+            : 'noindex, nofollow'
+    )
+});
 
 useHead(() => ({
     link: headLinks.value,

@@ -15,7 +15,7 @@
             <span class="mx-auto" :class="icon ? 'lg:hidden xl:block' : 'lg:block'">{{ name ?? $t(slug) }}</span>
         </div>
         <div class="header__dropdown" ref="submenu" :data-active="headerStore.submenu === slug ? true : false">
-            <div class="w-full max-w-max-content">
+            <div class="w-full max-w-max-content max-h-[75vh] no-scrollbar">
                 <slot />
             </div>
         </div>

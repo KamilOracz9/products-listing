@@ -10,7 +10,7 @@
                     :aria-label="slide.title ?? `New Trendy - slide-${index}`" :key="index"
                     :aria-current-value="slide.title ?? `New Trendy - slide-${index}`">
                     <div
-                        class="h-[582px] flex relative after:w-full after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] sm:h-[401px] lg:h-[612px] 2xl:h-[716px]">
+                        class="mx-auto flex relative lg:after:w-full lg:after:h-full after:absolute after:bg-[linear-gradient(90deg,_rgba(29,29,27,0.4)_0%,_rgba(29,29,27,0)_40%,_rgba(29,29,27,0)_100%)] aspect-[607/582] sm:aspect-[991/401] lg:aspect-[420/179]">
 
                         <!-- <img v-if="slide.image" decoding="async" :srcset="`
                                 ${slide.image?.mobile} 607w,
@@ -22,7 +22,7 @@
                         <picture v-if="slide.image" >
                             <source media="(min-width:1024px)" :srcset="slide.image?.desktop">
                             <source media="(min-width:640px)" :srcset="slide.image?.tablet">
-                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="h-full w-full object-cover">
+                            <img :src="slide.image?.mobile" :alt="slide.title ?? `New Trendy - slide-${index}`" class="h-full w-full">
                         </picture>
 
                         <ClientOnly>
@@ -33,10 +33,10 @@
                         </ClientOnly>
                     </div>
 
-                    <div class="absolute bottom-4 left-4 text-white md:bottom-1 lg:bottom-32 lg:left-20">
-                        <p class="text-3xl">{{ slide.subtitle }}</p>
+                    <div class="absolute bottom-4 left-8 text-white md:bottom-4 lg:bottom-32 lg:left-20">
+                        <p class="text-xl xs:text-2xl sm:text-2xl md:text-3xl">{{ slide.subtitle }}</p>
                         <p v-if="slide.title"
-                            class="text-[2.5rem] font-medium leading-[3rem] uppercase xl:text-[50px] xl:leading-[60px]">
+                            class="text-[1.5rem] font-medium leading-[125%] uppercase xs:text-[2rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[50px] xl:leading-[60px]">
                             {{ slide.title }}
                         </p>
                     </div>
@@ -44,14 +44,14 @@
             </SwiperSlide>
 
             <img src="@/assets/icons/slider-arrow.svg"
-                class="left-4 main-slider-arrow main-slider-arrow-prev block rotate-180 lg:left-14 xl:left-16 2xl:left-20"
+                class="left-8 main-slider-arrow main-slider-arrow-prev block rotate-180 lg:left-14 xl:left-16 2xl:left-20"
                 :alt="$t('slider-arrow-left')" :title="$t('slider-arrow-left')">
 
             <div
                 class="swiper-pagination hidden absolute bottom-3 text-white z-20 !left-1/2 !-translate-x-1/2 !w-[80%] border-t border-white pt-2 lg:flex lg:text-base lg:!bottom-7 xl:!w-[85%]">
             </div>
 
-            <img class="right-4 main-slider-arrow main-slider-arrow-next block lg:right-14 xl:right-16 2xl:right-20"
+            <img class="right-8 main-slider-arrow main-slider-arrow-next block lg:right-14 xl:right-16 2xl:right-20"
                 src="@/assets/icons/slider-arrow.svg" :alt="$t('slider-arrow-left')" :title="$t('slider-arrow-left')">
         </Swiper>
     </div>

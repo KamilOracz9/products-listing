@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Montavimas ant vidinių kubų", 
         "rail-hanger": "Bėgelių pakaba",
         "collections": "Mūsų kolekcijos",
+        "new-products": "Nauji produktai",
         "slug": {
             "made-to-measure": "Pagaminti-pagal-uzsakyma",
             "measure": "Matavimas",
@@ -119,7 +120,8 @@
         "product_material": "Medžiaga",
         "product_shape": "Forma",
         "product_surface_finishing": "Paviršius",
-        "product_walls_count": "Sienų skaičius"
+        "product_walls_count": "Sienų skaičius",
+        "is_new": "Naujiena"
     },
     "pages": {
         "search": {
@@ -231,6 +233,7 @@
         "download-files": "Failai atsisiuntimui",
         "parts": "Dalys",
         "similar-products": "Panašūs produktai",
+        "complementary-products": "Papildomi produktai",
         "similar-product-see": "Peržiūrėti",
         "symbol": "Simbolis",
         "dimensions": "Matmenys",
@@ -258,7 +261,9 @@
             "4-weeks": "Produktas prieinamas pagal užsakymą. Pristatymo laikas apie 4 savaites",
             "6-weeks": "Produktas prieinamas pagal užsakymą. Pristatymo laikas apie 6 savaites"
         },
-        "toggle-toggle-clipboard": "Perjungti produktą iškarpinėje" 
+        "toggle-toggle-clipboard": "Perjungti produktą iškarpinėje",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {
@@ -294,5 +299,10 @@
     "Pole miejsce jest wymagane.": "Vieta yra privalomas laukas.",
     "Pole działanie jest wymagane.": "Veiksmas yra privalomas laukas.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Teisingi duomenys turi būti priimti.",
-    "Wiadomość została wysłana": "Žinutė buvo išsiųsta."
+    "Wiadomość została wysłana": "Žinutė buvo išsiųsta.",
+    "meta": {
+        "products": {
+            "title": "Dušo kabinos"
+        }
+    }
 }

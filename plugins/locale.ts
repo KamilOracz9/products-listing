@@ -2,6 +2,7 @@ export default defineNuxtPlugin(() => {
     const localePath = useLocalePath();
     const nuxt = useNuxtApp();
     const i18n = nuxt.$i18n;
+    // const {locale} = useI18n();
     const url = useRequestURL()
 
     const localeRoutes: {

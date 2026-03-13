@@ -181,6 +181,13 @@
     .range-slider input {
         @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px];
     }
+    .range-slider input:last-child {
+        @apply bg-transparent;
+    }
+
+    .range-slider input::-moz-range-track {
+        /* @apply pointer-events-none absolute w-full bg-gray-200 border-0 appearance-none h-[3px]; */
+    }
 
     /* Swiper */
    .swiper-pagination > .swiper-pagination-bullet {
@@ -196,6 +203,14 @@
 
     .range-slider input::-webkit-slider-thumb {
         @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
+
+    .range-slider input::-moz-range-thumb {
+        @apply relative pointer-events-auto z-[1] bg-black rounded-[2px] w-[10px] h-[25px];
+    }
+
+    .range-slider input::-moz-range-progress {
+        @apply bg-transparent;
     }
 
     /* Pagination */
@@ -232,7 +247,8 @@
     }
 
     header .content-grid .header__dropdown > div {
-        @apply mt-4 px-4 overflow-hidden lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:h-0 lg:bg-white lg:mt-0;
+        @apply mt-4 px-4 overflow-x-hidden lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:h-0 lg:bg-white lg:mt-0;
+        /* @apply mt-4 px-4 overflow-hidden lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:h-0 lg:bg-white lg:mt-0; */
     }
 
     header .content-grid .header__dropdown[data-active=true] > div {
@@ -246,7 +262,7 @@
     header .content-grid .header__items {
         grid-auto-rows: min-content;
         /* grid-auto-columns: min-content; */
-        @apply hidden max-h-[calc(100vh-148px)] min-h-[calc(100vh-148px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-7 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
+        @apply hidden max-h-[calc(100vh-188px)] min-h-[calc(100vh-188px)] small-height:max-h-[calc(100vh-86px)] small-height:min-h-[calc(100vh-86px)] overflow-x-hidden overflow-y-auto mt-7 gap-y-2 lg:flex lg:min-h-[auto] lg:max-h-[auto] lg:w-full lg:items-center;
     }
 
     header .content-grid .header__items[data-active=true] {
@@ -563,7 +579,7 @@
     }
 
     #made-to-measure .section-img img {
-        @apply max-h-[400px] w-full object-cover;
+        /* @apply w-full object-cover; */
     }
 
     /* Contact */

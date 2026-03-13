@@ -23,7 +23,7 @@
                 </ul>
 
                 <div class="self-start [&>a]:border-black">
-                    <ButtonsTransparent v-if="section.button" tagType="link" :url="localePath({ name: 'download-3d' })"
+                    <ButtonsTransparent v-if="section.button" tagType="link" :url="section.link"
                         :label="section.button" />
                 </div>
             </li>
@@ -36,10 +36,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchDownloadPage } from '~/services/api/download';
 import type { DownloadPage } from '~/types/download.types';
 
-const localePath = useLocalePath();
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.DOWNLOAD_PAGE, async () => fetchDownloadPage($locale));
+const { data } = await useAsyncData(DataKeys.DOWNLOAD_PAGE, async () => fetchDownloadPage(getLocaleIso()));
 const { breadcrumbs, description, meta, title, schema } = toRefs(data.value as DownloadPage);
 
 setMeta(meta.value);

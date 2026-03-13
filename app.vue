@@ -19,6 +19,9 @@ const { pageIsLoading } = storeToRefs(globalStore);
 const url = useRequestURL();
 const runtimeConfig = useRuntimeConfig()
 
+const { $baseUrl } = useNuxtApp();
+const baseUrl = $baseUrl();
+
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;
 });
@@ -69,6 +72,7 @@ useHead(() => ({
   }],
   script: [
     {
+      'data-culture': i18n.locale.value,
       src: `https://consent.cookiebot.com/uc.js?cbid=${runtimeConfig.public.cookiebotToken}`,
       tagPosition: 'bodyClose',
     },
@@ -92,8 +96,8 @@ useHead(() => ({
 useSeoMeta({
   ogImage: logo,
   ogLocale: i18n.locale.value,
-  ogUrl: url.href,
-  ogSiteName: url.href,
+  ogUrl: baseUrl.value.fullUrl,
+  ogSiteName: baseUrl.value.domain,
   twitterCard: 'summary_large_image',
 })
 
@@ -104,8 +108,10 @@ onMounted(() => {
 
   useSeoMeta({
     robots: {
-      'noindex': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
-      'nofollow': (i18n.locale.value === 'pl' && useRequestURL().host !== 'newtrendy.pl') || (useRequestURL().host !== 'newtrendy.eu' && i18n.locale.value !== 'pl'),
+      'noindex': (i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
+                (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl'),
+      'nofollow': (i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
+                (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl'),
     },
   })
 })

@@ -5,7 +5,7 @@
         <div class="lg:grid lg:grid-cols-2 lg:gap-10 xl:grid-cols-5">
             <div class="flex flex-col gap-6 sm:text-lg">
                 <div data-aos="fade-up">
-                    <p><span>ul:</span> {{ officeAddress }}</p>
+                    <p>{{ officeAddress }}</p>
                     <p><span>{{ $t('pages.contact.phone') }}:</span> <a :href="`tel:${office.contact.phone}`">{{
                         office.contact.phone }}</a></p>
                     <p><a :href="`mailto:${office.contact.email}`">{{ office.contact.email }}</a></p>

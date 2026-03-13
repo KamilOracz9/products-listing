@@ -11,9 +11,7 @@ import { DataKeys } from '~/enums/dataKeys';
 import { fetchInformationClausuePage } from '~/services/api';
 import type { InformationClausuePage } from '~/types/information-clausue.types';
 
-const { $locale } = useNuxtApp();
-
-const { data } = await useAsyncData(DataKeys.INFORMATION_CLAUSUE_PAGE, async () => fetchInformationClausuePage($locale));
+const { data } = await useAsyncData(DataKeys.INFORMATION_CLAUSUE_PAGE, async () => fetchInformationClausuePage(getLocaleIso()));
 const { breadcrumbs, meta, description, schema } = toRefs(data.value as InformationClausuePage);
 
 setMeta(meta.value);

@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "deploy": "npm run build && pm2 restart ecosystem.config.cjs",
-    "test": "vitest"
+    "deploy-mydevil": "npm run build && devil www restart dev.newtrendy.usermd.net",
+    "test": "vitest",
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -45,7 +47,9 @@
     "nuxt-leaflet": "^0.0.27",
     "nuxt-schema-org": "^4.1.1",
     "nuxt-swiper": "^1.2.2",
+    "nuxt-toast": "^1.4.0",
     "nuxt3-leaflet": "^1.0.12",
+    "ofetch": "^1.4.1",
     "pinia": "^2.1.7",
     "vue-easy-lightbox": "^1.17.0"
   },

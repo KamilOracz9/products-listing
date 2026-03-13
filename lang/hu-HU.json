@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Telepítés belső kockákra",
         "rail-hanger": "Sínes akasztó",
         "collections": "Gyűjteményeink",
+        "new-products": "Új termékek",
         "slug": {
             "made-to-measure": "Méretek szerint készült",
             "measure": "Mérés",
@@ -119,7 +120,8 @@
         "product_material": "Anyag",
         "product_shape": "Forma",
         "product_surface_finishing": "Felület",
-        "product_walls_count": "Falak száma"
+        "product_walls_count": "Falak száma",
+        "is_new": "Újdonság"
     },
     "pages": {
         "search": {
@@ -231,6 +233,7 @@
         "download-files": "Letölthető fájlok",
         "parts": "Részek",
         "similar-products": "Hasonló termékek",
+        "complementary-products": "Kiegészítő termékek",
         "similar-product-see": "Megnéz",
         "symbol": "Szimbólum",
         "dimensions": "Méretek",
@@ -255,7 +258,9 @@
             "4-weeks": "A termék kérésre elérhető. Szállítási idő kb. 4 hét.",
             "6-weeks": "A termék kérésre elérhető. Szállítási idő kb. 6 hét."
         },
-        "toggle-toggle-clipboard": "Termék váltása a vágólapon"
+        "toggle-toggle-clipboard": "Termék váltása a vágólapon",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

@@ -20,14 +20,22 @@
                     <ul
                         class="absolute border border-gray-2 top-full flex-col bg-white min-w-[140px] invisible group-hover:visible group-hover:animate-fade-in">
                         <li v-for="item in globalStore.locales">
-                            <button v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl'))"
+                            <a v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl'))"
+                                :href="switchLocalePath(item.code)"
+                                class="p-3 flex items-center gap-2 group/dropdown-item">
+                                <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code"
+                                    :title="item.code" />
+                                <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
+                                    $t(item.label.toLowerCase()) }}</span>
+                            </a>
+                            <!-- <button v-if="(isWebsiteEu && item.code !== 'pl') || (!isWebsiteEu && (item.code === 'pl'))"
                                 type="button" @click="changeLanguage(item.code)"
                                 class="p-3 flex items-center gap-2 group/dropdown-item">
                                 <img height="12" width="18" :src="`/assets/langs/${item.code}.svg`" :alt="item.code"
                                     :title="item.code" />
                                 <span class="transition-opacity group-hover/dropdown-item:opacity-[70%] capitalize">{{
                                     $t(item.label.toLowerCase()) }}</span>
-                            </button>
+                            </button> -->
                         </li>
                         <li v-if="!isWebsiteEu">
                             <a href="https://newtrendy.eu/en" class="p-3 flex items-center gap-2 group/dropdown-item">
@@ -82,20 +90,21 @@ const props = defineProps<{
 
 const { data: socials } = toRefs(props);
 
-const setIsRefreshing = inject('setIsRefreshing');
-
-const { setLocale } = useI18n();
+const { setLocale, locale } = useI18n();
 const localePath = useLocalePath();
 const globalStore = useGlobalStore();
+
+const switchLocalePath = inject('switchLocalePath');
 
 const open = ref(false);
 const isMobile = device().provide.isMobile();
 
 const changeLanguage = async (lang: string) => {
-    await setIsRefreshing();
+    // await setIsRefreshing();
+    // console.log(switchLocalePath('de'))
     await setLocale(lang);
 
-    window.location = window.location.href.split('?')[0];
+    // window.location = window.location.href.split('?')[0];
 }
 
 const isWebsiteEu = computed(() => (!useRequestURL().host.includes('newtrendy.pl') && useRequestURL().host !== 'localhost:3001'));

@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Inštalácia na vnútorné kocky",
         "rail-hanger": "Hlavný zavesenie",
         "collections": "Naše kolekcie",
+        "new-products": "Nové produkty",
         "slug": {
             "made-to-measure": "Na mieru",
             "measure": "Rozmery",
@@ -119,7 +120,8 @@
         "product_material": "Materiál",
         "product_shape": "Tvar",
         "product_surface_finishing": "Dokončenie",
-        "product_walls_count": "Počet stien"
+        "product_walls_count": "Počet stien",
+        "is_new": "Novinka"
     },
     "pages": {
         "search": {
@@ -235,6 +237,7 @@
         "download-files": "Stiahnuť súbory",
         "parts": "Diely",
         "similar-products": "Podobné produkty",
+        "complementary-products": "Doplnkové produkty",
         "similar-product-see": "Zobraziť",
         "symbol": "Symbol",
         "dimensions": "Rozmery",
@@ -263,7 +266,9 @@
             "4-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 4 týždne",
             "6-weeks": "Produkt dostupný na objednávku. Doba realizácie cca 6 týždňov"
         },
-        "toggle-toggle-clipboard": "Prepnúť produkt v schránke"
+        "toggle-toggle-clipboard": "Prepnúť produkt v schránke",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {

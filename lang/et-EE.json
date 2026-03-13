@@ -85,6 +85,7 @@
         "installation-on-internal-cubes": "Paigaldus sisekuubikutele",
         "rail-hanger": "Rööpa riputi",
         "collections": "Meie kollektsioonid",
+        "new-products": "Uued tooted",
         "slug": {
             "made-to-measure": "Mõõdu järgi",
             "measure": "Mõõt",
@@ -119,7 +120,8 @@
         "product_material": "Materjal",
         "product_shape": "Kuju",
         "product_surface_finishing": "Pind",
-        "product_walls_count": "Seinte arv"
+        "product_walls_count": "Seinte arv",
+        "is_new": "Uus"
     },
     "pages": {
        "search": {
@@ -231,6 +233,7 @@
         "download-files": "Laetavad failid",
         "parts": "Osad",
         "similar-products": "Sarnased tooted",
+        "complementary-products": "Täiendavad tooted",
         "similar-product-see": "Vaata",
         "symbol": "Sümbol",
         "dimensions": "Mõõtmed",
@@ -258,7 +261,9 @@
             "4-weeks": "Toode saadaval soovi korral. Kohaletoimetamise aeg umbes 4 nädalat",
             "6-weeks": "Toode saadaval soovi korral. Kohaletoimetamise aeg umbes 6 nädalat"
         },
-        "toggle-toggle-clipboard": "Lülita toode lõikelaual"
+        "toggle-toggle-clipboard": "Lülita toode lõikelaual",
+        "L": "L",
+        "P": "R"
     },
     "home": {
         "in-offer": {
@@ -294,5 +299,10 @@
     "Pole miejsce jest wymagane.": "Asukoha väli on kohustuslik.",
     "Pole działanie jest wymagane.": "Tegevuse väli on kohustuslik.",
     "Pole prawidłowe dane musi zostać zaakceptowane.": "Kehtivad andmed tuleb aktsepteerida.",
-    "Wiadomość została wysłana": "Sõnum on saadetud."
+    "Wiadomość została wysłana": "Sõnum on saadetud.",
+    "meta": {
+        "products": {
+            "title": "Dušikabiinid"
+        }
+    }
 }
