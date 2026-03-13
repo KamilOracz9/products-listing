@@ -1,6 +1,6 @@
 import pages from './lang/pages.json';
 
-// const languages = ['pl', 'en', 'de']
+const languages = ['pl', 'en', 'de']
 
 // const productRouteRules = Object.fromEntries(
 //   languages.map(lang => [`/${lang}/products`, { swr: true }])
@@ -16,17 +16,17 @@ import pages from './lang/pages.json';
 //   }
 // }).filter(item => item);
 
-// const routeRules = Object.fromEntries(
-//   Object.entries(pages).flatMap(([route, languages]) => {
-//     const regex = /^(index|.*(products).*|products\/[^/]+\/index)$/
+const routeRules = Object.fromEntries(
+  Object.entries(pages).flatMap(([route, languages]) => {
+    const regex = /^(index|.*(products).*|products\/[^/]+\/index)$/
 
-//     if (regex.test(route)) {
-//       return Object.entries(languages).map(([language, data]) => {
-//         return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
-//       })
-//     }
-//   }).filter(item => item)
-// );
+    if (regex.test(route)) {
+      return Object.entries(languages).map(([language, data]) => {
+        return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
+      })
+    }
+  }).filter(item => item)
+);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -54,16 +54,79 @@ export default defineNuxtConfig({
       traceOptions: { base: process.cwd() }
     },
     routeRules: {
-      '/': { swr: true },
-      '/download': { swr: true },
-      '/contact': { swr: true },
-      '/about': { swr: true },
-      '/servis': { swr: true },
-      '/blog': { swr: true },
-      '/made-to-measure': { swr: true },
-      '/products': { swr: false },
-      '/products/**': { swr: false },
-      '/search': { swr: false },
+      ...routeRules,
+      // ...productRouteRules,
+      // ...() => ({
+      //   '/': { swr: true },
+      // }),
+      // '/': { swr: true },
+      // '/download': { swr: true },
+      // '/contact': { swr: true },
+      // '/about': { swr: true },
+      // '/servis': { swr: true },
+      // '/blog': { swr: true },
+      // '/made-to-measure': { swr: true },
+      // '/products': { swr: true },
+      // '/products/**': { swr: false },
+      // '/search': { swr: false },
+      // "/**": { ssr: true },
+      // "/**": { swr: 60 },
+      // "/products": { swr: false, },
+      // "/produkty": { swr: false, },
+      // "/produkte": { swr: false, },
+      // "/produits": { swr: false, },
+      // "/prodotti": { swr: false, },
+      // "/productos": { swr: false, },
+      // "/produkter": { swr: false, },
+      // "/produse": { swr: false, },
+      // "/termekek": { swr: false, },
+      // "/tooted": { swr: false, },
+      // "/produkti": { swr: false, },
+      // "/produktai": { swr: false, },
+      // "/products/**": { swr: false, },
+      // "/produkty/**": { swr: false, },
+      // "/produkte/**": { swr: false, },
+      // "/produits/**": { swr: false, },
+      // "/prodotti/**": { swr: false, },
+      // "/productos/**": { swr: false, },
+      // "/produkter/**": { swr: false, },
+      // "/produse/**": { swr: false, },
+      // "/termekek/**": { swr: false, },
+      // "/tooted/**": { swr: false, },
+      // "/produkti/**": { swr: false, },
+      // "/produktai/**": { swr: false, },
+      // "/search": { swr: false },
+      // "/szukaj": { swr: false },
+      // "/suche": { swr: false },
+      // "/recherche": { swr: false },
+      // "/cerca": { swr: false },
+      // "/buscar": { swr: false },
+      // "/sok": { swr: false },
+      // "/hladat": { swr: false },
+      // "/hledat": { swr: false },
+      // "/cauta": { swr: false },
+      // "/poisk": { swr: false },
+      // "/пошук": { swr: false },
+      // "/kereses": { swr: false },
+      // "/otsing": { swr: false },
+      // "/meklet": { swr: false },
+      // "/paieska": { swr: false },
+      // "/place-to-buy": { swr: false },
+      // "/gdzie-kupic-nasze-produkty": { swr: false },
+      // "/verkaufsstellen": { swr: false },
+      // "/points-de-vente": { swr: false },
+      // "/dove-comprare": { swr: false },
+      // "/donde-comprar": { swr: false },
+      // "/hvor-kjøpe": { swr: false },
+      // "/miesta-kde-kupit": { swr: false },
+      // "/mista-kde-koupit": { swr: false },
+      // "/unde-cumpara": { swr: false },
+      // "/gde-kupit": { swr: false },
+      // "/де-купити": { swr: false },
+      // "/hol-lehet-megvenni": { swr: false },
+      // "/kus-osta-meie-tooted": { swr: false },
+      // "/pirkuma-vieta": { swr: false },
+      // "/kur-pirkti": { swr: false },
       "/img/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       "/_nuxt/**": { headers: { 'cache-control': `public,max-age=31536000,s-maxage=31536000` } },
       '/kategoria-produktu/kabiny-prysznicowe/kwadratowe-prostokatne/': { redirect: { to: '/kategoria-produktu/kabiny-prysznicowe?ksztalkt-produktu[]=kwadratowa', statusCode: 301 } },

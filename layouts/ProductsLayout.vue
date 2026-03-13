@@ -8,12 +8,12 @@
                 {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` -
                 ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') :
                         (getFilterBySlug(firstParam)?.label ??
-                            '')}` : ''
+                '')}` : ''
                 }}</h1>
 
-            <div class="mt-10 flex gap-10">
+            <div class="mt-10 flex gap-10" v-if="!filtersPending && filtersData">
                 <SectionsProductsSidebar />
-                <div class="w-full">
+                <div class="w-full" v-if="!pending && !categoryPagePending">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
 
@@ -23,21 +23,18 @@
                         class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }}</button>
 
-                    <SectionsProductsListing :products="data.products.data" />
+                    <div v-if="data?.products">
+                        <SectionsProductsListing :products="data.products" />
+                    </div>
 
-
-                    <SectionsProductsPagination v-if="data.products.last_page > 1"
-                        :meta="{ ...data.products, data: null }" />
+                    <SectionsProductsPagination v-if="data?.meta?.last_page > 1"
+                        :meta="data?.meta" />
 
 
                     <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
                         v-html="categoryPage?.description"></div>
                 </div>
-            </div>
-
-            <div>
-                <!-- <slot /> -->
             </div>
         </div>
     </section>
@@ -47,6 +44,7 @@
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
+import { fetchFilters } from '~/services/api/products';
 
 const FILTERS_DISABLED_FROM_INDEXING = [
     'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max', 'page'
@@ -62,11 +60,45 @@ const { $locale, $baseUrl } = useNuxtApp();
 const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
 
-const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(DataKeys.CATEGORY_PAGE, async () => fetchCategoryPage(route.params.category, nuxt.$locale));
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({ ...route.query, 'category': categoryPage.value.id ?? null }, nuxt.$locale), { watch: [() => route.query] });
+// Fetch category page data
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
+    () => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`, 
+    async () => fetchCategoryPage(route.params.category, $locale), 
+    { 
+        watch: [() => route.params.category],
+        server: true 
+    }
+);
 
-provide('filtersData', data);
-provide('filtersRefresh', pending);
+// Fetch products data - depends on category
+const { data, pending, refresh: refreshProducts } = await useAsyncData(
+    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}-${JSON.stringify(route.query)}`, 
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
+    }, 
+    { 
+        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug],
+        server: true 
+    }
+);
+
+// Fetch filters
+const { data: filtersData, pending: filtersPending } = await useAsyncData(
+    () => `${DataKeys.FILTERS_LIST}-${route.params.category}`, 
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchFilters({ 'category': categorySlug }, $locale);
+    }, 
+    { 
+        watch: [() => route.params.category, () => categoryPage.value?.slug],
+        server: true 
+    }
+);
+
+provide('filtersData', filtersData);
+provide('filtersPending', filtersPending);
+provide('refreshProducts', refreshProducts);
 
 const loading = computed(() => pending.value || categoryPagePending.value);
 
@@ -74,12 +106,14 @@ watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
 
+// console.log(data.value)
+
 const canonical = computed(() => pageIndexable.value ? baseUrl.value.fullUrl : `${baseUrl.value.domain}${baseUrl.value.path.split('?')[0]}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
 
-    return page < data.value.products.last_page ? `${canonical.value}?page=${page + 1}` : null
+    return (data.value?.meta?.last_page && page < data.value.meta.last_page) ? `${canonical.value}?page=${page + 1}` : null
 });
 
 const prev = computed(() => {
@@ -118,30 +152,40 @@ const hasOneFilter = computed(() =>
 
 const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
-const metaParams = computed(() => Object.values(data.value.filters)
-    .flatMap(({ options }) => options)
-    .filter(({ value_slug }) => Object.values(route.query).flat().includes(value_slug))
-    .map((({ label }) => label))
-    .join(', '));
+const metaParams = computed(() => {
+    if (!filtersData.value?.filters) return '';
+    
+    return Object.values(filtersData.value.filters)
+        .flatMap(filter => filter?.options ?? [])
+        .filter(option => option?.value_slug && Object.values(route.query).flat().includes(option.value_slug))
+        .map(option => option.label)
+        .join(', ');
+});
 
 const meta = computed(() => ([
     {
-        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && url.host !== 'newtrendy.pl') || (url.host !== 'newtrendy.eu' && i18n.locale.value !== 'pl')))
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
             ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
             : `noindex, nofollow`
     },
 ]))
 
-const getFilterBySlug = (slug) => Object.values(data.value.filters).flatMap(({ options }) => options).find(({ value_slug }) => value_slug === slug);
+const getFilterBySlug = (slug) => {
+    if (!filtersData.value?.filters || !slug) return null;
+    
+    return Object.values(filtersData.value.filters)
+        .flatMap(filter => filter?.options ?? [])
+        .find(option => option?.value_slug === slug);
+};
 
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
     document.querySelector('link[rel="prev"]')?.remove();
 
-    setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+    setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 }, { deep: true })
 
-setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
 useSeoMeta({
     robots: computed(() =>
@@ -156,10 +200,10 @@ useHead(() => ({
     link: headLinks.value,
 }))
 
-useSchemaOrg([categoryPage.value.schema])
+useSchemaOrg([categoryPage.value?.schema])
 
 onMounted(() => {
-    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
+    if (route.params.category && (route.params.category !== categoryPage.value?.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value?.slug } }));
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();
