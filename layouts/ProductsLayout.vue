@@ -8,12 +8,12 @@
                 {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` -
                 ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') :
                         (getFilterBySlug(firstParam)?.label ??
-                '')}` : ''
+                            '')}` : ''
                 }}</h1>
 
             <div class="mt-10 flex gap-10" v-if="!filtersPending && filtersData">
                 <SectionsProductsSidebar />
-                <div class="w-full" v-if="!pending && !categoryPagePending">
+                <div class="w-full" v-if="!categoryPagePending">
                     <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
                         v-html="categoryPage.description_short"></p>
 
@@ -23,17 +23,22 @@
                         class="my-10 underline text-2xl lg:hidden">{{
                             $t('filtering') }}</button>
 
-                    <div v-if="data?.products">
-                        <SectionsProductsListing :products="data.products" />
-                    </div>
+                    <template v-if="!pending">
+                        <template v-if="data?.products">
+                            <div>
+                                <SectionsProductsListing :products="data.products" />
+                            </div>
 
-                    <SectionsProductsPagination v-if="data?.meta?.last_page > 1"
-                        :meta="data?.meta" />
+                            <SectionsProductsPagination v-if="data?.meta?.last_page > 1" :meta="data?.meta" />
+                        </template>
 
-
-                    <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
+                        <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
                         v-html="categoryPage?.description"></div>
+                    </template>
+                    <div v-else>
+                        <LoadingIndicator />
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,37 +67,37 @@ const nuxtApp = useNuxtApp();
 
 // Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    () => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`, 
-    async () => fetchCategoryPage(route.params.category, $locale), 
-    { 
+    () => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`,
+    async () => fetchCategoryPage(route.params.category, $locale),
+    {
         watch: [() => route.params.category],
-        server: true 
+        server: true
     }
 );
 
 // Fetch products data - depends on category
 const { data, pending, refresh: refreshProducts } = await useAsyncData(
-    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}-${JSON.stringify(route.query)}`, 
+    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}-${JSON.stringify(route.query)}`,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
-    }, 
-    { 
+    },
+    {
         watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug],
-        server: true 
+        server: true
     }
 );
 
 // Fetch filters
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    () => `${DataKeys.FILTERS_LIST}-${route.params.category}`, 
+    () => `${DataKeys.FILTERS_LIST}-${route.params.category}`,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchFilters({ 'category': categorySlug }, $locale);
-    }, 
-    { 
+    },
+    {
         watch: [() => route.params.category, () => categoryPage.value?.slug],
-        server: true 
+        server: true
     }
 );
 
@@ -154,7 +159,7 @@ const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
 const metaParams = computed(() => {
     if (!filtersData.value?.filters) return '';
-    
+
     return Object.values(filtersData.value.filters)
         .flatMap(filter => filter?.options ?? [])
         .filter(option => option?.value_slug && Object.values(route.query).flat().includes(option.value_slug))
@@ -172,7 +177,7 @@ const meta = computed(() => ([
 
 const getFilterBySlug = (slug) => {
     if (!filtersData.value?.filters || !slug) return null;
-    
+
     return Object.values(filtersData.value.filters)
         .flatMap(filter => filter?.options ?? [])
         .find(option => option?.value_slug === slug);

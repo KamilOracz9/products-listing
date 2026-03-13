@@ -135,7 +135,7 @@ const filterFilters = (excludeCategory = null) => {
 
 const updateQueryParam = debounce((newParams) => {
     router.replace(`?${newParams.join('&')}`)
-}, 1000)
+}, 500)
 
 watch(params, (newVal) => {
     updateQueryParam(newVal);
