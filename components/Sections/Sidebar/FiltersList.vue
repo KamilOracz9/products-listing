@@ -31,6 +31,7 @@ import debounce from 'debounce';
 
 const props = defineProps(['filters', 'allFilters', 'labels']);
 const route = useRoute();
+const router = useRouter();
 const { filters, allFilters } = toRefs(props);
 // const refresh = inject('refresh');
 const seriesSearch = ref('');
@@ -42,35 +43,34 @@ const isActive = (name, value) => {
     else return route.query[`${name}[]`] == value;
 };
 
-const onChange = async (name, value, checked) => {
-    // Don't add [] here because getName already handles it
-    const key = name;
+// const onChange = debounce(async (name, value, checked) => {
+//     // Don't add [] here because getName already handles it
+//     const key = name;
 
-    const query = { ...route.query };
+//     const query = { ...route.query };
 
-    if (checked) {
-        query[key] = Array.isArray(query[key]) ? [...query[key], value] : [value];
-    } else {
-        if (Array.isArray(query[key])) {
-            query[key] = query[key].filter((item) => item !== value);
-            if (query[key].length === 0) {
-                delete query[key];
-            }
-        } else {
-            delete query[key];
-        }
-    }
+//     if (checked) {
+//         query[key] = Array.isArray(query[key]) ? [...query[key], value] : [value];
+//     } else {
+//         if (Array.isArray(query[key])) {
+//             query[key] = query[key].filter((item) => item !== value);
+//             if (query[key].length === 0) {
+//                 delete query[key];
+//             }
+//         } else {
+//             delete query[key];
+//         }
+//     }
 
-    delete query.page;
+//     delete query.page;
 
-    console.log('Query before navigate:', query); // Debug
-    await navigateTo({ query });
-}
+//     await navigateTo({ query });
+// }, 1000);
 
 // refresh();
 const getName = (filterCategory) => {
     const result = `${filterCategory === 'is_new' ? slugify(i18n.t('filters.is_new')) : filterCategory}${filterCategory === 'is_new' ? '' : '[]'}`;
-    console.log('getName result:', filterCategory, '->', result); // Debug
+
     return result;
 }
 
@@ -143,35 +143,35 @@ watch(params, (newVal) => {
     filterFilters();
 })
 
-// const onChange = (filterCategory, value) => {
-//     const param = `${filterCategory}=${value}`
-//     let newParams = params.value.filter(item => !item.includes('page='))
+const onChange = (filterCategory, value) => {
+    const param = `${filterCategory}=${value}`
+    let newParams = params.value.filter(item => !item.includes('page='))
 
-//     if (filterCategory === 'length_min') newParams = params.value.filter(item => !item.includes('length_min[]='))
-//     if (filterCategory === 'length_max') newParams = params.value.filter(item => !item.includes('length_max[]='))
-//     if (filterCategory === 'width_min') newParams = params.value.filter(item => !item.includes('width_min[]='))
-//     if (filterCategory === 'width_max') newParams = params.value.filter(item => !item.includes('width_max[]='))
-//     if (filterCategory === 'height_min') newParams = params.value.filter(item => !item.includes('height_min[]='))
-//     if (filterCategory === 'height_max') newParams = params.value.filter(item => !item.includes('height_max[]='))
+    if (filterCategory === 'length_min') newParams = params.value.filter(item => !item.includes('length_min[]='))
+    if (filterCategory === 'length_max') newParams = params.value.filter(item => !item.includes('length_max[]='))
+    if (filterCategory === 'width_min') newParams = params.value.filter(item => !item.includes('width_min[]='))
+    if (filterCategory === 'width_max') newParams = params.value.filter(item => !item.includes('width_max[]='))
+    if (filterCategory === 'height_min') newParams = params.value.filter(item => !item.includes('height_min[]='))
+    if (filterCategory === 'height_max') newParams = params.value.filter(item => !item.includes('height_max[]='))
 
-//     if (newParams.includes(param)) {
-//         newParams = newParams.filter(item => item !== param)
-//     } else {
-//         if (filterCategory === 'length_min' && dimensions.length.min == value) { }
-//         else if (filterCategory === 'length_max' && dimensions.length.max == value) { }
-//         else if (filterCategory === 'width_min' && dimensions.width.min == value) { }
-//         else if (filterCategory === 'width_max' && dimensions.width.max == value) { }
-//         else if (filterCategory === 'height_min' && dimensions.height.min == value) { }
-//         else if (filterCategory === 'height_max' && dimensions.height.max == value) { }
-//         else newParams.push(param)
-//     }
+    if (newParams.includes(param)) {
+        newParams = newParams.filter(item => item !== param)
+    } else {
+        if (filterCategory === 'length_min' && dimensions.length.min == value) { }
+        else if (filterCategory === 'length_max' && dimensions.length.max == value) { }
+        else if (filterCategory === 'width_min' && dimensions.width.min == value) { }
+        else if (filterCategory === 'width_max' && dimensions.width.max == value) { }
+        else if (filterCategory === 'height_min' && dimensions.height.min == value) { }
+        else if (filterCategory === 'height_max' && dimensions.height.max == value) { }
+        else newParams.push(param)
+    }
 
-//     params.value = [...newParams];
+    params.value = [...newParams];
 
-//     filterFilters();
+    filterFilters();
 
-//     updateQueryParam(newParams)
-// }
+    updateQueryParam(newParams)
+}
 
 const getSelectedParams = () => {
     return Object.entries(route.query).map(item => {
