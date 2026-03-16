@@ -5,40 +5,40 @@
 
             <h1
                 class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` - ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') : (getFilterBySlug(firstParam)?.label ??
-                    '')}` : ''
+                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` -
+                ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') :
+                        (getFilterBySlug(firstParam)?.label ??
+                            '')}` : ''
                 }}</h1>
 
-            <div class="mt-10 flex gap-10">
+            <div class="mt-10 flex gap-10" v-if="!filtersPending && filtersData">
                 <SectionsProductsSidebar />
-                <div class="w-full">
-                    <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
-                        v-html="categoryPage.description_short"></p>
+                <div class="w-full" v-if="!categoryPagePending && !pending">
+                    <template v-if="data?.products">
+                        <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
+                            v-html="categoryPage.description_short"></p>
 
-                    <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
+                        <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
-                    <button @click="productsFilterStore.toggleMenuIsOpen"
-                        :aria-label="`${$t('filtering')}}`"
-                        class="my-10 underline text-2xl lg:hidden">{{
-                            $t('filtering') }}</button>
+                        <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
+                            class="my-10 underline text-2xl lg:hidden">{{
+                                $t('filtering') }}</button>
 
-                    <template v-if="!pending">
-                        <SectionsProductsListing :products="data.data" />
+                        <div>
+                            <SectionsProductsListing :products="data.products" />
+                        </div>
 
-                        <SectionsProductsPagination v-if="data.meta.last_page > 1" :meta="data.meta" />
-                    </template>
-                    <template v-else>
-                        <Loading />
+                        <SectionsProductsPagination v-if="data?.meta?.last_page > 1" :meta="data?.meta" />
                     </template>
 
                     <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
                         v-html="categoryPage?.description"></div>
-                </div>
-            </div>
 
-            <div>
-                <!-- <slot /> -->
+                </div>
+                <div v-else class="w-full h-full flex items-center justify-center mt-[10%]">
+                    <LoadingIndicator />
+                </div>
             </div>
         </div>
     </section>
@@ -46,8 +46,9 @@
 
 <script setup>
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchFilters, fetchProducts } from '~/services/api';
+import { fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
+import { fetchFilters } from '~/services/api/products';
 
 const FILTERS_DISABLED_FROM_INDEXING = [
     'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max', 'page'
@@ -63,50 +64,60 @@ const { $locale, $baseUrl } = useNuxtApp();
 const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
 
+// Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    `${DataKeys.CATEGORY_PAGE}-${route.params.category ? '-' + route.params.category : ''}${$locale}`,
-    () => fetchCategoryPage(route.params.category, $locale),
+    () => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`,
+    async () => fetchCategoryPage(route.params.category, $locale),
     {
-        getCachedData(key) {
-            return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
-        }
+        watch: [() => route.params.category],
+        server: true
     }
-)
+);
 
-const { data: filtersData, pending: filtersPending, refresh: filtersRefresh } = await useAsyncData(
-    `${DataKeys.FILTERS_LIST}-${categoryPage.value.slug ? '-' + categoryPage.value.slug : ''}${$locale}`,
-    () => fetchFilters({ 'category': categoryPage.value.slug ?? null }, $locale),
+// Fetch products data - depends on category
+const { data, pending, refresh: refreshProducts } = await useAsyncData(
+    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}-${JSON.stringify(route.query)}`,
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
+    },
     {
-        getCachedData(key) {
-            return (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) ?? null;
-        }
+        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug],
+        server: true
     }
-)
+);
 
-const { data, pending } = await useAsyncData(DataKeys.PRODUCTS_LIST, async () => fetchProducts({
-    ...Object.fromEntries(
-        Object.entries(route.query).map(([key, value]) => {
-            if (key === slugify(i18n.t('filters.is_new'))) return ['is_new', value];
-            else return [key, value]
-        })
-    ), 'category': categoryPage.value.slug ?? null
-}, $locale), { watch: [() => route.query] });
+// Fetch filters
+const { data: filtersData, pending: filtersPending } = await useAsyncData(
+    () => `${DataKeys.FILTERS_LIST}-${route.params.category}`,
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchFilters({ 'category': categorySlug }, $locale);
+    },
+    {
+        watch: [() => route.params.category, () => categoryPage.value?.slug],
+        server: true
+    }
+);
 
 provide('filtersData', filtersData);
-provide('filtersRefresh', filtersRefresh);
+provide('filtersPending', filtersPending);
+provide('refreshProducts', refreshProducts);
 
-const loading = computed(() => pending.value || categoryPagePending.value || filtersPending.value);
+const loading = computed(() => pending.value || categoryPagePending.value);
 
 watch(loading, (newValue) => {
     globalStore.pageIsLoading = newValue;
 })
+
+// console.log(data.value)
 
 const canonical = computed(() => pageIndexable.value ? baseUrl.value.fullUrl : `${baseUrl.value.domain}${baseUrl.value.path.split('?')[0]}`);
 
 const next = computed(() => {
     const page = route.query.page ? parseInt(route.query.page) : 1;
 
-    return page < data.value.meta.last_page ? `${canonical.value}?page=${page + 1}` : null
+    return (data.value?.meta?.last_page && page < data.value.meta.last_page) ? `${canonical.value}?page=${page + 1}` : null
 });
 
 const prev = computed(() => {
@@ -142,42 +153,61 @@ const hasOneFilter = computed(() =>
     new URLSearchParams(indexedQueryParams.value).size === 1
     && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
     || Object.values(indexedQueryParams.value)[0]?.length === 1);
-    
+
 const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
 
-const metaParams = computed(() => flattenFilters.value
-    .filter(({ value }) => Object.values(route.query).flat().includes(value))
-    .map((({ label }) => label))
-    .join(', '));
+const metaParams = computed(() => {
+    if (!filtersData.value?.filters) return '';
 
-const getFilterBySlug = (slug) => flattenFilters.value.find(({ value }) => value === slug);
+    return Object.values(filtersData.value.filters)
+        .flatMap(filter => filter?.options ?? [])
+        .filter(option => option?.value_slug && Object.values(route.query).flat().includes(option.value_slug))
+        .map(option => option.label)
+        .join(', ');
+});
+
+const meta = computed(() => ([
+    {
+        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
+            ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
+            : `noindex, nofollow`
+    },
+]))
+
+const getFilterBySlug = (slug) => {
+    if (!filtersData.value?.filters || !slug) return null;
+
+    return Object.values(filtersData.value.filters)
+        .flatMap(filter => filter)
+        .find(filter => filter.value === slug);
+};
 
 watch(router.currentRoute, () => {
     document.querySelector('link[rel="next"]')?.remove();
     document.querySelector('link[rel="prev"]')?.remove();
 
-    setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+    setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 }, { deep: true })
 
-setMeta({ meta_description: categoryPage.value.meta.meta_description, meta_title: `${categoryPage.value.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
+setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
 
 useSeoMeta({
-  robots: computed(() => 
-    (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || 
-    (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
-    ? 'index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1'
-    : 'noindex, nofollow'
-  )
+    robots: computed(() =>
+        (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) ||
+            (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
+            ? 'index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1'
+            : 'noindex, nofollow'
+    )
 });
 
 useHead(() => ({
     link: headLinks.value,
 }))
 
-useSchemaOrg([categoryPage.value.schema])
+useSchemaOrg([categoryPage.value?.schema])
 
 onMounted(() => {
-    if (route.params.category && (route.params.category !== categoryPage.value.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value.slug } }));
+    if (route.params.category && (route.params.category !== categoryPage.value?.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value?.slug } }));
 
     watch(() => route.query.page, value => {
         if (value) document.querySelector('h1').scrollIntoView();

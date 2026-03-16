@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="globalStore.pageIsLoading" />
+  <Loading v-if="shouldShowLoading" />
   <NuxtLayout name="main">
     <NuxtPage />
   </NuxtLayout>
@@ -18,9 +18,20 @@ const globalStore = useGlobalStore();
 const { pageIsLoading } = storeToRefs(globalStore);
 const url = useRequestURL();
 const runtimeConfig = useRuntimeConfig()
+const route = useRoute();
 
 const { $baseUrl } = useNuxtApp();
 const baseUrl = $baseUrl();
+
+const shouldShowLoading = computed(() => {
+  if (!pageIsLoading.value) return false;
+  
+  const isProductCategoryPage = route.name && (
+    route.name.startsWith('products')
+  );
+  
+  return !isProductCategoryPage;
+});
 
 nuxtApp.hook("page:start", () => {
   pageIsLoading.value = true;

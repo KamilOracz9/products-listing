@@ -78,7 +78,7 @@ const { badge, breadcrumbs, category, description, files, images, meta, name, va
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
 const hasGlasses = computed(() => !!images.value.glasses.length);
-const hasAllRelationships = computed(() => !!(data.value.relationships.similar.length && data.value.relationships.complementary.length))
+const hasAllRelationships = computed(() => !!(data.value.relationships.similar?.length && data.value.relationships.complementary?.length))
 
 const sliderConfig = computed(() => (
     {

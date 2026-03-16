@@ -13,7 +13,7 @@
                             :name="getName(filterCategory)" :value="option.value"
                             :disabled="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)"
                             type="checkbox" :id="`option-${option.value}`"
-                            @change="() => onChange(`${getName(filterCategory)}`, option.value)"
+                            @change="(event) => onChange(getName(filterCategory), option.value, event.target.checked)"
                             :checked="getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`)" />
                         <label :for="`option-${option.value}`" class="break-keep whitespace-nowrap"
                             :class="option.disabled && !getSelectedParams().includes(`${getName(filterCategory)}=${option.value.toString()}`) ? 'text-gray-4' : 'text-black'">
@@ -31,13 +31,47 @@ import debounce from 'debounce';
 
 const props = defineProps(['filters', 'allFilters', 'labels']);
 const route = useRoute();
-const { filters, allFilters, labels } = toRefs(props);
-const router = useRouter()
+const router = useRouter();
+const { filters, allFilters } = toRefs(props);
+// const refresh = inject('refresh');
 const seriesSearch = ref('');
 const i18n = useI18n();
 
+const isDisabled = (active, disabled) => (!active && disabled);
+const isActive = (name, value) => {
+    if (Array.isArray(route.query[`${name}[]`])) return route.query[`${name}[]`].includes(value.toString());
+    else return route.query[`${name}[]`] == value;
+};
+
+// const onChange = debounce(async (name, value, checked) => {
+//     // Don't add [] here because getName already handles it
+//     const key = name;
+
+//     const query = { ...route.query };
+
+//     if (checked) {
+//         query[key] = Array.isArray(query[key]) ? [...query[key], value] : [value];
+//     } else {
+//         if (Array.isArray(query[key])) {
+//             query[key] = query[key].filter((item) => item !== value);
+//             if (query[key].length === 0) {
+//                 delete query[key];
+//             }
+//         } else {
+//             delete query[key];
+//         }
+//     }
+
+//     delete query.page;
+
+//     await navigateTo({ query });
+// }, 1000);
+
+// refresh();
 const getName = (filterCategory) => {
-    return `${filterCategory === 'is_new' ? slugify(i18n.t('filters.is_new')) : filterCategory}${filterCategory === 'is_new' ? '' : '[]'}`
+    const result = `${filterCategory === 'is_new' ? slugify(i18n.t('filters.is_new')) : filterCategory}${filterCategory === 'is_new' ? '' : '[]'}`;
+
+    return result;
 }
 
 const params = ref(
@@ -78,15 +112,15 @@ const filterFilters = (excludeCategory = null) => {
     Object.keys(filters.value).forEach(categoryKey => {
         (filters.value[categoryKey] ?? []).forEach(option => {
             const testFilters = {};
-            
+
             Object.entries(selectedFilters).forEach(([key, values]) => {
                 if (key !== categoryKey) {
                     testFilters[key] = [...values];
                 }
             });
-            
+
             testFilters[categoryKey] = [option.value.toString()];
-            
+
             const hasMatchingProducts = allFilters.value.some((product) => {
                 const matches = Object.entries(testFilters).every(([key, values]) => {
                     return values.some(value => product[key] == value);
@@ -101,7 +135,7 @@ const filterFilters = (excludeCategory = null) => {
 
 const updateQueryParam = debounce((newParams) => {
     router.replace(`?${newParams.join('&')}`)
-}, 1000)
+}, 500)
 
 watch(params, (newVal) => {
     updateQueryParam(newVal);
@@ -135,7 +169,7 @@ const onChange = (filterCategory, value) => {
     params.value = [...newParams];
 
     filterFilters();
-    
+
     updateQueryParam(newParams)
 }
 

@@ -1,27 +1,5 @@
 <template>
     <ul class="flex flex-col gap-8">
-        <!-- <li v-for="dimension in dimensions" class="flex flex-col gap-4 border-b border-gray-1 pb-4">
-            <span class="font-medium uppercase">{{ $t('dimension') }} - {{ $t(`filters.${dimension.name}`) }}</span>
-            <div class="mb-4">
-                <button @click="onResetClick(dimension.name)" :aria-label="$t('reset')">{{ $t('reset') }}</button>
-            </div>
-            <div class="range-slider relative h-[35px]">
-                <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_min`] ?? dimension.min" type="min" inputType="range" />
-                <SectionsSidebarSlider :dimension="dimension" :value="route.query[`${dimension.name}_max`] ?? dimension.max" type="max" inputType="range" />
-            </div>
-            <div class="flex gap-2 uppercase justify-start">
-                <div class="flex items-center gap-2">
-                    {{ $t('from') }}
-                    <SectionsSidebarSlider :value="route.query[`${dimension.name}_min`] ?? dimension.min" :dimension="dimension" type="min" inputType="number"
-                        class="min-w-[60px] h-[26px]" />
-                </div>
-                <div class="flex items-center gap-2">
-                    {{ $t('to') }}
-                    <SectionsSidebarSlider :value="route.query[`${dimension.name}_max`] ?? dimension.max" :dimension="dimension" type="max" inputType="number"
-                        class="min-w-[60px] h-[26px]" />
-                </div>
-            </div>
-        </li> -->
         <Dimension v-for="dimension in dimensions" :dimension="dimension" :onResetClick="onResetClick" />
     </ul>
 </template>

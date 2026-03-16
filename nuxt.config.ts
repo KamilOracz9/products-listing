@@ -1,6 +1,6 @@
 import pages from './lang/pages.json';
 
-// const languages = ['pl', 'en', 'de']
+const languages = ['pl', 'en', 'de']
 
 // const productRouteRules = Object.fromEntries(
 //   languages.map(lang => [`/${lang}/products`, { swr: true }])
@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       ...routeRules,
+      // '/produkty': { swr: true },
       // ...productRouteRules,
       // ...() => ({
       //   '/': { swr: true },
