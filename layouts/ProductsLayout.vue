@@ -65,9 +65,9 @@ const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
 
 // Computed keys for useAsyncData
-const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`);
-const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${route.params.category}`);
-const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${route.params.category}`);
+const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}`);
+const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}`);
+const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}`);
 
 // Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
