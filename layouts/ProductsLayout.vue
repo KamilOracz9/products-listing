@@ -71,7 +71,7 @@ const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}`);
 
 // Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    categoryPageKey,
+    categoryPageKey.value,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
         watch: [() => route.params.category],
@@ -81,7 +81,7 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
 
 // Fetch products data - depends on category
 const { data, pending, refresh: refreshProducts } = await useAsyncData(
-    productsKey,
+    productsKey.value,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
@@ -94,7 +94,7 @@ const { data, pending, refresh: refreshProducts } = await useAsyncData(
 
 // Fetch filters
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    filtersKey,
+    filtersKey.value,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchFilters({ 'category': categorySlug }, $locale);
