@@ -23,34 +23,12 @@ const route = useRoute();
 const { $baseUrl } = useNuxtApp();
 const baseUrl = $baseUrl();
 
-// Check if current route is product category page and should skip loading
 const shouldShowLoading = computed(() => {
   if (!pageIsLoading.value) return false;
   
-  // Debug: log route info
-  console.log('Route name:', route.name, 'Route path:', route.path);
-  
   const isProductCategoryPage = route.name && (
-    route.name.startsWith('products-category') ||
-    route.name === 'products-category___en' ||
-    route.name === 'products-category___pl' ||
-    route.name === 'products-category___de' ||
-    route.name === 'products-category___fr' ||
-    route.name === 'products-category___it' ||
-    route.name === 'products-category___es' ||
-    route.name === 'products-category___no' ||
-    route.name === 'products-category___sk' ||
-    route.name === 'products-category___cs' ||
-    route.name === 'products-category___ro' ||
-    route.name === 'products-category___ru' ||
-    route.name === 'products-category___uk' ||
-    route.name === 'products-category___hu' ||
-    route.name === 'products-category___et' ||
-    route.name === 'products-category___lv' ||
-    route.name === 'products-category___lt'
+    route.name.startsWith('products')
   );
-  
-  console.log('Is product category page:', isProductCategoryPage);
   
   return !isProductCategoryPage;
 });

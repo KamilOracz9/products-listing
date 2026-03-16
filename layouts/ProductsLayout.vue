@@ -13,32 +13,31 @@
 
             <div class="mt-10 flex gap-10" v-if="!filtersPending && filtersData">
                 <SectionsProductsSidebar />
-                <div class="w-full" v-if="!categoryPagePending">
-                    <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
-                        v-html="categoryPage.description_short"></p>
+                <div class="w-full" v-if="!categoryPagePending && !pending">
+                    <template v-if="data?.products">
+                        <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
+                            v-html="categoryPage.description_short"></p>
 
-                    <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
+                        <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
-                    <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
-                        class="my-10 underline text-2xl lg:hidden">{{
-                            $t('filtering') }}</button>
+                        <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
+                            class="my-10 underline text-2xl lg:hidden">{{
+                                $t('filtering') }}</button>
 
-                    <template v-if="!pending">
-                        <template v-if="data?.products">
-                            <div>
-                                <SectionsProductsListing :products="data.products" />
-                            </div>
+                        <div>
+                            <SectionsProductsListing :products="data.products" />
+                        </div>
 
-                            <SectionsProductsPagination v-if="data?.meta?.last_page > 1" :meta="data?.meta" />
-                        </template>
+                        <SectionsProductsPagination v-if="data?.meta?.last_page > 1" :meta="data?.meta" />
+                    </template>
 
-                        <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
+                    <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
                         class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
                         v-html="categoryPage?.description"></div>
-                    </template>
-                    <div v-else>
-                        <LoadingIndicator />
-                    </div>
+
+                </div>
+                <div v-else class="w-full h-full flex items-center justify-center mt-[10%]">
+                    <LoadingIndicator />
                 </div>
             </div>
         </div>
@@ -179,8 +178,8 @@ const getFilterBySlug = (slug) => {
     if (!filtersData.value?.filters || !slug) return null;
 
     return Object.values(filtersData.value.filters)
-        .flatMap(filter => filter?.options ?? [])
-        .find(option => option?.value_slug === slug);
+        .flatMap(filter => filter)
+        .find(filter => filter.value === slug);
 };
 
 watch(router.currentRoute, () => {

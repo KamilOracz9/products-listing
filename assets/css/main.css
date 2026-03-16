@@ -59,13 +59,13 @@
         @apply font-normal text-base overflow-x-hidden;
     }
 
-    body[data-noscroll="true"]{
+    /* body[data-noscroll="true"]{
         @apply lg:!overflow-y-hidden;
     }
 
     body[data-noscroll="false"]{
         @apply lg:!overflow-y-auto;
-    }
+    } */
 
     /* * [id] {
         scroll-margin-top: 200px;

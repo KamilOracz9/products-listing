@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       ...routeRules,
+      // '/produkty': { swr: true },
       // ...productRouteRules,
       // ...() => ({
       //   '/': { swr: true },
