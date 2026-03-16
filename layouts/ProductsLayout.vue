@@ -65,16 +65,16 @@ const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
 
 // Computed keys for useAsyncData
-const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}`);
-const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}`);
-const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}`);
+const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
+const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
+const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.params.category}`);
 
 // Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     categoryPageKey.value,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
-        watch: [() => route.params.category],
+        watch: [() => route.params.category, () => $locale],
         server: true
     }
 );
@@ -87,7 +87,7 @@ const { data, pending, refresh: refreshProducts } = await useAsyncData(
         return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
     },
     {
-        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug],
+        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug, () => $locale],
         server: true
     }
 );
@@ -100,7 +100,7 @@ const { data: filtersData, pending: filtersPending } = await useAsyncData(
         return fetchFilters({ 'category': categorySlug }, $locale);
     },
     {
-        watch: [() => route.params.category, () => categoryPage.value?.slug],
+        watch: [() => route.params.category, () => categoryPage.value?.slug, () => $locale],
         server: true
     }
 );
@@ -111,9 +111,9 @@ provide('refreshProducts', refreshProducts);
 
 const loading = computed(() => pending.value || categoryPagePending.value);
 
-watch(loading, (newValue) => {
-    globalStore.pageIsLoading = newValue;
-})
+// watch(loading, (newValue) => {
+//     // globalStore.pageIsLoading = newValue;
+// })
 
 // console.log(data.value)
 
