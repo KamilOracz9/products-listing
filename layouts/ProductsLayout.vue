@@ -64,9 +64,14 @@ const { $locale, $baseUrl } = useNuxtApp();
 const baseUrl = $baseUrl();
 const nuxtApp = useNuxtApp();
 
+// Computed keys for useAsyncData
+const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`);
+const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${route.params.category}`);
+const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${route.params.category}`);
+
 // Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    () => `${DataKeys.CATEGORY_PAGE}-${route.params.category}`,
+    categoryPageKey,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
         watch: [() => route.params.category],
@@ -76,7 +81,7 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
 
 // Fetch products data - depends on category
 const { data, pending, refresh: refreshProducts } = await useAsyncData(
-    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}`,
+    productsKey,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
@@ -89,7 +94,7 @@ const { data, pending, refresh: refreshProducts } = await useAsyncData(
 
 // Fetch filters
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    () => `${DataKeys.FILTERS_LIST}-${route.params.category}`,
+    filtersKey,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchFilters({ 'category': categorySlug }, $locale);
