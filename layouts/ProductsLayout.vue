@@ -76,7 +76,7 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
 
 // Fetch products data - depends on category
 const { data, pending, refresh: refreshProducts } = await useAsyncData(
-    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}-${JSON.stringify(route.query)}`,
+    () => `${DataKeys.PRODUCTS_LIST}-${route.params.category}`,
     async () => {
         const categorySlug = categoryPage.value?.slug ?? route.params.category;
         return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
