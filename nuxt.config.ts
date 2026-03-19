@@ -22,7 +22,7 @@ const routeRules = Object.fromEntries(
 
     if (regex.test(route)) {
       return Object.entries(languages).map(([language, data]) => {
-        return [`${(language !== 'pl' || route === 'index') ? '/' : ''}${language === 'pl' ? '' : language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
+        return [`${(route === 'index') ? '/' : ''}${language}${route === 'index' ? '' : (data ?? data.static.body).replace(/\[.*?\]/g, "*")}`, { swr: true }];
       })
     }
   }).filter(item => item)
@@ -55,8 +55,8 @@ export default defineNuxtConfig({
     },
     routeRules: {
       ...routeRules,
-      '/produkty': { swr: true },
-      '/kategoria-produktu/*': { swr: true },
+      // '/produkty': { swr: true },
+      // '/kategoria-produktu/*': { swr: true },
       // ...productRouteRules,
       // ...() => ({
       //   '/': { swr: true },
