@@ -2,73 +2,47 @@ export default [
     { UserAgent: 'Googlebot' },
     { Allow: '/' },
 
-    { UserAgent: 'Amazonbot' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'Meta-ExternalAgent' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'dotbot' },
-    { Disallow: '/' },
-
-    { UserAgent: 'GPTBot' },
-    { Allow: '/' },
-    
-    { UserAgent: 'OAI-SearchBot' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'Baiduspider' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'ByteDanceSpider' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'Bytespider' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'HTTrack' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'Sogou web spider' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'TeleportPro' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'WebCopier' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'WebStripper' },
-    { Disallow: '/' },
-
-    { UserAgent: 'ClaudeBot' },
+    { UserAgent: 'Googlebot-Image' },
     { Allow: '/' },
 
-    { UserAgent: 'Yandex' },
-    { Disallow: '/' },
+    { UserAgent: 'Googlebot-Video' },
+    { Allow: '/' },
 
-    { UserAgent: 'YandexBot' },
-    { Disallow: '/' },
+    { UserAgent: 'AdsBot-Google' },
+    { Allow: '/' },
 
-    { UserAgent: 'YandexRenderResourcesBot' },
-    { Disallow: '/' },
-
-    { UserAgent: 'BacklinksExtendedBot' },
-    { Disallow: '/' },
-
-    { UserAgent: 'RU_Bot' },
-    { Disallow: '/' },
-
-    { UserAgent: 'PetalBot' },
-    { Disallow: '/' },
-    
-    { UserAgent: 'wget' },
-    { Disallow: '/' },
+    { UserAgent: 'AdsBot-Google-Mobile' },
+    { Allow: '/' },
 
     { UserAgent: 'Google-Extended' },
     { Allow: '/' },
 
+    { UserAgent: 'GPTBot' },
+    { Allow: '/' },
+
+    { UserAgent: 'ClaudeBot' },
+    { Allow: '/' },
+
+    { UserAgent: 'facebookexternalhit' },
+    { Allow: '/' },
+
+    { UserAgent: 'Pinterestbot' },
+    { Allow: '/' },
+
+    { UserAgent: 'LinkedInBot' },
+    { Allow: '/' },
+
+    { UserAgent: 'AhrefsBot' },
+    { Allow: '/' },
+
+    { UserAgent: 'AhrefsSiteAudit' },
+    { Allow: '/' },
+
+    { UserAgent: 'Screaming Frog SEO Spider' },
+    { Allow: '/' },
+
     { UserAgent: '*' },
     { Disallow: '/' },
-    { CrawlDelay: '10' },
+
+    { Sitemap: 'https://newtrendy.pl/sitemap.xml' },
 ]
