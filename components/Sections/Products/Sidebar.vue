@@ -1,6 +1,6 @@
 <template>
     <div ref="formRef" :class="productsFilterStore.isOpen ? '' : 'hidden'"
-        class="fixed px-5 pb-5 top-0 left-0 bg-white w-full h-screen overflow-y-auto z-40 flex-col lg:pb-0 lg:h-fit lg:overflow-hidden lg:p-0 lg:!flex lg:relative lg:z-0 lg:w-min lg:min-w-min">
+        class="fixed px-5 pb-5 top-0 left-0 bg-white w-full h-screen overflow-y-auto z-40 flex-col lg:pb-0 lg:h-fit lg:overflow-hidden lg:p-0 lg:!flex lg:relative lg:z-0 lg:w-min lg:min-w-[200px]">
         <div class="text-[1.25rem] flex fixed bg-white z-10 py-5 w-[calc(100%-2.5rem)] justify-between lg:hidden">
             <span class="underline">{{ $t('filtering') }}</span>
             <button type="button" class="lg:hidden" :aria-label="$t('filtering')" @click="toggleMenuIsOpen">
