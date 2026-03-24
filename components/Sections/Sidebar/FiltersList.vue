@@ -1,7 +1,7 @@
 <template>
     <ul class="flex flex-col gap-8">
         <template v-for="[filterCategory, options] in Object.entries(filters)">
-            <li v-if="getFilterOptions(options, filterCategory).length"
+            <li v-if="getFilterOptions(options, filterCategory).length || filterCategory === slugify($t('filters.series'))"
                 class="flex flex-col gap-4 border-b border-gray-1 pb-4">
                 <span class="font-medium uppercase">{{ labels[filterCategory] }}</span>
                 <input v-model="seriesSearch" v-if="filterCategory === slugify($t('filters.series'))" type="text"
