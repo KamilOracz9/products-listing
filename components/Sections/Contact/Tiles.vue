@@ -12,9 +12,26 @@
                     <span class="flex flex-1 h-0 border-b-2 border-black"></span>
                 </div>
                 <div class="font-normal text-base lg:text-[1.25rem] flex flex-col gap-1">
-                    <a v-for="phone in tile.phone" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone
+                    <!-- <a v-for="phone in tile.phone" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{ phone
                     }}</a>
-                    <a v-for="email in tile.email" :href="`mailto:${email}`">{{ email }}</a>
+                    <a v-for="email in tile.email" :href="`mailto:${email}`">{{ email }}</a> -->
+
+                    <template v-for="item in tile.items">
+                        <template v-if="Array.isArray(item.phone) || Array.isArray(item.phone)">
+                            <a v-for="phone in item.phone" :href="`tel:${phone}`">{{ $t('pages.contact.phone') }}: {{
+                                phone }}</a>
+                            <a v-for="email in item.email" :href="`mailto:${email}`">{{ email }}</a>
+                        </template>
+
+                        <template v-else>
+                            <div class="flex flex-col gap-1 mb-2">
+                                <a v-if="item.phone" :href="`tel:${item.phone}`">{{ $t('pages.contact.phone') }}: {{
+                                    item.phone }}</a>
+                                <a v-if="item.email" :href="`mailto:${item.email}`">{{ item.email }}</a>
+                            </div>
+                        </template>
+                    </template>
+
                 </div>
             </li>
         </ul>
@@ -26,4 +43,6 @@ import type { Department } from '@/types/contact.types.ts';
 
 const props = defineProps<{ data: Department[] }>();
 const { data } = toRefs(props);
+
+console.log(data.value)
 </script>
