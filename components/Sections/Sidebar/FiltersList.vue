@@ -33,41 +33,9 @@ const props = defineProps(['filters', 'allFilters', 'labels']);
 const route = useRoute();
 const router = useRouter();
 const { filters, allFilters } = toRefs(props);
-// const refresh = inject('refresh');
 const seriesSearch = ref('');
 const i18n = useI18n();
 
-const isDisabled = (active, disabled) => (!active && disabled);
-const isActive = (name, value) => {
-    if (Array.isArray(route.query[`${name}[]`])) return route.query[`${name}[]`].includes(value.toString());
-    else return route.query[`${name}[]`] == value;
-};
-
-// const onChange = debounce(async (name, value, checked) => {
-//     // Don't add [] here because getName already handles it
-//     const key = name;
-
-//     const query = { ...route.query };
-
-//     if (checked) {
-//         query[key] = Array.isArray(query[key]) ? [...query[key], value] : [value];
-//     } else {
-//         if (Array.isArray(query[key])) {
-//             query[key] = query[key].filter((item) => item !== value);
-//             if (query[key].length === 0) {
-//                 delete query[key];
-//             }
-//         } else {
-//             delete query[key];
-//         }
-//     }
-
-//     delete query.page;
-
-//     await navigateTo({ query });
-// }, 1000);
-
-// refresh();
 const getName = (filterCategory) => {
     const result = `${filterCategory === 'is_new' ? slugify(i18n.t('filters.is_new')) : filterCategory}${filterCategory === 'is_new' ? '' : '[]'}`;
 
@@ -109,7 +77,7 @@ const filterFilters = (excludeCategory = null) => {
         selectedFilters[filterName].push(filterValue);
     });
 
-    Object.keys(filters.value).forEach(categoryKey => {
+    Object.keys(filters.value)?.forEach(categoryKey => {
         (filters.value[categoryKey] ?? []).forEach(option => {
             const testFilters = {};
 
@@ -121,29 +89,45 @@ const filterFilters = (excludeCategory = null) => {
 
             testFilters[categoryKey] = [option.value.toString()];
 
-            const hasMatchingProducts = allFilters.value.some((product) => {
-                const matches = Object.entries(testFilters).every(([key, values]) => {
-                    return values.some(value => product[key] == value);
-                });
-                return matches;
-            });
+            // Object.entries(filters.value).some(filter => {
+                // console.log(filter)
+                // const matches = Object.entries(testFilters).every(([key, values]) => {
+                //     console.log(key, values, filters.value[key])
 
-            option.disabled = !hasMatchingProducts;
+                //     return values.some(value => product[key] == value);
+                // });
+                // return matches;
+            // })
+
+            // console.log(filters.value)
+
+            // const hasMatchingProducts = allFilters.value.some((product) => {
+            // const matches = Object.entries(testFilters).every(([key, values]) => {
+            //     return values.some(value => product[key] == value);
+            // });
+            // return matches;
+            // });
+
+            // option.disabled = !hasMatchingProducts;
         });
     });
 }
 
-const updateQueryParam = debounce((newParams) => {
-    router.replace(`?${newParams.join('&')}`)
-}, 500)
+// const updateQueryParam = debounce((newParams) => {
+//     router.replace(`?${newParams.join('&')}`)
+// }, 500)
 
-watch(params, (newVal) => {
-    updateQueryParam(newVal);
+// watch(params, (newVal) => {
+//     updateQueryParam(newVal);
 
-    filterFilters();
-})
+//     filterFilters();
+// })
 
 const onChange = (filterCategory, value) => {
+    // console.log(filterCategory, value)
+
+    // console.log(route.query)
+
     const param = `${filterCategory}=${value}`
     let newParams = params.value.filter(item => !item.includes('page='))
 
@@ -170,7 +154,9 @@ const onChange = (filterCategory, value) => {
 
     filterFilters();
 
-    updateQueryParam(newParams)
+    // updateQueryParam(newParams)
+
+    router.push(`?${newParams.join('&')}`)
 }
 
 const getSelectedParams = () => {
@@ -193,6 +179,6 @@ onMounted(() => {
 
     seriesSearch.value = localStorage.getItem('seriesSearch') ?? '';
 
-    filterFilters();
+    // filterFilters();
 })
 </script>

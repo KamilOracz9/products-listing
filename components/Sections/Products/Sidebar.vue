@@ -14,40 +14,40 @@
             </button>
         </div>
 
-        <div class="flex flex-col gap-8 text-sm relative" v-if="data && !pending">
-            <SectionsSidebarFiltersList :filters="data.filters" :allFilters="data.allFilters" :labels="data.labels" />
-            <SectionsSidebarDimensions :filters="data.dimensions" />
+        <div class="flex flex-col gap-8 text-sm relative" v-if="data">
+            <SectionsSidebarFiltersList :filters="data.filters" :labels="data.labels" />
+            <!-- <SectionsSidebarDimensions :filters="data.dimensions" /> -->
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { DataKeys } from '~/enums/dataKeys';
-import { fetchFilters } from '~/services/api/products';
-const { $locale, $baseUrl } = useNuxtApp();
+// import { DataKeys } from '~/enums/dataKeys';
+// import { fetchFilters } from '~/services/api/products';
+// const { $locale, $baseUrl } = useNuxtApp();
 
 // const refresh = inject('filtersRefresh');
-const route = useRoute();
-const localePath = useLocalePath();
+// const route = useRoute();
+// const localePath = useLocalePath();
 
 const data = inject('filtersData');
-const pending = inject('filtersPending');
-const refreshProducts = inject('refreshProducts');
+// const pending = inject('filtersPending');
+// const refreshProducts = inject('refreshProducts');
 
 const productsFilterStore = useProductsFilterStore();
 const { toggleMenuIsOpen } = reactive(productsFilterStore);
 
-const resetFilters = async () => {
-    try {
-        await navigateTo(`${localePath(route.name.split('___'))}/`);
-        // Refresh products after filter reset
-        if (refreshProducts) {
-            await refreshProducts();
-        }
-    } catch (error) {
-        console.error('Error resetting filters:', error);
-    }
-}
+// const resetFilters = async () => {
+//     try {
+//         await navigateTo(`${localePath(route.name.split('___'))}/`);
+//         // Refresh products after filter reset
+//         if (refreshProducts) {
+//             await refreshProducts();
+//         }
+//     } catch (error) {
+//         console.error('Error resetting filters:', error);
+//     }
+// }
 
 // provide('refresh', refresh);
 </script>

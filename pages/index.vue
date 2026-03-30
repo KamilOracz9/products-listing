@@ -1,50 +1,61 @@
 <template>
-  <div>
-    <NuxtLink :to="localePath('made-to-measure')" :aria-label="configuratorLink"
-      class="flex text-[.7rem] mt-8 mb-7 group xs:text-sm md:text-xl md:w-fit">
-      <span
-        class="bg-black-2 text-white px-2 rounded-tl-xs group-hover:bg-yellow-2 transition-all xs:px-4 xs:py-2  md:rounded-tl-sm md:px-5 md:py-3">{{
-          configuratorLink }}</span>
-      <span class="px-2 uppercase font-medium xs:px-4 xs:py-2 md:px-5 md:py-3">{{ $t('made-to-measure-home-link')
-        }}</span>
-    </NuxtLink>
+  <div class="flex">
+    <section>
+      <div>
+        <div class="mt-10 flex gap-10">
+          <SectionsProductsSidebar />
+          <div class="w-full">
+            <template v-if="variants">
+              <div>
+                <SectionsProductsListing :products="filteredProducts" />
+              </div>
+            </template>
 
-    <SectionsHomeSwiper :data="Object.values(slides)" />
-    <SectionsHomeCategories :data="categories" />
-    <SectionsHomeProductTiles :data="collections" />
-    <SectionsHomeAboutTiles :data="boxes" />
-    <SectionsHomeLeftImage :data="customized" />
-    <SectionsHomeRightImage :data="quality" />
-    <div class="mb-12 lg:grid lg:grid-cols-2 lg:gap-10">
-      <SectionsHomeInOffer :data="products" />
-      <SectionsHomeAdditionalContent :data="{ information, yellow, welcome }" />
-    </div>
-    <SectionsCommonFindUs />
-    <SectionsCommonUE />
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { DataKeys } from '~/enums/dataKeys';
-import { fetchHomePage } from '~/services/api';
-import type { HomePage } from '~/types/home.types';
+const route = useRoute();
 
-const { locale } = useI18n();
-const localePath = useLocalePath();
+const query = {
+  // category: 'kabiny-prysznicowe',
+}
 
-const configuratorLink = computed(() => {
-  if (locale.value === 'pl') return 'konfiguratorkabin.pl';
-  if (locale.value === 'sk') return 'konfiguratorkabin.sk';
-  else return 'konfiguratorkabin.eu';
-})
+const filters = await $fetch(`http://localhost:8000/api/newtrendy/v3/pl_PL/variants/filters`, { query })
+const variants = await $fetch(`http://localhost:8000/api/newtrendy/v3/pl_PL/variants`, { query })
 
-const { data } = await useAsyncData(DataKeys.HOME_PAGE, async () => fetchHomePage(getLocaleIso()));
-const { description, meta, schema } = toRefs(data.value as HomePage);
-const { box: boxes, categories, collections, customized, information, products, quality, sliders: slides, welcome, yellow } = toRefs(description.value.content);
+// console.log(filters.filters['seria'].find())
 
-setMeta(meta.value);
+const filteredProductsIds = computed(() => {
+  return new Set(Object.entries(route.query).map(([key, values]) => {
+    const paramName = key.replace('[]', '');
 
-useSchemaOrg([
-  schema.value
-])
+    values = Array.isArray(values) ? values : [values];
+
+    return filters.filters[paramName].filter(option => values.includes(option.value)).map(({ products }) => products).flat();
+  }));
+});
+
+// console.log(filteredProductsIds.value.values().every(values => values.includes(14)));
+
+const filteredProducts = computed(() => filteredProductsIds.value.size ? variants?.filter(variant => filteredProductsIds.value.values().every(values => values.includes(variant.product_id))) : variants);
+
+const options = new Set(filteredProducts.value.flatMap(product => product.options));
+const availableOptions = new Set(variants.filter(variant => variant.options.some(option => options.has(option))).flatMap(product => product.options));
+
+// console.log(filteredProducts.value, variants.filter(variant => variant.options.some(option => options.has(option))));
+
+// console.log(availableOptions, Object.entries(filters.filters).map(([key, options]) => ([key, options.products.some(productId => filteredProductsIds.value.has(productId))])));
+
+// console.log(filters.filters['seria'][0].products.some(productId => filteredProductsIds.value.has(productId)));
+console.log(filters.filters['seria'][2].products.filter(productId => filteredProductsIds.value.values().next().value.includes(productId)));
+
+// console.log(filteredProductsIds.value.values().next().value.includes(48))
+
+provide('filtersData', filters);
+provide('filteredProductsIds', filteredProductsIds);
 </script>
