@@ -4,8 +4,6 @@
             <div class="flex justify-between w-full relative flex-col lg:flex-row">
                 <SectionsHeaderLogo />
             </div>
-
-            <LazyFlashMessages />
         </div>
     </div>
 </template>

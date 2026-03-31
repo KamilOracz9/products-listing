@@ -1,1 +1,0 @@
-export const fetchPrivacyPolicyPage = async (locale: string) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/cms/page/privacy-policy`));

@@ -50,11 +50,10 @@ const params = ref(
                 : [`${param[0]}=${param[1]}`]
         )
         .flat()
-)
+        .filter(param => !param.startsWith('page='))
+);
 
 const filterFilters = (excludeCategory = null) => {
-    filters.value = props.filters;
-
     if (params.value.length === 0) {
         Object.keys(filters.value).forEach(key => {
             (filters.value[key] ?? []).forEach(item => {
@@ -77,7 +76,7 @@ const filterFilters = (excludeCategory = null) => {
         selectedFilters[filterName].push(filterValue);
     });
 
-    Object.keys(filters.value)?.forEach(categoryKey => {
+    Object.keys(filters.value).forEach(categoryKey => {
         (filters.value[categoryKey] ?? []).forEach(option => {
             const testFilters = {};
 
@@ -89,45 +88,29 @@ const filterFilters = (excludeCategory = null) => {
 
             testFilters[categoryKey] = [option.value.toString()];
 
-            // Object.entries(filters.value).some(filter => {
-                // console.log(filter)
-                // const matches = Object.entries(testFilters).every(([key, values]) => {
-                //     console.log(key, values, filters.value[key])
+            const hasMatchingProducts = allFilters.value.some((product) => {
+                const matches = Object.entries(testFilters).every(([key, values]) => {
+                    return values.some(value => product[key] == value);
+                });
+                return matches;
+            });
 
-                //     return values.some(value => product[key] == value);
-                // });
-                // return matches;
-            // })
-
-            // console.log(filters.value)
-
-            // const hasMatchingProducts = allFilters.value.some((product) => {
-            // const matches = Object.entries(testFilters).every(([key, values]) => {
-            //     return values.some(value => product[key] == value);
-            // });
-            // return matches;
-            // });
-
-            // option.disabled = !hasMatchingProducts;
+            option.disabled = !hasMatchingProducts;
         });
     });
 }
 
-// const updateQueryParam = debounce((newParams) => {
-//     router.replace(`?${newParams.join('&')}`)
-// }, 500)
+const updateQueryParam = debounce((newParams) => {
+    router.replace(`?${newParams.join('&')}`)
+}, 500)
 
-// watch(params, (newVal) => {
-//     updateQueryParam(newVal);
+watch(params, (newVal) => {
+    updateQueryParam(newVal);
 
-//     filterFilters();
-// })
+    filterFilters();
+})
 
 const onChange = (filterCategory, value) => {
-    // console.log(filterCategory, value)
-
-    // console.log(route.query)
-
     const param = `${filterCategory}=${value}`
     let newParams = params.value.filter(item => !item.includes('page='))
 
@@ -154,9 +137,7 @@ const onChange = (filterCategory, value) => {
 
     filterFilters();
 
-    // updateQueryParam(newParams)
-
-    router.push(`?${newParams.join('&')}`)
+    updateQueryParam(newParams)
 }
 
 const getSelectedParams = () => {
@@ -179,6 +160,6 @@ onMounted(() => {
 
     seriesSearch.value = localStorage.getItem('seriesSearch') ?? '';
 
-    // filterFilters();
+    filterFilters();
 })
 </script>

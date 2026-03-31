@@ -1,4 +1,3 @@
-import { Colors } from "~/enums/download";
 import type { Meta } from "~/types/common.types";
 
 export const toGetParams = (params: any) => (
@@ -35,17 +34,6 @@ export const slugify = (string: string, withSpecialChars: boolean = true): strin
     if (!withSpecialChars) transformedString = transformedString.replace(/[^a-z0-9 -]/g, '')
 
     return transformedString;
-}
-
-export const getBgColor = (color: Colors) => {
-    let bgColor = '';
-
-    switch (color) {
-        case Colors.YELLOW: bgColor = '#ffce44'; break;
-        case Colors.GRAY: bgColor = '#e1e1e1'; break;
-    }
-
-    return bgColor;
 }
 
 export const groupBy = (list: any, keyGetter: (item: any) => string) => {

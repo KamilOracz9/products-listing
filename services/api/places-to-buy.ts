@@ -1,4 +1,0 @@
-import type { PlaceToBuyPage } from "~/types/place-to-buy.types";
-
-export const fetchShops = async (query: any, page: number, locale: string, locationsIds?: number[]): Promise<PlaceToBuyPage> => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/place-to-buy/shops-list?page=${page}` + `${locationsIds ? `&locationsIds=${locationsIds}` : ''}`, { query }));
-export const fetchCoordsList = async (query: any, locale: string, locationsIds?: number[]) => (await $fetch(`${useAppConfig().public.apiBase}/v1/${locale}/place-to-buy/coords-list` + `${locationsIds ? `?locationsIds=${locationsIds}` : ''}`, { query }));

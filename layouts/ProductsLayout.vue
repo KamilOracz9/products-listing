@@ -1,221 +1,87 @@
 <template>
-    <section>
-        <div>
-            <SectionsCommonBreadrumbs v-if="categoryPage?.breadcrumbs" :breadcrumbs="categoryPage.breadcrumbs" />
-
-            <h1
-                class="uppercase text-[2rem] leading-[2.375rem] mt-0 mb-2 font-medium sm:text-[2.25rem] sm:leading-[2.75rem]">
-                {{ categoryPage?.name ?? $t('products') }} {{ hasOneFilter ? ` -
-                ${route.query[slugify(i18n.t('filters.is_new'))] ? i18n.t('navigation.new-products') :
-                        (getFilterBySlug(firstParam)?.label ??
-                            '')}` : ''
-                }}</h1>
-
-            <div class="mt-10 flex gap-10" v-if="!filtersPending && filtersData">
-                <SectionsProductsSidebar />
-                <div class="w-full" v-if="!categoryPagePending && !pending">
-                    <template v-if="data?.products">
-                        <p v-if="categoryPage?.description_short" class="pb-3.5 mb-5 border-b text-lg"
-                            v-html="categoryPage.description_short"></p>
-
+    <div class="flex">
+        <section>
+            <div>
+                <div class="mt-10 flex gap-10">
+                    <SectionsProductsSidebar />
+                    <div class="w-full" v-if="!categoryPagePending && !productsPending">
                         <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                         <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
                             class="my-10 underline text-2xl lg:hidden">{{
                                 $t('filtering') }}</button>
+                        <SectionsProductsListing v-if="!productsPending" :products="filteredProducts" />
 
-                        <div>
-                            <SectionsProductsListing :products="data.products" />
-                        </div>
-
-                        <SectionsProductsPagination v-if="data?.meta?.last_page > 1" :meta="data?.meta" />
-                    </template>
-
-                    <div v-if="categoryPage?.description && ((route.query.page == 1 && Object.keys(route.query).length === 1) || Object.keys(route.query).length === 0)"
-                        class="pt-3.5 mb-10 border-t text-lg [&_ul]:list-disc [&_ul]:px-5 [&_h2]:text-[1.75rem] [&_h2]:pt-10 [&_h2]:pb-4 [&_h2]:font-medium [&_h3]:text-[1.5rem] [&_h3]:font-medium"
-                        v-html="categoryPage?.description"></div>
-
-                </div>
-                <div v-else class="w-full h-full flex items-center justify-center mt-[10%]">
-                    <LoadingIndicator />
+                        <SectionsProductsPagination :perPage="perPage" :currentPage="currentPage" :productsCount="productsCount" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { DataKeys } from '~/enums/dataKeys';
-import { fetchProducts } from '~/services/api';
 import { fetchCategoryPage } from '~/services/api/category';
 import { fetchFilters } from '~/services/api/products';
 
-const FILTERS_DISABLED_FROM_INDEXING = [
-    'length_min', 'length_max', 'height_min', 'height_max', 'width_min', 'width_max', 'page'
-];
-
-const i18n = useI18n();
-const globalStore = useGlobalStore();
-const productsFilterStore = useProductsFilterStore();
 const route = useRoute();
-const router = useRouter();
-const localePath = useLocalePath();
-const { $locale, $baseUrl } = useNuxtApp();
-const baseUrl = $baseUrl();
-const nuxtApp = useNuxtApp();
+const { $locale } = useNuxtApp();
 
-// Computed keys for useAsyncData
-const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
-const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
+const productsFilterStore = useProductsFilterStore();
+
 const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.params.category}`);
+const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
+const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
 
-// Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    categoryPageKey.value,
+    categoryPageKey,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
-        watch: [() => route.params.category, () => $locale],
-        server: true
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key] 
+                ?? useNuxtApp().static.data[key];
+        }
     }
 );
 
-// Fetch products data - depends on category
-const { data, pending, refresh: refreshProducts } = await useAsyncData(
-    productsKey.value,
-    async () => {
-        const categorySlug = categoryPage.value?.slug ?? route.params.category;
-        return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
-    },
-    {
-        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug, () => $locale],
-        server: true
-    }
-);
-
-// Fetch filters
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    filtersKey.value,
-    async () => {
-        const categorySlug = categoryPage.value?.slug ?? route.params.category;
-        return fetchFilters({ 'category': categorySlug }, $locale);
-    },
+    filtersKey,
+    async () => fetchFilters({ 'category': route.params.category }, $locale),
     {
-        watch: [() => route.params.category, () => categoryPage.value?.slug, () => $locale],
-        server: true
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key] 
+                ?? useNuxtApp().static.data[key];
+        }
     }
 );
+
+const { data: productsData, pending: productsPending } = await useAsyncData(
+    productsKey,
+    async () => $fetch(`http://localhost:8000/api/newtrendy/v3/pl_PL/variants?category=${route.params.category}`),
+    {
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key] 
+                ?? useNuxtApp().static.data[key];
+        }
+    }
+);
+
+const { filteredProductsIds } = useFilteredProducts(filtersData, computed(() => route.query));
+
+const filteredProducts = computed(() => {
+    if (!productsData.value) return [];
+
+    return productsData.value.filter(product =>
+        filteredProductsIds.value.length
+            ? filteredProductsIds.value.includes(product.product_id)
+            : true
+    );
+});
+
+const perPage = 20;
+const currentPage = computed(() => parseInt(route.query.page as string) || 1);
+const productsCount = computed(() => filteredProducts.value.length);
 
 provide('filtersData', filtersData);
-provide('filtersPending', filtersPending);
-provide('refreshProducts', refreshProducts);
-
-const loading = computed(() => pending.value || categoryPagePending.value);
-
-// watch(loading, (newValue) => {
-//     // globalStore.pageIsLoading = newValue;
-// })
-
-// console.log(data.value)
-
-const canonical = computed(() => pageIndexable.value ? baseUrl.value.fullUrl : `${baseUrl.value.domain}${baseUrl.value.path.split('?')[0]}`);
-
-const next = computed(() => {
-    const page = route.query.page ? parseInt(route.query.page) : 1;
-
-    return (data.value?.meta?.last_page && page < data.value.meta.last_page) ? `${canonical.value}?page=${page + 1}` : null
-});
-
-const prev = computed(() => {
-    const page = route.query.page ? parseInt(route.query.page) : 1;
-
-    return page > 1 ? `${canonical.value}?page=${page - 1}` : null
-});
-
-const headLinks = computed(() => {
-    const links = [];
-
-    canonical.value && links.push({ rel: 'canonical', href: canonical.value });
-    next.value && links.push({ rel: 'next', href: next.value });
-    prev.value && links.push({ rel: 'prev', href: prev.value });
-
-    return links;
-});
-
-const firstParam = computed(() => {
-    switch (typeof (Object.values(route.query)[0])) {
-        case 'string': return Object.values(route.query)[0];
-        case 'object': return Object.values(route.query)[0][0];
-    }
-})
-
-const indexedQueryParams = computed(() => Object.fromEntries(Object.entries(route.query).filter(item => !FILTERS_DISABLED_FROM_INDEXING.includes(item[0]))));
-
-const hasMoreThenOneFilter = computed(() => new URLSearchParams(route.query).size > 1 || Array.isArray(Object.values(route.query)[0]));
-
-const flattenFilters = computed(() => Object.values(filtersData.value?.filters ?? {}).flat());
-
-const hasOneFilter = computed(() =>
-    new URLSearchParams(indexedQueryParams.value).size === 1
-    && typeof (Object.values(indexedQueryParams.value)[0]) === 'string'
-    || Object.values(indexedQueryParams.value)[0]?.length === 1);
-
-const pageIndexable = computed(() => (!hasMoreThenOneFilter.value));
-
-const metaParams = computed(() => {
-    if (!filtersData.value?.filters) return '';
-
-    return Object.values(filtersData.value.filters)
-        .flatMap(filter => filter?.options ?? [])
-        .filter(option => option?.value_slug && Object.values(route.query).flat().includes(option.value_slug))
-        .map(option => option.label)
-        .join(', ');
-});
-
-const meta = computed(() => ([
-    {
-        name: 'robots', content: (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) || (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
-            ? `index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1`
-            : `noindex, nofollow`
-    },
-]))
-
-const getFilterBySlug = (slug) => {
-    if (!filtersData.value?.filters || !slug) return null;
-
-    return Object.values(filtersData.value.filters)
-        .flatMap(filter => filter)
-        .find(filter => filter.value === slug);
-};
-
-watch(router.currentRoute, () => {
-    document.querySelector('link[rel="next"]')?.remove();
-    document.querySelector('link[rel="prev"]')?.remove();
-
-    setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
-}, { deep: true })
-
-setMeta({ meta_description: categoryPage.value?.meta?.meta_description, meta_title: `${categoryPage.value?.name ?? i18n.t('meta.products.title')}${metaParams.value ? ' - ' + metaParams.value : ''} | New Trendy` })
-
-useSeoMeta({
-    robots: computed(() =>
-        (pageIndexable.value && !((i18n.locale.value === 'pl' && !baseUrl.value.domain.includes('newtrendy.pl')) ||
-            (!baseUrl.value.domain.includes('newtrendy.eu') && i18n.locale.value !== 'pl')))
-            ? 'index, follow, max-image-preview: large, max-snippet: -1, max-video-preview: -1'
-            : 'noindex, nofollow'
-    )
-});
-
-useHead(() => ({
-    link: headLinks.value,
-}))
-
-useSchemaOrg([categoryPage.value?.schema])
-
-onMounted(() => {
-    if (route.params.category && (route.params.category !== categoryPage.value?.slug)) router.push(localePath({ name: 'products-category', params: { 'category': categoryPage.value?.slug } }));
-
-    watch(() => route.query.page, value => {
-        if (value) document.querySelector('h1').scrollIntoView();
-    })
-})
 </script>
