@@ -6,7 +6,14 @@
 </template>
 
 <script setup>
-
+onMounted(() => {
+  useSeoMeta({
+    robots: {
+      'noindex': true,
+      'nofollow': true,
+    },
+  })
+})
 </script>
 
 <style lang="postcss">

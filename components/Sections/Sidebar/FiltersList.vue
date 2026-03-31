@@ -53,51 +53,58 @@ const params = ref(
         .filter(param => !param.startsWith('page='))
 );
 
-const filterFilters = (excludeCategory = null) => {
+const rangeKeys = new Set(['length_min', 'length_max', 'width_min', 'width_max', 'height_min', 'height_max'])
+
+const matchesRanges = (product, selected) => {
+    if (selected.width_min?.[0]  && product.width  < Number(selected.width_min[0]))  return false
+    if (selected.width_max?.[0]  && product.width  > Number(selected.width_max[0]))  return false
+    if (selected.length_min?.[0] && product.length < Number(selected.length_min[0])) return false
+    if (selected.length_max?.[0] && product.length > Number(selected.length_max[0])) return false
+    if (selected.height_min?.[0] && product.height < Number(selected.height_min[0])) return false
+    if (selected.height_max?.[0] && product.height > Number(selected.height_max[0])) return false
+    return true
+}
+
+const filterFilters = () => {
     if (params.value.length === 0) {
         Object.keys(filters.value).forEach(key => {
-            (filters.value[key] ?? []).forEach(item => {
-                item.disabled = false;
-            });
-        });
-        return;
+            (filters.value[key] ?? []).forEach(item => { item.disabled = false })
+        })
+        return
     }
 
-    const selectedFilters = {};
+    const selectedFilters = {}
     params.value.forEach(param => {
-        const itemArray = param.split('=');
-        let filterName = itemArray[0].replace('[]', '');
-        if (filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new';
-        const filterValue = itemArray[1];
-
-        if (!selectedFilters[filterName]) {
-            selectedFilters[filterName] = [];
-        }
-        selectedFilters[filterName].push(filterValue);
-    });
+        const [rawKey, filterValue] = param.split('=')
+        let filterName = rawKey.replace('[]', '')
+        if (filterName === slugify(i18n.t('filters.is_new'))) filterName = 'is_new'
+        if (!selectedFilters[filterName]) selectedFilters[filterName] = []
+        selectedFilters[filterName].push(filterValue)
+    })
 
     Object.keys(filters.value).forEach(categoryKey => {
         (filters.value[categoryKey] ?? []).forEach(option => {
-            const testFilters = {};
-
+            // zbuduj testowe filtry dla tej opcji
+            const testSelected = {}
             Object.entries(selectedFilters).forEach(([key, values]) => {
-                if (key !== categoryKey) {
-                    testFilters[key] = [...values];
-                }
-            });
+                if (key !== categoryKey) testSelected[key] = [...values]
+            })
+            testSelected[categoryKey] = [option.value.toString()]
 
-            testFilters[categoryKey] = [option.value.toString()];
+            const hasMatchingProducts = allFilters.value.some(product => {
+                // sprawdź zakresy
+                if (!matchesRanges(product, testSelected)) return false
 
-            const hasMatchingProducts = allFilters.value.some((product) => {
-                const matches = Object.entries(testFilters).every(([key, values]) => {
-                    return values.some(value => product[key] == value);
-                });
-                return matches;
-            });
+                // sprawdź pozostałe filtry (nie zakresy)
+                return Object.entries(testSelected).every(([key, values]) => {
+                    if (rangeKeys.has(key)) return true
+                    return values.some(value => product[key] == value)
+                })
+            })
 
-            option.disabled = !hasMatchingProducts;
-        });
-    });
+            option.disabled = !hasMatchingProducts
+        })
+    })
 }
 
 const updateQueryParam = debounce((newParams) => {
@@ -114,23 +121,10 @@ const onChange = (filterCategory, value) => {
     const param = `${filterCategory}=${value}`
     let newParams = params.value.filter(item => !item.includes('page='))
 
-    if (filterCategory === 'length_min') newParams = params.value.filter(item => !item.includes('length_min[]='))
-    if (filterCategory === 'length_max') newParams = params.value.filter(item => !item.includes('length_max[]='))
-    if (filterCategory === 'width_min') newParams = params.value.filter(item => !item.includes('width_min[]='))
-    if (filterCategory === 'width_max') newParams = params.value.filter(item => !item.includes('width_max[]='))
-    if (filterCategory === 'height_min') newParams = params.value.filter(item => !item.includes('height_min[]='))
-    if (filterCategory === 'height_max') newParams = params.value.filter(item => !item.includes('height_max[]='))
-
     if (newParams.includes(param)) {
         newParams = newParams.filter(item => item !== param)
     } else {
-        if (filterCategory === 'length_min' && dimensions.length.min == value) { }
-        else if (filterCategory === 'length_max' && dimensions.length.max == value) { }
-        else if (filterCategory === 'width_min' && dimensions.width.min == value) { }
-        else if (filterCategory === 'width_max' && dimensions.width.max == value) { }
-        else if (filterCategory === 'height_min' && dimensions.height.min == value) { }
-        else if (filterCategory === 'height_max' && dimensions.height.max == value) { }
-        else newParams.push(param)
+        newParams.push(param)
     }
 
     params.value = [...newParams];
@@ -141,11 +135,7 @@ const onChange = (filterCategory, value) => {
 }
 
 const getSelectedParams = () => {
-    return Object.entries(route.query).map(item => {
-        const filter = item.join('=').split('=');
-
-        return filter[1].split(',').map(item => `${filter[0]}=${item}`)
-    }).flat()
+    return params.value
 }
 
 const getFilterOptions = (options, name) => {

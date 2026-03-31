@@ -48,7 +48,7 @@ const { dimension } = toRefs(props);
 
 const initialMinValue = computed(() => {
   const queryValue = parseInt(
-    router.currentRoute.value.query[`${dimension.value.name}_min[]`]
+    router.currentRoute.value.query[`${dimension.value.name}_min`]
   );
   if (queryValue > dimension.value.min && queryValue <= dimension.value.max - MIN_MAX_DIFF) {
     return queryValue;
@@ -58,7 +58,7 @@ const initialMinValue = computed(() => {
 
 const initialMaxValue = computed(() => {
   const queryValue = parseInt(
-    router.currentRoute.value.query[`${dimension.value.name}_max[]`]
+    router.currentRoute.value.query[`${dimension.value.name}_max`]
   );
   if (queryValue < dimension.value.max && queryValue >= dimension.value.min + MIN_MAX_DIFF) {
     return queryValue;
@@ -69,7 +69,7 @@ const initialMaxValue = computed(() => {
 const minValue = ref(initialMinValue.value);
 const maxValue = ref(initialMaxValue.value);
 
-const saveToQuery = (type: 'min[]' | 'max[]', newValue: number) => {
+const saveToQuery = (type: 'min' | 'max', newValue: number) => {
   const query = router.currentRoute.value.query;
   const key = `${dimension.value.name}_${type}`;
   const params = { ...query, [key]: newValue };
@@ -94,25 +94,25 @@ const validateMax = (val: number) => {
 const debouncedRangeMin = debounce((val: number) => {
   const validated = validateMin(val);
   minValue.value = validated;
-  saveToQuery('min[]', validated);
+  saveToQuery('min', validated);
 }, DEBOUNCE_TIME);
 
 const debouncedRangeMax = debounce((val: number) => {
   const validated = validateMax(val);
   maxValue.value = validated;
-  saveToQuery('max[]', validated);
+  saveToQuery('max', validated);
 }, DEBOUNCE_TIME);
 
 const debouncedNumberMin = debounce((val: number) => {
   const validated = validateMin(val);
   minValue.value = validated;
-  saveToQuery('min[]', validated);
+  saveToQuery('min', validated);
 }, DEBOUNCE_TIME);
 
 const debouncedNumberMax = debounce((val: number) => {
   const validated = validateMax(val);
   maxValue.value = validated;
-  saveToQuery('max[]', validated);
+  saveToQuery('max', validated);
 }, DEBOUNCE_TIME);
 
 watch(minValue, (val, _, onCleanup) => {

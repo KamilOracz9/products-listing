@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="w-full">
     <ProductsLayout :title="$t('products')">
     </ProductsLayout>
   </section>
