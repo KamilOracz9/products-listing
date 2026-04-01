@@ -3,7 +3,7 @@
         <section class="w-full">
             <div>
                 <div class="mt-10 flex gap-10">
-                    <SectionsProductsSidebar />
+                    <!-- <SectionsProductsSidebar />
                     <div class="w-full" v-if="!categoryPagePending && !productsPending">
                         <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
@@ -17,7 +17,7 @@
                                 :productsCount="productsCount" />
                         </div>
                     </div>
-                    <Loading v-else />
+                    <Loading v-else /> -->
                 </div>
             </div>
         </section>
@@ -39,41 +39,56 @@ const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.p
 const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
 const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
 
-// Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    categoryPageKey.value,
+    categoryPageKey,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
-        watch: [() => route.params.category, () => $locale],
-        server: true
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key]
+                ?? useNuxtApp().static.data[key];
+        }
     }
 );
 
-// Fetch products data - depends on category
-const { data: productsData, pending: productsPending } = await useAsyncData(
-    productsKey.value,
-    async () => {
-        const categorySlug = categoryPage.value?.slug ?? route.params.category;
-        return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
-    },
-    {
-        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug, () => $locale],
-        server: true
-    }
-);
-
-// Fetch filters
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    filtersKey.value,
-    async () => {
-        const categorySlug = categoryPage.value?.slug ?? route.params.category;
-        return fetchFilters({ 'category': categorySlug }, $locale);
-    },
+    filtersKey,
+    async () => fetchFilters({ 'category': route.params.category }, $locale),
     {
-        watch: [() => route.params.category, () => categoryPage.value?.slug, () => $locale],
-        server: true
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key]
+                ?? useNuxtApp().static.data[key];
+        }
     }
 );
+
+const { data: productsData, pending: productsPending } = await useAsyncData(
+    productsKey,
+    async () => fetchProducts({ 'category': route.params.category }, $locale),
+    {
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key]
+                ?? useNuxtApp().static.data[key];
+        }
+    }
+);
+
+console.log(
+    {
+        categoryPage,
+        filtersData,
+        productsData
+    },
+    {
+        categoryPagePending,
+        filtersPending,
+        productsPending
+    },
+    {
+        categoryPage: categoryPage.value,
+        filtersData: filtersData.value,
+        productsData: productsData.value
+    },
+)
 
 const { filteredProductsIds } = useFilteredProducts(filtersData, computed(() => route.query));
 
