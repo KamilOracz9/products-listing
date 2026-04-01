@@ -1,10 +1,11 @@
 export default defineNuxtPlugin(() => {
     const originalFetch = globalThis.$fetch
+    const requestHost = useRequestURL().host
 
     globalThis.$fetch = (url, options = {}) => {
         options.headers = {
             ...options.headers,
-            'X-Url': useRequestURL().host,
+            'X-Url': requestHost,
         }
 
         return originalFetch(url, options)
