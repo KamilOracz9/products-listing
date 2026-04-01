@@ -1,23 +1,20 @@
 export default defineNuxtPlugin(() => {
-    const originalFetch = globalThis.$fetch
     const requestHost = useRequestURL().host
 
-    globalThis.$fetch = (url, options = {}) => {
-        const existingHeaders = options.headers instanceof Headers
-            ? Object.fromEntries((options.headers as Headers).entries())
-            : (options.headers ?? {});
+    globalThis.$fetch = $fetch.create({
+        onRequest({ options }) {
+            const existing = options.headers
+                ? Object.fromEntries(
+                    options.headers instanceof Headers
+                        ? (options.headers as Headers).entries()
+                        : Object.entries(options.headers as Record<string, string>)
+                )
+                : {};
 
-        options.headers = {
-            ...existingHeaders,
-            'X-Url': requestHost,
+            options.headers = {
+                ...existing,
+                'X-Url': requestHost,
+            };
         }
-
-        return originalFetch(url, options)
-            .then((response) => {
-                return response
-            })
-            .catch((error) => {
-                throw error
-            })
-    }
+    });
 })
