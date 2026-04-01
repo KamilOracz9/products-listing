@@ -50,6 +50,12 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     }
 );
 
+await fetch(`${useAppConfig().public.apiBase}/v1/pl_PL/cms/page/category`).then(res => res.json()).then(data => {
+    console.log('category page data', data);
+}).catch(err => {
+    console.error('Error fetching category page:', err);
+});
+
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
     filtersKey,
     async () => fetchFilters({ 'category': route.params.category }, $locale),
