@@ -3,9 +3,9 @@
         <li>
             <NuxtLink :to="localePath({path: '/'})" :aria-label="$t('home-page')" :title="$t('home-page')">
                 <h1 v-if="$isHomePage()">
-                    <img src="/assets/images/logo.svg" class="aspect-[auto_4/3] w-[181px] small-height:w-[100px]" width="214" alt="NEW TRENDY" title="NEW TRENDY" />
+                    <img src="~/assets/images/logo.svg" class="aspect-[auto_4/3] w-[181px] small-height:w-[100px]" width="214" alt="NEW TRENDY" title="NEW TRENDY" />
                 </h1>
-                <img v-else src="/assets/images/logo.svg" class="aspect-[auto_4/3] w-[181px] small-height:w-[100px]" width="214" alt="NEW TRENDY" title="NEW TRENDY" />
+                <img v-else src="~/assets/images/logo.svg" class="aspect-[auto_4/3] w-[181px] small-height:w-[100px]" width="214" alt="NEW TRENDY" title="NEW TRENDY" />
             </NuxtLink>
         </li>
 

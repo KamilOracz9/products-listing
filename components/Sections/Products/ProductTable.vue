@@ -94,11 +94,11 @@
                 </div>
                 <div class="flex flex-col gap-4 mt-10">
                     <div class="flex items-center gap-2">
-                        <img class="size-[16px]" src="/assets/icons/clipboard.svg" alt="">
+                        <img class="size-[16px]" src="~/assets/icons/clipboard.svg" alt="">
                         <p class="text-sm">{{ $t('product.add-to-clipboard') }}</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img class="size-[16px]" src="/assets/icons/product_card.svg" alt="">
+                        <img class="size-[16px]" src="~/assets/icons/product_card.svg" alt="">
                         <p class="text-sm">{{ $t('product.generate-product-card') }}</p>
                     </div>
                     <!-- <div class="flex items-center gap-2">

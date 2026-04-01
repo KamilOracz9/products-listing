@@ -95,7 +95,7 @@
                 <div class="title">
                     <p>{{ t('pages.product.parts-catalog-title') }}: {{ productSymbol }}</p>
                     <button @click="handleClose">
-                        <img src="/assets/icons/close.svg" width="16" height="16" alt="">
+                        <img src="~/assets/icons/close.svg" width="16" height="16" alt="">
                     </button>
                 </div>
 

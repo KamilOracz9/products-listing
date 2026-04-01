@@ -32,9 +32,6 @@ export default defineNuxtConfig({
     }
   },
   ssr: true,
-  devServer: {
-    port: 3001,
-  },
   experimental: { defaults: { nuxtLink: { trailingSlash: 'append' } }, inlineRouteRules: true },
   router: {
     options: {
