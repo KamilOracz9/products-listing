@@ -39,36 +39,39 @@ const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.p
 const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
 const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
 
+// Fetch category page data
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
-    categoryPageKey,
+    categoryPageKey.value,
     async () => fetchCategoryPage(route.params.category, $locale),
     {
-        getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
-        }
+        watch: [() => route.params.category, () => $locale],
+        server: true
     }
 );
 
-const { data: filtersData, pending: filtersPending } = await useAsyncData(
-    filtersKey,
-    async () => fetchFilters({ 'category': route.params.category }, $locale),
-    {
-        getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
-        }
-    }
-);
-
+// Fetch products data - depends on category
 const { data: productsData, pending: productsPending } = await useAsyncData(
-    productsKey,
-    async () => fetchProducts({ 'category': route.params.category }, $locale),
+    productsKey.value,
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchProducts({ ...route.query, 'category': categorySlug }, $locale);
+    },
     {
-        getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
-        }
+        watch: [() => route.query, () => route.params.category, () => categoryPage.value?.slug, () => $locale],
+        server: true
+    }
+);
+
+// Fetch filters
+const { data: filtersData, pending: filtersPending } = await useAsyncData(
+    filtersKey.value,
+    async () => {
+        const categorySlug = categoryPage.value?.slug ?? route.params.category;
+        return fetchFilters({ 'category': categorySlug }, $locale);
+    },
+    {
+        watch: [() => route.params.category, () => categoryPage.value?.slug, () => $locale],
+        server: true
     }
 );
 
