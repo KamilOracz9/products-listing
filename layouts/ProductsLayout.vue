@@ -31,7 +31,7 @@ import { fetchCategoryPage } from '~/services/api/category';
 import { fetchFilters, fetchProducts } from '~/services/api/products';
 
 const route = useRoute();
-const { $locale, $apiFetch } = useNuxtApp();
+const { $locale } = useNuxtApp();
 
 const productsFilterStore = useProductsFilterStore();
 
@@ -39,41 +39,34 @@ const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.p
 const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
 const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
 
+const nuxtApp = useNuxtApp();
+
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     categoryPageKey,
-    async () => fetchCategoryPage(route.params.category, $locale, $apiFetch),
+    async () => fetchCategoryPage(route.params.category, $locale),
     {
         getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
+            return nuxtApp.payload.data[key];
         }
     }
 );
 
-await fetch(`https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category`).then(res => res.json()).then(data => {
-    console.log('category page data', data);
-}).catch(err => {
-    console.error('Error fetching category page:', err);
-});
-
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
     filtersKey,
-    async () => fetchFilters({ 'category': route.params.category }, $locale, $apiFetch),
+    async () => fetchFilters({ 'category': route.params.category }, $locale),
     {
         getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
+            return nuxtApp.payload.data[key];
         }
     }
 );
 
 const { data: productsData, pending: productsPending } = await useAsyncData(
     productsKey,
-    async () => fetchProducts({ 'category': route.params.category }, $locale, $apiFetch),
+    async () => fetchProducts({ 'category': route.params.category }, $locale),
     {
         getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
+            return nuxtApp.payload.data[key];
         }
     }
 );

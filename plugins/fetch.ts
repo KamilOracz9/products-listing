@@ -1,18 +1,16 @@
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
     const requestHost = useRequestURL().host
 
-    const apiFetch = $fetch.create({
-        onRequest({ options }) {
+    nuxtApp.hook('app:created', () => {
+        const originalFetch = globalThis.$fetch
+
+        nuxtApp.$fetch = (url: string, options: Record<string, any> = {}) => {
             options.headers = {
-                ...options.headers as Record<string, string>,
+                ...options.headers,
                 'X-Url': requestHost,
             }
-        },
-    })
 
-    return {
-        provide: {
-            apiFetch,
-        },
-    }
+            return originalFetch(url, options)
+        }
+    })
 })

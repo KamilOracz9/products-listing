@@ -5,7 +5,6 @@ declare module '#app' {
         $getMapCenter(): number[],
         $isNewtrendyEU(): boolean,
         $locale: string,
-        $apiFetch: typeof $fetch,
     }
 }
 
@@ -16,7 +15,6 @@ declare module '@vue/runtime-core' {
         $getMapCenter(): number[],
         $isNewtrendyEU(): boolean,
         $locale: string,
-        $apiFetch: typeof $fetch,
     }
 }
 
