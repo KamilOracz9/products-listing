@@ -3,8 +3,12 @@ export default defineNuxtPlugin(() => {
     const requestHost = useRequestURL().host
 
     globalThis.$fetch = (url, options = {}) => {
+        const existingHeaders = options.headers instanceof Headers
+            ? Object.fromEntries((options.headers as Headers).entries())
+            : (options.headers ?? {});
+
         options.headers = {
-            ...options.headers,
+            ...existingHeaders,
             'X-Url': requestHost,
         }
 
