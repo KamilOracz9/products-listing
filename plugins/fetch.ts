@@ -1,16 +1,19 @@
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
+    const originalFetch = globalThis.$fetch
     const requestHost = useRequestURL().host
 
-    nuxtApp.hook('app:created', () => {
-        const originalFetch = globalThis.$fetch
-
-        nuxtApp.$fetch = (url: string, options: Record<string, any> = {}) => {
-            options.headers = {
-                ...options.headers,
-                'X-Url': requestHost,
-            }
-
-            return originalFetch(url, options)
+    globalThis.$fetch = (url, options = {}) => {
+        options.headers = {
+            ...options.headers,
+            'X-Url': requestHost,
         }
-    })
+
+        return originalFetch(url, options)
+            .then((response) => {
+                return response
+            })
+            .catch((error) => {
+                throw error
+            })
+    }
 })
