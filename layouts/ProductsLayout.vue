@@ -4,7 +4,7 @@
             <div>
                 <div class="mt-10 flex gap-10">
                     <SectionsProductsSidebar />
-                    <div class="w-full" v-if="!categoryPagePending && !productsPending && isReady">
+                    <div class="w-full" v-if="!categoryPagePending && !productsPending">
                         <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                         <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"

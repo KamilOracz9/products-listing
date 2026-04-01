@@ -9,10 +9,5 @@
 </template>
 
 <script setup lang="ts">
-import type { Header } from '~/types/layout.types';
-
-const props = defineProps<{
-    data: Header;
-}>();
 
 </script>
