@@ -31,7 +31,7 @@ import { fetchCategoryPage } from '~/services/api/category';
 import { fetchFilters, fetchProducts } from '~/services/api/products';
 
 const route = useRoute();
-const { $locale } = useNuxtApp();
+const { $locale, $apiFetch } = useNuxtApp();
 
 const productsFilterStore = useProductsFilterStore();
 
@@ -41,7 +41,7 @@ const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${r
 
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     categoryPageKey,
-    async () => fetchCategoryPage(route.params.category, $locale),
+    async () => fetchCategoryPage(route.params.category, $locale, $apiFetch),
     {
         getCachedData(key) {
             return useNuxtApp().payload.data[key]
@@ -50,7 +50,7 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     }
 );
 
-await fetch(`${useAppConfig().public.apiBase}/v1/pl_PL/cms/page/category`).then(res => res.json()).then(data => {
+await fetch(`https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category`).then(res => res.json()).then(data => {
     console.log('category page data', data);
 }).catch(err => {
     console.error('Error fetching category page:', err);
@@ -58,7 +58,7 @@ await fetch(`${useAppConfig().public.apiBase}/v1/pl_PL/cms/page/category`).then(
 
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
     filtersKey,
-    async () => fetchFilters({ 'category': route.params.category }, $locale),
+    async () => fetchFilters({ 'category': route.params.category }, $locale, $apiFetch),
     {
         getCachedData(key) {
             return useNuxtApp().payload.data[key]
@@ -69,7 +69,7 @@ const { data: filtersData, pending: filtersPending } = await useAsyncData(
 
 const { data: productsData, pending: productsPending } = await useAsyncData(
     productsKey,
-    async () => fetchProducts({ 'category': route.params.category }, $locale),
+    async () => fetchProducts({ 'category': route.params.category }, $locale, $apiFetch),
     {
         getCachedData(key) {
             return useNuxtApp().payload.data[key]

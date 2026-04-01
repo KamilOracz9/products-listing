@@ -70,10 +70,11 @@ const modalIsOpen = ref(false);
 const galleryActiveSlide = ref(0);
 const route = useRoute();
 const { locale } = useI18n();
+const { $apiFetch } = useNuxtApp();
 
 const cacheKey = computed(() => `${DataKeys.PRODUCT_PAGE}_${locale.value}_${route.params.slug}`);
 
-const { data, pending } = await fetchData(cacheKey.value, async () => fetchProductPage(route.params.slug, getLocaleIso()));
+const { data, pending } = await fetchData(cacheKey.value, async () => fetchProductPage(route.params.slug, getLocaleIso(), $apiFetch));
 const { badge, breadcrumbs, category, description, files, images, meta, name, variants, schema } = toRefs(data.value as ProductPage);
 
 const hasFiles = computed(() => !!Object.values(files.value).filter(file => file).length);
