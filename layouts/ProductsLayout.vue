@@ -50,9 +50,18 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     }
 );
 
-const { data : shops } = await useFetch('https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category')
+const { data: shops, error: shopsError } = await useAsyncData(
+    'shops-category-page',
+    async () => $fetch('https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category'),
+    {
+        getCachedData(key) {
+            return useNuxtApp().payload.data[key]
+                ?? useNuxtApp().static.data[key];
+        }
+    }
+);
 
-console.log(shops.value)
+console.log(shops.value, shopsError.value)
 
 // fetch(`https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category`)
 
