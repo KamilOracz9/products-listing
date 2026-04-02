@@ -7,8 +7,8 @@
                     <figure>
                         <div class="relative">
                             <SectionsProductsBadge :badge="product.badge" />
-                            <img class="w-full rounded-br-sm aspect-[460/613]" :src="product.image" width="460"
-                                height="613" :alt="product.name" :title="product.name">
+                            <NuxtImg class="w-full rounded-br-sm aspect-[460/613]" :src="product.image" width="460"
+                                height="613" :alt="product.name" :title="product.name" />
                         </div>
                         <figcaption>
                             <p class="font-medium uppercase text-base pt-2 pb-3">{{ product.product_name }}</p>

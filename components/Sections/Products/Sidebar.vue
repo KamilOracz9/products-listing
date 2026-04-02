@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const localePath = useLocalePath();
 
 const data = inject('filtersData');
 

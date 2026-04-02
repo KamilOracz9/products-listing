@@ -66,12 +66,9 @@ const filteredProducts = computed(() => {
             ? filteredProductsIds.value.includes(product.product_id)
             : true
     ).filter(product => {
-        return (!route.query.width_max || product.width <= parseInt(route.query.width_max as string))
-            && (!route.query.width_min || product.width >= parseInt(route.query.width_min as string))
-            && (!route.query.height_max || product.height <= parseInt(route.query.height_max as string))
-            && (!route.query.height_min || product.height >= parseInt(route.query.height_min as string))
-            && (!route.query.length_max || product.length <= parseInt(route.query.length_max as string))
-            && (!route.query.length_min || product.length >= parseInt(route.query.length_min as string))
+        return (!route.query.width || product.width == parseInt(route.query.width as string))
+            && (!route.query.height || product.height == parseInt(route.query.height as string))
+            && (!route.query.length || product.length == parseInt(route.query.length as string))
     });
 });
 

@@ -53,15 +53,12 @@ const params = ref(
         .filter(param => !param.startsWith('page='))
 );
 
-const rangeKeys = new Set(['length_min', 'length_max', 'width_min', 'width_max', 'height_min', 'height_max'])
+const rangeKeys = new Set(['length', 'length', 'width', 'width', 'height', 'height'])
 
 const matchesRanges = (product, selected) => {
-    if (selected.width_min?.[0]  && product.width  < Number(selected.width_min[0]))  return false
-    if (selected.width_max?.[0]  && product.width  > Number(selected.width_max[0]))  return false
-    if (selected.length_min?.[0] && product.length < Number(selected.length_min[0])) return false
-    if (selected.length_max?.[0] && product.length > Number(selected.length_max[0])) return false
-    if (selected.height_min?.[0] && product.height < Number(selected.height_min[0])) return false
-    if (selected.height_max?.[0] && product.height > Number(selected.height_max[0])) return false
+    // if (selected.width?.[0]  && product.width  == selected.width[0])  return false
+    // if (selected.length?.[0] && product.length == selected.length_min[0]) return false
+    // if (selected.height?.[0] && product.height == selected.height_min[0]) return false
     return true
 }
 
