@@ -4,7 +4,7 @@
             <div>
                 <div class="mt-10 flex gap-10">
                     <SectionsProductsSidebar :key="queryString" />
-                    <div class="w-full" v-if="!categoryPagePending && !productsPending && isReady">
+                    <div class="w-full" v-if="!categoryPagePending && !productsPending">
                         <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
                         <button @click="productsFilterStore.toggleMenuIsOpen" :aria-label="`${$t('filtering')}}`"
@@ -26,7 +26,6 @@
 
 <script setup lang="ts">
 import Loading from '~/components/Loading.vue';
-import { useCachedData } from '~/composables/useCachedData';
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchCategoryPage } from '~/services/api/category';
 import { fetchFilters, fetchProducts } from '~/services/api/products';
@@ -42,20 +41,20 @@ const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${r
 
 const queryString = computed(() => new URLSearchParams(route.query as Record<string, string>).toString());
 
-const { data: categoryPage } = await useCachedData(
-  categoryPageKey,
-  () => fetchCategoryPage(route.params.category, $locale)
-)
+const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
+    categoryPageKey,
+    async () => fetchCategoryPage(route.params.category, $locale),
+);
 
-const { data: filtersData } = await useCachedData(
-  filtersKey,
-  () => fetchFilters({ category: route.params.category }, $locale)
-)
+const { data: filtersData, pending: filtersPending } = await useAsyncData(
+    filtersKey,
+    async () => fetchFilters({ 'category': route.params.category }, $locale),
+);
 
-const { data: productsData } = await useCachedData(
-  productsKey,
-  () => fetchProducts({ category: route.params.category }, $locale)
-)
+const { data: productsData, pending: productsPending } = await useAsyncData(
+    productsKey,
+    async () => fetchProducts({ 'category': route.params.category }, $locale),
+);
 
 const { filteredProductsIds } = useFilteredProducts(filtersData, computed(() => route.query));
 

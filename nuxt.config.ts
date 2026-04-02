@@ -42,22 +42,22 @@ export default defineNuxtConfig({
     externals: {
       traceOptions: { base: process.cwd() }
     },
-    prerender: {
-      routes: process.env.PRERENDER_ROUTES
-        ? process.env.PRERENDER_ROUTES.split(',')
-        : ['/', '/produkty', '/kategoria-produktu/drzwi-wnekowe', '/kategoria-produktu/kabiny-prysznicowe', '/kategoria-produktu/kabiny-walk-in',
-          '/kategoria-produktu/parawany-nawannowe', '/kategoria-produktu/brodziki-i-odwodnienia', '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji'] // domyślnie wszystkie
-    },
+    // prerender: {
+    //   routes: process.env.PRERENDER_ROUTES
+    //     ? process.env.PRERENDER_ROUTES.split(',')
+    //     : ['/', '/produkty', '/kategoria-produktu/drzwi-wnekowe', '/kategoria-produktu/kabiny-prysznicowe', '/kategoria-produktu/kabiny-walk-in',
+    //       '/kategoria-produktu/parawany-nawannowe', '/kategoria-produktu/brodziki-i-odwodnienia', '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji'] // domyślnie wszystkie
+    // },
     routeRules: {
       // ...routeRules,
-      // '/': { swr: 60 },
-      // '/produkty': { swr: 60 },
-      // '/kategoria-produktu/drzwi-wnekowe': { swr: 60 },
-      // '/kategoria-produktu/kabiny-prysznicowe': { swr: 60 },
-      // '/kategoria-produktu/kabiny-walk-in': { swr: 60 },
-      // '/kategoria-produktu/parawany-nawannowe': { swr: 60 },
-      // '/kategoria-produktu/brodziki-i-odwodnienia': { swr: 60 },
-      // '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji': { swr: 60 },
+      '/': { prerender: true },
+      '/produkty': { prerender: true },
+      '/kategoria-produktu/drzwi-wnekowe': { prerender: true },
+      '/kategoria-produktu/kabiny-prysznicowe': { prerender: true },
+      '/kategoria-produktu/kabiny-walk-in': { prerender: true },
+      '/kategoria-produktu/parawany-nawannowe': { prerender: true },
+      '/kategoria-produktu/brodziki-i-odwodnienia': { prerender: true },
+      '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji': { prerender: true },
     },
     preset: 'node-server',
   },
