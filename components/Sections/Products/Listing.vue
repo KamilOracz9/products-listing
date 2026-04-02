@@ -3,7 +3,7 @@
         <ul class="grid gap-8 xs:grid-cols-2 sm:grid-cols-3 lg:mt-10 xl:grid-cols-4 2xl:grid-cols-5">
             <li v-for="product in products.slice((currentPage - 1) * perPage, perPage + ((currentPage - 1) * perPage))" class="border-b border-gray-2 pb-8">
                 <NuxtLink :aria-label="product.name" :title="product.name"
-                    :to="localePath({ name: 'product-slug', params: { slug: product.slug } })">
+                    :to="product.product_card" target="_blank">
                     <figure>
                         <div class="relative">
                             <SectionsProductsBadge :badge="product.badge" />
@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-const localePath = useLocalePath();
 const props = defineProps(['products']);
 const route = useRoute();
 
