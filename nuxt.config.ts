@@ -9,7 +9,7 @@ const routeRules = Object.fromEntries(
         // Handle Polish as default locale (no prefix)
         const languagePrefix = language === 'pl' ? '' : `/${language}`;
         const routePath = route === 'index' ? '/' : (data ?? data.static?.body ?? '').replace(/\[.*?\]/g, "*");
-        
+
         if (route === 'index') {
           return [languagePrefix || '/', { swr: true }];
         } else {
@@ -42,8 +42,22 @@ export default defineNuxtConfig({
     externals: {
       traceOptions: { base: process.cwd() }
     },
+    prerender: {
+      routes: process.env.PRERENDER_ROUTES
+        ? process.env.PRERENDER_ROUTES.split(',')
+        : ['/', '/produkty', '/kategoria-produktu/drzwi-wnekowe', '/kategoria-produktu/kabiny-prysznicowe', '/kategoria-produktu/kabiny-walk-in',
+          '/kategoria-produktu/parawany-nawannowe', '/kategoria-produktu/brodziki-i-odwodnienia', '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji'] // domyślnie wszystkie
+    },
     routeRules: {
-      ...routeRules,
+      // ...routeRules,
+      // '/': { swr: 60 },
+      // '/produkty': { swr: 60 },
+      // '/kategoria-produktu/drzwi-wnekowe': { swr: 60 },
+      // '/kategoria-produktu/kabiny-prysznicowe': { swr: 60 },
+      // '/kategoria-produktu/kabiny-walk-in': { swr: 60 },
+      // '/kategoria-produktu/parawany-nawannowe': { swr: 60 },
+      // '/kategoria-produktu/brodziki-i-odwodnienia': { swr: 60 },
+      // '/kategoria-produktu/akcesoria-i-srodki-do-pielegnacji': { swr: 60 },
     },
     preset: 'node-server',
   },
