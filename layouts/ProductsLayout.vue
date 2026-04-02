@@ -3,7 +3,7 @@
         <section class="w-full">
             <div>
                 <div class="mt-10 flex gap-10">
-                    <!-- <SectionsProductsSidebar />
+                    <SectionsProductsSidebar :key="queryString" />
                     <div class="w-full" v-if="!categoryPagePending && !productsPending">
                         <SectionsProductsCategories v-if="categoryPage" :categories="categoryPage?.categories" />
 
@@ -17,7 +17,7 @@
                                 :productsCount="productsCount" />
                         </div>
                     </div>
-                    <Loading v-else /> -->
+                    <Loading v-else />
                 </div>
             </div>
         </section>
@@ -39,6 +39,8 @@ const filtersKey = computed(() => `${DataKeys.FILTERS_LIST}-${$locale}-${route.p
 const productsKey = computed(() => `${DataKeys.PRODUCTS_LIST}-${$locale}-${route.params.category}`);
 const categoryPageKey = computed(() => `${DataKeys.CATEGORY_PAGE}-${$locale}-${route.params.category}`);
 
+const queryString = computed(() => new URLSearchParams(route.query as Record<string, string>).toString());
+
 const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
     categoryPageKey,
     async () => fetchCategoryPage(route.params.category, $locale),
@@ -49,27 +51,6 @@ const { data: categoryPage, pending: categoryPagePending } = await useAsyncData(
         }
     }
 );
-
-const { data: shops, error: shopsError } = await useAsyncData(
-    'shops-category-page',
-    async () => $fetch('https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category'),
-    {
-        getCachedData(key) {
-            return useNuxtApp().payload.data[key]
-                ?? useNuxtApp().static.data[key];
-        }
-    }
-);
-
-console.log(shops.value, shopsError.value)
-
-// fetch(`https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category`)
-
-// await fetch(`https://panel.newtrendy.pl/api/v1/pl_PL/cms/page/category`).then(res => res.json()).then(data => {
-//     console.log('category page data', data);
-// }).catch(err => {
-//     console.error('Error fetching category page:', err);
-// });
 
 const { data: filtersData, pending: filtersPending } = await useAsyncData(
     filtersKey,
@@ -92,24 +73,6 @@ const { data: productsData, pending: productsPending } = await useAsyncData(
         }
     }
 );
-
-// console.log(
-//     {
-//         categoryPage,
-//         filtersData,
-//         productsData
-//     },
-//     {
-//         categoryPagePending,
-//         filtersPending,
-//         productsPending
-//     },
-//     {
-//         categoryPage: categoryPage.value,
-//         filtersData: filtersData.value,
-//         productsData: productsData.value
-//     },
-// )
 
 const { filteredProductsIds } = useFilteredProducts(filtersData, computed(() => route.query));
 
