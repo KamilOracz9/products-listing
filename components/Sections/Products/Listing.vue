@@ -11,7 +11,7 @@
                                 height="613" :alt="product.name" :title="product.name" />
                         </div>
                         <figcaption>
-                            <p class="font-medium uppercase text-base pt-2 pb-3">{{ product.product_name }}</p>
+                            <p class="font-medium uppercase text-base pt-2 pb-3 text-sm">{{ product.product_name }} <span class="font-bold text-base">{{ product.catalog_dimensions }}</span></p>
                             <div class="text-sm text-gray-4" v-html="product.description_short"></div>
                         </figcaption>
                     </figure>
