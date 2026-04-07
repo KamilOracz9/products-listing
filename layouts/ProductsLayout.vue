@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { isArray } from 'lodash';
 import Loading from '~/components/Loading.vue';
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchCategoryPage } from '~/services/api/category';
@@ -57,7 +56,7 @@ const { data: productsData, pending: productsPending } = await useAsyncData(
     async () => fetchProducts({ 'category': route.params.category }, $locale),
 );
 
-const mappedProductDirectionsQuery = computed(() => (isArray(route.query['orientacja-produktu[]']) ? route.query['orientacja-produktu[]'] : [route.query['orientacja-produktu[]']])
+const mappedProductDirectionsQuery = computed(() => (Array.isArray(route.query['orientacja-produktu[]']) ? route.query['orientacja-produktu[]'] : [route.query['orientacja-produktu[]']])
     .map(value => {
         switch (value) {
             case 'p':
