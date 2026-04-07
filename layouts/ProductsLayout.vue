@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import { isArray } from 'lodash';
 import Loading from '~/components/Loading.vue';
 import { DataKeys } from '~/enums/dataKeys';
 import { fetchCategoryPage } from '~/services/api/category';
@@ -56,6 +57,22 @@ const { data: productsData, pending: productsPending } = await useAsyncData(
     async () => fetchProducts({ 'category': route.params.category }, $locale),
 );
 
+const mappedProductDirectionsQuery = computed(() => (isArray(route.query['orientacja-produktu[]']) ? route.query['orientacja-produktu[]'] : [route.query['orientacja-produktu[]']])
+    .map(value => {
+        switch (value) {
+            case 'p':
+                return 142;
+            case 'l':
+                return 141;
+            case 'u':
+                return 143;
+            case 'nd':
+                return 177;
+            default:
+                return null;
+        }
+    }))
+
 const { filteredProductsIds } = useFilteredProducts(filtersData, computed(() => route.query));
 
 const filteredProducts = computed(() => {
@@ -69,6 +86,7 @@ const filteredProducts = computed(() => {
         return (!route.query.width || product.width == parseInt(route.query.width as string))
             && (!route.query.height || product.height == parseInt(route.query.height as string))
             && (!route.query.length || product.length == parseInt(route.query.length as string))
+            && (!route.query['orientacja-produktu[]'] || mappedProductDirectionsQuery.value.includes(product.product_direction_id))
     });
 });
 
